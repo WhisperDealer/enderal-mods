@@ -1,0 +1,34 @@
+FormKey: 012FB4:Skyrim.esm
+Version2: 14
+NavMeshVersion: 12
+MapInfos:
+- NavigationMesh: 0A0252:Apocalypse - Magic of Skyrim.esp
+  Point: -856.6465, -1068.7432, 285.97513
+  Unknown2: -1511415748
+  Parent:
+    MutagenObjectType: NavigationMapInfoCellParent
+    ParentCell: 0A017C:Apocalypse - Magic of Skyrim.esp
+- NavigationMesh: 0A0253:Apocalypse - Magic of Skyrim.esp
+  Unknown: 32
+  Point: 1421.7499, 1269.8583, 165.67212
+  Island:
+    Min: 1364.9341, 1140.667, 161.20297
+    Max: 1487.929, 1392.6456, 167.69305
+    Triangles:
+    - 0, 1, 2
+    - 0, 2, 3
+    Vertices:
+    - 1464.8059, 1156.7936, 166.78444
+    - 1487.437, 1392.6456, 166.99213
+    - 1364.9341, 1388.614, 167.69305
+    - 1368.8699, 1140.667, 161.20297
+  Unknown2: -1511415748
+  Parent:
+    MutagenObjectType: NavigationMapInfoCellParent
+    ParentCell: 0A017C:Apocalypse - Magic of Skyrim.esp
+- NavigationMesh: 0ABFDE:Apocalypse - Magic of Skyrim.esp
+  Point: 22.850508, -23.37987, 75.06135
+  Unknown2: -1511415748
+  Parent:
+    MutagenObjectType: NavigationMapInfoCellParent
+    ParentCell: 0ABFCD:Apocalypse - Magic of Skyrim.esp
