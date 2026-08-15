@@ -53,8 +53,8 @@ Thumbs.db
 # if a .pex is MISSING but cannot tell that one is STALE. See "CI build & release" in README.md.
 #
 # Add one pair of lines per script-shipping plugin (the /mod-new-plugin skill does this for you):
-!src/ExampleMod/Scripts/compiled/
-!src/ExampleMod/Scripts/compiled/*.pex
+!src/Apocalypse/Scripts/compiled/
+!src/Apocalypse/Scripts/compiled/*.pex
 
 # Reference decompiles — vanilla and third-party plugins serialized ONLY for FormKey lookups.
 # Large, regenerated locally from each machine's own copy of the source mod, never committed.
