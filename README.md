@@ -22,6 +22,7 @@ all of it. **You edit the YAML, not the binary plugin.**
 | Mod | Plugin | What it is |
 |---|---|---|
 | [`src/Apocalypse/`](src/Apocalypse/) | `Apocalypse - Magic of Skyrim.esp` | Enai Siaion's spell pack converted for Enderal — form version lowered so Enderal's 1.5.97 engine will load it, Elder Scrolls proper nouns renamed, and its distribution rebuilt onto Enderal's own vendor and loot lists. A **replacement plugin**, installed over the original |
+| [`src/RelentlessSword/`](src/RelentlessSword/) | `Relentless Sword - Enderal.esp` | johnskyrim's *Relentless Sword SE*, rebuilt for Enderal — clean masters (his plugin masters the three DLC stubs), shadowsteel-tier stats, and Enderal's own blueprint + Handicraft gating instead of a Skyforge recipe that could never appear. A **standalone conversion**: plugin only, install his mod for the assets and disable his ESP |
 
 Run **`/mod-new-plugin`** to add another. `build/manifest.json` drives the build, and an empty
 `"releases": []` is legal — the build reports "nothing to build" and exits 0.
@@ -310,6 +311,42 @@ A **replacement plugin**, not a patch: it ships under Enai's original filename
 - **Dragonborn-only content is gone** (staff recipes, the Tamriel worldspace override) and the
   Elder Scrolls proper nouns are renamed to Enderal's.
 
+### `Relentless Sword - Enderal Conversion`
+
+A **standalone conversion**, plugin only — it carries no meshes and no textures. Six blades (a
+longsword and a greatsword, each plain / Fire / Ice), ESL-flagged.
+
+- **Requires johnskyrim's *[Relentless Sword SE](https://www.nexusmods.com/skyrimspecialedition/mods/114022)*, installed first**, for its meshes and
+  textures. Pick the **CORE** (runed) branch in *his* installer — NoRune ships different meshes and
+  only two weapons, so it is not covered. Any texture resolution works; this plugin references
+  meshes and no textures at all.
+- **Then disable `Relentless Sword SE - Johnskyrim.esp`.** This release replaces it. His plugin
+  masters `Dawnguard.esm`, `HearthFires.esm` and `Dragonborn.esm` — Enderal ships those as empty
+  stubs — and its recipes are keyed to the Skyforge and a Companions-questline global, neither of
+  which exists anywhere in Enderal, so the swords were uncraftable there.
+- **Retuned to Enderal's shadowsteel tier** (23/6 one-handed, 37/11 two-handed — parity with *Sword
+  of the Righteous Path*), given `WeapTypeMelee`, and given the dismantle recipes Forgotten Stories
+  gives its own gear.
+- **How you get them:** *Blueprint: Relentless Sword (Handicraft 50)* on the noble-dresser shelf in
+  the Riverville Temple (free to take), or from blueprint traders at level 30. One copy unlocks all
+  six; keep it in your pack, the recipes check for it. Forge at any forge with Handicraft 50.
+- It overrides exactly two records — the Riverville Temple interior and
+  `_00ETraderCraftingPlansC` — both forwarded from the Forgotten Stories versions. **Load it after
+  anything else that edits the Riverville Temple**, or you lose the shelf copy and the trader
+  becomes your only source.
+- **Known conflict with `Enderal SE - Gameplay Overhaul.esp` (EGO), which overrides both records.**
+  **[verified]**
+  - `_00ETraderCraftingPlansC 148ABE` — **material.** Loading after EGO reverts its version of the
+    list: EGO rebands every entry to levels 1/15/20 (FS uses 19–30), adds `ChanceNone: 0.4`, and
+    adds six blueprints of its own (`001E6A`–`001E6C`, `001E72`, `002C56`, `002C77`), all of which
+    this override drops. The blueprint on the temple shelf is unaffected, so the swords stay
+    obtainable either way — but on an EGO load order, put this plugin **before** EGO and take the
+    shelf copy, or accept losing EGO's blueprint tiering. There is no EGO-forwarding patch here yet.
+  - `FlusshaimTemple 015282` — **benign.** The cell's own fields are identical between EGO's copy
+    and FS's apart from EGO's usual localized-string collapse. EGO's edit inside the temple is a
+    separate `PlacedObject` record (`0240EC:Enderal - Forgotten Stories.esm`), and placed refs are
+    independent records — this override does not list it and therefore does not remove it.
+
 ## CI build & release (GitHub Actions)
 
 `.github/workflows/build.yml` rebuilds every release archive on each push to `main` — as a **smoke
@@ -410,6 +447,8 @@ pwsh build/Test-RecordYaml.ps1
 Enderal: Forgotten Stories is by **SureAI**. This repo contains no Enderal or Bethesda assets —
 `reference/`, `papyrus-source/` and `modlist/` are gitignored precisely so none can be committed.
 Tooling and original work in this repo are licensed under `LICENSE`. Where a release rebuilds
-someone else's mod — *Apocalypse - Magic of Skyrim* is **Enai Siaion's**, redistributed here under
-his permissions — that work remains under its author's own terms and is credited on its mod page and
-in the plugin header.
+someone else's mod — *Apocalypse - Magic of Skyrim* is **Enai Siaion's**, and *Relentless Sword SE*
+is **johnskyrim's**, both redistributed here under their authors' permissions — that work remains
+under its author's own terms and is credited on its mod page and in the plugin header. The Relentless
+Sword release ships **no assets at all**: the models and textures stay in johnskyrim's own download,
+which the player installs alongside it.
