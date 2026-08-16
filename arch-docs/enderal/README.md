@@ -1,6 +1,6 @@
 # How Enderal works
 
-Reference documentation for building Zenderal patches. **Read `plugin-architecture.md` first** — it
+Reference documentation for building Enderal mods. **Read `plugin-architecture.md` first** — it
 contains the one fact that invalidates most Skyrim modding intuition, and the rest of these documents
 assume it.
 

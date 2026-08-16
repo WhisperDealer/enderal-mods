@@ -6,7 +6,7 @@ $repo    = 'C:\modding\mod-projects\enderal-mods'
 $apoc    = Join-Path $repo 'reference\mods\Apocalypse\esp'
 $enderal = Join-Path $repo 'reference\base\Skyrim\LeveledItems'
 $out     = Join-Path $repo 'src\Apocalypse\ApocalypseESP\LeveledItems'
-$modKey  = 'Zenderal - Apocalypse.esp'
+$modKey  = 'Apocalypse - Staging.esp'
 $enc     = New-Object System.Text.UTF8Encoding($false)
 
 New-Item -ItemType Directory -Force $out | Out-Null

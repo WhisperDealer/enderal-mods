@@ -34,7 +34,7 @@ function Get-Unresolved($tree) {
     'Enderal - Forgotten Stories.esm' = $fs
     'Dragonborn.esm' = $dbs
     'Apocalypse - Magic of Skyrim.esp' = $own
-    'Zenderal - Apocalypse.esp' = $own
+    'Apocalypse - Staging.esp' = $own
   }
   $bad = @{}
   Get-ChildItem $tree -Recurse -Filter *.yaml -File | ForEach-Object {

@@ -95,8 +95,8 @@ VendorLocation:
 ```
 
 The `MerchantContainer` link is the one that matters for loot/stock patches — it points at the
-merchant chest records documented in CLAUDE.md's vendor-chest section (the `Zenderal - Kata Fixes`
-merge). The faction is how you get from "a merchant" to "their chest" programmatically.
+merchant chest records documented in CLAUDE.md's vendor-chest section. The faction is how you get
+from "a merchant" to "their chest" programmatically.
 
 ## Names and localization
 

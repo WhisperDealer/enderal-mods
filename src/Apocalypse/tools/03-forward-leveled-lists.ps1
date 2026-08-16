@@ -41,7 +41,7 @@ foreach ($name in $inject.Keys) {
 
   $add = ''
   foreach ($e in $inject[$name]) {
-    $add += "- Data:`r`n    Level: $($e.L)`r`n    Reference: $($e.S):Zenderal - Apocalypse.esp`r`n    Count: 1`r`n"
+    $add += "- Data:`r`n    Level: $($e.L)`r`n    Reference: $($e.S):Apocalypse - Staging.esp`r`n    Count: 1`r`n"
   }
   $text = $text.TrimEnd("`r","`n") + "`r`n" + $add
 

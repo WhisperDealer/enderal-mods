@@ -51,7 +51,7 @@ $map = [ordered]@{
   '000804' = '1C1E75'   # ZP_Apoc_Tomes_R100
   '000805' = '1C1E76'   # ZP_Apoc_Scrolls
 }
-$oldMaster = 'Zenderal - Apocalypse.esp'
+$oldMaster = 'Apocalypse - Staging.esp'
 $newMaster = 'Apocalypse - Magic of Skyrim.esp'
 
 # rewrite references inside every file
