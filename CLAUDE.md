@@ -331,20 +331,20 @@ These are distilled from real failures in this workspace's lineage. They cost te
 
 ### Allocations in use
 
-Each mod's own ESL block. Overrides are not listed — they consume nothing. The one release here
-(`Apocalypse`) is a *replacement plugin* rather than a patch and allocates in its host's space
-instead; the row says so. An ordinary ESL-flagged patch would take `0x800–0xFFF`.
+Each mod's own ESL block. Overrides are not listed — they consume nothing. `Apocalypse` is a
+*replacement plugin* rather than a patch and allocates in its host's space instead; the row says so.
+An ordinary ESL-flagged patch takes `0x800–0xFFF`, as `RelentlessSword` does.
 
 | Mod / plugin | Block | Contents |
 |---|---|---|
 | `Apocalypse` → **`Apocalypse - Magic of Skyrim.esp`** | `0x1C1E71–0x1C1E76` | **Not an ESL block.** This release *replaces* Enai's plugin rather than patching it (see the form-version ceiling above), so new records are allocated in **Apocalypse's own FormID space**, just past its highest own ID `1C1E70`. `1C1E71–75` `ZP_Apoc_Tomes_R000/R025/R050/R075/R100` — one LeveledItem per spell rank; `1C1E76` `ZP_Apoc_Scrolls`. ~3,890 records, full ESP, no ESL flag |
+| `RelentlessSword` → **`Relentless Sword - Enderal.esp`** | `0x800–0x827` | `800–806` statics (1st-person models), `809–80F` weapons, `811–81F` forge + temper recipes (**johnskyrim's original offsets, preserved for traceability** — that is why the block has gaps and is not densely packed), `820–825` dismantle recipes (new here), `826` the crafting blueprint MiscItem, `827` its placed reference in Riverville Temple. 44 records, ESL-flagged. Overrides only `FlusshaimTemple 015282:Skyrim.esm` and `_00ETraderCraftingPlansC 148ABE:Skyrim.esm`, both forwarded from the **Forgotten Stories** versions |
 
 > **`Enderal - Forgotten Stories.esm` survives as a declared master.** It is an *implicit* base
 > master under `GameRelease.EnderalSE`, so there was reason to fear Mutagen would drop it from the
 > written master list and leave `:Enderal - Forgotten Stories.esm` FormKeys dangling. It does not:
-> a small ESL patch built here (`Zenderal - Relentless Sword.esp`, since moved to the
-> `zenderal-patches` repo) came out with `MAST Skyrim.esm` + `MAST Enderal - Forgotten
-> Stories.esm`, and its `02F336` references resolved at master index **1**. **[verified]** So a patch
+> `src/RelentlessSword/`'s small ESL plugin builds with `MAST Skyrim.esm` + `MAST Enderal - Forgotten
+> Stories.esm`, and its `02F336` references resolve at master index **1**. **[verified]** So a patch
 > may reference FS records freely — just declare the master and confirm it in the built header.
 
 ## Papyrus toolchain
@@ -516,6 +516,7 @@ Currently released:
 | Mod | Plugin | What it is |
 |---|---|---|
 | `Apocalypse` | `Apocalypse - Magic of Skyrim.esp` | Enai Siaion's spell pack, converted for Enderal — form version lowered to 1.70, Elder Scrolls proper nouns renamed, and distribution rebuilt onto Enderal's own vendor and loot lists. A **replacement plugin**; see the form-version ceiling below for why it cannot be a patch |
+| `RelentlessSword` | `Relentless Sword - Enderal.esp` | johnskyrim's *Relentless Sword SE* rebuilt for Enderal: clean masters (his plugin masters the three DLC stubs), shadowsteel-tier stats, blueprint + Handicraft-50 gating instead of a Skyforge recipe that could never fire, and FS-style dismantle recipes. **New content shipped as a standalone plugin, carrying no assets** — the player installs his mod for the meshes and disables his ESP. Sourced from the `zenderal-patches` repo and renamed off its `Zenderal - ` prefix on the way in |
 
 ### Where the documentation is
 

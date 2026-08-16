@@ -15,6 +15,18 @@
         "from": "src/Apocalypse/Scripts/compiled",
         "to": "Scripts"
       }
+    },
+    {
+      "$comment": "Standalone Enderal conversion of johnskyrim's Relentless Sword SE - a PLUGIN ONLY. It carries no meshes or textures: the player installs johnskyrim's mod for its assets (CORE/runed branch, any texture resolution) and disables 'Relentless Sword SE - Johnskyrim.esp', which cannot work here because it masters the three DLC stubs. Six weapons, shadowsteel-tier stats, blueprint-gated forge/temper/dismantle recipes; ESL-flagged, overriding only FlusshaimTemple (to place the blueprint) and _00ETraderCraftingPlansC (to stock it at level 30).",
+      "name": "Relentless Sword - Enderal Conversion",
+      "archiveName": "Relentless Sword - Enderal Conversion",
+      "fomod": false,
+      "plugins": [
+        {
+          "yamlSource": "src/RelentlessSword/RelentlessSwordESP",
+          "dest": "Relentless Sword - Enderal.esp"
+        }
+      ]
     }
   ]
 }
