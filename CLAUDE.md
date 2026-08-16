@@ -522,7 +522,7 @@ Currently released:
 
 | Read this | For |
 |---|---|
-| **[`arch-docs/enderal/`](arch-docs/enderal/)** | **How Enderal actually works** — six documents mined from the serialized plugins and SureAI's own source. Start with [`plugin-architecture.md`](arch-docs/enderal/plugin-architecture.md) |
+| **[`arch-docs/enderal/`](arch-docs/enderal/)** | **How Enderal actually works** — nine documents mined from the serialized plugins and SureAI's own source. Start with [`plugin-architecture.md`](arch-docs/enderal/plugin-architecture.md); [its README](arch-docs/enderal/README.md) indexes the rest |
 | **[`arch-docs/EGO/`](arch-docs/EGO/)** | **How EGO works and how to patch around it** — the community's Enderal gameplay overhaul, 6203 overridden records. Start with [`patching-ego.md`](arch-docs/EGO/patching-ego.md) before any combat/loot/crafting patch |
 | **[`arch-docs/Apocalypse/`](arch-docs/Apocalypse/)** | **What a real port broke and how it was found.** [`enderal-gap-audit.md`](arch-docs/Apocalypse/enderal-gap-audit.md) is the worked example of auditing a ported mod against Enderal's stripped `Skyrim.esm`; [`spell-test-matrix.md`](arch-docs/Apocalypse/spell-test-matrix.md) is what a generated per-item test checklist looks like |
 | `arch-docs/enderal-record-patterns.md` | Record shapes that build clean and do nothing in-game |
@@ -532,7 +532,14 @@ visuals at [`visuals-and-world.md`](arch-docs/enderal/visuals-and-world.md), and
 progression, potions or scripts at
 [`progression-and-classes.md`](arch-docs/enderal/progression-and-classes.md) /
 [`crafting-alchemy-economy.md`](arch-docs/enderal/crafting-alchemy-economy.md) /
-[`scripting-and-actorvalues.md`](arch-docs/enderal/scripting-and-actorvalues.md).
+[`scripting-and-actorvalues.md`](arch-docs/enderal/scripting-and-actorvalues.md). Three more cover
+the content a patch places things *into*:
+[`factions.md`](arch-docs/enderal/factions.md) (the 335+96 faction records, and why the lore
+factions mostly do not exist as records — plus the German↔English glossary Enderal's EditorIDs
+need), [`bestiary.md`](arch-docs/enderal/bestiary.md) (enemy families, the `_NNE_` tier system,
+per-actor XP, and the fact that **nothing scales to the player**) and
+[`world-and-dungeons.md`](arch-docs/enderal/world-and-dungeons.md) (the 22 real regions, the
+abandoned Location/EncounterZone systems, interior-cell conventions, the map-marker dungeon census).
 
 ### EGO is the dominant conflict source in Enderal lists
 

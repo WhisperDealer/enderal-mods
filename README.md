@@ -437,7 +437,7 @@ pwsh build/Test-RecordYaml.ps1
 | File | What it's for |
 |---|---|
 | `CLAUDE.md` | **Read first.** Verified Enderal facts, conventions, guardrails, gotchas |
-| **`arch-docs/enderal/`** | **How Enderal works** — plugin architecture, progression, combat, visuals, crafting, scripting. Mined from the serialized plugins and SureAI's own source |
+| **`arch-docs/enderal/`** | **How Enderal works** — plugin architecture, progression, combat, visuals, crafting, scripting, factions, bestiary, world & dungeons. Nine documents mined from the serialized plugins and SureAI's own source; `arch-docs/enderal/README.md` indexes them |
 | `arch-docs/enderal-record-patterns.md` | Record shapes that work, and the ones that silently don't |
 | **`arch-docs/EGO/`** | **`Enderal SE - Gameplay Overhaul.esp`** — 6203 overridden records, the biggest conflict surface in most Enderal load orders. Read `patching-ego.md` before any combat/loot/crafting patch |
 | `CONTRIBUTING.md` | How to propose a mod |
