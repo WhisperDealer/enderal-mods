@@ -179,7 +179,7 @@ src/                       # EVERY mod lives here — one folder per mod
     tools/*.ps1            # only for REPLACEMENT releases — the generators that rebuild the tree
 build/                     # build.ps1 + manifest.json (+ a committed FOMOD tree per release that has
                            #   one - none currently do; releases carry "fomod": false)
-arch-docs/                 # Enderal reference docs, authoring guide, generated build report
+arch-docs/                 # Enderal reference docs, authoring guide
 reference/base/            # gitignored — Enderal/vanilla decompiles + script source, LOOKUP ONLY
 reference/mods/            # gitignored — third-party Enderal mods, serialized for lookup
 reference/mods/EGO/        #   `-- EGO's .esp + its loose scripts; documented in arch-docs/EGO/
