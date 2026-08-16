@@ -4,7 +4,7 @@ $ErrorActionPreference = 'Stop'
 
 # Forward Enderal's MQP01Home worldspace (Forgotten Stories' winning version) while KEEPING
 # Apocalypse's three persistent refs, which other Apocalypse records still point at.
-$repo = 'C:\modding\mod-projects\enderal-mods'
+$repo = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $PSCommandPath)))
 $fsFile   = Join-Path $repo 'reference\base\EnderalFS\Worldspaces\MQP01Home - 00003C_Skyrim.esm\RecordData.yaml'
 $apocFile = Join-Path $repo 'reference\mods\Apocalypse\esp\Worldspaces\Tamriel - 00003C_Skyrim.esm\RecordData.yaml'
 $dstDir   = Join-Path (Join-Path $repo 'src\Apocalypse\ApocalypseESP\Worldspaces') 'MQP01Home - 00003C_Skyrim.esm'

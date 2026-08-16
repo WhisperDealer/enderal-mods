@@ -2,7 +2,7 @@
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-$repo = 'C:\modding\mod-projects\enderal-mods'
+$repo = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $PSCommandPath)))
 $dst  = Join-Path $repo 'src\Apocalypse\ApocalypseESP\LeveledItems'
 $fs   = Join-Path $repo 'reference\base\EnderalFS\LeveledItems'
 $base = Join-Path $repo 'reference\base\Skyrim\LeveledItems'

@@ -4,7 +4,7 @@ $ErrorActionPreference = 'Stop'
 
 # Which unresolved references does OUR tree have that Enai's original did not?
 # Apocalypse already points at thousands of vanilla FormIDs Enderal lacks; those are his, not ours.
-$repo = 'C:\modding\mod-projects\enderal-mods'
+$repo = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $PSCommandPath)))
 $ours = Join-Path $repo 'src\Apocalypse\ApocalypseESP'
 $orig = Join-Path $repo 'reference\mods\Apocalypse\esp'
 

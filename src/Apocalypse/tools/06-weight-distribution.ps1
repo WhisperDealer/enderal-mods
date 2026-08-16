@@ -15,7 +15,7 @@ $ErrorActionPreference = 'Stop'
 #
 # Idempotent: it counts what is already there and only tops up the difference.
 
-$repo = 'C:\modding\mod-projects\enderal-mods'
+$repo = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $PSCommandPath)))
 $out  = Join-Path $repo 'src\Apocalypse\ApocalypseESP\LeveledItems'
 $enc  = New-Object System.Text.UTF8Encoding($false)
 

@@ -25,7 +25,7 @@ $ErrorActionPreference = 'Stop'
 #
 # Idempotent: values are always recomputed from Enai's untouched tree, never from our own output.
 
-$repo = 'C:\modding\mod-projects\enderal-mods'
+$repo = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $PSCommandPath)))
 $orig = Join-Path $repo 'reference\mods\Apocalypse\esp'
 $mine = Join-Path $repo 'src\Apocalypse\ApocalypseESP'
 $enc  = New-Object System.Text.UTF8Encoding($false)

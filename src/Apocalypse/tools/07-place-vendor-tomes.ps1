@@ -16,7 +16,7 @@ $ErrorActionPreference = 'Stop'
 # The loot lists (_00E_SpellBooksLoot*) keep their random injections. Random is the right shape for
 # loot; it is the wrong shape for a shop.
 
-$repo = 'C:\modding\mod-projects\enderal-mods'
+$repo = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $PSCommandPath)))
 $src  = Join-Path $repo 'reference\base\EnderalFS\Containers'   # FS wins all six - see below
 $book = Join-Path $repo 'src\Apocalypse\ApocalypseESP\Books'
 $out  = Join-Path $repo 'src\Apocalypse\ApocalypseESP\Containers'

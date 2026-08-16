@@ -2,7 +2,7 @@
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-$repo = 'C:\modding\mod-projects\enderal-mods'
+$repo = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $PSCommandPath)))
 $apoc = Join-Path $repo 'reference\mods\Apocalypse\esp'
 $dst  = Join-Path $repo 'src\Apocalypse\ApocalypseESP'
 $enc  = New-Object System.Text.UTF8Encoding($false)

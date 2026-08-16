@@ -46,7 +46,7 @@ $ErrorActionPreference = 'Stop'
 # Run after 05-merge-tree.ps1. Disjoint from 06/07/08 (they touch LeveledItems / Containers / Value:,
 # this touches Effects:).
 
-$repo = 'C:\modding\mod-projects\enderal-mods'
+$repo = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $PSCommandPath)))
 $mine = Join-Path $repo 'src\Apocalypse\ApocalypseESP'
 $enc  = New-Object System.Text.UTF8Encoding($false)
 

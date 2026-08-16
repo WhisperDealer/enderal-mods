@@ -3,7 +3,7 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
 # Build the merged Apocalypse tree: Enai's records + our edits, minus the groups we drop.
-$repo = 'C:\modding\mod-projects\enderal-mods'
+$repo = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $PSCommandPath)))
 $ref  = Join-Path $repo 'reference\mods\Apocalypse\esp'
 $dst  = Join-Path $repo 'src\Apocalypse\ApocalypseESP'
 $enc  = New-Object System.Text.UTF8Encoding($false)

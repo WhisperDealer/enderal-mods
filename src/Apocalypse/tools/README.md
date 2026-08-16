@@ -20,6 +20,10 @@ That single fact drives the whole architecture. Do not "simplify" this back into
 ## Order
 
 Run against a fresh `reference/mods/Apocalypse/esp/` produced by `/spriggit-decompile-reference`.
+Several stages also read the base trees — `reference/base/Skyrim`, `EnderalFS`, `Update` and
+`Dragonborn-stub`. All of `reference/` is gitignored, so on a fresh clone these scripts fail with
+"cannot find path …\reference\…" until you regenerate it; that is the expected first error, not a
+broken script. Each derives the repo root from its own location, so run them from anywhere.
 
 | # | Script | Does |
 |---|---|---|
