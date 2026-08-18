@@ -1,0 +1,16 @@
+FormKey: 000DA1:Biggie Traits.esp
+EditorID: Traits_GamblerAb
+Name:
+  TargetLanguage: English
+  Value: Gambler
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: You go in all or nothing. Gain <50%> chance to critical hit. However, overall weapon damage is reduced by <25%>. When you land a critical hit, your attacks do <10%> more damage for <30> seconds (stackable up to <5> times).
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 000D77:Biggie Traits.esp
+  Data: {}

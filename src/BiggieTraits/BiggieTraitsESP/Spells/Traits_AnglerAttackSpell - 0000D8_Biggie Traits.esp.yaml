@@ -1,0 +1,15 @@
+FormKey: 0000D8:Biggie Traits.esp
+EditorID: Traits_AnglerAttackSpell
+Name:
+  TargetLanguage: English
+  Value: Angler Attack Contact Spell
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+CastType: FireAndForget
+TargetType: Touch
+Effects:
+- BaseEffect: 0000D7:Biggie Traits.esp
+  Data:
+    Duration: 30

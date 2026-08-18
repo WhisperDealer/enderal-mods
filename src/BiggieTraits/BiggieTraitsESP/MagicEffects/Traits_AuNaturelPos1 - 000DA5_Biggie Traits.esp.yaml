@@ -1,0 +1,22 @@
+FormKey: 000DA5:Biggie Traits.esp
+EditorID: Traits_AuNaturelPos1
+Name:
+  TargetLanguage: English
+  Value: Traits_AuNaturelEffect1
+Flags:
+- Recover
+- NoDuration
+- NoArea
+- HideInUI
+SecondActorValueWeight: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+  Type: DualValueModifier
+SecondActorValue: Stamina
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

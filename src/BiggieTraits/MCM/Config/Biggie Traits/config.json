@@ -1,0 +1,59 @@
+{
+    "modName":  "Biggie Traits",
+    "displayName":  "$BIGTRAIT_TITLE",
+    "cursorFillMode":  "topToBottom",
+    "content":  [
+                    {
+                        "id":  "iRequiredTraits:Main",
+                        "text":  "$BIGTRAIT_MIN",
+                        "help":  "$BIGTRAIT_MINH",
+                        "type":  "slider",
+                        "valueOptions":  {
+                                             "min":  0,
+                                             "max":  5,
+                                             "step":  1,
+                                             "sourceType":  "ModSettingInt"
+                                         }
+                    },
+                    {
+                        "id":  "iMaxTraits:Main",
+                        "text":  "$BIGTRAIT_MAX",
+                        "type":  "slider",
+                        "valueOptions":  {
+                                             "min":  1,
+                                             "max":  5,
+                                             "step":  1,
+                                             "sourceType":  "ModSettingInt"
+                                         }
+                    },
+                    {
+                        "type":  "header",
+                        "text":  "$BIGTRAIT_WITCHER_TITLE"
+                    },
+                    {
+                        "id":  "iWitcherWidget:Main",
+                        "text":  "$BIGTRAIT_WITCHER",
+                        "help":  "$BIGTRAIT_WITCHER_H",
+                        "type":  "toggle",
+                        "valueOptions":  {
+                                             "sourceType":  "ModSettingInt"
+                                         }
+                    },
+                    {
+                        "id":  "sWitcherWidgetX:Main",
+                        "text":  "$BIGTRAIT_WITCHER_X",
+                        "type":  "input",
+                        "valueOptions":  {
+                                             "sourceType":  "ModSettingString"
+                                         }
+                    },
+                    {
+                        "id":  "sWitcherWidgetY:Main",
+                        "text":  "$BIGTRAIT_WITCHER_Y",
+                        "type":  "input",
+                        "valueOptions":  {
+                                             "sourceType":  "ModSettingString"
+                                         }
+                    }
+                ]
+}

@@ -1,0 +1,22 @@
+FormKey: 000070:Biggie Traits.esp
+EditorID: Traits_AnglerNeg1
+Name:
+  TargetLanguage: English
+  Value: Weakness to Shock
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- Recover
+- Detrimental
+- NoDuration
+- NoArea
+- HideInUI
+- PowerAffectsMagnitude
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: ResistShock
+SkillUsageMultiplier: 1
+DualCastScale: 1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

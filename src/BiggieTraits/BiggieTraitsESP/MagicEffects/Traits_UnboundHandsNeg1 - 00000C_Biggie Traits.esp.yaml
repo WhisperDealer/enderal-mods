@@ -1,0 +1,21 @@
+FormKey: 00000C:Biggie Traits.esp
+EditorID: Traits_UnboundHandsNeg1
+Name:
+  TargetLanguage: English
+  Value: 'Trait: Unbound Hands Unarmed'
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- Recover
+- Detrimental
+- NoDuration
+- NoArea
+- HideInUI
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: UnarmedDamage
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

@@ -1,0 +1,110 @@
+FormKey: 00080C:Biggie Traits.esp
+EditorID: Traits_AuNaturelScalingEffectAb
+Name:
+  TargetLanguage: English
+  Value: Au Naturel Scaling Effect
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 000807:Biggie Traits.esp
+  Data:
+    Magnitude: 1
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 10CD13:Skyrim.esm
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 06C0EF:Skyrim.esm
+- BaseEffect: 000808:Biggie Traits.esp
+  Data:
+    Magnitude: 1
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 10CD13:Skyrim.esm
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 06C0EF:Skyrim.esm
+- BaseEffect: 000807:Biggie Traits.esp
+  Data:
+    Magnitude: 1
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 10CD12:Skyrim.esm
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 06C0ED:Skyrim.esm
+- BaseEffect: 000808:Biggie Traits.esp
+  Data:
+    Magnitude: 1
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 10CD12:Skyrim.esm
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 06C0ED:Skyrim.esm
+- BaseEffect: 000807:Biggie Traits.esp
+  Data:
+    Magnitude: 1
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 0A8657:Skyrim.esm
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 06C0EC:Skyrim.esm
+- BaseEffect: 000808:Biggie Traits.esp
+  Data:
+    Magnitude: 1
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 0A8657:Skyrim.esm
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 06C0EC:Skyrim.esm
+- BaseEffect: 000807:Biggie Traits.esp
+  Data:
+    Magnitude: 1
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 10CD11:Skyrim.esm
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 06C0EE:Skyrim.esm
+- BaseEffect: 000808:Biggie Traits.esp
+  Data:
+    Magnitude: 1
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 10CD11:Skyrim.esm
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 06C0EE:Skyrim.esm

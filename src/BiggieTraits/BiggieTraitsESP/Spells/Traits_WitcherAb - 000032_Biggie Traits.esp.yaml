@@ -1,0 +1,16 @@
+FormKey: 000032:Biggie Traits.esp
+EditorID: Traits_WitcherAb
+Name:
+  TargetLanguage: English
+  Value: Witcher
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: Potions and poisons you craft are <20%> more effective, and consuming raw ingredients grants double the effect. However, you can only benefit from up to <four> active potion effects at a time.
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 000030:Biggie Traits.esp
+  Data: {}

@@ -1,0 +1,27 @@
+FormKey: 000003:Biggie Traits.esp
+EditorID: Traits_PickTraitEffect
+VirtualMachineAdapter:
+  Scripts:
+  - Name: Traits_PickTraitScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Traits_Quest
+      Object: 000001:Biggie Traits.esp
+Name:
+  TargetLanguage: English
+  Value: Select Traits
+Flags:
+- NoDuration
+- NoMagnitude
+- NoArea
+MagicSkill: Alteration
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+CastType: FireAndForget
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

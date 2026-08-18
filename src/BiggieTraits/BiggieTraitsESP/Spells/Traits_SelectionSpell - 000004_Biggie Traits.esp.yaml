@@ -1,0 +1,14 @@
+FormKey: 000004:Biggie Traits.esp
+EditorID: Traits_SelectionSpell
+Name:
+  TargetLanguage: English
+  Value: Select Traits
+EquipmentType: 025BEE:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Type: Power
+CastType: FireAndForget
+Effects:
+- BaseEffect: 000003:Biggie Traits.esp
+  Data: {}

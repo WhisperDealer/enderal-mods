@@ -1,0 +1,36 @@
+FormKey: 000D93:Biggie Traits.esp
+EditorID: Traits_FocusedAb
+Name:
+  TargetLanguage: English
+  Value: Focused
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: When in danger, you think before acting. When at less than <20%> health, you regenerate <0.5> magicka per second and absorb <10%> of incoming spells. However, you take <10%> more damage when below this threshold.
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 000D70:Biggie Traits.esp
+  Data: {}
+- BaseEffect: 00002C:Biggie Traits.esp
+  Data:
+    Magnitude: 0.5
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetActorValuePercentConditionData
+      ActorValue: Health
+    ComparisonValue: 0.2
+- BaseEffect: 00002D:Biggie Traits.esp
+  Data:
+    Magnitude: 10
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetActorValuePercentConditionData
+      ActorValue: Health
+    ComparisonValue: 0.2

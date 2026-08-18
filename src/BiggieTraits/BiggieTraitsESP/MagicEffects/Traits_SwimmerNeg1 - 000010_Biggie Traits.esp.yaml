@@ -1,0 +1,24 @@
+FormKey: 000010:Biggie Traits.esp
+EditorID: Traits_SwimmerNeg1
+Name:
+  TargetLanguage: English
+  Value: 'Trait: Swimmer'
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- Recover
+- Detrimental
+- NoDuration
+- NoArea
+- HideInUI
+SecondActorValueWeight: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: HealRateMult
+  Type: DualValueModifier
+SecondActorValue: StaminaRateMult
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

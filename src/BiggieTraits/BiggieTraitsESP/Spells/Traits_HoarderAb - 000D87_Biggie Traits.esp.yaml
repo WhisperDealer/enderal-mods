@@ -1,0 +1,17 @@
+FormKey: 000D87:Biggie Traits.esp
+EditorID: Traits_HoarderAb
+Name:
+  TargetLanguage: English
+  Value: Hoarder
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: You love carrying stuff around, even if it's junk. Gain <+100> carryweight. Selling prices are <50%> worse.
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 000D69:Biggie Traits.esp
+  Data:
+    Magnitude: 100

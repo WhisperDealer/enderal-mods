@@ -1,0 +1,16 @@
+FormKey: 0000E3:Biggie Traits.esp
+EditorID: Traits_GollumPos1Spell
+Name:
+  TargetLanguage: English
+  Value: Lurker Healing
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 96
+CastType: FireAndForget
+Effects:
+- BaseEffect: 0000E1:Biggie Traits.esp
+  Data:
+    Magnitude: 2
+    Duration: 600

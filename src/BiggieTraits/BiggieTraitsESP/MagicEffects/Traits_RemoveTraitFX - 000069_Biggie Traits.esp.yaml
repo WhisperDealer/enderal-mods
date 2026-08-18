@@ -1,0 +1,36 @@
+FormKey: 000069:Biggie Traits.esp
+EditorID: Traits_RemoveTraitFX
+VirtualMachineAdapter:
+  Scripts:
+  - Name: Traits_RemoveTraitFXScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SoundFX
+      Object: 05300E:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Traits_RemovedMsg
+      Object: 000068:Biggie Traits.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: XMarker
+      Object: 00003B:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: SFX for trait removal
+Flags:
+- NoMagnitude
+- NoArea
+- HideInUI
+HitShader: 04E220:Skyrim.esm
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+CastType: FireAndForget
+HitEffectArt: 04E221:Skyrim.esm
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds:
+- Type: Release
+  Sound: 03F361:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''

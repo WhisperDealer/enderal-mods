@@ -1,0 +1,18 @@
+FormKey: 0000DB:Biggie Traits.esp
+EditorID: Traits_AnglerExplosion
+Name:
+  TargetLanguage: English
+  Value: Claw Impact
+Model:
+  File: CreationClub\BGSSSE001\Effects\WaterImpactExplosion.nif
+  Data: 0x020000000000000000000000
+ImpactDataSet: 03F819:Skyrim.esm
+Force: 100
+Damage: 1
+Radius: 200
+Flags:
+- 0x1
+- AlwaysUsesWorldOrientation
+- IgnoreLosCheck
+- PushExplosionSourceRefOnly
+- IgnoreImageSpaceSwap

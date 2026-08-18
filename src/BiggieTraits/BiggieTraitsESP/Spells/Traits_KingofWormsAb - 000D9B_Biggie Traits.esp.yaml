@@ -1,0 +1,16 @@
+FormKey: 000D9B:Biggie Traits.esp
+EditorID: Traits_KingofWormsAb
+Name:
+  TargetLanguage: English
+  Value: King of Worms
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: You've gained hidden insight into necromantic arts. You can have <1> additional summon or undead thrall. However, the duration of summon and resurrecting spells is reduced by <50%>.
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 000D74:Biggie Traits.esp
+  Data: {}

@@ -1,0 +1,13 @@
+FormKey: 00008D:Biggie Traits.esp
+EditorID: Traits_GamblerStackingBuffPerk04
+Description:
+  TargetLanguage: English
+  Value: ''
+NumRanks: 1
+Playable: True
+Effects:
+- MutagenObjectType: PerkEntryPointModifyValue
+  EntryPoint: ModAttackDamage
+  PerkConditionTabCount: 3
+  Modification: Multiply
+  Value: 1.1

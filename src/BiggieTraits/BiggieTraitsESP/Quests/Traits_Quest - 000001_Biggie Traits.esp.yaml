@@ -1,0 +1,38 @@
+FormKey: 000001:Biggie Traits.esp
+EditorID: Traits_Quest
+VirtualMachineAdapter:
+  Scripts:
+  - Name: Traits_QuestScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerRef
+      Object: 000014:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Traits_AbilityList
+      Object: 000002:Biggie Traits.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Traits_AuNaturelAb
+      Object: 000D7B:Biggie Traits.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Traits_NoneSelectionMsg
+      Object: 000005:Biggie Traits.esp
+  Versioning:
+  - Break0
+  ExtraBindDataVersion: 0
+  FileName: ''
+Name:
+  TargetLanguage: English
+  Value: Traits Selection Quest
+Flags:
+- StartGameEnabled
+- 0x10
+- RunOnce
+NextAliasID: 1
+Aliases:
+- Name: PlayerRef
+  Flags: []
+  ForcedReference: 000014:Skyrim.esm
+  Spells:
+  - 000004:Biggie Traits.esp
+  - 000DA9:Biggie Traits.esp
+  VoiceTypes: Null

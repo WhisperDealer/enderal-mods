@@ -1,0 +1,22 @@
+FormKey: 00007A:Biggie Traits.esp
+EditorID: Traits_DruidNeg1
+Name:
+  TargetLanguage: English
+  Value: Weakness to Fire
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- Recover
+- Detrimental
+- NoDuration
+- NoArea
+- HideInUI
+- PowerAffectsMagnitude
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: ResistFire
+SkillUsageMultiplier: 1
+DualCastScale: 1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

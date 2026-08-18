@@ -1,0 +1,16 @@
+FormKey: 000D89:Biggie Traits.esp
+EditorID: Traits_JackofAllSpellsAb
+Name:
+  TargetLanguage: English
+  Value: Jack of All Spells
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: But master of none. Novice, Apprentice and Adept spells are <20%> stronger or longer lasting, expert and master spells are <20%> weaker or shorter.
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 000D6A:Biggie Traits.esp
+  Data: {}

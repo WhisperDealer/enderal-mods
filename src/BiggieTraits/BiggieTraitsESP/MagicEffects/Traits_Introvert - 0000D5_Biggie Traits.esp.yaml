@@ -1,0 +1,21 @@
+FormKey: 0000D5:Biggie Traits.esp
+EditorID: Traits_Introvert
+Name:
+  TargetLanguage: English
+  Value: 'Trait: Introvert'
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- Recover
+- NoDuration
+- NoMagnitude
+- NoArea
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+DualCastScale: 1
+PerkToApply: 0000D6:Biggie Traits.esp
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

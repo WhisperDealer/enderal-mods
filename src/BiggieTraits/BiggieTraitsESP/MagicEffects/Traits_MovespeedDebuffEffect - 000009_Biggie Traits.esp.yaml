@@ -1,0 +1,21 @@
+FormKey: 000009:Biggie Traits.esp
+EditorID: Traits_MovespeedDebuffEffect
+Name:
+  TargetLanguage: English
+  Value: 'Trait: Light Foot Movement Speed'
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- Recover
+- Detrimental
+- NoDuration
+- NoArea
+- HideInUI
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: SpeedMult
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

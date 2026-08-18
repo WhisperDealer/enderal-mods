@@ -1,0 +1,20 @@
+FormKey: 000022:Biggie Traits.esp
+EditorID: Traits_BulwarkPos1
+Name:
+  TargetLanguage: English
+  Value: 'Trait: Bulwark'
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- Recover
+- NoDuration
+- NoArea
+- HideInUI
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: ReflectDamage
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

@@ -1,0 +1,16 @@
+FormKey: 000D99:Biggie Traits.esp
+EditorID: Traits_DefilerAb
+Name:
+  TargetLanguage: English
+  Value: Defiler
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: The only use you have for the living is to resurrect them in death. Deal <20%> more damage to playable races. However, do <10%> less damage to other beings.
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 000D73:Biggie Traits.esp
+  Data: {}

@@ -1,0 +1,15 @@
+FormKey: 000005:Biggie Traits.esp
+EditorID: Traits_NoneSelectionMsg
+Description:
+  TargetLanguage: English
+  Value: You have not selected any traits. Are you sure?
+INAM: 0x00000000
+Flags:
+- MessageBox
+MenuButtons:
+- Text:
+    TargetLanguage: English
+    Value: Wait, go back!
+- Text:
+    TargetLanguage: English
+    Value: Yes, no traits for me.

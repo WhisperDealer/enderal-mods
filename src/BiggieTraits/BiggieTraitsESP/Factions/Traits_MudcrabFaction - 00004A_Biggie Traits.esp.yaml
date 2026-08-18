@@ -1,0 +1,12 @@
+FormKey: 00004A:Biggie Traits.esp
+EditorID: Traits_MudcrabFaction
+Name:
+  TargetLanguage: English
+  Value: Crab people... Crab people...
+Relations:
+- Target: 00004A:Biggie Traits.esp
+  Reaction: Ally
+CrimeValues:
+  Arrest: True
+  AttackOnSight: True
+VendorValues: {}

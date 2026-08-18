@@ -1,0 +1,19 @@
+FormKey: 00005A:Biggie Traits.esp
+EditorID: Traits_MarathonRunner
+Name:
+  TargetLanguage: English
+  Value: 'Trait: Marathon Runner'
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- NoDuration
+- NoMagnitude
+- NoArea
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

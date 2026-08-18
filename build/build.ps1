@@ -262,6 +262,29 @@ foreach ($rel in $releases) {
         }
     }
 
+    # 2b. copy committed loose assets (Interface/, MCM/, SKSE/, distribution .ini, ...)
+    # A release that ships more than a plugin and its scripts - anything with a UI, an MCM or a
+    # KID/SPID config - lists them here as {from, to} pairs, both repo-relative.
+    #
+    # 'to' is the destination path inside the archive ('' = the archive root). For a FOLDER
+    # source, the folder's CONTENTS are copied into 'to' rather than the folder itself, so 'to'
+    # names the destination exactly. That matters because the source layout does not always match
+    # the Data layout: src/<Mod>/Scripts/source has to land at Source/Scripts.
+    if ($rel.PSObject.Properties.Name -contains 'assets' -and $rel.assets) {
+        foreach ($a in $rel.assets) {
+            $aFrom = Join-Path $RepoRoot $a.from
+            if (-not (Test-Path $aFrom)) { throw "Release asset missing: $aFrom (declared by '$($rel.name)')" }
+            $aTo = if ([string]::IsNullOrWhiteSpace($a.to)) { $stageDir } else { Join-Path $stageDir $a.to }
+            New-Item -ItemType Directory -Force $aTo | Out-Null
+            if (Test-Path -PathType Container $aFrom) {
+                Copy-Item -Path (Join-Path $aFrom '*') -Destination $aTo -Recurse -Force
+            } else {
+                Copy-Item -Path $aFrom -Destination $aTo -Force
+            }
+            Write-Host "  asset $($a.from) -> $(if ($a.to) { $a.to } else { '<root>' })/"
+        }
+    }
+
     # 3. copy committed .pex (addon only)
     if ($rel.PSObject.Properties.Name -contains 'scripts' -and $rel.scripts) {
         $pexSrc = Join-Path $RepoRoot $rel.scripts.from

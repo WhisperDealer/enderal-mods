@@ -1,0 +1,19 @@
+FormKey: 000D75:Biggie Traits.esp
+EditorID: Traits_Pacifist
+Name:
+  TargetLanguage: English
+  Value: 'Trait: Pacifist'
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- NoDuration
+- NoMagnitude
+- NoArea
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

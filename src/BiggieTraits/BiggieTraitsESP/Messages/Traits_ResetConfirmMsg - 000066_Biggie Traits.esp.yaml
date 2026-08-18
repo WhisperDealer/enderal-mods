@@ -1,0 +1,23 @@
+FormKey: 000066:Biggie Traits.esp
+EditorID: Traits_ResetConfirmMsg
+Description:
+  TargetLanguage: English
+  Value: Do you want to remove this trait?
+INAM: 0x00000000
+Flags:
+- MessageBox
+MenuButtons:
+- Text:
+    TargetLanguage: English
+    Value: No
+- Text:
+    TargetLanguage: English
+    Value: Yes
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: GreaterThan
+    Data:
+      MutagenObjectType: GetActorValueConditionData
+      RunOnType: Reference
+      Reference: 000014:Skyrim.esm
+      ActorValue: DragonSouls

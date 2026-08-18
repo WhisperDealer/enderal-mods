@@ -1,0 +1,150 @@
+FormKey: 0000D6:Biggie Traits.esp
+EditorID: Traits_IntrovertPerk
+Description:
+  TargetLanguage: English
+  Value: ''
+NumRanks: 1
+Playable: True
+Effects:
+- MutagenObjectType: PerkEntryPointModifyValue
+  Priority: 1
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: IsInCombatConditionData
+      ComparisonValue: 1
+    - MutagenObjectType: ConditionFloat
+      CompareOperator: GreaterThan
+      Data:
+        MutagenObjectType: GetGroupTargetCountConditionData
+      ComparisonValue: 3
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Flags:
+      - OR
+      Data:
+        MutagenObjectType: SpellHasCastingPerkConditionData
+        Perk: 0F2CA8:Skyrim.esm
+      ComparisonValue: 1
+    - MutagenObjectType: ConditionFloat
+      Flags:
+      - OR
+      Data:
+        MutagenObjectType: SpellHasCastingPerkConditionData
+        Perk: 0C44BF:Skyrim.esm
+      ComparisonValue: 1
+    - MutagenObjectType: ConditionFloat
+      Flags:
+      - OR
+      Data:
+        MutagenObjectType: SpellHasCastingPerkConditionData
+        Perk: 0C44C0:Skyrim.esm
+      ComparisonValue: 1
+    - MutagenObjectType: ConditionFloat
+      Flags:
+      - OR
+      Data:
+        MutagenObjectType: SpellHasCastingPerkConditionData
+        Perk: 0C44C1:Skyrim.esm
+      ComparisonValue: 1
+    - MutagenObjectType: ConditionFloat
+      Flags:
+      - OR
+      Data:
+        MutagenObjectType: SpellHasCastingPerkConditionData
+        Perk: 0C44C2:Skyrim.esm
+      ComparisonValue: 1
+  EntryPoint: ModSpellMagnitude
+  PerkConditionTabCount: 3
+  Modification: Multiply
+  Value: 0.85
+- MutagenObjectType: PerkEntryPointModifyValue
+  Priority: 2
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: IsInCombatConditionData
+      ComparisonValue: 1
+    - MutagenObjectType: ConditionFloat
+      CompareOperator: GreaterThan
+      Data:
+        MutagenObjectType: GetGroupTargetCountConditionData
+      ComparisonValue: 3
+  EntryPoint: ModAttackDamage
+  PerkConditionTabCount: 3
+  Modification: Multiply
+  Value: 0.85
+- MutagenObjectType: PerkEntryPointModifyValue
+  Priority: 3
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: IsInCombatConditionData
+      ComparisonValue: 1
+    - MutagenObjectType: ConditionFloat
+      CompareOperator: LessThan
+      Data:
+        MutagenObjectType: GetGroupTargetCountConditionData
+      ComparisonValue: 4
+  EntryPoint: ModAttackDamage
+  PerkConditionTabCount: 3
+  Modification: Multiply
+  Value: 1.15
+- MutagenObjectType: PerkEntryPointModifyValue
+  Priority: 4
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: IsInCombatConditionData
+      ComparisonValue: 1
+    - MutagenObjectType: ConditionFloat
+      CompareOperator: LessThan
+      Data:
+        MutagenObjectType: GetGroupTargetCountConditionData
+      ComparisonValue: 4
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Flags:
+      - OR
+      Data:
+        MutagenObjectType: SpellHasCastingPerkConditionData
+        Perk: 0F2CA8:Skyrim.esm
+      ComparisonValue: 1
+    - MutagenObjectType: ConditionFloat
+      Flags:
+      - OR
+      Data:
+        MutagenObjectType: SpellHasCastingPerkConditionData
+        Perk: 0C44BF:Skyrim.esm
+      ComparisonValue: 1
+    - MutagenObjectType: ConditionFloat
+      Flags:
+      - OR
+      Data:
+        MutagenObjectType: SpellHasCastingPerkConditionData
+        Perk: 0C44C0:Skyrim.esm
+      ComparisonValue: 1
+    - MutagenObjectType: ConditionFloat
+      Flags:
+      - OR
+      Data:
+        MutagenObjectType: SpellHasCastingPerkConditionData
+        Perk: 0C44C1:Skyrim.esm
+      ComparisonValue: 1
+    - MutagenObjectType: ConditionFloat
+      Flags:
+      - OR
+      Data:
+        MutagenObjectType: SpellHasCastingPerkConditionData
+        Perk: 0C44C2:Skyrim.esm
+      ComparisonValue: 1
+  EntryPoint: ModSpellMagnitude
+  PerkConditionTabCount: 3
+  Modification: Multiply
+  Value: 1.15

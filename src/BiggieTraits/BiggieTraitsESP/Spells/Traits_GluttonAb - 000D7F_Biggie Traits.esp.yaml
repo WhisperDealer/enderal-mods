@@ -1,0 +1,16 @@
+FormKey: 000D7F:Biggie Traits.esp
+EditorID: Traits_GluttonAb
+Name:
+  TargetLanguage: English
+  Value: Glutton
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: You LOVE food but hate medicine. Food benefits are twice as strong, but potions have only <50%> their efficiency.
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 000D65:Biggie Traits.esp
+  Data: {}

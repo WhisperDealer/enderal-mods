@@ -1,0 +1,46 @@
+FormKey: 000D9F:Biggie Traits.esp
+EditorID: Traits_BulwarkAb
+Name:
+  TargetLanguage: English
+  Value: Bulwark
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: When walking or standing still, you gain <100> armor rating and reflect <10%> physical damage. You drain <1> additional stamina per second while sprinting and <0.25> when running.
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 000D76:Biggie Traits.esp
+  Data: {}
+- BaseEffect: 000022:Biggie Traits.esp
+  Data:
+    Magnitude: 10
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: IsSprintingConditionData
+- BaseEffect: 000023:Biggie Traits.esp
+  Data:
+    Magnitude: 100
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: IsSprintingConditionData
+- BaseEffect: 000025:Biggie Traits.esp
+  Data:
+    Magnitude: 1
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: IsSprintingConditionData
+    ComparisonValue: 1
+- BaseEffect: 000025:Biggie Traits.esp
+  Data:
+    Magnitude: 0.25
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: IsRunningConditionData
+    ComparisonValue: 1
