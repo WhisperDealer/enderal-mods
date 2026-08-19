@@ -1,0 +1,20 @@
+FormKey: 00081A:Zen Traits.esp
+EditorID: ZenTraits_LightbornMGEF
+Name:
+  TargetLanguage: English
+  Value: Lightborn
+Flags:
+- Recover
+- NoDuration
+- NoMagnitude
+- NoArea
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+DualCastScale: 1
+PerkToApply: 00081B:Zen Traits.esp
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

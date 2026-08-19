@@ -1,0 +1,16 @@
+FormKey: 00080A:Zen Traits.esp
+EditorID: ZenTraits_PurifiedBloodAb
+Name:
+  TargetLanguage: English
+  Value: Purified Blood
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: >-
+    Arcane Fever accumulation reduced by 40%.
+
+    Ambrosia is 50% less effective.
+Type: Ability
+Effects:
+- BaseEffect: 000809:Zen Traits.esp
+  Data: {}

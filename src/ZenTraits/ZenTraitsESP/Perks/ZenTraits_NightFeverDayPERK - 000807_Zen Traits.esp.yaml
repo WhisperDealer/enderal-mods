@@ -1,0 +1,7 @@
+FormKey: 000807:Zen Traits.esp
+EditorID: ZenTraits_NightFeverDayPERK
+Description:
+  TargetLanguage: English
+  Value: During the day, Arcane Fever increases 10% faster. Script is in ZenTraits_ArcaneFeverScript
+NumRanks: 1
+Playable: True

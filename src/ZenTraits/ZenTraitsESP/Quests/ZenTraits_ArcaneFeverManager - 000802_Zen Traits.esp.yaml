@@ -1,0 +1,54 @@
+FormKey: 000802:Zen Traits.esp
+EditorID: ZenTraits_ArcaneFeverManager
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ZenTraits_ArcaneFeverScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: _00E_AlchAmbrosia_sArcaneFeverDecreased
+      Object: 036F94:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: _00E_ArkanistenfieberIMOD
+      Object: 103755:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: _00E_Class_Thaumaturge_P07_MentalExpert
+      Object: 069D07:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: _00E_FS_DecreaseArcaneFeverM
+      Object: 02F10D:Enderal - Forgotten Stories.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: _00E_FS_IncreaseArcaneFeverM
+      Object: 02F10B:Enderal - Forgotten Stories.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: _00E_FS_ReduceArcaneFeverIMOD
+      Object: 02F111:Enderal - Forgotten Stories.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: _00E_Player_sArcaneFeverIncreased
+      Object: 036F95:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerRef
+      Object: 000014:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ZenTraits_NightFeverDayMagnitude
+      Object: 000808:Zen Traits.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ZenTraits_NightFeverDayPERK
+      Object: 000807:Zen Traits.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ZenTraits_PurifiedBloodAmbrosiaMult
+      Object: 00080C:Zen Traits.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ZenTraits_PurifiedBloodFeverMult
+      Object: 00080B:Zen Traits.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ZenTraits_PurifiedBloodMGEF
+      Object: 000809:Zen Traits.esp
+  Versioning:
+  - Break0
+  ExtraBindDataVersion: 0
+  FileName: ''
+Flags:
+- StartGameEnabled
+- 0x10
+- RunOnce
+NextAliasID: 0

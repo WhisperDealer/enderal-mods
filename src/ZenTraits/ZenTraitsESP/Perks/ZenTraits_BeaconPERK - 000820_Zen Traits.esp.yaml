@@ -1,0 +1,13 @@
+FormKey: 000820:Zen Traits.esp
+EditorID: ZenTraits_BeaconPERK
+Description:
+  TargetLanguage: English
+  Value: ''
+NumRanks: 1
+Playable: True
+Effects:
+- MutagenObjectType: PerkEntryPointModifyValue
+  EntryPoint: ModDetectionSneakSkill
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 0.7
