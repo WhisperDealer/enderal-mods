@@ -1,0 +1,15 @@
+FormKey: 000074:Biggie Traits.esp
+EditorID: Traits_Witcher_ToxicitySlot4Ab
+Name:
+  TargetLanguage: English
+  Value: Slot 4
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Flags:
+- NoAbsorbOrReflect
+CastType: FireAndForget
+Effects:
+- BaseEffect: 000936:Biggie Traits.esp
+  Data: {}

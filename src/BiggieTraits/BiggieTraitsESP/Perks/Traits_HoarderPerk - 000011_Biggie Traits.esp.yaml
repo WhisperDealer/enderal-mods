@@ -1,0 +1,13 @@
+FormKey: 000011:Biggie Traits.esp
+EditorID: Traits_HoarderPerk
+Description:
+  TargetLanguage: English
+  Value: ''
+NumRanks: 1
+Playable: True
+Effects:
+- MutagenObjectType: PerkEntryPointModifyValue
+  EntryPoint: ModSellPrices
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 0.5

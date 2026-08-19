@@ -1,0 +1,19 @@
+FormKey: 000DA6:Biggie Traits.esp
+EditorID: Traits_AuNaturelPos2
+Name:
+  TargetLanguage: English
+  Value: Traits_AuNaturelEffect2
+Flags:
+- Recover
+- NoDuration
+- NoArea
+- HideInUI
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Magicka
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

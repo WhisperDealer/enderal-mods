@@ -1,0 +1,20 @@
+FormKey: 00002D:Biggie Traits.esp
+EditorID: Traits_FocusedPos2
+Name:
+  TargetLanguage: English
+  Value: 'Trait: Focused'
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- Recover
+- NoDuration
+- NoArea
+- HideInUI
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: AbsorbChance
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

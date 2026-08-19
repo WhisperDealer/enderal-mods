@@ -1,0 +1,31 @@
+FormKey: 000825:Zen Traits.esp
+VersionControl: 13579
+EditorID: ZenTraits_RadiantSoulMGEF
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ZenTraits_RadiantSoulScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PerksList
+      Object: 000828:Zen Traits.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerRef
+      Object: 000014:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Radiant Soul
+Flags:
+- Recover
+- NoDuration
+- NoMagnitude
+- NoArea
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+DualCastScale: 1
+PerkToApply: 000826:Zen Traits.esp
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

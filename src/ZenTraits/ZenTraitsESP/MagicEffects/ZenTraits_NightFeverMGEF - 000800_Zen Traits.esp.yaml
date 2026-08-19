@@ -1,0 +1,19 @@
+FormKey: 000800:Zen Traits.esp
+EditorID: ZenTraits_NightFeverMGEF
+Name:
+  TargetLanguage: English
+  Value: Night Fever
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- NoDuration
+- NoMagnitude
+- NoArea
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

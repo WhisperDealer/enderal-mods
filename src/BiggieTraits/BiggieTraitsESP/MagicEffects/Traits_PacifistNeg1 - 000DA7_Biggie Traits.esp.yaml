@@ -1,0 +1,23 @@
+FormKey: 000DA7:Biggie Traits.esp
+EditorID: Traits_PacifistNeg1
+Name:
+  TargetLanguage: English
+  Value: 'Trait: Pacifist'
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- Detrimental
+- NoDuration
+- NoArea
+- HideInUI
+SecondActorValueWeight: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Magicka
+  Type: DualValueModifier
+SecondActorValue: Stamina
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

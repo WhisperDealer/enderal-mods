@@ -1,0 +1,20 @@
+FormKey: 00081D:Zen Traits.esp
+EditorID: ZenTraits_TwilightDiscipleMGEF
+Name:
+  TargetLanguage: English
+  Value: Twilight Disciple
+Flags:
+- Recover
+- NoDuration
+- NoMagnitude
+- NoArea
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+DualCastScale: 1
+PerkToApply: 00081E:Zen Traits.esp
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

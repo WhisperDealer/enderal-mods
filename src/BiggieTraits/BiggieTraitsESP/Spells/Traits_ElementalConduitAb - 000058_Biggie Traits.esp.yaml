@@ -1,0 +1,21 @@
+FormKey: 000058:Biggie Traits.esp
+EditorID: Traits_ElementalConduitAb
+Name:
+  TargetLanguage: English
+  Value: Elemental Conduit
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: >-
+    Fire spells are more powerful in sunny weather but lose potency in the rain. 
+
+    Shock spells are enhanced during rain but are less effective in snowy conditions. 
+
+    Frost spells excel in snowy weather but weaken under sunny skies.
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 000057:Biggie Traits.esp
+  Data: {}

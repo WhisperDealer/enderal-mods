@@ -1,0 +1,16 @@
+FormKey: 0000D4:Biggie Traits.esp
+EditorID: Traits_IntrovertAb
+Name:
+  TargetLanguage: English
+  Value: Introvert
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: You thrive in solitude but falter in the crowd. When facing three or fewer enemies, you deal <15%> more damage, whether with weapons or Destruction magic. Against four or more, your nerves get the better of you, and you deal <10%> less.
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 0000D5:Biggie Traits.esp
+  Data: {}

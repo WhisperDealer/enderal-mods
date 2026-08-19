@@ -1,0 +1,77 @@
+FormKey: 00006F:Biggie Traits.esp
+EditorID: Traits_AnglerPerk
+VirtualMachineAdapter:
+  Scripts:
+  - Name: PRKF_Traits_AnglerPerk_0700006F
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Traits_AnglerCatchFishReward
+      Object: 000078:Biggie Traits.esp
+  ScriptFragments:
+    FileName: PRKF_Traits_AnglerPerk_0700006F
+    Fragments:
+    - Unknown2: 1
+      ScriptName: PRKF_Traits_AnglerPerk_0700006F
+      FragmentName: Fragment_0
+Description:
+  TargetLanguage: English
+  Value: ''
+NumRanks: 1
+Playable: True
+Effects:
+- MutagenObjectType: PerkEntryPointSelectSpell
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionGlobal
+      CompareOperator: LessThanOrEqualTo
+      Data:
+        MutagenObjectType: GetRandomPercentConditionData
+      ComparisonValue: 0000D9:Biggie Traits.esp
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: IsInListConditionData
+        FormList: 000809:Biggie Traits.esp
+      ComparisonValue: 1
+  - RunOnTabIndex: 2
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasMagicEffectConditionData
+        MagicEffect: 0000D7:Biggie Traits.esp
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetIsRaceConditionData
+        Race: 0BA545:Skyrim.esm
+  EntryPoint: ApplyCombatHitSpell
+  PerkConditionTabCount: 3
+  Spell: 0000D8:Biggie Traits.esp
+- MutagenObjectType: PerkEntryPointModifyValue
+  Conditions:
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: IsInListConditionData
+        FormList: 000809:Biggie Traits.esp
+      ComparisonValue: 1
+  EntryPoint: ModAttackDamage
+  PerkConditionTabCount: 3
+  Modification: Multiply
+  Value: 2
+- MutagenObjectType: PerkEntryPointAddActivateChoice
+  Conditions:
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: IsInListConditionData
+        FormList: 000077:Biggie Traits.esp
+      ComparisonValue: 1
+  Flags:
+    Flags:
+    - RunImmediately
+    - ReplaceDefault
+  EntryPoint: Activate
+  PerkConditionTabCount: 2

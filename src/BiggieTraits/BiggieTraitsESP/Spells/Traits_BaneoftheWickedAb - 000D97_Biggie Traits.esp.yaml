@@ -1,0 +1,16 @@
+FormKey: 000D97:Biggie Traits.esp
+EditorID: Traits_BaneoftheWickedAb
+Name:
+  TargetLanguage: English
+  Value: Bane of the Wicked
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: You are an enemy to all things abhorrent. Deal <20%> more damage to undead, elementals and golems. However, do <10%> less damage to other beings.
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 000D72:Biggie Traits.esp
+  Data: {}

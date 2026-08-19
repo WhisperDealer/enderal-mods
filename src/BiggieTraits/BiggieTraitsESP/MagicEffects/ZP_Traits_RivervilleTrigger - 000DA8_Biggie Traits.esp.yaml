@@ -1,0 +1,25 @@
+FormKey: 000DA8:Biggie Traits.esp
+EditorID: ZP_Traits_RivervilleTrigger
+VirtualMachineAdapter:
+  Scripts:
+  - Name: Traits_PickTraitScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Traits_Quest
+      Object: 000001:Biggie Traits.esp
+Name:
+  TargetLanguage: English
+  Value: Select Traits
+Flags:
+- NoDuration
+- NoMagnitude
+- NoArea
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

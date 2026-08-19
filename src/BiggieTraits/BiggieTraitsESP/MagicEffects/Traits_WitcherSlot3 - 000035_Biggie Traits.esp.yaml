@@ -1,0 +1,31 @@
+FormKey: 000035:Biggie Traits.esp
+EditorID: Traits_WitcherSlot3
+VirtualMachineAdapter:
+  Scripts:
+  - Name: Traits_Witcher_ToxicitySlotScript
+    Properties:
+    - MutagenObjectType: ScriptIntProperty
+      Name: AssociatedPotionSlot
+      Data: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ControllerQuest
+      Object: 00002F:Biggie Traits.esp
+Name:
+  TargetLanguage: English
+  Value: Traits Potion Toxicity Slot 3
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- Recover
+- NoMagnitude
+- NoArea
+- HideInUI
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+CastType: FireAndForget
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

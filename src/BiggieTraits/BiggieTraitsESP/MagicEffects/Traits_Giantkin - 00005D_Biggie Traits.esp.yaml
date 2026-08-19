@@ -1,0 +1,28 @@
+FormKey: 00005D:Biggie Traits.esp
+EditorID: Traits_Giantkin
+VirtualMachineAdapter:
+  Scripts:
+  - Name: Traits_Giantkin_EffectScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: playerScript
+      Object: 000082:Biggie Traits.esp
+      Alias: 0
+Name:
+  TargetLanguage: English
+  Value: 'Trait: Giantkin'
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- Recover
+- NoDuration
+- NoArea
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: ResistMagic
+DualCastScale: 1
+PerkToApply: 000060:Biggie Traits.esp
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

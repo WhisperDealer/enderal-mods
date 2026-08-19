@@ -1,0 +1,19 @@
+FormKey: 000809:Zen Traits.esp
+EditorID: ZenTraits_PurifiedBloodMGEF
+Name:
+  TargetLanguage: English
+  Value: Purified Blood
+Flags:
+- Recover
+- NoDuration
+- NoMagnitude
+- NoArea
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

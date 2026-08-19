@@ -1,0 +1,39 @@
+FormKey: 000030:Biggie Traits.esp
+EditorID: Traits_Witcher
+VirtualMachineAdapter:
+  Scripts:
+  - Name: Traits_WitcherEffectScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Traits_Witcher_Quest
+      Object: 00002F:Biggie Traits.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Traits_Witcher_ToxicitySlot1Ab
+      Object: 000036:Biggie Traits.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Traits_Witcher_ToxicitySlot2Ab
+      Object: 000037:Biggie Traits.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Traits_Witcher_ToxicitySlot3Ab
+      Object: 000038:Biggie Traits.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Traits_Witcher_ToxicitySlot4Ab
+      Object: 000074:Biggie Traits.esp
+Name:
+  TargetLanguage: English
+  Value: 'Trait: Witcher'
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- NoDuration
+- NoMagnitude
+- NoArea
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+DualCastScale: 1
+PerkToApply: 000031:Biggie Traits.esp
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

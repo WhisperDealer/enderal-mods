@@ -1,0 +1,13 @@
+FormKey: 00006A:Biggie Traits.esp
+EditorID: Traits_RemoveTraitSpell
+Name:
+  TargetLanguage: English
+  Value: Remove Trait SFX Spell
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+CastType: FireAndForget
+Effects:
+- BaseEffect: 000069:Biggie Traits.esp
+  Data: {}

@@ -1,0 +1,33 @@
+FormKey: 0000E2:Biggie Traits.esp
+EditorID: Traits_Gollum
+VirtualMachineAdapter:
+  Scripts:
+  - Name: Traits_GollumScript
+    Properties:
+    - MutagenObjectType: ScriptFloatProperty
+      Name: fWeightLimit
+      Data: 10
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Traits_GollumFood
+      Object: 000797:Biggie Traits.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Traits_GollumPos1Spell
+      Object: 0000E3:Biggie Traits.esp
+Name:
+  TargetLanguage: English
+  Value: 'Trait: Gollum'
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- NoDuration
+- NoMagnitude
+- NoArea
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+DualCastScale: 1
+PerkToApply: 0000E0:Biggie Traits.esp
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

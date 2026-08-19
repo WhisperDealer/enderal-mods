@@ -1,0 +1,13 @@
+FormKey: 000006:Biggie Traits.esp
+EditorID: Traits_LightFootPerkPos
+Description:
+  TargetLanguage: English
+  Value: ''
+NumRanks: 1
+Playable: True
+Effects:
+- MutagenObjectType: PerkEntryPointModifyValue
+  EntryPoint: ModFallingDamage
+  PerkConditionTabCount: 1
+  Modification: Multiply
+  Value: 0.5

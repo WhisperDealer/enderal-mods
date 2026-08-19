@@ -1,0 +1,17 @@
+FormKey: 000827:Zen Traits.esp
+VersionControl: 13579
+EditorID: ZenTraits_RadiantSoulAb
+Name:
+  TargetLanguage: English
+  Value: Radiant Soul
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: >-
+    Healing spells also restore stamina.
+
+    Offensive spells cost 20% more.
+Type: Ability
+Effects:
+- BaseEffect: 000825:Zen Traits.esp
+  Data: {}

@@ -1,0 +1,27 @@
+FormKey: 00003B:Biggie Traits.esp
+EditorID: Traits_NosferatuPos1
+Name:
+  TargetLanguage: English
+  Value: Restore Health & Stamina
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- NoArea
+SecondActorValueWeight: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+  Type: DualValueModifier
+CastType: FireAndForget
+SecondActorValue: Stamina
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Restore <mag> health & stamina for <dur> seconds.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasMagicEffectConditionData
+    MagicEffect: 00003A:Biggie Traits.esp
+  ComparisonValue: 1

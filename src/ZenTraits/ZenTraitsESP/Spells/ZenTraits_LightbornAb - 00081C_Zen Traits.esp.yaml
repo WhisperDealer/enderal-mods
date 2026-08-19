@@ -1,0 +1,16 @@
+FormKey: 00081C:Zen Traits.esp
+EditorID: ZenTraits_LightbornAb
+Name:
+  TargetLanguage: English
+  Value: Lightborn
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: >-
+    Light magic is 50% stronger and 50% cheaper.
+
+    All other schools deal 50% less damage and cost 50% more.
+Type: Ability
+Effects:
+- BaseEffect: 00081A:Zen Traits.esp
+  Data: {}

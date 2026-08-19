@@ -1,0 +1,22 @@
+FormKey: 000090:Biggie Traits.esp
+EditorID: Traits_GamblerStackingBuffEffect02
+Name:
+  TargetLanguage: English
+  Value: 'Gambler: Stacking Buff 02'
+Flags:
+- NoHitEvent
+- NoMagnitude
+- NoArea
+- HideInUI
+- NoHitEffect
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+CastType: FireAndForget
+DualCastScale: 1
+PerkToApply: 00008B:Biggie Traits.esp
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

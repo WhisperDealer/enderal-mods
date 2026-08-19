@@ -1,0 +1,21 @@
+FormKey: 00005E:Biggie Traits.esp
+EditorID: Traits_MarathonRunnerNeg1
+Name:
+  TargetLanguage: English
+  Value: 'Trait: Marathon Runner Negative'
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- Recover
+- Detrimental
+- NoDuration
+- NoArea
+- HideInUI
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: StaminaRateMult
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

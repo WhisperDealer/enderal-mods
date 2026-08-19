@@ -1,0 +1,26 @@
+FormKey: 00009E:Biggie Traits.esp
+EditorID: Traits_NosferatuBuffSpell
+Name:
+  TargetLanguage: English
+  Value: Blessing of Skeever
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+CastType: FireAndForget
+Effects:
+- BaseEffect: 00003B:Biggie Traits.esp
+  Data:
+    Magnitude: 5
+    Duration: 180
+- BaseEffect: 00003C:Biggie Traits.esp
+  Data:
+    Magnitude: 5
+    Duration: 180
+- BaseEffect: 00003D:Biggie Traits.esp
+  Data:
+    Magnitude: 20
+    Duration: 180

@@ -1,0 +1,48 @@
+FormKey: 000D7D:Biggie Traits.esp
+EditorID: Traits_UnboundHandsAb
+Name:
+  TargetLanguage: English
+  Value: Unbound Hands
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: Handwear constricts you. Spells are <15%> stronger and unarmed attacks do <+15> more damage when not wearing gloves/gauntlets. However, they suffer the opposite effect when wearing gloves/gauntlets.
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 000D64:Biggie Traits.esp
+  Data: {}
+- BaseEffect: 00000B:Biggie Traits.esp
+  Data:
+    Magnitude: 15
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 10CD13:Skyrim.esm
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 06C0EF:Skyrim.esm
+- BaseEffect: 00000C:Biggie Traits.esp
+  Data:
+    Magnitude: 15
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: GreaterThanOrEqualTo
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 10CD13:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: GreaterThanOrEqualTo
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 06C0EF:Skyrim.esm
+    ComparisonValue: 1

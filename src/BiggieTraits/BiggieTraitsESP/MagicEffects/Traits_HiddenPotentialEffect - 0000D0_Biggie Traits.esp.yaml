@@ -1,0 +1,26 @@
+FormKey: 0000D0:Biggie Traits.esp
+EditorID: Traits_HiddenPotentialEffect
+VirtualMachineAdapter:
+  Scripts:
+  - Name: Traits_HiddenPotentialScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: QuestScript
+      Object: 000001:Biggie Traits.esp
+Name:
+  TargetLanguage: English
+  Value: Hidden Potential
+Flags:
+- NoDuration
+- NoMagnitude
+- NoArea
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+CastType: FireAndForget
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: A rare brew that unlocks new facets of your being. Drinking this elixir allows you to choose an extra trait, shaping your destiny further.

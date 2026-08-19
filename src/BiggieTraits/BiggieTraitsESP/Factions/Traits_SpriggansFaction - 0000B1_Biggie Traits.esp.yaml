@@ -1,0 +1,12 @@
+FormKey: 0000B1:Biggie Traits.esp
+EditorID: Traits_SpriggansFaction
+Name:
+  TargetLanguage: English
+  Value: Tree people.
+Relations:
+- Target: 0000B1:Biggie Traits.esp
+  Reaction: Ally
+CrimeValues:
+  Arrest: True
+  AttackOnSight: True
+VendorValues: {}

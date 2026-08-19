@@ -1,0 +1,58 @@
+FormKey: 00002F:Biggie Traits.esp
+EditorID: Traits_Witcher_Quest
+VirtualMachineAdapter:
+  Scripts:
+  - Name: Traits_Witcher_QuestScript
+    Properties:
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: Traits_Witcher_SpellSlots
+      Objects:
+      - Name: ''
+        Object: 000036:Biggie Traits.esp
+      - Name: ''
+        Object: 000037:Biggie Traits.esp
+      - Name: ''
+        Object: 000038:Biggie Traits.esp
+      - Name: ''
+        Object: 000074:Biggie Traits.esp
+  - Name: Traits_Witcher_Widget
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: config
+      Object: 000054:Biggie Traits.esp
+    - MutagenObjectType: ScriptBoolProperty
+      Name: RequireExtend
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WitcherQuest
+      Object: 00002F:Biggie Traits.esp
+  FileName: ''
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 00002F:Biggie Traits.esp
+      Alias: 0
+    Scripts:
+    - Name: Traits_Witcher_PlayerScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: ControllerQuest
+        Object: 00002F:Biggie Traits.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Traits_Witcher_ExcludePotion
+        Object: 000064:Biggie Traits.esp
+Name:
+  TargetLanguage: English
+  Value: Potion Toxicity Manager
+Flags:
+- RunOnce
+Stages:
+- {}
+- Index: 10
+  Flags:
+  - StartUpStage
+NextAliasID: 1
+Aliases:
+- Name: PlayerRef
+  Flags: []
+  ForcedReference: 000014:Skyrim.esm
+  VoiceTypes: Null

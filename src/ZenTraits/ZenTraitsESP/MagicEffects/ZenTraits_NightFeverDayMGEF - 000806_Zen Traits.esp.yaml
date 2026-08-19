@@ -1,0 +1,21 @@
+FormKey: 000806:Zen Traits.esp
+EditorID: ZenTraits_NightFeverDayMGEF
+Name:
+  TargetLanguage: English
+  Value: 'Night Fever: Day effect'
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- NoDuration
+- NoMagnitude
+- NoArea
+- HideInUI
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+DualCastScale: 1
+PerkToApply: 000807:Zen Traits.esp
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

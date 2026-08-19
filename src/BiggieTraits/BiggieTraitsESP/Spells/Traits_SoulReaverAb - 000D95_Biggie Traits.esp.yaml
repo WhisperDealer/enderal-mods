@@ -1,0 +1,16 @@
+FormKey: 000D95:Biggie Traits.esp
+EditorID: Traits_SoulReaverAb
+Name:
+  TargetLanguage: English
+  Value: Soul Reaver
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: You've claimed countless souls for your gain. Weapon and armor enchantments are <10%> stronger and use <10%> less charge. Armor rating and weapon damage is reduced by <10%>.
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 000D71:Biggie Traits.esp
+  Data: {}

@@ -1,0 +1,15 @@
+FormKey: 000081:Biggie Traits.esp
+EditorID: Traits_LifebloomEssenceCobj02
+Items:
+- Item:
+    Item: 03AD71:Skyrim.esm
+    Count: 1
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasMagicEffectConditionData
+    MagicEffect: 000079:Biggie Traits.esp
+  ComparisonValue: 1
+CreatedObject: 00007F:Biggie Traits.esp
+WorkbenchKeyword: 0A5CB3:Skyrim.esm
+CreatedObjectCount: 2

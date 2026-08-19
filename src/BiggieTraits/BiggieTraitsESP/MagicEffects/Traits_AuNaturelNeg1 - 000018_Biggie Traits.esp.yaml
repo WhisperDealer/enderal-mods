@@ -1,0 +1,23 @@
+FormKey: 000018:Biggie Traits.esp
+EditorID: Traits_AuNaturelNeg1
+Name:
+  TargetLanguage: English
+  Value: 'Trait: Au Naturel Negative 1'
+Flags:
+- Recover
+- Detrimental
+- NoDuration
+- NoArea
+- HideInUI
+SecondActorValueWeight: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+  Type: DualValueModifier
+SecondActorValue: Stamina
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

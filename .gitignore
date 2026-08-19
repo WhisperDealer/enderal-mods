@@ -55,7 +55,36 @@ Thumbs.db
 # Add one pair of lines per script-shipping plugin (the /mod-new-plugin skill does this for you):
 !src/Apocalypse/Scripts/compiled/
 !src/Apocalypse/Scripts/compiled/*.pex
+!src/ZenTraits/Scripts/compiled/
+!src/ZenTraits/Scripts/compiled/*.pex
 
 # Reference decompiles — vanilla and third-party plugins serialized ONLY for FormKey lookups.
 # Large, regenerated locally from each machine's own copy of the source mod, never committed.
 /reference/
+
+# ---------------------------------------------------------------------------
+# Third-party assets a conversion does NOT modify.
+#
+# A replacement plugin ships only what it CHANGED — see the Apocalypse release,
+# which is a single .esp plus two Papyrus stubs. `08-assemble-package.ps1` still
+# builds a complete, installable Data-layout folder locally for testing and
+# mod-deploy, but the unmodified third-party parts of it are not committed and
+# not published: this repo is public, and redistributing another author's
+# compiled SKSE plugin, SWF menus and translations needs permission we do not
+# have on file.
+#
+# Users install the original mod, then this release over it.
+#
+# Scoped per-mod rather than /src/*/... on purpose: a blanket /src/*/Scripts/
+# would swallow src/Apocalypse/Scripts/, whose two compiled stubs we DO ship,
+# and an excluded directory cannot be re-included from inside.
+/src/BiggieTraits/SKSE/
+/src/BiggieTraits/Interface/
+/src/BiggieTraits/Scripts/
+/src/BiggieTraits/Sample/
+/src/BiggieTraits/Source/
+
+# build/staging/<release>/ holds derived output for every release that has no
+# committed fomod/ tree. Keep any real fomod/ source, ignore the rest.
+/build/staging/*/*
+!/build/staging/*/fomod/

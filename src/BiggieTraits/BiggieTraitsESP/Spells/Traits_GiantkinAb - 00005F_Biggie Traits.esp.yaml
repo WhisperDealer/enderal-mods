@@ -1,0 +1,17 @@
+FormKey: 00005F:Biggie Traits.esp
+EditorID: Traits_GiantkinAb
+Name:
+  TargetLanguage: English
+  Value: Giantkin
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: Descended from the mighty giants; you gain <10%> magic resistance and damage with blunt weapons, however you cannot read skill books, or use scrolls and staves.
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 00005D:Biggie Traits.esp
+  Data:
+    Magnitude: 10

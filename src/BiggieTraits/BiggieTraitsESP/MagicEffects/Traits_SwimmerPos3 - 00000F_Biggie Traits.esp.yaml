@@ -1,0 +1,19 @@
+FormKey: 00000F:Biggie Traits.esp
+EditorID: Traits_SwimmerPos3
+Name:
+  TargetLanguage: English
+  Value: 'Trait: Swimmer'
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- NoDuration
+- NoArea
+- HideInUI
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Magicka
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

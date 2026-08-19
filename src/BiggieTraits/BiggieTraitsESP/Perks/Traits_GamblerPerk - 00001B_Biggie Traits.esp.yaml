@@ -1,0 +1,18 @@
+FormKey: 00001B:Biggie Traits.esp
+EditorID: Traits_GamblerPerk
+Description:
+  TargetLanguage: English
+  Value: ''
+NumRanks: 1
+Playable: True
+Effects:
+- MutagenObjectType: PerkEntryPointModifyValue
+  EntryPoint: ModAttackDamage
+  PerkConditionTabCount: 3
+  Modification: Multiply
+  Value: 0.75
+- MutagenObjectType: PerkEntryPointModifyValue
+  EntryPoint: CalculateMyCriticalHitChance
+  PerkConditionTabCount: 3
+  Modification: Add
+  Value: 40

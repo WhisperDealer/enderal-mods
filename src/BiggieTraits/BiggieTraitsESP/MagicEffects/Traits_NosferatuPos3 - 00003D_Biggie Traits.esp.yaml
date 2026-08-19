@@ -1,0 +1,25 @@
+FormKey: 00003D:Biggie Traits.esp
+EditorID: Traits_NosferatuPos3
+Name:
+  TargetLanguage: English
+  Value: Movement Speed
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- Recover
+- NoArea
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: SpeedMult
+CastType: FireAndForget
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Movement speed is increased by <mag> for <dur> seconds.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasMagicEffectConditionData
+    MagicEffect: 00003A:Biggie Traits.esp
+  ComparisonValue: 1

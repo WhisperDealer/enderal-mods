@@ -1,0 +1,19 @@
+FormKey: 000D85:Biggie Traits.esp
+EditorID: Traits_BadNaturedAb
+Name:
+  TargetLanguage: English
+  Value: Bad Natured
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: You were born into wickedness. Your attacks while being crouched deals <20%> more and you're better at pickpocketing. However, attacks while standing up do <20%> less.
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 000D68:Biggie Traits.esp
+  Data: {}
+- BaseEffect: 000801:Biggie Traits.esp
+  Data:
+    Magnitude: 20

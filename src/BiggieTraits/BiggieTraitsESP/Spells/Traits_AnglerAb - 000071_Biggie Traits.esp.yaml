@@ -1,0 +1,19 @@
+FormKey: 000071:Biggie Traits.esp
+EditorID: Traits_AnglerAb
+Name:
+  TargetLanguage: English
+  Value: Angler
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: Your bond with the sea grants unique benefits. Mudcrabs and slaughterfish become friendly toward you. Fishing yields more valuable items. Fishing rods deal double damage and have a chance to summon a mudcrab to fight at your side. The summoned mudcrab becomes stronger if you're carrying an insect or small fish. Fishing rods can be enchanted. However, your affinity with the waters leaves you <25%> more vulnerable to shock damage.
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 00006E:Biggie Traits.esp
+  Data: {}
+- BaseEffect: 000070:Biggie Traits.esp
+  Data:
+    Magnitude: 25

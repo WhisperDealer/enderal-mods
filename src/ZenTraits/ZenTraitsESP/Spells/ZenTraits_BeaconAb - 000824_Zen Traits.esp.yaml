@@ -1,0 +1,17 @@
+FormKey: 000824:Zen Traits.esp
+EditorID: ZenTraits_BeaconAb
+Name:
+  TargetLanguage: English
+  Value: Beacon
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: >-
+    Nearby allies regenerate Health and Mana.
+
+    Stealth is significantly harder.
+Type: Ability
+Effects:
+- BaseEffect: 000823:Zen Traits.esp
+  Data:
+    Magnitude: 40

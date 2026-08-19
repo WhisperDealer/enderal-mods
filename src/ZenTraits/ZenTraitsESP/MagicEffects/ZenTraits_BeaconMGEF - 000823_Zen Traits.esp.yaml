@@ -1,0 +1,18 @@
+FormKey: 000823:Zen Traits.esp
+EditorID: ZenTraits_BeaconMGEF
+Name:
+  TargetLanguage: English
+  Value: Beacon
+Flags:
+- NoDuration
+- NoArea
+Archetype:
+  MutagenObjectType: MagicEffectCloakArchetype
+  Association: 000822:Zen Traits.esp
+DualCastScale: 1
+PerkToApply: 000820:Zen Traits.esp
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

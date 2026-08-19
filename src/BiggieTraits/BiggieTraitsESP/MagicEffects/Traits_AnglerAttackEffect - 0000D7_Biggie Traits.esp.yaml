@@ -1,0 +1,46 @@
+FormKey: 0000D7:Biggie Traits.esp
+EditorID: Traits_AnglerAttackEffect
+VirtualMachineAdapter:
+  Scripts:
+  - Name: Traits_AnglerAttackScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: EncMudcrabLarge
+      Object: 01722B:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: EncMudcrabMedium
+      Object: 0164C4:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SummonExplosion
+      Object: 0000DB:Biggie Traits.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Traits_AnglerNormalCrabBuffAb
+      Object: 0000DE:Biggie Traits.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Traits_AnglerSuperCrabBuffAb
+      Object: 0000DC:Biggie Traits.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Traits_CrabDietList
+      Object: 0000DA:Biggie Traits.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: UnsummonExplosion
+      Object: 0000DD:Biggie Traits.esp
+Name:
+  TargetLanguage: English
+  Value: Angler trait attack script
+Flags:
+- Recover
+- NoMagnitude
+- NoArea
+- NoRecast
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+CastType: FireAndForget
+TargetType: Touch
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

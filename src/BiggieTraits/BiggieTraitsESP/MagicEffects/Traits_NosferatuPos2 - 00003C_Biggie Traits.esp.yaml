@@ -1,0 +1,24 @@
+FormKey: 00003C:Biggie Traits.esp
+EditorID: Traits_NosferatuPos2
+Name:
+  TargetLanguage: English
+  Value: Restore Magicka
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- NoArea
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Magicka
+CastType: FireAndForget
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Restore <mag> magicka for <dur> seconds.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasMagicEffectConditionData
+    MagicEffect: 00003A:Biggie Traits.esp
+  ComparisonValue: 1

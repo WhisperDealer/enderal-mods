@@ -1,0 +1,11 @@
+FormKey: 000097:Biggie Traits.esp
+EditorID: Traits_GamblerStackingBuffSpell04
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+CastType: FireAndForget
+Effects:
+- BaseEffect: 000092:Biggie Traits.esp
+  Data:
+    Duration: 30

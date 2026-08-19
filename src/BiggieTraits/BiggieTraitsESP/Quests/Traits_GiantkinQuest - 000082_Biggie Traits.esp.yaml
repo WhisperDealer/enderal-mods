@@ -1,0 +1,28 @@
+FormKey: 000082:Biggie Traits.esp
+EditorID: Traits_GiantkinQuest
+VirtualMachineAdapter:
+  FileName: ''
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 000082:Biggie Traits.esp
+      Alias: 0
+    Scripts:
+    - Name: Traits_Giantkin_PlayerScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: PlayerRef
+        Object: 000014:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Traits_GiantkinAb
+        Object: 00005F:Biggie Traits.esp
+Flags:
+- StartGameEnabled
+- 0x10
+- RunOnce
+NextAliasID: 1
+Aliases:
+- Name: PlayerRef
+  Flags: []
+  ForcedReference: 000014:Skyrim.esm
+  VoiceTypes: Null

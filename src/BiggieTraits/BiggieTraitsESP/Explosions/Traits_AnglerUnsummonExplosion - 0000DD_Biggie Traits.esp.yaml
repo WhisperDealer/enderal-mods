@@ -1,0 +1,13 @@
+FormKey: 0000DD:Biggie Traits.esp
+EditorID: Traits_AnglerUnsummonExplosion
+Model:
+  File: Magic\ShoutAreaExplosion01.nif
+  Data: 0x020000000000000000000000
+ImpactDataSet: 015C7B:Skyrim.esm
+Force: 1
+Radius: 400
+ISRadius: 400
+VerticalOffsetMult: 0.8
+Flags:
+- 0x1
+- IgnoreImageSpaceSwap

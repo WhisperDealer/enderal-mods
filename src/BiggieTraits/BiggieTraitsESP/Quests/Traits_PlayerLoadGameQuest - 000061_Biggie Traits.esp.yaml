@@ -1,0 +1,68 @@
+FormKey: 000061:Biggie Traits.esp
+EditorID: Traits_PlayerLoadGameQuest
+VirtualMachineAdapter:
+  FileName: ''
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 000061:Biggie Traits.esp
+      Alias: 0
+    Scripts:
+    - Name: Traits_AuNaturelPlayerScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Traits_AuNaturelAb
+        Object: 000D7B:Biggie Traits.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Traits_AuNaturelScalingEffectAb
+        Object: 00080C:Biggie Traits.esp
+    - Name: Traits_GamblerPlayerScript
+      Properties:
+      - MutagenObjectType: ScriptStringProperty
+        Name: sFlag
+        Data: Traits_Gambler
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Traits_GamblerAb
+        Object: 000DA1:Biggie Traits.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Traits_GamblerMagicEffectsList
+        Object: 000099:Biggie Traits.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Traits_GamblerSpellsList
+        Object: 00009A:Biggie Traits.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: TraitSpell
+        Object: 000DA1:Biggie Traits.esp
+    - Name: Traits_AnglerPlayerScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MagicDisallowEnchanting
+        Object: 0C27BD:Skyrim.esm
+      - MutagenObjectType: ScriptStringProperty
+        Name: sFlag
+        Data: Traits_Angler
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Traits_AnglerAb
+        Object: 000071:Biggie Traits.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Traits_AnglerFishingRodsList
+        Object: 000809:Biggie Traits.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: TraitSpell
+        Object: 000071:Biggie Traits.esp
+Name:
+  TargetLanguage: English
+  Value: Handles load game event for various traits
+Flags:
+- StartGameEnabled
+- 0x10
+- RunOnce
+Stages:
+- Flags:
+  - StartUpStage
+NextAliasID: 1
+Aliases:
+- Name: PlayerRef
+  Flags: []
+  ForcedReference: 000014:Skyrim.esm
+  VoiceTypes: Null

@@ -1,0 +1,13 @@
+FormKey: 000822:Zen Traits.esp
+EditorID: ZenTraits_BeaconBuffSPEL
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+CastType: Concentration
+TargetType: Aimed
+Effects:
+- BaseEffect: 000821:Zen Traits.esp
+  Data:
+    Magnitude: 1
+    Duration: 1

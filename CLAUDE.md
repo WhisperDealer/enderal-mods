@@ -517,6 +517,13 @@ Currently released:
 |---|---|---|
 | `Apocalypse` | `Apocalypse - Magic of Skyrim.esp` | Enai Siaion's spell pack, converted for Enderal — form version lowered to 1.70, Elder Scrolls proper nouns renamed, and distribution rebuilt onto Enderal's own vendor and loot lists. A **replacement plugin**; see the form-version ceiling below for why it cannot be a patch |
 | `RelentlessSword` | `Relentless Sword - Enderal.esp` | johnskyrim's *Relentless Sword SE* rebuilt for Enderal: clean masters (his plugin masters the three DLC stubs), shadowsteel-tier stats, blueprint + Handicraft-50 gating instead of a Skyforge recipe that could never fire, and FS-style dismantle recipes. **New content shipped as a standalone plugin, carrying no assets** — the player installs his mod for the meshes and disables his ESP |
+| `BiggieTraits` | `Biggie Traits.esp` | Shazdeh's Fallout-style trait system, converted for Enderal — form version lowered to 1.70, DLC masters dropped, and the traits with no Enderal target removed (the five Skyrim city houses, standing stones, Divine shrines, shouts, vanilla perk points). 30 of 38 traits survive. A **replacement plugin**; its generators live in `src/BiggieTraits/tools/` |
+
+> **B612 is deliberately NOT shipped here.** It is a dependency of Biggie Traits and its `b612.esp`
+> is form version 1.71, so a conversion was written — and then dropped, because **BEES** loads the
+> stock plugin unchanged (see the form-version ceiling below). Requiring an SKSE plugin the user
+> already has beats maintaining a rebuild of someone else's mod forever. Use B612 as its author
+> ships it.
 
 ### Where the documentation is
 
@@ -770,6 +777,14 @@ Enderal lacks.
 > same record type **and the same thing**. A script that maps FormID → record group for both trees
 > does this in seconds. Note this override was **not** the crash it looked like — it is a real
 > defect, found while chasing an unrelated bug, and worth fixing on its own merits.
+>
+> **And check what it REFERENCES, not only what it overrides — a surviving ID inside a condition is
+> the nastier case.** **[verified 2026-08-05]** Biggie Traits gates two traits on an OR-group of the
+> nine Amulets of the Divines. Eight of the nine FormIDs resolve to nothing in Enderal, but
+> `0C891B` is `_04E_30_Unique_SongOfTheWinter` — an unrelated Enderal unique weapon. Left alone, the
+> group is not merely dead: equipping that one weapon fires effects meant for a Divine amulet. A
+> dangling reference is inert and safe to ignore; a reference that *resolves to the wrong record* is
+> a live bug, and only resolving every external FormKey against `reference/base/` tells them apart.
 
 **Enderal's own distribution slots**, for re-homing a ported mod's items **[verified]**
 (`reference/base/Skyrim/LeveledItems/`). Note Enderal has **no spell tomes at all** — it teaches
@@ -1005,6 +1020,76 @@ These are **engine-hardcoded** FormIDs — Bethesda's own code depends on them, 
 > `CS Light.esp`, `DynDOLOD.esp`, `Enderal Weather - HDR.esp`, `standard_lighting_templates.esp`,
 > `TerrainHelper.esp` — most of a visuals layer, loading nothing, with no error anywhere. Audit any
 > Enderal list for this.
+>
+> **Check the mod's DEPENDENCIES for 1.71 too, not just the mod.** **[verified 2026-08-05]** Porting
+> Biggie Traits turned up `Biggie Traits.esp` at 1.71 *and* `b612.esp` — the UI library that supplies
+> its trait-selection menu — also at 1.71. Rebuilding only the mod would have produced a plugin that
+> loads and a menu that never opens, which reads like a scripting bug and is not one. Any required
+> mod that ships an `.esp` is subject to the same ceiling, so run the offset-30 check over the whole
+> dependency chain before concluding a port is one plugin's worth of work.
+>
+> ### BEES LIFTS THE CEILING — check for it before rebuilding anything
+>
+> **[verified in-game 2026-08-05 — this corrects the section above, which describes the STOCK
+> engine.]** **Backported Extended ESL Support (BEES)** by Nukem
+> (`BackportedESLSupport.dll`, Nexus 106441) makes 1.5.97 load 1.71 plugins. Its export table
+> carries `SKSEPlugin_Query`, so it loads on Enderal, and the mechanism is visible in the binary:
+>
+> ```
+> LoaderHooks::ReadFormVersionHook::Thunk(RE::TESFile*, void*, unsigned int)
+> ```
+>
+> — it hooks the form-version read itself. It also resolves the address library through
+> `version-{}.bin`, which is the name Enderal ships.
+>
+> Proven by direct A/B in `thepath`: with BEES enabled, the **stock** `b612.esp` (1.71) loads and
+> Biggie Traits' trait menu works; with BEES disabled and the same stock plugin, the menu cannot be
+> used at all. That second half is `b612.psc` doing
+> `Game.GetFormFromFile(0x800, "b612.esp")` — when the engine skips the plugin the lookup returns
+> `None` and every B612 menu silently fails.
+>
+> **So the first question about a 1.71 mod is no longer "how do we rebuild it" but "is BEES in this
+> list?"** With BEES, a 1.71 dependency needs no conversion at all — which is why this repo ships
+> **no** B612 conversion despite having written one. Rebuilding a third-party plugin carries a
+> permissions burden and an update burden forever; requiring BEES carries neither.
+>
+> Two things this does **not** change:
+>
+> - **Author your own plugins at 1.70 regardless.** It costs nothing and keeps them working in lists
+>   without BEES. `Biggie Traits.esp` here is 1.70 for exactly that reason, so only its *dependency*
+>   needs BEES.
+> - **A conversion is still worth it when the mod's CONTENT is wrong for Enderal.** BEES would have
+>   let stock Biggie Traits load, and it would still have overridden five nonexistent Skyrim house
+>   cells and offered 14 traits with no target. Form version is one reason to rebuild, not the only
+>   one.
+>
+> Worth revisiting: `Apocalypse` is a **replacement plugin** partly because of this ceiling. With
+> BEES it could in principle have been a patch. Its other changes (renames, distribution rebuild)
+> are extensive enough that this was probably still the right call — but the reasoning recorded in
+> `src/Apocalypse/tools/README.md` now overstates the case.
+
+> ### Proving an SKSE plugin is 1.5.97-capable WITHOUT launching the game
+>
+> **[verified 2026-08-05]** SE-era SKSE (1.5.97) calls a DLL's **`SKSEPlugin_Query`** export. The
+> AE-era entry point is **`SKSEPlugin_Version`**. So reading the PE export table decides
+> SE compatibility statically:
+>
+> | Exports | Means |
+> |---|---|
+> | `Query` only | SE-only build — fine for Enderal |
+> | `Query` **and** `Version` | CommonLibSSE-NG build — runtime-agnostic, fine for Enderal |
+> | `Version` only | **AE-only — will not load on 1.5.97** |
+>
+> Validated against Keyword Item Distributor's own FOMOD, which ships `SE/` and `AE/` folders: the
+> `SE/` DLL exports `Query`, the `AE/` DLL exports only `Version`. This turns "is this whole SKSE
+> stack usable?" from a build-deploy-launch cycle into a minute of reading headers. Note it proves
+> the *entry point* matches, not that the plugin behaves — still launch before claiming it works.
+>
+> Two related facts from the same session: CommonLibSSE-NG DLLs look for the address library under
+> **both** `Data/SKSE/Plugins/versionlib-{}.bin` and `version-{}.bin`, so Enderal's stock
+> `version-1-5-97-0.bin` satisfies them with no rename. And a dependency's **Papyrus** side needs
+> checking separately — po3's Papyrus Extender ships different script signatures per era, so confirm
+> the functions a ported script imports exist in the SE build's `.psc`.
 
 > ### Debugging a load crash: bisect the PLUGIN, not the records
 >
@@ -1056,6 +1141,29 @@ These are **engine-hardcoded** FormIDs — Bethesda's own code depends on them, 
   last. Any other arrangement just prints the usage banner.
 - **Missing-type compile errors** → the referenced API's source isn't on the import path; add its
   `Source\Scripts` dir to `importDirs` in `tools.json` and record it in the imports table above.
+- **Emptying a collection in the YAML means DELETING its key, not leaving it bare.** **[verified
+  2026-08-05]** Spriggit omits a collection key entirely when the collection is empty — a FormList
+  with no entries serializes to just `FormKey:` + `EditorID:`, with no `Items:` line. Remove the
+  last entry and leave `Items:` behind, and deserialize dies with
+  `Expected 'SequenceStart', got 'Scalar'`. The build fails loudly, so this one is cheap.
+
+  The related trap is **not** cheap: when scripting that key removal, remember a YAML block sequence
+  sits at the **same indentation** as the key that owns it —
+
+  ```yaml
+  Flags:
+  - IgnoreResistance
+  ```
+
+  so an "is anything indented under this key?" test deletes live keys (`Flags:`, `Effects:`,
+  `Conditions:`) across the whole tree. A key is empty only when the next non-blank line is neither
+  more indented **nor** a `- ` item at the same indent. This corrupted several records here before
+  it was caught; the fix is in `src/BiggieTraits/tools/00-common.ps1`.
+- **`build/manifest.json` supports an `assets` array** for releases that ship more than a plugin and
+  its `.pex` — `Interface/`, `MCM/`, `SKSE/`, KID/SPID `.ini`. Entries are `{from, to}`, both
+  repo-relative; `to` is the path inside the archive (`""` = root). For a **folder** source the
+  folder's *contents* are copied into `to`, so `to` names the destination exactly — that is what lets
+  `src/<Mod>/Scripts/source` land at `Source/Scripts`.
 - **YAML comments do not survive a re-serialize.** Spriggit rewrites the folder from the binary
   plugin, so any `#` comment you add to a record file is lost the next time anyone runs
   `/spriggit-serialize`. Put durable explanation in this file, not in the record YAML.

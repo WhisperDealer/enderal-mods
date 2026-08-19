@@ -1,0 +1,21 @@
+SpriggitSource:
+  PackageName: Spriggit.Yaml.Skyrim
+  Version: 0.40
+ModKey: Biggie Traits.esp
+GameRelease: EnderalSE
+ModHeader:
+  Stats:
+    Version: 1.7
+  Flags:
+  - Small
+  Author: Shazdeh / Whisperdealer
+  Description: >-
+    Biggie Traits by Shazdeh, converted for Enderal: Forgotten Stories. Form version lowered to
+    1.70 so Enderal's 1.5.97 engine will load it, DLC masters removed, and the traits that
+    target Skyrim-only content removed. Original mod and all assets are Shazdeh's.
+  MasterReferences:
+  - Master: Skyrim.esm
+    FileSize: 0
+  - Master: Update.esm
+    FileSize: 0
+  INTV: 1

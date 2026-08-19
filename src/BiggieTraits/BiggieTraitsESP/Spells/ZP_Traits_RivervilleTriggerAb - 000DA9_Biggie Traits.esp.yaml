@@ -1,0 +1,21 @@
+FormKey: 000DA9:Biggie Traits.esp
+EditorID: ZP_Traits_RivervilleTriggerAb
+Name:
+  TargetLanguage: English
+  Value: Select Traits
+Description:
+  TargetLanguage: English
+  Value: ''
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 000DA8:Biggie Traits.esp
+  Data: {}
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: GetInCurrentLocConditionData
+      Location: 032706:Skyrim.esm
+    ComparisonValue: 1

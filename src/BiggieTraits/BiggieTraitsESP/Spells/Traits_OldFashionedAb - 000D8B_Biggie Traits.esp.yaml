@@ -1,0 +1,16 @@
+FormKey: 000D8B:Biggie Traits.esp
+EditorID: Traits_OldFashionedAb
+Name:
+  TargetLanguage: English
+  Value: Old Fashioned
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: If it ain't broke, don't fix it. Weapons, armor and magical staves made of iron, wood, steel, fur or hide are <25%> stronger. Otherwise, they are <10%> weaker.
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 000D6B:Biggie Traits.esp
+  Data: {}

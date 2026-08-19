@@ -1,0 +1,16 @@
+FormKey: 000810:Zen Traits.esp
+EditorID: ZenTraits_ArcaneAddictAb
+Name:
+  TargetLanguage: English
+  Value: Arcane Addict
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: >-
+    Spells deal 20% more damage while above 70% Arcane Fever.
+
+    Arcane Fever rises 50% faster.
+Type: Ability
+Effects:
+- BaseEffect: 00080D:Zen Traits.esp
+  Data: {}

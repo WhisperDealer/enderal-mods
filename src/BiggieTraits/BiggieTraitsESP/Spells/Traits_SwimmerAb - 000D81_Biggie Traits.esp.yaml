@@ -1,0 +1,57 @@
+FormKey: 000D81:Biggie Traits.esp
+EditorID: Traits_SwimmerAb
+Name:
+  TargetLanguage: English
+  Value: Swimmer
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: You prefer life on the water. In water, you swim <20%> faster, can breath underwater and regenerate health, stamina and magicka by a flat <0.25> per second. On land, you suffer <50%> less health, stamina and magicka regeneration.
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 000D66:Biggie Traits.esp
+  Data: {}
+- BaseEffect: 00000D:Biggie Traits.esp
+  Data:
+    Magnitude: 20
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: IsSwimmingConditionData
+    ComparisonValue: 1
+- BaseEffect: 00000E:Biggie Traits.esp
+  Data:
+    Magnitude: 0.25
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: IsSwimmingConditionData
+    ComparisonValue: 1
+- BaseEffect: 00000F:Biggie Traits.esp
+  Data:
+    Magnitude: 0.25
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: IsSwimmingConditionData
+    ComparisonValue: 1
+- BaseEffect: 0AA01C:Skyrim.esm
+  Data: {}
+- BaseEffect: 000010:Biggie Traits.esp
+  Data:
+    Magnitude: 50
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: IsSwimmingConditionData
+- BaseEffect: 000012:Biggie Traits.esp
+  Data:
+    Magnitude: 50
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: IsSwimmingConditionData

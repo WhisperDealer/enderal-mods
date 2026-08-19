@@ -1,0 +1,40 @@
+FormKey: 000039:Biggie Traits.esp
+EditorID: Traits_NosferatuAb
+Name:
+  TargetLanguage: English
+  Value: Nosferatu
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: You're an ugly sight and live in the sewers. <-50> speech, no health, magicka or stamina regen outdoors. Eating skeever meat, tail, or hide gives you a <20%> speed boost and restores <5> health, magicka and stamina per second for <3> minutes.
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 00003A:Biggie Traits.esp
+  Data: {}
+- BaseEffect: 000802:Biggie Traits.esp
+  Data:
+    Magnitude: 1000
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: IsInInteriorConditionData
+- BaseEffect: 000803:Biggie Traits.esp
+  Data:
+    Magnitude: 1000
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: IsInInteriorConditionData
+- BaseEffect: 000804:Biggie Traits.esp
+  Data:
+    Magnitude: 1000
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: IsInInteriorConditionData
+- BaseEffect: 000805:Biggie Traits.esp
+  Data:
+    Magnitude: 50

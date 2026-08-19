@@ -1,0 +1,19 @@
+FormKey: 0000DF:Biggie Traits.esp
+EditorID: Traits_GollumAb
+Name:
+  TargetLanguage: English
+  Value: Lurker
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: When not wearing any clothes sneak attacks deal <2.5> times more damage and can sneak <25%> better, and are 100% immune to disease. Eating fish when it's raw and wriggling triggers a powerful healing effect that lasts <10> minutes. However, armor provides no protection, cooked food offers no benefits, and weapons with a weight above 10 will deal no damage.
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 0000E2:Biggie Traits.esp
+  Data: {}
+- BaseEffect: 0E40D3:Skyrim.esm
+  Data:
+    Magnitude: 100

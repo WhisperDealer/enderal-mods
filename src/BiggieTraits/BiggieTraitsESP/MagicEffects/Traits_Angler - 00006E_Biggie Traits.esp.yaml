@@ -1,0 +1,36 @@
+FormKey: 00006E:Biggie Traits.esp
+EditorID: Traits_Angler
+VirtualMachineAdapter:
+  Scripts:
+  - Name: Traits_AnglerScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: playerScript
+      Object: 000061:Biggie Traits.esp
+      Alias: 0
+  - Name: Traits_MakeAllyToFactions
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FactionsList
+      Object: 000076:Biggie Traits.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerFaction
+      Object: 000DB1:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: 'Trait: Angler'
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- NoDuration
+- NoMagnitude
+- NoArea
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+DualCastScale: 1
+PerkToApply: 00006F:Biggie Traits.esp
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

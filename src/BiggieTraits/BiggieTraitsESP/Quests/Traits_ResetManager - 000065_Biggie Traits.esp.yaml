@@ -1,0 +1,39 @@
+FormKey: 000065:Biggie Traits.esp
+EditorID: Traits_ResetManager
+VirtualMachineAdapter:
+  Scripts:
+  - Name: Traits_ResetMenuScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Traits_AbilityList
+      Object: 000002:Biggie Traits.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Traits_EffectsList
+      Object: 000067:Biggie Traits.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Traits_RemoveTraitSpell
+      Object: 00006A:Biggie Traits.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Traits_ResetConfirmMsg
+      Object: 000066:Biggie Traits.esp
+  FileName: ''
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 000065:Biggie Traits.esp
+      Alias: 0
+    Scripts:
+    - Name: Traits_ResetMenuPlayerScript
+Name:
+  TargetLanguage: English
+  Value: Handles the menu for resetting traits
+Flags:
+- StartGameEnabled
+- 0x10
+- RunOnce
+NextAliasID: 1
+Aliases:
+- Name: PlayerRef
+  Flags: []
+  ForcedReference: 000014:Skyrim.esm
+  VoiceTypes: Null

@@ -1,0 +1,13 @@
+FormKey: 00081F:Zen Traits.esp
+EditorID: ZenTraits_TwilightDiscipleAb
+Name:
+  TargetLanguage: English
+  Value: Lightborn
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: Light magic becomes 30% stronger at night, but it's 30% weaker during daylight.
+Type: Ability
+Effects:
+- BaseEffect: 00081D:Zen Traits.esp
+  Data: {}

@@ -1,0 +1,22 @@
+FormKey: 00000E:Biggie Traits.esp
+EditorID: Traits_SwimmerPos2
+Name:
+  TargetLanguage: English
+  Value: 'Trait: Swimmer'
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- NoDuration
+- NoArea
+- HideInUI
+SecondActorValueWeight: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+  Type: DualValueModifier
+SecondActorValue: Stamina
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

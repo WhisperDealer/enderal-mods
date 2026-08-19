@@ -1,0 +1,30 @@
+FormKey: 000816:Zen Traits.esp
+EditorID: ZenTraits_CleansedSoulMGEF
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ZenTraits_CleansedSoulScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: GameHour
+      Object: 000038:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Magnitude
+      Object: 000819:Zen Traits.esp
+Name:
+  TargetLanguage: English
+  Value: Cleansed Soul
+Flags:
+- Recover
+- NoDuration
+- NoMagnitude
+- NoArea
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+DualCastScale: 1
+PerkToApply: 000817:Zen Traits.esp
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

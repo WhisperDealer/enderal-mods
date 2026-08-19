@@ -1,0 +1,29 @@
+FormKey: 0000D1:Biggie Traits.esp
+EditorID: Traits_BlankSlateEffect
+VirtualMachineAdapter:
+  Scripts:
+  - Name: Traits_BlankSlateScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Traits_AbilityList
+      Object: 000002:Biggie Traits.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Traits_RemoveTraitSpell
+      Object: 00006A:Biggie Traits.esp
+Name:
+  TargetLanguage: English
+  Value: Blank Slate
+Flags:
+- NoDuration
+- NoMagnitude
+- NoArea
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+CastType: FireAndForget
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: A potent concoction that washes away all defining traits, leaving you a blank canvas once more.

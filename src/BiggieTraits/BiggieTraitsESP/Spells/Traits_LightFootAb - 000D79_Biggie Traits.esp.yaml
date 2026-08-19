@@ -1,0 +1,60 @@
+FormKey: 000D79:Biggie Traits.esp
+EditorID: Traits_LightFootAb
+Name:
+  TargetLanguage: English
+  Value: Light Foot
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: You've never felt comfortable in footwear. When not wearing boots/shoes, your movement is muffled, you move <5%> faster and suffer half fall damage. When wearing boots/shoes you move <10%> slower.
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 000D63:Biggie Traits.esp
+  Data: {}
+- BaseEffect: 000007:Biggie Traits.esp
+  Data:
+    Magnitude: 5
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 10CD12:Skyrim.esm
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 06C0ED:Skyrim.esm
+- BaseEffect: 000008:Biggie Traits.esp
+  Data:
+    Magnitude: 1
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 10CD12:Skyrim.esm
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 06C0ED:Skyrim.esm
+- BaseEffect: 000009:Biggie Traits.esp
+  Data:
+    Magnitude: 10
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: GreaterThanOrEqualTo
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 10CD12:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: GreaterThanOrEqualTo
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 06C0ED:Skyrim.esm
+    ComparisonValue: 1

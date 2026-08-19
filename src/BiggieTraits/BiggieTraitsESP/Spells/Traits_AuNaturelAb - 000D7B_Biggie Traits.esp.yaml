@@ -1,0 +1,182 @@
+FormKey: 000D7B:Biggie Traits.esp
+EditorID: Traits_AuNaturelAb
+Name:
+  TargetLanguage: English
+  Value: Au Naturel
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: Embrace your divine gifts! Start with <+100> health, magicka, and stamina. For each piece of armor or clothing you wear, you lose <40> from each attribute (up to a maximum loss of <-160> with four pieces equipped). Additionally, you gain +1 to health, magicka, and stamina per level for each empty armor slot (head, chest, hands, and feet).
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 000800:Biggie Traits.esp
+  Data: {}
+- BaseEffect: 000DA5:Biggie Traits.esp
+  Data:
+    Magnitude: 100
+- BaseEffect: 000DA6:Biggie Traits.esp
+  Data:
+    Magnitude: 100
+- BaseEffect: 000018:Biggie Traits.esp
+  Data:
+    Magnitude: 40
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: GreaterThanOrEqualTo
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 10CD13:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: GreaterThanOrEqualTo
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 06C0EF:Skyrim.esm
+    ComparisonValue: 1
+- BaseEffect: 00001A:Biggie Traits.esp
+  Data:
+    Magnitude: 40
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: GreaterThanOrEqualTo
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 10CD13:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: GreaterThanOrEqualTo
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 06C0EF:Skyrim.esm
+    ComparisonValue: 1
+- BaseEffect: 000018:Biggie Traits.esp
+  Data:
+    Magnitude: 40
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: GreaterThanOrEqualTo
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 10CD12:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: GreaterThanOrEqualTo
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 06C0ED:Skyrim.esm
+    ComparisonValue: 1
+- BaseEffect: 00001A:Biggie Traits.esp
+  Data:
+    Magnitude: 40
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: GreaterThanOrEqualTo
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 10CD12:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: GreaterThanOrEqualTo
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 06C0ED:Skyrim.esm
+    ComparisonValue: 1
+- BaseEffect: 000018:Biggie Traits.esp
+  Data:
+    Magnitude: 40
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: GreaterThanOrEqualTo
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 0A8657:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: GreaterThanOrEqualTo
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 06C0EC:Skyrim.esm
+    ComparisonValue: 1
+- BaseEffect: 00001A:Biggie Traits.esp
+  Data:
+    Magnitude: 40
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: GreaterThanOrEqualTo
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 0A8657:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: GreaterThanOrEqualTo
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 06C0EC:Skyrim.esm
+    ComparisonValue: 1
+- BaseEffect: 000018:Biggie Traits.esp
+  Data:
+    Magnitude: 40
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: GreaterThanOrEqualTo
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 10CD11:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: GreaterThanOrEqualTo
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 06C0EE:Skyrim.esm
+    ComparisonValue: 1
+- BaseEffect: 00001A:Biggie Traits.esp
+  Data:
+    Magnitude: 40
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: GreaterThanOrEqualTo
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 10CD11:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: GreaterThanOrEqualTo
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: WornApparelHasKeywordCountConditionData
+      Keyword: 06C0EE:Skyrim.esm
+    ComparisonValue: 1

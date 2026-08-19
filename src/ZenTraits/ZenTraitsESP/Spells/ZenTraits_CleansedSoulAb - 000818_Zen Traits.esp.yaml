@@ -1,0 +1,16 @@
+FormKey: 000818:Zen Traits.esp
+EditorID: ZenTraits_CleansedSoulAb
+Name:
+  TargetLanguage: English
+  Value: Cleansed Soul
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: >-
+    Sleeping removes a portion of Arcane Fever.
+
+    Sleep bonuses last half as long.
+Type: Ability
+Effects:
+- BaseEffect: 000816:Zen Traits.esp
+  Data: {}
