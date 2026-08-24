@@ -57,7 +57,7 @@ Sounds:
   Sound: 115E18:Triumvirate - Mage Archetypes.esp
 Description:
   TargetLanguage: English
-  Value: Deals <mag> raw damage and flings survivors into Oblivion until the spell is cast again.
+  Value: Deals <mag> raw damage and flings survivors into Sinistra until the spell is cast again.
 Conditions:
 - MutagenObjectType: ConditionFloat
   Data:
