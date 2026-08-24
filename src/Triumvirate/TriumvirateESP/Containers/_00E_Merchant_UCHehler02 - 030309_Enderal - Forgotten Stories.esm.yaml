@@ -1,0 +1,166 @@
+FormKey: 030309:Enderal - Forgotten Stories.esm
+MajorRecordFlagsRaw: 134217728
+EditorID: _00E_Merchant_UCHehler02
+SkyrimMajorRecordFlags:
+- 0x8000000
+ObjectBounds:
+  First: -48, -25, 0
+  Second: 48, 24, 48
+Name:
+  TargetLanguage: English
+  Values:
+  - Language: English
+    String: Chest
+  - Language: Japanese
+    String: 箱
+  - Language: Spanish
+    String: Cofre
+  - Language: Polish
+    String: Kufer
+  - Language: Italian
+    String: Baule
+  - Language: Korean
+    String: 상자
+  - Language: French
+    String: Coffre
+  - Language: Chinese
+    String: 箱子
+  - Language: German
+    String: Truhe
+  - Language: Russian
+    String: Сундук
+Model:
+  File: Clutter\Containers\Chest01\Chest01.nif
+  Data: 0x020000000000000000000000
+Items:
+- Item:
+    Item: 00000A:Skyrim.esm
+    Count: 6
+- Item:
+    Item: 00000F:Skyrim.esm
+    Count: 1450
+- Item:
+    Item: 0028C5:Skyrim.esm
+    Count: 1
+- Item:
+    Item: 015A74:Skyrim.esm
+    Count: 1
+- Item:
+    Item: 03133B:Skyrim.esm
+    Count: 1
+- Item:
+    Item: 03133C:Skyrim.esm
+    Count: 1
+- Item:
+    Item: 084E64:Skyrim.esm
+    Count: 1
+- Item:
+    Item: 085641:Skyrim.esm
+    Count: 8
+- Item:
+    Item: 085642:Skyrim.esm
+    Count: 12
+- Item:
+    Item: 085643:Skyrim.esm
+    Count: 8
+- Item:
+    Item: 085644:Skyrim.esm
+    Count: 9
+- Item:
+    Item: 08591B:Skyrim.esm
+    Count: 6
+- Item:
+    Item: 08591D:Skyrim.esm
+    Count: 8
+- Item:
+    Item: 08591E:Skyrim.esm
+    Count: 6
+- Item:
+    Item: 08591F:Skyrim.esm
+    Count: 10
+- Item:
+    Item: 0E75F0:Skyrim.esm
+    Count: 8
+- Item:
+    Item: 0E75F2:Skyrim.esm
+    Count: 11
+- Item:
+    Item: 0E75F3:Skyrim.esm
+    Count: 9
+- Item:
+    Item: 0E75F4:Skyrim.esm
+    Count: 6
+- Item:
+    Item: 0E762A:Skyrim.esm
+    Count: 9
+- Item:
+    Item: 0E762B:Skyrim.esm
+    Count: 7
+- Item:
+    Item: 0E762C:Skyrim.esm
+    Count: 8
+- Item:
+    Item: 0E762D:Skyrim.esm
+    Count: 6
+- Item:
+    Item: 0E762E:Skyrim.esm
+    Count: 9
+- Item:
+    Item: 0E762F:Skyrim.esm
+    Count: 13
+- Item:
+    Item: 0E7630:Skyrim.esm
+    Count: 8
+- Item:
+    Item: 0E7631:Skyrim.esm
+    Count: 6
+- Item:
+    Item: 0E7636:Skyrim.esm
+    Count: 5
+- Item:
+    Item: 0E7637:Skyrim.esm
+    Count: 8
+- Item:
+    Item: 0E7638:Skyrim.esm
+    Count: 11
+- Item:
+    Item: 0E7639:Skyrim.esm
+    Count: 6
+- Item:
+    Item: 0FEC69:Skyrim.esm
+    Count: 1
+- Item:
+    Item: 1037F5:Skyrim.esm
+    Count: 1
+- Item:
+    Item: 137A06:Skyrim.esm
+    Count: 8
+- Item:
+    Item: 030307:Enderal - Forgotten Stories.esm
+    Count: 1
+- Item:
+    Item: 43D323:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 43D324:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 43D325:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 419B18:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 419B17:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 419B19:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 419B1A:Triumvirate - Mage Archetypes.esp
+    Count: 1
+Flags:
+- Respawns
+Weight: 20
+MajorFlags:
+- NavMeshGenerationBoundingBox

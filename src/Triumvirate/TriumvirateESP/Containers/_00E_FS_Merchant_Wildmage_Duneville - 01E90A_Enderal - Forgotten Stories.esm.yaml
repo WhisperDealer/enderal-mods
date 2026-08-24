@@ -1,0 +1,128 @@
+FormKey: 01E90A:Enderal - Forgotten Stories.esm
+MajorRecordFlagsRaw: 134217728
+EditorID: _00E_FS_Merchant_Wildmage_Duneville
+Version2: 6
+SkyrimMajorRecordFlags:
+- 0x8000000
+ObjectBounds:
+  First: -48, -25, 0
+  Second: 48, 24, 48
+Name:
+  TargetLanguage: English
+  Values:
+  - Language: English
+    String: Chest
+  - Language: Japanese
+    String: 箱
+  - Language: Spanish
+    String: Cofre
+  - Language: Polish
+    String: Kufer
+  - Language: Italian
+    String: Baule
+  - Language: Korean
+    String: 상자
+  - Language: French
+    String: Coffre
+  - Language: Chinese
+    String: 箱子
+  - Language: German
+    String: Truhe
+  - Language: Russian
+    String: Сундук
+Model:
+  File: Clutter\Containers\Chest01\Chest01.nif
+  Data: 0x020000000000000000000000
+Items:
+- Item:
+    Item: 00000F:Skyrim.esm
+    Count: 707
+- Item:
+    Item: 03AD5B:Skyrim.esm
+    Count: 1
+- Item:
+    Item: 0480ED:Skyrim.esm
+    Count: 1
+- Item:
+    Item: 0480EE:Skyrim.esm
+    Count: 3
+- Item:
+    Item: 08561C:Skyrim.esm
+    Count: 9
+- Item:
+    Item: 08561D:Skyrim.esm
+    Count: 10
+- Item:
+    Item: 08561E:Skyrim.esm
+    Count: 6
+- Item:
+    Item: 08561F:Skyrim.esm
+    Count: 1
+- Item:
+    Item: 085620:Skyrim.esm
+    Count: 9
+- Item:
+    Item: 085621:Skyrim.esm
+    Count: 7
+- Item:
+    Item: 085622:Skyrim.esm
+    Count: 11
+- Item:
+    Item: 085623:Skyrim.esm
+    Count: 6
+- Item:
+    Item: 01E90D:Enderal - Forgotten Stories.esm
+    Count: 30
+- Item:
+    Item: 01EC55:Enderal - Forgotten Stories.esm
+    Count: 1
+- Item:
+    Item: 01EC57:Enderal - Forgotten Stories.esm
+    Count: 6
+- Item:
+    Item: 02ED62:Enderal - Forgotten Stories.esm
+    Count: 1
+- Item:
+    Item: 0302EE:Enderal - Forgotten Stories.esm
+    Count: 1
+- Item:
+    Item: 43D326:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 43D327:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 43D328:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 43D320:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 43D321:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 43D322:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 4149FC:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 4149FD:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 4149FE:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 4149FF:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 4149FA:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 4149FB:Triumvirate - Mage Archetypes.esp
+    Count: 1
+Flags:
+- Respawns
+Weight: 20
+MajorFlags:
+- NavMeshGenerationBoundingBox

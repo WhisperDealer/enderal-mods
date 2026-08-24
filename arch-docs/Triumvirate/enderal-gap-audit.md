@@ -416,9 +416,13 @@ corpse feeding the wild is the spell's own fiction.
 | `MasterOfTheMind 059B76` (Possession) | 1 | The OR-group collapses to "not a Dwarven-keyword construct" - vanilla's no-perk behaviour exactly |
 | `TVR_Stone_Quest_Mark`'s `WETravel`/`WESceneCenter` LocationReferenceTypes | 16 | The quest is not StartGameEnabled and **nothing references it** - records or scripts. Enai's orphaned dev content, like `TVR_Diviner_FormList_Mark_Gold_UNUSED_ATM` |
 
-The remaining **253** dead occurrences are WD-16's distribution surface: the merchant chests
-(215 Item), the populate quest (34), the vanilla vendor-faction overrides, and one Update.esm
-water reference on a cell WD-9 already deleted the override for.
+The remaining **253** dead occurrences were WD-16's distribution surface, and the WD-16 rebuild
+removed them all: the 14 vanilla merchant-chest overrides, the 6 vanilla vendor-faction
+overrides, the 8 satellite chests and 9 satellite factions are deleted, the populate quest's 76
+dead calls are gone with its replacement script, and distribution now runs through ten Enderal
+merchant chest overrides (see [`vendor-mapping.md`](vendor-mapping.md)). **The audit now reads
+40 dead occurrences - exactly the deliberate leaves above - and the plugin overrides nothing of
+any master except the ten chests.**
 
 ### Findings that closed ticket questions without edits
 

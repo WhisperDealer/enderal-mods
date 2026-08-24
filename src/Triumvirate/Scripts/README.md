@@ -1,4 +1,20 @@
-# Why this release ships two Papyrus scripts
+# Why this release ships three Papyrus scripts
+
+## TVR_PopulateSpellBooks_Script (ours - WD-16)
+
+`TVR_PopulateSpellBooks_Script.pex` is the one script this release actually authors: a
+replacement for Enai's distribution script, shipped loose so it beats the copy in
+`Triumvirate - Mage Archetypes.bsa`. The original makes 76 calls against Skyrim NPCs, merchant
+chests and staff leveled lists - none of which exist in Enderal - and would log that many
+`Cannot call ... on a None object` errors at game start. Distribution was rebuilt at the record
+level (see `arch-docs/Triumvirate/vendor-mapping.md`), so the replacement keeps only the two
+live pieces: starting `TVR_Conversion_Quest` and showing the mod-ready message. The quest
+record's VMAD was stripped to the matching three properties by
+`src/Triumvirate/tools/15-distribution.ps1`.
+
+Recompile with the same Enderal-first import order as below; a correct build is **1657 bytes**.
+
+# Why this release also ships two of SureAI's scripts
 
 Nothing here is ours. Both files are **SureAI's own**, copied verbatim from `ScriptsEnderal.zip`
 (`reference/base/EnderalScripts/source/scripts/`). They are shipped **loose** so they beat a BSA.

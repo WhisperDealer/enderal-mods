@@ -15,8 +15,8 @@ distribution rows are WD-16's and packaging is WD-18's.
 2. **Test character**: `tgm`, `player.setav magicka 100000`, `player.setlevel 50`.
 3. **Papyrus log on** (see CLAUDE.md -- the PROFILE ini, and the log lands in the Skyrim SE
    Documents folder). Any `Cannot call ... on a None object` line naming a `TVR_` script during
-   these tests is a regression -- the known-remaining None noise belongs to the populate quest
-   (WD-16) only.
+   these tests is a regression -- after WD-16 there is NO expected TVR Papyrus noise at all:
+   the populate script was replaced and its dead calls removed.
 4. Teach a spell with `player.additem <XX offset of the tome> 1` then read it, or
    `player.addspell`.
 
