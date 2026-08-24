@@ -213,6 +213,7 @@ Regenerate any of these with `/spriggit-decompile-reference`; the script trees a
 | `Update/` | `Update.esm` | 404 records |
 | `SkyUI_SE/` | `SkyUI_SE.esp` | 8 records (SkyUI is built into Enderal) |
 | `Dawnguard-stub/`, `Dragonborn-stub/`, `HearthFires-stub/` | the DLC ESMs | **1–2 records each — they are empty stubs** (see below) |
+| `SkyrimReal/`, `UpdateReal/`, `DawnguardReal/`, `HearthFiresReal/`, `DragonbornReal/` | the **real** Bethesda masters from `skyrimSeRoot` | 853721 / 14032 / 93218 / 17480 / 176956 records. **What Bethesda actually had at a FormID** — the other half of every port audit (see below) |
 | `EnderalScripts/source/scripts/` | `ScriptsEnderal.zip` | **5029 real `.psc`** from SureAI — not decompiles |
 | `SKSEScripts/` | `Data/Source/Scripts` | 74 SKSE-extended vanilla types |
 | `VanillaScripts/Source/Scripts/` | Skyrim SE `Scripts.zip` | 14301 `.psc` **plus `TESV_Papyrus_Flags.flg`** |
@@ -220,6 +221,17 @@ Regenerate any of these with `/spriggit-decompile-reference`; the script trees a
 `tools.json`'s `papyrusSource` points at the three script trees here, so the compiler and the
 lookup copies are the same files — there is no second copy to drift.
 
+> **Serialize the REAL Bethesda masters too — a dead FormID is an opaque hex string without them.**
+> **[verified 2026-08-24]** `reference/base/Skyrim/` tells you what Enderal has; `SkyrimReal/` tells
+> you what the ported mod's author *meant*. You need both to pick a substitute, and the pair is what
+> separates the three states a ported reference can be in: **dead** (nothing at that FormID),
+> **renamed** (Enderal kept the record under its own name — `MineOreBlackreach01` is
+> `_00E_MineOreShadowsteel`), and **drifted** (a completely different record — the live-bug class).
+> On Triumvirate this turned 311 anonymous dead FormKeys into 311 named records with **zero**
+> unresolved, and isolated 15 drifted references out of 1462 survivors. Serialize them with
+> `/spriggit-decompile-reference` from `skyrimSeRoot`; `Dawnguard.esm` fails Spriggit's round-trip
+> check on one LZ4-compressed NPC record but its tree is complete and correct for lookup.
+>
 > **`reference/base/Skyrim/` is lookup-only and cannot be rebuilt.** Spriggit 0.40.0 serializes it
 > fine but **fails its own round-trip check**: `Skyrim.esm`'s NavigationMeshInfoMap (NAVI) record has
 > a **null FormKey**, so Spriggit writes it as `NavigationMeshInfoMaps/Null.yaml` with no `FormKey:`
@@ -632,6 +644,18 @@ magic effects' display strings in `reference/base/Skyrim/MagicEffects/`, and cor
 > Note the last two: **Alteration is Mentalism and Illusion is Psionics.** The intuitive pairing
 > (Illusion→Mentalism) is wrong, and getting it backwards mis-files every spell in a magic patch.
 
+> **Keep a ported spell's `HalfCostPerk` — it is the hook Enderal's talents already read.**
+> **[verified 2026-08-24]** Enderal reuses **all 25 vanilla school perks** (`AlterationNovice00` …
+> `RestorationMaster100`) as tier tags, and **14 of its own talent perks** — the Elementalist,
+> Sinistrope, Thaumaturge and Affinity lines — key off them with
+> `SpellHasCastingPerkConditionData`, the condition that asks *"is this spell's `HalfCostPerk` X?"*.
+> `_00E_Class_Thaumaturge_P02_MentalNovice` is the worked example: `ModSpellCost × 0.7` for any
+> spell tagged `AlterationNovice00`/`Apprentice25` or `RestorationNovice00`/`Apprentice25`.
+>
+> So the vanilla field a porter is most tempted to strip as "Skyrim progression cruft" is in fact
+> what makes an Enderal mage's talent discounts apply to the ported spell. Set it to the right tier
+> and leave it. All 126 of Triumvirate's `HalfCostPerk` references resolve untouched.
+
 The consequence is good news for ported spell mods: a Skyrim spell's `MagicSkill`, magicka cost and
 skill scaling all work unchanged in Enderal. What does *not* carry over is anything user-visible
 that names a school — spell tomes, load screens, descriptions — because the player has never heard
@@ -787,6 +811,13 @@ Enderal lacks.
 > group is not merely dead: equipping that one weapon fires effects meant for a Divine amulet. A
 > dangling reference is inert and safe to ignore; a reference that *resolves to the wrong record* is
 > a live bug, and only resolving every external FormKey against `reference/base/` tells them apart.
+>
+> **`0C891B` has now caught three mods.** **[verified 2026-08-24]** Triumvirate stocks it as an
+> `Item` in its own Maramal merchant chest — vanilla's Amulet of Mara, Enderal's unique weapon,
+> again. Check it by name on any port that touches the Divines. And note the ratio that makes this
+> worth automating: of Triumvirate's **1462** surviving `:Skyrim.esm` references, **1402 are exact
+> matches** and only **15** drifted — the signal is rare, uniform-looking, and invisible to every
+> check except a vanilla-vs-Enderal comparison.
 
 **Enderal's own distribution slots**, for re-homing a ported mod's items **[verified]**
 (`reference/base/Skyrim/LeveledItems/`). Note Enderal has **no spell tomes at all** — it teaches
