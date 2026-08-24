@@ -381,6 +381,71 @@ comm -12 bsa.txt enderal.txt          # any output is an Enderal script the mod 
 `bsab`'s list output has a trailing blank line — filter with `grep -c .`, not `wc -l`, or every
 archive reports one phantom hit.
 
+## The archetype passes (WD-11..WD-15)
+
+Applied 2026-08-24 by generators `08`-`13` in `src/Triumvirate/tools/`, after regenerating the
+audit CSVs against the post-WD-9 tree. Result: **391 -> 293 dead occurrences (-98, the exact sum
+of the fixes below)**, and the built plugin is 1.70 / EnderalSE and deserializes clean.
+
+### Fixed (98 occurrences)
+
+| Fix | Occ | Why this substitute |
+|---|---:|---|
+| `MagicAllegianceFaction 09E0C9` -> `Creature__SummonableFaction 046E6B` | 25 | Enderal's own player summons carry exactly this one faction (read off `_05E_SummonableGhostlyWolf_Player`). Covers 20 SpiritGuardian actors, 2 `AddToFaction` script properties, 2 faction relations, 1 quest-alias faction |
+| 8 staves' `Template: StaffTemplateIIllusion 07A91B` -> `StaffTemplateConjuration 07E647` | 8 | Enderal keeps five staff templates and its own staves template to the surviving one for their school (`_00E_StaffOfTheOorbaya` -> `07E647`). Illusion = Psionics, a Sinistra school like Entropy |
+| `SayOnHitByMagicEffectScript` removed from 3 effects | 3 | Their `TopicToSay` pointed at `WICastMagicNonHostileSpell*` topics; Enderal has **no** WICastMagic topics at all. GrandHealing subspell lost its whole VMAD (only script); Suggestion/Obedience keep their own scripts |
+| Aura cloak-proc guard exclusion `086EEE` -> `IsGuardFaction 07286D` | 2 | Enderal has its own IsGuardFaction at a different ID - the exclusion is repointed, not lost |
+| `PredatorFaction`/`PreyFaction` stripped (5 NPCs + 1 alias condition) | 6 | No Enderal equivalent (creature factions are per-species). The TrackEnemies condition only excluded prey; `IsHostileToActor` on the same alias already does |
+| Conversion quest bow/arrow -> `_01E_01_HuntingBow 015C39` / `_01E_05_IronArrow 0457D8` | 2 | Enderal's own basic hunting kit |
+| `MG01` VMAD property removed (ControlFlames) | 1 | Vanilla College quest; unfilled property is None either way |
+| Shield of Awe release-sound condition removed | 1 | Gated on `GetGlobalValue CWDistantCatapultsAMB == 1`, dead here - the master spell's release sound **never played**. The .wavs are vanilla and ship in `Skyrim - Sounds.bsa` |
+| Dead list entries pruned (Mark lists 28, fire sources 11, chargen presets 10, voice types 1) | 50 | Inert `<list entry>` references; pruned so the audit stays readable |
+
+Plus one **repopulation**: `TVR_Verdant_FormList_Ingredients` (emptied by the WD-9 DLC strip)
+now holds **24 Enderal wild plants** - herbs, flowers and mushrooms verified in
+`reference/base/Skyrim/{Florae,Trees}` with English names and ingredient yields - so Druidcraft
+grows something again. Wild herbs rather than the original's Hearthfires garden vegetables: a
+corpse feeding the wild is the spell's own fiction.
+
+### Deliberate leaves (40 occurrences, all graceful)
+
+| Left dead | Occ | Why leaving is correct |
+|---|---:|---|
+| `TwinSouls 0D5F1C` (12 effect conditions + manager quest property) | 13 | The single-summon base variants carry `HasPerk == 0` conditions - TRUE forever with the perk dead - so the base path always fires. Enderal has no two-summons perk to repoint at (Sinistrope line checked). **Minion doubling is absent by design** |
+| `ElementalPotency 0CB41A` (10 Conjure effect conditions) | 10 | Same shape: base variants always fire, `_Potent` never. `Sinistrope: Mystical Binding` is summoned *weapons*, not summons - no equivalent |
+| `MasterOfTheMind 059B76` (Possession) | 1 | The OR-group collapses to "not a Dwarven-keyword construct" - vanilla's no-perk behaviour exactly |
+| `TVR_Stone_Quest_Mark`'s `WETravel`/`WESceneCenter` LocationReferenceTypes | 16 | The quest is not StartGameEnabled and **nothing references it** - records or scripts. Enai's orphaned dev content, like `TVR_Diviner_FormList_Mark_Gold_UNUSED_ATM` |
+
+The remaining **253** dead occurrences are WD-16's distribution surface: the merchant chests
+(215 Item), the populate quest (34), the vanilla vendor-faction overrides, and one Update.esm
+water reference on a cell WD-9 already deleted the override for.
+
+### Findings that closed ticket questions without edits
+
+* **Sun damage (WD-14/WD-15) was already solved.** The "fire and sun" spells are plain fire
+  (`ResistValue: ResistFire`) plus `_VsUndead` doubling effects gated on
+  `HasKeyword ActorTypeUndead == 1 OR IsUndead == 1`. `ActorTypeUndead 013796` **exists** in
+  Enderal, and `IsUndead` reads race flags - the Lost Ones sit on `DraugrRace` shells, so the
+  anti-undead doubling fires. No Dawnguard machinery survives in these records.
+* **Spirit Guardian races (WD-14) degrade gracefully.** `TVR_ProjectedSpirit_Script` does
+  `TVR_Races.find(GetRace())` and falls back to index 0 on no match - every Enderal race gets a
+  guardian. The Argonian/Khajiit/Orc guardians are unreachable (no Enderal player has those
+  races) and stay as vestigial records rather than being deleted.
+* **The Hurl Into Sinistra holding cell is the mod's own** (`TVR_Cell 2E99EB`) - nothing to
+  repoint, only a WD-18 stranding test.
+* **The Fylgjas' granted spells** (Winter's Howl, Crystalize, Sun Flare, Grand Healing) are all
+  Triumvirate's own subspell copies and resolve.
+
+### Renames applied (naming-table decisions, settled)
+
+Per `naming-table.md`: Hircine -> no patron (*Call the Glacier Hound*, *Mark of the Wild*),
+*Azra's Wrath* -> *Shadow's Wrath*, *Hurl Into Oblivion* -> *Hurl Into Sinistra* (descriptions
+follow), *Eye of the All-Maker* -> *Eye of the Ancestors*, *Staff of Earth Bones* -> *Staff of
+Fissures*, and the Cleric's Aid buff names now read Enderal's skill display names (Mentalism,
+Entropy, Elementalism, Psionics, Light Magic, Handicraft, Rhetoric, Sleight of Hand...). Display
+strings only; EditorIDs and asset paths are identifiers and stay. The WD-10 close-out grep runs
+over the finished tree after WD-16.
+
 ## How to reproduce
 
 ```powershell
