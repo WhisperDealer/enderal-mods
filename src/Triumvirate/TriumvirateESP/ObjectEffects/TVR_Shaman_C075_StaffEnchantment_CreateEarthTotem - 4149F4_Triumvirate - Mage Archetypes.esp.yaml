@@ -1,0 +1,16 @@
+FormKey: 4149F4:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_C075_StaffEnchantment_CreateEarthTotem
+Name:
+  TargetLanguage: English
+  Value: Create Earth Totem
+EnchantmentCost: 278
+CastType: FireAndForget
+EnchantmentAmount: 278
+TargetType: TargetLocation
+EnchantType: StaffEnchantment
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 35E36C:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 120
+    Duration: 60

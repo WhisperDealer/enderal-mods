@@ -1,0 +1,27 @@
+FormKey: 2B6F41:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Spell_ForceOfNature_TriplePowerAttack
+Name:
+  TargetLanguage: English
+  Value: Mark of Hircine
+MenuDisplayObject: 14F4DC:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F43:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Flags:
+- ManualCostCalc
+Type: Poison
+CastType: FireAndForget
+TargetType: Touch
+Effects:
+- BaseEffect: 2751A3:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 250
+    Duration: 10
+- BaseEffect: 2B6F35:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 200
+    Duration: 1
+- BaseEffect: 2B6F31:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 1

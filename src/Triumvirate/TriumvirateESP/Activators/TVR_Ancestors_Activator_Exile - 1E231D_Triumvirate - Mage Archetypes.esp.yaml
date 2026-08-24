@@ -1,0 +1,18 @@
+FormKey: 1E231D:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 67109376
+EditorID: TVR_Ancestors_Activator_Exile
+SkyrimMajorRecordFlags:
+- 0x200
+- 0x4000000
+ObjectBounds:
+  First: -158, -131, -157
+  Second: 161, 131, 162
+Model:
+  File: Triumvirate\Ancestors_Static_Exile.nif
+  Data: 0x020000000000000000000000
+MarkerColor: '#008F32CD'
+LoopingSound: 03F2C5:Skyrim.esm
+Flags: []
+MajorFlags:
+- HiddenFromLocalMap
+- NavMeshGenerationFilter

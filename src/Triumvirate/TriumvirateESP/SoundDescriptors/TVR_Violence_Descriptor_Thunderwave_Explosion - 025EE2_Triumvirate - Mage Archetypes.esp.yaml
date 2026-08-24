@@ -1,0 +1,16 @@
+FormKey: 025EE2:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Violence_Descriptor_Thunderwave_Explosion
+Type: Standard
+Category: 01A0BD:Skyrim.esm
+SoundFiles:
+- fx\mag\shock\ff\MAG_Shock_FF_Fire_01.wav
+- Data\Sound\FX\MAG\Shock\FF\MAG_Shock_FF_Fire_02.wav
+OutputModel: 0B4246:Skyrim.esm
+LoopAndRumble:
+  Unknown: 4
+  RumbleValues: 1
+PercentFrequencyShift: -35
+PercentFrequencyVariance: 2
+Priority: 128
+Variance: 1
+StaticAttenuation: 12.78

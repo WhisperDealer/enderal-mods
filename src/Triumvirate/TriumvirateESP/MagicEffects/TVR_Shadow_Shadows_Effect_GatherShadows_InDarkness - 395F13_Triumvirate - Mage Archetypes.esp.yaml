@@ -1,0 +1,41 @@
+FormKey: 395F13:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shadow_Shadows_Effect_GatherShadows_InDarkness
+Name:
+  TargetLanguage: English
+  Value: In Shadows
+MenuDisplayObject: 381AEB:Triumvirate - Mage Archetypes.esp
+Flags:
+- Recover
+- NoMagnitude
+- NoArea
+- FXPersist
+- HideInUI
+- PowerAffectsDuration
+MagicSkill: Illusion
+CastingLight: 3727BD:Triumvirate - Mage Archetypes.esp
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+CastType: FireAndForget
+CastingArt: 381AEC:Triumvirate - Mage Archetypes.esp
+HitEffectArt: 395F0D:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds:
+- Sound: 07BBAB:Skyrim.esm
+- Type: Charge
+  Sound: 06F6D3:Skyrim.esm
+- Type: Ready
+  Sound: 07C720:Skyrim.esm
+- Type: Release
+  Sound: 08196D:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000007:Skyrim.esm
+  ComparisonValue: 1

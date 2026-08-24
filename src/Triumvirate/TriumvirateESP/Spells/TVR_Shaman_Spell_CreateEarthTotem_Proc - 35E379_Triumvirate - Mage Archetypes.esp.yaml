@@ -1,0 +1,23 @@
+FormKey: 35E379:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Spell_CreateEarthTotem_Proc
+Name:
+  TargetLanguage: English
+  Value: Earth Totem Tremor Origin
+MenuDisplayObject: 35E370:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Flags:
+- AreaEffectIgnoresLOS
+- IgnoreResistance
+- NoAbsorbOrReflect
+ChargeTime: 0.5
+CastType: FireAndForget
+Effects:
+- BaseEffect: 35E378:Triumvirate - Mage Archetypes.esp
+  Data:
+    Area: 50
+- BaseEffect: 35E377:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 50

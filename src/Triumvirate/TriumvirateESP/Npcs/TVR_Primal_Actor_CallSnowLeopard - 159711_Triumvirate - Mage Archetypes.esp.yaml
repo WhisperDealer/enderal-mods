@@ -1,0 +1,147 @@
+FormKey: 159711:Triumvirate - Mage Archetypes.esp
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
+EditorID: TVR_Primal_Actor_CallSnowLeopard
+SkyrimMajorRecordFlags:
+- Compressed
+VirtualMachineAdapter:
+  Scripts:
+  - Name: FXunsommonSCRIPT
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AtronachUnsummonDeathFXS
+      Object: 0EA8FF:Skyrim.esm
+ObjectBounds:
+  First: -27, -100, 0
+  Second: 27, 100, 109
+Configuration:
+  Flags:
+  - AutoCalcStats
+  - UseTemplate
+  - Summonable
+  StaminaOffset: 5
+  Level:
+    MutagenObjectType: PcLevelMult
+    LevelMult: 1
+  CalcMinLevel: 24
+  CalcMaxLevel: 39
+  SpeedMultiplier: 140
+  DispositionBase: 35
+  HealthOffset: -180
+Factions:
+- Faction: 000013:Skyrim.esm
+  Fluff: 0x000000
+- Faction: 02E893:Skyrim.esm
+  Fluff: 0x000000
+Voice: 01920C:Skyrim.esm
+Race: 000804:Triumvirate - Mage Archetypes.esp
+ActorEffect:
+- 270097:Triumvirate - Mage Archetypes.esp
+WornArmor: 15970F:Triumvirate - Mage Archetypes.esp
+AttackRace: 000804:Triumvirate - Mage Archetypes.esp
+AIData:
+  Aggression: VeryAggressive
+  Confidence: Foolhardy
+  EnergyLevel: 50
+  Mood: Angry
+  Assistance: HelpsAllies
+  WarnOrAttack: 2000
+  Attack: 1500
+Class: 0131E6:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Snow Leopard
+PlayerSkills:
+  SkillValues:
+  - Key: OneHanded
+    Value: 52
+  - Key: TwoHanded
+    Value: 15
+  - Key: Archery
+    Value: 52
+  - Key: Block
+    Value: 70
+  - Key: Smithing
+    Value: 15
+  - Key: HeavyArmor
+    Value: 15
+  - Key: LightArmor
+    Value: 15
+  - Key: Pickpocket
+    Value: 15
+  - Key: Lockpicking
+    Value: 15
+  - Key: Sneak
+    Value: 90
+  - Key: Alchemy
+    Value: 15
+  - Key: Speech
+    Value: 15
+  - Key: Alteration
+    Value: 15
+  - Key: Conjuration
+    Value: 15
+  - Key: Destruction
+    Value: 15
+  - Key: Illusion
+    Value: 15
+  - Key: Restoration
+    Value: 15
+  - Key: Enchanting
+    Value: 15
+  SkillOffsets:
+  - Key: OneHanded
+    Value: 0
+  - Key: TwoHanded
+    Value: 0
+  - Key: Archery
+    Value: 0
+  - Key: Block
+    Value: 0
+  - Key: Smithing
+    Value: 0
+  - Key: HeavyArmor
+    Value: 0
+  - Key: LightArmor
+    Value: 0
+  - Key: Pickpocket
+    Value: 0
+  - Key: Lockpicking
+    Value: 0
+  - Key: Sneak
+    Value: 0
+  - Key: Alchemy
+    Value: 0
+  - Key: Speech
+    Value: 0
+  - Key: Alteration
+    Value: 0
+  - Key: Conjuration
+    Value: 0
+  - Key: Destruction
+    Value: 0
+  - Key: Illusion
+    Value: 0
+  - Key: Restoration
+    Value: 0
+  - Key: Enchanting
+    Value: 0
+  Health: 100
+  Stamina: 220
+  GearedUpWeapons: 1
+CombatStyle: 01CDE6:Skyrim.esm
+NAM5: 255
+Height: 0.95
+Weight: 100
+SoundLevel: Normal
+Sound:
+  MutagenObjectType: NpcSoundTypes
+  Types:
+  - Type: Hit
+    Sounds:
+    - Sound: 16391E:Triumvirate - Mage Archetypes.esp
+      SoundChance: 100
+DefaultPackageList: 095F47:Skyrim.esm
+TextureLighting: '#00808080'
+MajorFlags:
+- 0x40000

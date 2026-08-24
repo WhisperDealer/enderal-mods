@@ -1,0 +1,21 @@
+FormKey: 419B38:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_D075_StaffEnchantment_Cloudkill
+Name:
+  TargetLanguage: English
+  Value: Cloudkill
+EnchantmentCost: 323
+CastType: FireAndForget
+EnchantmentAmount: 323
+TargetType: TargetLocation
+EnchantType: StaffEnchantment
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 1A0587:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 50
+    Area: 12
+    Duration: 1
+- BaseEffect: 1A5693:Triumvirate - Mage Archetypes.esp
+  Data:
+    Area: 12
+    Duration: 1

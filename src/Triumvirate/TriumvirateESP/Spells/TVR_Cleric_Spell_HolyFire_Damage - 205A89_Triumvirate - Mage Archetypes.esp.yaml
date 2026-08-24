@@ -1,0 +1,25 @@
+FormKey: 205A89:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Cleric_Spell_HolyFire_Damage
+Name:
+  TargetLanguage: English
+  Value: Holy Fire
+MenuDisplayObject: 205A7A:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 24
+Flags:
+- AreaEffectIgnoresLOS
+ChargeTime: 0.5
+CastType: FireAndForget
+TargetType: TargetActor
+Range: 50
+HalfCostPerk: 0C44BF:Skyrim.esm
+Effects:
+- BaseEffect: 205A88:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 10
+- BaseEffect: 20AB9B:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 10

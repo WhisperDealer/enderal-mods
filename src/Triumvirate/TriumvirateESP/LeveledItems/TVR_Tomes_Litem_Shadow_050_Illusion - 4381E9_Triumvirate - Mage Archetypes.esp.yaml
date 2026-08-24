@@ -1,0 +1,11 @@
+FormKey: 4381E9:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Tomes_Litem_Shadow_050_Illusion
+ChanceNone: 1
+Flags:
+- UseAll
+Global: 0F258D:Skyrim.esm
+Entries:
+- Data:
+    Level: 1
+    Reference: 419B27:Triumvirate - Mage Archetypes.esp
+    Count: 1

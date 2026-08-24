@@ -1,0 +1,21 @@
+FormKey: 265E7B:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_Demon_Effect_ConjureOathbreaker_Ab_Regen
+Name:
+  TargetLanguage: English
+  Value: Regenerate Magicka
+MenuDisplayObject: 1C3CBA:Triumvirate - Mage Archetypes.esp
+Flags:
+- NoHitEvent
+- NoDuration
+- NoArea
+- HideInUI
+- NoHitEffect
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Magicka
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

@@ -1,0 +1,149 @@
+FormKey: 1D2FEF:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Cleric_Ancestors_Effect_SpiritGuardian
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_ProjectedSpirit_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MagicAllegianceFaction
+      Object: 09E0C9:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Character
+      Object: 1CDEC9:Triumvirate - Mage Archetypes.esp
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Cleric_Spell_SpiritGuardian_Ab
+      Object: 191254:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: TVR_RaceFormlists
+      Objects:
+      - Name: ''
+        Object: 1D2FF5:Triumvirate - Mage Archetypes.esp
+      - Name: ''
+        Object: 1D2FF5:Triumvirate - Mage Archetypes.esp
+      - Name: ''
+        Object: 219EEB:Triumvirate - Mage Archetypes.esp
+      - Name: ''
+        Object: 219EEB:Triumvirate - Mage Archetypes.esp
+      - Name: ''
+        Object: 219EEE:Triumvirate - Mage Archetypes.esp
+      - Name: ''
+        Object: 219EEE:Triumvirate - Mage Archetypes.esp
+      - Name: ''
+        Object: 219EE2:Triumvirate - Mage Archetypes.esp
+      - Name: ''
+        Object: 219EE2:Triumvirate - Mage Archetypes.esp
+      - Name: ''
+        Object: 219EDC:Triumvirate - Mage Archetypes.esp
+      - Name: ''
+        Object: 219EDC:Triumvirate - Mage Archetypes.esp
+      - Name: ''
+        Object: 219EF1:Triumvirate - Mage Archetypes.esp
+      - Name: ''
+        Object: 219EF1:Triumvirate - Mage Archetypes.esp
+      - Name: ''
+        Object: 219EE8:Triumvirate - Mage Archetypes.esp
+      - Name: ''
+        Object: 219EE8:Triumvirate - Mage Archetypes.esp
+      - Name: ''
+        Object: 219EE5:Triumvirate - Mage Archetypes.esp
+      - Name: ''
+        Object: 219EE5:Triumvirate - Mage Archetypes.esp
+      - Name: ''
+        Object: 219EF4:Triumvirate - Mage Archetypes.esp
+      - Name: ''
+        Object: 219EF4:Triumvirate - Mage Archetypes.esp
+      - Name: ''
+        Object: 219EDF:Triumvirate - Mage Archetypes.esp
+      - Name: ''
+        Object: 219EDF:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: TVR_Races
+      Objects:
+      - Name: ''
+        Object: 013746:Skyrim.esm
+      - Name: ''
+        Object: 088794:Skyrim.esm
+      - Name: ''
+        Object: 013740:Skyrim.esm
+      - Name: ''
+        Object: 08883A:Skyrim.esm
+      - Name: ''
+        Object: 013741:Skyrim.esm
+      - Name: ''
+        Object: 08883C:Skyrim.esm
+      - Name: ''
+        Object: 013742:Skyrim.esm
+      - Name: ''
+        Object: 08883D:Skyrim.esm
+      - Name: ''
+        Object: 013743:Skyrim.esm
+      - Name: ''
+        Object: 088840:Skyrim.esm
+      - Name: ''
+        Object: 013744:Skyrim.esm
+      - Name: ''
+        Object: 088844:Skyrim.esm
+      - Name: ''
+        Object: 013745:Skyrim.esm
+      - Name: ''
+        Object: 088845:Skyrim.esm
+      - Name: ''
+        Object: 013747:Skyrim.esm
+      - Name: ''
+        Object: 0A82B9:Skyrim.esm
+      - Name: ''
+        Object: 013748:Skyrim.esm
+      - Name: ''
+        Object: 088846:Skyrim.esm
+      - Name: ''
+        Object: 013749:Skyrim.esm
+      - Name: ''
+        Object: 088884:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Spirit Guardian
+MenuDisplayObject: 1D2FF8:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 1D2FFC:Triumvirate - Mage Archetypes.esp
+Flags:
+- SnapToNavmesh
+- NoMagnitude
+- NoArea
+- PowerAffectsDuration
+BaseCost: 0.03
+MagicSkill: Illusion
+CastingLight: 1D2FFA:Triumvirate - Mage Archetypes.esp
+MinimumSkillLevel: 50
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+CastType: FireAndForget
+CastingArt: 1D2FF9:Triumvirate - Mage Archetypes.esp
+HitEffectArt: 1D2FFB:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 0.12
+DualCastScale: 1
+ImageSpaceModifier: 10FBEB:Skyrim.esm
+CastingSoundLevel: Normal
+Sounds:
+- Sound: 07BBAB:Skyrim.esm
+- Type: Release
+  Sound: 115E12:Triumvirate - Mage Archetypes.esp
+- Type: Charge
+  Sound: 06F6D3:Skyrim.esm
+- Type: Ready
+  Sound: 07C720:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: Manifest the idealized spirit of your race. Can use and carry equipment and will obey orders.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000007:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasMagicEffectConditionData
+    MagicEffect: 46FD5A:Triumvirate - Mage Archetypes.esp

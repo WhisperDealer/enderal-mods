@@ -1,0 +1,12 @@
+FormKey: 24784D:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Demon_Descriptor_ConjureLeviathan
+Type: Standard
+Category: 0DDDC5:Skyrim.esm
+SoundFiles:
+- data\Sound\fx\mihailnemesis.esp\finalnemesisdovah.wav
+OutputModel: 0E324B:Skyrim.esm
+LoopAndRumble:
+  Loop: Loop
+PercentFrequencyVariance: 5
+Priority: 1
+StaticAttenuation: 10.13

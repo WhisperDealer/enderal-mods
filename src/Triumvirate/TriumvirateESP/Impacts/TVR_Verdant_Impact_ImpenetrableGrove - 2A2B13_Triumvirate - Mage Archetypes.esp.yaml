@@ -1,0 +1,23 @@
+FormKey: 2A2B13:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Verdant_Impact_ImpenetrableGrove
+Model:
+  File: Effects\FXEmptyObject.nif
+  Data: 0x020000000000000000000000
+Duration: 1
+AngleThreshold: 80
+PlacementRadius: 10
+SoundLevel: Normal
+Decal:
+  MinWidth: 64
+  MaxWidth: 85
+  MinHeight: 8
+  MaxHeight: 32
+  Depth: 32
+  ParallaxScale: 1
+  ParallaxPasses: 4
+  Flags:
+  - AlphaBlending
+  Unknown: 127
+  Color: '#00FFFFFF'
+Sound1: 03EFC0:Skyrim.esm
+Hazard: 2988F7:Triumvirate - Mage Archetypes.esp

@@ -1,0 +1,52 @@
+FormKey: 2B6F35:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Verdant_Effect_ForceOfNature_AbsorbMagicka
+VirtualMachineAdapter:
+  Scripts:
+  - Name: magicAbsorbFXScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CasterVFX
+      Object: 0ABF13:Skyrim.esm
+    - MutagenObjectType: ScriptFloatProperty
+      Name: fEffectDurationMax
+      Data: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TargetVFX
+      Object: 0ABF14:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Drain Magicka
+MenuDisplayObject: 10FEF4:Skyrim.esm
+Keywords:
+- 2B6F37:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Detrimental
+- NoArea
+- FXPersist
+- PowerAffectsMagnitude
+- NoDeathDispel
+BaseCost: 2.1
+MagicSkill: Alteration
+ResistValue: ResistMagic
+TaperWeight: 1
+EnchantShader: 05D608:Skyrim.esm
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Magicka
+  Type: Absorb
+Projectile: 0ABF03:Skyrim.esm
+CastType: FireAndForget
+TargetType: Touch
+ImpactData: 0ABF0B:Skyrim.esm
+SkillUsageMultiplier: 1
+DualCastScale: 1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Absorb <mag> points of Magicka.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 01397A:Skyrim.esm

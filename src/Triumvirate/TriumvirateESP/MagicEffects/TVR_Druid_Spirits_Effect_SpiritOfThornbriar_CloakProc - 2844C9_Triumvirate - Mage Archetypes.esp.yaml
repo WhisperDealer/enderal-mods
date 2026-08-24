@@ -1,0 +1,73 @@
+FormKey: 2844C9:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Spirits_Effect_SpiritOfThornbriar_CloakProc
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_Thorns_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Spell
+      Object: 2844CB:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WeapTypeBow
+      Object: 01E715:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: 'Spirit: Thornbriar'
+MenuDisplayObject: 27F3BB:Triumvirate - Mage Archetypes.esp
+Flags:
+- Recover
+- NoHitEvent
+- NoArea
+- FXPersist
+- NoRecast
+- PowerAffectsDuration
+- Painless
+BaseCost: 6
+MagicSkill: Restoration
+CastingLight: 27F3BD:Triumvirate - Mage Archetypes.esp
+TaperWeight: 0.3
+HitShader: 27F3C6:Triumvirate - Mage Archetypes.esp
+MinimumSkillLevel: 50
+SpellmakingCastingTime: 0.5
+TaperCurve: 2
+TaperDuration: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Fame
+Projectile: 012FCF:Skyrim.esm
+CastType: Concentration
+TargetType: Aimed
+CastingArt: 27F3BC:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 0.06
+DualCastScale: 1.1
+ImageSpaceModifier: 10605A:Triumvirate - Mage Archetypes.esp
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Spirit grants caster and living <mag> bleed and poison damage reflection on melee attacks.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsHostileToActorConditionData
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 013796:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsUndeadConditionData
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 013798:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 013794:Skyrim.esm
+  ComparisonValue: 1

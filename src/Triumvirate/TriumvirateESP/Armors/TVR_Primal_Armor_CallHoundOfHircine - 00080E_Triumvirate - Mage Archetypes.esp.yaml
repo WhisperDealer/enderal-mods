@@ -1,0 +1,21 @@
+FormKey: 00080E:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 4
+EditorID: TVR_Primal_Armor_CallHoundOfHircine
+SkyrimMajorRecordFlags:
+- NotPlayable
+Name:
+  TargetLanguage: English
+  Value: Hound of Hircine Skin
+BodyTemplate:
+  FirstPersonFlags:
+  - Body
+  ArmorType: Clothing
+  ActsLike44: True
+Race: 00080C:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: ''
+Armature:
+- 2F3CA6:Triumvirate - Mage Archetypes.esp
+MajorFlags:
+- NonPlayable

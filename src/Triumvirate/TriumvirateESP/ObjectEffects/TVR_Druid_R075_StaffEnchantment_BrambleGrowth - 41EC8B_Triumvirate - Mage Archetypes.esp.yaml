@@ -1,0 +1,16 @@
+FormKey: 41EC8B:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_R075_StaffEnchantment_BrambleGrowth
+Name:
+  TargetLanguage: English
+  Value: Bramble Growth
+EnchantmentCost: 62
+CastType: Concentration
+EnchantmentAmount: 62
+TargetType: Aimed
+EnchantType: StaffEnchantment
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 2B1E28:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 10
+    Duration: 15

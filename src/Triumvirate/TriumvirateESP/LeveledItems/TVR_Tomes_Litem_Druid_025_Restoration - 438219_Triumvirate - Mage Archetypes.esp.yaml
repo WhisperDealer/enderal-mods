@@ -1,0 +1,9 @@
+FormKey: 438219:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Tomes_Litem_Druid_025_Restoration
+Flags:
+- UseAll
+Entries:
+- Data:
+    Level: 1
+    Reference: 41EC86:Triumvirate - Mage Archetypes.esp
+    Count: 1

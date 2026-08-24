@@ -1,0 +1,53 @@
+FormKey: 40F8E2:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Farsight_Quest
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_Farsight_Quest_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BookShelfBook08
+      Object: 0D5B8E:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MAGFail
+      Object: 022472:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerRef
+      Object: 000014:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Farsight_Imod_Loop
+      Object: 40F8ED:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Shaman_Spell_Farsight_Proc
+      Object: 40F8E6:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_StartHeightIn
+      Data: 32
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_StartHeightOut
+      Data: 2500
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Totem_Imod_Fylgja
+      Object: 3B4564:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Veil_Actor_Farsight
+      Object: 4056DD:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Veil_Message_IsAlreadyControlTransferred
+      Object: 40F8E4:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_XP
+      Data: 10
+  Versioning:
+  - Break0
+  ExtraBindDataVersion: 0
+  FileName: ''
+Name:
+  TargetLanguage: English
+  Value: Farsight Quest
+Flags:
+- StartGameEnabled
+- AllowRepeatedStages
+- 0x10
+Priority: 100
+Filter: TVR\
+NextAliasID: 0

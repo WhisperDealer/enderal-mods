@@ -1,0 +1,57 @@
+FormKey: 3B456E:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Totem_Effect_FylgjaWind_Subspell_Crystalize
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_FylgjaTaunt_Script
+  - Name: TVR_Immobilize_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BookShelfBook07
+      Object: 0D5B8D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Violence_Descriptor_Chained
+      Object: 01E36F:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Immobilize
+MenuDisplayObject: 09DB72:Skyrim.esm
+Keywords:
+- 330A46:Triumvirate - Mage Archetypes.esp
+- 0D5B8D:Skyrim.esm
+Flags:
+- FXPersist
+BaseCost: 400
+MagicSkill: Destruction
+ResistValue: ResistFrost
+HitShader: 0DC20D:Skyrim.esm
+MinimumSkillLevel: 25
+SpellmakingArea: 10
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Stagger
+Explosion: 3B4570:Triumvirate - Mage Archetypes.esp
+CastType: FireAndForget
+HitEffectArt: 24C956:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 0.8
+DualCastScale: 1.1
+ImageSpaceModifier: 10FBF1:Skyrim.esm
+CastingSoundLevel: Silent
+Sounds:
+- Type: Release
+  Sound: 03EA7B:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: Immobilize and taunt all nearby enemies for <dur> seconds.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsHostileToActorConditionData
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsFlyingConditionData
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 035D59:Skyrim.esm

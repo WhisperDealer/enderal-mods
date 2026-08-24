@@ -1,0 +1,22 @@
+FormKey: 27F3C3:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Spell_SpiritOfTheOak_CloakProc
+Name:
+  TargetLanguage: English
+  Value: Spirit of the Oak
+MenuDisplayObject: 27F3BB:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 26
+Flags:
+- AreaEffectIgnoresLOS
+ChargeTime: 0.5
+CastType: Concentration
+TargetType: Aimed
+HalfCostPerk: 0F2CAA:Skyrim.esm
+Effects:
+- BaseEffect: 27F3C2:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 20
+    Duration: 1

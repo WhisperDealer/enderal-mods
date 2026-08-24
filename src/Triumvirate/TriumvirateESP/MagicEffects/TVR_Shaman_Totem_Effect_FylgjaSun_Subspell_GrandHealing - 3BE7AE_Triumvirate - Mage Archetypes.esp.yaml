@@ -1,0 +1,74 @@
+FormKey: 3BE7AE:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Totem_Effect_FylgjaSun_Subspell_GrandHealing
+VirtualMachineAdapter:
+  Scripts:
+  - Name: SayOnHitByMagicEffectScript
+    Properties:
+    - MutagenObjectType: ScriptIntProperty
+      Name: AllowForTeammate
+      Data: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: GameDaysPassed
+      Object: 000039:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TopicToSay
+      Object: 0AB87F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WICastNonHostileTimer
+      Object: 0E0CDC:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Restore Health Area
+MenuDisplayObject: 0A0E7D:Skyrim.esm
+Keywords:
+- 01CEB0:Skyrim.esm
+- 0A9B1E:Skyrim.esm
+Flags:
+- NoDuration
+- FXPersist
+- PowerAffectsMagnitude
+BaseCost: 0.6
+MagicSkill: Restoration
+HitShader: 012FD9:Skyrim.esm
+MinimumSkillLevel: 75
+SpellmakingArea: 10
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+Projectile: 012FDC:Skyrim.esm
+CastType: FireAndForget
+HitEffectArt: 03F1B4:Skyrim.esm
+SkillUsageMultiplier: 0.6
+DualCastScale: 1
+Sounds:
+- Type: Release
+  Sound: 03F361:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: Heals everyone close to the caster <mag> points.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetShouldAttackConditionData
+- MutagenObjectType: ConditionFloat
+  CompareOperator: NotEqualTo
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 013797:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: NotEqualTo
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 013796:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: NotEqualTo
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 01397A:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsUndeadConditionData

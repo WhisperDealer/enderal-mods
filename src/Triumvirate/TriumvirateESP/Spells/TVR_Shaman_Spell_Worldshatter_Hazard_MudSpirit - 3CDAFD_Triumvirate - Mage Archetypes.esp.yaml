@@ -1,0 +1,20 @@
+FormKey: 3CDAFD:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Spell_Worldshatter_Hazard_MudSpirit
+Name:
+  TargetLanguage: English
+  Value: Dirt Spirit
+MenuDisplayObject: 3A0132:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 63
+ChargeTime: 1
+CastType: FireAndForget
+TargetType: Touch
+HalfCostPerk: 0C44B9:Skyrim.esm
+Effects:
+- BaseEffect: 3CDAFF:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 40
+    Duration: 4

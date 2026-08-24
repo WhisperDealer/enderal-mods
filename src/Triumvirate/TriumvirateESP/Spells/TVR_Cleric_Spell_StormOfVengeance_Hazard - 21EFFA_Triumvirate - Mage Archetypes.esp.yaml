@@ -1,0 +1,26 @@
+FormKey: 21EFFA:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Cleric_Spell_StormOfVengeance_Hazard
+Name:
+  TargetLanguage: English
+  Value: Storm of Vengeance
+MenuDisplayObject: 205A7A:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 18
+CastType: FireAndForget
+TargetType: Touch
+Effects:
+- BaseEffect: 21EFF7:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 8
+    Duration: 5
+- BaseEffect: 21EFF8:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 8
+    Duration: 5
+- BaseEffect: 21EFF9:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 8
+    Duration: 5

@@ -1,0 +1,15 @@
+FormKey: 145214:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Spell_CallRattlesnakes_Ab
+Name:
+  TargetLanguage: English
+  Value: Rattlesnake Abilities
+MenuDisplayObject: 0435A5:Skyrim.esm
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Type: Ability
+Effects:
+- BaseEffect: 0AA024:Skyrim.esm
+  Data:
+    Magnitude: 100

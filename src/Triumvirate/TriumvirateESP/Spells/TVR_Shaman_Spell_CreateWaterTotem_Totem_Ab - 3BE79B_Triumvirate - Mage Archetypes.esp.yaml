@@ -1,0 +1,29 @@
+FormKey: 3BE79B:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Spell_CreateWaterTotem_Totem_Ab
+Name:
+  TargetLanguage: English
+  Value: Water Totem
+MenuDisplayObject: 35E370:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Flags:
+- 0x10000
+- 0x40000
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 3BE792:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 15
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: NotEqualTo
+    Data:
+      MutagenObjectType: GetActorValueConditionData
+      ActorValue: ShieldPerks
+- BaseEffect: 3C89D3:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 15

@@ -1,0 +1,65 @@
+FormKey: 28E6DA:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Toxic_Effect_ParasiticGrowth_Goodberry
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_AddGoodberry_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Healing_Potion_Goodberry
+      Object: 2844D3:Triumvirate - Mage Archetypes.esp
+Name:
+  TargetLanguage: English
+  Value: Goodberry
+MenuDisplayObject: 27F3AB:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Recover
+- Detrimental
+- NoMagnitude
+- NoDeathDispel
+TaperWeight: 1
+SpellmakingCastingTime: 0.5
+TaperCurve: 1
+TaperDuration: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+Projectile: 035277:Triumvirate - Mage Archetypes.esp
+CastType: FireAndForget
+TargetType: Aimed
+CastingArt: 27F3AC:Triumvirate - Mage Archetypes.esp
+ImpactData: 11D1A4:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1.1
+CastingSoundLevel: Normal
+Sounds:
+- Sound: 03E957:Skyrim.esm
+- Type: Charge
+  Sound: 03C8F9:Skyrim.esm
+- Type: Ready
+  Sound: 03F363:Skyrim.esm
+- Type: Release
+  Sound: 0059B6:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: On death, sprouts a <Goodberry>.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsCommandedActorConditionData
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: HasMagicEffectConditionData
+    MagicEffect: 2844D8:Triumvirate - Mage Archetypes.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: HasMagicEffectConditionData
+    MagicEffect: 28E6DB:Triumvirate - Mage Archetypes.esp
+  ComparisonValue: 1

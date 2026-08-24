@@ -1,0 +1,33 @@
+FormKey: 14521A:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Primal_Effect_CallSnakes_Proc
+Name:
+  TargetLanguage: English
+  Value: Poison Damage
+MenuDisplayObject: 11D19E:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 1545FE:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Detrimental
+- NoArea
+- FXPersist
+- NoRecast
+- PowerAffectsMagnitude
+- Painless
+- NoDeathDispel
+ResistValue: PoisonResist
+HitShader: 10CC64:Skyrim.esm
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+Projectile: 04600A:Skyrim.esm
+CastType: FireAndForget
+TargetType: Touch
+CastingArt: 046006:Skyrim.esm
+ImpactData: 0FFF4B:Skyrim.esm
+DualCastScale: 1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Snake venom deals <mag> points of poison damage for <dur> seconds.

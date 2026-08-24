@@ -1,0 +1,9 @@
+FormKey: 1CDECC:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Conversion_Dialogue_Topic_Wait
+Name:
+  TargetLanguage: English
+  Value: Wait here.
+Priority: 95
+Branch: 1CDECB:Triumvirate - Mage Archetypes.esp
+Quest: 1CDEC9:Triumvirate - Mage Archetypes.esp
+SubtypeName: CUST

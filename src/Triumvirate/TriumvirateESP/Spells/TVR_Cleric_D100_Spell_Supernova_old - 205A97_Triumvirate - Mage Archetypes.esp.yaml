@@ -1,0 +1,33 @@
+FormKey: 205A97:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Cleric_D100_Spell_Supernova_old
+Name:
+  TargetLanguage: English
+  Value: Supernova
+MenuDisplayObject: 205A7A:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F45:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 1236
+Flags:
+- AreaEffectIgnoresLOS
+- NoDualCastModification
+ChargeTime: 3.5
+CastType: FireAndForget
+HalfCostPerk: 0C44C2:Skyrim.esm
+Effects:
+- BaseEffect: 214DC4:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 8
+    Area: 80
+    Duration: 30
+- BaseEffect: 214DC7:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 8
+    Area: 80
+    Duration: 30
+- BaseEffect: 214DC8:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 8
+    Area: 80
+    Duration: 30

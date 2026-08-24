@@ -1,0 +1,11 @@
+FormKey: 025E53:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Walk_Descriptor_NightGate_Activate
+Type: Standard
+Category: 0172A1:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\QST\QST_AlduinDeath_Explosion_A_2D.wav
+OutputModel: 07E5DD:Skyrim.esm
+LoopAndRumble: {}
+PercentFrequencyShift: 50
+Priority: 128
+StaticAttenuation: 7.49

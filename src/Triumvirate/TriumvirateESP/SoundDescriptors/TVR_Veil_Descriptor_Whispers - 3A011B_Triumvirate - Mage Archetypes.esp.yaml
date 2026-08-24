@@ -1,0 +1,14 @@
+FormKey: 3A011B:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Veil_Descriptor_Whispers
+Type: Standard
+Category: 0172A1:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\QST\DA10\QST_DA10_Item_Levitate_02.wav
+- Data\Sound\FX\QST\DA10\QST_DA10_Item_Levitate_03.wav
+- Data\Sound\FX\QST\DA10\QST_DA10_Item_Levitate_01.wav
+OutputModel: 0D78B8:Skyrim.esm
+LoopAndRumble: {}
+PercentFrequencyShift: -30
+PercentFrequencyVariance: 8
+Priority: 128
+StaticAttenuation: 5.29

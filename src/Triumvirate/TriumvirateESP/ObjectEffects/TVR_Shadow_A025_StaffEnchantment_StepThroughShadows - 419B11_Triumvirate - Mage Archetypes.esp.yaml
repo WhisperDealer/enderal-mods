@@ -1,0 +1,28 @@
+FormKey: 419B11:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shadow_A025_StaffEnchantment_StepThroughShadows
+Name:
+  TargetLanguage: English
+  Value: Step Through Shadows
+EnchantmentCost: 63
+CastType: FireAndForget
+EnchantmentAmount: 63
+TargetType: Aimed
+EnchantType: StaffEnchantment
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 30D2A5:Triumvirate - Mage Archetypes.esp
+  Data: {}
+- BaseEffect: 30D2AB:Triumvirate - Mage Archetypes.esp
+  Data: {}
+- BaseEffect: 30D2AC:Triumvirate - Mage Archetypes.esp
+  Data: {}
+- BaseEffect: 30D2AD:Triumvirate - Mage Archetypes.esp
+  Data: {}
+- BaseEffect: 30D2A9:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 100
+    Duration: 10
+- BaseEffect: 326823:Triumvirate - Mage Archetypes.esp
+  Data: {}
+- BaseEffect: 326825:Triumvirate - Mage Archetypes.esp
+  Data: {}

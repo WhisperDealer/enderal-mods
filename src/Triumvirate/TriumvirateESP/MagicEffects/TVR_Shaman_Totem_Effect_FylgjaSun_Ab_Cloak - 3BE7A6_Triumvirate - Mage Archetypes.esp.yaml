@@ -1,0 +1,17 @@
+FormKey: 3BE7A6:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Totem_Effect_FylgjaSun_Ab_Cloak
+Name:
+  TargetLanguage: English
+  Value: Sunstorm Cloak
+MenuDisplayObject: 04E264:Skyrim.esm
+Flags:
+- NoDuration
+Archetype:
+  MutagenObjectType: MagicEffectCloakArchetype
+  Association: 3BE7A4:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: <mag> foot fire cloak.

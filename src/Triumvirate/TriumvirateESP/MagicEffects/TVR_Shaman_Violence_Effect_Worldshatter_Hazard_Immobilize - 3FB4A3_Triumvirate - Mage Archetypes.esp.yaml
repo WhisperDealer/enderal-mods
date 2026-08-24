@@ -1,0 +1,45 @@
+FormKey: 3FB4A3:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Violence_Effect_Worldshatter_Hazard_Immobilize
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_Immobilize_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BookShelfBook07
+      Object: 0D5B8D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Violence_Descriptor_Chained
+      Object: 24C959:Triumvirate - Mage Archetypes.esp
+Name:
+  TargetLanguage: English
+  Value: Immobilize
+MenuDisplayObject: 1E741E:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 0D5B8D:Skyrim.esm
+Flags:
+- Hostile
+- NoArea
+- FXPersist
+- PowerAffectsMagnitude
+BaseCost: 150
+MagicSkill: Alteration
+HitShader: 3CDB05:Triumvirate - Mage Archetypes.esp
+SpellmakingCastingTime: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Stagger
+CastType: FireAndForget
+TargetType: Touch
+ImpactData: 04C6DA:Skyrim.esm
+SkillUsageMultiplier: 1
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Immobilizes targets for <dur> seconds.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsHostileToActorConditionData
+  ComparisonValue: 1

@@ -1,0 +1,12 @@
+FormKey: 0A6EBC:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Violence_Descriptor_Loop
+Type: Standard
+Category: 01A0BD:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\QST\Ustengrav\QST_Ustengrav_Rumble_2D_LPM.wav
+OutputModel: 06CB4F:Skyrim.esm
+LoopAndRumble:
+  Loop: EnvelopeFast
+PercentFrequencyShift: 60
+Priority: 128
+StaticAttenuation: 4.85

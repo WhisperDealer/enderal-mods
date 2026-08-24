@@ -1,0 +1,11 @@
+FormKey: 3F639C:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Violence_Impact_Fissure_Dirt
+Model:
+  File: Triumvirate\Violence_Impact_RollingTremor_Dirt.nif
+  Data: 0x020000000000000000000000
+Duration: 0.1
+AngleThreshold: 80
+PlacementRadius: 16
+NoDecalData: True
+Sound1: 42DFC7:Triumvirate - Mage Archetypes.esp
+Hazard: 42DFC4:Triumvirate - Mage Archetypes.esp

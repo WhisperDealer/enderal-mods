@@ -1,0 +1,20 @@
+FormKey: 3DCE49:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Geist_Hazard_SpiritFire
+ObjectBounds:
+  First: -188, -188, -158
+  Second: 203, 188, 391
+Name:
+  TargetLanguage: English
+  Value: Spirit Fire Hazard
+Model:
+  File: Triumvirate\Geist_Hazard_SpiritFire2.nif
+  Data: 0x020000000000000000000000
+Limit: 1
+Radius: 8
+Lifetime: 10
+TargetInterval: 0.2
+Flags:
+- InheritDurationFromSpawnSpell
+Spell: 3DCE4E:Triumvirate - Mage Archetypes.esp
+Light: 3DCE4B:Triumvirate - Mage Archetypes.esp
+Sound: 3DCE4A:Triumvirate - Mage Archetypes.esp

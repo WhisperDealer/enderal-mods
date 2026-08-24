@@ -1,0 +1,10 @@
+FormKey: 1E741E:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_MagInv_Violence
+ObjectBounds:
+  First: -22, -15, -4
+  Second: 27, 21, 12
+Model:
+  File: Triumvirate\Violence_Inv.nif
+  Data: 0x020000000000000000000000
+MaxAngle: 90
+Unused: 0x000000

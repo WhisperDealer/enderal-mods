@@ -1,0 +1,10 @@
+FormKey: 386BFE:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Possess_Art_Impact_TraitorousShadow
+ObjectBounds:
+  First: -83, -36, -106
+  Second: 83, 36, 105
+Model:
+  File: Triumvirate\Possess_Art_TraitorousShadow_Impact.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

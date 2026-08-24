@@ -1,0 +1,25 @@
+FormKey: 200973:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Cleric_Spell_Aura_2_Proc
+Name:
+  TargetLanguage: English
+  Value: Vigor Release
+MenuDisplayObject: 1CDEBE:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 68
+Flags:
+- AreaEffectIgnoresLOS
+- IgnoreResistance
+- NoAbsorbOrReflect
+CastType: FireAndForget
+HalfCostPerk: 0C44C8:Skyrim.esm
+Effects:
+- BaseEffect: 1F675B:Triumvirate - Mage Archetypes.esp
+  Data:
+    Area: 30
+    Duration: 2
+- BaseEffect: 200975:Triumvirate - Mage Archetypes.esp
+  Data:
+    Duration: 2

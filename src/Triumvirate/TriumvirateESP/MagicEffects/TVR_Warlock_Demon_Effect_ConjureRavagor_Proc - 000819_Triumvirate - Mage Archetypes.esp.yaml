@@ -1,0 +1,24 @@
+FormKey: 000819:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_Demon_Effect_ConjureRavagor_Proc
+Name:
+  TargetLanguage: English
+  Value: Ravagor Single Target Stagger Push
+MenuDisplayObject: 1C3CBA:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- NoArea
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Stagger
+Projectile: 013FFF:Skyrim.esm
+CastType: FireAndForget
+TargetType: Touch
+ImpactData: 015C7B:Skyrim.esm
+SkillUsageMultiplier: 1
+DualCastScale: 1
+Sounds:
+- Type: Release
+  Sound: 0A0F53:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''

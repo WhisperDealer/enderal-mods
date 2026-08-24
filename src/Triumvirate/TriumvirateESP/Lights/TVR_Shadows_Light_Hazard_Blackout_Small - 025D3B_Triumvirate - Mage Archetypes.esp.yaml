@@ -1,0 +1,13 @@
+FormKey: 025D3B:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shadows_Light_Hazard_Blackout_Small
+Time: -1
+Radius: 426
+Color: '#00D4FFD4'
+Flags:
+- Dynamic
+- Negative
+FalloffExponent: 1
+FOV: 90
+NearClip: 1
+FlickerPeriod: 1
+FadeValue: 2

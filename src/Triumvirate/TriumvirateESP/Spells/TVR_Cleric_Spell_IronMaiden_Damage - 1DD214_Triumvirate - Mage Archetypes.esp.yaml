@@ -1,0 +1,21 @@
+FormKey: 1DD214:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Cleric_Spell_IronMaiden_Damage
+Name:
+  TargetLanguage: English
+  Value: Chastise
+MenuDisplayObject: 1CDEE2:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 9
+Flags:
+- NoAbsorbOrReflect
+ChargeTime: 0.5
+CastType: FireAndForget
+TargetType: Touch
+HalfCostPerk: 0C44C3:Skyrim.esm
+Effects:
+- BaseEffect: 1DD213:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 15

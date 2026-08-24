@@ -1,0 +1,11 @@
+FormKey: 438212:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Tomes_Litem_Druid_100_Alteration
+ChanceNone: 1
+Flags:
+- UseAll
+Global: 0F2586:Skyrim.esm
+Entries:
+- Data:
+    Level: 1
+    Reference: 41EC7F:Triumvirate - Mage Archetypes.esp
+    Count: 1

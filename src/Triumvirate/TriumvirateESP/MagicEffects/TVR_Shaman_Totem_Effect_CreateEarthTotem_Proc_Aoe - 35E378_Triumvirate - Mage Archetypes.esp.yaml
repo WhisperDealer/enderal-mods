@@ -1,0 +1,22 @@
+FormKey: 35E378:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Totem_Effect_CreateEarthTotem_Proc_Aoe
+Name:
+  TargetLanguage: English
+  Value: Earth Totem Tremor
+MenuDisplayObject: 35E370:Triumvirate - Mage Archetypes.esp
+Flags:
+- NoDuration
+- NoMagnitude
+SpellmakingArea: 50
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+Explosion: 35E375:Triumvirate - Mage Archetypes.esp
+CastType: FireAndForget
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Slam a tremor through the ground that deals magic damage and staggers enemies.

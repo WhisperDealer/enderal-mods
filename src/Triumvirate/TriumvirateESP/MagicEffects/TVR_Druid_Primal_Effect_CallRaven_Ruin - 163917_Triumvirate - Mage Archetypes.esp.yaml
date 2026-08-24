@@ -1,0 +1,44 @@
+FormKey: 163917:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Primal_Effect_CallRaven_Ruin
+Name:
+  TargetLanguage: English
+  Value: Drain Weapon Skills
+MenuDisplayObject: 11D1A7:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 163914:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Recover
+- Detrimental
+- NoArea
+- FXPersist
+- PowerAffectsMagnitude
+ResistValue: ResistMagic
+HitShader: 11D71A:Triumvirate - Mage Archetypes.esp
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectPeakValueModArchetype
+  ActorValue: OneHanded
+  Association: 163914:Triumvirate - Mage Archetypes.esp
+CastType: FireAndForget
+TargetType: Touch
+HitEffectArt: 11D1A6:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1.1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Reduces weapon skills by <mag> points for <dur> seconds.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 013794:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 013796:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsUndeadConditionData

@@ -1,0 +1,21 @@
+FormKey: 000816:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 4
+EditorID: TVR_Demon_Armor_ConjureRavagor
+SkyrimMajorRecordFlags:
+- NotPlayable
+Name:
+  TargetLanguage: English
+  Value: Ravagor Skin
+BodyTemplate:
+  FirstPersonFlags:
+  - Body
+  ArmorType: Clothing
+  ActsLike44: True
+Race: 000814:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: ''
+Armature:
+- 000815:Triumvirate - Mage Archetypes.esp
+MajorFlags:
+- NonPlayable

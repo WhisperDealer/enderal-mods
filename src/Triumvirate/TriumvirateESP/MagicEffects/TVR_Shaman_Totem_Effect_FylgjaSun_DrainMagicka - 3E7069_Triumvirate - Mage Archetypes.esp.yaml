@@ -1,0 +1,34 @@
+FormKey: 3E7069:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Totem_Effect_FylgjaSun_DrainMagicka
+Name:
+  TargetLanguage: English
+  Value: Damage Magicka
+MenuDisplayObject: 0435A5:Skyrim.esm
+Keywords:
+- 0D5B8E:Skyrim.esm
+Flags:
+- Detrimental
+- NoArea
+- PowerAffectsDuration
+MagicSkill: Conjuration
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Magicka
+CastType: FireAndForget
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Costs <mag> Magicka per second.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000007:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasMagicEffectKeywordConditionData
+    Keyword: 0D5B8E:Skyrim.esm

@@ -1,0 +1,25 @@
+FormKey: 260D6B:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Demon_Perk_ConjureOathbreaker
+Name:
+  TargetLanguage: English
+  Value: Oathbreaker Ult Mana Cost
+Description:
+  TargetLanguage: English
+  Value: ''
+NumRanks: 1
+Playable: True
+Hidden: True
+Effects:
+- MutagenObjectType: PerkEntryPointModifyValue
+  Priority: 5
+  Conditions:
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 260D68:Triumvirate - Mage Archetypes.esp
+      ComparisonValue: 1
+  EntryPoint: ModSpellCost
+  PerkConditionTabCount: 2
+  Value: 350

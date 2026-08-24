@@ -1,0 +1,25 @@
+FormKey: 2844D3:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Healing_Potion_Goodberry
+ObjectBounds:
+  First: -35, -36, -5
+  Second: 35, 37, 16
+Name:
+  TargetLanguage: English
+  Value: Goodberry
+Model:
+  File: Triumvirate\SFOT\Goodberry2.nif
+  Data: 0x020000000000000000000000
+PickUpSound: 0517C9:Skyrim.esm
+PutDownSound: 0517C8:Skyrim.esm
+Value: 50
+Flags:
+- NoAutoCalc
+- FoodItem
+ConsumeSound: 0CAF94:Skyrim.esm
+Effects:
+- BaseEffect: 28E6DC:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 200
+- BaseEffect: 0AE722:Skyrim.esm
+  Data:
+    Magnitude: 40

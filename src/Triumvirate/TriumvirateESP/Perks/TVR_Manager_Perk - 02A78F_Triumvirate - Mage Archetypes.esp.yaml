@@ -1,0 +1,203 @@
+FormKey: 02A78F:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Manager_Perk
+Name:
+  TargetLanguage: English
+  Value: Built In Perk
+Description:
+  TargetLanguage: English
+  Value: ''
+NumRanks: 1
+Playable: True
+Hidden: True
+Effects:
+- MutagenObjectType: PerkEntryPointModifyValue
+  Conditions:
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 154600:Triumvirate - Mage Archetypes.esp
+      ComparisonValue: 1
+  EntryPoint: ModCommandedActorLimit
+  PerkConditionTabCount: 2
+  Value: 99
+- MutagenObjectType: PerkEntryPointModifyValue
+  Priority: 34
+  Conditions:
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetIsIDConditionData
+        Object: 4056DC:Triumvirate - Mage Archetypes.esp
+      ComparisonValue: 1
+  EntryPoint: FilterActivation
+  PerkConditionTabCount: 2
+  Value: 1
+- MutagenObjectType: PerkEntryPointModifyValue
+  Priority: 35
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasMagicEffectConditionData
+        MagicEffect: 40A7E1:Triumvirate - Mage Archetypes.esp
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetIsIDConditionData
+        Object: 3C38BB:Triumvirate - Mage Archetypes.esp
+      ComparisonValue: 1
+  EntryPoint: FilterActivation
+  PerkConditionTabCount: 2
+  Value: 1
+- MutagenObjectType: PerkEntryPointModifyActorValue
+  Priority: 40
+  Conditions:
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 3E706A:Triumvirate - Mage Archetypes.esp
+      ComparisonValue: 1
+  EntryPoint: ModSpellMagnitude
+  PerkConditionTabCount: 3
+  ActorValue: Conjuration
+  Value: 0.01
+  Modification: MultiplyOnePlusAVMult
+- MutagenObjectType: PerkEntryPointModifyValue
+  Priority: 49
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: IsDualCastingConditionData
+      ComparisonValue: 1
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Flags:
+      - OR
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 40F8E8:Triumvirate - Mage Archetypes.esp
+      ComparisonValue: 1
+  EntryPoint: ModSpellRange
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 5
+- MutagenObjectType: PerkEntryPointModifyValue
+  Priority: 50
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: IsDualCastingConditionData
+      ComparisonValue: 1
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Flags:
+      - OR
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 2E99FA:Triumvirate - Mage Archetypes.esp
+      ComparisonValue: 1
+  EntryPoint: ModSpellRange
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 2
+- MutagenObjectType: PerkEntryPointModifyValue
+  Priority: 70
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: IsDualCastingConditionData
+      ComparisonValue: 1
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 154600:Triumvirate - Mage Archetypes.esp
+      ComparisonValue: 1
+  EntryPoint: ModSpellCost
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 1
+- MutagenObjectType: PerkEntryPointModifyValue
+  Priority: 75
+  Conditions:
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 330A46:Triumvirate - Mage Archetypes.esp
+      ComparisonValue: 1
+  EntryPoint: ModSpellCost
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 0
+- MutagenObjectType: PerkEntryPointModifyValue
+  Priority: 76
+  Conditions:
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 386BFC:Triumvirate - Mage Archetypes.esp
+      ComparisonValue: 1
+  EntryPoint: ModSpellCost
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 0.25
+- MutagenObjectType: PerkEntryPointModifyActorValue
+  Priority: 80
+  Conditions:
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 330A38:Triumvirate - Mage Archetypes.esp
+      ComparisonValue: 1
+  EntryPoint: ModSpellMagnitude
+  PerkConditionTabCount: 3
+  ActorValue: Magicka
+  Value: 0.01
+  Modification: MultiplyOnePlusAVMult
+- MutagenObjectType: PerkEntryPointModifyActorValue
+  Priority: 180
+  Conditions:
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+      ComparisonValue: 1
+  EntryPoint: ModSpellMagnitude
+  PerkConditionTabCount: 3
+  ActorValue: LastFlattered
+  Value: 0.01
+  Modification: MultiplyAVMult
+- MutagenObjectType: PerkEntryPointModifyActorValue
+  Priority: 230
+  Conditions:
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 2844D7:Triumvirate - Mage Archetypes.esp
+      ComparisonValue: 1
+  EntryPoint: ModSpellMagnitude
+  PerkConditionTabCount: 3
+  ActorValue: Restoration
+  Value: 0.01
+  Modification: MultiplyAVMult

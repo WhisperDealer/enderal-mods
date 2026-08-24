@@ -1,0 +1,12 @@
+FormKey: 4056DE:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Veil_Explosion_Farsight
+Model:
+  File: Effects\FXEmptyExplosionArt.nif
+  Data: 0x020000000000000000000000
+PlacedObject: 4056DC:Triumvirate - Mage Archetypes.esp
+Radius: 128
+Flags:
+- 0x1
+- IgnoreLosCheck
+- IgnoreImageSpaceSwap
+SoundLevel: Silent

@@ -1,0 +1,18 @@
+FormKey: 044260:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Teleport_Explosion_ChaseTheHorizon
+ObjectBounds:
+  First: -222, -196, -98
+  Second: 222, 196, 98
+Model:
+  File: Triumvirate\Teleport_Explosion.nif
+  Data: 0x020000000000000000000000
+Sound1: 00496B:Triumvirate - Mage Archetypes.esp
+Sound2: 0FD989:Skyrim.esm
+PlacedObject: 08797D:Triumvirate - Mage Archetypes.esp
+Force: 64
+Radius: 125
+VerticalOffsetMult: 0.9
+Flags:
+- 0x1
+- AlwaysUsesWorldOrientation
+- IgnoreImageSpaceSwap

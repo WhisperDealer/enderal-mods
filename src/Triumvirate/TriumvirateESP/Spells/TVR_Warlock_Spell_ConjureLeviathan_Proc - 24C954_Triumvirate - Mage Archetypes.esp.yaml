@@ -1,0 +1,23 @@
+FormKey: 24C954:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_Spell_ConjureLeviathan_Proc
+Name:
+  TargetLanguage: English
+  Value: Draw and Quarter
+MenuDisplayObject: 1C3CBA:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Flags:
+- NoAbsorbOrReflect
+CastType: FireAndForget
+TargetType: Touch
+Effects:
+- BaseEffect: 24C94F:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 1
+    Duration: 10
+- BaseEffect: 2BC054:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 10
+    Duration: 10

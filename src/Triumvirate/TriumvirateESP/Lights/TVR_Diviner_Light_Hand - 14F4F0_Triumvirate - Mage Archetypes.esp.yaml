@@ -1,0 +1,10 @@
+FormKey: 14F4F0:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Diviner_Light_Hand
+Time: -1
+Radius: 25
+Color: '#00548CBA'
+FalloffExponent: 1
+FOV: 90
+NearClip: 1
+FlickerPeriod: 1
+FadeValue: 1

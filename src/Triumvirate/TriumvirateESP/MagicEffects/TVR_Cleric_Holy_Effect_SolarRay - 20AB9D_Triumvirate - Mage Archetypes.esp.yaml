@@ -1,0 +1,48 @@
+FormKey: 20AB9D:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Cleric_Holy_Effect_SolarRay
+Name:
+  TargetLanguage: English
+  Value: Fire Damage
+MenuDisplayObject: 205A7A:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 20AB9E:Triumvirate - Mage Archetypes.esp
+- 01CEAD:Skyrim.esm
+Flags:
+- Hostile
+- Detrimental
+- NoArea
+- FXPersist
+- NoRecast
+- PowerAffectsMagnitude
+- NoDeathDispel
+BaseCost: 1
+MagicSkill: Destruction
+ResistValue: ResistFire
+CastingLight: 205A7D:Triumvirate - Mage Archetypes.esp
+TaperWeight: 0.3
+HitShader: 205A7F:Triumvirate - Mage Archetypes.esp
+SpellmakingCastingTime: 0.5
+TaperCurve: 2
+TaperDuration: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+Projectile: 20AB9C:Triumvirate - Mage Archetypes.esp
+CastType: Concentration
+TargetType: Aimed
+CastingArt: 205A7B:Triumvirate - Mage Archetypes.esp
+ImpactData: 033CD6:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 1
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds:
+- Sound: 03C8F8:Skyrim.esm
+- Type: Charge
+  Sound: 03C8F9:Skyrim.esm
+- Type: Ready
+  Sound: 03C8FA:Skyrim.esm
+- Type: Release
+  Sound: 023DF7:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: Thin beam of light that deals <mag> points of fire and sun damage per second.

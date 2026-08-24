@@ -1,0 +1,14 @@
+FormKey: 008573:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Senua_Descriptor_FXS
+Type: Standard
+Category: 0172A1:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\AMBt\Dungeon\Dwemer\AMBt_Dungeon_Dwemer_Generic_2DLP.wav
+OutputModel: 014BCB:Dawnguard.esm
+LoopAndRumble:
+  Unknown: 4
+  Loop: Loop
+PercentFrequencyShift: 80
+PercentFrequencyVariance: 5
+Priority: 128
+StaticAttenuation: 16.3

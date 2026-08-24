@@ -1,0 +1,9 @@
+FormKey: 02E159:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_DaedricSeek
+Name:
+  TargetLanguage: English
+  Value: TVR_DaedricSeek
+Quest: 02E149:Triumvirate - Mage Archetypes.esp
+Category: Detection
+Subtype: NormalToCombat
+SubtypeName: NOTC

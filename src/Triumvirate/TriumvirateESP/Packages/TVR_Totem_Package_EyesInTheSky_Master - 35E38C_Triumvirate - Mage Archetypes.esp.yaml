@@ -1,0 +1,295 @@
+FormKey: 35E38C:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Totem_Package_EyesInTheSky_Master
+Type: Package
+PreferredSpeed: Run
+Unknown: 97
+InteruptFlags:
+- 0x400
+- 0x800
+- 0x1000
+- 0x2000
+- 0x4000
+- 0x8000
+ScheduleMonth: -1
+ScheduleDayOfWeek: Any
+ScheduleHour: -1
+ScheduleMinute: -1
+Unknown3: 0x3D2041
+DataInputVersion: 9
+Data:
+- Key: 5
+  Value:
+    MutagenObjectType: PackageDataTarget
+    Name: 'Linked Ref '
+    Flags: []
+    Type: SingleRef
+    Target:
+      MutagenObjectType: PackageTargetLinkedReference
+- Key: 6
+  Value:
+    MutagenObjectType: PackageDataFloat
+    Name: 'Patrol: PointRadius'
+    Flags:
+    - Public
+    Data: 512
+- Key: 7
+  Value:
+    MutagenObjectType: PackageDataBool
+    Name: 'Bool: True'
+    Flags: []
+    Data: True
+- Key: 9
+  Value:
+    MutagenObjectType: PackageDataBool
+    Name: 'Bool: False'
+    Flags: []
+- Key: 19
+  Value:
+    MutagenObjectType: PackageDataLocation
+    Name: Editor Location
+    Flags: []
+    Location:
+      Target:
+        MutagenObjectType: LocationFallback
+        Type: NearEditorLocation
+      Radius: 512
+- Key: 20
+  Value:
+    MutagenObjectType: PackageDataFloat
+    Name: 'Orbit: InnerRadius'
+    Flags:
+    - Public
+    Data: 2048
+- Key: 21
+  Value:
+    MutagenObjectType: PackageDataFloat
+    Name: 'Orbit: OuterRadius'
+    Flags:
+    - Public
+    Data: 4096
+- Key: 22
+  Value:
+    MutagenObjectType: PackageDataFloat
+    Name: 'Orbit: Height'
+    Flags:
+    - Public
+    Data: 2048
+- Key: 42
+  Value:
+    MutagenObjectType: PackageDataTarget
+    Name: Linked Perch Ref
+    Flags: []
+    Type: SingleRef
+    Target:
+      MutagenObjectType: PackageTargetLinkedReference
+      Keyword: 055BEB:Skyrim.esm
+- Key: 0
+  Value:
+    MutagenObjectType: APackageData
+    Name: Flight Patrol
+    Flags:
+    - Public
+- Key: 2
+  Value:
+    MutagenObjectType: APackageData
+    Name: Orbit Editor Location
+    Flags:
+    - Public
+- Key: 4
+  Value:
+    MutagenObjectType: APackageData
+    Name: Perch @ Linked
+    Flags:
+    - Public
+- Key: 8
+  Value:
+    MutagenObjectType: APackageData
+    Name: 'Patrol: StartAtNearestPoint'
+    Flags:
+    - Public
+- Key: 10
+  Value:
+    MutagenObjectType: APackageData
+    Name: Linked Perch Ref
+    Flags:
+    - Public
+- Key: 11
+  Value:
+    MutagenObjectType: APackageData
+    Name: 'Perch: RideHorseIfPossible'
+    Flags:
+    - Public
+- Key: 12
+  Value:
+    MutagenObjectType: APackageData
+    Name: Destination
+    Flags:
+    - Public
+- Key: 13
+  Value:
+    MutagenObjectType: APackageData
+    Name: RideHorseIfPossible
+    Flags:
+    - Public
+- Key: 15
+  Value:
+    MutagenObjectType: APackageData
+    Name: 'Orbit: PointRadius'
+    Flags:
+    - Public
+- Key: 16
+  Value:
+    MutagenObjectType: APackageData
+    Name: repeatable
+    Flags:
+    - Public
+- Key: 17
+  Value:
+    MutagenObjectType: APackageData
+    Name: StartAtNearestPoint
+    Flags:
+    - Public
+- Key: 18
+  Value:
+    MutagenObjectType: APackageData
+    Name: RideHorseIfPossible
+    Flags:
+    - Public
+- Key: 23
+  Value:
+    MutagenObjectType: APackageData
+    Name: PathStart
+    Flags:
+    - Public
+- Key: 24
+  Value:
+    MutagenObjectType: APackageData
+    Name: Destination
+    Flags:
+    - Public
+- Key: 25
+  Value:
+    MutagenObjectType: APackageData
+    Name: RideHorseIfPossible
+    Flags:
+    - Public
+- Key: 26
+  Value:
+    MutagenObjectType: APackageData
+    Name: SearchLocation
+    Flags:
+    - Public
+- Key: 27
+  Value:
+    MutagenObjectType: APackageData
+    Name: 'Perch: Search Criteria'
+    Flags:
+    - Public
+- Key: 28
+  Value:
+    MutagenObjectType: APackageData
+    Name: 'Perch: ObjectList'
+    Flags:
+    - Public
+- Key: 29
+  Value:
+    MutagenObjectType: APackageData
+    Name: SearchOwnInventory
+    Flags:
+    - Public
+- Key: 30
+  Value:
+    MutagenObjectType: APackageData
+    Name: Destination
+    Flags:
+    - Public
+- Key: 31
+  Value:
+    MutagenObjectType: APackageData
+    Name: RideHorseIfPossible
+    Flags:
+    - Public
+- Key: 32
+  Value:
+    MutagenObjectType: APackageData
+    Name: Location
+    Flags:
+    - Public
+- Key: 33
+  Value:
+    MutagenObjectType: APackageData
+    Name: Preferred Path Only
+    Flags:
+    - Public
+- Key: 34
+  Value:
+    MutagenObjectType: APackageData
+    Name: RideHorseIfPossible
+    Flags:
+    - Public
+- Key: 35
+  Value:
+    MutagenObjectType: APackageData
+    Name: Destination
+    Flags:
+    - Public
+- Key: 36
+  Value:
+    MutagenObjectType: APackageData
+    Name: RideHorseIfPossible
+    Flags:
+    - Public
+- Key: 37
+  Value:
+    MutagenObjectType: APackageData
+    Name: target
+    Flags:
+    - Public
+- Key: 38
+  Value:
+    MutagenObjectType: APackageData
+    Name: Destination
+    Flags:
+    - Public
+- Key: 39
+  Value:
+    MutagenObjectType: APackageData
+    Name: RideHorseIfPossible
+    Flags:
+    - Public
+- Key: 40
+  Value:
+    MutagenObjectType: APackageData
+    Name: 'Perch: Wait Float Zero'
+    Flags:
+    - Public
+- Key: 41
+  Value:
+    MutagenObjectType: APackageData
+    Name: StopMovement
+    Flags:
+    - Public
+XnamMarker: 0x18
+ProcedureTree:
+- BranchType: Stacked
+  Root:
+    BranchCount: 1
+  Unknown: []
+- BranchType: Procedure
+  ProcedureType: Orbit
+  Flags: []
+  DataInputIndices:
+  - 19
+  - 20
+  - 21
+  - 22
+  Unknown: []
+OnBegin:
+  Topics:
+  - MutagenObjectType: TopicReference
+OnEnd:
+  Topics:
+  - MutagenObjectType: TopicReference
+OnChange:
+  Topics:
+  - MutagenObjectType: TopicReference

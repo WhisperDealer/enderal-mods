@@ -1,0 +1,10 @@
+FormKey: 2751A2:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Primal_Art_HuntersMark
+ObjectBounds:
+  First: -70, -73, 4
+  Second: 70, 73, 153
+Model:
+  File: Triumvirate\Primal_Art_HuntersMark.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

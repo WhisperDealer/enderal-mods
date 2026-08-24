@@ -1,0 +1,10 @@
+FormKey: 381AFA:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Walk_Art_Buff_ShadowStride
+ObjectBounds:
+  First: -32768, -32768, -32768
+  Second: 32767, 32767, 32767
+Model:
+  File: Triumvirate\Walk_Art_Feet.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

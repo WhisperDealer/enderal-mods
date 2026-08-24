@@ -1,0 +1,10 @@
+FormKey: 22921E:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Hex_Art_Weaken
+ObjectBounds:
+  First: -70, -73, 4
+  Second: 70, 73, 153
+Model:
+  File: Triumvirate\Hex_Art_Weaken.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

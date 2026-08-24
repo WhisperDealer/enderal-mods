@@ -1,0 +1,28 @@
+FormKey: 35E372:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Spell_CreateEarthTotem_Proc_CloakProc
+Name:
+  TargetLanguage: English
+  Value: Earth Tremor
+MenuDisplayObject: 35E370:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Flags:
+- AreaEffectIgnoresLOS
+ChargeTime: 0.5
+CastType: Concentration
+TargetType: Aimed
+Effects:
+- BaseEffect: 35E371:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 120
+    Duration: 1
+- BaseEffect: 35E374:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 1
+    Duration: 1
+- BaseEffect: 35E376:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 0.5
+    Duration: 1

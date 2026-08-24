@@ -1,0 +1,25 @@
+FormKey: 43D325:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Tomes_Litem_Shadow_Illusion
+Flags:
+- UseAll
+Entries:
+- Data:
+    Level: 1
+    Reference: 4381E3:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4381E6:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4381E9:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4381EC:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4381EF:Triumvirate - Mage Archetypes.esp
+    Count: 1

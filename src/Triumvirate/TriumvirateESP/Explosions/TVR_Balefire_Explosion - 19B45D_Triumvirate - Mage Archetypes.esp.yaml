@@ -1,0 +1,19 @@
+FormKey: 19B45D:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Balefire_Explosion
+ObjectBounds:
+  First: -57, -60, -9
+  Second: 57, 60, 33
+Model:
+  File: Triumvirate\Balefire_Explosion.nif
+  Data: 0x020000000000000000000000
+ImageSpaceModifier: 02CD7D:Triumvirate - Mage Archetypes.esp
+Sound1: 00A080:Triumvirate - Mage Archetypes.esp
+Sound2: 08196F:Skyrim.esm
+Force: 32
+Radius: 50
+ISRadius: 150
+VerticalOffsetMult: 0.9
+Flags:
+- 0x1
+- AlwaysUsesWorldOrientation
+- IgnoreImageSpaceSwap

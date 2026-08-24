@@ -1,0 +1,10 @@
+FormKey: 14F4DC:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_MagInv_Primal
+ObjectBounds:
+  First: -149, -251, -140
+  Second: 160, 251, 227
+Model:
+  File: DruidAccessories\MagInv_Primal.nif
+  Data: 0x020000000000000000000000
+MaxAngle: 90
+Unused: 0x000000

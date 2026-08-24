@@ -1,0 +1,14 @@
+FormKey: 1B49AC:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Balefire_Explosion_WitchBolt
+Model:
+  File: Triumvirate\Balefire_Explosion.nif
+  Data: 0x020000000000000000000000
+Sound1: 000D6D:Triumvirate - Mage Archetypes.esp
+Sound2: 08196F:Skyrim.esm
+Force: 32
+Radius: 64
+VerticalOffsetMult: 0.9
+Flags:
+- 0x1
+- AlwaysUsesWorldOrientation
+- IgnoreImageSpaceSwap

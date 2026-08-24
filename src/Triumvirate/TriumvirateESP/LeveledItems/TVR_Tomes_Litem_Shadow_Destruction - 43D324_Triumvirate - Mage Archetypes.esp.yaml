@@ -1,0 +1,25 @@
+FormKey: 43D324:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Tomes_Litem_Shadow_Destruction
+Flags:
+- UseAll
+Entries:
+- Data:
+    Level: 1
+    Reference: 4381E2:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4381E5:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4381E8:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4381EB:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4381EE:Triumvirate - Mage Archetypes.esp
+    Count: 1

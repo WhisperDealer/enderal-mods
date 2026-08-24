@@ -1,0 +1,11 @@
+FormKey: 438203:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Tomes_Litem_Cleric_100_Destruction
+ChanceNone: 1
+Flags:
+- UseAll
+Global: 0F258C:Skyrim.esm
+Entries:
+- Data:
+    Level: 1
+    Reference: 41EC70:Triumvirate - Mage Archetypes.esp
+    Count: 1

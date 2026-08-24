@@ -1,0 +1,10 @@
+FormKey: 1D3004:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Ancestors_Art_IronMaiden
+ObjectBounds:
+  First: -78, -63, -99
+  Second: 79, 63, 119
+Model:
+  File: Triumvirate\Ancestors_Art_IronMaiden.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

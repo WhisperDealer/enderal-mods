@@ -1,0 +1,22 @@
+SpriggitSource:
+  PackageName: Spriggit.Yaml.Skyrim
+  Version: 0.40
+ModKey: Triumvirate - Mage Archetypes.esp
+GameRelease: EnderalSE
+ModHeader:
+  Stats:
+    Version: 1.7
+  Author: Enai Siaion (& Mihail)
+  Description: Adds 75 spells, divided among 5 archetypes (druid, shadow mage, warlock, cleric, shaman), immersively integrated into the game.{{BASH:Delev,Relev,Invent,Names,Stats}}
+  MasterReferences:
+  - Master: Skyrim.esm
+    FileSize: 0
+  - Master: Update.esm
+    FileSize: 0
+  - Master: Dawnguard.esm
+    FileSize: 0
+  - Master: HearthFires.esm
+    FileSize: 0
+  - Master: Dragonborn.esm
+    FileSize: 0
+  INTV: 1

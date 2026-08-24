@@ -1,0 +1,58 @@
+FormKey: 38BCFF:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shadow_Shadows_Effect_Nightfall
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_CastAllTheThings_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: TVR_Spells
+      Objects:
+      - Name: ''
+        Object: 381AF8:Triumvirate - Mage Archetypes.esp
+      - Name: ''
+        Object: 30818A:Triumvirate - Mage Archetypes.esp
+      - Name: ''
+        Object: 330A43:Triumvirate - Mage Archetypes.esp
+      - Name: ''
+        Object: 31C5C1:Triumvirate - Mage Archetypes.esp
+      - Name: ''
+        Object: 3727BF:Triumvirate - Mage Archetypes.esp
+Name:
+  TargetLanguage: English
+  Value: Nightfall
+MenuDisplayObject: 381AEB:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 0806E1:Skyrim.esm
+- 0A9B1E:Skyrim.esm
+- 31C5B7:Triumvirate - Mage Archetypes.esp
+Flags:
+- NoArea
+- FXPersist
+- PowerAffectsDuration
+BaseCost: 3
+MagicSkill: Illusion
+CastingLight: 3727BD:Triumvirate - Mage Archetypes.esp
+MinimumSkillLevel: 100
+SpellmakingCastingTime: 3
+Archetype:
+  MutagenObjectType: MagicEffectLightArchetype
+  Association: 38BD02:Triumvirate - Mage Archetypes.esp
+CastType: FireAndForget
+CastingArt: 381AEC:Triumvirate - Mage Archetypes.esp
+HitEffectArt: 395F0C:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 0.5
+DualCastScale: 1
+EquipAbility: 381AEF:Triumvirate - Mage Archetypes.esp
+ImageSpaceModifier: 330A37:Triumvirate - Mage Archetypes.esp
+CastingSoundLevel: Normal
+Sounds:
+- Sound: 07BBAB:Skyrim.esm
+- Type: Charge
+  Sound: 087588:Skyrim.esm
+- Type: Ready
+  Sound: 07C720:Skyrim.esm
+- Type: Release
+  Sound: 025D9B:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: A pool of darkness follows the caster for <dur> seconds, and the caster gains all known Shadow Mage buffs.

@@ -1,0 +1,10 @@
+FormKey: 35E37F:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Totem_Light_Hand
+Time: -1
+Radius: 25
+Color: '#009FCFEC'
+FalloffExponent: 1
+FOV: 90
+NearClip: 1
+FlickerPeriod: 1
+FadeValue: 1

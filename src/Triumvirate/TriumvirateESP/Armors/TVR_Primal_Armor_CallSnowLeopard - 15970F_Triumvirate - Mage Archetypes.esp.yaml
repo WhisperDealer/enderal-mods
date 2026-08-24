@@ -1,0 +1,21 @@
+FormKey: 15970F:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 4
+EditorID: TVR_Primal_Armor_CallSnowLeopard
+SkyrimMajorRecordFlags:
+- NotPlayable
+Name:
+  TargetLanguage: English
+  Value: Snow Leopard
+BodyTemplate:
+  FirstPersonFlags:
+  - Body
+  ArmorType: Clothing
+  ActsLike44: True
+Race: 000804:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: ''
+Armature:
+- 159712:Triumvirate - Mage Archetypes.esp
+MajorFlags:
+- NonPlayable

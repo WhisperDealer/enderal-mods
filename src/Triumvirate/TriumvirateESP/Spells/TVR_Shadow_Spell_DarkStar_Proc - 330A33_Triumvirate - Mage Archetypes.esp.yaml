@@ -1,0 +1,21 @@
+FormKey: 330A33:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shadow_Spell_DarkStar_Proc
+Name:
+  TargetLanguage: English
+  Value: Dark Star
+MenuDisplayObject: 2FDF71:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 295
+Flags:
+- AreaEffectIgnoresLOS
+ChargeTime: 0.5
+CastType: FireAndForget
+HalfCostPerk: 0C44C2:Skyrim.esm
+Effects:
+- BaseEffect: 330A32:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 50
+    Area: 30

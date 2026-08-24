@@ -1,0 +1,16 @@
+FormKey: 214DC2:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Holy_Explosion_Supernova
+Model:
+  File: ApocNew\RestorationHeal_Explosion_DefyDeath.nif
+  Data: 0x020000000000000000000000
+ImageSpaceModifier: 02F66B:Triumvirate - Mage Archetypes.esp
+Sound1: 1168F1:Triumvirate - Mage Archetypes.esp
+PlacedObject: 214DC3:Triumvirate - Mage Archetypes.esp
+Radius: 256
+ISRadius: 512
+Flags:
+- 0x1
+- IgnoreLosCheck
+- IgnoreImageSpaceSwap
+- NoControllerVibration
+SoundLevel: Normal

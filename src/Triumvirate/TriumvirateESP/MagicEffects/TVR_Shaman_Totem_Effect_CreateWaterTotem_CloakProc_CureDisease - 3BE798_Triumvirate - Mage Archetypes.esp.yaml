@@ -1,0 +1,36 @@
+FormKey: 3BE798:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Totem_Effect_CreateWaterTotem_CloakProc_CureDisease
+Name:
+  TargetLanguage: English
+  Value: Cure Disease
+MenuDisplayObject: 35E370:Triumvirate - Mage Archetypes.esp
+Flags:
+- NoArea
+- FXPersist
+- HideInUI
+- PowerAffectsMagnitude
+TaperWeight: 1
+SpellmakingCastingTime: 0.5
+TaperCurve: 1
+TaperDuration: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: CureDisease
+Projectile: 012FCF:Skyrim.esm
+CastType: Concentration
+TargetType: Aimed
+HitEffectArt: 04E223:Skyrim.esm
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsHostileToActorConditionData
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDiseaseConditionData
+  ComparisonValue: 1

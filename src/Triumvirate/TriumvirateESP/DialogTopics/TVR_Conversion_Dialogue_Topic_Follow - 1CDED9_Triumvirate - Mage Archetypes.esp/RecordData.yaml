@@ -1,0 +1,9 @@
+FormKey: 1CDED9:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Conversion_Dialogue_Topic_Follow
+Name:
+  TargetLanguage: English
+  Value: Follow me.
+Priority: 95
+Branch: 1CDED8:Triumvirate - Mage Archetypes.esp
+Quest: 1CDEC9:Triumvirate - Mage Archetypes.esp
+SubtypeName: CUST

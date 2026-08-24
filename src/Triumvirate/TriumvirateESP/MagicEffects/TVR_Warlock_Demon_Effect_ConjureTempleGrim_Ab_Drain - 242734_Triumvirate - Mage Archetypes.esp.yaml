@@ -1,0 +1,23 @@
+FormKey: 242734:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_Demon_Effect_ConjureTempleGrim_Ab_Drain
+Name:
+  TargetLanguage: English
+  Value: Damage Magicka
+MenuDisplayObject: 1C3CBA:Triumvirate - Mage Archetypes.esp
+Flags:
+- Detrimental
+- NoHitEvent
+- NoDuration
+- NoArea
+- Painless
+- NoHitEffect
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Magicka
+DualCastScale: 1.1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

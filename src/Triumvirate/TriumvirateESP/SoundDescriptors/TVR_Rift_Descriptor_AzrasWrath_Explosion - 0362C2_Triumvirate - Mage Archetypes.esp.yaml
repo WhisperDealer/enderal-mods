@@ -1,0 +1,12 @@
+FormKey: 0362C2:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Rift_Descriptor_AzrasWrath_Explosion
+Type: Standard
+Category: 01A0BD:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\NPC\AtronachFlame\DeathExplosion\NPC_AtronachFlame_DeathExplosion2D.wav
+OutputModel: 0B4246:Skyrim.esm
+LoopAndRumble: {}
+PercentFrequencyShift: 80
+PercentFrequencyVariance: 10
+Priority: 128
+StaticAttenuation: 6.17

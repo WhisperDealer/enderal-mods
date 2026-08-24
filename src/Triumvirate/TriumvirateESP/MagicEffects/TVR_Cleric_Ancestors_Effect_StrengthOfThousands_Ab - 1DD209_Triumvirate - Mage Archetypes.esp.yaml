@@ -1,0 +1,35 @@
+FormKey: 1DD209:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Cleric_Ancestors_Effect_StrengthOfThousands_Ab
+VirtualMachineAdapter:
+  Scripts:
+  - Name: magicSetActorAlphaScript
+    Properties:
+    - MutagenObjectType: ScriptFloatProperty
+      Name: AlphaValue
+      Data: 0.25
+    - MutagenObjectType: ScriptBoolProperty
+      Name: DontFadeBack
+      Data: True
+  - Name: TVR_PlayEffect_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Effect
+      Object: 1D2FFF:Triumvirate - Mage Archetypes.esp
+Name:
+  TargetLanguage: English
+  Value: Illusion Visuals
+MenuDisplayObject: 1D2FF8:Triumvirate - Mage Archetypes.esp
+Flags:
+- NoHitEvent
+- NoDuration
+- FXPersist
+HitShader: 07BD55:Triumvirate - Mage Archetypes.esp
+EnchantShader: 07BD55:Triumvirate - Mage Archetypes.esp
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+DualCastScale: 1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

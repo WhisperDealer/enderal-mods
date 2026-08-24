@@ -1,0 +1,21 @@
+FormKey: 005913:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Demon_Addon_ConjureOathbreaker
+BodyTemplate:
+  FirstPersonFlags:
+  - Body
+  - Hands
+  ArmorType: Clothing
+  ActsLike44: True
+Race: 005901:Triumvirate - Mage Archetypes.esp
+Priority:
+  Male: 0
+  Female: 0
+WeightSliderEnabled:
+  Male: False
+  Female: False
+Unknown2: 22
+WorldModel:
+  Female:
+    File: Triumvirate\Demon_Actor_Oathbreaker4.nif
+    Data: 0x020000000000000000000000
+FootstepSound: 01AEBD:Skyrim.esm

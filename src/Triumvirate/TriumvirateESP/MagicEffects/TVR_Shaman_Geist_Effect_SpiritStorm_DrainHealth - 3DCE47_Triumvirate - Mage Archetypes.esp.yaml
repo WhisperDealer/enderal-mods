@@ -1,0 +1,58 @@
+FormKey: 3DCE47:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Geist_Effect_SpiritStorm_DrainHealth
+Name:
+  TargetLanguage: English
+  Value: Damage Health
+MenuDisplayObject: 3DCE41:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 3DCE48:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Detrimental
+- NoArea
+- FXPersist
+- PowerAffectsMagnitude
+BaseCost: 0.35
+MagicSkill: Restoration
+ResistValue: ResistMagic
+CastingLight: 3DCE43:Triumvirate - Mage Archetypes.esp
+TaperWeight: 1
+MinimumSkillLevel: 75
+SpellmakingCastingTime: 0.5
+TaperCurve: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+Projectile: 3DCE42:Triumvirate - Mage Archetypes.esp
+CastType: Concentration
+TargetType: Aimed
+CastingArt: 3DCE40:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 0.9
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds:
+- Sound: 03E957:Skyrim.esm
+- Type: Charge
+  Sound: 086EFC:Skyrim.esm
+- Type: Ready
+  Sound: 03F363:Skyrim.esm
+- Type: Release
+  Sound: 116E56:Triumvirate - Mage Archetypes.esp
+- Type: ConcentrationCastLoop
+  Sound: 02F66C:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: When both are depleted, drains Health instead.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThan
+  Data:
+    MutagenObjectType: GetActorValueConditionData
+    ActorValue: Magicka
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThan
+  Data:
+    MutagenObjectType: GetActorValueConditionData
+    ActorValue: Stamina
+  ComparisonValue: 1

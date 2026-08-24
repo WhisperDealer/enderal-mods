@@ -1,0 +1,7 @@
+FormKey: 3A5249:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Elemental_Art_ControlFlames_Target
+Model:
+  File: Triumvirate\Elemental_Art_AbsorbTarget.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

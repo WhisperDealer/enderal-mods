@@ -1,0 +1,22 @@
+FormKey: 3DCE42:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Geist_Projectile
+ObjectBounds:
+  First: -205, -202, -104
+  Second: 205, 232, 19
+Model:
+  File: Triumvirate\Geist_Projectile.nif
+  Data: 0x020000000000000000000000
+Flags:
+- PassThroughSmallTransparent
+Type: Cone
+Speed: 512
+Range: 2560
+Light: 3DCE44:Triumvirate - Mage Archetypes.esp
+Sound: 3CDAEB:Triumvirate - Mage Archetypes.esp
+FadeDuration: 8
+ImpactForce: 0.5
+ConeSpread: 9.8
+CollisionRadius: 10
+RelaunchInterval: 0.2
+MuzzleFlashModel: ''
+SoundLevel: 1

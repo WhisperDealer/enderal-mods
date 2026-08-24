@@ -1,0 +1,49 @@
+FormKey: 270093:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Primal_Effect_CallWolf_Proc
+Name:
+  TargetLanguage: English
+  Value: Bleed Damage
+MenuDisplayObject: 1C3CBA:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Detrimental
+- NoArea
+- FXPersist
+- NoRecast
+- NoDeathDispel
+TaperWeight: 1
+HitShader: 24C950:Triumvirate - Mage Archetypes.esp
+SpellmakingCastingTime: 0.5
+TaperCurve: 1
+TaperDuration: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+CastType: FireAndForget
+TargetType: Touch
+DualCastScale: 1.1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Deals <mag> bleed damage to a target below <Global=TVR_Primal_Global_CallWolf_ExecutePct>% Health for <dur> seconds.
+Conditions:
+- MutagenObjectType: ConditionGlobal
+  CompareOperator: LessThan
+  Data:
+    MutagenObjectType: GetActorValuePercentConditionData
+    ActorValue: Health
+  ComparisonValue: 270095:Triumvirate - Mage Archetypes.esp
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 013798:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 013794:Skyrim.esm
+  ComparisonValue: 1

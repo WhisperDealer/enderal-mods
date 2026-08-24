@@ -1,0 +1,87 @@
+FormKey: 3727D0:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shadow_Possess_Effect_Possession_Turn_Rally
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_Control_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MagicCharmFaction
+      Object: 08F3E8:Skyrim.esm
+    - MutagenObjectType: ScriptBoolProperty
+      Name: TVR_Ghost
+      Data: True
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Possess_Marker_Control
+      Object: 3778DB:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptBoolProperty
+      Name: TVR_Teammate
+      Data: True
+Name:
+  TargetLanguage: English
+  Value: Unchained
+MenuDisplayObject: 1E741E:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 3778D6:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Recover
+- DispelWithKeywords
+- NoArea
+- FXPersist
+- HideInUI
+- PowerAffectsMagnitude
+- PowerAffectsDuration
+- NoDeathDispel
+MagicSkill: Illusion
+CastingLight: 3A524D:Triumvirate - Mage Archetypes.esp
+HitShader: 3A524C:Triumvirate - Mage Archetypes.esp
+MinimumSkillLevel: 75
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Confidence
+  Type: Rally
+Projectile: 3A524E:Triumvirate - Mage Archetypes.esp
+CastType: FireAndForget
+TargetType: Aimed
+CastingArt: 1E741F:Triumvirate - Mage Archetypes.esp
+HitEffectArt: 3778D8:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds:
+- Sound: 03F37A:Skyrim.esm
+- Type: Charge
+  Sound: 086EFC:Skyrim.esm
+- Type: Ready
+  Sound: 0FDA52:Skyrim.esm
+- Type: Release
+  Sound: 116E54:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    RunOnType: Target
+    Object: 000007:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsCommandedActorConditionData
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 01397A:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 035D59:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 0D205E:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 01269F:Dawnguard.esm

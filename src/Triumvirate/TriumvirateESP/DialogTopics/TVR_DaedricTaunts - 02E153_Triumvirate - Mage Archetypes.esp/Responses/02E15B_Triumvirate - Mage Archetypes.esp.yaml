@@ -1,0 +1,18 @@
+FormKey: 02E15B:Triumvirate - Mage Archetypes.esp
+Flags:
+  Flags:
+  - Random
+PreviousDialog: 02E158:Triumvirate - Mage Archetypes.esp
+FavorLevel: None
+Responses:
+- EmotionValue: 50
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Flags:
+  - UseEmotionAnimation
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am the Death itself, and I have come for you, child!
+  ScriptNotes: ''
+  Edits: ''

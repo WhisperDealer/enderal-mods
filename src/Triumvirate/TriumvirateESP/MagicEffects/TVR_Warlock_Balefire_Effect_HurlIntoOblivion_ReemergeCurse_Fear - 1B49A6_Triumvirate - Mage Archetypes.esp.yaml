@@ -1,0 +1,26 @@
+FormKey: 1B49A6:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_Balefire_Effect_HurlIntoOblivion_ReemergeCurse_Fear
+Name:
+  TargetLanguage: English
+  Value: Calm All
+MenuDisplayObject: 19B45E:Triumvirate - Mage Archetypes.esp
+Flags:
+- Recover
+- NoArea
+- FXPersist
+- HideInUI
+- PowerAffectsMagnitude
+TaperWeight: 1
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Confidence
+  Type: Demoralize
+CastType: FireAndForget
+TargetType: Touch
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

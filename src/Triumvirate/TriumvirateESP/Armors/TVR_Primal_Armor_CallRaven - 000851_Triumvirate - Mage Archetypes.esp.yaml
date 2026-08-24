@@ -1,0 +1,21 @@
+FormKey: 000851:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 4
+EditorID: TVR_Primal_Armor_CallRaven
+SkyrimMajorRecordFlags:
+- NotPlayable
+Name:
+  TargetLanguage: English
+  Value: Crow
+BodyTemplate:
+  FirstPersonFlags:
+  - Body
+  ArmorType: Clothing
+  ActsLike44: True
+Race: 00084F:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: ''
+Armature:
+- 000850:Triumvirate - Mage Archetypes.esp
+MajorFlags:
+- NonPlayable

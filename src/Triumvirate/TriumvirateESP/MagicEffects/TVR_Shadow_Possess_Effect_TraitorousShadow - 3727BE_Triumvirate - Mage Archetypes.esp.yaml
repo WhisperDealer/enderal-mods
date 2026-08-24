@@ -1,0 +1,95 @@
+FormKey: 3727BE:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shadow_Possess_Effect_TraitorousShadow
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_Shadow_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MagicAllegianceFaction
+      Object: 09E0C9:Skyrim.esm
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_DistanceInFront
+      Data: -96
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_GhostSpell
+      Object: 3727CA:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptIntProperty
+      Name: TVR_LevelMod
+      Data: 4
+    - MutagenObjectType: ScriptBoolProperty
+      Name: TVR_Teammate
+      Data: True
+Name:
+  TargetLanguage: English
+  Value: Traitorous Shadow
+MenuDisplayObject: 3727BB:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 38BD01:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Recover
+- NoDuration
+- NoArea
+- PowerAffectsMagnitude
+BaseCost: 4.5
+MagicSkill: Illusion
+CastingLight: 3727BD:Triumvirate - Mage Archetypes.esp
+MinimumSkillLevel: 75
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Confidence
+  Type: Rally
+Projectile: 30D2A0:Triumvirate - Mage Archetypes.esp
+CastType: FireAndForget
+TargetType: Aimed
+CastingArt: 3727BC:Triumvirate - Mage Archetypes.esp
+HitEffectArt: 386BFE:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 1
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds:
+- Sound: 07BBAB:Skyrim.esm
+- Type: Charge
+  Sound: 06F6D3:Skyrim.esm
+- Type: Ready
+  Sound: 07C720:Skyrim.esm
+- Type: Release
+  Sound: 116E54:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: Target up to level <mag> is attacked by its own shadow. It vanishes after attacking for <200>% more damage.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    RunOnType: Target
+    Object: 000007:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsCommandedActorConditionData
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 01397A:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasPerkConditionData
+    RunOnType: Target
+    Perk: 059B76:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 035D59:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 0D205E:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 01269F:Dawnguard.esm

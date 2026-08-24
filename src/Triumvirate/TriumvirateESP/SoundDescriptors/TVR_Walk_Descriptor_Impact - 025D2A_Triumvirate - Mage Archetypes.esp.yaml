@@ -1,0 +1,15 @@
+FormKey: 025D2A:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Walk_Descriptor_Impact
+Type: Standard
+Category: 0172A1:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\VOC\Shout\Impact\Disarm\VOC_Shout_Impact_Disarm_01.wav
+- Data\Sound\FX\VOC\Shout\Impact\Disarm\VOC_Shout_Impact_Disarm_02.wav
+- Data\Sound\FX\VOC\Shout\Impact\Disarm\VOC_Shout_Impact_Disarm_03.wav
+OutputModel: 0E32BF:Skyrim.esm
+LoopAndRumble: {}
+PercentFrequencyShift: -20
+PercentFrequencyVariance: 10
+Priority: 88
+Variance: 2
+StaticAttenuation: 3.52

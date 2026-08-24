@@ -1,0 +1,10 @@
+FormKey: 19B45E:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_MagInv_Balefire
+ObjectBounds:
+  First: -37, -29, -12
+  Second: 37, 42, 24
+Model:
+  File: Triumvirate\Balefire_Maginv.nif
+  Data: 0x020000000000000000000000
+MaxAngle: 90
+Unused: 0x000000

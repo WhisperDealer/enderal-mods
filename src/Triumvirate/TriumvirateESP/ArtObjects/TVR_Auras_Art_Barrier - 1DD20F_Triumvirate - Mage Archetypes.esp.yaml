@@ -1,0 +1,10 @@
+FormKey: 1DD20F:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Auras_Art_Barrier
+ObjectBounds:
+  First: -74, -74, -89
+  Second: 74, 74, 99
+Model:
+  File: Triumvirate\Auras_Art_Barrier.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

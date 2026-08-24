@@ -1,0 +1,151 @@
+FormKey: 2E99EB:Triumvirate - Mage Archetypes.esp
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
+EditorID: TVR_Cell
+SkyrimMajorRecordFlags:
+- Compressed
+Name:
+  TargetLanguage: English
+  Value: Marker Storage Unit
+Flags:
+- IsInteriorCell
+- PublicArea
+Lighting:
+  AmbientColor: '#00808080'
+  DirectionalColor: '#00000000'
+  FogNearColor: '#00000000'
+  FogPower: 1
+  AmbientColors:
+    DirectionalXPlus: '#008D8086'
+    DirectionalXMinus: '#0073807A'
+    DirectionalYPlus: '#00808680'
+    DirectionalYMinus: '#00807A80'
+    DirectionalZPlus: '#003D3D3A'
+    DirectionalZMinus: '#00C3C3C6'
+    Specular: '#00000000'
+    Scale: 1
+  FogFarColor: '#00000000'
+  FogMax: 1
+  Inherits:
+  - AmbientColor
+  - DirectionalColor
+  - FogColor
+  - FogNear
+  - FogFar
+  - ClipDistance
+WaterHeight: 0
+Persistent:
+- MutagenObjectType: PlacedObject
+  FormKey: 2E99F7:Triumvirate - Mage Archetypes.esp
+  MajorRecordFlagsRaw: 1073742848
+  SkyrimMajorRecordFlags:
+  - 0x400
+  - 0x40000000
+  Base: 025EAE:Triumvirate - Mage Archetypes.esp
+  LinkedReferences:
+  - Reference: 2E99F8:Triumvirate - Mage Archetypes.esp
+  Placement: {}
+- MutagenObjectType: PlacedObject
+  FormKey: 2E99F8:Triumvirate - Mage Archetypes.esp
+  MajorRecordFlagsRaw: 1073742848
+  SkyrimMajorRecordFlags:
+  - 0x400
+  - 0x40000000
+  Base: 025EAD:Triumvirate - Mage Archetypes.esp
+  LinkedReferences:
+  - Reference: 2E99F7:Triumvirate - Mage Archetypes.esp
+  Placement:
+    Position: 192, 0, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 3C38BC:Triumvirate - Mage Archetypes.esp
+  MajorRecordFlagsRaw: 1073742848
+  SkyrimMajorRecordFlags:
+  - 0x400
+  - 0x40000000
+  Base: 3C38BB:Triumvirate - Mage Archetypes.esp
+  Placement:
+    Position: 64, 0, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 3C38C0:Triumvirate - Mage Archetypes.esp
+  MajorRecordFlagsRaw: 1073742848
+  EditorID: TVR_Origin
+  SkyrimMajorRecordFlags:
+  - 0x400
+  - 0x40000000
+  Base: 0B79FF:Skyrim.esm
+  Placement:
+    Position: 171.89645, -749.2466, 316.20944
+- MutagenObjectType: PlacedObject
+  FormKey: 43D32D:Triumvirate - Mage Archetypes.esp
+  MajorRecordFlagsRaw: 1024
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 43D32C:Triumvirate - Mage Archetypes.esp
+  Placement:
+    Position: 0, -0, 256
+- MutagenObjectType: PlacedObject
+  FormKey: 43D330:Triumvirate - Mage Archetypes.esp
+  MajorRecordFlagsRaw: 1024
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 43D32F:Triumvirate - Mage Archetypes.esp
+  Placement:
+    Position: 0, -208, 256
+- MutagenObjectType: PlacedObject
+  FormKey: 442433:Triumvirate - Mage Archetypes.esp
+  MajorRecordFlagsRaw: 1024
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 442432:Triumvirate - Mage Archetypes.esp
+  Placement:
+    Position: -128, 0, 256
+- MutagenObjectType: PlacedObject
+  FormKey: 442437:Triumvirate - Mage Archetypes.esp
+  MajorRecordFlagsRaw: 1024
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 442436:Triumvirate - Mage Archetypes.esp
+  Placement:
+    Position: -256, 0, 256
+- MutagenObjectType: PlacedObject
+  FormKey: 44243A:Triumvirate - Mage Archetypes.esp
+  MajorRecordFlagsRaw: 1024
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 442439:Triumvirate - Mage Archetypes.esp
+  Placement:
+    Position: 0, 64, 256
+- MutagenObjectType: PlacedObject
+  FormKey: 44243D:Triumvirate - Mage Archetypes.esp
+  MajorRecordFlagsRaw: 1024
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 44243C:Triumvirate - Mage Archetypes.esp
+  Placement:
+    Position: -384, 0, 256
+- MutagenObjectType: PlacedObject
+  FormKey: 442443:Triumvirate - Mage Archetypes.esp
+  MajorRecordFlagsRaw: 1024
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 442442:Triumvirate - Mage Archetypes.esp
+  Placement:
+    Position: -128, -208, 256
+- MutagenObjectType: PlacedObject
+  FormKey: 442445:Triumvirate - Mage Archetypes.esp
+  MajorRecordFlagsRaw: 1024
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 0A3F02:Skyrim.esm
+  Placement:
+    Position: -256, -208, 256
+- MutagenObjectType: PlacedObject
+  FormKey: 442448:Triumvirate - Mage Archetypes.esp
+  MajorRecordFlagsRaw: 1024
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 442446:Triumvirate - Mage Archetypes.esp
+  Placement:
+    Position: -128, 64, 256
+MajorFlags:
+- 0x40000

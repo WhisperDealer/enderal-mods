@@ -1,0 +1,18 @@
+FormKey: 3AF451:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Senua_Descriptor_CrowCall
+Type: Standard
+Category: 07F80B:Skyrim.esm
+SoundFiles:
+- data\Sound\fx\Triumvirate - Mage Archetypes.esp\CrowCall.wav
+OutputModel: 01333C:Dawnguard.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  CompareOperator: NotEqualTo
+  Data:
+    MutagenObjectType: GetSleepingConditionData
+  ComparisonValue: 3
+LoopAndRumble:
+  Unknown: 2
+PercentFrequencyVariance: 20
+Priority: 128
+StaticAttenuation: 13.22

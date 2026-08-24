@@ -1,0 +1,9 @@
+FormKey: 4381F8:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Tomes_Litem_Warlock_025_Destruction
+Flags:
+- UseAll
+Entries:
+- Data:
+    Level: 1
+    Reference: 419B54:Triumvirate - Mage Archetypes.esp
+    Count: 1

@@ -1,0 +1,51 @@
+FormKey: 308190:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shadow_Spell_ShadowDance_Proc
+Name:
+  TargetLanguage: English
+  Value: Shadow Dancing
+MenuDisplayObject: 2FDF85:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 248
+ChargeTime: 0.5
+CastType: FireAndForget
+HalfCostPerk: 0C44B8:Skyrim.esm
+Effects:
+- BaseEffect: 30818C:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 10
+- BaseEffect: 30818D:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 10
+- BaseEffect: 30818E:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 10
+- BaseEffect: 30818F:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 10
+- BaseEffect: 30D293:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 10
+- BaseEffect: 30D294:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 10
+- BaseEffect: 30D295:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 10
+- BaseEffect: 30D296:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 10
+- BaseEffect: 30D297:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 10
+- BaseEffect: 30D298:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 10
+- BaseEffect: 30D299:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 10
+- BaseEffect: 30D29A:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 10

@@ -1,0 +1,6 @@
+FormKey: 3A0140:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Elemental_VFX_Absorb_Target
+EffectArt: 3A5249:Triumvirate - Mage Archetypes.esp
+Shader: 3A5244:Triumvirate - Mage Archetypes.esp
+Flags:
+- RotateToFaceTarget

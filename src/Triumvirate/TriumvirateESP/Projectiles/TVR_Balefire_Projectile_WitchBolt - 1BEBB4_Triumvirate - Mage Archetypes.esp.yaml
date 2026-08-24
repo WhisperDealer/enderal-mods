@@ -1,0 +1,23 @@
+FormKey: 1BEBB4:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Balefire_Projectile_WitchBolt
+ObjectBounds:
+  First: -26, -37, -27
+  Second: 27, 542, 9
+Model:
+  File: Triumvirate\Balefire_Projectile_Immolation.nif
+  Data: 0x020000000000000000000000
+Flags:
+- Explosion
+- PassThroughSmallTransparent
+Type: Beam
+Speed: 20000
+Range: 2048
+Explosion: 1B49AC:Triumvirate - Mage Archetypes.esp
+Sound: 1BEBB5:Triumvirate - Mage Archetypes.esp
+FadeDuration: 0.4
+ImpactForce: 7
+ConeSpread: 9.8
+CollisionRadius: 10
+Lifetime: 0.25
+RelaunchInterval: 0.1
+MuzzleFlashModel: ''

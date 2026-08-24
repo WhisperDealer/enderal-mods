@@ -1,0 +1,28 @@
+FormKey: 40F8EA:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Veil_Addon_Farsight
+BodyTemplate:
+  FirstPersonFlags:
+  - Head
+  - Body
+  - Hands
+  - Feet
+  - Tail
+  ArmorType: Clothing
+  ActsLike44: True
+Race: 013743:Skyrim.esm
+Priority:
+  Male: 0
+  Female: 0
+WeightSliderEnabled:
+  Male: False
+  Female: False
+Unknown2: 24
+WorldModel:
+  Male:
+    File: Triumvirate\Veil_Static_Farsight.nif
+    Data: 0x020000000000000000000000
+  Female:
+    File: Triumvirate\Veil_Static_Farsight.nif
+    Data: 0x020000000000000000000000
+AdditionalRaces:
+- 35E36B:Triumvirate - Mage Archetypes.esp

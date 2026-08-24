@@ -1,0 +1,22 @@
+FormKey: 3B4569:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Spell_FylgjaWind_Subspell_Crystalize
+Name:
+  TargetLanguage: English
+  Value: Crystalize
+MenuDisplayObject: 35E370:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 186
+Flags:
+- AreaEffectIgnoresLOS
+ChargeTime: 0.5
+CastType: FireAndForget
+HalfCostPerk: 0C44BF:Skyrim.esm
+Effects:
+- BaseEffect: 3B456E:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 0.3
+    Area: 10
+    Duration: 5

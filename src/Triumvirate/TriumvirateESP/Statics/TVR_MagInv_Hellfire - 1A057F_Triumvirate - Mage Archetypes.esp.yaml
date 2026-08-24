@@ -1,0 +1,10 @@
+FormKey: 1A057F:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_MagInv_Hellfire
+ObjectBounds:
+  First: -37, -29, -10
+  Second: 37, 42, 4
+Model:
+  File: Triumvirate\Hellfire_Maginv.nif
+  Data: 0x020000000000000000000000
+MaxAngle: 90
+Unused: 0x000000

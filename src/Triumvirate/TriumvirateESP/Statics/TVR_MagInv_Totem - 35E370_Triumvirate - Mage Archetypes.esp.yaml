@@ -1,0 +1,10 @@
+FormKey: 35E370:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_MagInv_Totem
+ObjectBounds:
+  First: -21, -21, -6
+  Second: 22, 22, 6
+Model:
+  File: Triumvirate\ConjurationBanshee_Inv.nif
+  Data: 0x020000000000000000000000
+MaxAngle: 90
+Unused: 0x000000

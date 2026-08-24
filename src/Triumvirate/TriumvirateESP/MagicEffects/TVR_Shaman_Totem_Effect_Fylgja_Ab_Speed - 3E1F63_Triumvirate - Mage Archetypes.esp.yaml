@@ -1,0 +1,29 @@
+FormKey: 3E1F63:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Totem_Effect_Fylgja_Ab_Speed
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_CarryWeight_Script
+    Properties:
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_CarryWeight
+      Data: 0.01
+Name:
+  TargetLanguage: English
+  Value: Fylgja Speed
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- Recover
+- NoHitEvent
+- NoDuration
+- NoArea
+- HideInUI
+- NoHitEffect
+Archetype:
+  MutagenObjectType: MagicEffectPeakValueModArchetype
+  ActorValue: SpeedMult
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

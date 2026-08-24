@@ -1,0 +1,10 @@
+FormKey: 3DCE41:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_MagInv_Geist
+ObjectBounds:
+  First: -205, -202, -104
+  Second: 205, 232, 19
+Model:
+  File: Triumvirate\Geist_Inv.nif
+  Data: 0x020000000000000000000000
+MaxAngle: 90
+Unused: 0x000000

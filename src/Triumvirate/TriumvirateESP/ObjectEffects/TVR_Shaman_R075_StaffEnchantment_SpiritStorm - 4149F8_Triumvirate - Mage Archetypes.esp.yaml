@@ -1,0 +1,20 @@
+FormKey: 4149F8:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_R075_StaffEnchantment_SpiritStorm
+Name:
+  TargetLanguage: English
+  Value: Spirit Storm
+EnchantmentCost: 54
+CastType: Concentration
+EnchantmentAmount: 54
+TargetType: Aimed
+EnchantType: StaffEnchantment
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 3C89DC:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 60
+    Duration: 1
+- BaseEffect: 3DCE47:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 60
+    Duration: 1

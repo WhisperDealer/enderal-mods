@@ -1,0 +1,19 @@
+FormKey: 4056DC:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 67108864
+EditorID: TVR_Veil_Activator_Farsight
+SkyrimMajorRecordFlags:
+- 0x4000000
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_Farsight_Activator_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Farsight_Quest
+      Object: 40F8E2:Triumvirate - Mage Archetypes.esp
+Model:
+  File: Effects\FXEmptyObject.nif
+  Data: 0x020000000000000000000000
+MarkerColor: '#00CC4C33'
+Flags: []
+MajorFlags:
+- NavMeshGenerationFilter

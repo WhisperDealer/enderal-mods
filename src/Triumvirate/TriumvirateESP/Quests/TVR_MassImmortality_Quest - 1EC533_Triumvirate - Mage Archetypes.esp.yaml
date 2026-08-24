@@ -1,0 +1,31 @@
+FormKey: 1EC533:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_MassImmortality_Quest
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_FillRefs_Script
+  Versioning:
+  - Break0
+  ExtraBindDataVersion: 0
+  FileName: ''
+Name:
+  TargetLanguage: English
+  Value: Mass Immortality
+Flags:
+- StartGameEnabled
+- 0x10
+- RunOnce
+Priority: 100
+Filter: TVR\
+NextAliasID: 2
+Aliases:
+- Name: TVR_Immortal_00
+  Flags:
+  - Optional
+  - Essential
+  VoiceTypes: Null
+- ID: 1
+  Name: TVR_Immortal_01
+  Flags:
+  - Optional
+  - Essential
+  VoiceTypes: Null

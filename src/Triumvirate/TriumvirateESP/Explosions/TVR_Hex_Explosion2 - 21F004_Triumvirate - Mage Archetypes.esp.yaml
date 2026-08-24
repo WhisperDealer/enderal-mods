@@ -1,0 +1,19 @@
+FormKey: 21F004:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Hex_Explosion2
+ObjectBounds:
+  First: -57, -60, 0
+  Second: 57, 60, 52
+Model:
+  File: Effects\FXEmptyExplosion10sec.nif
+  Data: 0x020000000000000000000000
+ImageSpaceModifier: 083A66:Triumvirate - Mage Archetypes.esp
+Sound1: 02E0CC:Triumvirate - Mage Archetypes.esp
+PlacedObject: 21F005:Triumvirate - Mage Archetypes.esp
+Radius: 128
+ISRadius: 512
+Flags:
+- 0x1
+- IgnoreLosCheck
+- IgnoreImageSpaceSwap
+- NoControllerVibration
+SoundLevel: Normal

@@ -1,0 +1,15 @@
+FormKey: 025D6E:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Rift_Descriptor_DrainHit
+Type: Standard
+Category: 0172A1:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\QST\YngolLightMotes\QST_Yngol_Light_Mote_Bounce_02.wav
+- Data\Sound\FX\QST\YngolLightMotes\QST_Yngol_Light_Mote_Bounce_03.wav
+- Data\Sound\FX\QST\YngolLightMotes\QST_Yngol_Light_Mote_Bounce_04.wav
+- Data\Sound\FX\QST\YngolLightMotes\QST_Yngol_Light_Mote_Bounce_01.wav
+OutputModel: 0D78B4:Skyrim.esm
+LoopAndRumble: {}
+PercentFrequencyShift: 50
+PercentFrequencyVariance: 2
+Priority: 128
+StaticAttenuation: 6.17

@@ -1,0 +1,17 @@
+FormKey: 419B3C:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_I025_StaffEnchantment_Frailty
+Name:
+  TargetLanguage: English
+  Value: Frailty
+EnchantmentCost: 82
+CastType: FireAndForget
+EnchantmentAmount: 82
+TargetType: TargetLocation
+EnchantType: StaffEnchantment
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 224118:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 150
+    Area: 40
+    Duration: 30

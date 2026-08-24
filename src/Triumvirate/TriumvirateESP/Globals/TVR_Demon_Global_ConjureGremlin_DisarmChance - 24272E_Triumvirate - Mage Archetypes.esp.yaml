@@ -1,0 +1,9 @@
+MutagenObjectType: GlobalFloat
+FormKey: 24272E:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 64
+EditorID: TVR_Demon_Global_ConjureGremlin_DisarmChance
+SkyrimMajorRecordFlags:
+- 0x40
+MajorFlags:
+- Constant
+Data: 40

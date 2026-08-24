@@ -1,0 +1,45 @@
+FormKey: 3AF453:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Senua_Effect_RunesHealing_Proc
+VirtualMachineAdapter:
+  Scripts:
+  - Name: magicsoundplayintrooutro
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: IntroSoundFX
+      Object: 3AF452:Triumvirate - Mage Archetypes.esp
+Name:
+  TargetLanguage: English
+  Value: Absorb Health
+MenuDisplayObject: 36D6A8:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 0D5BDF:Skyrim.esm
+- 4005D0:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Detrimental
+- NoArea
+- FXPersist
+- PowerAffectsMagnitude
+BaseCost: 8
+MagicSkill: Restoration
+TaperWeight: 1
+HitShader: 36D6B0:Triumvirate - Mage Archetypes.esp
+MinimumSkillLevel: 50
+SpellmakingCastingTime: 0.5
+TaperCurve: 1
+TaperDuration: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+  Type: Absorb
+Projectile: 012FCF:Skyrim.esm
+CastType: FireAndForget
+TargetType: TargetActor
+HitEffectArt: 36D6B1:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 0.6
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Absorb <mag> points of Health from the target for <dur> seconds.

@@ -1,0 +1,60 @@
+FormKey: 1F675A:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Cleric_Auras_Effect_Aura_2
+Name:
+  TargetLanguage: English
+  Value: 'Aura: Vigor'
+MenuDisplayObject: 1CDEBE:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 1F6761:Triumvirate - Mage Archetypes.esp
+- 01CEB0:Skyrim.esm
+Flags:
+- FXPersist
+- NoRecast
+- PowerAffectsMagnitude
+BaseCost: 1
+MagicSkill: Restoration
+CastingLight: 1EC53A:Triumvirate - Mage Archetypes.esp
+TaperWeight: 1
+MinimumSkillLevel: 50
+SpellmakingArea: 30
+SpellmakingCastingTime: 3
+TaperCurve: 1
+TaperDuration: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+CastType: Concentration
+CastingArt: 1CDEBF:Triumvirate - Mage Archetypes.esp
+HitEffectArt: 1F1654:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 0.5
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds:
+- Sound: 03E957:Skyrim.esm
+- Type: Charge
+  Sound: 0960E9:Skyrim.esm
+- Type: Ready
+  Sound: 03F363:Skyrim.esm
+- Type: Release
+  Sound: 074096:Triumvirate - Mage Archetypes.esp
+- Type: ConcentrationCastLoop
+  Sound: 02F66C:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: Caster and living or undead allies heal <mag> points per second.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsHostileToActorConditionData
+- MutagenObjectType: ConditionFloat
+  CompareOperator: NotEqualTo
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 013797:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: NotEqualTo
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 01397A:Skyrim.esm
+  ComparisonValue: 1

@@ -1,0 +1,17 @@
+FormKey: 02E149:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Demon_Quest_ConjureOathbreaker_Dialogue
+Name:
+  TargetLanguage: English
+  Value: Magister Dialogue
+Flags:
+- StartGameEnabled
+- 0x10
+Priority: 5
+Filter: TVR\
+DialogConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsVoiceTypeConditionData
+    VoiceTypeOrList: 02E156:Triumvirate - Mage Archetypes.esp
+  ComparisonValue: 1
+NextAliasID: 0

@@ -1,0 +1,54 @@
+FormKey: 2BC054:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_Demon_Effect_ConjureLeviathan_Proc_Bleed
+Name:
+  TargetLanguage: English
+  Value: Bleed Damage
+MenuDisplayObject: 1C3CBA:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Detrimental
+- NoArea
+- FXPersist
+- NoRecast
+- NoDeathDispel
+TaperWeight: 1
+HitShader: 24C950:Triumvirate - Mage Archetypes.esp
+SpellmakingCastingTime: 0.5
+TaperCurve: 1
+TaperDuration: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+CastType: FireAndForget
+TargetType: Touch
+DualCastScale: 1.1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Deals <mag> bleed damage.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 013794:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 013798:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 013796:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsUndeadConditionData
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetActorValueConditionData
+    RunOnType: Target
+    ActorValue: EnchantingPowerModifier
+  ComparisonValue: 1337

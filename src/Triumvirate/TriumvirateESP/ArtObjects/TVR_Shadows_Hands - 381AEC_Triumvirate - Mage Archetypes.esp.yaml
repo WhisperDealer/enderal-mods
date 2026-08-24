@@ -1,0 +1,9 @@
+FormKey: 381AEC:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shadows_Hands
+ObjectBounds:
+  First: -13, -13, 0
+  Second: 13, 13, 0
+Model:
+  File: Triumvirate\Shadows_Hands.nif
+  Data: 0x020000000000000000000000
+Type: []

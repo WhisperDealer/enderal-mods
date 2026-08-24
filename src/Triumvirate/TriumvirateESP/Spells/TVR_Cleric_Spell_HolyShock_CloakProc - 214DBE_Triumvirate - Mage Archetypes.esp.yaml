@@ -1,0 +1,21 @@
+FormKey: 214DBE:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Cleric_Spell_HolyShock_CloakProc
+Name:
+  TargetLanguage: English
+  Value: Holy Shock
+MenuDisplayObject: 205A7A:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Flags:
+- AreaEffectIgnoresLOS
+- IgnoreResistance
+- NoAbsorbOrReflect
+ChargeTime: 3
+CastType: Concentration
+TargetType: Aimed
+Effects:
+- BaseEffect: 214DB9:Triumvirate - Mage Archetypes.esp
+  Data:
+    Duration: 1

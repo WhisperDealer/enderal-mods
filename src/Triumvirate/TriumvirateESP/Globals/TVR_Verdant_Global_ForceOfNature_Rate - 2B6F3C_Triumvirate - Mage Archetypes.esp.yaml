@@ -1,0 +1,9 @@
+MutagenObjectType: GlobalFloat
+FormKey: 2B6F3C:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 64
+EditorID: TVR_Verdant_Global_ForceOfNature_Rate
+SkyrimMajorRecordFlags:
+- 0x40
+MajorFlags:
+- Constant
+Data: 1

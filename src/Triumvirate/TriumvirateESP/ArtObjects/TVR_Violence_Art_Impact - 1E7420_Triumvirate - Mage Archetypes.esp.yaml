@@ -1,0 +1,10 @@
+FormKey: 1E7420:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Violence_Art_Impact
+ObjectBounds:
+  First: -104, -36, -147
+  Second: 105, 48, 136
+Model:
+  File: Triumvirate\Violence_Art.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

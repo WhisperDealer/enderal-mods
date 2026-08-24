@@ -1,0 +1,22 @@
+FormKey: 3BE792:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Totem_Effect_CreateWaterTotem_Totem_Ab
+Name:
+  TargetLanguage: English
+  Value: Water Totem Ab
+MenuDisplayObject: 35E370:Triumvirate - Mage Archetypes.esp
+Flags:
+- NoDuration
+- NoArea
+- FXPersist
+- HideInUI
+HitShader: 3BE793:Triumvirate - Mage Archetypes.esp
+EnchantShader: 3BE793:Triumvirate - Mage Archetypes.esp
+Archetype:
+  MutagenObjectType: MagicEffectCloakArchetype
+  Association: 3BE799:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

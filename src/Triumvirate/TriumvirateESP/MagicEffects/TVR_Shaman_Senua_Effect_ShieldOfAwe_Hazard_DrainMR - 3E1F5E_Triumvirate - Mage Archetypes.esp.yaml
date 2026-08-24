@@ -1,0 +1,35 @@
+FormKey: 3E1F5E:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Senua_Effect_ShieldOfAwe_Hazard_DrainMR
+Name:
+  TargetLanguage: English
+  Value: Drain Defenses
+MenuDisplayObject: 36D6A8:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 3E1F5B:Triumvirate - Mage Archetypes.esp
+Flags:
+- Recover
+- Detrimental
+- NoArea
+- FXPersist
+- PowerAffectsMagnitude
+BaseCost: 2
+MagicSkill: Restoration
+MinimumSkillLevel: 100
+SpellmakingCastingTime: 0.5
+SecondActorValueWeight: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: ResistMagic
+  Type: DualValueModifier
+Projectile: 012FCF:Skyrim.esm
+CastType: FireAndForget
+TargetType: Touch
+SecondActorValue: DamageResist
+HitEffectArt: 3AF463:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 0.6
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: <mag>% weakness to magic and armor reduced by <mag> points by shamanic power.

@@ -1,0 +1,30 @@
+FormKey: 35E376:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Totem_Effect_CreateEarthTotem_Proc_CloakProc_Knockdown
+Name:
+  TargetLanguage: English
+  Value: Stagger
+MenuDisplayObject: 35E370:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- NoArea
+- HideInUI
+- PowerAffectsMagnitude
+- Painless
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Stagger
+Projectile: 012FCF:Skyrim.esm
+CastType: Concentration
+TargetType: Aimed
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsHostileToActorConditionData
+  ComparisonValue: 1

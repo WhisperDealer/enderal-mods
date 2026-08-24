@@ -1,0 +1,19 @@
+FormKey: 05E788:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_Balefire_Effect_Body_Ab
+Name:
+  TargetLanguage: English
+  Value: AtronachBodyArtHolder
+Flags:
+- NoDuration
+- FXPersist
+- HideInUI
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+CastingArt: 02016C:Skyrim.esm
+HitEffectArt: 11F246:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

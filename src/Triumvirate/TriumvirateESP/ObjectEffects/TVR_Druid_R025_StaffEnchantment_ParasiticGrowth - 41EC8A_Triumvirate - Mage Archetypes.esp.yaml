@@ -1,0 +1,23 @@
+FormKey: 41EC8A:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_R025_StaffEnchantment_ParasiticGrowth
+Name:
+  TargetLanguage: English
+  Value: Parasitic Growth
+EnchantmentCost: 62
+CastType: FireAndForget
+EnchantmentAmount: 62
+TargetType: Aimed
+EnchantType: StaffEnchantment
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 2844D8:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 1
+    Duration: 15
+- BaseEffect: 28E6DB:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 1
+    Duration: 15
+- BaseEffect: 28E6DA:Triumvirate - Mage Archetypes.esp
+  Data:
+    Duration: 15

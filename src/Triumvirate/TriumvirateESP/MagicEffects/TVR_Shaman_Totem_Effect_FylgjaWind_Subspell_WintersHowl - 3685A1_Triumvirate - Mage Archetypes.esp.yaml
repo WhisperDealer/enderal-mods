@@ -1,0 +1,41 @@
+FormKey: 3685A1:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Totem_Effect_FylgjaWind_Subspell_WintersHowl
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_SendAssaultAlarm_Script
+Name:
+  TargetLanguage: English
+  Value: Frost Damage
+MenuDisplayObject: 09DB72:Skyrim.esm
+Keywords:
+- 01CEAE:Skyrim.esm
+- 330A46:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Detrimental
+- FXPersist
+- PowerAffectsMagnitude
+BaseCost: 2
+MagicSkill: Destruction
+ResistValue: ResistFrost
+HitShader: 01F03A:Skyrim.esm
+MinimumSkillLevel: 25
+SpellmakingArea: 20
+SpellmakingCastingTime: 0.5
+SecondActorValueWeight: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+  Type: DualValueModifier
+Explosion: 3B4565:Triumvirate - Mage Archetypes.esp
+CastType: FireAndForget
+SecondActorValue: Stamina
+SkillUsageMultiplier: 1
+DualCastScale: 1.1
+CastingSoundLevel: Silent
+Sounds:
+- Type: Release
+  Sound: 03EA7B:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: The spirit of winter deals <mag> frost damage to Health and Stamina to all nearby targets.

@@ -1,0 +1,19 @@
+FormKey: 41EC95:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 134217728
+EditorID: TVR_Any_Container_CheatChest
+SkyrimMajorRecordFlags:
+- 0x8000000
+Name:
+  TargetLanguage: English
+  Value: Triumvirate Cheat Chest
+Model:
+  File: Clutter\Containers\Chest01\Chest01.nif
+  Data: 0x020000000000000000000000
+Items:
+- Item:
+    Item: 442449:Triumvirate - Mage Archetypes.esp
+    Count: 1
+Flags:
+- Respawns
+MajorFlags:
+- NavMeshGenerationBoundingBox

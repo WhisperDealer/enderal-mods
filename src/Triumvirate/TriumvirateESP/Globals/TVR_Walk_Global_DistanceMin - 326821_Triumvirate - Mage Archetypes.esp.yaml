@@ -1,0 +1,9 @@
+MutagenObjectType: GlobalShort
+FormKey: 326821:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 64
+EditorID: TVR_Walk_Global_DistanceMin
+SkyrimMajorRecordFlags:
+- 0x40
+MajorFlags:
+- Constant
+Data: 107

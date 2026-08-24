@@ -1,0 +1,9 @@
+FormKey: 2751A5:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_MarkLeyLocations_Quest
+Name:
+  TargetLanguage: English
+  Value: Mark Ley Locations
+Flags:
+- AllowRepeatedStages
+Filter: TVR\
+NextAliasID: 0

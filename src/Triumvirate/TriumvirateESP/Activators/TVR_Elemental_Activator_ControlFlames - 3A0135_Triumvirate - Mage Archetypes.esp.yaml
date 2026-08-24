@@ -1,0 +1,49 @@
+FormKey: 3A0135:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 67108864
+EditorID: TVR_Elemental_Activator_ControlFlames
+SkyrimMajorRecordFlags:
+- 0x4000000
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_ControlFlames_Activator_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerRef
+      Object: 000014:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Elemental_FormList_ControlFlames_FireSources
+      Object: 1CDEDE:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Elemental_Keyword_ControlFlames_Buff
+      Object: 3A0138:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Elemental_Marker_ControlFlames_FireExplosion
+      Object: 3A0143:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Elemental_Message_ControlFlames_Captured
+      Object: 3A0142:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Elemental_Message_ControlFlames_Fail
+      Object: 3A524B:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Elemental_VFX_Absorb_Caster
+      Object: 3A0141:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Elemental_VFX_Absorb_Target
+      Object: 3A0140:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_Range
+      Data: 426.66
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Shaman_Spell_ControlFlames_Buff
+      Object: 3A0139:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_VFXDur
+      Data: 2.5
+Model:
+  File: Effects\FXEmptyObject.nif
+  Data: 0x020000000000000000000000
+MarkerColor: '#00CC4C33'
+Flags: []
+MajorFlags:
+- NavMeshGenerationFilter

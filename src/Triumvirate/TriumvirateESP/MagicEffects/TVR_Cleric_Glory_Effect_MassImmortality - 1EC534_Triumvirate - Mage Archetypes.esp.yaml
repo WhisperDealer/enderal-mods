@@ -1,0 +1,58 @@
+FormKey: 1EC534:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Cleric_Glory_Effect_MassImmortality
+Name:
+  TargetLanguage: English
+  Value: Regenerate Health
+MenuDisplayObject: 1D2FF8:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 1EC52F:Triumvirate - Mage Archetypes.esp
+- 0806E1:Skyrim.esm
+- 01CEB0:Skyrim.esm
+Flags:
+- FXPersist
+- PowerAffectsDuration
+BaseCost: 0.065
+MagicSkill: Restoration
+CastingLight: 1EC539:Triumvirate - Mage Archetypes.esp
+MinimumSkillLevel: 100
+SpellmakingArea: 50
+SpellmakingCastingTime: 3.5
+Archetype:
+  MutagenObjectType: MagicEffectPeakValueModArchetype
+  ActorValue: Health
+  Association: 1EC52F:Triumvirate - Mage Archetypes.esp
+Explosion: 099571:Triumvirate - Mage Archetypes.esp
+CastType: FireAndForget
+CastingArt: 1EC538:Triumvirate - Mage Archetypes.esp
+HitEffectArt: 1E742D:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 0.75
+DualCastScale: 1
+EquipAbility: 10CDCD:Skyrim.esm
+ImageSpaceModifier: 05A2A4:Skyrim.esm
+Sounds:
+- Sound: 03E957:Skyrim.esm
+- Type: Charge
+  Sound: 0960E9:Skyrim.esm
+- Type: Ready
+  Sound: 03F363:Skyrim.esm
+- Type: Release
+  Sound: 120819:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: Nearby living or undead allies get unlimited Health regeneration for <dur> seconds.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetShouldAttackConditionData
+- MutagenObjectType: ConditionFloat
+  CompareOperator: NotEqualTo
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 013797:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: NotEqualTo
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 01397A:Skyrim.esm
+  ComparisonValue: 1

@@ -1,0 +1,10 @@
+FormKey: 115E12:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Ancestors_Descriptor_Release_SpiritGuardian
+Type: Standard
+Category: 07F80B:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\QST\QST_DA02_Boethiah_Impact_01.wav
+OutputModel: 07E5DD:Skyrim.esm
+LoopAndRumble: {}
+PercentFrequencyShift: 90
+Priority: 128

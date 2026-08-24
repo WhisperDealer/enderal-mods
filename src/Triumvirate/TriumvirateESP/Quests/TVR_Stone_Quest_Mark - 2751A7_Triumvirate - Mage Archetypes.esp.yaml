@@ -1,0 +1,413 @@
+FormKey: 2751A7:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Stone_Quest_Mark
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_TVR_Stone_Quest_Mark_052751A7
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Beam_0
+      Object: 2751A7:Triumvirate - Mage Archetypes.esp
+      Alias: 16
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Beam_1
+      Object: 2751A7:Triumvirate - Mage Archetypes.esp
+      Alias: 17
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Beam_2
+      Object: 2751A7:Triumvirate - Mage Archetypes.esp
+      Alias: 18
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Beam_3
+      Object: 2751A7:Triumvirate - Mage Archetypes.esp
+      Alias: 19
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Beam_4
+      Object: 2751A7:Triumvirate - Mage Archetypes.esp
+      Alias: 20
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Beam_5
+      Object: 2751A7:Triumvirate - Mage Archetypes.esp
+      Alias: 21
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Beam_6
+      Object: 2751A7:Triumvirate - Mage Archetypes.esp
+      Alias: 22
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Beam_7
+      Object: 2751A7:Triumvirate - Mage Archetypes.esp
+      Alias: 23
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Player
+      Object: 2751A7:Triumvirate - Mage Archetypes.esp
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Target_0
+      Object: 2751A7:Triumvirate - Mage Archetypes.esp
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Target_1
+      Object: 2751A7:Triumvirate - Mage Archetypes.esp
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Target_2
+      Object: 2751A7:Triumvirate - Mage Archetypes.esp
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Target_3
+      Object: 2751A7:Triumvirate - Mage Archetypes.esp
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Target_4
+      Object: 2751A7:Triumvirate - Mage Archetypes.esp
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Target_5
+      Object: 2751A7:Triumvirate - Mage Archetypes.esp
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Target_6
+      Object: 2751A7:Triumvirate - Mage Archetypes.esp
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Target_7
+      Object: 2751A7:Triumvirate - Mage Archetypes.esp
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Beam
+      Object: 14F4EC:Triumvirate - Mage Archetypes.esp
+  FileName: QF_TVR_Stone_Quest_Mark_052751A7
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_TVR_Stone_Quest_Mark_052751A7
+    FragmentName: Fragment_0
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_TVR_Stone_Quest_Mark_052751A7
+    FragmentName: Fragment_1
+Name:
+  TargetLanguage: English
+  Value: Stone Mark Quest
+Flags:
+- AllowRepeatedStages
+- 0x1000
+Filter: TVR\
+Stages:
+- Flags:
+  - StartUpStage
+  Unknown: 155
+  LogEntries:
+  - Flags: []
+- Index: 200
+  Flags:
+  - ShutDownStage
+  Unknown: 32
+  LogEntries:
+  - Flags: []
+NextAliasID: 33
+Aliases:
+- Name: TVR_Player
+  Flags: []
+  ForcedReference: 000014:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: TVR_Target_0
+  Flags:
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetDistanceConditionData
+      UseAliases: True
+    ComparisonValue: 10665
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: HasRefTypeConditionData
+      LocationReferenceType: 04A5F5:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: HasRefTypeConditionData
+      LocationReferenceType: 04A5FE:Skyrim.esm
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 2
+  Name: TVR_Target_1
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetDistanceConditionData
+      UseAliases: True
+    ComparisonValue: 10665
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: HasRefTypeConditionData
+      LocationReferenceType: 04A5F5:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: HasRefTypeConditionData
+      LocationReferenceType: 04A5FE:Skyrim.esm
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 3
+  Name: TVR_Target_2
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetDistanceConditionData
+      UseAliases: True
+    ComparisonValue: 10665
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: HasRefTypeConditionData
+      LocationReferenceType: 04A5F5:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: HasRefTypeConditionData
+      LocationReferenceType: 04A5FE:Skyrim.esm
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 4
+  Name: TVR_Target_3
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetDistanceConditionData
+      UseAliases: True
+    ComparisonValue: 10665
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: HasRefTypeConditionData
+      LocationReferenceType: 04A5F5:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: HasRefTypeConditionData
+      LocationReferenceType: 04A5FE:Skyrim.esm
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 5
+  Name: TVR_Target_4
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetDistanceConditionData
+      UseAliases: True
+    ComparisonValue: 10665
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: HasRefTypeConditionData
+      LocationReferenceType: 04A5F5:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: HasRefTypeConditionData
+      LocationReferenceType: 04A5FE:Skyrim.esm
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 6
+  Name: TVR_Target_5
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetDistanceConditionData
+      UseAliases: True
+    ComparisonValue: 10665
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: HasRefTypeConditionData
+      LocationReferenceType: 04A5F5:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: HasRefTypeConditionData
+      LocationReferenceType: 04A5FE:Skyrim.esm
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 7
+  Name: TVR_Target_6
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetDistanceConditionData
+      UseAliases: True
+    ComparisonValue: 10665
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: HasRefTypeConditionData
+      LocationReferenceType: 04A5F5:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: HasRefTypeConditionData
+      LocationReferenceType: 04A5FE:Skyrim.esm
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 8
+  Name: TVR_Target_7
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetDistanceConditionData
+      UseAliases: True
+    ComparisonValue: 10665
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: HasRefTypeConditionData
+      LocationReferenceType: 04A5F5:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: HasRefTypeConditionData
+      LocationReferenceType: 04A5FE:Skyrim.esm
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 16
+  Name: TVR_Beam_0
+  Flags:
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  CreateReferenceToObject:
+    Object: 14F4EC:Triumvirate - Mage Archetypes.esp
+    AliasID: 1
+  VoiceTypes: Null
+- ID: 17
+  Name: TVR_Beam_1
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  CreateReferenceToObject:
+    Object: 14F4EC:Triumvirate - Mage Archetypes.esp
+    AliasID: 2
+  VoiceTypes: Null
+- ID: 18
+  Name: TVR_Beam_2
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  CreateReferenceToObject:
+    Object: 14F4EC:Triumvirate - Mage Archetypes.esp
+    AliasID: 3
+  VoiceTypes: Null
+- ID: 19
+  Name: TVR_Beam_3
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  CreateReferenceToObject:
+    Object: 14F4EC:Triumvirate - Mage Archetypes.esp
+    AliasID: 4
+  VoiceTypes: Null
+- ID: 20
+  Name: TVR_Beam_4
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  CreateReferenceToObject:
+    Object: 14F4EC:Triumvirate - Mage Archetypes.esp
+    AliasID: 5
+  VoiceTypes: Null
+- ID: 21
+  Name: TVR_Beam_5
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  CreateReferenceToObject:
+    Object: 14F4EC:Triumvirate - Mage Archetypes.esp
+    AliasID: 6
+  VoiceTypes: Null
+- ID: 22
+  Name: TVR_Beam_6
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  CreateReferenceToObject:
+    Object: 14F4EC:Triumvirate - Mage Archetypes.esp
+    AliasID: 7
+  VoiceTypes: Null
+- ID: 23
+  Name: TVR_Beam_7
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  CreateReferenceToObject:
+    Object: 14F4EC:Triumvirate - Mage Archetypes.esp
+    AliasID: 8
+  VoiceTypes: Null

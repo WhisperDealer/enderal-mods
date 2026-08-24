@@ -1,0 +1,14 @@
+FormKey: 000D6D:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Balefire_Sound_Impact_WitchBolt
+Type: Standard
+Category: 01A0BD:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\FX\Explosion\Firestorm\FX_Explosion_FireStorm_Near_02.wav
+- Data\Sound\FX\FX\Explosion\Firestorm\FX_Explosion_FireStorm_Near_01.wav
+OutputModel: 07F80C:Skyrim.esm
+LoopAndRumble: {}
+PercentFrequencyShift: 50
+PercentFrequencyVariance: 15
+Priority: 128
+Variance: 1
+StaticAttenuation: 7.93

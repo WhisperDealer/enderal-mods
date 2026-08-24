@@ -1,0 +1,110 @@
+FormKey: 1CDEC9:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Conversion_Quest
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_Conversion_Quest_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AnimalAlias
+      Object: 1CDEC9:Triumvirate - Mage Archetypes.esp
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AnimalDismissMessage
+      Object: 1CDED2:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AnimalDismissMessageAbandoned
+      Object: 1CDED4:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AnimalDismissMessageAttacked
+      Object: 1CDED3:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FollowerAlias
+      Object: 1CDEC9:Triumvirate - Mage Archetypes.esp
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FollowerDismissMessage
+      Object: 1CDECF:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FollowerDismissMessageAbandoned
+      Object: 1CDED1:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FollowerDismissMessageAttacked
+      Object: 1CDED0:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FollowerHuntingBow
+      Object: 10E2DD:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FollowerIronArrow
+      Object: 10E2DE:Skyrim.esm
+  FileName: ''
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 1CDEC9:Triumvirate - Mage Archetypes.esp
+      Alias: 1
+    Scripts:
+    - Name: TVR_FakeFollower_Script
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: TVR_Ancestors_VFX_ProjectedSpirit
+        Object: 1D2FFF:Triumvirate - Mage Archetypes.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: TVR_Conversion_Faction
+        Object: 349F67:Triumvirate - Mage Archetypes.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: TVR_Conversion_Quest
+        Object: 1CDEC9:Triumvirate - Mage Archetypes.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: TVR_ToDispel
+        Object: 1D2FF0:Triumvirate - Mage Archetypes.esp
+  - Property:
+      Name: ''
+      Object: 1CDEC9:Triumvirate - Mage Archetypes.esp
+      Alias: 2
+    Scripts:
+    - Name: TVR_FakeFollower_Script
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: TVR_Conversion_Faction
+        Object: 349F67:Triumvirate - Mage Archetypes.esp
+      - MutagenObjectType: ScriptObjectProperty
+        Name: TVR_Conversion_Quest
+        Object: 1CDEC9:Triumvirate - Mage Archetypes.esp
+Name:
+  TargetLanguage: English
+  Value: Obedience Quest
+Flags:
+- RunOnce
+Priority: 100
+Filter: TVR\
+NextAliasID: 4
+Aliases:
+- ID: 1
+  Name: TVR_FakeFollower
+  Flags:
+  - Optional
+  - StoresText
+  - Protected
+  - UsesStoredText
+  Keywords:
+  - 0D5B88:Skyrim.esm
+  Spells:
+  - 191254:Triumvirate - Mage Archetypes.esp
+  Factions:
+  - 09E0C9:Skyrim.esm
+  - 349F68:Triumvirate - Mage Archetypes.esp
+  PackageData:
+  - 05C84B:Skyrim.esm
+  VoiceTypes: Null
+- ID: 2
+  Name: TVR_FakePet
+  Flags:
+  - Optional
+  - StoresText
+  - Protected
+  - UsesStoredText
+  Keywords:
+  - 0D5B88:Skyrim.esm
+  PackageData:
+  - 05C84B:Skyrim.esm
+  VoiceTypes: Null

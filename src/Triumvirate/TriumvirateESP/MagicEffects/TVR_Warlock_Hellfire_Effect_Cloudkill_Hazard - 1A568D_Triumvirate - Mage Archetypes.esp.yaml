@@ -1,0 +1,32 @@
+FormKey: 1A568D:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_Hellfire_Effect_Cloudkill_Hazard
+Name:
+  TargetLanguage: English
+  Value: Poison Hazard
+MenuDisplayObject: 1A057F:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Detrimental
+- FXPersist
+- NoRecast
+- PowerAffectsMagnitude
+BaseCost: 20
+MagicSkill: Destruction
+ResistValue: PoisonResist
+HitShader: 1A5692:Triumvirate - Mage Archetypes.esp
+MinimumSkillLevel: 75
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+Projectile: 06F793:Skyrim.esm
+CastType: FireAndForget
+TargetType: Touch
+ImpactData: 00ECB9:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 1
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Toxic cloud deals <mag> poison damage.

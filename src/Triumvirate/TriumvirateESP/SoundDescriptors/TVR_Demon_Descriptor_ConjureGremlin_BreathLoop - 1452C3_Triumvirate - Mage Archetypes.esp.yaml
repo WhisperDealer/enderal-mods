@@ -1,0 +1,12 @@
+FormKey: 1452C3:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Demon_Descriptor_ConjureGremlin_BreathLoop
+Type: Standard
+Category: 0DDDC5:Skyrim.esm
+SoundFiles:
+- data\Sound\fx\mihailleshen.esp\soundnekker.wav
+OutputModel: 10E425:Skyrim.esm
+LoopAndRumble:
+  Loop: Loop
+PercentFrequencyVariance: 2
+Priority: 1
+StaticAttenuation: 12.33

@@ -1,0 +1,70 @@
+FormKey: 19B46E:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_Balefire_Effect_BindSpirit_FFAimed
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_Branded_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Balefire_Global_ImprisonedBuff
+      Object: 22410A:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Balefire_Global_ImprisonedCurrentHP
+      Object: 19B470:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Balefire_Global_ImprisonedDiv
+      Object: 22410B:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Balefire_Message_Empowered
+      Object: 1B49A4:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Balefire_Spell_Empowered
+      Object: 19B472:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptStringProperty
+      Name: TVR_Imprisoned_1
+      Data: ' Bound ('
+    - MutagenObjectType: ScriptStringProperty
+      Name: TVR_Imprisoned_2
+      Data: ' Health)'
+Name:
+  TargetLanguage: English
+  Value: Bind Spirit
+MenuDisplayObject: 19B45E:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 19B46F:Triumvirate - Mage Archetypes.esp
+- 1BEBB7:Triumvirate - Mage Archetypes.esp
+- 1BEBB8:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Recover
+- Detrimental
+- NoArea
+- FXPersist
+- NoRecast
+- NoDeathDispel
+ResistValue: ResistMagic
+CastingLight: 19B45C:Triumvirate - Mage Archetypes.esp
+HitShader: 08868A:Triumvirate - Mage Archetypes.esp
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectPeakValueModArchetype
+  ActorValue: HealRateMult
+Projectile: 06F793:Skyrim.esm
+CastType: FireAndForget
+TargetType: Aimed
+CastingArt: 191247:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1.1
+Sounds:
+- Sound: 03C8F8:Skyrim.esm
+- Type: Charge
+  Sound: 03C8F9:Skyrim.esm
+- Type: Ready
+  Sound: 03C8FA:Skyrim.esm
+- Type: Release
+  Sound: 0253C4:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: If the target dies, bind their <Spirit> for <30> seconds.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsCommandedActorConditionData

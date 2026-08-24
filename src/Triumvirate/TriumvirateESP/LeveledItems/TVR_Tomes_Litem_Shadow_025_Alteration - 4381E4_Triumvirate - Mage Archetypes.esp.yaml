@@ -1,0 +1,9 @@
+FormKey: 4381E4:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Tomes_Litem_Shadow_025_Alteration
+Flags:
+- UseAll
+Entries:
+- Data:
+    Level: 1
+    Reference: 419B1C:Triumvirate - Mage Archetypes.esp
+    Count: 1

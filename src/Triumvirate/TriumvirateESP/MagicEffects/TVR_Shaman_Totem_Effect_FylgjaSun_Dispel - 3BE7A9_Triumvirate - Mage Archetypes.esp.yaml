@@ -1,0 +1,56 @@
+FormKey: 3BE7A9:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Totem_Effect_FylgjaSun_Dispel
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_DispelSpellOnEnd_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Spell
+      Object: 3BE7AA:Triumvirate - Mage Archetypes.esp
+Name:
+  TargetLanguage: English
+  Value: Sun Fylgja Dispel Effect
+MenuDisplayObject: 35E370:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 3B9677:Triumvirate - Mage Archetypes.esp
+Flags:
+- SnapToNavmesh
+- NoMagnitude
+- NoArea
+- PowerAffectsDuration
+MagicSkill: Conjuration
+CastingLight: 35E37F:Triumvirate - Mage Archetypes.esp
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+CastType: FireAndForget
+CastingArt: 11F239:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1
+ImageSpaceModifier: 09E586:Skyrim.esm
+CastingSoundLevel: Normal
+Sounds:
+- Sound: 03F269:Skyrim.esm
+- Type: Charge
+  Sound: 056B75:Skyrim.esm
+- Type: Ready
+  Sound: 03C8FA:Skyrim.esm
+- Type: Release
+  Sound: 03F2B1:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasMagicEffectKeywordConditionData
+    Keyword: 3B9677:Triumvirate - Mage Archetypes.esp
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000007:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasMagicEffectKeywordConditionData
+    Keyword: 0D5B8E:Skyrim.esm

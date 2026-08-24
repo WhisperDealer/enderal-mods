@@ -775,7 +775,9 @@ Enderal lacks.
 > Generalise the *check*, not the fix: for any ported mod, list every record it overrides whose
 > FormKey suffix is `:Skyrim.esm` / `:Update.esm` and confirm the Enderal record at that ID is the
 > same record type **and the same thing**. A script that maps FormID → record group for both trees
-> does this in seconds. Note this override was **not** the crash it looked like — it is a real
+> does this in seconds. **Run it on every port — it has now caught two.** Triumvirate ships the
+> identical `Tamriel` override at `00003C` **[verified 2026-08-24]**, found in the first minutes of
+> its ingest by listing 36 override FormKeys rather than by debugging anything. Note this override was **not** the crash it looked like — it is a real
 > defect, found while chasing an unrelated bug, and worth fixing on its own merits.
 >
 > **And check what it REFERENCES, not only what it overrides — a surviving ID inside a condition is

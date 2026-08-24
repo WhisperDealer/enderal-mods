@@ -1,0 +1,39 @@
+FormKey: 3A524A:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Elemental_Effect_ControlFlames_DirectDamage_Stagger
+Name:
+  TargetLanguage: English
+  Value: Stagger
+MenuDisplayObject: 3A0132:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- PowerAffectsMagnitude
+CastingLight: 3A0131:Triumvirate - Mage Archetypes.esp
+SpellmakingArea: 3
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Stagger
+Projectile: 3A0134:Triumvirate - Mage Archetypes.esp
+CastType: FireAndForget
+TargetType: Aimed
+CastingArt: 3A0133:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds:
+- Sound: 03C8F8:Skyrim.esm
+- Type: Charge
+  Sound: 03C8F9:Skyrim.esm
+- Type: Ready
+  Sound: 03C8FA:Skyrim.esm
+- Type: Release
+  Sound: 000D67:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasMagicEffectKeywordConditionData
+    RunOnType: Target
+    Keyword: 3A0138:Triumvirate - Mage Archetypes.esp
+  ComparisonValue: 1

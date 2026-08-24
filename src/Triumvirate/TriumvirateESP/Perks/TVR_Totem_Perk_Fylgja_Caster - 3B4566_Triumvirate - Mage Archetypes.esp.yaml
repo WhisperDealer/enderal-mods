@@ -1,0 +1,24 @@
+FormKey: 3B4566:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Totem_Perk_Fylgja_Caster
+Name:
+  TargetLanguage: English
+  Value: Fylgja Defense
+Description:
+  TargetLanguage: English
+  Value: ''
+NumRanks: 1
+Playable: True
+Hidden: True
+Effects:
+- MutagenObjectType: PerkEntryPointModifyValue
+  Priority: 120
+  EntryPoint: ModIncomingDamage
+  PerkConditionTabCount: 3
+  Modification: Multiply
+  Value: 0.5
+- MutagenObjectType: PerkEntryPointModifyValue
+  Priority: 121
+  EntryPoint: ModIncomingSpellMagnitude
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 0.5

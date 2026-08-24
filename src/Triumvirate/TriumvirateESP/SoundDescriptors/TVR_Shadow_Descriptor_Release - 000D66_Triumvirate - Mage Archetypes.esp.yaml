@@ -1,0 +1,13 @@
+FormKey: 000D66:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shadow_Descriptor_Release
+Type: Standard
+Category: 07F80B:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\MAG\PowerRacial\MAG_SerpentStone_Projectile_01_LP.wav
+- Data\Sound\FX\MAG\PowerRacial\MAG_SerpentStone_Projectile_02_LP.wav
+OutputModel: 07E5DD:Skyrim.esm
+LoopAndRumble: {}
+PercentFrequencyShift: 70
+PercentFrequencyVariance: 10
+Priority: 128
+StaticAttenuation: 12.33

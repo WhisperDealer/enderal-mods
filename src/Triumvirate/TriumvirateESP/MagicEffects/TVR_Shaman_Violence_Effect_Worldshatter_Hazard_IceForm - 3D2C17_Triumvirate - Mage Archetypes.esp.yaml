@@ -1,0 +1,58 @@
+FormKey: 3D2C17:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Violence_Effect_Worldshatter_Hazard_IceForm
+VirtualMachineAdapter:
+  Scripts:
+  - Name: magiceffectshadersonendscript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: EffectShaderFX01
+      Object: 0EA519:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: EffectShaderFX02
+      Object: 0EA51A:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Ice Form
+MenuDisplayObject: 09DB72:Skyrim.esm
+Keywords:
+- 01EA70:Skyrim.esm
+Flags:
+- Hostile
+- Recover
+- NoMagnitude
+- FXPersist
+BaseCost: 150
+MagicSkill: Alteration
+HitShader: 0DC20E:Skyrim.esm
+MinimumSkillLevel: 75
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Paralysis
+  Type: Paralysis
+Projectile: 0DEDCA:Skyrim.esm
+CastType: FireAndForget
+TargetType: Touch
+ImpactData: 049B64:Skyrim.esm
+SkillUsageMultiplier: 1
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: The spirits of the land freeze a target for <dur> seconds.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 035D59:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 0F23C5:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 028FDE:Dragonborn.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetRestrainedConditionData

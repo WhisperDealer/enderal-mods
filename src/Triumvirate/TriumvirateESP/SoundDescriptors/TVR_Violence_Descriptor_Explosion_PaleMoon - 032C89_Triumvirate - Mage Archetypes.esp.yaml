@@ -1,0 +1,17 @@
+FormKey: 032C89:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Violence_Descriptor_Explosion_PaleMoon
+Type: Standard
+Category: 07F80B:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\NPC\Wolf\Howl\NPC_Wolf_Howl_01.wav
+- Data\Sound\FX\NPC\Wolf\Howl\NPC_Wolf_Howl_02.wav
+- Data\Sound\FX\NPC\Wolf\Howl\NPC_Wolf_Howl_03.wav
+- Data\Sound\FX\NPC\Wolf\Howl\NPC_Wolf_Howl_04.wav
+- Data\Sound\FX\NPC\Wolf\Howl\NPC_Wolf_Howl_05.wav
+OutputModel: 07E5DD:Skyrim.esm
+LoopAndRumble: {}
+PercentFrequencyShift: 40
+PercentFrequencyVariance: 8
+Priority: 128
+Variance: 1
+StaticAttenuation: 5.73

@@ -1,0 +1,28 @@
+FormKey: 41EC7E:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_A075_Book_ImpenetrableGrove
+Name:
+  TargetLanguage: English
+  Value: 'Spell Tome: Impenetrable Grove'
+Model:
+  File: Clutter\Books\SpellTomeAlterationLowPoly.nif
+  Data: 0x020000000000000000000000
+BookText:
+  TargetLanguage: English
+  Value: >-
+    <font face'$HandwrittenFont'><font size='40'><p align='center'>
+
+    Impenetrable Grove
+Keywords:
+- 0937A2:Skyrim.esm
+- 0937A5:Skyrim.esm
+Flags:
+- 0x4
+Teaches:
+  MutagenObjectType: BookSpell
+  Spell: 2A7C1B:Triumvirate - Mage Archetypes.esp
+Value: 646
+Weight: 1
+InventoryArt: 02FBB3:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''

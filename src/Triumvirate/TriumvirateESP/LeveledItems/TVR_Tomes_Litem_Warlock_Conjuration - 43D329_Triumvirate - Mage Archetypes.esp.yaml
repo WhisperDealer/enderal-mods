@@ -1,0 +1,25 @@
+FormKey: 43D329:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Tomes_Litem_Warlock_Conjuration
+Flags:
+- UseAll
+Entries:
+- Data:
+    Level: 1
+    Reference: 4381F0:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4381F1:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4381F2:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4381F3:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4381F4:Triumvirate - Mage Archetypes.esp
+    Count: 1

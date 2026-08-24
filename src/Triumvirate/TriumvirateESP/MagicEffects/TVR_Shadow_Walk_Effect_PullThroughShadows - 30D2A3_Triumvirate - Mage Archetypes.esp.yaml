@@ -1,0 +1,61 @@
+FormKey: 30D2A3:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shadow_Walk_Effect_PullThroughShadows
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_Pull_Script
+    Properties:
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_DistanceInFront
+      Data: 96
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_Speed
+      Data: 20000
+Name:
+  TargetLanguage: English
+  Value: Pull Through Shadows
+MenuDisplayObject: 2FDF85:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 326829:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- NoHitEvent
+- NoDuration
+- HideInUI
+- Painless
+- NoHitEffect
+MagicSkill: Alteration
+CastingLight: 308186:Triumvirate - Mage Archetypes.esp
+MinimumSkillLevel: 75
+SpellmakingArea: 20
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Stagger
+Explosion: 071AD0:Triumvirate - Mage Archetypes.esp
+CastType: FireAndForget
+TargetType: TargetLocation
+CastingArt: 2FDF84:Triumvirate - Mage Archetypes.esp
+HitEffectArt: 308187:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds:
+- Sound: 03F37A:Skyrim.esm
+- Type: Charge
+  Sound: 0FDA53:Skyrim.esm
+- Type: Ready
+  Sound: 03F1F0:Skyrim.esm
+- Type: Release
+  Sound: 025D9B:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionGlobal
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetDistanceConditionData
+  ComparisonValue: 326821:Triumvirate - Mage Archetypes.esp
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasMagicEffectKeywordConditionData
+    Keyword: 0D5B8B:Skyrim.esm

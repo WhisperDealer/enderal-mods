@@ -1,0 +1,59 @@
+FormKey: 24272F:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_Demon_Effect_ConjureTempleGrim_Proc
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_Counterspell_Script
+Name:
+  TargetLanguage: English
+  Value: Counterspell
+MenuDisplayObject: 10FEF4:Skyrim.esm
+Flags:
+- Hostile
+- NoDuration
+- NoArea
+- FXPersist
+- PowerAffectsMagnitude
+- Painless
+MagicSkill: Illusion
+HitShader: 00D0DC:Triumvirate - Mage Archetypes.esp
+SpellmakingCastingTime: 0.2
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Stagger
+CastType: FireAndForget
+TargetType: Touch
+HitEffectArt: 0378A3:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds:
+- Type: Release
+  Sound: 074096:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: Interrupts target spellcaster.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsActorConditionData
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: HasEquippedSpellConditionData
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasEquippedSpellConditionData
+    SpellSource: Right
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsCastingConditionData
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetActorValueConditionData
+    RunOnType: Target
+    ActorValue: EnchantingPowerModifier
+  ComparisonValue: 1337

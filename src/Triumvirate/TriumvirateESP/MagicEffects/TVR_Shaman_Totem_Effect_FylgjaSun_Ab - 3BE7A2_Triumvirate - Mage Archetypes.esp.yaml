@@ -1,0 +1,30 @@
+FormKey: 3BE7A2:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Totem_Effect_FylgjaSun_Ab
+VirtualMachineAdapter:
+  Scripts:
+  - Name: magicSetActorAlphaScript
+    Properties:
+    - MutagenObjectType: ScriptFloatProperty
+      Name: AlphaValue
+      Data: 0.25
+    - MutagenObjectType: ScriptBoolProperty
+      Name: DontFadeBack
+      Data: True
+Name:
+  TargetLanguage: English
+  Value: Sun Fylgja Visuals
+MenuDisplayObject: 04E264:Skyrim.esm
+Flags:
+- NoDuration
+- FXPersist
+HitShader: 3BE7A1:Triumvirate - Mage Archetypes.esp
+EnchantShader: 3BE7A1:Triumvirate - Mage Archetypes.esp
+Archetype:
+  MutagenObjectType: MagicEffectPeakValueModArchetype
+  ActorValue: Health
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Sun Fylgja heals <mag> points per second.

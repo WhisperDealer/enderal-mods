@@ -1,0 +1,10 @@
+FormKey: 14F4ED:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Static_Diviner_Mark_Ore
+ObjectBounds:
+  First: -74, -54, -36
+  Second: 46, 70, -17
+Model:
+  File: Triumvirate\Veil_Static_Detect_Ore.nif
+  Data: 0x020000000000000000000000
+MaxAngle: 90
+Unused: 0x000000

@@ -1,0 +1,20 @@
+FormKey: 2B6F31:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Verdant_Effect_ForceOfNature_Stagger
+Name:
+  TargetLanguage: English
+  Value: Stagger
+MenuDisplayObject: 191249:Triumvirate - Mage Archetypes.esp
+Flags:
+- HideInUI
+- PowerAffectsMagnitude
+TaperWeight: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Stagger
+CastType: FireAndForget
+TargetType: Touch
+DualCastScale: 1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

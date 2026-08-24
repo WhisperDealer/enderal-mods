@@ -1,0 +1,14 @@
+FormKey: 419B30:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_C075_StaffEnchantment_ConjureMagister
+Name:
+  TargetLanguage: English
+  Value: Conjure Magister
+EnchantmentCost: 183
+CastType: FireAndForget
+EnchantmentAmount: 183
+EnchantType: StaffEnchantment
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 260D60:Triumvirate - Mage Archetypes.esp
+  Data:
+    Duration: 60

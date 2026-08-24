@@ -1,0 +1,17 @@
+FormKey: 181F40:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_Spell_ConjureGremlin_Proc
+Name:
+  TargetLanguage: English
+  Value: Disarm
+MenuDisplayObject: 10FEF4:Skyrim.esm
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Flags:
+- NoAbsorbOrReflect
+CastType: FireAndForget
+TargetType: Touch
+Effects:
+- BaseEffect: 181F3F:Triumvirate - Mage Archetypes.esp
+  Data: {}

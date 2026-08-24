@@ -1,0 +1,9 @@
+FormKey: 260D61:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Oath_Hands
+ObjectBounds:
+  First: -22, -22, -2
+  Second: 23, 23, 0
+Model:
+  File: Triumvirate\Oath_Hands.nif
+  Data: 0x020000000000000000000000
+Type: []

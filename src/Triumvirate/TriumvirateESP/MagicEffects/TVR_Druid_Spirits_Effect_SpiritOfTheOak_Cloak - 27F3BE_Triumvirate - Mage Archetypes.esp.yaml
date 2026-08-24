@@ -1,0 +1,36 @@
+FormKey: 27F3BE:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Spirits_Effect_SpiritOfTheOak_Cloak
+Name:
+  TargetLanguage: English
+  Value: Spirit of the Oak
+MenuDisplayObject: 27F3BB:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 27F3BF:Triumvirate - Mage Archetypes.esp
+Flags:
+- DispelWithKeywords
+- NoArea
+- FXPersist
+- HideInUI
+- PowerAffectsDuration
+MagicSkill: Restoration
+CastingLight: 27F3BD:Triumvirate - Mage Archetypes.esp
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectCloakArchetype
+  Association: 27F3C3:Triumvirate - Mage Archetypes.esp
+CastType: FireAndForget
+CastingArt: 27F3BC:Triumvirate - Mage Archetypes.esp
+HitEffectArt: 27F3BA:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1.1
+ImageSpaceModifier: 10FBEB:Skyrim.esm
+Sounds:
+- Sound: 03E957:Skyrim.esm
+- Type: Charge
+  Sound: 086EFC:Skyrim.esm
+- Type: Ready
+  Sound: 03F363:Skyrim.esm
+- Type: Release
+  Sound: 00649E:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: ''

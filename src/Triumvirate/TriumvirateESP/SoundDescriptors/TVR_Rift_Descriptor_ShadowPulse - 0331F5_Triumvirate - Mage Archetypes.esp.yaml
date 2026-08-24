@@ -1,0 +1,11 @@
+FormKey: 0331F5:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Rift_Descriptor_ShadowPulse
+Type: Standard
+Category: 01A0BD:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\FX\Explosion\Catapult\FX_Explosion_Catapult_Near_01.wav
+OutputModel: 0FD93D:Skyrim.esm
+LoopAndRumble: {}
+PercentFrequencyShift: 60
+Priority: 128
+StaticAttenuation: 9.25

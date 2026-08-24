@@ -1,0 +1,34 @@
+FormKey: 2C1159:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Spirits_Effect_SpiritOfTheSun_KeywordHolder
+Name:
+  TargetLanguage: English
+  Value: Spirit of the Sun Keyword Holder
+MenuDisplayObject: 27F3BB:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 01CEB0:Skyrim.esm
+- 0806E1:Skyrim.esm
+Flags:
+- NoDuration
+- NoMagnitude
+- NoArea
+- HideInUI
+CastingLight: 27F3BD:Triumvirate - Mage Archetypes.esp
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+CastType: FireAndForget
+CastingArt: 27F3BC:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1.1
+ImageSpaceModifier: 10605A:Triumvirate - Mage Archetypes.esp
+Sounds:
+- Sound: 03E957:Skyrim.esm
+- Type: Charge
+  Sound: 086EFC:Skyrim.esm
+- Type: Ready
+  Sound: 03F363:Skyrim.esm
+- Type: Release
+  Sound: 116E56:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: ''

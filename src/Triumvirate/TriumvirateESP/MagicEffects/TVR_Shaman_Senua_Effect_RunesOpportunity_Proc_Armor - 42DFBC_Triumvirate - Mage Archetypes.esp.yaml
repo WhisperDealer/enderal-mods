@@ -1,0 +1,43 @@
+FormKey: 42DFBC:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Senua_Effect_RunesOpportunity_Proc_Armor
+VirtualMachineAdapter:
+  Scripts:
+  - Name: magicsoundplayintrooutro
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: IntroSoundFX
+      Object: 3AF452:Triumvirate - Mage Archetypes.esp
+Name:
+  TargetLanguage: English
+  Value: Drain Armor
+MenuDisplayObject: 36D6A8:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 4005D0:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Recover
+- Detrimental
+- NoArea
+- FXPersist
+- PowerAffectsMagnitude
+BaseCost: 0.5
+MagicSkill: Restoration
+TaperWeight: 1
+HitShader: 36D6B0:Triumvirate - Mage Archetypes.esp
+SpellmakingCastingTime: 0.5
+TaperCurve: 1
+TaperDuration: 1
+Archetype:
+  MutagenObjectType: MagicEffectPeakValueModArchetype
+  ActorValue: DamageResist
+Projectile: 012FCF:Skyrim.esm
+CastType: FireAndForget
+TargetType: TargetActor
+HitEffectArt: 36D6B1:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 0.6
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Reduces armor by <mag> points and

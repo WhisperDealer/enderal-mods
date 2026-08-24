@@ -1,0 +1,16 @@
+FormKey: 2ACD23:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Verdant_AshPile_Druidcraft
+ObjectBounds:
+  First: -134, -159, -23
+  Second: 153, 174, 49
+Name:
+  TargetLanguage: English
+  Value: Remains
+Model:
+  File: Triumvirate\Verdant_Hazard_Ferns_mini.nif
+  Data: 0x020000000000000000000000
+MarkerColor: '#00CC4C33'
+ActivateTextOverride:
+  TargetLanguage: English
+  Value: Search
+Flags: []

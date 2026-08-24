@@ -1,0 +1,12 @@
+FormKey: 30D29F:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Walk_Light_Projectile_Blackout
+Time: -1
+Radius: 300
+Color: '#00F4FFC0'
+Flags:
+- Negative
+FalloffExponent: 1
+FOV: 90
+NearClip: 1
+FlickerPeriod: 1
+FadeValue: 1

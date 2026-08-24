@@ -1,0 +1,26 @@
+FormKey: 423DAF:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Violence_Effect_StaveBinding_Desc
+Name:
+  TargetLanguage: English
+  Value: Stave of Binding Desc Immobilize
+MenuDisplayObject: 1E741E:Triumvirate - Mage Archetypes.esp
+Flags:
+- NoHitEvent
+- NoDuration
+- NoMagnitude
+- NoArea
+- NoHitEffect
+MagicSkill: Alteration
+CastingLight: 3A524D:Triumvirate - Mage Archetypes.esp
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+CastType: FireAndForget
+CastingArt: 1E741F:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Immobilizes targets with <25>% chance to disarm.

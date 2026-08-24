@@ -1,0 +1,44 @@
+FormKey: 3C89C9:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Totem_Effect_CreateTreeTotem_CloakProc_PoisonDamage
+Name:
+  TargetLanguage: English
+  Value: Poison Damage
+MenuDisplayObject: 27F3AB:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 3E706A:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Detrimental
+- NoArea
+- FXPersist
+- PowerAffectsMagnitude
+BaseCost: 7
+MagicSkill: Destruction
+ResistValue: PoisonResist
+TaperWeight: 1
+HitShader: 1A5692:Triumvirate - Mage Archetypes.esp
+SpellmakingCastingTime: 0.5
+TaperCurve: 1
+TaperDuration: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+Projectile: 012FCF:Skyrim.esm
+CastType: Concentration
+TargetType: Aimed
+SkillUsageMultiplier: 0.8
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: The spirits inflict <mag> poison damage for <dur> seconds.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsHostileToActorConditionData
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000007:Skyrim.esm

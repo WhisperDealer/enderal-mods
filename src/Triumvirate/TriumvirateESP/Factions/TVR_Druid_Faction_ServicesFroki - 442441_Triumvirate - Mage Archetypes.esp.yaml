@@ -1,0 +1,19 @@
+FormKey: 442441:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Faction_ServicesFroki
+Name:
+  TargetLanguage: English
+  Value: Froki Services
+Flags:
+- Vendor
+CrimeValues:
+  Arrest: True
+  AttackOnSight: True
+VendorBuySellList: 44244D:Triumvirate - Mage Archetypes.esp
+MerchantContainer: 442443:Triumvirate - Mage Archetypes.esp
+VendorValues:
+  EndHour: 24
+  Radius: 10000
+VendorLocation:
+  Target:
+    MutagenObjectType: LocationFallback
+    Type: NearSelf

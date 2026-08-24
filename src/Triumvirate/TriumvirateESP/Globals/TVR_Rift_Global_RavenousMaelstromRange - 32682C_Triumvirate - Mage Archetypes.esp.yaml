@@ -1,0 +1,9 @@
+MutagenObjectType: GlobalShort
+FormKey: 32682C:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 64
+EditorID: TVR_Rift_Global_RavenousMaelstromRange
+SkyrimMajorRecordFlags:
+- 0x40
+MajorFlags:
+- Constant
+Data: 256

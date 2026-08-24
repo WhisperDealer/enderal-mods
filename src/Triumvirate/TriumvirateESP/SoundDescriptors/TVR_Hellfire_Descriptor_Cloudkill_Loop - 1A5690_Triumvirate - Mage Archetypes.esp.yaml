@@ -1,0 +1,13 @@
+FormKey: 1A5690:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Hellfire_Descriptor_Cloudkill_Loop
+Type: Standard
+Category: 07F80B:Skyrim.esm
+SoundFiles:
+- data\Sound\FX\DLC02\MAG\Destruction\Whirlwind\MAG_Whirlwind_LP.wav
+OutputModel: 0E324B:Skyrim.esm
+LoopAndRumble:
+  Loop: Loop
+PercentFrequencyShift: 70
+PercentFrequencyVariance: 7
+Priority: 128
+StaticAttenuation: 21.59

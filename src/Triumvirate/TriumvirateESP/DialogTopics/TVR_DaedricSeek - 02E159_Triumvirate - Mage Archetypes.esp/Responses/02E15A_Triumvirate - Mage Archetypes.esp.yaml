@@ -1,0 +1,20 @@
+FormKey: 02E15A:Triumvirate - Mage Archetypes.esp
+Flags:
+  Flags:
+  - Random
+  - RandomEnd
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Anger
+  EmotionValue: 100
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Flags:
+  - UseEmotionAnimation
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You are alone, mortal...
+  ScriptNotes: ''
+  Edits: ''

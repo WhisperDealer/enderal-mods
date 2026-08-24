@@ -1,0 +1,25 @@
+FormKey: 19B471:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_Balefire_Effect_BindSpirit
+Name:
+  TargetLanguage: English
+  Value: Bound Spirit
+MenuDisplayObject: 19B45E:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 19B474:Triumvirate - Mage Archetypes.esp
+Flags:
+- NoHitEvent
+- NoMagnitude
+- NoArea
+- FXPersist
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+CastType: FireAndForget
+HitEffectArt: 19B45A:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1.1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: A <Spirit> is bound for <dur> seconds. It will be offered to your next warlock minion, improving it by <Global=TVR_Balefire_Global_ImprisonedBuff>%.

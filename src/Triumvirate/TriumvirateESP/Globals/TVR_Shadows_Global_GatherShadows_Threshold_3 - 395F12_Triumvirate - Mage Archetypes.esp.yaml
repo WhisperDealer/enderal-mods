@@ -1,0 +1,9 @@
+MutagenObjectType: GlobalShort
+FormKey: 395F12:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 64
+EditorID: TVR_Shadows_Global_GatherShadows_Threshold_3
+SkyrimMajorRecordFlags:
+- 0x40
+MajorFlags:
+- Constant
+Data: 20

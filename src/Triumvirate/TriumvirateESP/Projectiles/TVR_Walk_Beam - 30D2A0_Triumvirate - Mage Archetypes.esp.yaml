@@ -1,0 +1,16 @@
+FormKey: 30D2A0:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Walk_Beam
+Model:
+  File: ApocNew\IllusionBlue_Beam.nif
+  Data: 0x020000000000000000000000
+Type: Beam
+Speed: 10000
+Range: 3096
+Light: 30D29F:Triumvirate - Mage Archetypes.esp
+Sound: 30D2A1:Triumvirate - Mage Archetypes.esp
+FadeDuration: 0.4
+CollisionRadius: 10
+Lifetime: 0.6
+RelaunchInterval: 0.1
+MuzzleFlashModel: ''
+SoundLevel: 2

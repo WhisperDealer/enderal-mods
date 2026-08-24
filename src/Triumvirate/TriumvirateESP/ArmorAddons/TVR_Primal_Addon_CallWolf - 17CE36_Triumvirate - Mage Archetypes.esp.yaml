@@ -1,0 +1,22 @@
+FormKey: 17CE36:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Primal_Addon_CallWolf
+BodyTemplate:
+  FirstPersonFlags:
+  - Body
+  ArmorType: Clothing
+  ActsLike44: True
+Race: 17CE32:Triumvirate - Mage Archetypes.esp
+Priority:
+  Male: 0
+  Female: 0
+WeightSliderEnabled:
+  Male: False
+  Female: False
+Unknown2: 17
+WorldModel:
+  Male:
+    File: Mihail Monsters and Animals\Wolf\Cyrodiilian Wolf\cyrodiilianwolf.nif
+    Data: 0x020000000000000000000000
+AdditionalRaces:
+- 106C10:Skyrim.esm
+FootstepSound: 0DCE9D:Skyrim.esm

@@ -1,0 +1,39 @@
+FormKey: 4330CA:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Violence_Effect_Fissure_Knockdown
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_Knockdown_Script
+    Properties:
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_KnockdownForce
+      Data: 13
+Name:
+  TargetLanguage: English
+  Value: Knockdown
+MenuDisplayObject: 1E741E:Triumvirate - Mage Archetypes.esp
+Flags:
+- NoDuration
+- NoMagnitude
+- HideInUI
+MagicSkill: Alteration
+TaperWeight: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Stagger
+CastType: FireAndForget
+TargetType: Aimed
+DualCastScale: 1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 0172AC:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThan
+  Data:
+    MutagenObjectType: GetRandomPercentConditionData
+  ComparisonValue: 125

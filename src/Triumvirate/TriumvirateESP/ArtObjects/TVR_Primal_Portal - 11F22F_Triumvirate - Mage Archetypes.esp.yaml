@@ -1,0 +1,10 @@
+FormKey: 11F22F:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Primal_Portal
+ObjectBounds:
+  First: -189, -61, -12
+  Second: 189, 292, 344
+Model:
+  File: Triumvirate\Primal_Art_Portal.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

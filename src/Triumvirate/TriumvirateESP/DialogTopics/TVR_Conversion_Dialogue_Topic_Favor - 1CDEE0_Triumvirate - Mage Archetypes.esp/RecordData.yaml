@@ -1,0 +1,9 @@
+FormKey: 1CDEE0:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Conversion_Dialogue_Topic_Favor
+Name:
+  TargetLanguage: English
+  Value: I need you to do something.
+Priority: 75
+Branch: 1CDEDF:Triumvirate - Mage Archetypes.esp
+Quest: 1CDEC9:Triumvirate - Mage Archetypes.esp
+SubtypeName: CUST

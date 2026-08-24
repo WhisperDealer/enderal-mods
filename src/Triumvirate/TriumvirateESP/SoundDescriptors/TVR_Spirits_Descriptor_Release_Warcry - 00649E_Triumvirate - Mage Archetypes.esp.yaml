@@ -1,0 +1,11 @@
+FormKey: 00649E:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Spirits_Descriptor_Release_Warcry
+Type: Standard
+Category: 01A0BD:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\UI\UI_StartNewGame.wav
+OutputModel: 08F3E4:Skyrim.esm
+LoopAndRumble:
+  Unknown: 2
+Priority: 128
+StaticAttenuation: 11.01

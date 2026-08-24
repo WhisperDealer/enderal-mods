@@ -1,0 +1,29 @@
+FormKey: 22410C:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_Hex_Effect_IronMaiden_Damage
+Name:
+  TargetLanguage: English
+  Value: Raw Damage
+MenuDisplayObject: 21F001:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Detrimental
+- NoArea
+- FXPersist
+- PowerAffectsMagnitude
+- NoDeathDispel
+BaseCost: 20
+MagicSkill: Illusion
+TaperWeight: 1
+MinimumSkillLevel: 50
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+CastType: FireAndForget
+TargetType: Touch
+SkillUsageMultiplier: 1
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Deal <mag> points of raw damage.

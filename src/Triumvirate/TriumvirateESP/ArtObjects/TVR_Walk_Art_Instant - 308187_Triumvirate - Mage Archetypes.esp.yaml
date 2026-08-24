@@ -1,0 +1,10 @@
+FormKey: 308187:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Walk_Art_Instant
+ObjectBounds:
+  First: -104, -36, -147
+  Second: 105, 48, 136
+Model:
+  File: Triumvirate\Walk_Art_Instant.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

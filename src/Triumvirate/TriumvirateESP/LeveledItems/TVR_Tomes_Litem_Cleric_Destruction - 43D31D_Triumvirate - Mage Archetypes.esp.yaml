@@ -1,0 +1,25 @@
+FormKey: 43D31D:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Tomes_Litem_Cleric_Destruction
+Flags:
+- UseAll
+Entries:
+- Data:
+    Level: 1
+    Reference: 438200:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 438201:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 438202:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 438203:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4381FF:Triumvirate - Mage Archetypes.esp
+    Count: 1

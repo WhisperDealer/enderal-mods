@@ -1,0 +1,62 @@
+FormKey: 247845:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 4
+EditorID: TVR_Demon_Weapon_ConjureLeviathan
+SkyrimMajorRecordFlags:
+- NotPlayable
+ObjectBounds:
+  First: -12, -21, -1
+  Second: 16, 43, 1
+Name:
+  TargetLanguage: English
+  Value: Leviathan Blade
+Model:
+  File: Mihail Monsters and Animals\Draugr\Nemesis\nemesisaxe.nif
+  Data: 0x020000000000000000000000
+EnchantmentAmount: 3000
+EquipmentType: 013F42:Skyrim.esm
+BlockBashImpact: 0189E8:Skyrim.esm
+AlternateBlockMaterial: 0774C0:Skyrim.esm
+Keywords:
+- 01E712:Skyrim.esm
+- 08F958:Skyrim.esm
+- 01E71F:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+ImpactDataSet: 0189E8:Skyrim.esm
+AttackSound2D: 03EDD3:Skyrim.esm
+AttackFailSound: 03EDD3:Skyrim.esm
+EquipSound: 1098B2:Skyrim.esm
+UnequipSound: 1098B1:Skyrim.esm
+BasicStats:
+  Value: 3500
+  Weight: 20
+  Damage: 60
+Data:
+  AnimationType: OneHandAxe
+  Unused: 0x000000
+  Speed: 0.7
+  Reach: 1.3
+  Flags:
+  - CantDrop
+  - NonPlayable
+  NumProjectiles: 1
+  AnimationAttackMult: 1
+  Unknown2: 1063675494
+  RumbleLeftMotorStrength: 0.5
+  RumbleRightMotorStrength: 1
+  RumbleDuration: 0.33
+  Unknown3: 0x000000000000000000000000
+  Skill: OneHanded
+  Stagger: 1.15
+Critical:
+  Damage: 6
+  Unused: -22723
+  PercentMult: 1
+  Flags:
+  - OnDeath
+  Unused2: 0xFFFFFF
+  Unused3: 1
+DetectionSoundLevel: Normal
+MajorFlags:
+- NonPlayable

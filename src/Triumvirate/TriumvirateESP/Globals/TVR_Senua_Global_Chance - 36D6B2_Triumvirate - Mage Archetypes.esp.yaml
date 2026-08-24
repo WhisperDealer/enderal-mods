@@ -1,0 +1,9 @@
+MutagenObjectType: GlobalFloat
+FormKey: 36D6B2:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 64
+EditorID: TVR_Senua_Global_Chance
+SkyrimMajorRecordFlags:
+- 0x40
+MajorFlags:
+- Constant
+Data: 2

@@ -1,0 +1,68 @@
+FormKey: 224112:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_Hex_Effect_Decrepify
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_Decrepify_Script
+    Properties:
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_ASPDPenalty
+      Data: 0.5
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_CarryWeightPenalty
+      Data: 25
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_SpeedPenalty
+      Data: 20
+Name:
+  TargetLanguage: English
+  Value: 'Curse: Decrepify'
+MenuDisplayObject: 21F001:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 21EFFE:Triumvirate - Mage Archetypes.esp
+- 0806E1:Skyrim.esm
+Flags:
+- Detrimental
+- DispelWithKeywords
+- FXPersist
+- NoRecast
+- PowerAffectsDuration
+- Painless
+BaseCost: 2.5
+MagicSkill: Illusion
+CastingLight: 21F003:Triumvirate - Mage Archetypes.esp
+TaperWeight: 1
+MinimumSkillLevel: 100
+SpellmakingArea: 40
+SpellmakingCastingTime: 3.5
+TaperCurve: 1
+TaperDuration: 1
+Archetype:
+  MutagenObjectType: MagicEffectPeakValueModArchetype
+  ActorValue: Stamina
+Explosion: 21F004:Triumvirate - Mage Archetypes.esp
+CastType: FireAndForget
+TargetType: TargetLocation
+CastingArt: 21F002:Triumvirate - Mage Archetypes.esp
+HitEffectArt: 224115:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 0.6
+DualCastScale: 1.1
+EquipAbility: 091919:Triumvirate - Mage Archetypes.esp
+Sounds:
+- Sound: 03C8F8:Skyrim.esm
+- Type: Charge
+  Sound: 073FD9:Skyrim.esm
+- Type: Ready
+  Sound: 03C8FA:Skyrim.esm
+- Type: Release
+  Sound: 116E57:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: Creatures and people are cursed for <dur> seconds. They suffer <50>% reduced weapon speed, <20>% slowed movement and lose <mag> stamina per second.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsHostileToActorConditionData
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsCommandedActorConditionData

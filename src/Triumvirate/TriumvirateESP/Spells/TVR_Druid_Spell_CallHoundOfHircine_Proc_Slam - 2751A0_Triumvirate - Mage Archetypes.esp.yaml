@@ -1,0 +1,26 @@
+FormKey: 2751A0:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Spell_CallHoundOfHircine_Proc_Slam
+Name:
+  TargetLanguage: English
+  Value: Mass Mark of Hircine
+MenuDisplayObject: 14F4DC:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Flags:
+- ManualCostCalc
+- AreaEffectIgnoresLOS
+- 0x400000
+CastType: FireAndForget
+TargetType: Touch
+Effects:
+- BaseEffect: 104D44:Skyrim.esm
+  Data:
+    Magnitude: 100
+    Area: 7
+- BaseEffect: 2751A3:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 250
+    Area: 7
+    Duration: 10

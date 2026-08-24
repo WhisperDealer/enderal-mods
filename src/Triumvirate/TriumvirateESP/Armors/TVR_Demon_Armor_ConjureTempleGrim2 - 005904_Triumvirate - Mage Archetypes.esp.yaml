@@ -1,0 +1,21 @@
+FormKey: 005904:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 4
+EditorID: TVR_Demon_Armor_ConjureTempleGrim2
+SkyrimMajorRecordFlags:
+- NotPlayable
+Name:
+  TargetLanguage: English
+  Value: Temple Grim Skin
+BodyTemplate:
+  FirstPersonFlags:
+  - Body
+  ArmorType: Clothing
+  ActsLike44: True
+Race: 005907:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: ''
+Armature:
+- 23852D:Triumvirate - Mage Archetypes.esp
+MajorFlags:
+- NonPlayable

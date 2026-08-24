@@ -1,0 +1,36 @@
+FormKey: 3D2C30:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Violence_Effect_Worldshatter_Hazard_DamagePoison
+Name:
+  TargetLanguage: English
+  Value: Poison Damage
+MenuDisplayObject: 27F3AB:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Detrimental
+- NoArea
+- FXPersist
+- PowerAffectsMagnitude
+BaseCost: 7.5
+MagicSkill: Alteration
+ResistValue: PoisonResist
+HitShader: 1A5692:Triumvirate - Mage Archetypes.esp
+MinimumSkillLevel: 75
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+Projectile: 012FCF:Skyrim.esm
+CastType: FireAndForget
+TargetType: Touch
+SkillUsageMultiplier: 0.8
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: The spirits of the land deal <mag> poison damage for <dur> seconds.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsHostileToActorConditionData
+  ComparisonValue: 1

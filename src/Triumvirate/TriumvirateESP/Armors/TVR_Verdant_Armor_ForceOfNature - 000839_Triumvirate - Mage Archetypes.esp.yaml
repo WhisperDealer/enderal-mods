@@ -1,0 +1,21 @@
+FormKey: 000839:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 4
+EditorID: TVR_Verdant_Armor_ForceOfNature
+SkyrimMajorRecordFlags:
+- NotPlayable
+BodyTemplate:
+  FirstPersonFlags:
+  - Body
+  - Hands
+  - Feet
+  - Tail
+  ArmorType: Clothing
+  ActsLike44: True
+Race: 000837:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: ''
+Armature:
+- 000838:Triumvirate - Mage Archetypes.esp
+MajorFlags:
+- NonPlayable

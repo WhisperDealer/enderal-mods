@@ -1,0 +1,43 @@
+FormKey: 35E374:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Totem_Effect_CreateEarthTotem_Proc_CloakProc_Stagger
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_Knockup_Script
+    Properties:
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_KnockdownForce
+      Data: 8
+Name:
+  TargetLanguage: English
+  Value: Knockdown
+MenuDisplayObject: 35E370:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- NoArea
+- HideInUI
+- PowerAffectsMagnitude
+- Painless
+ResistValue: ResistMagic
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Stamina
+Projectile: 012FCF:Skyrim.esm
+CastType: Concentration
+TargetType: Aimed
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsHostileToActorConditionData
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThan
+  Data:
+    MutagenObjectType: GetRandomPercentConditionData
+  ComparisonValue: 20

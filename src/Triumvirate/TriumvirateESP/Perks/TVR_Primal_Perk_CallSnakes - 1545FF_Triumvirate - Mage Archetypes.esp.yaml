@@ -1,0 +1,27 @@
+FormKey: 1545FF:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Primal_Perk_CallSnakes
+Name:
+  TargetLanguage: English
+  Value: Rattlesnake Poison Scaling
+Description:
+  TargetLanguage: English
+  Value: ''
+NumRanks: 1
+Playable: True
+Hidden: True
+Effects:
+- MutagenObjectType: PerkEntryPointModifyActorValue
+  Priority: 32
+  Conditions:
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 1545FE:Triumvirate - Mage Archetypes.esp
+      ComparisonValue: 1
+  EntryPoint: ModSpellMagnitude
+  PerkConditionTabCount: 3
+  ActorValue: Destruction
+  Value: 0.01
+  Modification: MultiplyAVMult

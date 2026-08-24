@@ -1,0 +1,10 @@
+FormKey: 1E742D:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Auras_Art_MassImmortality
+ObjectBounds:
+  First: -78, -63, -99
+  Second: 79, 63, 119
+Model:
+  File: Triumvirate\Auras_Art_Resurrect.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

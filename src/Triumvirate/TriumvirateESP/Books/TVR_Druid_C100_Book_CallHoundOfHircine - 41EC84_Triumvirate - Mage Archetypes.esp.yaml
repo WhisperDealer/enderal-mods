@@ -1,0 +1,28 @@
+FormKey: 41EC84:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_C100_Book_CallHoundOfHircine
+Name:
+  TargetLanguage: English
+  Value: 'Spell Tome: Call Hound of Hircine'
+Model:
+  File: Clutter\Books\SpellTomeConjurationLowPoly.nif
+  Data: 0x020000000000000000000000
+BookText:
+  TargetLanguage: English
+  Value: >-
+    <font face'$HandwrittenFont'><font size='40'><p align='center'>
+
+    Call Hound of Hircine
+Keywords:
+- 0937A2:Skyrim.esm
+- 0937A5:Skyrim.esm
+Flags:
+- 0x4
+Teaches:
+  MutagenObjectType: BookSpell
+  Spell: 27009A:Triumvirate - Mage Archetypes.esp
+Value: 1352
+Weight: 1
+InventoryArt: 02FBB6:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''

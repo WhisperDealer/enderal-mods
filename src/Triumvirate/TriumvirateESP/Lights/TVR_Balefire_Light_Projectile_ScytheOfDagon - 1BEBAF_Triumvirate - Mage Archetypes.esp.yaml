@@ -1,0 +1,10 @@
+FormKey: 1BEBAF:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Balefire_Light_Projectile_ScytheOfDagon
+Time: -1
+Radius: 300
+Color: '#00FB6070'
+FalloffExponent: 1
+FOV: 90
+NearClip: 1
+FlickerPeriod: 1
+FadeValue: 1.2

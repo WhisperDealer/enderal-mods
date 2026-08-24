@@ -1,0 +1,18 @@
+FormKey: 42DFC4:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 33554432
+EditorID: TVR_Violence_Hazard_Fissure
+SkyrimMajorRecordFlags:
+- 0x2000000
+ObjectBounds:
+  First: -383, -384, -79
+  Second: 384, 384, 388
+Model:
+  File: Triumvirate\Violence_Hazard_RollingTremor_BigAssFingRock.nif
+  Data: 0x020000000000000000000000
+Radius: 2
+Lifetime: 10
+TargetInterval: 10
+Flags:
+- InheritDurationFromSpawnSpell
+- AlignToImpactNormal
+- DropToGround

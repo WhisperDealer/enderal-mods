@@ -1,0 +1,17 @@
+FormKey: 00ECB5:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Hellfire_Projectile_Touch
+Model:
+  File: Effects\FXEmptyObject.nif
+  Data: 0x020000000000000000000000
+Type: Missile
+Speed: 20000
+Range: 3096
+MuzzleFlash: 00ECB6:Triumvirate - Mage Archetypes.esp
+Sound: 000D62:Triumvirate - Mage Archetypes.esp
+MuzzleFlashDuration: 0.5
+FadeDuration: 0.5
+ImpactForce: 1.5
+CollisionRadius: 1
+RelaunchInterval: 0.25
+MuzzleFlashModel: ''
+SoundLevel: 2

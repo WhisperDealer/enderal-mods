@@ -1,0 +1,12 @@
+FormKey: 28E6E2:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Toxic_Impact_Rune
+Model:
+  File: Triumvirate\Toxic_Impact_PoisonEffect.nif
+  Data: 0x020000000000000000000000
+Duration: 1
+AngleThreshold: 80
+PlacementRadius: 16
+SoundLevel: Normal
+NoDecalData: True
+TextureSet: 12F175:Triumvirate - Mage Archetypes.esp
+Sound1: 000DFF:Skyrim.esm

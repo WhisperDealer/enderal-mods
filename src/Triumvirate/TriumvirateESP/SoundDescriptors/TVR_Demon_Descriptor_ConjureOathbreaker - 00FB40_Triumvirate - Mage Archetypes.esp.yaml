@@ -1,0 +1,11 @@
+FormKey: 00FB40:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Demon_Descriptor_ConjureOathbreaker
+Type: Standard
+Category: 09F254:Skyrim.esm
+SoundFiles:
+- data\Sound\fx\mihaillich.esp\npc_draugr_conscious_01_lp.wav
+OutputModel: 07F80C:Skyrim.esm
+LoopAndRumble:
+  Loop: Loop
+Priority: 1
+StaticAttenuation: 9.69

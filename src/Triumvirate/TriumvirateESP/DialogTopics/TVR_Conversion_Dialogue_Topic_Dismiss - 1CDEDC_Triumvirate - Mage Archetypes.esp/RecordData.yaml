@@ -1,0 +1,9 @@
+FormKey: 1CDEDC:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Conversion_Dialogue_Topic_Dismiss
+Name:
+  TargetLanguage: English
+  Value: It's time for us to part ways.
+Priority: 10
+Branch: 1CDEDB:Triumvirate - Mage Archetypes.esp
+Quest: 1CDEC9:Triumvirate - Mage Archetypes.esp
+SubtypeName: CUST

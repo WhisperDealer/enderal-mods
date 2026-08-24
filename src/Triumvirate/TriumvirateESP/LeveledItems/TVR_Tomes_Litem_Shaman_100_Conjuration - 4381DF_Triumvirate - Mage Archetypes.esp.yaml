@@ -1,0 +1,11 @@
+FormKey: 4381DF:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Tomes_Litem_Shaman_100_Conjuration
+ChanceNone: 1
+Flags:
+- UseAll
+Global: 0F2589:Skyrim.esm
+Entries:
+- Data:
+    Level: 1
+    Reference: 414A09:Triumvirate - Mage Archetypes.esp
+    Count: 1

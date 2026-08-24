@@ -1,0 +1,16 @@
+FormKey: 4149F2:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_C025_StaffEnchantment_CreateTreeTotem
+Name:
+  TargetLanguage: English
+  Value: Create Tree Totem
+EnchantmentCost: 90
+CastType: FireAndForget
+EnchantmentAmount: 90
+TargetType: TargetLocation
+EnchantType: StaffEnchantment
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 3C89CF:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 10
+    Duration: 60

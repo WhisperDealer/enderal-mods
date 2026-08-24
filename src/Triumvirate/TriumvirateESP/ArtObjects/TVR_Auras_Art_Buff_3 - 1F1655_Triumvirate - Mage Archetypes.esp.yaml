@@ -1,0 +1,10 @@
+FormKey: 1F1655:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Auras_Art_Buff_3
+ObjectBounds:
+  First: -62, -162, -112
+  Second: 62, 180, 130
+Model:
+  File: Triumvirate\Auras_Art_Buff_3.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

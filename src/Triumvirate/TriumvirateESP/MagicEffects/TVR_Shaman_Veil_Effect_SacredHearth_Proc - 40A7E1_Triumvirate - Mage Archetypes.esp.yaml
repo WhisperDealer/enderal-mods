@@ -1,0 +1,38 @@
+FormKey: 40A7E1:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Veil_Effect_SacredHearth_Proc
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_SacredHearth_Buff_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_SacredHearth_Quest
+      Object: 3C38BD:Triumvirate - Mage Archetypes.esp
+Name:
+  TargetLanguage: English
+  Value: Hearth Spirit
+MenuDisplayObject: 2B6F47:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 0D5B8E:Skyrim.esm
+Flags:
+- Recover
+- NoArea
+- FXPersist
+- PowerAffectsDuration
+BaseCost: 1
+MagicSkill: Alteration
+HitShader: 3727D4:Triumvirate - Mage Archetypes.esp
+MinimumSkillLevel: 100
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+CastType: FireAndForget
+SkillUsageMultiplier: 0.12
+DualCastScale: 1.1
+CastingSoundLevel: Normal
+Sounds:
+- Type: Release
+  Sound: 07BBAE:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: You recalled to your Hearth. After <dur> seconds, you will return whence you came.

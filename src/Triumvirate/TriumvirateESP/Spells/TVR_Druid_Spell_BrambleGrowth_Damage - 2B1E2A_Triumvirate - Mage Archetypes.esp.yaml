@@ -1,0 +1,32 @@
+FormKey: 2B1E2A:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Spell_BrambleGrowth_Damage
+Name:
+  TargetLanguage: English
+  Value: Bramble Growth
+MenuDisplayObject: 27F3AB:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 266
+Flags:
+- AreaEffectIgnoresLOS
+ChargeTime: 0.5
+CastType: FireAndForget
+TargetType: Touch
+HalfCostPerk: 0C44C9:Skyrim.esm
+Effects:
+- BaseEffect: 28E6DF:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 10
+    Duration: 3
+- BaseEffect: 28E6E1:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 10
+    Duration: 3
+- BaseEffect: 2B1E29:Triumvirate - Mage Archetypes.esp
+  Data:
+    Duration: 3
+- BaseEffect: 2B1E2E:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 0.25

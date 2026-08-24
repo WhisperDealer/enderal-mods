@@ -1,0 +1,18 @@
+FormKey: 3B4570:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Totem_Explosion_FylgjaWind_Crystalize
+Model:
+  File: ApocNew\destructionfrost_explosion_shivers.nif
+  Data: 0x020000000000000000000000
+ImageSpaceModifier: 04408A:Skyrim.esm
+Sound1: 0BCF59:Triumvirate - Mage Archetypes.esp
+ImpactDataSet: 018A2E:Skyrim.esm
+Force: 128
+Radius: 128
+ISRadius: 512
+Flags:
+- 0x1
+- AlwaysUsesWorldOrientation
+- IgnoreLosCheck
+- IgnoreImageSpaceSwap
+- NoControllerVibration
+SoundLevel: Normal

@@ -1,0 +1,11 @@
+FormKey: 4381F3:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Tomes_Litem_Warlock_075_Conjuration
+ChanceNone: 1
+Flags:
+- UseAll
+Global: 0F2588:Skyrim.esm
+Entries:
+- Data:
+    Level: 1
+    Reference: 419B51:Triumvirate - Mage Archetypes.esp
+    Count: 1

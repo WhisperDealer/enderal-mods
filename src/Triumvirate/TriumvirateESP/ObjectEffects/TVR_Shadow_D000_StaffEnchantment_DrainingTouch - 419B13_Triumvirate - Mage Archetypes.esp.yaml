@@ -1,0 +1,23 @@
+FormKey: 419B13:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shadow_D000_StaffEnchantment_DrainingTouch
+Name:
+  TargetLanguage: English
+  Value: Draining Touch
+EnchantmentCost: 30
+CastType: FireAndForget
+EnchantmentAmount: 30
+TargetType: Aimed
+EnchantType: StaffEnchantment
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 33FD5C:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 3
+    Duration: 30
+- BaseEffect: 33FD62:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 3
+    Duration: 30
+- BaseEffect: 33FD65:Triumvirate - Mage Archetypes.esp
+  Data:
+    Duration: 30

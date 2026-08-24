@@ -1,0 +1,44 @@
+FormKey: 386BFD:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shadow_Walk_Effect_ShadowStride_InCombat
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_CarryWeight_Script
+    Properties:
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_CarryWeight
+      Data: 0.01
+Name:
+  TargetLanguage: English
+  Value: Fortify Speed
+MenuDisplayObject: 2FDF85:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 31C5B7:Triumvirate - Mage Archetypes.esp
+Flags:
+- Recover
+- NoHitEvent
+- NoArea
+- HideInUI
+- PowerAffectsDuration
+- NoHitEffect
+MagicSkill: Alteration
+CastingLight: 308186:Triumvirate - Mage Archetypes.esp
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectPeakValueModArchetype
+  ActorValue: SpeedMult
+CastType: FireAndForget
+CastingArt: 2FDF84:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1
+ImageSpaceModifier: 054225:Skyrim.esm
+CastingSoundLevel: Normal
+Sounds:
+- Sound: 03F37A:Skyrim.esm
+- Type: Charge
+  Sound: 03EDD5:Skyrim.esm
+- Type: Ready
+  Sound: 03F1F0:Skyrim.esm
+- Type: Release
+  Sound: 025D9B:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: ''

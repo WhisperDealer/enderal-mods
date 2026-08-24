@@ -1,0 +1,15 @@
+FormKey: 41EC60:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Cleric_I025_StaffEnchantment_Exile
+Name:
+  TargetLanguage: English
+  Value: Exile
+EnchantmentCost: 98
+CastType: FireAndForget
+EnchantmentAmount: 98
+TargetType: Aimed
+EnchantType: StaffEnchantment
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 1CDEEC:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 15

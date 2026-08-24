@@ -1,0 +1,93 @@
+FormKey: 191250:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Verdant_Effect_ForceOfNature
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_Wildshape_Script
+    Properties:
+    - MutagenObjectType: ScriptStringProperty
+      Name: TVR_AnimEvent
+      Data: aggroWarningStart
+    - MutagenObjectType: ScriptBoolProperty
+      Name: TVR_DisableFight
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_HelpMessage
+      Object: 2B6F3B:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_HelpMessageDuration_Global
+      Object: 2B6F3D:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_HelpMessageRate_Global
+      Object: 2B6F3C:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptStringProperty
+      Name: TVR_HelpMessageType
+      Data: ForceOfNatureDesc
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Imod
+      Object: 29DA0A:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_MorphSpell
+      Object: 28E6EB:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Primal_Explosion_Wildshape
+      Object: 19124E:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Primal_Spell_DispelPower
+      Object: 2B6F39:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Primal_VFX_Wildshape
+      Object: 00E1CE:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Race
+      Object: 000837:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_SpellImmuneFromUnequip
+      Object: 28E6EB:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptBoolProperty
+      Name: TVR_UnequipItems
+      Data: True
+Name:
+  TargetLanguage: English
+  Value: Force of Nature
+MenuDisplayObject: 191249:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 191251:Triumvirate - Mage Archetypes.esp
+- 2B6F38:Triumvirate - Mage Archetypes.esp
+Flags:
+- Detrimental
+- SnapToNavmesh
+- NoArea
+- FXPersist
+- PowerAffectsDuration
+- NoHitEffect
+BaseCost: 2.5
+MagicSkill: Alteration
+CastingLight: 19124F:Triumvirate - Mage Archetypes.esp
+MinimumSkillLevel: 25
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Magicka
+CastType: FireAndForget
+CastingArt: 19124A:Triumvirate - Mage Archetypes.esp
+HitEffectArt: 19124B:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 0.25
+DualCastScale: 1
+PerkToApply: 2B6F30:Triumvirate - Mage Archetypes.esp
+CastingSoundLevel: Normal
+Sounds:
+- Sound: 03F37A:Skyrim.esm
+- Type: Release
+  Sound: 00649E:Triumvirate - Mage Archetypes.esp
+- Type: Charge
+  Sound: 0FDA53:Skyrim.esm
+- Type: Ready
+  Sound: 006A26:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: Assume the form of a Horned Lord for <dur> seconds. It uses melee attacks and can cast the caster's other equipped spell. Its power attacks steal Magicka.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000007:Skyrim.esm
+  ComparisonValue: 1

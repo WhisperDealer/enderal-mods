@@ -1,0 +1,54 @@
+FormKey: 224118:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_Hex_Effect_Frailty
+Name:
+  TargetLanguage: English
+  Value: 'Curse: Frailty'
+MenuDisplayObject: 21F001:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 21EFFE:Triumvirate - Mage Archetypes.esp
+Flags:
+- Recover
+- Detrimental
+- DispelWithKeywords
+- FXPersist
+- NoRecast
+- PowerAffectsDuration
+- Painless
+BaseCost: 0.1
+MagicSkill: Illusion
+CastingLight: 21F003:Triumvirate - Mage Archetypes.esp
+TaperWeight: 1
+MinimumSkillLevel: 25
+SpellmakingArea: 40
+SpellmakingCastingTime: 0.5
+TaperCurve: 1
+TaperDuration: 1
+Archetype:
+  MutagenObjectType: MagicEffectPeakValueModArchetype
+  ActorValue: DamageResist
+Explosion: 21F004:Triumvirate - Mage Archetypes.esp
+CastType: FireAndForget
+TargetType: TargetLocation
+CastingArt: 21F002:Triumvirate - Mage Archetypes.esp
+HitEffectArt: 224117:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 0.6
+DualCastScale: 1.1
+Sounds:
+- Sound: 03C8F8:Skyrim.esm
+- Type: Charge
+  Sound: 03C8F9:Skyrim.esm
+- Type: Ready
+  Sound: 03C8FA:Skyrim.esm
+- Type: Release
+  Sound: 116E57:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: Creatures and people are cursed for <dur> seconds. Their armor is reduced by <mag> points.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsHostileToActorConditionData
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsCommandedActorConditionData

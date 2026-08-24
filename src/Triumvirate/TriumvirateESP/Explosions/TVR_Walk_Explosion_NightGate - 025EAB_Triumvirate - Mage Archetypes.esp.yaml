@@ -1,0 +1,15 @@
+FormKey: 025EAB:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Walk_Explosion_NightGate
+ObjectBounds:
+  First: -3, -4, 0
+  Second: 3, 4, 5
+Model:
+  File: Effects\FXEmptyExplosionArt.nif
+  Data: 0x020000000000000000000000
+PlacedObject: 025EAC:Triumvirate - Mage Archetypes.esp
+Radius: 128
+Flags:
+- 0x1
+- IgnoreLosCheck
+- IgnoreImageSpaceSwap
+SoundLevel: Silent

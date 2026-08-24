@@ -1,0 +1,18 @@
+FormKey: 13BEE2:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Controller_Projectile
+ObjectBounds:
+  First: -28, -102, -18
+  Second: 28, 31, 19
+Model:
+  File: Triumvirate\Controller_Projectile.nif
+  Data: 0x020000000000000000000000
+Type: Missile
+Speed: 2000
+Range: 10000
+Light: 1CDEE7:Triumvirate - Mage Archetypes.esp
+FadeDuration: 8
+ImpactForce: 0.5
+CollisionRadius: 10
+RelaunchInterval: 0.25
+MuzzleFlashModel: ''
+SoundLevel: 1

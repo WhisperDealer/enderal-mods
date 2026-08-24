@@ -1,0 +1,10 @@
+FormKey: 30D2A2:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Rift_Light_Projectile
+Time: -1
+Radius: 300
+Color: '#008C40E1'
+FalloffExponent: 1
+FOV: 90
+NearClip: 1
+FlickerPeriod: 1
+FadeValue: 1

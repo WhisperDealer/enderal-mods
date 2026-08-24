@@ -1,0 +1,100 @@
+FormKey: 3A013C:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Elemental_Effect_ControlFlames_DirectDamage
+VirtualMachineAdapter:
+  Scripts:
+  - Name: MG01FireEffectScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MG01
+      Object: 01F251:Skyrim.esm
+  - Name: TVR_DispelFromCaster_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Spell
+      Object: 3A0139:Triumvirate - Mage Archetypes.esp
+  - Name: TVR_Message_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Message
+      Object: 3A5245:Triumvirate - Mage Archetypes.esp
+  - Name: TVR_RampRumble_Script
+    Properties:
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_Dur
+      Data: 0.5
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_Falloff
+      Data: 2048
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_Str
+      Data: 0.5
+  - Name: TVR_SoundAndImod_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerRef
+      Object: 000014:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Imod
+      Object: 0FB3EA:Skyrim.esm
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_Range
+      Data: 2048
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Sound
+      Object: 0248DE:Skyrim.esm
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_Strength
+      Data: 0.8
+Name:
+  TargetLanguage: English
+  Value: Fire Damage
+MenuDisplayObject: 3A0132:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 01CEAD:Skyrim.esm
+Flags:
+- Hostile
+- Detrimental
+- FXPersist
+- NoRecast
+- PowerAffectsMagnitude
+- NoDeathDispel
+BaseCost: 9
+MagicSkill: Alteration
+ResistValue: ResistFire
+CastingLight: 3A0131:Triumvirate - Mage Archetypes.esp
+TaperWeight: 0.3
+HitShader: 3A5247:Triumvirate - Mage Archetypes.esp
+MinimumSkillLevel: 25
+SpellmakingArea: 3
+SpellmakingCastingTime: 0.5
+TaperCurve: 2
+TaperDuration: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+Projectile: 3A0134:Triumvirate - Mage Archetypes.esp
+Explosion: 3A013B:Triumvirate - Mage Archetypes.esp
+CastType: FireAndForget
+TargetType: Aimed
+CastingArt: 3A0133:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 1
+DualCastScale: 1
+ImageSpaceModifier: 10FBEB:Skyrim.esm
+Sounds:
+- Sound: 03C8F8:Skyrim.esm
+- Type: Charge
+  Sound: 03C8F9:Skyrim.esm
+- Type: Ready
+  Sound: 03C8FA:Skyrim.esm
+- Type: Release
+  Sound: 000D67:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: Target a nonmagical fire to absorb its power, gaining <mag>% Fire Resist. Afterwards, target an enemy to release the fire, dealing <mag> fire damage for <dur> seconds.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasMagicEffectKeywordConditionData
+    RunOnType: Target
+    Keyword: 3A0138:Triumvirate - Mage Archetypes.esp
+  ComparisonValue: 1

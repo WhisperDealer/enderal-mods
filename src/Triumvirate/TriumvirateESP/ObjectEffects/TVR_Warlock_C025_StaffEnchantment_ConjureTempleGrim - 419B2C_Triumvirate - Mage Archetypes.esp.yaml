@@ -1,0 +1,14 @@
+FormKey: 419B2C:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_C025_StaffEnchantment_ConjureTempleGrim
+Name:
+  TargetLanguage: English
+  Value: Conjure Temple Grim
+EnchantmentCost: 76
+CastType: FireAndForget
+EnchantmentAmount: 76
+EnchantType: StaffEnchantment
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 23342B:Triumvirate - Mage Archetypes.esp
+  Data:
+    Duration: 60

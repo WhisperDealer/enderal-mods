@@ -1,0 +1,19 @@
+FormKey: 015F54:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Demon_Effect_ConjureRavagor_Ab
+Name:
+  TargetLanguage: English
+  Value: Vampiric Cloak
+MenuDisplayObject: 1C3CBA:Triumvirate - Mage Archetypes.esp
+Flags:
+- NoHitEvent
+- NoDuration
+- NoArea
+- NoHitEffect
+Archetype:
+  MutagenObjectType: MagicEffectCloakArchetype
+  Association: 26AF7D:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Gain a <mag> foot vampiric cloak.

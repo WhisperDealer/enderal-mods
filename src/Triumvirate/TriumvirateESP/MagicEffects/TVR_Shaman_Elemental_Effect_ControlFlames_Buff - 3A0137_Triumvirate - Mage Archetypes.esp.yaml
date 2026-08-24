@@ -1,0 +1,29 @@
+FormKey: 3A0137:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Elemental_Effect_ControlFlames_Buff
+Name:
+  TargetLanguage: English
+  Value: Resist Fire
+MenuDisplayObject: 3A0132:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 3A0138:Triumvirate - Mage Archetypes.esp
+Flags:
+- Recover
+- NoArea
+- FXPersist
+- PowerAffectsDuration
+BaseCost: 1
+MagicSkill: Alteration
+MinimumSkillLevel: 25
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: ResistFire
+CastType: FireAndForget
+HitEffectArt: 3A5246:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 1
+DualCastScale: 1.1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: The spirit of fire increases Fire Resist by <mag>% for <dur> seconds. Release by casting Control Flames again.

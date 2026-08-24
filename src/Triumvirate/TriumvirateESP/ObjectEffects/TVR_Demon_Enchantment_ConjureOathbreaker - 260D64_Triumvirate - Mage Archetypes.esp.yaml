@@ -1,0 +1,16 @@
+FormKey: 260D64:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Demon_Enchantment_ConjureOathbreaker
+Name:
+  TargetLanguage: English
+  Value: Leech Bolt
+EnchantmentCost: 9
+CastType: FireAndForget
+EnchantmentAmount: 9
+TargetType: Aimed
+EnchantType: StaffEnchantment
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 260D62:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 40
+    Duration: 2
