@@ -3,14 +3,10 @@ EditorID: TVR_Shaman_Violence_Effect_Worldshatter_Hazard_AshShell
 VirtualMachineAdapter:
   Scripts:
   - Name: DLC2AshShellScript
-    Properties:
-    - MutagenObjectType: ScriptObjectProperty
-      Name: DLC2AshShellDmgPerk
-      Object: 0177B4:Dragonborn.esm
 Name:
   TargetLanguage: English
   Value: Ash Shell
-MenuDisplayObject: 027BF9:Dragonborn.esm
+MenuDisplayObject: 109AC2:Skyrim.esm
 Keywords:
 - 01EA70:Skyrim.esm
 Flags:
@@ -48,10 +44,6 @@ Conditions:
   Data:
     MutagenObjectType: HasKeywordConditionData
     Keyword: 0F23C5:Skyrim.esm
-- MutagenObjectType: ConditionFloat
-  Data:
-    MutagenObjectType: HasKeywordConditionData
-    Keyword: 028FDE:Dragonborn.esm
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: GetRestrainedConditionData

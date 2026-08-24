@@ -6,7 +6,7 @@ SoundFiles:
 - Data\Sound\FX\NPC\Dragon\FlightRoar\Obstructed\NPC_Dragon_FlightRoarObstructed_01.wav
 - Data\Sound\FX\NPC\Dragon\FlightRoar\Obstructed\NPC_Dragon_FlightRoarObstructed_02.wav
 - Data\Sound\FX\NPC\Dragon\FlightRoar\Obstructed\NPC_Dragon_FlightRoarObstructed_03.wav
-OutputModel: 01333C:Dawnguard.esm
+OutputModel: 0E363A:Skyrim.esm
 LoopAndRumble:
   Unknown: 1
 PercentFrequencyShift: 50

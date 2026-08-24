@@ -85,7 +85,7 @@ MovementTypeNames:
 - SWIM
 - WALK
 Voices:
-  Male: 024C3E:Dragonborn.esm
+  Male: 01F6A7:Skyrim.esm
   Female: 00002E:Skyrim.esm
 FacegenMainClamp: 5
 FacegenFaceClamp: 3

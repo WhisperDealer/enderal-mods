@@ -9,7 +9,7 @@ VirtualMachineAdapter:
       Data: True
     - MutagenObjectType: ScriptObjectProperty
       Name: EffectShaderFX
-      Object: 019C9E:Dawnguard.esm
+      Object: 01B212:Skyrim.esm
 Name:
   TargetLanguage: English
   Value: Holy Burst
@@ -27,7 +27,6 @@ Archetype:
   Association: 200977:Triumvirate - Mage Archetypes.esp
 CastType: FireAndForget
 DualCastScale: 1
-ImageSpaceModifier: 00AE9D:Dawnguard.esm
 CastingSoundLevel: Silent
 Sounds:
 - Type: Release

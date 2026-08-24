@@ -4,7 +4,7 @@ Type: Standard
 Category: 07F80B:Skyrim.esm
 SoundFiles:
 - data\Sound\fx\Triumvirate - Mage Archetypes.esp\CrowCall.wav
-OutputModel: 01333C:Dawnguard.esm
+OutputModel: 0E363A:Skyrim.esm
 Conditions:
 - MutagenObjectType: ConditionFloat
   CompareOperator: NotEqualTo

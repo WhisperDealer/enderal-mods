@@ -9,7 +9,7 @@ VirtualMachineAdapter:
       Data: True
     - MutagenObjectType: ScriptObjectProperty
       Name: EffectShaderFX
-      Object: 019C9E:Dawnguard.esm
+      Object: 01B212:Skyrim.esm
 Name:
   TargetLanguage: English
   Value: Fire Damage
@@ -28,7 +28,7 @@ Flags:
 BaseCost: 1
 MagicSkill: Restoration
 TaperWeight: 0.3
-HitShader: 00A3BB:Dawnguard.esm
+HitShader: 01B212:Skyrim.esm
 MinimumSkillLevel: 25
 SpellmakingCastingTime: 0.5
 TaperCurve: 2

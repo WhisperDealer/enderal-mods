@@ -51,8 +51,4 @@ Conditions:
     Keyword: 0F23C5:Skyrim.esm
 - MutagenObjectType: ConditionFloat
   Data:
-    MutagenObjectType: HasKeywordConditionData
-    Keyword: 028FDE:Dragonborn.esm
-- MutagenObjectType: ConditionFloat
-  Data:
     MutagenObjectType: GetRestrainedConditionData

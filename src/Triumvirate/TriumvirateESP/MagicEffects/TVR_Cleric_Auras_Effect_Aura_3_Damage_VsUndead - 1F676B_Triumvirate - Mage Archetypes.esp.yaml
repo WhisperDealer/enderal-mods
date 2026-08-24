@@ -12,7 +12,7 @@ Flags:
 - PowerAffectsMagnitude
 BaseCost: 1
 MagicSkill: Restoration
-HitShader: 00A3BB:Dawnguard.esm
+HitShader: 01B212:Skyrim.esm
 MinimumSkillLevel: 75
 SpellmakingCastingTime: 0.5
 Archetype:

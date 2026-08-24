@@ -8,21 +8,6 @@ VirtualMachineAdapter:
       Name: DanicaPureSpring
       Object: 01A69F:Skyrim.esm
     - MutagenObjectType: ScriptObjectProperty
-      Name: DLC1VendorChestFlorentius
-      Object: 00F82C:Dawnguard.esm
-    - MutagenObjectType: ScriptObjectProperty
-      Name: DLC2dunFrostmoonVendorChest
-      Object: 01F9E5:Dragonborn.esm
-    - MutagenObjectType: ScriptObjectProperty
-      Name: DLC2MerchantTelMithrynNelothChest
-      Object: 0177C3:Dragonborn.esm
-    - MutagenObjectType: ScriptObjectProperty
-      Name: DLC2SkaalBlacksmithChest
-      Object: 01F898:Dragonborn.esm
-    - MutagenObjectType: ScriptObjectProperty
-      Name: DLC2SkaalMerchantChest
-      Object: 01F88E:Dragonborn.esm
-    - MutagenObjectType: ScriptObjectProperty
       Name: Dravynea
       Object: 01B08B:Skyrim.esm
     - MutagenObjectType: ScriptObjectProperty

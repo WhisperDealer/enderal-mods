@@ -44,7 +44,7 @@ Configuration:
 Factions:
 - Faction: 000013:Skyrim.esm
   Fluff: 0x000000
-Voice: 00F8AE:Dawnguard.esm
+Voice: 01F1CE:Skyrim.esm
 Race: 000814:Triumvirate - Mage Archetypes.esp
 ActorEffect:
 - 0128E3:Triumvirate - Mage Archetypes.esp

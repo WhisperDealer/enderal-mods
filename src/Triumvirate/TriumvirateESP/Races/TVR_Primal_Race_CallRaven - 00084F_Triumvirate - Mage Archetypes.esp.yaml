@@ -134,7 +134,7 @@ BodyData:
     Model:
       File: Actors\Character\UpperBodyHumanFemale.egt
       Data: 0x020000000000000000000000
-BodyPartData: 005205:Dawnguard.esm
+BodyPartData: 059060:Skyrim.esm
 BehaviorGraph:
   Male:
     File: Actors\DLC01\ChaurusFlyer\ChaurusFlyer.hkx
@@ -160,5 +160,5 @@ EquipmentSlots:
 - 013F42:Skyrim.esm
 - 013F43:Skyrim.esm
 UnarmedEquipSlot: 013F42:Skyrim.esm
-BaseMovementDefaultWalk: 0051FC:Dawnguard.esm
-BaseMovementDefaultRun: 0051FC:Dawnguard.esm
+BaseMovementDefaultWalk: 064113:Skyrim.esm
+BaseMovementDefaultRun: 064113:Skyrim.esm

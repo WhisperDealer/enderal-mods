@@ -84,7 +84,7 @@ MovementTypeNames:
 - SWIM
 - WALK
 Voices:
-  Male: 011681:Dawnguard.esm
+  Male: 01F180:Skyrim.esm
   Female: 01F180:Skyrim.esm
 FacegenMainClamp: 5
 FacegenFaceClamp: 3

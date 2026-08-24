@@ -81,7 +81,3 @@ Conditions:
   Data:
     MutagenObjectType: HasKeywordConditionData
     Keyword: 0D205E:Skyrim.esm
-- MutagenObjectType: ConditionFloat
-  Data:
-    MutagenObjectType: HasKeywordConditionData
-    Keyword: 01269F:Dawnguard.esm

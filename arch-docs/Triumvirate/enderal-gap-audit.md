@@ -243,6 +243,72 @@ Triumvirate's overrides *inject* four Skyrim cells. Their supporting references 
 Delete the cell overrides, the worldspace override, and the 13 `REFR` / 4 `ACHR` that live in them.
 Triumvirate's own `TVR_Cell 2E99EB` stays — it is the Night Gate portal interior and is self-contained.
 
+## Applied
+
+The verdicts above are implemented by six numbered generators in `src/Triumvirate/tools/`, run in
+order. Each asserts what it changed and refuses to proceed on a silent no-op.
+
+| Step | Does |
+|---|---|
+| `01-drop-skyrim-cells.ps1` | Deletes the `Tamriel` worldspace and the four cell overrides Enderal lacks, then prunes the orphaned CELL block folders — Spriggit leaves a `GroupRecordData.yaml` behind, which would serialize as an empty GRUP |
+| `02-drop-dlc-override-records.ps1` | Deletes the six whole-record DLC overrides |
+| `03-strip-dlc-list-entries.ps1` | Removes 185 bare DLC list entries across 8 records |
+| `04-substitute-dlc-fields.ps1` | 35 field substitutions, 3 field removals, 10 sequence-item removals |
+| `05-drop-dlc-masters.ps1` | Drops the three DLC masters — refuses to run while any DLC reference survives |
+| `06-fix-drifted-refs.ps1` | The two drifted references worth fixing |
+
+### Result
+
+| | Before | After |
+|---|---:|---:|
+| References examined | 11,289 | 10,961 |
+| **Dead occurrences** | **702** | **391** |
+| Distinct dead FormKeys | 311 | 154 |
+| Records holding a dead reference | 149 | 101 |
+| **References into a DLC** | **260** | **0** |
+| **RETYPED** (wrong record type) | 1 | **0** |
+| **DRIFTED** (wrong record) | 14 | **12**, all deliberate LEAVEs |
+| Masters | 5 | **`Skyrim.esm`, `Update.esm`** |
+| Form version | 1.70 | **1.70** |
+
+The rebuilt plugin drops from 1882 records to **1866 — exactly the 16 intended**, with **nothing
+added and no type mismatches**, verified by an index-shift-aware census (the mod index moves 05 → 02
+when three masters go, so a naive FormID diff reports all 1882 records as changed):
+
+```
+REMOVED (16):                              ADDED (0): none
+  00003C WRLD   Tamriel                    type mismatches: 0
+  000D74 CELL   Tamriel's persistent cell
+  009732 CELL   Riverwood
+  016A02 016BDE 016DF3  CELL   the three temple/house interiors
+  0198A5 019DCC 01E766 1066DF  ACHR  the placed vendor NPCs inside them
+  00F82B 0177C1 01DC65 01F88D 01F897  CONT   the DLC vendor chests
+  01DC62 FACT   DLC2dunFrostmoonWerewolvesVendorFaction
+```
+
+Everything still dead is `Skyrim.esm` (390 occurrences) plus one `Update.esm`, and it is
+concentrated where the remaining tickets already point: `Item` 215 and `Faction`/`MerchantContainer`
+31 (WD-16), `Perk` 23 (WD-11…WD-15), `Object` 43 (mostly the populate quest), `Template` 8 and
+`LocationReferenceType` 16.
+
+### One casualty to carry into WD-11
+
+**`TVR_Verdant_FormList_Ingredients` is now empty.** All 36 of its entries were Hearthfires garden
+plants, so stripping the DLC took the whole list. The Druid's Druidcraft ingredient mechanic has
+nothing to find until WD-11 repopulates it from Enderal's own flora. The list is a legal empty
+FormList — Spriggit drops the `Items:` key entirely, which is the required shape — so it builds and
+does nothing, rather than failing.
+
+Two neighbours shrank but survived: `TVR_Veil_FormList_Mark_Plant` 170 → 112 and
+`TVR_Elemental_FormList_ControlFlames_FireSources` 101 → 87. `TVR_Veil_FormList_Mark_Ore` lost 6 of
+567 and still resolves against Enderal's shadowsteel veins.
+
+### Flagged for WD-17 while applying
+
+`TVR_Shaman_Violence_Effect_Worldshatter_Hazard_AshShell` runs **`DLC2AshShellScript`** — Bethesda's
+Dragonborn script, not one of Triumvirate's. Its dead `DLC2AshShellDmgPerk` property is gone, but
+whether the BSA ships a copy of the script itself is unknown until an extractor is configured.
+
 ## Not yet swept
 
 Stated plainly rather than left implied:

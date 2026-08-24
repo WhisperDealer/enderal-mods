@@ -1,8 +1,6 @@
 FormKey: 3DCE52:Triumvirate - Mage Archetypes.esp
 EditorID: TVR_Geist_ImpactSet_SpiritFire
 Impacts:
-- Material: 018C9C:Dragonborn.esm
-  Impact: 3DCE50:Triumvirate - Mage Archetypes.esp
 - Material: 012F34:Skyrim.esm
   Impact: 3DCE50:Triumvirate - Mage Archetypes.esp
 - Material: 012F35:Skyrim.esm

@@ -4,7 +4,7 @@ Type: Standard
 Category: 0172A1:Skyrim.esm
 SoundFiles:
 - Data\Sound\FX\AMBt\Dungeon\Dwemer\AMBt_Dungeon_Dwemer_Generic_2DLP.wav
-OutputModel: 014BCB:Dawnguard.esm
+OutputModel: 08F3E4:Skyrim.esm
 LoopAndRumble:
   Unknown: 4
   Loop: Loop

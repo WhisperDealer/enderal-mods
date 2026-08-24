@@ -47,7 +47,7 @@ Configuration:
 Factions:
 - Faction: 02B0E5:Skyrim.esm
   Fluff: 0x000000
-Voice: 011681:Dawnguard.esm
+Voice: 01F180:Skyrim.esm
 Race: 005907:Triumvirate - Mage Archetypes.esp
 ActorEffect:
 - 242735:Triumvirate - Mage Archetypes.esp
@@ -68,7 +68,7 @@ AIData:
   Assistance: HelpsAllies
 Keywords:
 - 23342A:Triumvirate - Mage Archetypes.esp
-Class: 0145DC:Dawnguard.esm
+Class: 0131E6:Skyrim.esm
 Name:
   TargetLanguage: English
   Value: Potent Temple Grim

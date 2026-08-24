@@ -28,7 +28,7 @@ Configuration:
 Factions:
 - Faction: 000013:Skyrim.esm
   Fluff: 0x000000
-Voice: 00F8AE:Dawnguard.esm
+Voice: 01F6A7:Skyrim.esm
 Race: 00080C:Triumvirate - Mage Archetypes.esp
 WornArmor: 00080E:Triumvirate - Mage Archetypes.esp
 AttackRace: 00080C:Triumvirate - Mage Archetypes.esp

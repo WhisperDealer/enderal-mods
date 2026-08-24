@@ -4,7 +4,7 @@ Type: Standard
 Category: 0DDDC5:Skyrim.esm
 SoundFiles:
 - data\Sound\fx\Triumvirate - Mage Archetypes.esp\Spirits.wav
-OutputModel: 01686B:Dawnguard.esm
+OutputModel: 0F11FD:Skyrim.esm
 Conditions:
 - MutagenObjectType: ConditionFloat
   CompareOperator: NotEqualTo
