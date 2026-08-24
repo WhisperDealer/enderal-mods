@@ -3,10 +3,11 @@
 The agreed mapping from Triumvirate's Elder Scrolls proper nouns to Enderal's own vocabulary, so
 every archetype ticket uses the same names. Produced for **WD-10**.
 
-**Decide here, apply last.** This document is the deciding half. The mechanical rename runs *after*
-the archetype ports (WD-11…WD-15) and the distribution rebuild (WD-16), because those tickets add
-and delete player-facing strings, and WD-10's done-when — "no leftover Skyrim proper nouns" — is only
-meaningful when asserted over the finished tree.
+**Applied.** The renames landed with the archetype ports (WD-11–WD-15, generators `09`–`13` in
+`src/Triumvirate/tools/`), and `16-verify-naming.ps1` closes the ticket: it scans every
+player-facing string in the finished tree against the full Elder Scrolls lexicon and **asserts
+zero**, which it does. Re-run it after any later string edit — WD-18's build should treat it as
+a gate.
 
 ---
 
@@ -132,72 +133,34 @@ either choice alone. Every target is attested Enderal vocabulary, not invented.
 | **Fylgja**, **Goodberry** | **keep** | Norse and D&D loans, not Elder Scrolls. Neither collides with Enderal vocabulary and both read as generic. WD-10 asked for this to be decided explicitly — decided: keep |
 | **Horned Lord** | **keep** | Generic; no Elder Scrolls referent |
 
-### Needs your decision
+### The four contested calls — settled and applied
 
-Four calls where the evidence does not choose for us. Each shapes what the archetype tickets build,
-which is why they are worth settling before WD-11.
+All four went with the recommendation (confirmed by starting the ports on that basis):
 
-#### 1. Hircine — the Druid's patron
-
-Appears in *Call Hound of Hircine*, *Mark of Hircine*, and the Druid's whole framing.
-
-| Option | Reads as | Cost |
-|---|---|---|
-| **A — The High Ones** | The closest structural match Enderal has: a power that *manifests as beasts*, with Bear/Wolf/Spider/Sabre Cat avatars already in the game | They are the **antagonists** — behind the Cleansing, the Cycle and the Red Madness. A Druid who serves them is a villain, which is a bigger statement than a spell pack should make by accident |
-| **B — no patron at all** *(my recommendation)* | The Druid is simply attuned to the wild. *Call Hound of Hircine* → **Call the Glacier Hound**; *Mark of Hircine* → **Mark of the Wild** | Loses a little colour. But Enderal genuinely has no nature god, and inventing one is a bigger liberty than dropping the framing |
-| **C — the Pyreans** | Ancient precursors with a spiritual "Highest Being" | Archaeological rather than natural; the association is a stretch |
-
-#### 2. Daedra and Oblivion — the Warlock's identity
-
-Includes *Hurl Into Oblivion*. Apocalypse already settled **Oblivion-as-a-place → Sinistra / the Sea
-of Eventualities**, so the open question is only what the Warlock *summons*.
-
-| Option | Reads as |
+| Decision | Applied as |
 |---|---|
-| **A — Oorbâya and kin** *(my recommendation)* | Enderal's own summoned otherworldly entities. The Warlock binds Oorbâya rather than daedra; *Hurl Into Oblivion* → **Hurl Into Sinistra** |
-| **B — the Black Guardian** | Leans on Enderal's existing dark-oath figure. More sinister, less established — it appears as an exclamation, never as a described power |
+| 1. Hircine (Druid's patron) | **B — no patron.** *Call Hound of Hircine* → **Call the Glacier Hound** (a real Enderal creature); *Mark of Hircine* → **Mark of the Wild** |
+| 2. Daedra / Oblivion (Warlock) | **A.** Oblivion-as-a-place → Sinistra: *Hurl Into Oblivion* → **Hurl Into Sinistra**, descriptions follow. The demons keep Enai's own invented names, and the internal "Daedric*" labels became "Demon*" |
+| 3. Azra's Wrath | **B — attribution dropped.** → **Shadow's Wrath** |
+| 4. All-Maker / Earth Bones / Old Ways (Shaman) | **A — the ancestors.** *Eye of the All-Maker* → **Eye of the Ancestors**; *Staff of Earth Bones* → **Staff of Fissures** (named for its spell, per both Enai's and Enderal's staff conventions) |
 
-Note Triumvirate's demons keep their own invented names — Gremlin, Temple Grim, Ravagor, Leviathan,
-Oathbreaker — and **none is an Elder Scrolls term**, so they stay whatever this decision is.
-
-#### 3. Azra — *Azra's Wrath*
-
-Azra Nightwielder is Elder Scrolls apocrypha. Enderal has no equivalent famous mage in the material
-I read.
-
-| Option | |
-|---|---|
-| **A — reattribute to an Enderal figure** | **Baledor** is already used this way in Apocalypse (*Ocato's Recital* → *Baledor's Recital*), so *Azra's Wrath* → **Baledor's Wrath** is consistent and free |
-| **B — drop the attribution** *(my recommendation)* | *Azra's Wrath* → **Nightwielder's Wrath** or simply **Shadow's Wrath**. Avoids attaching a destructive spell to a figure whose character we have not read |
-
-#### 4. The All-Maker, Earth Bones and the Old Ways — the Shaman
-
-Skaal and Nordic religion, and the densest Elder Scrolls layer in the mod (*Eye of the All-Maker*).
-
-| Option | Reads as |
-|---|---|
-| **A — the ancestors** *(my recommendation)* | Enderal ships an `AncestralSpiritFaction` and Triumvirate's own line is already called **Ancestors**. *Eye of the All-Maker* → **Eye of the Ancestors**; the Old Ways → **the old rites**, which is Erodan's own domain wording |
-| **B — the Pyreans** | The precursor civilisation and its Highest Being. Gives the Shaman an archaeological identity distinct from the Druid's |
-| **C — Malphas / the Light-Born** | Makes the Shaman devotional. Probably wrong — Enderal's Order is institutional, not shamanic |
+Also applied: the Cleric's Aid buff names now read Enderal's skill display names (Mentalism,
+Entropy, Elementalism, Psionics, Light Magic, Handicraft, Rhetoric, Sleight of Hand…).
 
 ---
 
-## Part 3 — How this gets applied
+## Part 3 — How it was applied
 
-Not yet. The rename runs after WD-11…WD-16 as **WD-10b**, and two constraints come from the
-Apocalypse precedent:
+Both constraints from the Apocalypse precedent held: every rename **edits in place** (the tree
+already carried the WD-9/WD-17 fixes) and every generator is **idempotent** — a re-run replaces
+nothing and still asserts the target strings exist, so a typo'd pattern throws rather than
+silently matching nothing.
 
-1. **It must edit in place.** `src/Apocalypse/tools/01-gen-renames.ps1` regenerates the working tree
-   *from the pristine reference copy* (`reference/mods/Apocalypse/esp` → `src/…`). That is only safe
-   because it runs first in its chain. Triumvirate's tree already carries seven in-place steps;
-   copying that script's shape would wipe them.
-2. **It must be idempotent.** Apocalypse's version `throw`s if a rename matches nothing — correct on
-   a single pass, fatal on a re-run. Triumvirate's needs to tolerate already-applied renames and
-   still fail loudly on a rename that never matched *anything*, in any run.
+Fields renamed: spell/effect/actor/race/armor `Name`, tome titles, `Description`, `Message`
+text. EditorIDs and asset paths are identifiers, not prose, and were left alone. Gameplay text
+(damage numbers, durations) untouched — this was a naming pass, not a balance pass.
 
-Fields in scope: spell and magic-effect `Name`, tome titles, `Description`, `Message` text and
-dialogue. **Gameplay text — damage numbers, durations — is out of scope**; this is a naming pass, not
-a balance pass.
-
-The final check is the one that makes the ticket true: a grep over every player-facing string in the
-finished tree for the Elder Scrolls terms above, asserting zero.
+The final check lives in `src/Triumvirate/tools/16-verify-naming.ps1`: zero Elder Scrolls
+proper nouns across every player-facing string line, over a lexicon deliberately wider than
+what the mod ever contained (gods, princes, races, holds, factions), so a future edit that
+reintroduces one fails loudly.

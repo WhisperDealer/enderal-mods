@@ -2,7 +2,7 @@ FormKey: 05E788:Triumvirate - Mage Archetypes.esp
 EditorID: TVR_Warlock_Balefire_Effect_Body_Ab
 Name:
   TargetLanguage: English
-  Value: AtronachBodyArtHolder
+  Value: DemonBodyArtHolder
 Flags:
 - NoDuration
 - FXPersist

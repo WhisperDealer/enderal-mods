@@ -2,7 +2,7 @@ FormKey: 02E160:Triumvirate - Mage Archetypes.esp
 EditorID: TVR_DaedricHit
 Name:
   TargetLanguage: English
-  Value: TVR_DaedricHit
+  Value: TVR_DemonHit
 Quest: 02E149:Triumvirate - Mage Archetypes.esp
 Category: Combat
 Subtype: Hit

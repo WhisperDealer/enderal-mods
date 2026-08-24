@@ -2,7 +2,7 @@ FormKey: 02E153:Triumvirate - Mage Archetypes.esp
 EditorID: TVR_DaedricTaunts
 Name:
   TargetLanguage: English
-  Value: DaedricTaunts
+  Value: DemonTaunts
 Quest: 02E149:Triumvirate - Mage Archetypes.esp
 Category: Combat
 Subtype: Taunt
