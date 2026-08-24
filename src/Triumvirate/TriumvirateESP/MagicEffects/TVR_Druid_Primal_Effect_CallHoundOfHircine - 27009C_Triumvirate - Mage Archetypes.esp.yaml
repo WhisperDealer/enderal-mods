@@ -12,7 +12,7 @@ VirtualMachineAdapter:
       Data: magicka
 Name:
   TargetLanguage: English
-  Value: Call Hound of Hircine
+  Value: Call the Glacier Hound
 MenuDisplayObject: 14F4DC:Triumvirate - Mage Archetypes.esp
 Keywords:
 - 1091CF:Skyrim.esm
@@ -49,4 +49,4 @@ Sounds:
   Sound: 073FD9:Skyrim.esm
 Description:
   TargetLanguage: English
-  Value: Concentrate to summon a Hound of Hircine. Its attacks reduce armor by <250> points for <10> seconds.
+  Value: Concentrate to summon a Glacier Hound. Its attacks reduce armor by <250> points for <10> seconds.

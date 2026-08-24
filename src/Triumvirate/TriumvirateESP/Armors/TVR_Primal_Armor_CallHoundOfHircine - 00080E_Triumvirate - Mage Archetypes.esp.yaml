@@ -5,7 +5,7 @@ SkyrimMajorRecordFlags:
 - NotPlayable
 Name:
   TargetLanguage: English
-  Value: Hound of Hircine Skin
+  Value: Glacier Hound Skin
 BodyTemplate:
   FirstPersonFlags:
   - Body

@@ -2,7 +2,7 @@ FormKey: 2751A0:Triumvirate - Mage Archetypes.esp
 EditorID: TVR_Druid_Spell_CallHoundOfHircine_Proc_Slam
 Name:
   TargetLanguage: English
-  Value: Mass Mark of Hircine
+  Value: Mass Mark of the Wild
 MenuDisplayObject: 14F4DC:Triumvirate - Mage Archetypes.esp
 EquipmentType: 013F44:Skyrim.esm
 Description:
