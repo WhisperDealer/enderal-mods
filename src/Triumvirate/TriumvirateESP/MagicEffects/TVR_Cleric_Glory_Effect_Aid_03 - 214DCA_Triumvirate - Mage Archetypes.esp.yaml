@@ -2,7 +2,7 @@ FormKey: 214DCA:Triumvirate - Mage Archetypes.esp
 EditorID: TVR_Cleric_Glory_Effect_Aid_03
 Name:
   TargetLanguage: English
-  Value: Fortify Skills - Block
+  Value: Fortify Skills - Blocking
 MenuDisplayObject: 1EC537:Triumvirate - Mage Archetypes.esp
 Keywords:
 - 1EC545:Triumvirate - Mage Archetypes.esp
