@@ -57,6 +57,8 @@ Thumbs.db
 !src/Apocalypse/Scripts/compiled/*.pex
 !src/ZenTraits/Scripts/compiled/
 !src/ZenTraits/Scripts/compiled/*.pex
+!src/Triumvirate/Scripts/compiled/
+!src/Triumvirate/Scripts/compiled/*.pex
 
 # Reference decompiles — vanilla and third-party plugins serialized ONLY for FormKey lookups.
 # Large, regenerated locally from each machine's own copy of the source mod, never committed.

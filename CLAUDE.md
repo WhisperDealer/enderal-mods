@@ -785,6 +785,14 @@ Enderal lacks.
 > loose files beat any BSA, and to say on the mod page that your mod must sit below the ported one in
 > MO2's file order. Compile with **Enderal's tree first** on `-i`, or you rebuild the very script you
 > are trying to suppress.
+>
+> **Assume every Enairim port does this.** **[verified 2026-08-24]** Triumvirate ships the identical
+> pair — 2425 and 1983 bytes, decompiling to 59 and 47 lines, with a Champollion header reading
+> `User: Maximilian` and a 2016 date. That is the Brawl Bugs Patch in both mods. Two for two, so run
+> the intersection on any Enai mod before anything else. A correct rebuild of Enderal's stubs is
+> **480 and 482 bytes** in both releases — byte-identical output is the cheapest proof the `-i` order
+> was right, because vanilla's copy compiles to ~2 KB. Note `bsab`'s list output ends in a blank
+> line: count with `grep -c .`, not `wc -l`, or every archive reports one phantom hit.
 
 > **A vanilla FormID that survived may be a completely different record — check what a ported mod
 > OVERRIDES, not just what it references.** **[verified]** Apocalypse overrides exactly one Enderal

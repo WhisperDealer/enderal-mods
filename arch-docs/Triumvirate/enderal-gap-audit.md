@@ -313,18 +313,73 @@ whether the BSA ships a copy of the script itself is unknown until an extractor 
 
 Stated plainly rather than left implied:
 
-* **Assets.** Nothing in Triumvirate's two BSAs has been examined. `bsab` and `bsarch` are both
-  unset in `tools.json` and `BSArch64.exe` is not in this machine's xEdit folder, so no extractor is
-  configured. **This matters more than it sounds**: CLAUDE.md records that Apocalypse's BSA shipped
-  `dgintimidateplayerscript.pex` over Enderal's deliberate 4-line stubs, restoring a brawl system
-  Enderal removed. The check is one command once an extractor exists — list the archive and
-  intersect the script names with `reference/base/EnderalScripts/source/scripts/`. **WD-17.**
-* **Script internals.** `TVR_PopulateSpellBooks_Script` and the archetype scripts have not been
-  decompiled, so every claim here about *runtime* behaviour is bounded by what the records show.
-  **WD-17.**
+* **Script internals.** `TVR_PopulateSpellBooks_Script` and the 96 `tvr_*` archetype scripts have
+  not been decompiled, so every claim here about *runtime* behaviour is bounded by what the records
+  show. The `.pex` are extractable now — see the asset sweep below. **WD-17.**
 * **Per-summon actor mapping.** Which of the ~15 summons has a usable Enderal base actor is scoped
   but not decided; the faction, voice and class substitutes above are the framework.
   **WD-11…WD-15.**
+
+## Asset sweep — the BSA overwrites two of Enderal's own scripts
+
+**Done, and it found the defect it was looking for.** `bsab` and `champollion` are now wired into
+`tools.json`, so this is reproducible in one command.
+
+Triumvirate ships two archives: 334 files in `Triumvirate - Mage Archetypes.bsa` (107 scripts, ~225
+meshes/sounds) and 133 in the Textures BSA.
+
+### The script collision
+
+Intersecting the BSA's 107 script names with Enderal's own 5031 gives **exactly two**, and they are
+the two CLAUDE.md already names as Enderal's deliberate stubs:
+
+| Script | Enderal's version | What the BSA ships |
+|---|---|---|
+| `dgintimidateplayerscript` | 4 lines, `; DUMMY, DO NOTHING` | 2425 bytes — **59 lines decompiled**, the full vanilla brawl script |
+| `dgintimidatealiasscript` | 4 lines, `; DUMMY, DO NOTHING` | 1983 bytes — **47 lines decompiled**, the full vanilla alias script |
+
+Both decompile with a Champollion header reading `User: Maximilian` and a 2016 compile date — the
+Brawl Bugs Patch. `dgintimidatealiasscript` reaches for `DGIntimidateFaction`, which Enderal lacks.
+Triumvirate loads after Enderal, so **its BSA wins and Skyrim's brawl system comes back on a game
+that removed it**.
+
+**This is the second Enai Siaion mod in this workspace to ship exactly this.** Apocalypse did the
+same, for the same reason. Treat it as expected of any Enairim port rather than as a surprise.
+
+**Fixed** the way Apocalypse fixed it: `src/Triumvirate/Scripts/` re-ships **Enderal's own stubs**,
+loose, because loose files beat any BSA. Compiled with Enderal's tree first on `-i` — the results
+are **480 and 482 bytes, byte-identical to Apocalypse's**, which is the cheapest possible proof the
+import order was right (vanilla's copy compiles to ~2 KB). Consequence for the mod page: **this mod
+must sit after Triumvirate in MO2's file priority**, which it already must in order to win the
+`.esp`.
+
+Seven further Bethesda scripts ride along — `bladessparringscript`, `c00trainerscript`,
+`c00vilkasscript`, the two Jorrvaskr fight scripts, `companionssinglecombatantscript`,
+`ms11calixtoscript`. All seven are vanilla, **none collides with an Enderal script name**, and
+Enderal has no Companions to attach them. Inert clutter; left alone.
+
+### Non-script assets
+
+Meshes, sounds and textures are almost entirely namespaced (`meshes\triumvirate\`,
+`meshes\mihail monsters and animals\`, `meshes\apocnew\`, `textures\triumvirate\`,
+`sound\fx\<esp>\`), so they cannot collide. Four files sit outside a namespace, and only two of
+those actually overlap Enderal:
+
+| File | Verdict |
+|---|---|
+| `textures\architecture\riften\riftenrope01.dds` and `_n.dds` | **Overwrites Enderal's copies** — both exist in `Skyrim - Textures1.bsa` and Enderal does not override them. Cosmetic: a rope texture changes wherever Enderal reuses it. **LEAVE**, note on the mod page |
+| `textures\effects\gradients\mihailvoriplasmgrad.dds`, `mihailwillothewispgrad.dds` | Mihail's own; **no** Enderal file at either path. No collision |
+
+### Reproduce
+
+```bash
+bsab -l:N "<mod>.bsa" -f "scripts\*" | sed 's/\.pex$//' | tr A-Z a-z | sort -u > bsa.txt
+ls reference/base/EnderalScripts/source/scripts/ | sed 's/\.psc$//' | tr A-Z a-z | sort -u > enderal.txt
+comm -12 bsa.txt enderal.txt          # any output is an Enderal script the mod overwrites
+```
+
+`bsab`'s list output has a trailing blank line — filter with `grep -c .`, not `wc -l`, or every
+archive reports one phantom hit.
 
 ## How to reproduce
 
