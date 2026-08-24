@@ -23,12 +23,3 @@ Flags:
 - RunOnce
 Filter: TVR\
 NextAliasID: 1
-Aliases:
-- Name: TVR_CheatChicken
-  Flags: []
-  ForcedReference: 1066DF:Skyrim.esm
-  Items:
-  - Item:
-      Item: 442449:Triumvirate - Mage Archetypes.esp
-      Count: 1
-  VoiceTypes: Null

@@ -1,8 +1,5 @@
 FormKey: 3D2C18:Triumvirate - Mage Archetypes.esp
 EditorID: TVR_Shaman_Violence_Effect_Worldshatter_Hazard_AshShell
-VirtualMachineAdapter:
-  Scripts:
-  - Name: DLC2AshShellScript
 Name:
   TargetLanguage: English
   Value: Ash Shell
