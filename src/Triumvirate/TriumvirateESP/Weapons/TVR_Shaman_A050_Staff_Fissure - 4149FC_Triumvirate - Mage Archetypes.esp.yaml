@@ -2,7 +2,7 @@ FormKey: 4149FC:Triumvirate - Mage Archetypes.esp
 EditorID: TVR_Shaman_A050_Staff_Fissure
 Name:
   TargetLanguage: English
-  Value: Staff of Earth Bones
+  Value: Staff of Fissures
 Model:
   File: Weapons\Staff03\Staff03.nif
   Data: 0x020000000000000000000000

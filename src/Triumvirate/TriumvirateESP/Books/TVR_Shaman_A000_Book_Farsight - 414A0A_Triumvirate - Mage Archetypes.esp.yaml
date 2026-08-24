@@ -2,7 +2,7 @@ FormKey: 414A0A:Triumvirate - Mage Archetypes.esp
 EditorID: TVR_Shaman_A000_Book_Farsight
 Name:
   TargetLanguage: English
-  Value: 'Spell Tome: Eye of the All-Maker'
+  Value: 'Spell Tome: Eye of the Ancestors'
 Model:
   File: Clutter\Books\SpellTomeAlterationLowPoly.nif
   Data: 0x020000000000000000000000
@@ -11,7 +11,7 @@ BookText:
   Value: >-
     <font face'$HandwrittenFont'><font size='40'><p align='center'>
 
-    Eye of the All-Maker
+    Eye of the Ancestors
 Keywords:
 - 0937A2:Skyrim.esm
 - 0937A5:Skyrim.esm

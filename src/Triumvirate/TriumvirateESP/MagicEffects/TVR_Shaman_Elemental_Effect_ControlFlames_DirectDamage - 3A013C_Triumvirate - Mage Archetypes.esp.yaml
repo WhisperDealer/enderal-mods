@@ -3,10 +3,6 @@ EditorID: TVR_Shaman_Elemental_Effect_ControlFlames_DirectDamage
 VirtualMachineAdapter:
   Scripts:
   - Name: MG01FireEffectScript
-    Properties:
-    - MutagenObjectType: ScriptObjectProperty
-      Name: MG01
-      Object: 01F251:Skyrim.esm
   - Name: TVR_DispelFromCaster_Script
     Properties:
     - MutagenObjectType: ScriptObjectProperty
