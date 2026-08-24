@@ -61,8 +61,6 @@ Configuration:
 Factions:
 - Faction: 000013:Skyrim.esm
   Fluff: 0x000000
-- Faction: 02E893:Skyrim.esm
-  Fluff: 0x000000
 - Faction: 03E691:Skyrim.esm
   Fluff: 0x000000
 Voice: 01F6A7:Skyrim.esm

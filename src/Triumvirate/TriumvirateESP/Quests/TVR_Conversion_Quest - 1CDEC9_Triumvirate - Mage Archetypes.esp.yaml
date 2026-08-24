@@ -32,10 +32,10 @@ VirtualMachineAdapter:
       Object: 1CDED0:Triumvirate - Mage Archetypes.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: FollowerHuntingBow
-      Object: 10E2DD:Skyrim.esm
+      Object: 015C39:Skyrim.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: FollowerIronArrow
-      Object: 10E2DE:Skyrim.esm
+      Object: 0457D8:Skyrim.esm
   FileName: ''
   Aliases:
   - Property:
@@ -91,7 +91,7 @@ Aliases:
   Spells:
   - 191254:Triumvirate - Mage Archetypes.esp
   Factions:
-  - 09E0C9:Skyrim.esm
+  - 046E6B:Skyrim.esm
   - 349F68:Triumvirate - Mage Archetypes.esp
   PackageData:
   - 05C84B:Skyrim.esm

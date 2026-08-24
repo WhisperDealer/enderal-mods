@@ -6,7 +6,7 @@ VirtualMachineAdapter:
     Properties:
     - MutagenObjectType: ScriptObjectProperty
       Name: MagicAllegianceFaction
-      Object: 09E0C9:Skyrim.esm
+      Object: 046E6B:Skyrim.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: TVR_Character
       Object: 1CDEC9:Triumvirate - Mage Archetypes.esp

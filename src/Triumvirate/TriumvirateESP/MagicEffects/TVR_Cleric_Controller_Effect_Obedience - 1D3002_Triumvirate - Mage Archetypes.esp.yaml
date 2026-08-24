@@ -2,20 +2,6 @@ FormKey: 1D3002:Triumvirate - Mage Archetypes.esp
 EditorID: TVR_Cleric_Controller_Effect_Obedience
 VirtualMachineAdapter:
   Scripts:
-  - Name: SayOnHitByMagicEffectScript
-    Properties:
-    - MutagenObjectType: ScriptIntProperty
-      Name: AllowForTeammate
-      Data: 1
-    - MutagenObjectType: ScriptObjectProperty
-      Name: GameDaysPassed
-      Object: 000039:Skyrim.esm
-    - MutagenObjectType: ScriptObjectProperty
-      Name: TopicToSay
-      Object: 0B2DD8:Skyrim.esm
-    - MutagenObjectType: ScriptObjectProperty
-      Name: WICastNonHostileTimer
-      Object: 0E0CDC:Skyrim.esm
   - Name: TVR_Conversion3_Script
     Properties:
     - MutagenObjectType: ScriptObjectProperty

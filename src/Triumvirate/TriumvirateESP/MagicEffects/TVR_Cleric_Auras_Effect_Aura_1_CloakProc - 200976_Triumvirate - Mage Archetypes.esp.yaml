@@ -58,5 +58,5 @@ Conditions:
   CompareOperator: LessThan
   Data:
     MutagenObjectType: GetInFactionConditionData
-    Faction: 086EEE:Skyrim.esm
+    Faction: 07286D:Skyrim.esm
   ComparisonValue: 1

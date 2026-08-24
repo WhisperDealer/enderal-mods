@@ -1,21 +1,5 @@
 FormKey: 3BE7AE:Triumvirate - Mage Archetypes.esp
 EditorID: TVR_Shaman_Totem_Effect_FylgjaSun_Subspell_GrandHealing
-VirtualMachineAdapter:
-  Scripts:
-  - Name: SayOnHitByMagicEffectScript
-    Properties:
-    - MutagenObjectType: ScriptIntProperty
-      Name: AllowForTeammate
-      Data: 1
-    - MutagenObjectType: ScriptObjectProperty
-      Name: GameDaysPassed
-      Object: 000039:Skyrim.esm
-    - MutagenObjectType: ScriptObjectProperty
-      Name: TopicToSay
-      Object: 0AB87F:Skyrim.esm
-    - MutagenObjectType: ScriptObjectProperty
-      Name: WICastNonHostileTimer
-      Object: 0E0CDC:Skyrim.esm
 Name:
   TargetLanguage: English
   Value: Restore Health Area

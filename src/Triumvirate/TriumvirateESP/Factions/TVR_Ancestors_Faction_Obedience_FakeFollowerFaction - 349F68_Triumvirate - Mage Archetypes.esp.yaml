@@ -4,7 +4,7 @@ Name:
   TargetLanguage: English
   Value: Conversion Faction
 Relations:
-- Target: 09E0C9:Skyrim.esm
+- Target: 046E6B:Skyrim.esm
   Reaction: Ally
 CrimeValues:
   Arrest: True

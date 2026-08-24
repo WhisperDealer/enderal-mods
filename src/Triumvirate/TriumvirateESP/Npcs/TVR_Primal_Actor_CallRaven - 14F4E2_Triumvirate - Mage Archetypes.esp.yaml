@@ -23,9 +23,6 @@ Configuration:
   CalcMaxLevel: 16
   SpeedMultiplier: 280
   DispositionBase: 35
-Factions:
-- Faction: 02E894:Skyrim.esm
-  Fluff: 0x000000
 Voice: 0D78AD:Skyrim.esm
 Race: 00084F:Triumvirate - Mage Archetypes.esp
 WornArmor: 000851:Triumvirate - Mage Archetypes.esp

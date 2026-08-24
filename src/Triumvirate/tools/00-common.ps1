@@ -213,3 +213,93 @@ function Assert-Changed {
         throw "Nothing changed for '$What'. Either the tree was already edited, or a pattern stopped matching - do not ignore this."
     }
 }
+
+# --- helpers added for the archetype passes (WD-11..WD-15) ---------------------------------------
+
+# Remove the sequence item ("- ..." plus its indented/continuation lines) that CONTAINS a line
+# matching $ContainsPattern. Walks back from the match to the owning "- " line, then forward to
+# the next line whose indentation is <= the item's. Returns lines removed; 0 if no match.
+function Remove-SequenceItemContaining {
+    param(
+        [Parameter(Mandatory)][string]$Path,
+        [Parameter(Mandatory)][string]$ContainsPattern
+    )
+    $lines = Get-YamlLines $Path
+    $hit = -1
+    for ($i = 0; $i -lt $lines.Count; $i++) {
+        if ($lines[$i] -match $ContainsPattern) { $hit = $i; break }
+    }
+    if ($hit -lt 0) { return 0 }
+    $start = -1
+    for ($i = $hit; $i -ge 0; $i--) {
+        if ($lines[$i] -match '^(\s*)-\s') { $start = $i; break }
+    }
+    if ($start -lt 0) { throw "Remove-SequenceItemContaining: no owning '- ' item above '$ContainsPattern' in $Path" }
+    $itemIndent = ($lines[$start] -replace '^(\s*).*$', '$1').Length
+    $end = $lines.Count
+    for ($i = $start + 1; $i -lt $lines.Count; $i++) {
+        if ($lines[$i].Trim() -eq '') { continue }
+        $indent = ($lines[$i] -replace '^(\s*).*$', '$1').Length
+        if ($indent -le $itemIndent) { $end = $i; break }
+    }
+    $keep = @()
+    if ($start -gt 0) { $keep += $lines[0..($start - 1)] }
+    if ($end -lt $lines.Count) { $keep += $lines[$end..($lines.Count - 1)] }
+    $keep = Remove-EmptyCollectionKeys -Lines $keep
+    Set-YamlLines -Path $Path -Lines $keep
+    return ($end - $start)
+}
+
+# Remove a TOP-LEVEL key and its block, correctly ending at the next line that is neither
+# indented NOR a '- ' sequence item at column 0. (A YAML block sequence sits at the SAME
+# indentation as the key that owns it - see CLAUDE.md and 07's local copy of this.)
+function Remove-TopLevelKeyBlock {
+    param([Parameter(Mandatory)][string]$Path, [Parameter(Mandatory)][string]$Key)
+    $lines = Get-YamlLines $Path
+    $start = -1
+    for ($i = 0; $i -lt $lines.Count; $i++) {
+        if ($lines[$i] -match ('^' + [regex]::Escape($Key) + ':\s*$')) { $start = $i; break }
+    }
+    if ($start -lt 0) { return 0 }
+    $end = $lines.Count
+    for ($i = $start + 1; $i -lt $lines.Count; $i++) {
+        if ($lines[$i].Trim() -eq '') { continue }
+        if ($lines[$i] -match '^\s') { continue }
+        if ($lines[$i] -match '^-\s') { continue }
+        $end = $i; break
+    }
+    $keep = @()
+    if ($start -gt 0) { $keep += $lines[0..($start - 1)] }
+    if ($end -lt $lines.Count) { $keep += $lines[$end..($lines.Count - 1)] }
+    Set-YamlLines -Path $Path -Lines $keep
+    return ($end - $start)
+}
+
+# Replace literal $Old -> $New in every yaml under the ESP root. Returns occurrences replaced.
+# Idempotency contract: the CALLER decides what a zero means - pass -MustExistAfter to assert the
+# rename is present in the tree either way (fresh run or re-run), so a typo'd pattern still throws.
+function Update-TreeStrings {
+    param(
+        [Parameter(Mandatory)][string]$Old,
+        [Parameter(Mandatory)][string]$New,
+        [switch]$MustExistAfter
+    )
+    $root = Get-EspRoot
+    $n = 0
+    foreach ($file in Get-ChildItem -Path $root -Recurse -Filter '*.yaml') {
+        $text = Read-YamlText $file.FullName
+        if ($text.Contains($Old)) {
+            $count = ([regex]::Matches($text, [regex]::Escape($Old))).Count
+            Write-YamlText -Path $file.FullName -Text ($text.Replace($Old, $New))
+            $n += $count
+        }
+    }
+    if ($MustExistAfter -and $n -eq 0) {
+        $found = $false
+        foreach ($file in Get-ChildItem -Path $root -Recurse -Filter '*.yaml') {
+            if ((Read-YamlText $file.FullName).Contains($New)) { $found = $true; break }
+        }
+        if (-not $found) { throw "Rename '$Old' -> '$New' matched nothing and the target string is absent - pattern is wrong." }
+    }
+    return $n
+}

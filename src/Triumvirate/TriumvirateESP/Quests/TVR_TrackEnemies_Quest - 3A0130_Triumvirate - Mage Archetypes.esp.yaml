@@ -72,8 +72,4 @@ Aliases:
   - MutagenObjectType: ConditionFloat
     Data:
       MutagenObjectType: GetDeadConditionData
-  - MutagenObjectType: ConditionFloat
-    Data:
-      MutagenObjectType: GetInFactionConditionData
-      Faction: 02E894:Skyrim.esm
   VoiceTypes: Null

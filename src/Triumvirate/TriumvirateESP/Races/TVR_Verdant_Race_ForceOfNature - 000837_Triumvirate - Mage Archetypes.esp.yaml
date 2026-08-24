@@ -583,10 +583,6 @@ HeadData:
     RacePresets:
     - 043E57:Skyrim.esm
     - 043E58:Skyrim.esm
-    - 0A2CEB:Skyrim.esm
-    - 0A2CEF:Skyrim.esm
-    - 0A2CF0:Skyrim.esm
-    - 0B2E10:Skyrim.esm
     - 10D3C2:Skyrim.esm
     - 10D3C3:Skyrim.esm
     - 10D3C4:Skyrim.esm
@@ -1390,12 +1386,6 @@ HeadData:
       Lip:
         Data: 0x3F000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
     RacePresets:
-    - 0B2E11:Skyrim.esm
-    - 0B2E12:Skyrim.esm
-    - 0B2E13:Skyrim.esm
-    - 0B2E14:Skyrim.esm
-    - 0B2E15:Skyrim.esm
-    - 0B2E16:Skyrim.esm
     - 10D3BE:Skyrim.esm
     - 10D3BF:Skyrim.esm
     - 10D3C0:Skyrim.esm
