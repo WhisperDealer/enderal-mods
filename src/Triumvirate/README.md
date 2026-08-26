@@ -3,8 +3,13 @@
 Enai Siaion's **Triumvirate — Mage Archetypes** (75 spells across druid, shadow mage, warlock,
 cleric and shaman), converted for Enderal SE. Tracked as epic **WD-7**.
 
-**Status: ingested only (WD-8).** `TriumvirateESP/` is currently Enai's plugin, unchanged, as YAML.
-No conversion work has been done to it yet.
+**Status: converted and building.** The DLC masters are off, the five archetype passes are done,
+the naming close-out holds at zero Elder Scrolls nouns, and distribution has been rebuilt onto
+Enderal merchants (WD-16) and tier-gated (WD-16b). `build/manifest.json` carries the release, so
+CI builds it on every push and attaches the archive to the PR.
+
+**Not yet proven in game** — see
+[`arch-docs/Triumvirate/distribution-test-checklist.md`](../../arch-docs/Triumvirate/distribution-test-checklist.md).
 
 ## Shape
 
@@ -35,6 +40,15 @@ gap audit. The headlines:
 
 ```
 TriumvirateESP/        Spriggit YAML — the source of truth, committed
+Scripts/source/*.psc   Papyrus source, committed
+Scripts/compiled/*.pex committed via a .gitignore exception — CI cannot compile Papyrus
+tools/*.ps1            the numbered generators that rebuild the tree against a new upstream
 ```
 
-`Scripts/`, `tools/` and a `build/manifest.json` entry arrive with WD-17 and WD-18.
+`Scripts/` ships three loose `.pex`: our replacement distribution script, and verbatim copies of
+Enderal's two `dgintimidate*` DUMMY stubs that Triumvirate's BSA would otherwise overwrite with the
+Brawl Bugs Patch versions. **This mod must sit after Triumvirate in MO2's file priority** — which it
+must anyway, to win the `.esp`. See [`Scripts/README.md`](Scripts/README.md).
+
+The release is `Triumvirate - Enderal Conversion` in `build/manifest.json` (`"fomod": false` — a
+plain archive, since a single `.esp` plus loose scripts has nothing to ask the installer).

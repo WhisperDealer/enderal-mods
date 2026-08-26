@@ -246,7 +246,8 @@ lookup copies are the same files — there is no second copy to drift.
 
 **An empty `build/manifest.json` is legal.** With `"releases": []` the build reports "nothing to
 build" and exits 0 rather than failing, so the repo stays green even with nothing to ship. Today it
-carries one release, `Apocalypse - Enderal Patch`.
+carries four releases — `Apocalypse - Enderal Patch`, `Relentless Sword - Enderal Conversion`,
+`Biggie Traits - Enderal Conversion` and `Triumvirate - Enderal Conversion`.
 
 ## Guardrails — how to work in this repo
 
@@ -530,6 +531,7 @@ Currently released:
 | `Apocalypse` | `Apocalypse - Magic of Skyrim.esp` | Enai Siaion's spell pack, converted for Enderal — form version lowered to 1.70, Elder Scrolls proper nouns renamed, and distribution rebuilt onto Enderal's own vendor and loot lists. A **replacement plugin**; see the form-version ceiling below for why it cannot be a patch |
 | `RelentlessSword` | `Relentless Sword - Enderal.esp` | johnskyrim's *Relentless Sword SE* rebuilt for Enderal: clean masters (his plugin masters the three DLC stubs), shadowsteel-tier stats, blueprint + Handicraft-50 gating instead of a Skyforge recipe that could never fire, and FS-style dismantle recipes. **New content shipped as a standalone plugin, carrying no assets** — the player installs his mod for the meshes and disables his ESP |
 | `BiggieTraits` | `Biggie Traits.esp` | Shazdeh's Fallout-style trait system, converted for Enderal — form version lowered to 1.70, DLC masters dropped, and the traits with no Enderal target removed (the five Skyrim city houses, standing stones, Divine shrines, shouts, vanilla perk points). 30 of 38 traits survive. A **replacement plugin**; its generators live in `src/BiggieTraits/tools/` |
+| `Triumvirate` | `Triumvirate - Mage Archetypes.esp` | Enai Siaion's five mage archetypes (75 spells), converted for Enderal — DLC masters dropped, Elder Scrolls nouns renamed, and distribution rebuilt from a script that made 76 calls against absent Skyrim receivers onto ten Enderal merchant chests, with Expert/Master confined to Ark and the Undercity. A **replacement plugin** (its two BSAs are named after the plugin); generators in `src/Triumvirate/tools/`, still on `feat/triumvirate-conversion` |
 
 > **B612 is deliberately NOT shipped here.** It is a dependency of Biggie Traits and its `b612.esp`
 > is form version 1.71, so a conversion was written — and then dropped, because **BEES** loads the

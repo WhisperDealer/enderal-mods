@@ -44,6 +44,22 @@
         { "from": "src/BiggieTraits/Biggie Traits_KID.ini", "to": "" },
         { "from": "src/BiggieTraits/Biggie Traits_DISTR.ini", "to": "" }
       ]
+    },
+    {
+      "$comment": "Enai Siaion's Triumvirate - Mage Archetypes, converted for Enderal. A REPLACEMENT PLUGIN, the same shape as the Apocalypse release: it ships under the ORIGINAL filename because the mod's two BSAs are named after the plugin and only load while that name is intact, so the player installs Enai's mod for its assets and this replaces the .esp. Also ships three loose .pex - our rebuilt distribution script (the original makes 76 calls against Skyrim NPCs and chests that do not exist in Enderal), plus verbatim copies of Enderal's two dgintimidate* DUMMY stubs, which Triumvirate's BSA would otherwise overwrite with the Brawl Bugs Patch versions. Loose files beat a BSA, so this mod must sit AFTER Triumvirate in MO2's file priority - which it must anyway, to win the .esp. See src/Triumvirate/Scripts/README.md.",
+      "name": "Triumvirate - Enderal Conversion",
+      "archiveName": "Triumvirate - Enderal Conversion",
+      "fomod": false,
+      "plugins": [
+        {
+          "yamlSource": "src/Triumvirate/TriumvirateESP",
+          "dest": "Triumvirate - Mage Archetypes.esp"
+        }
+      ],
+      "scripts": {
+        "from": "src/Triumvirate/Scripts/compiled",
+        "to": "Scripts"
+      }
     }
   ]
 }
