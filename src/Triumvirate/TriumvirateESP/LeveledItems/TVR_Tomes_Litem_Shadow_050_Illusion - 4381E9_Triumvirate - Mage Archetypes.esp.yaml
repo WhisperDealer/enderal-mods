@@ -3,7 +3,6 @@ EditorID: TVR_Tomes_Litem_Shadow_050_Illusion
 ChanceNone: 1
 Flags:
 - UseAll
-Global: 0F258D:Skyrim.esm
 Entries:
 - Data:
     Level: 1

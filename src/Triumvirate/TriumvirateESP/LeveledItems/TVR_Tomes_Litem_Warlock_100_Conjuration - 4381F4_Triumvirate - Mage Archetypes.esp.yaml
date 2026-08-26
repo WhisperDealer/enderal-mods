@@ -3,7 +3,6 @@ EditorID: TVR_Tomes_Litem_Warlock_100_Conjuration
 ChanceNone: 1
 Flags:
 - UseAll
-Global: 0F2589:Skyrim.esm
 Entries:
 - Data:
     Level: 1

@@ -3,7 +3,6 @@ EditorID: TVR_Tomes_Litem_Cleric_100_Destruction
 ChanceNone: 1
 Flags:
 - UseAll
-Global: 0F258C:Skyrim.esm
 Entries:
 - Data:
     Level: 1

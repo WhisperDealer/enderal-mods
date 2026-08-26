@@ -3,7 +3,6 @@ EditorID: TVR_Tomes_Litem_Shaman_050_Conjuration
 ChanceNone: 1
 Flags:
 - UseAll
-Global: 0F2587:Skyrim.esm
 Entries:
 - Data:
     Level: 1

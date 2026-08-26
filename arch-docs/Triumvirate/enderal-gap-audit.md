@@ -186,6 +186,46 @@ vendors that do not exist here, plus its own `TVR_*_Container_Merchant*Chest` re
 same absent NPCs. WD-16 rehomes all of it onto Enderal's merchants; Enderal's own spell-book lists
 and the merchant wealth ladder are tabulated in CLAUDE.md.
 
+#### The skill-tier globals
+
+**[verified 2026-08-26 — found after WD-16 shipped, fixed in WD-16b.]** Rehoming the tomes onto
+live merchants was necessary and **not sufficient**. 45 of the 75 were still unobtainable, because
+Enai's Adept/Expert/Master tier bundles carry vanilla Skyrim's own spell-tome gate:
+
+```yaml
+# TVR_Tomes_Litem_Druid_050_Alteration - 438210
+ChanceNone: 1
+Global: 0F2584:Skyrim.esm      # PCAlterationAdept
+```
+
+When a `LeveledItem` names a `Global`, **that global's value is the chance-none percentage** — the
+`ChanceNone` byte beside it is ignored. In Enderal all 15 `PC<School><Adept|Expert|Master>` globals
+read `Data: 100`, i.e. a 100% chance of yielding nothing, and **nothing in the game ever lowers
+them**:
+
+| Check | Result |
+|---|---|
+| Who zeroes them in vanilla | `WISkillIncrease02.psc`, on skill increase |
+| Is that quest in Enderal? | **No** — `WISkillIncrease01/02` exist in `reference/base/SkyrimReal/Quests/` and in **neither** `reference/base/Skyrim/Quests/` nor FS |
+| Is the script in Enderal's tree? | **No** — absent from `reference/base/EnderalScripts/` |
+| Anything else referencing them? | **No** — across Enderal's whole serialized tree the only file matching `0F2584:Skyrim.esm` is the global's own record |
+
+So the globals are inert leftovers sitting at their unopened default, and every Adept-and-above
+tome sat behind a 100% chance-none. The fix is to delete the `Global:` line and let Enai's authored
+`ChanceNone: 1` stand.
+
+> **Why WD-16's own proof missed it.** `15-distribution.ps1` walks the chest → bundle → tier-bundle
+> → tome chain and asserts every tome is reachable. That walk is **structural** — it reads
+> `Reference:` and never looks at `ChanceNone` or `Global`, so it reported a confident *"75/75 tomes
+> at >=3 vendors"* on a mod that could actually sell 30. A reachability check that ignores the
+> fields controlling whether a list yields is not a reachability check. `17-tier-gating.ps1`'s
+> verifier reads both.
+>
+> **Generalise it: on any ported Skyrim spell mod, grep the leveled lists for `Global:` before
+> trusting distribution.** This is a second instance of the CLAUDE.md pattern — a surviving vanilla
+> FormID that is *present* but semantically inert — and it is invisible to a missing-reference
+> audit, because `PCAlterationAdept` resolves perfectly well. It just never changes.
+
 ### 6. FormIDs that survived as a *different* record — **the live-bug class**
 
 15 of 1,462 distinct surviving `:Skyrim.esm` references are not the record Bethesda had. 1,402 are

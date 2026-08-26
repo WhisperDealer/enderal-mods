@@ -3,7 +3,6 @@ EditorID: TVR_Tomes_Litem_Shaman_100_Restoration
 ChanceNone: 1
 Flags:
 - UseAll
-Global: 0F2592:Skyrim.esm
 Entries:
 - Data:
     Level: 1

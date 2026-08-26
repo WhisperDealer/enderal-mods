@@ -31,11 +31,26 @@ copy, so the 76 dead calls are gone entirely.
 
 ## The merchants
 
-Every chest was checked against three claim sets and is free of all of them: **EGO's 319
-container overrides** (`arch-docs/EGO/conflict-index.md`), **Apocalypse's six chest overrides**
-(both mods ship from this repo — overriding the same chest would make load order silently delete
-one mod's stock), and **KataPUMB's three staff chests** (Tarhutie stays untouched, preserving
-Kata's full set per the CLAUDE.md precedent).
+Every chest was checked against **Apocalypse's six chest overrides** (both mods ship from this
+repo — overriding the same chest would make load order silently delete one mod's stock) and
+**KataPUMB's three staff chests** (Tarhutie stays untouched, preserving Kata's full set per the
+CLAUDE.md precedent), and is free of both.
+
+> **Correction (2026-08-26): three of the ten ARE overridden by EGO.** This section previously
+> claimed all ten were free of EGO's 319 container overrides as well. They are not. Grepping the
+> `## Containers (319)` section of [`arch-docs/EGO/conflict-index.md`](../EGO/conflict-index.md)
+> by exact FormKey finds **`_00E_Merchant_CCBlacksmithArkGuard` `02EFBD`**,
+> **`_00E_Merchant_Rhalata_SisterEnvyContainer` `01E893`** and **`_00E_Merchant_UCHehler02`
+> `030309`**. Our plugin loads after EGO and copies the *Forgotten Stories* version of each, so in
+> an EGO list those three chests silently revert EGO's changes to them — guardrail 5, unresolved.
+>
+> Re-homing them is not straightforward, because **EGO owns essentially all of Ark's commerce**:
+> of the capital's 55 merchant chests only **six** are EGO-clear, and all six are 250–405 gold
+> (Marius' library, a tavern, a butcher, a fruit stall). Every Ark chest at 900 gold or more is
+> EGO's. So the choice is between accepting the conflict, building those three overrides from
+> EGO's records (which makes EGO a soft dependency), or shipping a separate EGO patch. Deferred —
+> but it must be settled before release, and **the claim-set check must be re-run by FormKey**,
+> not by the assumption recorded here.
 
 | Chest | Who / where | Gold | Sells | Why |
 |---|---|---:|---|---|
@@ -50,9 +65,47 @@ Kata's full set per the CLAUDE.md precedent).
 | `_00E_Merchant_CCMarius` `046AEF:Skyrim.esm` | Marius, Ark bookseller | 250 | Cleric, Shadow + **Cleric staves** | Ark's bookshop (42 titles, including the Holy Order's own literature) — the natural home of any spell tome |
 | `_00E_Merchant_CCBlacksmithArkGuard` `02EFBD:FS` | Ark guard blacksmith | 2200 | Cleric | The Order's garrison smith — the paladin-facing seller |
 
-Per-spell source counts: **60 spells at 3 vendors, the 15 Shadow Mage spells at 4** (asserted by
-the generator, which resolves the full chest → bundle → tier-bundle → tome chain). Each
-archetype's **staves** (26 total) sit at one flavour-fit vendor apiece.
+The table's **Sells** column is the Novice/Apprentice/Adept line. Source counts for those:
+**36 spells at 3 vendors, the 9 Shadow Mage ones at 4**. Each archetype's **staves** (26 total)
+sit at one flavour-fit vendor apiece. Expert and Master are Ark/Undercity only — see below.
+
+## Tier gating — where the top two tiers are sold
+
+`tools/17-tier-gating.ps1`, run after `15-distribution.ps1`.
+
+Enai's Adept/Expert/Master tier bundles carry vanilla Skyrim's spell-tome gate — `ChanceNone: 1`
+plus `Global: PC<School><Adept|Expert|Master>` — and **in Enderal that gate never opens**, so 45
+of the 75 tomes were unobtainable no matter which chest they sat in. See
+[`enderal-gap-audit.md`](enderal-gap-audit.md#the-skill-tier-globals) for the evidence. Dropping
+the `Global:` line lets Enai's authored `ChanceNone: 1` stand.
+
+With the gate gone all ten vendors would sell all five tiers, so **Expert and Master are cut out
+of the 15 per-school parent bundles and placed directly at the five Ark/Undercity chests
+instead**. No new records: the `_075_`/`_100_` tier bundles already exist and are already
+`UseAll`-with-one-entry, so they go into the chests as ordinary `Items` entries.
+
+| Chest | Cell (verified via its placed ref) | Expert/Master it carries |
+|---|---|---|
+| `_00E_Merchant_CCMarius` | `CapitalCityBibliothek` — Ark, the library | Cleric, Shadow, **Druid, Shaman** |
+| `_00E_Merchant_CCBlacksmithArkGuard` | `CapitalCityCastleWorld` — Ark, the castle | Cleric |
+| `_00E_FS_Merchant_Wildmage_UndercityBarracks1` | `UndercityBarracks1` | Warlock, Shadow, **Druid, Shaman** |
+| `_00E_FS_UndercityBashHole_Merchant` | `UndercityBarracks3BashHole` | Warlock |
+| `_00E_Merchant_UCHehler02` | `UndercityBarracks0FalseDogTavern` | Shadow |
+
+Druid and Shaman have no Ark/Undercity vendor of their own, so restricting the top tiers to those
+five chests would have left 12 tomes with nowhere to go — re-breaking a sixth of the mod while
+fixing 45. They are added to the two shops that can carry anything: **Marius** (a library, 42
+titles) and the **Undercity Wild Mage** (FS's Wild Mages sell forbidden spell literature). Every
+archetype ends with **at least two** Expert/Master sources.
+
+> **Sister Envy is not Undercity.** Her chest sits in `FSNQR03RhalataTemple`, not the Undercity —
+> checked by resolving the container's placed ref rather than by reading the name. So the richest
+> vendor in the set (2700 gold) carries the low tiers only.
+
+The generator asserts all of it: 75/75 tomes obtainable, 15 per tier, every Expert/Master tome
+sourced **only** from those five chests and from at least two of them, every lower-tier tome still
+at three or more. It also refuses to let a merchant chest stock the vestigial
+`TVR_Tomes_Litem_All*` family, which belongs to Enai's debug chest.
 
 > **The Cleric caveat.** Enderal has no priest-merchants at all — its temples do not trade, and
 > the two Sun Temple vendors are claimed (STTurious by Apocalypse, STHalda by EGO). The Cleric
@@ -84,9 +137,16 @@ master under `GameRelease.EnderalSE`.
 
 ## Verified
 
-- Build is **byte-identical across two consecutive deserializes** (SHA-256
-  `6C7BB02F…CAD29C`) — the ticket's guard against silent leveled-list drops. Spriggit stays
-  pinned at 0.40.0.
-- `HEDR` 1.70, masters `Skyrim.esm, Update.esm, Enderal - Forgotten Stories.esm`, 745,728 bytes.
-- In-game proof (WD-18): visit one vendor per archetype, confirm the 15 tomes and the staves
-  appear in barter, and confirm game start produces **zero** `TVR_` Papyrus errors.
+- Build is **byte-identical across two consecutive deserializes** — the ticket's guard against
+  silent leveled-list drops. Spriggit stays pinned at 0.40.0.
+  - after WD-16: SHA-256 `6C7BB02F…CAD29C`, 745,728 bytes
+  - after WD-16b (tier gating): SHA-256 `881505F7…7164C7`, 745,651 bytes
+- `HEDR` 1.70, masters `Skyrim.esm, Update.esm, Enderal - Forgotten Stories.esm` — re-read out of
+  the built binary at offset 30, not assumed.
+- `17-tier-gating.ps1` is **idempotent**: a second run reports 0 changes and re-proves every
+  invariant.
+- In-game proof (WD-18): visit one vendor per archetype and confirm the low tiers appear in
+  barter; then **specifically confirm an Expert- or Master-tier tome at Marius or an Undercity
+  merchant, and its absence from Adreyo and the two Wild Mages** — the lower tiers appearing
+  proves nothing about the 45 that were gated. Confirm game start produces **zero** `TVR_`
+  Papyrus errors.

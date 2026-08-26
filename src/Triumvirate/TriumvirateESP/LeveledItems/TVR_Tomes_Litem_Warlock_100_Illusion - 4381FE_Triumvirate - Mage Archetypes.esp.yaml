@@ -3,7 +3,6 @@ EditorID: TVR_Tomes_Litem_Warlock_100_Illusion
 ChanceNone: 1
 Flags:
 - UseAll
-Global: 0F258F:Skyrim.esm
 Entries:
 - Data:
     Level: 1

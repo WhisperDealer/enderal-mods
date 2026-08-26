@@ -3,7 +3,6 @@ EditorID: TVR_Tomes_Litem_Shadow_050_Destruction
 ChanceNone: 1
 Flags:
 - UseAll
-Global: 0F258A:Skyrim.esm
 Entries:
 - Data:
     Level: 1

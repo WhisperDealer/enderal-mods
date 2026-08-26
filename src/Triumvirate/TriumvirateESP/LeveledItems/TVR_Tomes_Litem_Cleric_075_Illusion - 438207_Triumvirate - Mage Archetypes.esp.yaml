@@ -3,7 +3,6 @@ EditorID: TVR_Tomes_Litem_Cleric_075_Illusion
 ChanceNone: 1
 Flags:
 - UseAll
-Global: 0F258E:Skyrim.esm
 Entries:
 - Data:
     Level: 1

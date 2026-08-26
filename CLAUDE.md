@@ -850,6 +850,27 @@ spells from `_01E_SpellBook*` Books:
 > therefore belongs in that group, unsuffixed. Apocalypse's tomes ship as `Spell Tome: <name>` for
 > this reason; it looks inconsistent next to Enderal's and is in fact the consistent choice.
 
+> **A ported spell mod's high-tier tomes are gated on globals Enderal never sets — grep the
+> leveled lists for `Global:` before trusting distribution.** **[verified 2026-08-26]** Vanilla
+> gates spell-tome availability by player skill: the Adept/Expert/Master `LeveledItem`s carry
+> `Global: PC<School><Tier>`, and **when a leveled list names a Global that global's value IS the
+> chance-none percentage** — the `ChanceNone` byte beside it is ignored. All 15 of those globals
+> exist in Enderal at `Data: 100` (100% chance of nothing) and **nothing ever lowers them**:
+> vanilla zeroes them from `WISkillIncrease02`, a quest present in `reference/base/SkyrimReal/`
+> and in **neither** `reference/base/Skyrim/` nor FS; no Enderal script mentions them; and the
+> only file in Enderal's whole tree matching `0F2584:Skyrim.esm` is the global's own record.
+>
+> On Triumvirate this left **45 of 75 tomes unobtainable after the distribution rebuild had already
+> shipped**. The fix is one line per record — delete `Global:` and let the authored `ChanceNone`
+> stand (`src/Triumvirate/tools/17-tier-gating.ps1`).
+>
+> Two lessons beyond the fix. **This is invisible to a missing-reference audit** — `PCAlterationAdept`
+> resolves perfectly well, it just never changes; it is the "present but inert" class, a cousin of
+> the drifted-FormID bug above. And **a structural reachability proof is not a reachability proof**:
+> `15-distribution.ps1` walked chest → bundle → tome reading only `Reference:`, and reported a
+> confident *"75/75 tomes at >=3 vendors"* on a mod that could sell 30. If a check asserts an item
+> is obtainable, it must read the fields that decide whether the list yields at all.
+
 **Inject, don't rewrite.** Add entries to the host list pointing at your own sublist, and carry
 every existing entry through untouched (guardrail 5). One new LeveledItem per tier keeps the diff
 readable and leaves Enderal's own list contents byte-identical.
