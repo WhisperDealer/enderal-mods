@@ -908,9 +908,33 @@ readable and leaves Enderal's own list contents byte-identical.
 > no route to it at all. Two rounds of weighting did not fix that, because it is not a weighting
 > problem.
 >
-> **If every item must be reachable, place it directly** — write the item into a named merchant's
-> `Container` record as an ordinary `Items:` entry. Deterministic, restocks forever, and a player can
-> be told where to go. Enderal's spell merchants, ranked by the gold in their chest (the natural
+> ### Place it directly — but write into `<Merchant>_CustomMerchandise`, NOT the chest
+>
+> **[verified 2026-08-26]** Enderal ships **67 LeveledItems named `<Merchant>_CustomMerchandise`**,
+> one per merchant, and **every single one is empty** — `UseAll`, no entries, no `ChanceNone`, no
+> `Global`. Each merchant's chest already contains its own. They are an extension point SureAI
+> built and never filled, and they are the correct place to add vendor stock:
+>
+> - **`UseAll` with no `ChanceNone`** means everything you put in is yielded, in full, every
+>   restock — the same determinism as writing into the chest.
+> - **You override a `LeveledItem` instead of a `CONT`**, so you do not touch the merchant's
+>   record at all.
+>
+> That second point is the whole prize, because the chests are heavily contested and these are
+> not: **EGO overrides none of the 67, and neither does Apocalypse.** Compare with the chests —
+> EGO owns essentially all of Ark's commerce (of the capital's **55** merchant chests only **six**
+> are EGO-clear, and all six are 250–405 gold; every Ark chest at 900+ is EGO's), plus Apocalypse's
+> six and KataPUMB's three. Triumvirate originally overrode ten chests and collided with EGO on
+> three of them; moving to the hooks dropped its override surface to **ten `LeveledItem`s and zero
+> containers**, and the vendor picks stopped having to dodge anybody.
+>
+> Two practical notes. The empty records have **no `Entries:` key at all** — Spriggit omits an
+> empty collection — so you create the key rather than append to it. And **map hook → merchant by
+> reading the chest's own `Items:` list, never by the name**: Adreyo's hook is `Vexin_`, the Ark
+> guard smith's is `ArkHofSchmied_`.
+>
+> Writing into the `Container` still works and is what the older releases here do; prefer the hook
+> for anything new. Enderal's spell merchants, ranked by the gold in their chest (the natural
 > wealth ladder for tiering what each one sells) **[verified]**:
 >
 > | Chest | FormKey | Gold | Shop |
@@ -975,6 +999,12 @@ These are **engine-hardcoded** FormIDs — Bethesda's own code depends on them, 
   Searching `reference/base/*/Cells/` by the English town name returns **nothing** — grep the
   localized `String:` values instead, then read the EditorID off the match. This is also what a `coc`
   command needs: `coc FlusshaimShopSura` lands in "Riverville, Sura's Sharp Steel".
+  - **This applies to NPCs too, and it will put the wrong name in your mod page and your docs.**
+    **[verified 2026-08-26]** `_00E_FS_Wildmage_*` display as **"Shrouded Mage"** — all three of
+    them, and they are the only three NPCs in the game that do. `_00E_UndercityHehler02` is
+    **"Fence"** (*Hehler* = fence). Triumvirate's vendor docs called them "Wild Mage" and "Hehler"
+    for a whole release because the EditorID was never checked against the `Name` block. When you
+    name an NPC anywhere a player will read it, grep the record's English `String:` first.
 - **Placed references live inside the cell's single `RecordData.yaml`, not in per-ref files.**
   Interior cells serialize to one file (`Cells/<block>/<sub>/<EditorID> - <hex>_<master>/RecordData.yaml`)
   holding the cell record, its `NavigationMeshes:`, then `Persistent:` and `Temporary:` lists.

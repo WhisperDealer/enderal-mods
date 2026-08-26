@@ -56,9 +56,9 @@ inventory you see is the one from before this change.
 | ☐ | Where | `coc` target | Expect high tiers for |
 |---|---|---|---|
 | ☐ | Marius, Ark library | `coc CapitalCityBibliothek` | Cleric, Shadow, **Druid, Shaman** |
-| ☐ | Wild Mage, Undercity | `coc UndercityBarracks1` | Warlock, Shadow, **Druid, Shaman** |
+| ☐ | Shrouded Mage, Undercity | `coc UndercityBarracks1` | Warlock, Shadow, **Druid, Shaman** |
 | ☐ | The Bash Hole | `coc UndercityBarracks3BashHole` | Warlock |
-| ☐ | Hehler, the False Dog | `coc UndercityBarracks0FalseDogTavern` | Shadow |
+| ☐ | The Fence, the False Dog | `coc UndercityBarracks0FalseDogTavern` | Shadow |
 
 Marius is the single best check — he should carry high-tier tomes for **four of the five**
 archetypes, including Druid and Shaman, which he sells at no other tier.
@@ -67,8 +67,8 @@ archetypes, including Druid and Shaman, which he sells at no other tier.
 
 | ☐ | Where | `coc` target | Expect |
 |---|---|---|---|
-| ☐ | Wild Mage, Frostcliff Tavern | `coc SchneefelstaverneInterior` | Druid + Shaman tomes, but **nothing above Adept** |
-| ☐ | Wild Mage / smith, Duneville | `coc DuenenhaimMain` | Shaman + Druid tomes, **nothing above Adept** |
+| ☐ | Shrouded Mage, Frostcliff Tavern | `coc SchneefelstaverneInterior` | Druid + Shaman tomes, but **nothing above Adept** |
+| ☐ | Shrouded Mage / smith, Duneville | `coc DuenenhaimMain` | Shaman + Druid tomes, **nothing above Adept** |
 
 This half is the actual gating test. A quick way to read it: the low tiers are priced **41–105
 gold** and Adept sits around **130–170**; anything at **210+** is Expert or Master and should not be
@@ -102,6 +102,6 @@ Enderal's. Turn both back to `0` afterwards.
 
 The tome record exists (`help` found it), so a failure means the list still refuses to yield. Check
 the built plugin actually has the fix — the `Global:` line should be gone from all 45 Adept/Expert/
-Master tier bundles, and the built `.esp` should be **745,651 bytes / SHA-256 `881505F7…7164C7`**.
+Master tier bundles, and the built `.esp` should be **739,071 bytes / SHA-256 `43B8EF1E…161510`**.
 A stale `.esp` in the deploy folder is the likeliest cause; see guardrail 7 — rule out "never
 loaded" before debugging "loaded but broken".

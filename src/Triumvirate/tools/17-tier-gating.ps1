@@ -14,50 +14,59 @@
 #    the authored `ChanceNone: 1` stand (a 1% miss per restock, which is Enai's own value).
 #
 # 2. EXPERT/MASTER WERE EVERYWHERE. With the gate gone, all 10 vendors would sell all 5 tiers.
-#    The top two tiers are pulled out of the per-school parent bundles and placed directly at the
-#    five Ark/Undercity merchants instead, so the capital and the underworld are the only places
-#    high magic is sold. Locations verified by resolving each chest's placed ref to its cell:
-#      Marius            -> CapitalCityBibliothek        (Ark, the library)
-#      Ark Guard Smith   -> CapitalCityCastleWorld       (Ark, the castle worldspace)
-#      UC Wild Mage      -> UndercityBarracks1
-#      Bash Hole         -> UndercityBarracks3BashHole
-#      Hehler            -> UndercityBarracks0FalseDogTavern
-#    Note Sister Envy is NOT Undercity - her chest sits in FSNQR03RhalataTemple - so the Rhalata
-#    keeps the low tiers only, despite being the richest vendor in the set.
+#    The top two tiers are pulled out of the per-school parent bundles and placed at the five
+#    Ark/Undercity merchants instead, so the capital and the underworld are the only places high
+#    magic is sold. Locations verified by resolving each merchant's chest ref to its cell - by the
+#    record, not by the name, which is how Sister Envy turned out not to qualify:
+#      Marius              -> CapitalCityBibliothek             (Ark, the library)
+#      Ark Guard Smith     -> CapitalCityCastleWorld            (Ark, the castle worldspace)
+#      Shrouded Mage       -> UndercityBarracks1
+#      Bash Hole           -> UndercityBarracks3BashHole
+#      The Fence (Hehler)  -> UndercityBarracks0FalseDogTavern
+#      Sister Envy         -> FSNQR03RhalataTemple  <- NOT Undercity; low tiers only, despite
+#                                                      being the richest vendor in the set
 #
 # Druid and Shaman have no Ark/Undercity vendor of their own, so their high tiers would have
 # nowhere to go and we would have re-broken 12 tomes while fixing 45. They are added to the two
-# shops that can justify carrying anything: Marius (a library, 42 titles) and the Undercity Wild
-# Mage (FS's Wild Mages sell forbidden spell literature). Every archetype ends with >=2 sources.
+# shops that can justify carrying anything: Marius (a library, 42 titles) and the Undercity
+# Shrouded Mage (FS's Shrouded Mages sell forbidden spell literature - they already stock the
+# _00E_Lehrbuch<School> skill books for all five schools). Every archetype ends with >=2 sources.
+#
+# WHERE IT WRITES: the merchants' `*_CustomMerchandise` hooks, the same empty SureAI leveled lists
+# 15-distribution.ps1 populates - NOT their chests. See that script's header for why.
+#
+# NAMING: `Wildmage` is the German EditorID. All three display in English as **"Shrouded Mage"**,
+# and they are the only three NPCs in the game that do. CLAUDE.md's rule about Enderal's German
+# EditorIDs vs its English display strings applies to NPCs too, not just cells.
 #
 # NO NEW RECORDS. The 075/100 tier bundles already exist and are already UseAll-with-one-entry,
-# so they go into the chests directly. Nothing is allocated, so the FormID block is untouched.
+# so they go into the hooks directly. Nothing is allocated, so the FormID block is untouched.
 
 . (Join-Path $PSScriptRoot '00-common.ps1')
 
 Write-Host "17 - high-tier gating (WD-16b)"
 $root = Get-EspRoot
 $lvli = Join-Path $root 'LeveledItems'
-$conts = Join-Path $root 'Containers'
 
 $ARCHETYPES = @('Druid', 'Shadow', 'Warlock', 'Cleric', 'Shaman')
 $HIGH = @('075', '100')          # Expert, Master - Ark/Undercity only
 $COMMON = @('000', '025', '050') # Novice, Apprentice, Adept - unchanged vendors
 
-# Which archetypes' Expert/Master each Ark/Undercity chest carries. The first four columns are
-# the chest's existing archetypes (distribution is unchanged); Druid/Shaman are the two additions
-# forced by reachability, and they go only to the library and the Wild Mage.
+# Which archetypes' Expert/Master each Ark/Undercity merchant carries, written to that merchant's
+# CustomMerchandise hook. The first entries are the merchant's existing archetypes (distribution
+# is unchanged); Druid/Shaman are the two additions forced by reachability, and they go only to
+# the library and the Shrouded Mage.
 $highVendors = @(
-    @{ File = '_00E_Merchant_CCMarius - 046AEF_Skyrim.esm.yaml'
-       Where = 'Marius (Ark library)';          Archetypes = @('Cleric', 'Shadow', 'Druid', 'Shaman') }
-    @{ File = '_00E_Merchant_CCBlacksmithArkGuard - 02EFBD_Enderal - Forgotten Stories.esm.yaml'
-       Where = 'Ark guard blacksmith';          Archetypes = @('Cleric') }
-    @{ File = '_00E_FS_Merchant_Wildmage_UndercityBarracks1 - 01E900_Enderal - Forgotten Stories.esm.yaml'
-       Where = 'Wild Mage (Undercity)';         Archetypes = @('Warlock', 'Shadow', 'Druid', 'Shaman') }
-    @{ File = '_00E_FS_UndercityBashHole_Merchant - 02F2F0_Enderal - Forgotten Stories.esm.yaml'
-       Where = 'The Bash Hole (Undercity)';     Archetypes = @('Warlock') }
-    @{ File = '_00E_Merchant_UCHehler02 - 030309_Enderal - Forgotten Stories.esm.yaml'
-       Where = 'Hehler (Undercity fence)';      Archetypes = @('Shadow') }
+    @{ File = 'BibliothekarMarius_CustomMerchandise - 0302D2_Enderal - Forgotten Stories.esm.yaml'
+       Where = 'Marius (Ark library)';       Archetypes = @('Cleric', 'Shadow', 'Druid', 'Shaman') }
+    @{ File = 'ArkHofSchmied_CustomMerchandise - 0302D9_Enderal - Forgotten Stories.esm.yaml'
+       Where = 'Ark guard blacksmith';       Archetypes = @('Cleric') }
+    @{ File = 'Wildmage_Undercity_CustomMerchandise - 0302F0_Enderal - Forgotten Stories.esm.yaml'
+       Where = 'Shrouded Mage (Undercity)';  Archetypes = @('Warlock', 'Shadow', 'Druid', 'Shaman') }
+    @{ File = 'BashHole_CustomMerchandise - 0302CC_Enderal - Forgotten Stories.esm.yaml'
+       Where = 'The Bash Hole (Undercity)';  Archetypes = @('Warlock') }
+    @{ File = 'UndercityHehler02_CustomMerchandise - 030307_Enderal - Forgotten Stories.esm.yaml'
+       Where = 'The Fence (Undercity)';      Archetypes = @('Shadow') }
 )
 
 # ------------------------------------------------------------------ record lookups
@@ -137,32 +146,27 @@ if ($trimmed -gt 0 -and $trimmed -ne 30) { throw "expected to trim 30 parent ent
 Write-Host "  2. Expert/Master cut from the 15 parent bundles: $trimmed entries (each now Novice/Apprentice/Adept)"
 
 # ------------------------------------------------------------------ 3. place them in Ark / the Undercity
-function Add-ItemsEntries {
+function Add-LeveledEntries {
     param([string]$Path, [string[]]$FormKeys)
-    $lines = Get-YamlLines $Path
-    $itemsIdx = -1
-    for ($i = 0; $i -lt $lines.Count; $i++) { if ($lines[$i] -match '^Items:\s*$') { $itemsIdx = $i; break } }
-    if ($itemsIdx -lt 0) { throw "no Items: block in $Path" }
-    $end = $lines.Count
-    for ($i = $itemsIdx + 1; $i -lt $lines.Count; $i++) {
-        if ($lines[$i] -match '^[A-Za-z]') { $end = $i; break }
-    }
+    $lines = @(Get-YamlLines $Path | Where-Object { $_.Trim() -ne '' })
+    # NOT `$lines -notmatch ...`: against an ARRAY, -match/-notmatch are FILTERS returning the
+    # matching/non-matching elements, so -notmatch yields every other line and is always truthy.
+    if (-not ($lines -match '^Entries:\s*$')) { throw "no Entries: block in $Path - run 15-distribution.ps1 first" }
     $insert = @()
     foreach ($fk in $FormKeys) {
-        $insert += '- Item:'
-        $insert += "    Item: $fk"
+        $insert += '- Data:'
+        $insert += '    Level: 1'
+        $insert += "    Reference: $fk"
         $insert += '    Count: 1'
     }
-    $tail = @()
-    if ($end -lt $lines.Count) { $tail = $lines[$end..($lines.Count - 1)] }
-    Set-YamlLines -Path $Path -Lines ($lines[0..($end - 1)] + $insert + $tail)
+    Set-YamlLines -Path $Path -Lines ($lines + $insert)
     return $FormKeys.Count
 }
 
 $placed = 0
 foreach ($v in $highVendors) {
-    $path = Join-Path $conts $v.File
-    if (-not (Test-Path -LiteralPath $path)) { throw "chest not found (run 15-distribution.ps1 first): $($v.File)" }
+    $path = Join-Path $lvli $v.File
+    if (-not (Test-Path -LiteralPath $path)) { throw "hook not found (run 15-distribution.ps1 first): $($v.File)" }
     $adds = @()
     foreach ($a in $v.Archetypes) {
         foreach ($t in $HIGH) {
@@ -176,7 +180,7 @@ foreach ($v in $highVendors) {
         continue
     }
     if ($missing.Count -ne $adds.Count) { throw "$($v.File) is half-stocked - delete it, re-run 15, then re-run 17" }
-    [void](Add-ItemsEntries -Path $path -FormKeys $adds)
+    [void](Add-LeveledEntries -Path $path -FormKeys $adds)
     $placed += $adds.Count
     Write-Host ("  3. {0}: +{1} Expert/Master bundles ({2})" -f $v.Where, $adds.Count, ($v.Archetypes -join ', '))
 }
@@ -208,11 +212,11 @@ foreach ($eid in $fkOf.Keys) {
 
 $arkUnder = @($highVendors | ForEach-Object { $_.File })
 $sources = @{}   # tome FormKey -> list of chest file names
-foreach ($f in Get-ChildItem -LiteralPath $conts -Filter '_00E_*.yaml') {
+foreach ($f in Get-ChildItem -LiteralPath $lvli -Filter '*_CustomMerchandise*.yaml') {
     $text = Read-YamlText $f.FullName
-    $items = @([regex]::Matches($text, '(?m)^    Item: (.+?)(?=\r?$)') | ForEach-Object { $_.Groups[1].Value })
+    $items = @([regex]::Matches($text, '(?m)^    Reference: (.+?)(?=\r?$)') | ForEach-Object { $_.Groups[1].Value })
     $stray = @($items | Where-Object { $allFamily -contains $_ })
-    if ($stray.Count -gt 0) { throw "merchant chest $($f.Name) stocks a TVR_Tomes_Litem_All bundle - that is the debug chest's list" }
+    if ($stray.Count -gt 0) { throw "merchant hook $($f.Name) stocks a TVR_Tomes_Litem_All bundle - that is the debug chest's list" }
     $yield = @()
     foreach ($it in $items) {
         if ($childrenOf.ContainsKey($it)) { foreach ($tb in $childrenOf[$it]) { $yield += $tomeOf[$tb] } }
@@ -256,5 +260,5 @@ foreach ($tome in $allTomes) {
     $byTier[$t]++
 }
 $summary = @($byTier.Keys | Sort-Object | ForEach-Object { "$_=$($byTier[$_])" }) -join ' '
-Write-Host "  proof: 75/75 tomes obtainable ($summary); all 30 Expert/Master confined to the 5 Ark/Undercity chests"
+Write-Host "  proof: 75/75 tomes obtainable ($summary); all 30 Expert/Master confined to the 5 Ark/Undercity hooks"
 Write-Host "17 - done"

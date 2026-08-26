@@ -5,19 +5,31 @@
 # chests), AddItem of UseAll tome bundles into 14 vanilla merchant chests, and AddForm of 21
 # staves into vanilla staff loot lists. Not one receiver exists in Enderal.
 #
-# The rebuild is RECORD-LEVEL and deterministic - the CLAUDE.md "place it directly" doctrine:
-# override chosen Enderal merchants' chest CONT records and append the mod's own
-# TVR_Tomes_Litem_<Arch>_<School> UseAll bundles as ordinary Items entries. A UseAll bundle
-# yields EVERY tome behind it on every restock, so each archetype vendor deterministically
-# stocks that archetype's full 15 tomes, forever, with no scripting.
+# The rebuild is RECORD-LEVEL and deterministic - the CLAUDE.md "place it directly" doctrine.
 #
-# Vendor selection (documented in arch-docs/Triumvirate/vendor-mapping.md): every chest was
-# checked against three claim sets and is FREE of all of them -
-#   - EGO's 319 container overrides (arch-docs/EGO/conflict-index.md),
-#   - Apocalypse's six chest overrides (src/Apocalypse/ApocalypseESP/Containers/),
-#   - KataPUMB's three staff chests (CLAUDE.md - Tarhutie spared).
-# Chest overrides are copied VERBATIM from the WINNING reference version (FS where FS overrides,
-# guardrail 5) before our entries are appended.
+# WHERE IT WRITES: **SureAI's own `*_CustomMerchandise` hooks**, not the merchant chests.
+# [verified 2026-08-26] Enderal ships **67** LeveledItems named `<Merchant>_CustomMerchandise`,
+# one per merchant, and **every one of them is empty** - `UseAll`, no entries, no ChanceNone, no
+# Global. They are an extension point SureAI built and never filled, and each merchant's chest
+# already contains its own. So adding stock to a merchant does NOT require touching that
+# merchant's CONT record at all: put the entries in the hook and the chest yields them, in full,
+# on every restock (UseAll), deterministically.
+#
+# That matters because it is the difference between conflicting and not. Overriding the chests -
+# which this script used to do - collided with **EGO on three of the ten** (CCBlacksmithArkGuard
+# 02EFBD, Rhalata_SisterEnvy 01E893, UCHehler02 030309, all in EGO's `## Containers (319)`), and
+# forced the vendor picks to dodge Apocalypse's six chests and KataPUMB's three. Against the
+# hooks, **EGO overrides none of the 67 and neither does Apocalypse**, so the constraint
+# disappears and this plugin ends up overriding **zero** container records of any master.
+#
+# The entries are the mod's own TVR_Tomes_Litem_<Arch>_<School> UseAll bundles, so the resolution
+# chain is chest -> CustomMerchandise -> archetype/school bundle -> tier bundle -> tome, every
+# link UseAll.
+#
+# Vendor selection is documented in arch-docs/Triumvirate/vendor-mapping.md. Hook records are
+# copied VERBATIM from the FS reference tree (they are FS records; guardrail 5) before our
+# entries are appended - note the empty ones have **no `Entries:` key at all**, because Spriggit
+# omits an empty collection, so the key has to be created rather than appended to.
 #
 # What dies: the 14 vanilla chest overrides, the 6 vanilla Services* faction overrides, the 8
 # TVR satellite chests and the 9 TVR Services factions (37 records - after which the plugin
@@ -39,22 +51,24 @@
 Write-Host "15 - distribution rebuild (WD-16)"
 $root = Get-EspRoot
 $repo = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $PSScriptRoot))
-$refFS  = Join-Path $repo 'reference\base\EnderalFS\Containers'
+$refFS  = Join-Path $repo 'reference\base\EnderalFS\LeveledItems'
 
 # ------------------------------------------------------------------ the vendor mapping
-# Src is always the FS reference tree: every chosen chest has an FS override, which is the
-# winning version to copy (guardrail 5).
+# `File` is the merchant's *_CustomMerchandise hook, all ten of them FS records. `Merchant` is
+# the chest that already contains it - recorded only so the mapping stays readable; we never
+# touch that record. The hook<->chest pairing was read out of each chest's own Items list, not
+# guessed from the names (Adreyo's hook is called Vexin_, the Ark guard smith's ArkHofSchmied_).
 $vendors = @(
-    @{ File = '_00E_Merchant_FlusshaimAdreyoContainer - 05BCD4_Skyrim.esm.yaml';                          Archetypes = @('Druid','Cleric');   Staves = $null }
-    @{ File = '_00E_FS_Merchant_Wildmage_FrostcliffTavern - 01E904_Enderal - Forgotten Stories.esm.yaml'; Archetypes = @('Druid','Shaman');   Staves = 'Druid' }
-    @{ File = '_00E_FS_Merchant_Wildmage_Duneville - 01E90A_Enderal - Forgotten Stories.esm.yaml';        Archetypes = @('Shaman','Druid');   Staves = 'Shaman' }
-    @{ File = '_00E_Merchant_DunevilleSmithHunter - 02F2BF_Enderal - Forgotten Stories.esm.yaml';         Archetypes = @('Shaman');           Staves = $null }
-    @{ File = '_00E_FS_Merchant_Wildmage_UndercityBarracks1 - 01E900_Enderal - Forgotten Stories.esm.yaml'; Archetypes = @('Warlock','Shadow'); Staves = $null }
-    @{ File = '_00E_Merchant_Rhalata_SisterEnvyContainer - 01E893_Enderal - Forgotten Stories.esm.yaml';  Archetypes = @('Warlock','Shadow'); Staves = 'Warlock' }
-    @{ File = '_00E_FS_UndercityBashHole_Merchant - 02F2F0_Enderal - Forgotten Stories.esm.yaml';         Archetypes = @('Warlock');          Staves = $null }
-    @{ File = '_00E_Merchant_UCHehler02 - 030309_Enderal - Forgotten Stories.esm.yaml';                   Archetypes = @('Shadow');           Staves = 'Shadow' }
-    @{ File = '_00E_Merchant_CCMarius - 046AEF_Skyrim.esm.yaml';                                          Archetypes = @('Cleric','Shadow');  Staves = 'Cleric' }
-    @{ File = '_00E_Merchant_CCBlacksmithArkGuard - 02EFBD_Enderal - Forgotten Stories.esm.yaml';         Archetypes = @('Cleric');           Staves = $null }
+    @{ File = 'Vexin_CustomMerchandise - 0302F8_Enderal - Forgotten Stories.esm.yaml';                       Merchant = 'Adreyo, Riverville';        Archetypes = @('Druid','Cleric');   Staves = $null }
+    @{ File = 'Wildmage_FrostcliffTavern_CustomMerchandise - 0302EF_Enderal - Forgotten Stories.esm.yaml';    Merchant = 'Shrouded Mage, Frostcliff'; Archetypes = @('Druid','Shaman');   Staves = 'Druid' }
+    @{ File = 'Wildmage_Duneville_CustomMerchandise - 0302EE_Enderal - Forgotten Stories.esm.yaml';           Merchant = 'Shrouded Mage, Duneville';  Archetypes = @('Shaman','Druid');   Staves = 'Shaman' }
+    @{ File = 'Akatyr_CustomMerchandise - 0302EA_Enderal - Forgotten Stories.esm.yaml';                       Merchant = 'Duneville smith & hunter';  Archetypes = @('Shaman');           Staves = $null }
+    @{ File = 'Wildmage_Undercity_CustomMerchandise - 0302F0_Enderal - Forgotten Stories.esm.yaml';           Merchant = 'Shrouded Mage, Undercity';  Archetypes = @('Warlock','Shadow'); Staves = $null }
+    @{ File = 'SisterEnvy_CustomMerchandise - 0302ED_Enderal - Forgotten Stories.esm.yaml';                   Merchant = 'Sister Envy, the Rhalata';  Archetypes = @('Warlock','Shadow'); Staves = 'Warlock' }
+    @{ File = 'BashHole_CustomMerchandise - 0302CC_Enderal - Forgotten Stories.esm.yaml';                     Merchant = 'The Bash Hole, Undercity';  Archetypes = @('Warlock');          Staves = $null }
+    @{ File = 'UndercityHehler02_CustomMerchandise - 030307_Enderal - Forgotten Stories.esm.yaml';            Merchant = 'The Fence, Undercity';      Archetypes = @('Shadow');           Staves = 'Shadow' }
+    @{ File = 'BibliothekarMarius_CustomMerchandise - 0302D2_Enderal - Forgotten Stories.esm.yaml';           Merchant = 'Marius, Ark library';       Archetypes = @('Cleric','Shadow');  Staves = 'Cleric' }
+    @{ File = 'ArkHofSchmied_CustomMerchandise - 0302D9_Enderal - Forgotten Stories.esm.yaml';                Merchant = 'Ark guard blacksmith';      Archetypes = @('Cleric');           Staves = $null }
 )
 
 # ------------------------------------------------------------------ record lookups
@@ -195,33 +209,38 @@ if ($htext -notmatch 'Master: Enderal - Forgotten Stories\.esm') {
     Write-Host "  3. FS master already declared"
 }
 
-# ------------------------------------------------------------------ 4. create the chest overrides
-function Add-ItemsEntries {
+# ------------------------------------------------------------------ 4. populate the CustomMerchandise hooks
+# 4a. Migration: this script used to override the ten merchant CONT records. Any left behind are
+# stale - the whole point of the hooks is that we override no container at all.
+$staleChests = @(Get-ChildItem (Join-Path $root 'Containers') -Filter '_00E_*.yaml' -ErrorAction SilentlyContinue)
+foreach ($p in $staleChests) { Remove-Item -LiteralPath $p.FullName -Force }
+if ($staleChests.Count -gt 0) {
+    Write-Host "  4a. stale merchant-chest overrides removed: $($staleChests.Count) (superseded by the CustomMerchandise hooks)"
+}
+
+# A LeveledItem entry is '- Data:' + Level/Reference/Count, NOT a container's '- Item:'. And an
+# empty hook has NO 'Entries:' key at all (Spriggit omits empty collections), so it is created
+# here rather than appended to - CLAUDE.md's "emptying a collection means deleting its key".
+function Add-LeveledEntries {
     param([string]$Path, [string[]]$FormKeys)
-    $lines = Get-YamlLines $Path
-    $itemsIdx = -1
-    for ($i = 0; $i -lt $lines.Count; $i++) { if ($lines[$i] -match '^Items:\s*$') { $itemsIdx = $i; break } }
-    if ($itemsIdx -lt 0) { throw "no Items: block in $Path" }
-    $end = $lines.Count
-    for ($i = $itemsIdx + 1; $i -lt $lines.Count; $i++) {
-        if ($lines[$i] -match '^[A-Za-z]') { $end = $i; break }
-    }
-    $insert = @()
+    $lines = @(Get-YamlLines $Path | Where-Object { $_.Trim() -ne '' })
+    if ($lines -match '^Entries:\s*$') { throw "hook already has an Entries: block: $Path" }
+    $insert = @('Entries:')
     foreach ($fk in $FormKeys) {
-        $insert += '- Item:'
-        $insert += "    Item: $fk"
+        $insert += '- Data:'
+        $insert += '    Level: 1'
+        $insert += "    Reference: $fk"
         $insert += '    Count: 1'
     }
-    $keep = $lines[0..($end - 1)] + $insert + $(if ($end -lt $lines.Count) { $lines[$end..($lines.Count - 1)] } else { @() })
-    Set-YamlLines -Path $Path -Lines $keep
-    return $insert.Count / 3
+    Set-YamlLines -Path $Path -Lines ($lines + $insert)
+    return $FormKeys.Count
 }
 
 $created = 0
 foreach ($v in $vendors) {
     $srcPath = Join-Path $refFS $v.File
-    if (-not (Test-Path -LiteralPath $srcPath)) { throw "reference chest not found: $($v.File)" }
-    $dst = Join-Path (Join-Path $root 'Containers') $v.File
+    if (-not (Test-Path -LiteralPath $srcPath)) { throw "reference hook not found: $($v.File)" }
+    $dst = Join-Path (Join-Path $root 'LeveledItems') $v.File
     $adds = @()
     foreach ($arch in $v.Archetypes) { $adds += Get-ArchBundles -Arch $arch }
     if ($v.Staves) { $adds += Get-ArchStaves -Arch $v.Staves }
@@ -229,13 +248,17 @@ foreach ($v in $vendors) {
         $t = Read-YamlText $dst
         $missing = @($adds | Where-Object { $t -notmatch [regex]::Escape($_) })
         if ($missing.Count -gt 0) { throw "$($v.File) exists but lacks $($missing.Count) entries - delete it and re-run" }
-        Write-Host ("  4. {0}: already present" -f (($v.File -split ' - ')[0]))
+        Write-Host ("  4. {0}: already present" -f $v.Merchant)
         continue
     }
+    # the hook must genuinely be an empty UseAll list in the master, or we are misreading it
+    $srcText = Read-YamlText $srcPath
+    if ($srcText -notmatch '(?m)^- UseAll\s*$') { throw "$($v.File) is not UseAll - re-check the hook" }
+    if ($srcText -match '(?m)^Entries:\s*$') { throw "$($v.File) is not empty in the master - re-check the hook" }
     Copy-Item -LiteralPath $srcPath -Destination $dst
-    $n = Add-ItemsEntries -Path $dst -FormKeys $adds
+    $n = Add-LeveledEntries -Path $dst -FormKeys $adds
     $created++
-    Write-Host ("  4. {0}: +{1} entries ({2} tome bundles{3})" -f (($v.File -split ' - ')[0]), $n, (3 * $v.Archetypes.Count), $(if ($v.Staves) { ", $($v.Staves) staves" } else { '' }))
+    Write-Host ("  4. {0}: +{1} entries ({2} tome bundles{3})" -f $v.Merchant, $n, (3 * $v.Archetypes.Count), $(if ($v.Staves) { ", $($v.Staves) staves" } else { '' }))
 }
 
 # ------------------------------------------------------------------ 5. reprice the top tiers
@@ -284,7 +307,9 @@ foreach ($p in $allText.Keys) {
 }
 if ($left.Count -gt 0) { $left | ForEach-Object { Write-Host "    remaining: $_" }; throw "$($left.Count) references to deleted records survive" }
 
-# b. the only non-TVR-keyed records are the 10 new chests
+# b. the only non-TVR-keyed records are the 10 CustomMerchandise hooks - and in particular this
+#    plugin must now override NO container of any master, which is what buys the EGO/Apocalypse/
+#    KataPUMB freedom the header describes.
 $foreign = @()
 foreach ($p in $allText.Keys) {
     if ((Split-Path -Leaf $p) -in 'RecordData.yaml', 'GroupRecordData.yaml') { continue }
@@ -295,7 +320,13 @@ $expected = @($vendors | ForEach-Object { $_.File })
 $unexpected = @($foreign | Where-Object { $_ -notin $expected })
 if ($unexpected.Count -gt 0 -or $foreign.Count -ne 10) {
     $unexpected | ForEach-Object { Write-Host "    unexpected override: $_" }
-    throw "override set is wrong: $($foreign.Count) foreign-keyed records (want exactly the 10 chests)"
+    throw "override set is wrong: $($foreign.Count) foreign-keyed records (want exactly the 10 hooks)"
+}
+$ownedContainers = @(Get-ChildItem (Join-Path $root 'Containers') -Filter '*.yaml' -ErrorAction SilentlyContinue |
+    Where-Object { (Read-YamlText $_.FullName) -notmatch '(?m)^FormKey: [0-9A-F]{6}:Triumvirate' })
+if ($ownedContainers.Count -gt 0) {
+    $ownedContainers | ForEach-Object { Write-Host "    still overriding container: $($_.Name)" }
+    throw "$($ownedContainers.Count) master container overrides survive - the hooks exist to avoid exactly this"
 }
 
 # c. every tome reachable from >=3 chests, every staff from >=1
@@ -311,8 +342,8 @@ foreach ($f in Get-ChildItem (Join-Path $root 'LeveledItems') -Filter 'TVR_Tomes
 }
 $sources = @{}
 foreach ($v in $vendors) {
-    $t = Read-YamlText (Join-Path (Join-Path $root 'Containers') $v.File)
-    $items = @([regex]::Matches($t, '(?m)^    Item: (.+?)(?=\r?$)') | ForEach-Object { $_.Groups[1].Value })
+    $t = Read-YamlText (Join-Path (Join-Path $root 'LeveledItems') $v.File)
+    $items = @([regex]::Matches($t, '(?m)^    Reference: (.+?)(?=\r?$)') | ForEach-Object { $_.Groups[1].Value })
     foreach ($it in $items) {
         if ($tierBundleOf.ContainsKey($it)) {
             foreach ($tb in $tierBundleOf[$it]) {
@@ -324,10 +355,29 @@ foreach ($v in $vendors) {
 }
 $tomes = @($tomeOf.Values | Sort-Object -Unique)
 if ($tomes.Count -ne 75) { throw "tome chain resolves $($tomes.Count) tomes, want 75" }
-$short = @($tomes | Where-Object { -not $sources[$_] -or $sources[$_] -lt 3 })
+
+# Order-independence: 17-tier-gating.ps1 cuts Expert/Master out of the parent bundles and places
+# those tier bundles at the Ark/Undercity hooks directly, so once it has run the parents reach 45
+# of the 75 and 17 owns the proof for the other 30. Assert on what the parents actually carry
+# rather than hardcoding 75, or this step fails purely because it ran second.
+$viaParents = @($tomes | Where-Object { $sources.ContainsKey($_) })
+if ($viaParents.Count -notin @(45, 75)) {
+    throw "parent bundles reach $($viaParents.Count) tomes; expected 75 (before 17-tier-gating) or 45 (after)"
+}
+$short = @($viaParents | Where-Object { $sources[$_] -lt 3 })
 if ($short.Count -gt 0) { throw "$($short.Count) tomes have fewer than 3 vendor sources" }
-$noStaff = @($staves.Values | Where-Object { -not $sources[$_] })
+$noStaff = @($staves.Values | Where-Object { -not $sources.ContainsKey($_) })
 if ($noStaff.Count -gt 0) { throw "$($noStaff.Count) staves unplaced" }
-$counts = $tomes | ForEach-Object { $sources[$_] } | Group-Object | Sort-Object Name
-Write-Host ("  proof: 75/75 tomes at >=3 vendors (source counts: {0}); 26/26 staves placed" -f (($counts | ForEach-Object { "$($_.Count)x$($_.Name)" }) -join ', '))
+$counts = $viaParents | ForEach-Object { $sources[$_] } | Group-Object | Sort-Object Name
+Write-Host ("  proof: {0}/75 tomes at >=3 vendors (source counts: {1}); 26/26 staves placed" -f
+    $viaParents.Count, (($counts | ForEach-Object { "$($_.Count)x$($_.Name)" }) -join ', '))
+
+# Reachable is not the same as obtainable: a tier bundle still carrying vanilla's PC<School><Tier>
+# gate yields NOTHING however many vendors stock it, and reading only Reference: is exactly how
+# this script once reported "75/75" on a mod that could sell 30. Report it here; 17 does the fix.
+$gated = @(Get-ChildItem (Join-Path $root 'LeveledItems') -Filter 'TVR_Tomes_*.yaml' |
+    Where-Object { (Read-YamlText $_.FullName) -match '(?m)^Global: 0F25[0-9A-F]{2}:Skyrim\.esm' })
+if ($gated.Count -gt 0) {
+    Write-Host "  NOTE: $($gated.Count) tier bundles still carry the vanilla skill gate and will yield nothing - run 17-tier-gating.ps1"
+}
 Write-Host "15 - done"
