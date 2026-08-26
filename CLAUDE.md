@@ -920,31 +920,45 @@ readable and leaves Enderal's own list contents byte-identical.
 > - **You override a `LeveledItem` instead of a `CONT`**, so you do not touch the merchant's
 >   record at all.
 >
-> That second point is the whole prize, because the chests are heavily contested and these are
-> not: **EGO overrides none of the 67, and neither does Apocalypse.** Compare with the chests —
-> EGO owns essentially all of Ark's commerce (of the capital's **55** merchant chests only **six**
-> are EGO-clear, and all six are 250–405 gold; every Ark chest at 900+ is EGO's), plus Apocalypse's
-> six and KataPUMB's three. Triumvirate originally overrode ten chests and collided with EGO on
-> three of them; moving to the hooks dropped its override surface to **ten `LeveledItem`s and zero
-> containers**, and the vendor picks stopped having to dodge anybody.
+> That second point is the whole prize, because the chests are heavily contested and the hooks
+> are not. **No third-party plugin in `reference/mods/` overrides any of the 67** — EGO,
+> `EGO SE - Leveling Redone`, KataPUMB, KataEmberlord and xxOpenSpells included. Compare with the
+> chests: EGO owns essentially all of Ark's commerce (of the capital's **55** merchant chests only
+> **six** are EGO-clear, and all six are 250–405 gold; every Ark chest at 900+ is EGO's), and
+> **`EGO SE - Leveling Redone` overrides 50 containers**, among them every one of Apocalypse's six.
+>
+> **The critical property is that every one of those mods KEEPS the hook in the chests it
+> rewrites** **[verified 2026-08-27]**, so a hook stays reachable whoever wins the container. That
+> is what makes the technique safe rather than merely tidy, and it is worth re-checking per mod
+> rather than assuming — a chest override that dropped the hook would silence your stock with
+> no error, the "present but inert" class again.
+>
+> Both releases here have now moved. Triumvirate originally overrode ten chests and collided with
+> EGO on three; Apocalypse overrode six and collided with all five of the mods above. Each is now
+> at **zero container overrides** — ten `LeveledItem`s and six respectively — and both sets of
+> vendor picks stopped having to dodge anybody. Apocalypse's Apprentice tier moved **back** to
+> Tarhutie (630 gold) from the Maxus Tabbakus stand-in as a direct result. Note Maxus is one of the
+> merchants SureAI left **without** a hook, so not every chest has this escape route.
 >
 > Two practical notes. The empty records have **no `Entries:` key at all** — Spriggit omits an
 > empty collection — so you create the key rather than append to it. And **map hook → merchant by
 > reading the chest's own `Items:` list, never by the name**: Adreyo's hook is `Vexin_`, the Ark
 > guard smith's is `ArkHofSchmied_`.
 >
-> Writing into the `Container` still works and is what the older releases here do; prefer the hook
-> for anything new. Enderal's spell merchants, ranked by the gold in their chest (the natural
-> wealth ladder for tiering what each one sells) **[verified]**:
+> Writing into the `Container` still works, and it is what both releases here did first; **prefer
+> the hook** and migrate anything that does not. Enderal's spell merchants, ranked by the gold in
+> their chest (the natural wealth ladder for tiering what each one sells), with the hook that
+> stocks each one **[verified]**:
 >
-> | Chest | FormKey | Gold | Shop |
+> | Chest | Gold | Shop | Hook (write HERE) |
 > |---|---|---|---|
-> | `_00E_Merchant_CCFunkentanz` | `102AD5` | 1800 | Ark, Emberlord and Fireflash (`coc CapitalCityMagierkram`) |
-> | `_00E_Merchant_STTurious` | `118050` | 1430 | Sun Temple, Torius Flameling (`coc SuntempleAlchemy`) |
-> | `_00E_Merchant_UC_Barnabas` | `13824A` | 1050 | Undercity, Barnabas (`coc UndercityBarracks2Barnabas`) |
-> | `_00E_Merchant_CCSteinschlag` | `0F9320` | 980 | Ark, Ora Stonehand |
-> | `_00E_Merchant_MaxusTabbakus02` | `022BF2` | 620 | Duneville, Maxus Tabbakus |
-> | `_00E_Merchant_CCMilbert` | `127928` | 530 | Ark, Milbert Foxhand |
+> | `_00E_Merchant_CCFunkentanz` `102AD5` | 1800 | Ark, Emberlord and Fireflash (`coc CapitalCityMagierkram`) | `GabrielleFunkenfrst_` `0302D5` |
+> | `_00E_Merchant_STTurious` `118050` | 1430 | Sun Temple, Torius Flameling (`coc SuntempleAlchemy`) | `TuriousFlammentrunk_` `0302FE` |
+> | `_00E_Merchant_UC_Barnabas` `13824A` | 1050 | Undercity, Barnabas (`coc UndercityBarracks2Barnabas`) | `Barnabas_` `030302` |
+> | `_00E_Merchant_CCSteinschlag` `0F9320` | 980 | Ark, Ora Stonehand | `OraSteinschlag_` `0302E3` |
+> | `_00E_Merchant_FlusshaimTarhutieContainer` `05BCD6` | 630 | Riverville, Tarhutie | `Tarhutie_` `0302F7` |
+> | `_00E_Merchant_MaxusTabbakus02` `022BF2` | 620 | Duneville, Maxus Tabbakus | **none** |
+> | `_00E_Merchant_CCMilbert` `127928` | 530 | Ark, Milbert Foxhand | `MilbertFuchshand_` `0302DE` |
 >
 > Richer merchants exist (`Nordwind_Traveller_01` 3700, `Rhalata_SisterEnvy` 2700, `DunenhaimKarymea`
 > 2700) but draw from only 1–2 spell lists, so they read as incidental rather than as mage shops.
@@ -959,12 +973,16 @@ readable and leaves Enderal's own list contents byte-identical.
 > inside each tier survives, and let tiers overlap at the edges — Enderal's own do.
 > **Forgotten Stories overrides all of these**, so copy the FS record, not base Enderal's (guardrail 5).
 >
-> **Check what else overrides the chest before claiming it.** `KataPUMBSpellPack.esp` adds the same 15
-> staves to `CCFunkentanz`, `STTurious` and `FlusshaimTarhutieContainer`, and those three shops are
-> their only vendor. **[verified]** A plugin loading after it that overrides one of those chests
-> without mastering it silently deletes them. Where a mod repeats an identical set across several
-> chests, **sparing one chest preserves the whole set** — that is why `Apocalypse` leaves Tarhutie
-> alone and hosts its Apprentice tier at Maxus Tabbakus (620 gold vs Tarhutie's 630) instead.
+> **If you do claim a chest, check what else overrides it first.** `KataPUMBSpellPack.esp` adds the
+> same 15 staves to `CCFunkentanz`, `STTurious` and `FlusshaimTarhutieContainer`, and those three
+> shops are their only vendor. **[verified]** A plugin loading after it that overrides one of those
+> chests without mastering it silently deletes them. Where a mod repeats an identical set across
+> several chests, **sparing one chest preserves the whole set** — which is how `Apocalypse` used to
+> protect them, leaving Tarhutie alone and hosting its Apprentice tier at Maxus Tabbakus (620 gold
+> vs Tarhutie's 630) instead. **That workaround is now history**: on the hooks it claims no chest at
+> all, KataPUMB's staves are safe everywhere, and the Apprentice tier is back with Tarhutie. Keep
+> the reasoning for the cases the hooks cannot reach — a merchant without one, or a non-merchant
+> container.
 
 ## Useful FormKey constants
 

@@ -33,7 +33,7 @@ broken script. Each derives the repo root from its own location, so run them fro
 | 4 | `04-forward-worldspace.ps1` | Replaces Apocalypse's `Tamriel` override of `00003C` with Enderal's `MQP01Home`, **keeping Apocalypse's three persistent refs** — a quest and a faction still point at them |
 | 5 | `05-merge-tree.ps1` | Merges Enai's tree with our edits, drops the 67 staff recipes, re-homes our six new records into Apocalypse's own FormID space, writes the header at form version 1.7 |
 | 6 | `06-weight-distribution.ps1` | Duplicates each injected **loot** entry until those lists are ~11–19% Apocalypse. One entry per host list gives 160 tomes the same odds as a single Enderal book — see below. Idempotent; run after 05 |
-| 7 | `07-place-vendor-tomes.ps1` | Writes all 160 tomes **directly** into six named merchant chests, tiered by the chest's gold. This is what actually makes the spells obtainable; the vendor leveled lists no longer carry them. Idempotent — always rebuilds from the Forgotten Stories record |
+| 7 | `07-place-vendor-tomes.ps1` | Writes all 160 tomes **directly** to six named merchants, tiered by the gold in their chest — into SureAI's own `<Merchant>_CustomMerchandise` hooks, so **no container record of any master is overridden**. This is what actually makes the spells obtainable; the vendor leveled lists no longer carry them. Migrates away any leftover chest override. Idempotent — always rebuilds from the Forgotten Stories record |
 | 8 | `08-reprice.ps1` | Rescales all 175 tome and 144 scroll gold values onto Enderal's economy. Apocalypse prices on vanilla Skyrim's ladder, which Enderal does not use. Idempotent — always recomputes from Enai's untouched tree |
 | 9 | `09-arcane-fever-heals.ps1` | Appends Enderal's Arcane Fever effect to the 19 player self-heals (14 spells, 5 scrolls). Every Enderal healing spell pays Fever; Apocalypse's paid nothing. Idempotent — strips its own block and re-appends |
 | 10 | `10-strip-vanilla-navi.ps1` | Cuts Bethesda's navigation map out of the `NAVI` record the CK regenerated, keeping only Apocalypse's own three entries. **3,498 of the plugin's 4,077 missing references were in this one record** |
@@ -53,7 +53,8 @@ stubs is in
 
 | Script | Checks |
 |---|---|
-| `verify-plugin-census.ps1 <orig.esp> <built.esp>` | record counts by signature, FormID set, masters, `HEDR`. Expect −67 `COBJ`, +11 `LVLI`, +6 `CONT`, `HEDR 1.7`, no `Dragonborn.esm` |
+| `verify-plugin-census.ps1 <orig.esp> <built.esp>` | record counts by signature, FormID set, masters, `HEDR`. Expect −67 `COBJ`, +17 `LVLI`, +0 `CONT`, `HEDR 1.7`, no `Dragonborn.esm` |
+| `verify-vendor-reachability.ps1` | that the tomes can actually be **bought**: each hook is `UseAll` with no `ChanceNone` and no `Global`, is still carried by its merchant's chest in base Enderal **and in every `reference/mods/` override of that chest**, and covers all 160 tomes exactly once, all priced. Also asserts 0 container overrides |
 | `verify-missing-refs.ps1 [-Baseline N]` | **absolute** audit: everything the tree points at that Enderal does not have, with each surviving reference resolved to its Enderal group and EditorID. Currently **269**. `-Baseline` fails when the count rises |
 | `verify-dangling-diff.ps1` | unresolved references **relative to Enai's original** — a different question. Expect **0 new** |
 | `verify-addonnode-indices.ps1 [-Upstream]` | no `ADDN` index shared with Enderal. Defaults to our tree; `-Upstream` checks Enai's |
@@ -90,7 +91,8 @@ is `1C1E70`). This is not an ESL block — the merged plugin has ~3,890 records 
   half the share of its neighbours. It carries 8x to land in the same band as everything else.
 - **Weighting a leveled list has a ceiling, and the vendor lists hit it.** A list is rolled per draw,
   so which tomes a shop has stays random however heavy the entry is — most of the 160 were
-  purchasable nowhere even at a 38% share. Step 7 replaced that with direct placement and the four
+  purchasable nowhere even at a 38% share. Step 7 replaced that with direct placement (into the
+  merchant hooks) and the four
   `_00ETraderSpellBooksLevel*` overrides were deleted outright, handing those lists back to Forgotten
   Stories. Do not reintroduce them: the tomes would then be sold twice over.
 - **Gold values are Skyrim's, not Enderal's, and nothing warns you.** Apocalypse prices tomes on
@@ -99,12 +101,17 @@ is `1C1E70`). This is not an ESL block — the merged plugin has ~3,890 records 
   scrolls run 10–100 with two at 500. Enai's masters at a 1407 median were 5.6x Enderal's top tome
   and its X-school scrolls at 2500 were 5x Enderal's dearest scroll. Step 8 rescales by a per-tier
   ratio so his internal ordering survives. Re-derive the ratios if a new Apocalypse version reprices.
-- **`KataPUMBSpellPack.esp` adds the same 15 staves to three of the six chests** — `CCFunkentanz`,
-  `STTurious` and `FlusshaimTarhutieContainer` — and those shops are their only vendor. We do not
-  master it, so any chest we claim drops them. Because the set is identical at all three,
-  **Tarhutie is deliberately left unclaimed** and all 15 stay buyable from him; the Apprentice tier
-  went to Maxus Tabbakus (620 gold) instead of Tarhutie (630). Re-run the load-order sweep before
-  moving a tier onto a new chest.
+- **The chest overrides are gone — stock goes into `<Merchant>_CustomMerchandise` instead.**
+  Enderal ships 67 of those, one per merchant, every one an **empty `UseAll` LeveledItem already
+  sitting in that merchant's chest**. Writing there stocks the shop just as deterministically
+  while overriding **no container of any master**. That dissolved a real conflict, not a
+  hypothetical one: `EGO SE - Leveling Redone.esp` overrides **all six** of the chests this step
+  used to claim, and `KataPUMBSpellPack.esp`, `KataEmberlord` and `xxOpenSpells` override some of
+  them too — whichever loaded last simply erased the other's additions. **All five of those mods
+  keep the hook in the chests they rewrite**, so our stock now survives every one of them, and
+  KataPUMB's 15 staves survive us. That is also why **the Apprentice tier moved back to Tarhutie**
+  (630 gold) from Maxus Tabbakus, who was only ever the stand-in and has no hook at all.
+  `verify-vendor-reachability.ps1` re-proves the whole chain rather than trusting this note.
 - **Do not add `(Rank N)` to the tome names.** In Enderal that suffix means the same spell exists at
   another strength, gated on player level (`_01E_`/`_10E_`/`_18E_`/`_28E_`/`_38E_`/`_48E_` = levels
   1/10/18/28/38/48). Apocalypse spells have one version each, and Enderal leaves its own 13
