@@ -1,0 +1,10 @@
+FormKey: 2988FC:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_MagInv_Teleport
+ObjectBounds:
+  First: -92, -108, -9
+  Second: 93, 110, 19
+Model:
+  File: Triumvirate\Teleport_Inv.nif
+  Data: 0x020000000000000000000000
+MaxAngle: 90
+Unused: 0x000000

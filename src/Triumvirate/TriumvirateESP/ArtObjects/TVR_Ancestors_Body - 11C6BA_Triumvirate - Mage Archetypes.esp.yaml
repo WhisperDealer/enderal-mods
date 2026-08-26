@@ -1,0 +1,10 @@
+FormKey: 11C6BA:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Ancestors_Body
+ObjectBounds:
+  First: -88, -113, -108
+  Second: 88, 113, 166
+Model:
+  File: Triumvirate\Ancestors_Body.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

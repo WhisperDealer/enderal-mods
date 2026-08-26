@@ -1,0 +1,22 @@
+FormKey: 3C89D3:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Totem_Effect_CreateWaterTotem_Totem_Ab_Fake
+Name:
+  TargetLanguage: English
+  Value: Water Totem Ab Fake
+MenuDisplayObject: 35E370:Triumvirate - Mage Archetypes.esp
+Flags:
+- NoHitEvent
+- NoDuration
+- NoArea
+- FXPersist
+- HideInUI
+- NoHitEffect
+Archetype:
+  MutagenObjectType: MagicEffectCloakArchetype
+  Association: 3C89D1:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

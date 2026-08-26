@@ -1,0 +1,7 @@
+FormKey: 40F8E4:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Veil_Message_IsAlreadyControlTransferred
+Description:
+  TargetLanguage: English
+  Value: Cannot cast this while affected by a projected vision effect.
+INAM: 0x00000000
+DisplayTime: 2

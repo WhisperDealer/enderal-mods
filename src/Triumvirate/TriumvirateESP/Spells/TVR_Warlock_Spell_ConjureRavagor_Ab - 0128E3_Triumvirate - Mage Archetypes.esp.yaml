@@ -1,0 +1,29 @@
+FormKey: 0128E3:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_Spell_ConjureRavagor_Ab
+Name:
+  TargetLanguage: English
+  Value: Ravagor Ability
+MenuDisplayObject: 1C3CBA:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Flags:
+- AreaEffectIgnoresLOS
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 015F54:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 15
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: NotEqualTo
+    Data:
+      MutagenObjectType: GetCombatStateConditionData
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: GetActorValueConditionData
+      ActorValue: EnchantingPowerModifier
+    ComparisonValue: 1337

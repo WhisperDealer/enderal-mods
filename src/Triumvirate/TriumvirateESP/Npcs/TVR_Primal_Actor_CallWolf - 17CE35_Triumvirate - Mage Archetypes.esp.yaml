@@ -1,0 +1,141 @@
+FormKey: 17CE35:Triumvirate - Mage Archetypes.esp
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
+EditorID: TVR_Primal_Actor_CallWolf
+SkyrimMajorRecordFlags:
+- Compressed
+VirtualMachineAdapter:
+  Scripts:
+  - Name: FXunsommonSCRIPT
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AtronachUnsummonDeathFXS
+      Object: 0EA8FF:Skyrim.esm
+ObjectBounds:
+  First: -20, -74, 0
+  Second: 20, 74, 78
+Configuration:
+  Flags:
+  - AutoCalcStats
+  - Summonable
+  StaminaOffset: -75
+  Level:
+    MutagenObjectType: PcLevelMult
+    LevelMult: 1
+  CalcMinLevel: 16
+  CalcMaxLevel: 31
+  SpeedMultiplier: 100
+  DispositionBase: 35
+  HealthOffset: -12
+Factions:
+- Faction: 000013:Skyrim.esm
+  Fluff: 0x000000
+- Faction: 03E691:Skyrim.esm
+  Fluff: 0x000000
+Voice: 01F6A7:Skyrim.esm
+Race: 17CE32:Triumvirate - Mage Archetypes.esp
+WornArmor: 17CE34:Triumvirate - Mage Archetypes.esp
+AttackRace: 17CE32:Triumvirate - Mage Archetypes.esp
+AIData:
+  Aggression: VeryAggressive
+  Confidence: Brave
+  EnergyLevel: 50
+  Responsibility: NoCrime
+  Mood: Angry
+  Assistance: HelpsFriendsAndAllies
+  WarnOrAttack: 2000
+  Attack: 1500
+Class: 0131E6:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Gray Wolf
+PlayerSkills:
+  SkillValues:
+  - Key: OneHanded
+    Value: 39
+  - Key: TwoHanded
+    Value: 15
+  - Key: Archery
+    Value: 39
+  - Key: Block
+    Value: 51
+  - Key: Smithing
+    Value: 15
+  - Key: HeavyArmor
+    Value: 15
+  - Key: LightArmor
+    Value: 15
+  - Key: Pickpocket
+    Value: 15
+  - Key: Lockpicking
+    Value: 15
+  - Key: Sneak
+    Value: 66
+  - Key: Alchemy
+    Value: 15
+  - Key: Speech
+    Value: 15
+  - Key: Alteration
+    Value: 15
+  - Key: Conjuration
+    Value: 15
+  - Key: Destruction
+    Value: 15
+  - Key: Illusion
+    Value: 15
+  - Key: Restoration
+    Value: 15
+  - Key: Enchanting
+    Value: 15
+  SkillOffsets:
+  - Key: OneHanded
+    Value: 0
+  - Key: TwoHanded
+    Value: 0
+  - Key: Archery
+    Value: 0
+  - Key: Block
+    Value: 0
+  - Key: Smithing
+    Value: 0
+  - Key: HeavyArmor
+    Value: 0
+  - Key: LightArmor
+    Value: 0
+  - Key: Pickpocket
+    Value: 0
+  - Key: Lockpicking
+    Value: 0
+  - Key: Sneak
+    Value: 0
+  - Key: Alchemy
+    Value: 0
+  - Key: Speech
+    Value: 0
+  - Key: Alteration
+    Value: 0
+  - Key: Conjuration
+    Value: 0
+  - Key: Destruction
+    Value: 0
+  - Key: Illusion
+    Value: 0
+  - Key: Restoration
+    Value: 0
+  - Key: Enchanting
+    Value: 0
+  Health: 150
+  Stamina: 200
+  GearedUpWeapons: 1
+CombatStyle: 057BE8:Skyrim.esm
+NAM5: 255
+Height: 1.02
+Weight: 50
+SoundLevel: Normal
+Sound:
+  MutagenObjectType: NpcInheritSound
+  InheritsSoundsFrom: 0A85C7:Skyrim.esm
+DefaultPackageList: 095F47:Skyrim.esm
+TextureLighting: '#00808080'
+MajorFlags:
+- 0x40000

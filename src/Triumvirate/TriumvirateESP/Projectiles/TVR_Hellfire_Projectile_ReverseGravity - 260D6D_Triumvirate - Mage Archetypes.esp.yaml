@@ -1,0 +1,20 @@
+FormKey: 260D6D:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Hellfire_Projectile_ReverseGravity
+ObjectBounds:
+  First: -26, -37, -27
+  Second: 27, 542, 9
+Model:
+  File: Triumvirate\Hellfire_Beam_ReverseGravity.nif
+  Data: 0x020000000000000000000000
+Type: Beam
+Speed: 20000
+Range: 1920
+Light: 00ECB6:Triumvirate - Mage Archetypes.esp
+Explosion: 10A292:Skyrim.esm
+FadeDuration: 0.5
+ImpactForce: 10
+CollisionRadius: 1
+Lifetime: 0.8
+RelaunchInterval: 0.1
+MuzzleFlashModel: ''
+SoundLevel: 1

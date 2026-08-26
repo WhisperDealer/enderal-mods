@@ -1,0 +1,19 @@
+FormKey: 00ECBB:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Hellfire_Explosion_Cloudkill
+ObjectBounds:
+  First: -57, -60, -9
+  Second: 57, 60, 33
+Model:
+  File: Triumvirate\Hellfire_Explosion.nif
+  Data: 0x020000000000000000000000
+ImageSpaceModifier: 00ECBC:Triumvirate - Mage Archetypes.esp
+Sound1: 00ECB7:Triumvirate - Mage Archetypes.esp
+Sound2: 03C8FC:Skyrim.esm
+PlacedObject: 1A0586:Triumvirate - Mage Archetypes.esp
+Force: 32
+Radius: 128
+ISRadius: 1024
+Flags:
+- 0x1
+- IgnoreLosCheck
+- IgnoreImageSpaceSwap

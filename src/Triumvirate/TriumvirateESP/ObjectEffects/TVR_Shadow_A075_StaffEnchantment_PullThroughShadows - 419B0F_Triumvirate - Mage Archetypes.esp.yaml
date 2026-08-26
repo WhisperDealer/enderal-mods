@@ -1,0 +1,21 @@
+FormKey: 419B0F:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shadow_A075_StaffEnchantment_PullThroughShadows
+Name:
+  TargetLanguage: English
+  Value: Pull Through Shadows
+EnchantmentCost: 285
+CastType: FireAndForget
+EnchantmentAmount: 285
+TargetType: TargetLocation
+EnchantType: StaffEnchantment
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 30D2A3:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 0.3
+    Area: 20
+- BaseEffect: 326828:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 100
+    Area: 20
+    Duration: 10

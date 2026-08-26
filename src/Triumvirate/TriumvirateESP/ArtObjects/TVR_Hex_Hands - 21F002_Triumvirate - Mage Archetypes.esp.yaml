@@ -1,0 +1,9 @@
+FormKey: 21F002:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Hex_Hands
+ObjectBounds:
+  First: 0, -4, -4
+  Second: 1, 4, 4
+Model:
+  File: Triumvirate\Hex_Hands.nif
+  Data: 0x020000000000000000000000
+Type: []

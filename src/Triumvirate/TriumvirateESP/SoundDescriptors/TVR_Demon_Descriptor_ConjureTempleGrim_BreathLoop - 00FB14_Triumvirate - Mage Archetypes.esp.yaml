@@ -1,0 +1,18 @@
+FormKey: 00FB14:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Demon_Descriptor_ConjureTempleGrim_BreathLoop
+Type: Standard
+Category: 09F254:Skyrim.esm
+SoundFiles:
+- data\Sound\fx\mihailhellhounds.esp\hellhoundvoice.wav
+OutputModel: 05A28A:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  CompareOperator: NotEqualTo
+  Data:
+    MutagenObjectType: GetSleepingConditionData
+  ComparisonValue: 3
+LoopAndRumble:
+  Loop: Loop
+PercentFrequencyVariance: 10
+Priority: 1
+StaticAttenuation: 9.69

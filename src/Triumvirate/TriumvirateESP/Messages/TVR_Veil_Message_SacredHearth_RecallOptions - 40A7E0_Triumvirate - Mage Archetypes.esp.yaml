@@ -1,0 +1,33 @@
+FormKey: 40A7E0:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Veil_Message_SacredHearth_RecallOptions
+Description:
+  TargetLanguage: English
+  Value: What do you want to do?
+INAM: 0x00000000
+Flags:
+- MessageBox
+MenuButtons:
+- Text:
+    TargetLanguage: English
+    Value: Recall to Hearth
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: GetGlobalValueConditionData
+      Global: 3C89D4:Triumvirate - Mage Archetypes.esp
+    ComparisonValue: 1
+- Text:
+    TargetLanguage: English
+    Value: Consecrate This Location As Hearth
+- Text:
+    TargetLanguage: English
+    Value: Destroy Hearth
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: GetGlobalValueConditionData
+      Global: 3C89D4:Triumvirate - Mage Archetypes.esp
+    ComparisonValue: 1
+- Text:
+    TargetLanguage: English
+    Value: Cancel

@@ -1,0 +1,19 @@
+FormKey: 3E1F57:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Senua_Descriptor_Drums_Loop
+Type: Standard
+Category: 0DDDC5:Skyrim.esm
+SoundFiles:
+- data\Sound\fx\Triumvirate - Mage Archetypes.esp\DrumsFadeout.wav
+OutputModel: 0FD93D:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  CompareOperator: NotEqualTo
+  Data:
+    MutagenObjectType: GetSleepingConditionData
+  ComparisonValue: 3
+LoopAndRumble:
+  Unknown: 2
+  Loop: Loop
+PercentFrequencyShift: -22
+Priority: 128
+StaticAttenuation: 7.05

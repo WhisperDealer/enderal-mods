@@ -1,0 +1,42 @@
+FormKey: 3CDAFF:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Violence_Effect_Worldshatter_Hazard_Slow
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_CarryWeight_Script
+    Properties:
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_CarryWeight
+      Data: 0.01
+Name:
+  TargetLanguage: English
+  Value: Slow
+MenuDisplayObject: 1E741E:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Recover
+- Detrimental
+- NoArea
+- FXPersist
+BaseCost: 3
+MagicSkill: Alteration
+HitShader: 3CDB08:Triumvirate - Mage Archetypes.esp
+MinimumSkillLevel: 75
+SpellmakingCastingTime: 1
+Archetype:
+  MutagenObjectType: MagicEffectPeakValueModArchetype
+  ActorValue: SpeedMult
+CastType: FireAndForget
+TargetType: Touch
+ImpactData: 04C6DA:Skyrim.esm
+SkillUsageMultiplier: 1
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: The spirits of the land slow targets by <mag>% for <dur> seconds.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsHostileToActorConditionData
+  ComparisonValue: 1

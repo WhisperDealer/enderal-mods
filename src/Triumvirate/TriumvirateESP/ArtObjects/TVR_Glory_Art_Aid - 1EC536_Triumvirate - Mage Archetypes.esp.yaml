@@ -1,0 +1,10 @@
+FormKey: 1EC536:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Glory_Art_Aid
+ObjectBounds:
+  First: -74, -74, -89
+  Second: 74, 74, 99
+Model:
+  File: Triumvirate\Glory_Art_MassImmortality.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

@@ -1,0 +1,12 @@
+FormKey: 025D9B:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Walk_Descriptor_Release_Buff
+Type: Standard
+Category: 0172A1:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\OBJ\DwemerRepository\OBJ_Dwemer_Repository_Door_01.wav
+OutputModel: 0B4246:Skyrim.esm
+LoopAndRumble: {}
+PercentFrequencyShift: 50
+PercentFrequencyVariance: 6
+Priority: 128
+StaticAttenuation: 9.25

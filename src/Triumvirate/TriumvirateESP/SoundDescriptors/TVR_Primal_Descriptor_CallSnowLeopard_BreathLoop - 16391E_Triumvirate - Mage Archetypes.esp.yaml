@@ -1,0 +1,18 @@
+FormKey: 16391E:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Primal_Descriptor_CallSnowLeopard_BreathLoop
+Type: Standard
+Category: 09F254:Skyrim.esm
+SoundFiles:
+- data\Sound\fx\mihailmountainlion.esp\cougarsound.wav
+OutputModel: 05A28A:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  CompareOperator: NotEqualTo
+  Data:
+    MutagenObjectType: GetSleepingConditionData
+  ComparisonValue: 3
+LoopAndRumble:
+  Loop: Loop
+PercentFrequencyVariance: 10
+Priority: 1
+StaticAttenuation: 0.88

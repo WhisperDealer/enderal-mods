@@ -1,0 +1,26 @@
+FormKey: 270099:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Primal_Effect_CallSnowLeopard_Ab
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_CarryWeight_Script
+    Properties:
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_CarryWeight
+      Data: 50
+Name:
+  TargetLanguage: English
+  Value: Fortify Speed
+MenuDisplayObject: 14F4DC:Triumvirate - Mage Archetypes.esp
+Flags:
+- Recover
+- NoDuration
+- NoArea
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: SpeedMult
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Increases movement speed by <mag>%.

@@ -1,0 +1,11 @@
+FormKey: 115E13:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Senua_Descriptor_Release
+Type: Standard
+Category: 07F80B:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\QST\DA02\QST_DA02_Bubble_Activate_01.wav
+OutputModel: 07E5DD:Skyrim.esm
+LoopAndRumble: {}
+PercentFrequencyShift: -30
+Priority: 128
+StaticAttenuation: 4.41

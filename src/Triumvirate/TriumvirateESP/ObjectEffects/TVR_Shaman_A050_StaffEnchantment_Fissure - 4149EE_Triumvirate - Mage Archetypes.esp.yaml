@@ -1,0 +1,21 @@
+FormKey: 4149EE:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_A050_StaffEnchantment_Fissure
+Name:
+  TargetLanguage: English
+  Value: Fissure
+EnchantmentCost: 234
+CastType: FireAndForget
+EnchantmentAmount: 234
+TargetType: Aimed
+EnchantType: StaffEnchantment
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 3F6394:Triumvirate - Mage Archetypes.esp
+  Data:
+    Duration: 15
+- BaseEffect: 4330C8:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 0.5
+    Duration: 1
+- BaseEffect: 4330CA:Triumvirate - Mage Archetypes.esp
+  Data: {}

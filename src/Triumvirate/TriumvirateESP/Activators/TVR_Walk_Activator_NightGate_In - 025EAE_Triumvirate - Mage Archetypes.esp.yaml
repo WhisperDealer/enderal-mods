@@ -1,0 +1,28 @@
+FormKey: 025EAE:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Walk_Activator_NightGate_In
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_Transporter_Object_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Teleport_Imod_Quick
+      Object: 2E99F9:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Tonal_Marker_Transporter_Activate
+      Object: 32682B:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Tonal_VFX_Transporter
+      Object: 025EC7:Triumvirate - Mage Archetypes.esp
+ObjectBounds:
+  First: -125, -123, -70
+  Second: 125, 123, 191
+Name:
+  TargetLanguage: English
+  Value: Night Gate
+Model:
+  File: Triumvirate\Walk_Static_NightGate.nif
+  Data: 0x020000000000000000000000
+MarkerColor: '#00CC4C33'
+LoopingSound: 0BAD14:Skyrim.esm
+ActivationSound: 025E53:Triumvirate - Mage Archetypes.esp
+Flags: []

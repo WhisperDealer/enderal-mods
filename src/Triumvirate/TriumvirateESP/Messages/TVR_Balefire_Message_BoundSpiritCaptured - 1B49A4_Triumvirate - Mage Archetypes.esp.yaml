@@ -1,0 +1,7 @@
+FormKey: 1B49A4:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Balefire_Message_BoundSpiritCaptured
+Description:
+  TargetLanguage: English
+  Value: Spirit Bound (%.0f Health)
+INAM: 0x00000000
+DisplayTime: 2

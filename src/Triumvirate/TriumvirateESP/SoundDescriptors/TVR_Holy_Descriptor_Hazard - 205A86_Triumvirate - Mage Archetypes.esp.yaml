@@ -1,0 +1,13 @@
+FormKey: 205A86:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Holy_Descriptor_Hazard
+Type: Standard
+Category: 07F80B:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\AMB\AMB_RumbleShake_01.wav
+- Data\Sound\FX\AMB\AMB_RumbleShake_02.wav
+OutputModel: 0FD93D:Skyrim.esm
+LoopAndRumble: {}
+PercentFrequencyShift: 70
+PercentFrequencyVariance: 15
+Priority: 128
+StaticAttenuation: 14.1

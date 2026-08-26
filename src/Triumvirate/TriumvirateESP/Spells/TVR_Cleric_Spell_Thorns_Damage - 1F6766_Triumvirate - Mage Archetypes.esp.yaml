@@ -1,0 +1,30 @@
+FormKey: 1F6766:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Cleric_Spell_Thorns_Damage
+Name:
+  TargetLanguage: English
+  Value: Thorns
+MenuDisplayObject: 1CDEBE:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 310
+Flags:
+- AreaEffectIgnoresLOS
+ChargeTime: 0.5
+CastType: FireAndForget
+TargetType: Touch
+HalfCostPerk: 0C44C9:Skyrim.esm
+Effects:
+- BaseEffect: 1F6765:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 50
+- BaseEffect: 1F676B:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 50
+- BaseEffect: 1FB870:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 55
+- BaseEffect: 1FB871:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 55

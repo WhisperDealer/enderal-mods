@@ -1,0 +1,17 @@
+FormKey: 43D327:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Tomes_Litem_Shaman_Conjuration
+Flags:
+- UseAll
+Entries:
+- Data:
+    Level: 1
+    Reference: 4381D7:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4381D9:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4381DB:Triumvirate - Mage Archetypes.esp
+    Count: 1

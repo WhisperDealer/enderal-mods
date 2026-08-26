@@ -1,0 +1,19 @@
+FormKey: 260D6C:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Oath_Explosion_ReverseGravity
+ObjectBounds:
+  First: -57, -60, -9
+  Second: 57, 60, 33
+Model:
+  File: ApocNew\destructionhellfire_explosion.nif
+  Data: 0x020000000000000000000000
+ImageSpaceModifier: 00ECBC:Triumvirate - Mage Archetypes.esp
+Sound1: 00496B:Triumvirate - Mage Archetypes.esp
+Sound2: 08196E:Skyrim.esm
+Radius: 320
+ISRadius: 512
+VerticalOffsetMult: 0.6
+Flags:
+- 0x1
+- AlwaysUsesWorldOrientation
+- IgnoreImageSpaceSwap
+SoundLevel: Normal

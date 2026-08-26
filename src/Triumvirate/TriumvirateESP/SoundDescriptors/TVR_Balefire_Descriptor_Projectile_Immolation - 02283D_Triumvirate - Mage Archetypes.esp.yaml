@@ -1,0 +1,14 @@
+FormKey: 02283D:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Balefire_Descriptor_Projectile_Immolation
+Type: Standard
+Category: 0172A1:Skyrim.esm
+SoundFiles:
+- fx\mag\shock\mag_shock_concentration_fire_lpm.wav
+OutputModel: 10E425:Skyrim.esm
+LoopAndRumble:
+  Unknown: 1
+  Loop: EnvelopeFast
+  RumbleValues: 1
+PercentFrequencyShift: 80
+Priority: 128
+StaticAttenuation: 2.64

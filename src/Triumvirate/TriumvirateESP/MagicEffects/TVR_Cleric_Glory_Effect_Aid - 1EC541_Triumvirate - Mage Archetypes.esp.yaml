@@ -1,0 +1,56 @@
+FormKey: 1EC541:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Cleric_Glory_Effect_Aid
+Name:
+  TargetLanguage: English
+  Value: Fortify Skills
+MenuDisplayObject: 1EC537:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 1EC53C:Triumvirate - Mage Archetypes.esp
+Flags:
+- Recover
+- NoArea
+- FXPersist
+- PowerAffectsMagnitude
+BaseCost: 0.2
+MagicSkill: Restoration
+CastingLight: 1EC539:Triumvirate - Mage Archetypes.esp
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectPeakValueModArchetype
+  ActorValue: Alchemy
+  Association: 1EC53C:Triumvirate - Mage Archetypes.esp
+CastType: Concentration
+TargetType: TargetActor
+CastingArt: 1EC538:Triumvirate - Mage Archetypes.esp
+HitEffectArt: 1EC536:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 0.5
+DualCastScale: 1
+Sounds:
+- Sound: 03E957:Skyrim.esm
+- Type: Charge
+  Sound: 086EFC:Skyrim.esm
+- Type: Ready
+  Sound: 03F363:Skyrim.esm
+- Type: Release
+  Sound: 120819:Triumvirate - Mage Archetypes.esp
+- Type: ConcentrationCastLoop
+  Sound: 02F66C:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: Living or undead ally gets a <mag> point bonus to all skill levels while you concentrate.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetShouldAttackConditionData
+- MutagenObjectType: ConditionFloat
+  CompareOperator: NotEqualTo
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 013797:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: NotEqualTo
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 01397A:Skyrim.esm
+  ComparisonValue: 1

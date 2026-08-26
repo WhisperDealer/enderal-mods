@@ -1,0 +1,21 @@
+FormKey: 1452D3:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 4
+EditorID: TVR_Demon_Armor_Gremlin
+SkyrimMajorRecordFlags:
+- NotPlayable
+Name:
+  TargetLanguage: English
+  Value: Gremlin Skin
+BodyTemplate:
+  FirstPersonFlags:
+  - Body
+  ArmorType: Clothing
+  ActsLike44: True
+Race: 0CDD84:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Armature:
+- 1452D4:Triumvirate - Mage Archetypes.esp
+MajorFlags:
+- NonPlayable

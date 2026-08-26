@@ -1,0 +1,64 @@
+FormKey: 27F3C2:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Spirits_Effect_SpiritOfTheOak_CloakProc
+Name:
+  TargetLanguage: English
+  Value: 'Spirit: Oak'
+MenuDisplayObject: 27F3BB:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 01CEB0:Skyrim.esm
+Flags:
+- Recover
+- NoHitEvent
+- NoArea
+- FXPersist
+- NoRecast
+- PowerAffectsDuration
+- Painless
+BaseCost: 1
+MagicSkill: Restoration
+CastingLight: 27F3BD:Triumvirate - Mage Archetypes.esp
+TaperWeight: 0.3
+HitShader: 27F3C6:Triumvirate - Mage Archetypes.esp
+SpellmakingCastingTime: 0.5
+TaperCurve: 2
+TaperDuration: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+Projectile: 012FCF:Skyrim.esm
+CastType: Concentration
+TargetType: Aimed
+CastingArt: 27F3BC:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 0.06
+DualCastScale: 1.1
+ImageSpaceModifier: 10605A:Triumvirate - Mage Archetypes.esp
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Spirit grants caster and living allies <mag> points of Health.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsHostileToActorConditionData
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 013796:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsUndeadConditionData
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 013798:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 013794:Skyrim.esm
+  ComparisonValue: 1

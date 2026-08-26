@@ -1,0 +1,17 @@
+FormKey: 43D326:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Tomes_Litem_Shaman_Alteration
+Flags:
+- UseAll
+Entries:
+- Data:
+    Level: 1
+    Reference: 4381D2:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4381D4:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4381D5:Triumvirate - Mage Archetypes.esp
+    Count: 1

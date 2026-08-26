@@ -1,0 +1,174 @@
+FormKey: 3BE7AD:Triumvirate - Mage Archetypes.esp
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
+EditorID: TVR_Warrior_Actor_FylgjaSun
+SkyrimMajorRecordFlags:
+- Compressed
+VirtualMachineAdapter:
+  Scripts:
+  - Name: FXunsommonSCRIPT
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AtronachUnsummonDeathFXS
+      Object: 0EA8FF:Skyrim.esm
+  - Name: TVR_GIANTAQUATICPOODLE_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerRef
+      Object: 000014:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Effect
+      Object: 3C38C7:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Spell
+      Object: 3BE7AA:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Totem_Global_Fylgja_Leash
+      Object: 3E7065:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Totem_Global_Fylgja_Leash_Warning
+      Object: 3E7066:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Totem_Message_Fylgja_Leash_Warning
+      Object: 3E7067:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_UpdateRate
+      Data: 1
+  - Name: TVR_SwitchToEyes_Script
+    Properties:
+    - MutagenObjectType: ScriptIntProperty
+      Name: TVR_ControlledActorID
+      Data: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_ControlledActors_Quest
+      Object: 3685A0:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptBoolProperty
+      Name: TVR_PlayerControls
+      Data: True
+Configuration:
+  Flags:
+  - AutoCalcStats
+  - Summonable
+  StaminaOffset: -75
+  Level:
+    MutagenObjectType: PcLevelMult
+    LevelMult: 1
+  CalcMinLevel: 40
+  CalcMaxLevel: 60
+  SpeedMultiplier: 100
+  DispositionBase: 35
+  HealthOffset: -2
+Factions:
+- Faction: 000013:Skyrim.esm
+  Fluff: 0x000000
+- Faction: 03E691:Skyrim.esm
+  Fluff: 0x000000
+Voice: 01F6A7:Skyrim.esm
+Race: 2C625D:Triumvirate - Mage Archetypes.esp
+ActorEffect:
+- 3BE7A7:Triumvirate - Mage Archetypes.esp
+WornArmor: 2C625F:Triumvirate - Mage Archetypes.esp
+AttackRace: 17CE32:Triumvirate - Mage Archetypes.esp
+CombatOverridePackageList: 0E1F94:Skyrim.esm
+AIData:
+  EnergyLevel: 50
+  Responsibility: NoCrime
+  Mood: Angry
+  Assistance: HelpsFriendsAndAllies
+Class: 0131E6:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Sun Fylgja
+ShortName:
+  TargetLanguage: English
+  Value: Kai
+PlayerSkills:
+  SkillValues:
+  - Key: OneHanded
+    Value: 87
+  - Key: TwoHanded
+    Value: 15
+  - Key: Archery
+    Value: 87
+  - Key: Block
+    Value: 100
+  - Key: Smithing
+    Value: 15
+  - Key: HeavyArmor
+    Value: 15
+  - Key: LightArmor
+    Value: 15
+  - Key: Pickpocket
+    Value: 15
+  - Key: Lockpicking
+    Value: 15
+  - Key: Sneak
+    Value: 100
+  - Key: Alchemy
+    Value: 15
+  - Key: Speech
+    Value: 15
+  - Key: Alteration
+    Value: 15
+  - Key: Conjuration
+    Value: 15
+  - Key: Destruction
+    Value: 15
+  - Key: Illusion
+    Value: 15
+  - Key: Restoration
+    Value: 15
+  - Key: Enchanting
+    Value: 15
+  SkillOffsets:
+  - Key: OneHanded
+    Value: 0
+  - Key: TwoHanded
+    Value: 0
+  - Key: Archery
+    Value: 0
+  - Key: Block
+    Value: 0
+  - Key: Smithing
+    Value: 0
+  - Key: HeavyArmor
+    Value: 0
+  - Key: LightArmor
+    Value: 0
+  - Key: Pickpocket
+    Value: 0
+  - Key: Lockpicking
+    Value: 0
+  - Key: Sneak
+    Value: 0
+  - Key: Alchemy
+    Value: 0
+  - Key: Speech
+    Value: 0
+  - Key: Alteration
+    Value: 0
+  - Key: Conjuration
+    Value: 0
+  - Key: Destruction
+    Value: 0
+  - Key: Illusion
+    Value: 0
+  - Key: Restoration
+    Value: 0
+  - Key: Enchanting
+    Value: 0
+  Health: 400
+  Stamina: 320
+  GearedUpWeapons: 1
+CombatStyle: 057BE8:Skyrim.esm
+NAM5: 255
+Height: 1.1
+Weight: 50
+SoundLevel: Normal
+Sound:
+  MutagenObjectType: NpcInheritSound
+  InheritsSoundsFrom: 0A85C7:Skyrim.esm
+DefaultPackageList: 095F47:Skyrim.esm
+TextureLighting: '#00808080'
+MajorFlags:
+- 0x40000

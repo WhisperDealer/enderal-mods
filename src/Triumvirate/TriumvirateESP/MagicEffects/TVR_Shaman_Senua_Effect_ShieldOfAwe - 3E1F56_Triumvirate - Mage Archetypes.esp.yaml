@@ -1,0 +1,48 @@
+FormKey: 3E1F56:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Senua_Effect_ShieldOfAwe
+VirtualMachineAdapter:
+  Scripts:
+  - Name: magicPlaceExplosionScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ExplosionRef
+      Object: 3E1F61:Triumvirate - Mage Archetypes.esp
+Name:
+  TargetLanguage: English
+  Value: TAWOL ATHODU EK ERILAZ
+MenuDisplayObject: 36D6A8:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 0806E1:Skyrim.esm
+Flags:
+- NoArea
+- PowerAffectsMagnitude
+BaseCost: 1
+MagicSkill: Restoration
+CastingLight: 36D6AD:Triumvirate - Mage Archetypes.esp
+TaperWeight: 1
+MinimumSkillLevel: 100
+SpellmakingCastingTime: 3
+TaperCurve: 1
+TaperDuration: 1
+Archetype:
+  MutagenObjectType: MagicEffectSpawnHazardArchetype
+  Association: 3E1F55:Triumvirate - Mage Archetypes.esp
+Projectile: 012FCF:Skyrim.esm
+CastType: FireAndForget
+CastingArt: 36D6AA:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 0.12
+DualCastScale: 1
+EquipAbility: 10CDCD:Skyrim.esm
+ImageSpaceModifier: 084B38:Skyrim.esm
+CastingSoundLevel: Silent
+Sounds:
+- Sound: 03E957:Skyrim.esm
+- Type: Charge
+  Sound: 0960E9:Skyrim.esm
+- Type: Ready
+  Sound: 03F363:Skyrim.esm
+- Type: Release
+  Sound: 020241:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: Enemies inside the rune get <mag>% weakness to magic and lose <mag> points of armor. Lasts <dur> seconds.

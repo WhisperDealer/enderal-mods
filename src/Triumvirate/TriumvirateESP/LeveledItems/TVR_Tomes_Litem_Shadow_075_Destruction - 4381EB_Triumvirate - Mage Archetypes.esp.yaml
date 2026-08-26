@@ -1,0 +1,10 @@
+FormKey: 4381EB:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Tomes_Litem_Shadow_075_Destruction
+ChanceNone: 1
+Flags:
+- UseAll
+Entries:
+- Data:
+    Level: 1
+    Reference: 419B23:Triumvirate - Mage Archetypes.esp
+    Count: 1

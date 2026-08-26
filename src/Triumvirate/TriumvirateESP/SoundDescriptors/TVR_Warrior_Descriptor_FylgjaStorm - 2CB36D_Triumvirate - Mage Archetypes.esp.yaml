@@ -1,0 +1,12 @@
+FormKey: 2CB36D:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warrior_Descriptor_FylgjaStorm
+Type: Standard
+Category: 09F254:Skyrim.esm
+SoundFiles:
+- data\Sound\fx\willothewisp.esp\voicesprite.wav
+OutputModel: 05A28A:Skyrim.esm
+LoopAndRumble:
+  Loop: Loop
+PercentFrequencyVariance: 10
+Priority: 1
+Variance: 4

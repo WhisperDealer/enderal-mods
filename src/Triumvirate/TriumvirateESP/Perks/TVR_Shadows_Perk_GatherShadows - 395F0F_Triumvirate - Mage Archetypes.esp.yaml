@@ -1,0 +1,219 @@
+FormKey: 395F0F:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shadows_Perk_GatherShadows
+Name:
+  TargetLanguage: English
+  Value: Gather Shadows
+Description:
+  TargetLanguage: English
+  Value: ''
+NumRanks: 1
+Playable: True
+Hidden: True
+Effects:
+- MutagenObjectType: PerkEntryPointModifyValue
+  Priority: 68
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionGlobal
+      CompareOperator: LessThanOrEqualTo
+      Data:
+        MutagenObjectType: GetLightLevelConditionData
+      ComparisonValue: 395F12:Triumvirate - Mage Archetypes.esp
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 01E715:Skyrim.esm
+  EntryPoint: ModAttackDamage
+  PerkConditionTabCount: 3
+  Modification: Multiply
+  Value: 1.5
+- MutagenObjectType: PerkEntryPointModifyValue
+  Priority: 69
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionGlobal
+      CompareOperator: LessThanOrEqualTo
+      Data:
+        MutagenObjectType: GetLightLevelConditionData
+      ComparisonValue: 395F11:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ConditionGlobal
+      CompareOperator: GreaterThan
+      Data:
+        MutagenObjectType: GetLightLevelConditionData
+      ComparisonValue: 395F12:Triumvirate - Mage Archetypes.esp
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 01E715:Skyrim.esm
+  EntryPoint: ModAttackDamage
+  PerkConditionTabCount: 3
+  Modification: Multiply
+  Value: 1.35
+- MutagenObjectType: PerkEntryPointModifyValue
+  Priority: 70
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionGlobal
+      CompareOperator: LessThanOrEqualTo
+      Data:
+        MutagenObjectType: GetLightLevelConditionData
+      ComparisonValue: 395F10:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ConditionGlobal
+      CompareOperator: GreaterThan
+      Data:
+        MutagenObjectType: GetLightLevelConditionData
+      ComparisonValue: 395F11:Triumvirate - Mage Archetypes.esp
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 01E715:Skyrim.esm
+  EntryPoint: ModAttackDamage
+  PerkConditionTabCount: 3
+  Modification: Multiply
+  Value: 1.2
+- MutagenObjectType: PerkEntryPointModifyValue
+  Priority: 78
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionGlobal
+      CompareOperator: LessThanOrEqualTo
+      Data:
+        MutagenObjectType: GetLightLevelConditionData
+      ComparisonValue: 395F12:Triumvirate - Mage Archetypes.esp
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 31C5B7:Triumvirate - Mage Archetypes.esp
+      ComparisonValue: 1
+  EntryPoint: ModSpellDuration
+  PerkConditionTabCount: 3
+  Modification: Multiply
+  Value: 1.5
+- MutagenObjectType: PerkEntryPointModifyValue
+  Priority: 79
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionGlobal
+      CompareOperator: LessThanOrEqualTo
+      Data:
+        MutagenObjectType: GetLightLevelConditionData
+      ComparisonValue: 395F11:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ConditionGlobal
+      CompareOperator: GreaterThan
+      Data:
+        MutagenObjectType: GetLightLevelConditionData
+      ComparisonValue: 395F12:Triumvirate - Mage Archetypes.esp
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 31C5B7:Triumvirate - Mage Archetypes.esp
+      ComparisonValue: 1
+  EntryPoint: ModSpellDuration
+  PerkConditionTabCount: 3
+  Modification: Multiply
+  Value: 1.35
+- MutagenObjectType: PerkEntryPointModifyValue
+  Priority: 80
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionGlobal
+      CompareOperator: LessThanOrEqualTo
+      Data:
+        MutagenObjectType: GetLightLevelConditionData
+      ComparisonValue: 395F10:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ConditionGlobal
+      CompareOperator: GreaterThan
+      Data:
+        MutagenObjectType: GetLightLevelConditionData
+      ComparisonValue: 395F11:Triumvirate - Mage Archetypes.esp
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 31C5B7:Triumvirate - Mage Archetypes.esp
+      ComparisonValue: 1
+  EntryPoint: ModSpellDuration
+  PerkConditionTabCount: 3
+  Modification: Multiply
+  Value: 1.2
+- MutagenObjectType: PerkEntryPointModifyValue
+  Priority: 88
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionGlobal
+      CompareOperator: LessThanOrEqualTo
+      Data:
+        MutagenObjectType: GetLightLevelConditionData
+      ComparisonValue: 395F12:Triumvirate - Mage Archetypes.esp
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 38BD01:Triumvirate - Mage Archetypes.esp
+      ComparisonValue: 1
+  EntryPoint: ModSpellMagnitude
+  PerkConditionTabCount: 3
+  Modification: Multiply
+  Value: 1.5
+- MutagenObjectType: PerkEntryPointModifyValue
+  Priority: 89
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionGlobal
+      CompareOperator: LessThanOrEqualTo
+      Data:
+        MutagenObjectType: GetLightLevelConditionData
+      ComparisonValue: 395F11:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ConditionGlobal
+      CompareOperator: GreaterThan
+      Data:
+        MutagenObjectType: GetLightLevelConditionData
+      ComparisonValue: 395F12:Triumvirate - Mage Archetypes.esp
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 38BD01:Triumvirate - Mage Archetypes.esp
+      ComparisonValue: 1
+  EntryPoint: ModSpellMagnitude
+  PerkConditionTabCount: 3
+  Modification: Multiply
+  Value: 1.35
+- MutagenObjectType: PerkEntryPointModifyValue
+  Priority: 90
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionGlobal
+      CompareOperator: LessThanOrEqualTo
+      Data:
+        MutagenObjectType: GetLightLevelConditionData
+      ComparisonValue: 395F10:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ConditionGlobal
+      CompareOperator: GreaterThan
+      Data:
+        MutagenObjectType: GetLightLevelConditionData
+      ComparisonValue: 395F11:Triumvirate - Mage Archetypes.esp
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 38BD01:Triumvirate - Mage Archetypes.esp
+      ComparisonValue: 1
+  EntryPoint: ModSpellMagnitude
+  PerkConditionTabCount: 3
+  Modification: Multiply
+  Value: 1.2

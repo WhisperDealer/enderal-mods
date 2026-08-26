@@ -1,0 +1,7 @@
+FormKey: 1CDEE3:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Controller_Art
+Model:
+  File: Triumvirate\Controller_Art.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

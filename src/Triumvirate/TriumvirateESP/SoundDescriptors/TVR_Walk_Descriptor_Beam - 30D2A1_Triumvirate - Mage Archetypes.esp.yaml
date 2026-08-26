@@ -1,0 +1,17 @@
+FormKey: 30D2A1:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Walk_Descriptor_Beam
+Type: Standard
+Category: 0172A1:Skyrim.esm
+SoundFiles:
+- fx\phy\generic\chain\PHY_Chain_04.wav
+- fx\phy\generic\chain\PHY_Chain_03.wav
+- fx\phy\generic\chain\PHY_Chain_02.wav
+- fx\phy\generic\chain\PHY_Chain_01.wav
+OutputModel: 06CB4F:Skyrim.esm
+LoopAndRumble:
+  Unknown: 1
+PercentFrequencyShift: 40
+PercentFrequencyVariance: 5
+Priority: 128
+Variance: 6
+StaticAttenuation: 7.05

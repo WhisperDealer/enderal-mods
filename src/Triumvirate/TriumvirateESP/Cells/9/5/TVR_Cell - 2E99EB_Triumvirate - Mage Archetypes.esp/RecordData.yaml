@@ -1,0 +1,79 @@
+FormKey: 2E99EB:Triumvirate - Mage Archetypes.esp
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
+EditorID: TVR_Cell
+SkyrimMajorRecordFlags:
+- Compressed
+Name:
+  TargetLanguage: English
+  Value: Marker Storage Unit
+Flags:
+- IsInteriorCell
+- PublicArea
+Lighting:
+  AmbientColor: '#00808080'
+  DirectionalColor: '#00000000'
+  FogNearColor: '#00000000'
+  FogPower: 1
+  AmbientColors:
+    DirectionalXPlus: '#008D8086'
+    DirectionalXMinus: '#0073807A'
+    DirectionalYPlus: '#00808680'
+    DirectionalYMinus: '#00807A80'
+    DirectionalZPlus: '#003D3D3A'
+    DirectionalZMinus: '#00C3C3C6'
+    Specular: '#00000000'
+    Scale: 1
+  FogFarColor: '#00000000'
+  FogMax: 1
+  Inherits:
+  - AmbientColor
+  - DirectionalColor
+  - FogColor
+  - FogNear
+  - FogFar
+  - ClipDistance
+WaterHeight: 0
+Persistent:
+- MutagenObjectType: PlacedObject
+  FormKey: 2E99F7:Triumvirate - Mage Archetypes.esp
+  MajorRecordFlagsRaw: 1073742848
+  SkyrimMajorRecordFlags:
+  - 0x400
+  - 0x40000000
+  Base: 025EAE:Triumvirate - Mage Archetypes.esp
+  LinkedReferences:
+  - Reference: 2E99F8:Triumvirate - Mage Archetypes.esp
+  Placement: {}
+- MutagenObjectType: PlacedObject
+  FormKey: 2E99F8:Triumvirate - Mage Archetypes.esp
+  MajorRecordFlagsRaw: 1073742848
+  SkyrimMajorRecordFlags:
+  - 0x400
+  - 0x40000000
+  Base: 025EAD:Triumvirate - Mage Archetypes.esp
+  LinkedReferences:
+  - Reference: 2E99F7:Triumvirate - Mage Archetypes.esp
+  Placement:
+    Position: 192, 0, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 3C38BC:Triumvirate - Mage Archetypes.esp
+  MajorRecordFlagsRaw: 1073742848
+  SkyrimMajorRecordFlags:
+  - 0x400
+  - 0x40000000
+  Base: 3C38BB:Triumvirate - Mage Archetypes.esp
+  Placement:
+    Position: 64, 0, 0
+- MutagenObjectType: PlacedObject
+  FormKey: 3C38C0:Triumvirate - Mage Archetypes.esp
+  MajorRecordFlagsRaw: 1073742848
+  EditorID: TVR_Origin
+  SkyrimMajorRecordFlags:
+  - 0x400
+  - 0x40000000
+  Base: 0B79FF:Skyrim.esm
+  Placement:
+    Position: 171.89645, -749.2466, 316.20944
+MajorFlags:
+- 0x40000

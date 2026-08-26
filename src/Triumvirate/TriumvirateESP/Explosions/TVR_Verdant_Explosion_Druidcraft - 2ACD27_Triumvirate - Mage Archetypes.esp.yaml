@@ -1,0 +1,13 @@
+FormKey: 2ACD27:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Verdant_Explosion_Druidcraft
+Model:
+  File: Effects\FXEmptyExplosion10sec.nif
+  Data: 0x020000000000000000000000
+PlacedObject: 2ACD24:Triumvirate - Mage Archetypes.esp
+Flags:
+- 0x1
+- AlwaysUsesWorldOrientation
+- IgnoreLosCheck
+- IgnoreImageSpaceSwap
+- NoControllerVibration
+SoundLevel: Silent

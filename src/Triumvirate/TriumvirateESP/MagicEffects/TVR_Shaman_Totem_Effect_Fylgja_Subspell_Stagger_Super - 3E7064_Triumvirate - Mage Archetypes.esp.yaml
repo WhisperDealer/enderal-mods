@@ -1,0 +1,33 @@
+FormKey: 3E7064:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Totem_Effect_Fylgja_Subspell_Stagger_Super
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_FylgjaTaunt_Script
+Name:
+  TargetLanguage: English
+  Value: Stagger Taunt
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- Hostile
+SpellmakingArea: 20
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Stagger
+CastType: FireAndForget
+DualCastScale: 1.1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsHostileToActorConditionData
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThanOrEqualTo
+  Data:
+    MutagenObjectType: GetRandomPercentConditionData
+  ComparisonValue: 50

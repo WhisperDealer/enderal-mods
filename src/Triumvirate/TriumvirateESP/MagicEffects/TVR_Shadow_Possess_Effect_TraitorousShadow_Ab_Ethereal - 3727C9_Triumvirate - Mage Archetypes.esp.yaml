@@ -1,0 +1,41 @@
+FormKey: 3727C9:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shadow_Possess_Effect_TraitorousShadow_Ab_Ethereal
+VirtualMachineAdapter:
+  Scripts:
+  - Name: magicSetActorAlphaScript
+    Properties:
+    - MutagenObjectType: ScriptFloatProperty
+      Name: AlphaValue
+      Data: 0.25
+    - MutagenObjectType: ScriptBoolProperty
+      Name: DontFadeBack
+      Data: True
+    - MutagenObjectType: ScriptBoolProperty
+      Name: FadeToAlpha
+  - Name: TVR_ShadowDeathOnEnd_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AtronachUnsummonDeathFXS
+      Object: 3778DF:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_Delay
+      Data: 30
+Name:
+  TargetLanguage: English
+  Value: Traitorous Shadow Ethereal Ab
+MenuDisplayObject: 3727BB:Triumvirate - Mage Archetypes.esp
+Flags:
+- NoDuration
+- NoMagnitude
+- NoArea
+- FXPersist
+- HideInUI
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Etherealize
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

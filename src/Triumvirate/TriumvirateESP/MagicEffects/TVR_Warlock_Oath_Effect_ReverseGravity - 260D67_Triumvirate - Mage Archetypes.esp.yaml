@@ -1,0 +1,66 @@
+FormKey: 260D67:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_Oath_Effect_ReverseGravity
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_ReverseGravity_Script
+    Properties:
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_Speed
+      Data: 18
+Name:
+  TargetLanguage: English
+  Value: Magic Damage
+MenuDisplayObject: 1A057F:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 0A9B1F:Skyrim.esm
+- 260D68:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Detrimental
+- FXPersist
+- NoRecast
+- PowerAffectsMagnitude
+- NoDeathDispel
+BaseCost: 7
+MagicSkill: Destruction
+ResistValue: ResistMagic
+CastingLight: 00ECBD:Triumvirate - Mage Archetypes.esp
+TaperWeight: 1
+HitShader: 06DE84:Skyrim.esm
+SpellmakingArea: 20
+SpellmakingCastingTime: 0.5
+TaperCurve: 1
+TaperDuration: 1
+Archetype:
+  MutagenObjectType: MagicEffectPeakValueModArchetype
+  ActorValue: Health
+  Association: 260D68:Triumvirate - Mage Archetypes.esp
+Projectile: 260D6D:Triumvirate - Mage Archetypes.esp
+Explosion: 260D6C:Triumvirate - Mage Archetypes.esp
+CastType: FireAndForget
+TargetType: Aimed
+CastingArt: 00ECBA:Triumvirate - Mage Archetypes.esp
+HitEffectArt: 06DE86:Skyrim.esm
+ImpactData: 01B0E1:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 1
+DualCastScale: 1.1
+Sounds:
+- Sound: 03C8F8:Skyrim.esm
+- Type: Charge
+  Sound: 03C8F9:Skyrim.esm
+- Type: Ready
+  Sound: 03C8FA:Skyrim.esm
+- Type: Release
+  Sound: 120819:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: Deals <mag> magic damage and throws targets into the air.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasMagicEffectConditionData
+    MagicEffect: 260D60:Triumvirate - Mage Archetypes.esp
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 23342A:Triumvirate - Mage Archetypes.esp

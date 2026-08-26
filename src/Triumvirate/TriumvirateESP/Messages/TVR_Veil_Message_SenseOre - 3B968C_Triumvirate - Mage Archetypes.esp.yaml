@@ -1,0 +1,7 @@
+FormKey: 3B968C:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Veil_Message_SenseOre
+Description:
+  TargetLanguage: English
+  Value: You sense ore within %.0f feet.
+INAM: 0x00000000
+DisplayTime: 2

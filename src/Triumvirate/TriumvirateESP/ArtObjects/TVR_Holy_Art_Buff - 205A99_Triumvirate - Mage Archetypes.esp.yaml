@@ -1,0 +1,10 @@
+FormKey: 205A99:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Holy_Art_Buff
+ObjectBounds:
+  First: -62, -162, -112
+  Second: 62, 180, 130
+Model:
+  File: Triumvirate\Holy_Art_Buff.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

@@ -1,0 +1,35 @@
+FormKey: 2B6F36:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Verdant_Effect_ForceOfNature_Dispel
+Name:
+  TargetLanguage: English
+  Value: Force of Nature Dispel
+MenuDisplayObject: 191249:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 2B6F38:Triumvirate - Mage Archetypes.esp
+Flags:
+- SnapToNavmesh
+- NoHitEvent
+- DispelWithKeywords
+- NoDuration
+- NoMagnitude
+- NoArea
+- NoHitEffect
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+CastType: FireAndForget
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds:
+- Type: Release
+  Sound: 00649E:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000007:Skyrim.esm
+  ComparisonValue: 1

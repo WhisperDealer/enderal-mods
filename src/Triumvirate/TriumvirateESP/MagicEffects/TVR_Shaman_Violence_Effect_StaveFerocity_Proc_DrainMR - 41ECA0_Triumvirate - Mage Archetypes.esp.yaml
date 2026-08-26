@@ -1,0 +1,33 @@
+FormKey: 41ECA0:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Violence_Effect_StaveFerocity_Proc_DrainMR
+Name:
+  TargetLanguage: English
+  Value: Drain Magic Resist
+MenuDisplayObject: 1E741E:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Recover
+- Detrimental
+- NoArea
+- NoRecast
+- PowerAffectsDuration
+- NoDeathDispel
+MagicSkill: Alteration
+TaperWeight: 1
+MinimumSkillLevel: 25
+SpellmakingCastingTime: 0.5
+TaperCurve: 1
+TaperDuration: 1
+Archetype:
+  MutagenObjectType: MagicEffectPeakValueModArchetype
+  ActorValue: ResistMagic
+CastType: FireAndForget
+TargetType: TargetActor
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds:
+- Type: Release
+  Sound: 03F2EA:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: and magic resistance by <mag>% for <dur> seconds.

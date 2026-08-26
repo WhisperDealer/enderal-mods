@@ -1,0 +1,20 @@
+FormKey: 21EFF5:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Holy_Hazard_StormOfVengeance
+ObjectBounds:
+  First: -1980, -1980, -1014
+  Second: 1980, 1980, 1270
+Name:
+  TargetLanguage: English
+  Value: Vengeance Hazard
+Model:
+  File: Triumvirate\Holy_Art_Vengeance.nif
+  Data: 0x020000000000000000000000
+Limit: 1
+Radius: 80
+TargetInterval: 0.2
+Flags:
+- InheritDurationFromSpawnSpell
+- DropToGround
+Spell: 21EFFA:Triumvirate - Mage Archetypes.esp
+Light: 205A85:Triumvirate - Mage Archetypes.esp
+Sound: 20FCAE:Triumvirate - Mage Archetypes.esp

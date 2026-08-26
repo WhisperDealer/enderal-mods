@@ -1,0 +1,19 @@
+FormKey: 1B49AA:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Balefire_Projectile_Immolation_old
+Model:
+  File: Effects\FXEmptyObject.nif
+  Data: 0x020000000000000000000000
+Flags:
+- Explosion
+- PassThroughSmallTransparent
+Type: Missile
+Speed: 20000
+Range: 256
+Explosion: 1B49AC:Triumvirate - Mage Archetypes.esp
+FadeDuration: 0.4
+ImpactForce: 7
+ConeSpread: 9.8
+CollisionRadius: 16
+Lifetime: 0.2
+RelaunchInterval: 0.1
+MuzzleFlashModel: ''

@@ -1,0 +1,30 @@
+FormKey: 1AF89F:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_Balefire_Effect_HurlIntoOblivion_Reciprocal
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_Damnation_Reciprocal_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Balefire_Activator_Damnation
+      Object: 1AF895:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Balefire_Spell_Damnation_ReemergeCurse
+      Object: 1B49A7:Triumvirate - Mage Archetypes.esp
+Name:
+  TargetLanguage: English
+  Value: Fortify Magicka
+MenuDisplayObject: 19B45E:Triumvirate - Mage Archetypes.esp
+Flags:
+- Recover
+- NoArea
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Magicka
+CastType: FireAndForget
+TargetType: Touch
+DualCastScale: 1.1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: The torment of those you damned to Sinistra increases Magicka by <mag> points.

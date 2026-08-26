@@ -1,0 +1,18 @@
+FormKey: 3E1F61:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Senua_Explosion_ShieldOfAwe
+ObjectBounds:
+  First: -2626, -2626, -23
+  Second: 2626, 2626, 2319
+Model:
+  File: Triumvirate\Senua_Explosion_Kaldrsang.nif
+  Data: 0x020000000000000000000000
+Sound1: 11FD29:Triumvirate - Mage Archetypes.esp
+Sound2: 020D2C:Triumvirate - Mage Archetypes.esp
+Force: 384
+Radius: 534
+ISRadius: 1024
+Flags:
+- 0x1
+- IgnoreLosCheck
+- IgnoreImageSpaceSwap
+SoundLevel: Normal

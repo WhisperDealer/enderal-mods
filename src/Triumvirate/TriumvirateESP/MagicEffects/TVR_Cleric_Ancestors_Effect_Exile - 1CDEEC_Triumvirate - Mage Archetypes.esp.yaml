@@ -1,0 +1,56 @@
+FormKey: 1CDEEC:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Cleric_Ancestors_Effect_Exile
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_Sequester_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Ancestors_Activator_Exile
+      Object: 1E231D:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Ancestors_Message_Exile_Fail
+      Object: 4B6B5C:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_Duration
+      Data: 15
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Imod
+      Object: 02F66B:Triumvirate - Mage Archetypes.esp
+Name:
+  TargetLanguage: English
+  Value: Sequester
+MenuDisplayObject: 1D2FF8:Triumvirate - Mage Archetypes.esp
+Flags:
+- NoDuration
+- NoArea
+- PowerAffectsMagnitude
+BaseCost: 5
+MagicSkill: Illusion
+CastingLight: 1D2FFA:Triumvirate - Mage Archetypes.esp
+HitShader: 1DD217:Triumvirate - Mage Archetypes.esp
+MinimumSkillLevel: 25
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Confidence
+  Type: Rally
+Projectile: 13BEE2:Triumvirate - Mage Archetypes.esp
+CastType: FireAndForget
+TargetType: Aimed
+CastingArt: 1D2FF9:Triumvirate - Mage Archetypes.esp
+HitEffectArt: 1D3004:Triumvirate - Mage Archetypes.esp
+ImpactData: 13BEE1:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 1.2
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds:
+- Sound: 07BBAB:Skyrim.esm
+- Type: Charge
+  Sound: 06F6D3:Skyrim.esm
+- Type: Ready
+  Sound: 07C720:Skyrim.esm
+- Type: Release
+  Sound: 074096:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: Target up to level <mag> is hidden from this world for <15> seconds.

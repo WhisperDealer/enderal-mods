@@ -1,0 +1,10 @@
+FormKey: 3A0131:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Elemental_Light_Hand_Fire
+Time: -1
+Radius: 32
+Color: '#00F9B199'
+FalloffExponent: 1
+FOV: 90
+NearClip: 1
+FlickerPeriod: 1
+FadeValue: 3

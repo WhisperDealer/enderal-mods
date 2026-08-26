@@ -1,0 +1,10 @@
+FormKey: 395F0D:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shadows_Art_Empowered
+ObjectBounds:
+  First: -32768, -32768, -32768
+  Second: 32767, 32767, 32767
+Model:
+  File: Triumvirate\Shadows_Art_Empowered.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

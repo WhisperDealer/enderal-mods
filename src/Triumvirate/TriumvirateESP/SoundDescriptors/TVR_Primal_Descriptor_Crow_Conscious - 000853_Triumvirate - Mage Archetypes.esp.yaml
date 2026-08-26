@@ -1,0 +1,17 @@
+FormKey: 000853:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Primal_Descriptor_Crow_Conscious
+Type: Standard
+Category: 09F254:Skyrim.esm
+SoundFiles:
+- data\Sound\fx\mihailoldgod.esp\crowvoice.wav
+OutputModel: 0D78B4:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  CompareOperator: NotEqualTo
+  Data:
+    MutagenObjectType: GetSleepingConditionData
+  ComparisonValue: 3
+LoopAndRumble:
+  Unknown: 2
+  Loop: Loop
+Priority: 1

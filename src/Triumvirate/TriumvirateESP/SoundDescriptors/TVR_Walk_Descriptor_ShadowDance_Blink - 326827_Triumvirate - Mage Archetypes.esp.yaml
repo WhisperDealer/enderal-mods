@@ -1,0 +1,14 @@
+FormKey: 326827:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Walk_Descriptor_ShadowDance_Blink
+Type: Standard
+Category: 07F80B:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\MAG\Perk\ShadowWarrior\MAG_Perk_ShadowWarrior_Fire_2D_01.wav
+- Data\Sound\FX\MAG\Perk\ShadowWarrior\MAG_Perk_ShadowWarrior_Fire_2D_02.wav
+- Data\Sound\FX\MAG\Perk\ShadowWarrior\MAG_Perk_ShadowWarrior_Fire_2D_03.wav
+OutputModel: 0E32BF:Skyrim.esm
+LoopAndRumble: {}
+PercentFrequencyShift: -20
+PercentFrequencyVariance: 10
+Priority: 128
+StaticAttenuation: 0.88

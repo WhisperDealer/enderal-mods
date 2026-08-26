@@ -1,0 +1,22 @@
+FormKey: 00AA24:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_Demon_Effect_ConjureOathbreaker_Ab
+Name:
+  TargetLanguage: English
+  Value: Damage Magicka Regen
+MenuDisplayObject: 1C3CBA:Triumvirate - Mage Archetypes.esp
+Flags:
+- Recover
+- Detrimental
+- NoDuration
+- NoArea
+- FXPersist
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: MagickaRateMult
+DualCastScale: 1
+Sounds:
+- Type: Release
+  Sound: 09CE58:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: Reduces Magicka recovery rate by <mag>%.

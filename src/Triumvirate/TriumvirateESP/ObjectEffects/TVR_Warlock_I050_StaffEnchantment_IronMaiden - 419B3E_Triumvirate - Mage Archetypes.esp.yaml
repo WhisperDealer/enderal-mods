@@ -1,0 +1,17 @@
+FormKey: 419B3E:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_I050_StaffEnchantment_IronMaiden
+Name:
+  TargetLanguage: English
+  Value: Iron Maiden
+EnchantmentCost: 144
+CastType: FireAndForget
+EnchantmentAmount: 144
+TargetType: TargetLocation
+EnchantType: StaffEnchantment
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 22410F:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 25
+    Area: 40
+    Duration: 30

@@ -1,0 +1,17 @@
+FormKey: 24C958:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Violence_Descriptor_Chained
+Type: Standard
+Category: 0172A1:Skyrim.esm
+SoundFiles:
+- fx\phy\generic\chain\PHY_Chain_04.wav
+- fx\phy\generic\chain\PHY_Chain_03.wav
+- fx\phy\generic\chain\PHY_Chain_02.wav
+- fx\phy\generic\chain\PHY_Chain_01.wav
+OutputModel: 06CB4F:Skyrim.esm
+LoopAndRumble:
+  Unknown: 1
+PercentFrequencyShift: 10
+PercentFrequencyVariance: 5
+Priority: 128
+Variance: 6
+StaticAttenuation: 2.2

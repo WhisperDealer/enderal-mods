@@ -1,0 +1,17 @@
+FormKey: 43D31E:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Tomes_Litem_Cleric_Restoration
+Flags:
+- UseAll
+Entries:
+- Data:
+    Level: 1
+    Reference: 438209:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 43820A:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 43820B:Triumvirate - Mage Archetypes.esp
+    Count: 1

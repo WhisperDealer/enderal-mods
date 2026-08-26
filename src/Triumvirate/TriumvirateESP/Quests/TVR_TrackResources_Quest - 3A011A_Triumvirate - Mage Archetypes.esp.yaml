@@ -1,0 +1,66 @@
+FormKey: 3A011A:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_TrackResources_Quest
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_TVR_TrackResources_Quest_053A011A
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Player
+      Object: 3A011A:Triumvirate - Mage Archetypes.esp
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Target
+      Object: 3A011A:Triumvirate - Mage Archetypes.esp
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Veil_Marker_Whispers
+      Object: 3A011C:Triumvirate - Mage Archetypes.esp
+  FileName: QF_TVR_TrackResources_Quest_053A011A
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_TVR_TrackResources_Quest_053A011A
+    FragmentName: Fragment_0
+Name:
+  TargetLanguage: English
+  Value: Track Resources
+Flags:
+- AllowRepeatedStages
+Priority: 25
+Filter: TVR\
+Stages:
+- Flags:
+  - StartUpStage
+  Unknown: 80
+  LogEntries:
+  - Flags: []
+NextAliasID: 2
+Aliases:
+- Name: TVR_Player
+  Flags: []
+  ForcedReference: 000014:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: TVR_Target
+  Flags:
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Flora
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: IsInListConditionData
+      FormList: 1545F8:Triumvirate - Mage Archetypes.esp
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionGlobal
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetDistanceConditionData
+      UseAliases: True
+    ComparisonValue: 3A011F:Triumvirate - Mage Archetypes.esp
+  VoiceTypes: Null

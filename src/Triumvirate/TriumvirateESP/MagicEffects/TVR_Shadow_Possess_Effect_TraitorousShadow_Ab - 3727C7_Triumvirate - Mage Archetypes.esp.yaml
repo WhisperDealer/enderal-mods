@@ -1,0 +1,30 @@
+FormKey: 3727C7:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shadow_Possess_Effect_TraitorousShadow_Ab
+VirtualMachineAdapter:
+  Scripts:
+  - Name: SprigganFXSCRIPT
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SprigganFXAttachEffect
+      Object: 3727CC:Triumvirate - Mage Archetypes.esp
+Name:
+  TargetLanguage: English
+  Value: Traitorous Shadow Ab
+MenuDisplayObject: 3727BB:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 0D5BAA:Skyrim.esm
+Flags:
+- Recover
+- NoDuration
+- NoArea
+- FXPersist
+- HideInUI
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: AttackDamageMult
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

@@ -1,0 +1,28 @@
+FormKey: 41EC72:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Cleric_R025_Book_Aura_1
+Name:
+  TargetLanguage: English
+  Value: 'Spell Tome: Aura of Might'
+Model:
+  File: Clutter\Books\SpellTomeRestorationLowPoly.nif
+  Data: 0x020000000000000000000000
+BookText:
+  TargetLanguage: English
+  Value: >-
+    <font face'$HandwrittenFont'><font size='40'><p align='center'>
+
+    Aura of Might
+Keywords:
+- 0937A2:Skyrim.esm
+- 0937A5:Skyrim.esm
+Flags:
+- 0x4
+Teaches:
+  MutagenObjectType: BookSpell
+  Spell: 1E7427:Triumvirate - Mage Archetypes.esp
+Value: 102
+Weight: 1
+InventoryArt: 02FBB7:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''

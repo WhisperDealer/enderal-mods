@@ -1,0 +1,32 @@
+FormKey: 1AF895:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Balefire_Activator_Damnation
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_DisableSelf_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerRef
+      Object: 000014:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Balefire_Effect_Damnation_Reciprocal
+      Object: 1AF89F:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Balefire_Explosion
+      Object: 19B45D:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Balefire_Spell_Damnation_Reciprocal
+      Object: 1AF8A0:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_Delay1
+      Data: 1
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_Delay2
+      Data: 3
+ObjectBounds:
+  First: -239, -257, -14
+  Second: 259, 240, 557
+Model:
+  File: Magic\SummonBanishTargetFX.nif
+  Data: 0x020000000000000000000000
+MarkerColor: '#00CC4C33'
+Flags: []

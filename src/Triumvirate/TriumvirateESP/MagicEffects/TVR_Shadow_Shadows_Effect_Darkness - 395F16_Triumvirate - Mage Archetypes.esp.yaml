@@ -1,0 +1,43 @@
+FormKey: 395F16:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shadow_Shadows_Effect_Darkness
+Name:
+  TargetLanguage: English
+  Value: Darkness
+MenuDisplayObject: 381AEB:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 0A9B1E:Skyrim.esm
+- 31C5B7:Triumvirate - Mage Archetypes.esp
+Flags:
+- NoMagnitude
+- NoArea
+- FXPersist
+- PowerAffectsDuration
+- NoDeathDispel
+BaseCost: 20
+MagicSkill: Illusion
+CastingLight: 3727BD:Triumvirate - Mage Archetypes.esp
+MinimumSkillLevel: 25
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectLightArchetype
+  Association: 025D3B:Triumvirate - Mage Archetypes.esp
+Projectile: 30D2A0:Triumvirate - Mage Archetypes.esp
+CastType: FireAndForget
+TargetType: Aimed
+CastingArt: 381AEC:Triumvirate - Mage Archetypes.esp
+HitEffectArt: 395F0C:Triumvirate - Mage Archetypes.esp
+ImpactData: 395F14:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 0.15
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds:
+- Sound: 07BBAB:Skyrim.esm
+- Type: Charge
+  Sound: 06F6D3:Skyrim.esm
+- Type: Ready
+  Sound: 07C720:Skyrim.esm
+- Type: Release
+  Sound: 08196D:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: Creates a <10> foot source of darkness that sticks where it strikes for <dur> seconds.

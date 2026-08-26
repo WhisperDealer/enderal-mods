@@ -1,0 +1,18 @@
+FormKey: 005914:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 4
+EditorID: TVR_Demon_Armor_ConjureOathbreaker
+SkyrimMajorRecordFlags:
+- NotPlayable
+BodyTemplate:
+  FirstPersonFlags:
+  - Body
+  ArmorType: Clothing
+  ActsLike44: True
+Race: 005901:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: ''
+Armature:
+- 005913:Triumvirate - Mage Archetypes.esp
+MajorFlags:
+- NonPlayable

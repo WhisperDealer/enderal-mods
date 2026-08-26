@@ -1,0 +1,32 @@
+FormKey: 35E37B:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Totem_Effect_CreateEarthTotem_Totem_Ab
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_PeriodicCast_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_SpellToCast
+      Object: 35E379:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_UpdateRate
+      Data: 7
+Name:
+  TargetLanguage: English
+  Value: Earth Totem Ab
+MenuDisplayObject: 35E370:Triumvirate - Mage Archetypes.esp
+Flags:
+- NoDuration
+- NoMagnitude
+- NoArea
+- FXPersist
+- HideInUI
+HitShader: 35E37E:Triumvirate - Mage Archetypes.esp
+EnchantShader: 35E37E:Triumvirate - Mage Archetypes.esp
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+DualCastScale: 1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

@@ -1,0 +1,15 @@
+FormKey: 419B15:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shadow_I025_StaffEnchantment_Darkness
+Name:
+  TargetLanguage: English
+  Value: Darkness
+EnchantmentCost: 66
+CastType: FireAndForget
+EnchantmentAmount: 66
+TargetType: Aimed
+EnchantType: StaffEnchantment
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 395F16:Triumvirate - Mage Archetypes.esp
+  Data:
+    Duration: 30

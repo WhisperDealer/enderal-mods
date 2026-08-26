@@ -1,0 +1,15 @@
+FormKey: 423DB4:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Violence_Descriptor_Release_Roar_Big
+Type: Standard
+Category: 07F80B:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\NPC\Dragon\FlightRoar\Obstructed\NPC_Dragon_FlightRoarObstructed_01.wav
+- Data\Sound\FX\NPC\Dragon\FlightRoar\Obstructed\NPC_Dragon_FlightRoarObstructed_02.wav
+- Data\Sound\FX\NPC\Dragon\FlightRoar\Obstructed\NPC_Dragon_FlightRoarObstructed_03.wav
+OutputModel: 0E363A:Skyrim.esm
+LoopAndRumble:
+  Unknown: 1
+PercentFrequencyShift: 50
+PercentFrequencyVariance: 5
+Priority: 128
+StaticAttenuation: 1.76

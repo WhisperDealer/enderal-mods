@@ -1,0 +1,25 @@
+FormKey: 3685A0:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_ControlledActors_Quest
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_ControlledActors_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: TVR_ControlledActor
+      Objects:
+      - Name: ''
+      - Name: ''
+      - Name: ''
+  Versioning:
+  - Break0
+  ExtraBindDataVersion: 0
+  FileName: ''
+Name:
+  TargetLanguage: English
+  Value: Controlled Actors Quest
+Flags:
+- StartGameEnabled
+- 0x10
+Priority: 20
+Filter: TVR\
+NextAliasID: 1

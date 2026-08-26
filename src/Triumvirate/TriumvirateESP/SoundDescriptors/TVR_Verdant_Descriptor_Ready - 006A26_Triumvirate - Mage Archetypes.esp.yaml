@@ -1,0 +1,14 @@
+FormKey: 006A26:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Verdant_Descriptor_Ready
+Type: Standard
+Category: 07F80B:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\MAG\Illusion\MAG_Illusion_Ready_LP.wav
+OutputModel: 05A28A:Skyrim.esm
+LoopAndRumble:
+  Unknown: 1
+  Loop: Loop
+  RumbleValues: 32
+PercentFrequencyShift: 50
+Priority: 128
+StaticAttenuation: 4.41

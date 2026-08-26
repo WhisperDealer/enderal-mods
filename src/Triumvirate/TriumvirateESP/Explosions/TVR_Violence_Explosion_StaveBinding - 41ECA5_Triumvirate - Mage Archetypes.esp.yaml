@@ -1,0 +1,13 @@
+FormKey: 41ECA5:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Violence_Explosion_StaveBinding
+Model:
+  File: Effects\FXdustBurstMed.nif
+  Data: 0x020000000000000000000000
+Sound1: 12185A:Triumvirate - Mage Archetypes.esp
+ImpactDataSet: 015C7B:Skyrim.esm
+Radius: 512
+Flags:
+- 0x1
+- AlwaysUsesWorldOrientation
+- IgnoreImageSpaceSwap
+SoundLevel: Normal

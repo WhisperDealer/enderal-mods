@@ -1,0 +1,10 @@
+FormKey: 08557F:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Walk_Body
+ObjectBounds:
+  First: -105, -134, -29
+  Second: 105, 134, 31
+Model:
+  File: Triumvirate\Walk_Body.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

@@ -1,0 +1,17 @@
+FormKey: 205A87:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Holy_Descriptor_FXS
+Type: Standard
+Category: 071E63:Skyrim.esm
+SoundFiles:
+- fx\fx\fire\body\FX_Fire_Body_04_LP.wav
+- fx\fx\fire\body\FX_Fire_Body_03_LP.wav
+- fx\fx\fire\body\FX_Fire_Body_02_LP.wav
+- fx\fx\fire\body\FX_Fire_Body_01_LP.wav
+OutputModel: 0D78B4:Skyrim.esm
+LoopAndRumble:
+  Unknown: 1
+  Loop: Loop
+PercentFrequencyShift: 40
+PercentFrequencyVariance: 10
+Priority: 128
+StaticAttenuation: 13.22

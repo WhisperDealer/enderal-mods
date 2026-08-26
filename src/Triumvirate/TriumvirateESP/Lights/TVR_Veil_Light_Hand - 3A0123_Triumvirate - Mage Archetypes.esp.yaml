@@ -1,0 +1,10 @@
+FormKey: 3A0123:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Veil_Light_Hand
+Time: -1
+Radius: 30
+Color: '#009EBED8'
+FalloffExponent: 1
+FOV: 90
+NearClip: 1
+FlickerPeriod: 1
+FadeValue: 1

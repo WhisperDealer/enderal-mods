@@ -1,0 +1,19 @@
+FormKey: 006FA3:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Teleport_Effect_Body_Ab
+Name:
+  TargetLanguage: English
+  Value: TeleportBodyArtHolder
+MenuDisplayObject: 2988FC:Triumvirate - Mage Archetypes.esp
+Flags:
+- NoDuration
+- FXPersist
+- HideInUI
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+HitEffectArt: 006FA2:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

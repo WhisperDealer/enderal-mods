@@ -1,0 +1,17 @@
+FormKey: 071AD0:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Walk_Explosion_Flash
+ObjectBounds:
+  First: -275, -275, -23
+  Second: 275, 275, 243
+Model:
+  File: Triumvirate\Walk_Explosion_Flash.nif
+  Data: 0x020000000000000000000000
+ImageSpaceModifier: 11CC29:Triumvirate - Mage Archetypes.esp
+Sound1: 038388:Triumvirate - Mage Archetypes.esp
+Sound2: 020245:Triumvirate - Mage Archetypes.esp
+Radius: 320
+ISRadius: 2048
+VerticalOffsetMult: 0.6
+Flags:
+- 0x1
+- IgnoreImageSpaceSwap

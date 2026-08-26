@@ -1,0 +1,33 @@
+FormKey: 1B49A5:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_Balefire_Effect_HurlIntoOblivion_ReemergeCurse
+Name:
+  TargetLanguage: English
+  Value: Raw Damage
+MenuDisplayObject: 19B45E:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 19B468:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Detrimental
+- NoArea
+- FXPersist
+- NoRecast
+- PowerAffectsMagnitude
+- NoDeathDispel
+BaseCost: 10
+MagicSkill: Destruction
+HitShader: 08868A:Triumvirate - Mage Archetypes.esp
+SpellmakingCastingTime: 0.5
+TaperCurve: 1
+TaperDuration: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+CastType: FireAndForget
+TargetType: Touch
+SkillUsageMultiplier: 1
+DualCastScale: 1.1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Terrified by your trip to Sinistra and taking <mag> raw damage..

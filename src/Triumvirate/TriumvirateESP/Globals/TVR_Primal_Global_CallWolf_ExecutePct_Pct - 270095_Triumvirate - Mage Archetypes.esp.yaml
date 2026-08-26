@@ -1,0 +1,9 @@
+MutagenObjectType: GlobalFloat
+FormKey: 270095:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 64
+EditorID: TVR_Primal_Global_CallWolf_ExecutePct_Pct
+SkyrimMajorRecordFlags:
+- 0x40
+MajorFlags:
+- Constant
+Data: 0.2

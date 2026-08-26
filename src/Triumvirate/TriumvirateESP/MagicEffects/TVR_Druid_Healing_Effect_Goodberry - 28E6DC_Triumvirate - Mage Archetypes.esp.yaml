@@ -1,0 +1,28 @@
+FormKey: 28E6DC:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Healing_Effect_Goodberry
+Name:
+  TargetLanguage: English
+  Value: Restore Health and Magicka
+MenuDisplayObject: 191249:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 042503:Skyrim.esm
+- 042508:Skyrim.esm
+- 2844D7:Triumvirate - Mage Archetypes.esp
+Flags:
+- NoDuration
+- NoArea
+- PowerAffectsMagnitude
+HitShader: 0829C6:Triumvirate - Mage Archetypes.esp
+SecondActorValueWeight: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+  Type: DualValueModifier
+CastType: FireAndForget
+SecondActorValue: Magicka
+HitEffectArt: 28E6DD:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Restores <mag> points of Health and Magicka.

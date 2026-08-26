@@ -1,0 +1,21 @@
+FormKey: 20AB9C:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Holy_Beam_SolarRay
+ObjectBounds:
+  First: -26, -37, -27
+  Second: 27, 542, 9
+Model:
+  File: ApocNew\RestorationHeal_Beam_ChainHeal.nif
+  Data: 0x020000000000000000000000
+Flags:
+- PassThroughSmallTransparent
+Type: Beam
+Speed: 20000
+Range: 2048
+Light: 02F669:Triumvirate - Mage Archetypes.esp
+Sound: 000D62:Triumvirate - Mage Archetypes.esp
+FadeDuration: 0.3
+CollisionRadius: 1
+Lifetime: 0.4
+RelaunchInterval: 0.15
+MuzzleFlashModel: ''
+SoundLevel: 1

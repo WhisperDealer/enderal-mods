@@ -1,0 +1,10 @@
+FormKey: 2FDF71:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_MagInv_Rift
+ObjectBounds:
+  First: -22, -15, -4
+  Second: 27, 21, 12
+Model:
+  File: Triumvirate\Rift_Inv.nif
+  Data: 0x020000000000000000000000
+MaxAngle: 90
+Unused: 0x000000

@@ -1,0 +1,18 @@
+FormKey: 2988F7:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 33554432
+EditorID: TVR_Verdant_Hazard_ImpenetrableGrove
+SkyrimMajorRecordFlags:
+- 0x2000000
+ObjectBounds:
+  First: -127, -128, -26
+  Second: 128, 128, 190
+Model:
+  File: Triumvirate\Verdant_Hazard_Trees.nif
+  Data: 0x020000000000000000000000
+Limit: 100
+Radius: 3
+Lifetime: 60
+TargetInterval: 0.5
+Flags:
+- InheritDurationFromSpawnSpell
+- DropToGround

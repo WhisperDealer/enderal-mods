@@ -1,0 +1,40 @@
+FormKey: 000838:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Verdant_Addon_ForceOfNature
+BodyTemplate:
+  FirstPersonFlags:
+  - Head
+  - Hair
+  - Body
+  - Hands
+  - Forearms
+  - Amulet
+  - Ring
+  - Feet
+  - Calves
+  - Shield
+  - Tail
+  - LongHair
+  - Circlet
+  ArmorType: Clothing
+  ActsLike44: True
+Race: 000837:Triumvirate - Mage Archetypes.esp
+Priority:
+  Male: 0
+  Female: 0
+WeightSliderEnabled:
+  Male: False
+  Female: False
+Unknown2: 23
+WorldModel:
+  Male:
+    File: Triumvirate\Verdant_Actor_ForceOfNature.nif
+    Data: 0x020000000000000000000000
+  Female:
+    File: Triumvirate\Verdant_Actor_ForceOfNature.nif
+    Data: 0x020000000000000000000000
+SkinTexture:
+  Male: 081B9F:Skyrim.esm
+  Female: 0B79B8:Skyrim.esm
+AdditionalRaces:
+- 088845:Skyrim.esm
+FootstepSound: 05DD87:Skyrim.esm

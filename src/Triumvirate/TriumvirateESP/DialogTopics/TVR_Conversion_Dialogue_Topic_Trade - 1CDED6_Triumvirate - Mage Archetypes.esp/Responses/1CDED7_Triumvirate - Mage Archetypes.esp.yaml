@@ -1,0 +1,37 @@
+FormKey: 1CDED7:Triumvirate - Mage Archetypes.esp
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF__051CDED7
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF__051CDED7
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: TIF__051CDED7
+      FragmentName: Fragment_0
+Flags: {}
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- EmotionValue: 50
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Flags:
+  - UseEmotionAnimation
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: ' '
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsVoiceTypeConditionData
+    VoiceTypeOrList: 1CDECE:Triumvirate - Mage Archetypes.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetInFactionConditionData
+    Faction: 349F68:Triumvirate - Mage Archetypes.esp
+  ComparisonValue: 1

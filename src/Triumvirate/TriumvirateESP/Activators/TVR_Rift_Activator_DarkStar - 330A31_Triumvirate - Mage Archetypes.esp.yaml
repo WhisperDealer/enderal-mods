@@ -1,0 +1,32 @@
+FormKey: 330A31:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 67108864
+EditorID: TVR_Rift_Activator_DarkStar
+SkyrimMajorRecordFlags:
+- 0x4000000
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_RemoteCastSpam_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerRef
+      Object: 000014:Skyrim.esm
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_Duration
+      Data: 10
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Spell
+      Object: 330A33:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_UpdateRate
+      Data: 0.75
+ObjectBounds:
+  First: -165, -163, -37
+  Second: 167, 165, 37
+Model:
+  File: Triumvirate\Rift_Static_DarkStar.nif
+  Data: 0x020000000000000000000000
+MarkerColor: '#00CC4C33'
+LoopingSound: 10393A:Skyrim.esm
+Flags: []
+MajorFlags:
+- NavMeshGenerationFilter

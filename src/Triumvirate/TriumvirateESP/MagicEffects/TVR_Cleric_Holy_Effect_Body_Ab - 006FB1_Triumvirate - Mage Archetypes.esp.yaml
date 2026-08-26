@@ -1,0 +1,19 @@
+FormKey: 006FB1:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Cleric_Holy_Effect_Body_Ab
+Name:
+  TargetLanguage: English
+  Value: HolyBodyArtHolder
+MenuDisplayObject: 205A7A:Triumvirate - Mage Archetypes.esp
+Flags:
+- NoDuration
+- FXPersist
+- HideInUI
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+HitEffectArt: 006FB0:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

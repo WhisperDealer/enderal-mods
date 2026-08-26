@@ -1,0 +1,10 @@
+FormKey: 3A5246:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Elemental_Art_Empowered_ControlFlames
+ObjectBounds:
+  First: -32768, -32768, -32768
+  Second: 32767, 32767, 32767
+Model:
+  File: Triumvirate\Elemental_Art_Empowered_ControlFlames.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

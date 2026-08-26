@@ -1,0 +1,10 @@
+FormKey: 1D2FFA:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Ancestors_Light_Hands
+Time: -1
+Radius: 30
+Color: '#00F88E50'
+FalloffExponent: 1
+FOV: 90
+NearClip: 1
+FlickerPeriod: 1
+FadeValue: 2

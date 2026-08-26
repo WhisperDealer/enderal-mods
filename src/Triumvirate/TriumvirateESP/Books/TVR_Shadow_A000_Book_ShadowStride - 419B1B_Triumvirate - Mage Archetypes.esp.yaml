@@ -1,0 +1,28 @@
+FormKey: 419B1B:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shadow_A000_Book_ShadowStride
+Name:
+  TargetLanguage: English
+  Value: 'Spell Tome: Shadow Stride'
+Model:
+  File: Clutter\Books\SpellTomeAlterationLowPoly.nif
+  Data: 0x020000000000000000000000
+BookText:
+  TargetLanguage: English
+  Value: >-
+    <font face'$HandwrittenFont'><font size='40'><p align='center'>
+
+    Shadow Stride
+Keywords:
+- 0937A2:Skyrim.esm
+- 0937A5:Skyrim.esm
+Flags:
+- 0x4
+Teaches:
+  MutagenObjectType: BookSpell
+  Spell: 381AF8:Triumvirate - Mage Archetypes.esp
+Value: 46
+Weight: 1
+InventoryArt: 02FBB3:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''

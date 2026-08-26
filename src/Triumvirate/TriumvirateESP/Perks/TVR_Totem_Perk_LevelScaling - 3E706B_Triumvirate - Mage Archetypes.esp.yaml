@@ -1,0 +1,27 @@
+FormKey: 3E706B:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Totem_Perk_LevelScaling
+Name:
+  TargetLanguage: English
+  Value: Totem Level Scaling
+Description:
+  TargetLanguage: English
+  Value: ''
+NumRanks: 1
+Playable: True
+Hidden: True
+Effects:
+- MutagenObjectType: PerkEntryPointModifyActorValue
+  Priority: 35
+  Conditions:
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 3E706A:Triumvirate - Mage Archetypes.esp
+      ComparisonValue: 1
+  EntryPoint: ModSpellMagnitude
+  PerkConditionTabCount: 3
+  ActorValue: AlterationSkillAdvance
+  Value: 0.01
+  Modification: MultiplyOnePlusAVMult

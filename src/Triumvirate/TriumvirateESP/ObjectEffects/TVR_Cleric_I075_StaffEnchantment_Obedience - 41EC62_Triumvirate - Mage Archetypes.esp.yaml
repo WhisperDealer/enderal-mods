@@ -1,0 +1,16 @@
+FormKey: 41EC62:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Cleric_I075_StaffEnchantment_Obedience
+Name:
+  TargetLanguage: English
+  Value: Obedience
+EnchantmentCost: 355
+CastType: FireAndForget
+EnchantmentAmount: 355
+TargetType: Aimed
+EnchantType: StaffEnchantment
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 1D3002:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 24
+    Duration: 60

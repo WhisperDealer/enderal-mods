@@ -1,0 +1,10 @@
+FormKey: 3778D8:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Possess_Art_Buff
+ObjectBounds:
+  First: -1, -56, -39
+  Second: 1, 63, 45
+Model:
+  File: Triumvirate\Possess_Art_Buff.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

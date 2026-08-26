@@ -1,0 +1,20 @@
+FormKey: 12F175:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Toxic_DecalRune
+Diffuse: ApocNew\Rune_SurfaceGreen.dds
+NormalOrGloss: Effects\RuneFire01_n.dds
+GlowOrDetailMap: Effects\RuneFire01.dds
+Decal:
+  MinWidth: 384
+  MaxWidth: 384
+  MinHeight: 384
+  MaxHeight: 384
+  Depth: 64
+  Shininess: 500
+  ParallaxScale: 1
+  ParallaxPasses: 4
+  Flags:
+  - AlphaTesting
+  - NoSubtextures
+  Unknown: 127
+  Color: '#00FFFFFF'
+Flags: []

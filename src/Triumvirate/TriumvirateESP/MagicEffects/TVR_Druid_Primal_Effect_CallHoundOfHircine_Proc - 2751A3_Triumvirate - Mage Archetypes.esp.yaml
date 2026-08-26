@@ -1,0 +1,32 @@
+FormKey: 2751A3:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Primal_Effect_CallHoundOfHircine_Proc
+Name:
+  TargetLanguage: English
+  Value: Hunter's Mark
+MenuDisplayObject: 14F4DC:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 2751A4:Triumvirate - Mage Archetypes.esp
+- 2B6F37:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Recover
+- Detrimental
+- FXPersist
+BaseCost: 0.5
+MagicSkill: Alteration
+ResistValue: ResistMagic
+MinimumSkillLevel: 25
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectPeakValueModArchetype
+  ActorValue: DamageResist
+  Association: 2751A4:Triumvirate - Mage Archetypes.esp
+CastType: FireAndForget
+TargetType: Touch
+HitEffectArt: 2751A2:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 1
+DualCastScale: 1.1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Armor reduced by <mag> points for <dur> seconds.

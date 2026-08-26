@@ -1,0 +1,43 @@
+FormKey: 4056D3:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Violence_Effect_Bloodlust_CloakProc_FortifySpeed
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_CarryWeight_Script
+    Properties:
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_CarryWeight
+      Data: 0.01
+Name:
+  TargetLanguage: English
+  Value: Fortify Speed
+MenuDisplayObject: 1E741E:Triumvirate - Mage Archetypes.esp
+Flags:
+- Recover
+- NoArea
+- HideInUI
+MagicSkill: Alteration
+CastingLight: 3A524D:Triumvirate - Mage Archetypes.esp
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectPeakValueModArchetype
+  ActorValue: SpeedMult
+Projectile: 012FCF:Skyrim.esm
+CastType: Concentration
+TargetType: Aimed
+CastingArt: 1E741F:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasMagicEffectKeywordConditionData
+    Keyword: 4056D2:Triumvirate - Mage Archetypes.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsInCombatConditionData
+  ComparisonValue: 1

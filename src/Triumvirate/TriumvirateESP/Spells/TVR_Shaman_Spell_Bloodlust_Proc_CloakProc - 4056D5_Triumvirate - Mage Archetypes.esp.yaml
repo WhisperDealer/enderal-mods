@@ -1,0 +1,32 @@
+FormKey: 4056D5:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Spell_Bloodlust_Proc_CloakProc
+Name:
+  TargetLanguage: English
+  Value: Bloodlust
+MenuDisplayObject: 1E741E:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 298
+Flags:
+- AreaEffectIgnoresLOS
+- IgnoreResistance
+- NoAbsorbOrReflect
+ChargeTime: 0.5
+CastType: Concentration
+TargetType: Aimed
+HalfCostPerk: 0C44BA:Skyrim.esm
+Effects:
+- BaseEffect: 4056D1:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 999
+    Duration: 1
+- BaseEffect: 4056D3:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 50
+    Duration: 1
+- BaseEffect: 4056D4:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 0.5
+    Duration: 1

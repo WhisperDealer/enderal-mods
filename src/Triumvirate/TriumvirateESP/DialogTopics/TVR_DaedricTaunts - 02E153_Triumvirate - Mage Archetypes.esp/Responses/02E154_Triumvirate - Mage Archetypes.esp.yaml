@@ -1,0 +1,19 @@
+FormKey: 02E154:Triumvirate - Mage Archetypes.esp
+Flags:
+  Flags:
+  - Random
+PreviousDialog: Null
+FavorLevel: None
+Responses:
+- Emotion: Anger
+  EmotionValue: 100
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Flags:
+  - UseEmotionAnimation
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: All that grows must also decay and die. What dies and rots, will then conquer the living.
+  ScriptNotes: ''
+  Edits: ''

@@ -1,0 +1,48 @@
+FormKey: 24C94F:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_Demon_Effect_ConjureLeviathan_Proc_Immobilize
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_Immobilize_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BookShelfBook07
+      Object: 0D5B8D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Violence_Descriptor_Chained
+      Object: 24C959:Triumvirate - Mage Archetypes.esp
+Name:
+  TargetLanguage: English
+  Value: Immobilize
+MenuDisplayObject: 1C3CBA:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 0D5B8D:Skyrim.esm
+Flags:
+- Hostile
+- NoArea
+- FXPersist
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Stagger
+CastType: FireAndForget
+TargetType: Touch
+HitEffectArt: 24C956:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1.1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Immobilizes a target.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetActorValueConditionData
+    RunOnType: Target
+    ActorValue: EnchantingPowerModifier
+  ComparisonValue: 1337
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsFlyingConditionData
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 035D59:Skyrim.esm

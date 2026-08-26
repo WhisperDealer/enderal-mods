@@ -1,0 +1,16 @@
+FormKey: 071AD8:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Rift_Explosion_ShadowPulse
+ObjectBounds:
+  First: -275, -275, -23
+  Second: 275, 275, 243
+Model:
+  File: Triumvirate\Rift_Explosion_ShadowPulse.nif
+  Data: 0x020000000000000000000000
+ImageSpaceModifier: 054225:Skyrim.esm
+Sound1: 0331F5:Triumvirate - Mage Archetypes.esp
+Force: 256
+Radius: 400
+Flags:
+- 0x1
+- AlwaysUsesWorldOrientation
+- IgnoreImageSpaceSwap

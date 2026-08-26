@@ -1,0 +1,24 @@
+FormKey: 4381D1:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_PopulateSpellBooks2_Quest
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_PopulateSpellBooks_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Conversion_Quest
+      Object: 1CDEC9:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Any_Message_ModReady
+      Object: 44244A:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_UpdateRate
+      Data: 30
+Name:
+  TargetLanguage: English
+  Value: Populate Spell Books
+Flags:
+- StartGameEnabled
+- 0x10
+- RunOnce
+Filter: TVR\
+NextAliasID: 0

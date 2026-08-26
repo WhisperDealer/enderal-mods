@@ -1,0 +1,33 @@
+FormKey: 1DD213:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Cleric_Ancestors_Effect_IronMaiden_Damage
+Name:
+  TargetLanguage: English
+  Value: Raw Damage
+MenuDisplayObject: 1D2FF8:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 078098:Skyrim.esm
+Flags:
+- Detrimental
+- NoDuration
+- NoArea
+- HideInUI
+- PowerAffectsDuration
+BaseCost: 0.5
+MagicSkill: Illusion
+HitShader: 1DD217:Triumvirate - Mage Archetypes.esp
+MinimumSkillLevel: 25
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+CastType: FireAndForget
+TargetType: Touch
+SkillUsageMultiplier: 1
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds:
+- Type: Release
+  Sound: 074096:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: ''

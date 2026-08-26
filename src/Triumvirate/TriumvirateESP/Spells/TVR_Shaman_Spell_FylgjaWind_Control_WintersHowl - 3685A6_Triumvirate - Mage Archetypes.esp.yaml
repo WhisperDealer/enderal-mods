@@ -1,0 +1,19 @@
+FormKey: 3685A6:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Spell_FylgjaWind_Control_WintersHowl
+Name:
+  TargetLanguage: English
+  Value: Winter's Howl
+MenuDisplayObject: 09DB72:Skyrim.esm
+EquipmentType: 013F42:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 50
+Flags:
+- ManualCostCalc
+- IgnoreResistance
+- NoAbsorbOrReflect
+CastType: FireAndForget
+Effects:
+- BaseEffect: 3685A4:Triumvirate - Mage Archetypes.esp
+  Data: {}

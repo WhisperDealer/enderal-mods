@@ -1,0 +1,71 @@
+FormKey: 29DA04:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Verdant_Effect_Wildshape_MorphEffect
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_Wildshape_Script
+    Properties:
+    - MutagenObjectType: ScriptStringProperty
+      Name: TVR_AnimEvent
+      Data: aggroWarningStart
+    - MutagenObjectType: ScriptBoolProperty
+      Name: TVR_DisableFight
+      Data: True
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Imod
+      Object: 29DA0A:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_MorphSpell
+      Object: 191252:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Primal_Explosion_Wildshape
+      Object: 29DA08:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Primal_VFX_Wildshape
+      Object: 00E1CE:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Race
+      Object: 29DA06:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptBoolProperty
+      Name: TVR_UnequipItems
+Name:
+  TargetLanguage: English
+  Value: Morph Effect
+MenuDisplayObject: 191249:Triumvirate - Mage Archetypes.esp
+Flags:
+- Recover
+- SnapToNavmesh
+- NoArea
+- FXPersist
+- HideInUI
+- PowerAffectsDuration
+- NoHitEffect
+MagicSkill: Alteration
+CastingLight: 19124F:Triumvirate - Mage Archetypes.esp
+MinimumSkillLevel: 25
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectPeakValueModArchetype
+  ActorValue: CarryWeight
+CastType: FireAndForget
+CastingArt: 19124A:Triumvirate - Mage Archetypes.esp
+HitEffectArt: 19124B:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1
+ImageSpaceModifier: 124ED9:Triumvirate - Mage Archetypes.esp
+CastingSoundLevel: Normal
+Sounds:
+- Sound: 03F37A:Skyrim.esm
+- Type: Charge
+  Sound: 03C8F9:Skyrim.esm
+- Type: Ready
+  Sound: 006A26:Triumvirate - Mage Archetypes.esp
+- Type: Release
+  Sound: 115E1A:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000007:Skyrim.esm
+  ComparisonValue: 1

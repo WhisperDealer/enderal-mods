@@ -1,0 +1,20 @@
+FormKey: 205A7C:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Holy_Hazard_ConsecratedGround
+ObjectBounds:
+  First: -1756, -1678, 752
+  Second: 1723, 1732, 1717
+Name:
+  TargetLanguage: English
+  Value: Holy Hazard
+Model:
+  File: Triumvirate\Holy_Smoke.nif
+  Data: 0x020000000000000000000000
+Limit: 1
+Radius: 60
+TargetInterval: 0.2
+Flags:
+- InheritDurationFromSpawnSpell
+- DropToGround
+Spell: 205A82:Triumvirate - Mage Archetypes.esp
+Light: 205A85:Triumvirate - Mage Archetypes.esp
+Sound: 205A86:Triumvirate - Mage Archetypes.esp

@@ -1,0 +1,47 @@
+FormKey: 423DAA:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Violence_Effect_StaveBinding_CloakProc
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_Vengeance_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Spell
+      Object: 423DA8:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WeapTypeBow
+      Object: 01E715:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Stave of Binding Mark
+MenuDisplayObject: 1E741E:Triumvirate - Mage Archetypes.esp
+Flags:
+- Detrimental
+- NoHitEvent
+- NoMagnitude
+- NoArea
+- HideInUI
+- NoRecast
+- Painless
+- NoHitEffect
+SpellmakingCastingTime: 3
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+Projectile: 012FCF:Skyrim.esm
+CastType: Concentration
+TargetType: Aimed
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThan
+  Data:
+    MutagenObjectType: GetDistanceConditionData
+  ComparisonValue: 426

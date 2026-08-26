@@ -1,0 +1,21 @@
+FormKey: 26AF7F:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_Spell_ConjureRavagor_Proc_Slam
+Name:
+  TargetLanguage: English
+  Value: Ravagor Smash
+MenuDisplayObject: 1C3CBA:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Flags:
+- ManualCostCalc
+- AreaEffectIgnoresLOS
+- 0x400000
+CastType: FireAndForget
+TargetType: Touch
+Effects:
+- BaseEffect: 104D44:Skyrim.esm
+  Data:
+    Magnitude: 100
+    Area: 7

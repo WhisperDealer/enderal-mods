@@ -1,0 +1,15 @@
+FormKey: 41EC8F:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_A075_StaffEnchantment_ImpenetrableGrove
+Name:
+  TargetLanguage: English
+  Value: Impenetrable Grove
+EnchantmentCost: 55
+CastType: Concentration
+EnchantmentAmount: 55
+TargetType: Aimed
+EnchantType: StaffEnchantment
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 2A7C18:Triumvirate - Mage Archetypes.esp
+  Data:
+    Duration: 30

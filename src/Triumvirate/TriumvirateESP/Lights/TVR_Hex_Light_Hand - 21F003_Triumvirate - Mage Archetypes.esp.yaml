@@ -1,0 +1,10 @@
+FormKey: 21F003:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Hex_Light_Hand
+Time: -1
+Radius: 25
+Color: '#00E0C62E'
+FalloffExponent: 1
+FOV: 90
+NearClip: 1
+FlickerPeriod: 1
+FadeValue: 1

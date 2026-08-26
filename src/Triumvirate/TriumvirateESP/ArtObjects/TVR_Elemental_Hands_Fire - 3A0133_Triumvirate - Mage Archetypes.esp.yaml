@@ -1,0 +1,9 @@
+FormKey: 3A0133:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Elemental_Hands_Fire
+ObjectBounds:
+  First: -12, -12, 0
+  Second: 12, 12, 2
+Model:
+  File: Triumvirate\Elemental_Hands_Fire.nif
+  Data: 0x020000000000000000000000
+Type: []

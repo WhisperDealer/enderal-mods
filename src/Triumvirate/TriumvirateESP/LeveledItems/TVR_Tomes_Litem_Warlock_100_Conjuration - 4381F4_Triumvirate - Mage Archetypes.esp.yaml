@@ -1,0 +1,10 @@
+FormKey: 4381F4:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Tomes_Litem_Warlock_100_Conjuration
+ChanceNone: 1
+Flags:
+- UseAll
+Entries:
+- Data:
+    Level: 1
+    Reference: 419B52:Triumvirate - Mage Archetypes.esp
+    Count: 1

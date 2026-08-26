@@ -1,0 +1,10 @@
+FormKey: 3C38C8:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warrior_Art_FylgjaSun
+ObjectBounds:
+  First: -239, -234, -72
+  Second: 239, 234, 95
+Model:
+  File: Triumvirate\Warrior_Art_FylgjaSun.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

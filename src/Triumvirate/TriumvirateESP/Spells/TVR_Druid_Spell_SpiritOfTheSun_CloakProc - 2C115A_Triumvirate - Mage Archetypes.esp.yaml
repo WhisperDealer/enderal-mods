@@ -1,0 +1,22 @@
+FormKey: 2C115A:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Spell_SpiritOfTheSun_CloakProc
+Name:
+  TargetLanguage: English
+  Value: Spirit of the Sun
+MenuDisplayObject: 27F3BB:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 215
+Flags:
+- AreaEffectIgnoresLOS
+ChargeTime: 0.5
+CastType: Concentration
+TargetType: Aimed
+HalfCostPerk: 0C44CA:Skyrim.esm
+Effects:
+- BaseEffect: 2C1158:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 20
+    Duration: 1

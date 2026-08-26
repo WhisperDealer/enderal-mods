@@ -1,0 +1,9 @@
+FormKey: 3C89DA:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Violence_Hands_Big
+ObjectBounds:
+  First: -11, -11, 7
+  Second: 11, 11, 7
+Model:
+  File: Triumvirate\Violence_Hands_Big.nif
+  Data: 0x020000000000000000000000
+Type: []

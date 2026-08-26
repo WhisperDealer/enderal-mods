@@ -1,0 +1,9 @@
+FormKey: 1CDED6:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Conversion_Dialogue_Topic_Trade
+Name:
+  TargetLanguage: English
+  Value: I need to trade some things with you.
+Priority: 25
+Branch: 1CDED5:Triumvirate - Mage Archetypes.esp
+Quest: 1CDEC9:Triumvirate - Mage Archetypes.esp
+SubtypeName: CUST

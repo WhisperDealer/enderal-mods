@@ -213,6 +213,7 @@ Regenerate any of these with `/spriggit-decompile-reference`; the script trees a
 | `Update/` | `Update.esm` | 404 records |
 | `SkyUI_SE/` | `SkyUI_SE.esp` | 8 records (SkyUI is built into Enderal) |
 | `Dawnguard-stub/`, `Dragonborn-stub/`, `HearthFires-stub/` | the DLC ESMs | **1–2 records each — they are empty stubs** (see below) |
+| `SkyrimReal/`, `UpdateReal/`, `DawnguardReal/`, `HearthFiresReal/`, `DragonbornReal/` | the **real** Bethesda masters from `skyrimSeRoot` | 853721 / 14032 / 93218 / 17480 / 176956 records. **What Bethesda actually had at a FormID** — the other half of every port audit (see below) |
 | `EnderalScripts/source/scripts/` | `ScriptsEnderal.zip` | **5029 real `.psc`** from SureAI — not decompiles |
 | `SKSEScripts/` | `Data/Source/Scripts` | 74 SKSE-extended vanilla types |
 | `VanillaScripts/Source/Scripts/` | Skyrim SE `Scripts.zip` | 14301 `.psc` **plus `TESV_Papyrus_Flags.flg`** |
@@ -220,6 +221,17 @@ Regenerate any of these with `/spriggit-decompile-reference`; the script trees a
 `tools.json`'s `papyrusSource` points at the three script trees here, so the compiler and the
 lookup copies are the same files — there is no second copy to drift.
 
+> **Serialize the REAL Bethesda masters too — a dead FormID is an opaque hex string without them.**
+> **[verified 2026-08-24]** `reference/base/Skyrim/` tells you what Enderal has; `SkyrimReal/` tells
+> you what the ported mod's author *meant*. You need both to pick a substitute, and the pair is what
+> separates the three states a ported reference can be in: **dead** (nothing at that FormID),
+> **renamed** (Enderal kept the record under its own name — `MineOreBlackreach01` is
+> `_00E_MineOreShadowsteel`), and **drifted** (a completely different record — the live-bug class).
+> On Triumvirate this turned 311 anonymous dead FormKeys into 311 named records with **zero**
+> unresolved, and isolated 15 drifted references out of 1462 survivors. Serialize them with
+> `/spriggit-decompile-reference` from `skyrimSeRoot`; `Dawnguard.esm` fails Spriggit's round-trip
+> check on one LZ4-compressed NPC record but its tree is complete and correct for lookup.
+>
 > **`reference/base/Skyrim/` is lookup-only and cannot be rebuilt.** Spriggit 0.40.0 serializes it
 > fine but **fails its own round-trip check**: `Skyrim.esm`'s NavigationMeshInfoMap (NAVI) record has
 > a **null FormKey**, so Spriggit writes it as `NavigationMeshInfoMaps/Null.yaml` with no `FormKey:`
@@ -234,7 +246,8 @@ lookup copies are the same files — there is no second copy to drift.
 
 **An empty `build/manifest.json` is legal.** With `"releases": []` the build reports "nothing to
 build" and exits 0 rather than failing, so the repo stays green even with nothing to ship. Today it
-carries one release, `Apocalypse - Enderal Patch`.
+carries four releases — `Apocalypse - Enderal Patch`, `Relentless Sword - Enderal Conversion`,
+`Biggie Traits - Enderal Conversion` and `Triumvirate - Enderal Conversion`.
 
 ## Guardrails — how to work in this repo
 
@@ -518,6 +531,7 @@ Currently released:
 | `Apocalypse` | `Apocalypse - Magic of Skyrim.esp` | Enai Siaion's spell pack, converted for Enderal — form version lowered to 1.70, Elder Scrolls proper nouns renamed, and distribution rebuilt onto Enderal's own vendor and loot lists. A **replacement plugin**; see the form-version ceiling below for why it cannot be a patch |
 | `RelentlessSword` | `Relentless Sword - Enderal.esp` | johnskyrim's *Relentless Sword SE* rebuilt for Enderal: clean masters (his plugin masters the three DLC stubs), shadowsteel-tier stats, blueprint + Handicraft-50 gating instead of a Skyforge recipe that could never fire, and FS-style dismantle recipes. **New content shipped as a standalone plugin, carrying no assets** — the player installs his mod for the meshes and disables his ESP |
 | `BiggieTraits` | `Biggie Traits.esp` | Shazdeh's Fallout-style trait system, converted for Enderal — form version lowered to 1.70, DLC masters dropped, and the traits with no Enderal target removed (the five Skyrim city houses, standing stones, Divine shrines, shouts, vanilla perk points). 30 of 38 traits survive. A **replacement plugin**; its generators live in `src/BiggieTraits/tools/` |
+| `Triumvirate` | `Triumvirate - Mage Archetypes.esp` | Enai Siaion's five mage archetypes (75 spells), converted for Enderal — DLC masters dropped, Elder Scrolls nouns renamed, and distribution rebuilt from a script that made 76 calls against absent Skyrim receivers onto ten Enderal merchant chests, with Expert/Master confined to Ark and the Undercity. A **replacement plugin** (its two BSAs are named after the plugin); generators in `src/Triumvirate/tools/`, still on `feat/triumvirate-conversion` |
 
 > **B612 is deliberately NOT shipped here.** It is a dependency of Biggie Traits and its `b612.esp`
 > is form version 1.71, so a conversion was written — and then dropped, because **BEES** loads the
@@ -631,6 +645,18 @@ magic effects' display strings in `reference/base/Skyrim/MagicEffects/`, and cor
 
 > Note the last two: **Alteration is Mentalism and Illusion is Psionics.** The intuitive pairing
 > (Illusion→Mentalism) is wrong, and getting it backwards mis-files every spell in a magic patch.
+
+> **Keep a ported spell's `HalfCostPerk` — it is the hook Enderal's talents already read.**
+> **[verified 2026-08-24]** Enderal reuses **all 25 vanilla school perks** (`AlterationNovice00` …
+> `RestorationMaster100`) as tier tags, and **14 of its own talent perks** — the Elementalist,
+> Sinistrope, Thaumaturge and Affinity lines — key off them with
+> `SpellHasCastingPerkConditionData`, the condition that asks *"is this spell's `HalfCostPerk` X?"*.
+> `_00E_Class_Thaumaturge_P02_MentalNovice` is the worked example: `ModSpellCost × 0.7` for any
+> spell tagged `AlterationNovice00`/`Apprentice25` or `RestorationNovice00`/`Apprentice25`.
+>
+> So the vanilla field a porter is most tempted to strip as "Skyrim progression cruft" is in fact
+> what makes an Enderal mage's talent discounts apply to the ported spell. Set it to the right tier
+> and leave it. All 126 of Triumvirate's `HalfCostPerk` references resolve untouched.
 
 The consequence is good news for ported spell mods: a Skyrim spell's `MagicSkill`, magicka cost and
 skill scaling all work unchanged in Enderal. What does *not* carry over is anything user-visible
@@ -761,6 +787,14 @@ Enderal lacks.
 > loose files beat any BSA, and to say on the mod page that your mod must sit below the ported one in
 > MO2's file order. Compile with **Enderal's tree first** on `-i`, or you rebuild the very script you
 > are trying to suppress.
+>
+> **Assume every Enairim port does this.** **[verified 2026-08-24]** Triumvirate ships the identical
+> pair — 2425 and 1983 bytes, decompiling to 59 and 47 lines, with a Champollion header reading
+> `User: Maximilian` and a 2016 date. That is the Brawl Bugs Patch in both mods. Two for two, so run
+> the intersection on any Enai mod before anything else. A correct rebuild of Enderal's stubs is
+> **480 and 482 bytes** in both releases — byte-identical output is the cheapest proof the `-i` order
+> was right, because vanilla's copy compiles to ~2 KB. Note `bsab`'s list output ends in a blank
+> line: count with `grep -c .`, not `wc -l`, or every archive reports one phantom hit.
 
 > **A vanilla FormID that survived may be a completely different record — check what a ported mod
 > OVERRIDES, not just what it references.** **[verified]** Apocalypse overrides exactly one Enderal
@@ -775,7 +809,9 @@ Enderal lacks.
 > Generalise the *check*, not the fix: for any ported mod, list every record it overrides whose
 > FormKey suffix is `:Skyrim.esm` / `:Update.esm` and confirm the Enderal record at that ID is the
 > same record type **and the same thing**. A script that maps FormID → record group for both trees
-> does this in seconds. Note this override was **not** the crash it looked like — it is a real
+> does this in seconds. **Run it on every port — it has now caught two.** Triumvirate ships the
+> identical `Tamriel` override at `00003C` **[verified 2026-08-24]**, found in the first minutes of
+> its ingest by listing 36 override FormKeys rather than by debugging anything. Note this override was **not** the crash it looked like — it is a real
 > defect, found while chasing an unrelated bug, and worth fixing on its own merits.
 >
 > **And check what it REFERENCES, not only what it overrides — a surviving ID inside a condition is
@@ -785,6 +821,13 @@ Enderal lacks.
 > group is not merely dead: equipping that one weapon fires effects meant for a Divine amulet. A
 > dangling reference is inert and safe to ignore; a reference that *resolves to the wrong record* is
 > a live bug, and only resolving every external FormKey against `reference/base/` tells them apart.
+>
+> **`0C891B` has now caught three mods.** **[verified 2026-08-24]** Triumvirate stocks it as an
+> `Item` in its own Maramal merchant chest — vanilla's Amulet of Mara, Enderal's unique weapon,
+> again. Check it by name on any port that touches the Divines. And note the ratio that makes this
+> worth automating: of Triumvirate's **1462** surviving `:Skyrim.esm` references, **1402 are exact
+> matches** and only **15** drifted — the signal is rare, uniform-looking, and invisible to every
+> check except a vanilla-vs-Enderal comparison.
 
 **Enderal's own distribution slots**, for re-homing a ported mod's items **[verified]**
 (`reference/base/Skyrim/LeveledItems/`). Note Enderal has **no spell tomes at all** — it teaches
@@ -808,6 +851,27 @@ spells from `_01E_SpellBook*` Books:
 > Storm — precisely the spells that exist at one strength only. A ported spell with a single version
 > therefore belongs in that group, unsuffixed. Apocalypse's tomes ship as `Spell Tome: <name>` for
 > this reason; it looks inconsistent next to Enderal's and is in fact the consistent choice.
+
+> **A ported spell mod's high-tier tomes are gated on globals Enderal never sets — grep the
+> leveled lists for `Global:` before trusting distribution.** **[verified 2026-08-26]** Vanilla
+> gates spell-tome availability by player skill: the Adept/Expert/Master `LeveledItem`s carry
+> `Global: PC<School><Tier>`, and **when a leveled list names a Global that global's value IS the
+> chance-none percentage** — the `ChanceNone` byte beside it is ignored. All 15 of those globals
+> exist in Enderal at `Data: 100` (100% chance of nothing) and **nothing ever lowers them**:
+> vanilla zeroes them from `WISkillIncrease02`, a quest present in `reference/base/SkyrimReal/`
+> and in **neither** `reference/base/Skyrim/` nor FS; no Enderal script mentions them; and the
+> only file in Enderal's whole tree matching `0F2584:Skyrim.esm` is the global's own record.
+>
+> On Triumvirate this left **45 of 75 tomes unobtainable after the distribution rebuild had already
+> shipped**. The fix is one line per record — delete `Global:` and let the authored `ChanceNone`
+> stand (`src/Triumvirate/tools/17-tier-gating.ps1`).
+>
+> Two lessons beyond the fix. **This is invisible to a missing-reference audit** — `PCAlterationAdept`
+> resolves perfectly well, it just never changes; it is the "present but inert" class, a cousin of
+> the drifted-FormID bug above. And **a structural reachability proof is not a reachability proof**:
+> `15-distribution.ps1` walked chest → bundle → tome reading only `Reference:`, and reported a
+> confident *"75/75 tomes at >=3 vendors"* on a mod that could sell 30. If a check asserts an item
+> is obtainable, it must read the fields that decide whether the list yields at all.
 
 **Inject, don't rewrite.** Add entries to the host list pointing at your own sublist, and carry
 every existing entry through untouched (guardrail 5). One new LeveledItem per tier keeps the diff
@@ -844,9 +908,33 @@ readable and leaves Enderal's own list contents byte-identical.
 > no route to it at all. Two rounds of weighting did not fix that, because it is not a weighting
 > problem.
 >
-> **If every item must be reachable, place it directly** — write the item into a named merchant's
-> `Container` record as an ordinary `Items:` entry. Deterministic, restocks forever, and a player can
-> be told where to go. Enderal's spell merchants, ranked by the gold in their chest (the natural
+> ### Place it directly — but write into `<Merchant>_CustomMerchandise`, NOT the chest
+>
+> **[verified 2026-08-26]** Enderal ships **67 LeveledItems named `<Merchant>_CustomMerchandise`**,
+> one per merchant, and **every single one is empty** — `UseAll`, no entries, no `ChanceNone`, no
+> `Global`. Each merchant's chest already contains its own. They are an extension point SureAI
+> built and never filled, and they are the correct place to add vendor stock:
+>
+> - **`UseAll` with no `ChanceNone`** means everything you put in is yielded, in full, every
+>   restock — the same determinism as writing into the chest.
+> - **You override a `LeveledItem` instead of a `CONT`**, so you do not touch the merchant's
+>   record at all.
+>
+> That second point is the whole prize, because the chests are heavily contested and these are
+> not: **EGO overrides none of the 67, and neither does Apocalypse.** Compare with the chests —
+> EGO owns essentially all of Ark's commerce (of the capital's **55** merchant chests only **six**
+> are EGO-clear, and all six are 250–405 gold; every Ark chest at 900+ is EGO's), plus Apocalypse's
+> six and KataPUMB's three. Triumvirate originally overrode ten chests and collided with EGO on
+> three of them; moving to the hooks dropped its override surface to **ten `LeveledItem`s and zero
+> containers**, and the vendor picks stopped having to dodge anybody.
+>
+> Two practical notes. The empty records have **no `Entries:` key at all** — Spriggit omits an
+> empty collection — so you create the key rather than append to it. And **map hook → merchant by
+> reading the chest's own `Items:` list, never by the name**: Adreyo's hook is `Vexin_`, the Ark
+> guard smith's is `ArkHofSchmied_`.
+>
+> Writing into the `Container` still works and is what the older releases here do; prefer the hook
+> for anything new. Enderal's spell merchants, ranked by the gold in their chest (the natural
 > wealth ladder for tiering what each one sells) **[verified]**:
 >
 > | Chest | FormKey | Gold | Shop |
@@ -911,6 +999,12 @@ These are **engine-hardcoded** FormIDs — Bethesda's own code depends on them, 
   Searching `reference/base/*/Cells/` by the English town name returns **nothing** — grep the
   localized `String:` values instead, then read the EditorID off the match. This is also what a `coc`
   command needs: `coc FlusshaimShopSura` lands in "Riverville, Sura's Sharp Steel".
+  - **This applies to NPCs too, and it will put the wrong name in your mod page and your docs.**
+    **[verified 2026-08-26]** `_00E_FS_Wildmage_*` display as **"Shrouded Mage"** — all three of
+    them, and they are the only three NPCs in the game that do. `_00E_UndercityHehler02` is
+    **"Fence"** (*Hehler* = fence). Triumvirate's vendor docs called them "Wild Mage" and "Hehler"
+    for a whole release because the EditorID was never checked against the `Name` block. When you
+    name an NPC anywhere a player will read it, grep the record's English `String:` first.
 - **Placed references live inside the cell's single `RecordData.yaml`, not in per-ref files.**
   Interior cells serialize to one file (`Cells/<block>/<sub>/<EditorID> - <hex>_<master>/RecordData.yaml`)
   holding the cell record, its `NavigationMeshes:`, then `Persistent:` and `Temporary:` lists.

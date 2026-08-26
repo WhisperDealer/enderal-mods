@@ -1,0 +1,14 @@
+FormKey: 41EC8D:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_A000_StaffEnchantment_Druidcraft
+Name:
+  TargetLanguage: English
+  Value: Druidcraft
+EnchantmentCost: 40
+CastType: FireAndForget
+EnchantmentAmount: 40
+TargetType: TargetActor
+EnchantType: StaffEnchantment
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 2ACD21:Triumvirate - Mage Archetypes.esp
+  Data: {}

@@ -1,0 +1,21 @@
+FormKey: 3E1F55:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Senua_Hazard_ShieldOfAwe
+ObjectBounds:
+  First: -1053, -2413, -1706
+  Second: 1053, 2413, 1706
+Name:
+  TargetLanguage: English
+  Value: Aegishjalmur Hazard
+Model:
+  File: Triumvirate\Senua_Hazard_Kaldrsang.nif
+  Data: 0x020000000000000000000000
+Limit: 1
+Radius: 25
+Lifetime: 10
+TargetInterval: 0.1
+Flags:
+- InheritDurationFromSpawnSpell
+- DropToGround
+Spell: 3E1F5C:Triumvirate - Mage Archetypes.esp
+Light: 3E1F58:Triumvirate - Mage Archetypes.esp
+Sound: 3E1F57:Triumvirate - Mage Archetypes.esp

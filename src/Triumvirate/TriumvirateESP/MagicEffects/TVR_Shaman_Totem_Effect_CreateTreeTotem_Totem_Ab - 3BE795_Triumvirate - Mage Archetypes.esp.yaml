@@ -1,0 +1,21 @@
+FormKey: 3BE795:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Totem_Effect_CreateTreeTotem_Totem_Ab
+Name:
+  TargetLanguage: English
+  Value: Tree Totem Ab
+MenuDisplayObject: 35E370:Triumvirate - Mage Archetypes.esp
+Flags:
+- NoDuration
+- NoArea
+- FXPersist
+- HideInUI
+HitShader: 3BE794:Triumvirate - Mage Archetypes.esp
+EnchantShader: 3BE794:Triumvirate - Mage Archetypes.esp
+Archetype:
+  MutagenObjectType: MagicEffectCloakArchetype
+  Association: 3C89CA:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

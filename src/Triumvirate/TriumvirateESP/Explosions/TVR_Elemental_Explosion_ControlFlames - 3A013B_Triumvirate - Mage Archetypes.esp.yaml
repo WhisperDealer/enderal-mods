@@ -1,0 +1,13 @@
+FormKey: 3A013B:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Elemental_Explosion_ControlFlames
+Model:
+  File: Effects\FXEmptyExplosion10sec.nif
+  Data: 0x020000000000000000000000
+PlacedObject: 3A0135:Triumvirate - Mage Archetypes.esp
+Radius: 128
+Flags:
+- 0x1
+- IgnoreLosCheck
+- IgnoreImageSpaceSwap
+- NoControllerVibration
+SoundLevel: Normal

@@ -1,0 +1,10 @@
+FormKey: 14F4E7:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Diviner_Buffshield
+ObjectBounds:
+  First: -74, -370, -256
+  Second: 74, 410, 296
+Model:
+  File: Diviner\illusiondiviner_art_buffshield.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

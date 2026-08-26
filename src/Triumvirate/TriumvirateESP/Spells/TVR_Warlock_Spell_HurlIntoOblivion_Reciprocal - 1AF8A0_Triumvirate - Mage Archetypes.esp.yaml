@@ -1,0 +1,21 @@
+FormKey: 1AF8A0:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_Spell_HurlIntoOblivion_Reciprocal
+Name:
+  TargetLanguage: English
+  Value: Hurl Into Sinistra
+MenuDisplayObject: 19B45E:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+ChargeTime: 0.5
+CastType: FireAndForget
+TargetType: Touch
+Effects:
+- BaseEffect: 1AF89F:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 15
+    Duration: 28800

@@ -1,0 +1,19 @@
+FormKey: 091918:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_Hex_Effect_Body_Ab
+Name:
+  TargetLanguage: English
+  Value: HexBodyArtHolder
+MenuDisplayObject: 21F001:Triumvirate - Mage Archetypes.esp
+Flags:
+- NoDuration
+- FXPersist
+- HideInUI
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+HitEffectArt: 091917:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

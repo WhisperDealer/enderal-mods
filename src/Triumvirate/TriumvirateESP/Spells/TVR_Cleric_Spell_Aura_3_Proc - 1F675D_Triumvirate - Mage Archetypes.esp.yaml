@@ -1,0 +1,24 @@
+FormKey: 1F675D:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Cleric_Spell_Aura_3_Proc
+Name:
+  TargetLanguage: English
+  Value: Thorns Release
+MenuDisplayObject: 1CDEBE:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 316
+Flags:
+- AreaEffectIgnoresLOS
+ChargeTime: 0.5
+CastType: FireAndForget
+HalfCostPerk: 0C44C9:Skyrim.esm
+Effects:
+- BaseEffect: 1FB86C:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 100
+    Area: 30
+- BaseEffect: 1FB86D:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 100

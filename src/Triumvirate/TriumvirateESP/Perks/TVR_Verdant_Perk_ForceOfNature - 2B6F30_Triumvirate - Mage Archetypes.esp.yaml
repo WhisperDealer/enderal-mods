@@ -1,0 +1,76 @@
+FormKey: 2B6F30:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Verdant_Perk_ForceOfNature
+Name:
+  TargetLanguage: English
+  Value: Force of Nature Damage
+Description:
+  TargetLanguage: English
+  Value: ''
+NumRanks: 1
+Playable: True
+Hidden: True
+Effects:
+- MutagenObjectType: PerkEntryPointModifyActorValue
+  Priority: 7
+  Conditions:
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 2B6F37:Triumvirate - Mage Archetypes.esp
+      ComparisonValue: 1
+  EntryPoint: ModSpellMagnitude
+  PerkConditionTabCount: 3
+  ActorValue: Alteration
+  Value: 0.01
+  Modification: MultiplyAVMult
+- MutagenObjectType: PerkEntryPointModifyActorValue
+  Priority: 8
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: IsPowerAttackingConditionData
+  EntryPoint: ModAttackDamage
+  PerkConditionTabCount: 3
+  ActorValue: Alteration
+  Value: 1
+- MutagenObjectType: PerkEntryPointModifyActorValue
+  Priority: 9
+  Conditions:
+  - Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: IsPowerAttackingConditionData
+      ComparisonValue: 1
+  EntryPoint: ModAttackDamage
+  PerkConditionTabCount: 3
+  ActorValue: Alteration
+  Value: 2
+- MutagenObjectType: PerkEntryPointModifyValue
+  Priority: 20
+  EntryPoint: ModPowerAttackStamina
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 0.5
+- MutagenObjectType: PerkEntryPointModifyValue
+  Priority: 21
+  Conditions:
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 2B6F37:Triumvirate - Mage Archetypes.esp
+      ComparisonValue: 1
+  EntryPoint: ModSpellCost
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 0
+- MutagenObjectType: PerkEntryPointModifyValue
+  Priority: 25
+  EntryPoint: ModSpellCost
+  PerkConditionTabCount: 2
+  Modification: Multiply
+  Value: 0.75

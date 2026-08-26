@@ -1,0 +1,10 @@
+FormKey: 438207:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Tomes_Litem_Cleric_075_Illusion
+ChanceNone: 1
+Flags:
+- UseAll
+Entries:
+- Data:
+    Level: 1
+    Reference: 41EC79:Triumvirate - Mage Archetypes.esp
+    Count: 1

@@ -1,0 +1,48 @@
+FormKey: 2844CA:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Spirits_Effect_SpiritOfThornbriar
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_Thorns_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Spell
+      Object: 2844CB:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WeapTypeBow
+      Object: 01E715:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: 'Spirit: Thornbriar'
+MenuDisplayObject: 27F3BB:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 27F3C1:Triumvirate - Mage Archetypes.esp
+Flags:
+- Recover
+- DispelWithKeywords
+- NoArea
+- PowerAffectsDuration
+BaseCost: 20
+MagicSkill: Restoration
+CastingLight: 27F3BD:Triumvirate - Mage Archetypes.esp
+HitShader: 0803EA:Triumvirate - Mage Archetypes.esp
+MinimumSkillLevel: 50
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectPeakValueModArchetype
+  ActorValue: Fame
+CastType: FireAndForget
+CastingArt: 27F3BC:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 1
+DualCastScale: 1.1
+ImageSpaceModifier: 10605A:Triumvirate - Mage Archetypes.esp
+Sounds:
+- Sound: 03E957:Skyrim.esm
+- Type: Charge
+  Sound: 086EFC:Skyrim.esm
+- Type: Ready
+  Sound: 03F363:Skyrim.esm
+- Type: Release
+  Sound: 116E56:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: Spirit retaliates with <mag> bleed and poison damage for <8> seconds whenever the caster or a living ally is struck in melee for <dur> seconds.

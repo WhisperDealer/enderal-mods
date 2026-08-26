@@ -1,0 +1,13 @@
+FormKey: 07C836:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Violence_Descriptor_Explosion_Buff
+Type: Standard
+Category: 01A0BD:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\NPC\AtronachStorm\AttackPower\Bomb\NPC_AtronachStorm_AttackPower_Bomb_Thunder2D.wav
+OutputModel: 0E363A:Skyrim.esm
+LoopAndRumble: {}
+PercentFrequencyShift: 80
+PercentFrequencyVariance: 10
+Priority: 128
+Variance: 1
+StaticAttenuation: 7.93

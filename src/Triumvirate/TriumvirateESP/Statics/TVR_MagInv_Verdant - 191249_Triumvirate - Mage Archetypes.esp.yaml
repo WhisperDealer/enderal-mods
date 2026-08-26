@@ -1,0 +1,10 @@
+FormKey: 191249:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_MagInv_Verdant
+ObjectBounds:
+  First: -48, -54, -7
+  Second: 50, 104, 15
+Model:
+  File: Triumvirate\Verdant_Maginv.nif
+  Data: 0x020000000000000000000000
+MaxAngle: 90
+Unused: 0x000000

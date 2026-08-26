@@ -1,0 +1,10 @@
+FormKey: 1D2FF8:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_MagInv_Ancestors
+ObjectBounds:
+  First: -70, -76, -21
+  Second: 70, 78, 25
+Model:
+  File: Triumvirate\Ancestors_Inv.nif
+  Data: 0x020000000000000000000000
+MaxAngle: 90
+Unused: 0x000000

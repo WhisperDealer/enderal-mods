@@ -1,0 +1,17 @@
+FormKey: 43D32B:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Tomes_Litem_Warlock_Illusion
+Flags:
+- UseAll
+Entries:
+- Data:
+    Level: 1
+    Reference: 4381F6:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4381FB:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4381FC:Triumvirate - Mage Archetypes.esp
+    Count: 1

@@ -1,0 +1,17 @@
+FormKey: 3B4574:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Totem_Effect_FylgjaWind_Ab_Cloak
+Name:
+  TargetLanguage: English
+  Value: Fimbulwinter Cloak
+MenuDisplayObject: 09DB72:Skyrim.esm
+Flags:
+- NoDuration
+Archetype:
+  MutagenObjectType: MagicEffectCloakArchetype
+  Association: 3B4572:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: <mag> foot frost cloak.

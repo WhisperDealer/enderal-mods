@@ -1,0 +1,22 @@
+FormKey: 2C625F:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 4
+EditorID: TVR_Warrior_Armor_FylgjaWind
+SkyrimMajorRecordFlags:
+- NotPlayable
+Name:
+  TargetLanguage: English
+  Value: Fylgja
+BodyTemplate:
+  FirstPersonFlags:
+  - Body
+  ArmorType: Clothing
+  ActsLike44: True
+Race: 2C625D:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: ''
+Armature:
+- 17CE36:Triumvirate - Mage Archetypes.esp
+- 2C625E:Triumvirate - Mage Archetypes.esp
+MajorFlags:
+- NonPlayable

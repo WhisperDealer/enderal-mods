@@ -1,0 +1,228 @@
+FormKey: 005901:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Demon_Race_ConjureOathbreaker
+Name:
+  TargetLanguage: English
+  Value: Dragon Priest
+Description:
+  TargetLanguage: English
+  Value: ''
+Skin: 03B5AB:Skyrim.esm
+BodyTemplate:
+  ArmorType: Clothing
+  ActsLike44: True
+Keywords:
+- 013795:Skyrim.esm
+- 013796:Skyrim.esm
+- 0F23C5:Skyrim.esm
+- 103AD2:Skyrim.esm
+SkillBoost0:
+  Skill: Sneak
+  Boost: 40
+SkillBoost1:
+  Skill: 255
+SkillBoost2:
+  Skill: 255
+SkillBoost3:
+  Skill: 255
+SkillBoost4:
+  Skill: 255
+SkillBoost5:
+  Skill: 255
+SkillBoost6:
+  Skill: 255
+Height:
+  Male: 1
+  Female: 1
+Weight:
+  Male: 1
+  Female: 1
+Flags:
+- Walks
+- NoCombatInWater
+- UsesHeadTrackAnims
+- NoKnockdowns
+- DontShowWeaponBlood
+- UseAdvancedAvoidance
+Starting:
+- Key: Health
+  Value: 100
+- Key: Magicka
+  Value: 200
+- Key: Stamina
+  Value: 0
+BaseCarryWeight: 200
+BaseMass: 3.5
+AccelerationRate: 6
+DecelerationRate: 6
+Size: Medium
+Regen:
+- Key: Health
+  Value: 1
+- Key: Magicka
+  Value: 20
+- Key: Stamina
+  Value: 10
+UnarmedDamage: 1
+UnarmedReach: 64
+AimAngleTolerance: 15
+AngularAccelerationRate: 1.25
+AngularTolerance: 5
+MountData:
+  MountOffset: -63.479, 0, 0
+  DismountOffset: -50, 0, 65
+  MountCameraOffset: 0, -300, 0
+SkeletalModel:
+  Male:
+    MutagenObjectType: SimpleModel
+    File: Mihail Monsters and Animals\Dragon Priest\Liches\skeletonlich.nif
+    Data: 0x020000000000000000000000
+  Female:
+    MutagenObjectType: SimpleModel
+    File: Mihail Monsters and Animals\Dragon Priest\Liches\skeletonlich.nif
+    Data: 0x020000000000000000000000
+MovementTypeNames:
+- BLDO
+- RUN1
+- SNEK
+- SWIM
+- WALK
+Voices:
+  Male: 01F1CD:Skyrim.esm
+  Female: 01F1CD:Skyrim.esm
+FacegenMainClamp: 5
+FacegenFaceClamp: 3
+BodyData:
+  Male:
+    Index: BodyTexture
+    Model:
+      File: Actors\Character\UpperBodyHumanMale.egt
+      Data: 0x020000000000000000000000
+  Female:
+    Index: BodyTexture
+    Model:
+      File: Actors\Character\UpperBodyHumanFemale.egt
+      Data: 0x020000000000000000000000
+BodyPartData: 043592:Skyrim.esm
+BehaviorGraph:
+  Male:
+    File: Actors\DragonPriest\Dragon_Priest.hkx
+    Data: 0x020000000000000000000000
+  Female:
+    File: Actors\DragonPriest\Dragon_Priest.hkx
+    Data: 0x020000000000000000000000
+MaterialType: 0F0EA8:Skyrim.esm
+ImpactDataSet: 034930:Skyrim.esm
+OpenLootSound: 03DE35:Skyrim.esm
+CloseLootSound: 03DE39:Skyrim.esm
+BipedObjectNames:
+- Key: Head
+  Value: Mask
+- Key: Hair
+  Value: Mask2
+- Key: Body
+  Value: BODY
+- Key: Hands
+  Value: BodyToo
+- Key: Tail
+  Value: FXmist
+- Key: LongHair
+  Value: FXParticles
+EquipmentFlags:
+- Staff
+- Spell
+EquipmentSlots:
+- 013F42:Skyrim.esm
+- 013F43:Skyrim.esm
+- 025BEE:Skyrim.esm
+- 035698:Skyrim.esm
+UnarmedEquipSlot: 013F45:Skyrim.esm
+FaceFxPhonemes:
+  ForceNames: True
+  Aah_LipBigAah:
+    Name: Aah
+    EY: 0.6
+    AE: 0.8
+    AA: 1
+    AW: 0.2
+    AH: 0.8
+    AO: 0.1
+    Y: 0.2
+    HH: 0.6
+    G: 0.4
+  BigAah_LipDST:
+    Name: BigAah
+    OW: 0.8
+    UH: 0.5
+    AX: 0.8
+  BMP_LipEee:
+    Name: BMP
+    M: 1
+    B: 1
+    P: 0.9
+  ChJSh_LipFV:
+    Name: ChJSh
+    SH: 0.8
+    ZH: 0.7
+    JH: 1
+    G: 0.3
+    CH: 1
+  DST_LipK:
+    Name: DST
+    S: 0.9
+    Z: 0.8
+    DH: 0.2
+    D: 1
+    T: 0.8
+  Eee_LipL:
+    Name: Eee
+    IY: 1
+    IH: 0.2
+    EY: 0.3
+    AY: 0.2
+    OY: 0.3
+    Y: 0.4
+  Eh_LipR:
+    Name: Eh
+    IH: 0.7
+    EH: 1
+  FV_LipTh:
+    Name: FV
+    F: 0.8
+    V: 1
+  I:
+    Name: I
+    AY: 0.8
+    ER: 0.5
+    Y: 0.4
+  K:
+    Name: K
+    K: 1
+  N:
+    Name: N
+    N: 1
+    NG: 0.9
+    L: 0.6
+  Oh:
+    Name: Oh
+    AW: 0.6
+    AH: 0.2
+    AO: 0.5
+    OY: 0.6
+    OW: 0.2
+    UH: 0.2
+  OohQ:
+    Name: OohQ
+    UW: 1
+  R:
+    Name: R
+    ER: 0.3
+    R: 1
+  Th:
+    Name: Th
+    TH: 1
+    DH: 0.8
+    L: 0.2
+  W:
+    Name: W
+    AO: 0.2
+    W: 1

@@ -1,0 +1,24 @@
+FormKey: 27519E:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Spell_CallHoundOfHircine_Proc
+Name:
+  TargetLanguage: English
+  Value: Mark of the Wild
+MenuDisplayObject: 14F4DC:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F43:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Flags:
+- ManualCostCalc
+Type: Poison
+CastType: FireAndForget
+TargetType: Touch
+Effects:
+- BaseEffect: 2B6F31:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 0.8
+    Duration: 1
+- BaseEffect: 2751A3:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 250
+    Duration: 10

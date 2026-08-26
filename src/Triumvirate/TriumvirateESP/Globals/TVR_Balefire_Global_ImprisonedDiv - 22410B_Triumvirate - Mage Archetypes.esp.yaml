@@ -1,0 +1,9 @@
+MutagenObjectType: GlobalShort
+FormKey: 22410B:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 64
+EditorID: TVR_Balefire_Global_ImprisonedDiv
+SkyrimMajorRecordFlags:
+- 0x40
+MajorFlags:
+- Constant
+Data: 10

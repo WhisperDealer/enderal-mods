@@ -1,0 +1,10 @@
+FormKey: 006FB0:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Holy_Body
+ObjectBounds:
+  First: -105, -134, -29
+  Second: 105, 134, 31
+Model:
+  File: Triumvirate\Holy_Body.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

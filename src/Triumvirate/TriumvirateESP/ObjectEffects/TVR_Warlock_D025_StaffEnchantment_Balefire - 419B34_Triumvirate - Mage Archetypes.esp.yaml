@@ -1,0 +1,23 @@
+FormKey: 419B34:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_D025_StaffEnchantment_Balefire
+Name:
+  TargetLanguage: English
+  Value: Balefire
+EnchantmentCost: 47
+CastType: FireAndForget
+EnchantmentAmount: 47
+TargetType: TargetActor
+EnchantType: StaffEnchantment
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 1A0580:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 15
+    Duration: 1
+- BaseEffect: 1AF894:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 2
+    Duration: 10
+- BaseEffect: 1A568B:Triumvirate - Mage Archetypes.esp
+  Data:
+    Duration: 10

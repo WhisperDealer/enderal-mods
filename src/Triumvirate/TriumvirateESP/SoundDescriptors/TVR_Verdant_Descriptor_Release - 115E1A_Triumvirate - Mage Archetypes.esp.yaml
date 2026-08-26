@@ -1,0 +1,11 @@
+FormKey: 115E1A:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Verdant_Descriptor_Release
+Type: Standard
+Category: 07F80B:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\QST\MS06Potema\QST_MS06_Potema_Initial_Flee_Start_01.wav
+OutputModel: 07E5DD:Skyrim.esm
+LoopAndRumble: {}
+PercentFrequencyShift: 60
+Priority: 128
+StaticAttenuation: 8.81

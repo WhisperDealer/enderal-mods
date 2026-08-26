@@ -1,0 +1,10 @@
+FormKey: 3E1F54:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Violence_Art_Buffshield_1
+ObjectBounds:
+  First: -74, -370, -256
+  Second: 74, 410, 296
+Model:
+  File: Triumvirate\Violence_Art_Buffshield_1.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

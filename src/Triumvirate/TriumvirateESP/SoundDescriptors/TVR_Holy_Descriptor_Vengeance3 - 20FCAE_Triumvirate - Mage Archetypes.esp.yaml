@@ -1,0 +1,13 @@
+FormKey: 20FCAE:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Holy_Descriptor_Vengeance3
+Type: Standard
+Category: 01A0BD:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\AMB\Weather\AMB_Weather_AlduinStormCall_LP.wav
+OutputModel: 0E363A:Skyrim.esm
+LoopAndRumble:
+  Unknown: 4
+  Loop: Loop
+PercentFrequencyShift: 30
+Priority: 128
+StaticAttenuation: 11.89

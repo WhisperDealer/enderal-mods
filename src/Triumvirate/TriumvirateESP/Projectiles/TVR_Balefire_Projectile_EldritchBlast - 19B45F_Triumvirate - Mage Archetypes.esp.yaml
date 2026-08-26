@@ -1,0 +1,20 @@
+FormKey: 19B45F:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Balefire_Projectile_EldritchBlast
+ObjectBounds:
+  First: -40, -11, -32
+  Second: 39, 512, 28
+Model:
+  File: Triumvirate\Balefire_Projectile_EldritchBlast.nif
+  Data: 0x020000000000000000000000
+Type: Beam
+Speed: 20000
+Range: 1024
+Light: 19B45C:Triumvirate - Mage Archetypes.esp
+Explosion: 10A292:Skyrim.esm
+FadeDuration: 0.5
+ImpactForce: 10
+CollisionRadius: 1
+Lifetime: 0.6
+RelaunchInterval: 0.1
+MuzzleFlashModel: ''
+SoundLevel: 1

@@ -1,0 +1,9 @@
+FormKey: 27F3AC:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Toxic_Hands
+ObjectBounds:
+  First: 0, -11, -11
+  Second: 4, 15, 11
+Model:
+  File: Triumvirate\Toxic_Hands.nif
+  Data: 0x020000000000000000000000
+Type: []

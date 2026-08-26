@@ -1,0 +1,10 @@
+FormKey: 19B45A:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Balefire_Art_Empowered
+ObjectBounds:
+  First: -53, -56, 2
+  Second: 53, 55, 113
+Model:
+  File: Triumvirate\Balefire_Art_Empowered.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

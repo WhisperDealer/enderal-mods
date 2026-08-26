@@ -1,0 +1,19 @@
+FormKey: 330A36:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Rift_Hazard_DrainingMist
+ObjectBounds:
+  First: -1756, -1678, 752
+  Second: 1723, 1732, 1717
+Name:
+  TargetLanguage: English
+  Value: Shadow Hazard
+Model:
+  File: Triumvirate\Rift_Hazard_DrainingMist2.nif
+  Data: 0x020000000000000000000000
+Limit: 1
+Radius: 60
+TargetInterval: 0.1
+Flags:
+- InheritDurationFromSpawnSpell
+- DropToGround
+Spell: 3216CF:Triumvirate - Mage Archetypes.esp
+Sound: 205A86:Triumvirate - Mage Archetypes.esp

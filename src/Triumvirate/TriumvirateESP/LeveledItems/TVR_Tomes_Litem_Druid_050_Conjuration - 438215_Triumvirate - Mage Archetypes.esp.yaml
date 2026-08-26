@@ -1,0 +1,10 @@
+FormKey: 438215:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Tomes_Litem_Druid_050_Conjuration
+ChanceNone: 1
+Flags:
+- UseAll
+Entries:
+- Data:
+    Level: 1
+    Reference: 41EC82:Triumvirate - Mage Archetypes.esp
+    Count: 1

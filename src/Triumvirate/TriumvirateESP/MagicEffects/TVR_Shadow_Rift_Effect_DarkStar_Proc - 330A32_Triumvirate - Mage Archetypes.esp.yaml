@@ -1,0 +1,42 @@
+FormKey: 330A32:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shadow_Rift_Effect_DarkStar_Proc
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_DarkStar_Pull_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Rift_Activator_DarkStar
+      Object: 330A31:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_Speed
+      Data: 5000
+Name:
+  TargetLanguage: English
+  Value: Magic Damage
+MenuDisplayObject: 2FDF71:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Detrimental
+- PowerAffectsMagnitude
+BaseCost: 4
+MagicSkill: Destruction
+ResistValue: ResistMagic
+CastingLight: 2FDF80:Triumvirate - Mage Archetypes.esp
+MinimumSkillLevel: 100
+SpellmakingArea: 30
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+Explosion: 071AD8:Triumvirate - Mage Archetypes.esp
+CastType: FireAndForget
+CastingArt: 2FDF70:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 0.6
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds:
+- Type: Release
+  Sound: 03C8FB:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: Deals <mag> magic damage in an area.

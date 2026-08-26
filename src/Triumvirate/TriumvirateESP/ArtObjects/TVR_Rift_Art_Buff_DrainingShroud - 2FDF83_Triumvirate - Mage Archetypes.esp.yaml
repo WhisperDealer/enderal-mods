@@ -1,0 +1,10 @@
+FormKey: 2FDF83:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Rift_Art_Buff_DrainingShroud
+ObjectBounds:
+  First: -239, -234, -72
+  Second: 239, 234, 95
+Model:
+  File: Triumvirate\Rift_Art_LeechingVortex.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

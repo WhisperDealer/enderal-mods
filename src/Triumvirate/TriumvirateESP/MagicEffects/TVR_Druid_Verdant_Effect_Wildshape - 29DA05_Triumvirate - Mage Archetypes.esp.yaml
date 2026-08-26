@@ -1,0 +1,45 @@
+FormKey: 29DA05:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Verdant_Effect_Wildshape
+Name:
+  TargetLanguage: English
+  Value: Wildshape
+MenuDisplayObject: 191249:Triumvirate - Mage Archetypes.esp
+Flags:
+- Recover
+- SnapToNavmesh
+- NoMagnitude
+- NoArea
+- PowerAffectsDuration
+- NoHitEffect
+BaseCost: 20.5
+MagicSkill: Alteration
+CastingLight: 19124F:Triumvirate - Mage Archetypes.esp
+MinimumSkillLevel: 50
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+CastType: FireAndForget
+CastingArt: 19124A:Triumvirate - Mage Archetypes.esp
+HitEffectArt: 09F69B:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 0.12
+DualCastScale: 1
+ImageSpaceModifier: 124ED9:Triumvirate - Mage Archetypes.esp
+CastingSoundLevel: Normal
+Sounds:
+- Sound: 03F37A:Skyrim.esm
+- Type: Charge
+  Sound: 03C8F9:Skyrim.esm
+- Type: Ready
+  Sound: 006A26:Triumvirate - Mage Archetypes.esp
+- Type: Release
+  Sound: 115E1A:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: Assume the form of a Deer while sprinting out of combat, moving <30>% faster, for <dur> seconds.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000007:Skyrim.esm
+  ComparisonValue: 1

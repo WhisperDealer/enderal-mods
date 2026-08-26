@@ -1,0 +1,13 @@
+FormKey: 115E18:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Balefire_Sound_Release_EldritchBlast
+Type: Standard
+Category: 07F80B:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\QST\QST_Halldir_Cairn_Fade.wav
+OutputModel: 07E5DD:Skyrim.esm
+LoopAndRumble: {}
+PercentFrequencyShift: 80
+PercentFrequencyVariance: 15
+Priority: 128
+Variance: 2
+StaticAttenuation: 8.81

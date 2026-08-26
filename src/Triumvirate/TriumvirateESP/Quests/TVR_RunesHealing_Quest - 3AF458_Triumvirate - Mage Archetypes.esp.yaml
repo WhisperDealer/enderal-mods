@@ -1,0 +1,69 @@
+FormKey: 3AF458:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_RunesHealing_Quest
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_TVR_RunesHealth_Quest_053AF458
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Player
+      Object: 3AF458:Triumvirate - Mage Archetypes.esp
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Target
+      Object: 3AF458:Triumvirate - Mage Archetypes.esp
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Spell
+      Object: 3AF454:Triumvirate - Mage Archetypes.esp
+  FileName: QF_TVR_RunesHealth_Quest_053AF458
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_TVR_RunesHealth_Quest_053AF458
+    FragmentName: Fragment_0
+Name:
+  TargetLanguage: English
+  Value: Runes of Opportunity
+Flags:
+- AllowRepeatedStages
+Priority: 100
+Filter: TVR\
+Stages:
+- Flags:
+  - StartUpStage
+  Unknown: 155
+  LogEntries:
+  - Flags: []
+NextAliasID: 2
+Aliases:
+- Name: TVR_Player
+  Flags: []
+  ForcedReference: 000014:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: TVR_Target
+  Flags:
+  - MatchingRefInLoadedArea
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: IsActorConditionData
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: IsHostileToActorConditionData
+      UseAliases: True
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: GetDeadConditionData
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetDistanceConditionData
+      UseAliases: True
+    ComparisonValue: 1536
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: IsInCombatConditionData
+    ComparisonValue: 1
+  VoiceTypes: Null

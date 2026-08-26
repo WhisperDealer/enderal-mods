@@ -1,0 +1,10 @@
+FormKey: 1CDEE2:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_MagInv_Controller
+ObjectBounds:
+  First: -195, -251, -140
+  Second: 195, 251, 215
+Model:
+  File: Triumvirate\Controller_Inv.nif
+  Data: 0x020000000000000000000000
+MaxAngle: 90
+Unused: 0x000000

@@ -1,0 +1,12 @@
+FormKey: 349F67:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Conversion_Faction
+Name:
+  TargetLanguage: English
+  Value: Conversion Faction
+Relations:
+- Target: 046E6B:Skyrim.esm
+  Reaction: Ally
+CrimeValues:
+  Arrest: True
+  AttackOnSight: True
+VendorValues: {}

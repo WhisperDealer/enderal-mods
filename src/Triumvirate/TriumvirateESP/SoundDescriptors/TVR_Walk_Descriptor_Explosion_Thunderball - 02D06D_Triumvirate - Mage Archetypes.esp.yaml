@@ -1,0 +1,12 @@
+FormKey: 02D06D:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Walk_Descriptor_Explosion_Thunderball
+Type: Standard
+Category: 01A0BD:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\VOC\Shout\FX\UnrelentingForce\Thunder\VOC_Shout_FX_UnrelentingForce_B_01.wav
+OutputModel: 0FD93D:Skyrim.esm
+LoopAndRumble: {}
+PercentFrequencyShift: 75
+PercentFrequencyVariance: 6
+Priority: 128
+StaticAttenuation: 4.41

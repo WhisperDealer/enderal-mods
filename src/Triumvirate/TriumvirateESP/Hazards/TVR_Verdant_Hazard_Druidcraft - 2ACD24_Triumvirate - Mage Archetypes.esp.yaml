@@ -1,0 +1,11 @@
+FormKey: 2ACD24:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Verdant_Hazard_Druidcraft
+Model:
+  File: Effects\FXEmptyObject.nif
+  Data: 0x020000000000000000000000
+Radius: 3
+Lifetime: 5
+TargetInterval: 1
+Flags:
+- AlignToImpactNormal
+- DropToGround

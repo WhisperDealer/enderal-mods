@@ -1,0 +1,10 @@
+FormKey: 308188:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Walk_Art_Buff_ShadowDance
+ObjectBounds:
+  First: -78, -63, -99
+  Second: 79, 63, 119
+Model:
+  File: Triumvirate\Walk_Art_ShadowDance.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

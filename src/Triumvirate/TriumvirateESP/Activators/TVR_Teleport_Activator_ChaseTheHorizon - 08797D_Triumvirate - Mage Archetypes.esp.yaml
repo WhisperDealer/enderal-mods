@@ -1,0 +1,34 @@
+FormKey: 08797D:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 67108864
+EditorID: TVR_Teleport_Activator_ChaseTheHorizon
+SkyrimMajorRecordFlags:
+- 0x4000000
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_TeleportCircle_Activator_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerRef
+      Object: 000014:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Druid_Spell_ChaseTheHorizon_Aoe
+      Object: 2B6F45:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Teleport_FormList_ChaseTheHorizon
+      Object: 2B6F44:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Teleport_Imod
+      Object: 2988FF:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Teleport_Marker_Disengage
+      Object: 298901:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Teleport_Marker_Engage
+      Object: 298900:Triumvirate - Mage Archetypes.esp
+Model:
+  File: Effects\FXEmptyObject.nif
+  Data: 0x020000000000000000000000
+MarkerColor: '#00CC4C33'
+Flags: []
+MajorFlags:
+- NavMeshGenerationFilter

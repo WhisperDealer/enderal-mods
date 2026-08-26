@@ -1,0 +1,12 @@
+FormKey: 24784E:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Primal_Descriptor_HoundOfHircine_BreathLoop
+Type: Standard
+Category: 0DDDC5:Skyrim.esm
+SoundFiles:
+- data\Sound\fx\mihailczart.esp\soundczart.wav
+OutputModel: 05A28A:Skyrim.esm
+LoopAndRumble:
+  Unknown: 2
+  Loop: Loop
+Priority: 1
+StaticAttenuation: 11.89

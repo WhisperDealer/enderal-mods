@@ -1,0 +1,17 @@
+FormKey: 419B3A:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_I000_StaffEnchantment_Weaken
+Name:
+  TargetLanguage: English
+  Value: Weaken
+EnchantmentCost: 50
+CastType: FireAndForget
+EnchantmentAmount: 50
+TargetType: TargetLocation
+EnchantType: StaffEnchantment
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 22411B:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 0.2
+    Area: 40
+    Duration: 30

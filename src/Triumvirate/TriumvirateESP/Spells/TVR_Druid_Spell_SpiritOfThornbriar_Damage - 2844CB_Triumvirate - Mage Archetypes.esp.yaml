@@ -1,0 +1,26 @@
+FormKey: 2844CB:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Spell_SpiritOfThornbriar_Damage
+Name:
+  TargetLanguage: English
+  Value: Thornbriar Barbs
+MenuDisplayObject: 27F3AB:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 15
+Flags:
+- AreaEffectIgnoresLOS
+ChargeTime: 0.5
+CastType: FireAndForget
+TargetType: Touch
+HalfCostPerk: 0C44C8:Skyrim.esm
+Effects:
+- BaseEffect: 2844D0:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 1
+    Duration: 8
+- BaseEffect: 2844D2:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 1
+    Duration: 8

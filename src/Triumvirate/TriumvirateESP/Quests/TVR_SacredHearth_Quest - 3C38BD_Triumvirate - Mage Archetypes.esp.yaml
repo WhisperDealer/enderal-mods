@@ -1,0 +1,73 @@
+FormKey: 3C38BD:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_SacredHearth_Quest
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_SacredHearth_Quest_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerRef
+      Object: 000014:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Astral_Global_SacredHearth_HearthIsOut
+      Object: 3C89D4:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Astral_Global_SacredHearth_OriginIsOut
+      Object: 3C89D5:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Astral_Message_SacredHearth_Help
+      Object: 3C38C4:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Banish
+      Object: 3C38C0:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Hearth
+      Object: 3C38BD:Triumvirate - Mage Archetypes.esp
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Origin
+      Object: 3C38BD:Triumvirate - Mage Archetypes.esp
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Possess_Imod_In
+      Object: 3727D3:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Possess_Imod_Loop
+      Object: 3727D1:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Possess_Imod_Out
+      Object: 3727D2:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Shaman_Spell_SacredHearth_Proc
+      Object: 3B9680:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Teleport_Imod
+      Object: 2988FF:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Teleport_Marker_Disengage
+      Object: 298901:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Teleport_Marker_Engage
+      Object: 298900:Triumvirate - Mage Archetypes.esp
+  Versioning:
+  - Break0
+  ExtraBindDataVersion: 0
+  FileName: ''
+Name:
+  TargetLanguage: English
+  Value: Sacred Hearth
+Flags:
+- StartGameEnabled
+- 0x10
+Priority: 100
+Filter: TVR\
+NextAliasID: 2
+Aliases:
+- Name: TVR_Hearth
+  Flags: []
+  ForcedReference: 3C38BC:Triumvirate - Mage Archetypes.esp
+  VoiceTypes: Null
+- ID: 1
+  Name: TVR_Origin
+  Flags: []
+  ForcedReference: 3C38C0:Triumvirate - Mage Archetypes.esp
+  VoiceTypes: Null

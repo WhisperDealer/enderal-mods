@@ -1,0 +1,158 @@
+FormKey: 2CB368:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warrior_Race_FylgjaStorm
+Name:
+  TargetLanguage: English
+  Value: Witchlight
+Description:
+  TargetLanguage: English
+  Value: ''
+Skin: 2CB369:Triumvirate - Mage Archetypes.esp
+BodyTemplate:
+  ArmorType: Clothing
+  ActsLike44: True
+Keywords:
+- 013795:Skyrim.esm
+- 06F6FB:Skyrim.esm
+- 0F23C5:Skyrim.esm
+- 0FCD57:Skyrim.esm
+- 103AD2:Skyrim.esm
+SkillBoost0:
+  Skill: 255
+SkillBoost1:
+  Skill: 255
+SkillBoost2:
+  Skill: 255
+SkillBoost3:
+  Skill: 255
+SkillBoost4:
+  Skill: 255
+SkillBoost5:
+  Skill: 255
+SkillBoost6:
+  Skill: 255
+Height:
+  Male: 1
+  Female: 1
+Weight:
+  Male: 1
+  Female: 1
+Flags:
+- NoShadow
+- Walks
+- NoCombatInWater
+- DontShowBloodSpray
+- DontShowBloodDecal
+- AllowRagdollCollision
+- RegenHpInCombat
+- CantOpenDoors
+- NoKnockdowns
+- DontShowWeaponBlood
+Starting:
+- Key: Health
+  Value: 50
+- Key: Magicka
+  Value: 50
+- Key: Stamina
+  Value: 50
+BaseCarryWeight: 200
+BaseMass: 1
+AccelerationRate: 0.5
+DecelerationRate: 0.5
+Regen:
+- Key: Health
+  Value: 5
+- Key: Magicka
+  Value: 10
+- Key: Stamina
+  Value: 40
+UnarmedDamage: 20
+UnarmedReach: 96
+BodyBipedObject: Head
+AngularAccelerationRate: 0.25
+AngularTolerance: 5
+MountData:
+  MountOffset: -63.479, 0, 0
+  DismountOffset: -50, 0, 65
+  MountCameraOffset: 0, -300, 0
+SkeletalModel:
+  Male:
+    MutagenObjectType: SimpleModel
+    File: mihail monsters and animals\Witchlight\Will-o-the-Wisp\skeletonwillothewisp.nif
+    Data: 0x020000000000000000000000
+  Female:
+    MutagenObjectType: SimpleModel
+    File: Actors\Witchlight\Character Assets\skeleton.nif
+    Data: 0x020000000000000000000000
+MovementTypeNames:
+- BLDO
+- RUN1
+- SNEK
+- SWIM
+- WALK
+Voices:
+  Male: 01F6A5:Skyrim.esm
+  Female: 01F6A5:Skyrim.esm
+FacegenMainClamp: 5
+FacegenFaceClamp: 3
+Attacks:
+- AttackData:
+    DamageMult: 1
+    Chance: 1
+    Spell: 07E59B:Skyrim.esm
+    StrikeAngle: 35
+    StaminaMult: 1
+  AttackEvent: attackStart_Attack1
+BodyData:
+  Male:
+    Index: BodyTexture
+    Model:
+      File: Actors\Character\UpperBodyHumanMale.egt
+      Data: 0x020000000000000000000000
+  Female:
+    Index: BodyTexture
+    Model:
+      File: Actors\Character\UpperBodyHumanFemale.egt
+      Data: 0x020000000000000000000000
+BodyPartData: 086F43:Skyrim.esm
+BehaviorGraph:
+  Male:
+    File: Actors\Witchlight\WitchlightProject.hkx
+    Data: 0x020000000000000000000000
+  Female:
+    File: Actors\Witchlight\WitchlightProject.hkx
+    Data: 0x020000000000000000000000
+MaterialType: 100752:Skyrim.esm
+ImpactDataSet: 02C481:Skyrim.esm
+BipedObjectNames:
+- Key: Head
+  Value: BODY
+EquipmentFlags:
+- HandToHand
+- Spell
+- 0x2000
+- 0x4000
+- 0x8000
+- 0x10000
+- 0x20000
+- 0x40000
+- 0x80000
+- 0x100000
+- 0x200000
+- 0x400000
+- 0x800000
+- 0x1000000
+- 0x2000000
+- 0x4000000
+- 0x8000000
+- 0x10000000
+- 0x20000000
+- 0x40000000
+- 0x80000000
+- 0x0
+EquipmentSlots:
+- 013F42:Skyrim.esm
+UnarmedEquipSlot: 013F42:Skyrim.esm
+BaseMovementDefaultWalk: 086F47:Skyrim.esm
+BaseMovementDefaultRun: 086F47:Skyrim.esm
+MorphRace: 013209:Skyrim.esm
+ArmorRace: 013209:Skyrim.esm

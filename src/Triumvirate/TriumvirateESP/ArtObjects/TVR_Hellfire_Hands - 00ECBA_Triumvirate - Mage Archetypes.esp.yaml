@@ -1,0 +1,9 @@
+FormKey: 00ECBA:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Hellfire_Hands
+ObjectBounds:
+  First: -4, -16, -16
+  Second: 7, 16, 17
+Model:
+  File: Triumvirate\Hellfire_Hands.nif
+  Data: 0x020000000000000000000000
+Type: []

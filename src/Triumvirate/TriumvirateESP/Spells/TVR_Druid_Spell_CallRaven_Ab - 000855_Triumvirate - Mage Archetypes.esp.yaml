@@ -1,0 +1,14 @@
+FormKey: 000855:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Spell_CallRaven_Ab
+Name:
+  TargetLanguage: English
+  Value: Raven Abilities
+MenuDisplayObject: 14F4DC:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Type: Ability
+Effects:
+- BaseEffect: 08CAC9:Skyrim.esm
+  Data: {}

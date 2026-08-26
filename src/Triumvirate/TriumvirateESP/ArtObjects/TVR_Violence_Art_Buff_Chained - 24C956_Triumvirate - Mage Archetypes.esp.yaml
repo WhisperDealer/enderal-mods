@@ -1,0 +1,10 @@
+FormKey: 24C956:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Violence_Art_Buff_Chained
+ObjectBounds:
+  First: -98, -98, -202
+  Second: 100, 100, 59
+Model:
+  File: Triumvirate\Violence_Art_Chained.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

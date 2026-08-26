@@ -1,0 +1,26 @@
+FormKey: 35E369:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Totem_Addon_Totem1
+BodyTemplate:
+  FirstPersonFlags:
+  - Head
+  - Body
+  - Hands
+  - Feet
+  - Tail
+  ArmorType: Clothing
+  ActsLike44: True
+Race: 013743:Skyrim.esm
+Priority:
+  Male: 0
+  Female: 0
+WeightSliderEnabled:
+  Male: False
+  Female: False
+Unknown2: 24
+WorldModel:
+  Male:
+    File: Triumvirate\Totem_Art_Totem1.nif
+    Data: 0x020000000000000000000000
+  Female:
+    File: Clothes\Monk\FXMonkVariant2.nif
+    Data: 0x020000000000000000000000

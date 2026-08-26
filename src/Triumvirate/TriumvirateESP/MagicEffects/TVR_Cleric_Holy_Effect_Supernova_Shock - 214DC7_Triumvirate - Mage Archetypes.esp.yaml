@@ -1,0 +1,57 @@
+FormKey: 214DC7:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Cleric_Holy_Effect_Supernova_Shock
+Name:
+  TargetLanguage: English
+  Value: Shock Damage
+MenuDisplayObject: 205A7A:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 20AB9E:Triumvirate - Mage Archetypes.esp
+- 01CEAF:Skyrim.esm
+- 0806E1:Skyrim.esm
+Flags:
+- Detrimental
+- FXPersist
+- NoRecast
+- PowerAffectsDuration
+- NoDeathDispel
+BaseCost: 12.5
+MagicSkill: Destruction
+ResistValue: ResistShock
+CastingLight: 205A7D:Triumvirate - Mage Archetypes.esp
+TaperWeight: 0.3
+HitShader: 20FCB1:Triumvirate - Mage Archetypes.esp
+MinimumSkillLevel: 100
+SpellmakingArea: 80
+SpellmakingCastingTime: 3.5
+TaperCurve: 2
+TaperDuration: 1
+Archetype:
+  MutagenObjectType: MagicEffectPeakValueModArchetype
+  ActorValue: Health
+Explosion: 214DC2:Triumvirate - Mage Archetypes.esp
+CastType: FireAndForget
+CastingArt: 205A7B:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 0.66
+DualCastScale: 1
+ImageSpaceModifier: 037E91:Skyrim.esm
+CastingSoundLevel: Normal
+Sounds:
+- Sound: 03C8F8:Skyrim.esm
+- Type: Charge
+  Sound: 073FD9:Skyrim.esm
+- Type: Ready
+  Sound: 03C8FA:Skyrim.esm
+- Type: Release
+  Sound: 023DF7:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsHostileToActorConditionData
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsInCombatConditionData
+  ComparisonValue: 1

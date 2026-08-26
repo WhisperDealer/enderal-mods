@@ -1,0 +1,18 @@
+FormKey: 2CB369:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 4
+EditorID: TVR_Warrior_Armor_FylgjaStorm
+SkyrimMajorRecordFlags:
+- NotPlayable
+BodyTemplate:
+  FirstPersonFlags:
+  - Head
+  ArmorType: Clothing
+  ActsLike44: True
+Race: 2CB368:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: ''
+Armature:
+- 2CB36B:Triumvirate - Mage Archetypes.esp
+MajorFlags:
+- NonPlayable

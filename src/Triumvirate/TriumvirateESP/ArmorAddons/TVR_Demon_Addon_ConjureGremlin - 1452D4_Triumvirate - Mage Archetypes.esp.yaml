@@ -1,0 +1,32 @@
+FormKey: 1452D4:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Demon_Addon_ConjureGremlin
+BodyTemplate:
+  FirstPersonFlags:
+  - Body
+  ArmorType: Clothing
+  ActsLike44: True
+Priority:
+  Male: 0
+  Female: 0
+WeightSliderEnabled:
+  Male: False
+  Female: False
+Unknown: 2
+Unknown2: 23
+WorldModel:
+  Male:
+    File: Mihail Monsters and Animals\Werewolf\Nekker\nekker common.nif
+    Data: 0x020000000000000000000000
+  Female:
+    File: Actors\WerewolfBeast\Character Assets\MaleBodyWereWolf_1.NIF
+    Data: 0x020000000000000000000000
+FirstPersonModel:
+  Male:
+    File: Actors\Character\Character Assets\1stPersonMaleBody_1.NIF
+    Data: 0x020000000000000000000000
+  Female:
+    File: Actors\Character\Character Assets\1stPersonFemaleBody_1.nif
+    Data: 0x020000000000000000000000
+AdditionalRaces:
+- 0CDD84:Skyrim.esm
+FootstepSound: 04400B:Skyrim.esm

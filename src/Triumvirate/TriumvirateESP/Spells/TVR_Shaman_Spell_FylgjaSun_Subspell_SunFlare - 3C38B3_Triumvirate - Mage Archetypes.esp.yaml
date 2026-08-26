@@ -1,0 +1,25 @@
+FormKey: 3C38B3:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Spell_FylgjaSun_Subspell_SunFlare
+Name:
+  TargetLanguage: English
+  Value: Sun Flare
+MenuDisplayObject: 35E370:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 148
+Flags:
+- AreaEffectIgnoresLOS
+ChargeTime: 3
+CastType: FireAndForget
+HalfCostPerk: 0C44C1:Skyrim.esm
+Effects:
+- BaseEffect: 3C38B2:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 150
+    Area: 20
+- BaseEffect: 3E7064:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 0.65
+    Area: 20

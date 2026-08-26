@@ -1,0 +1,79 @@
+FormKey: 2ACD21:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Verdant_Effect_Druidcraft
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_Druidcraft_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AshPileObject
+      Object: 2ACD23:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DisintegrationMainImmunityList
+      Object: 0F6534:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_FXS
+      Object: 01E198:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Imod
+      Object: 124ED9:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Spawn
+      Object: 2ACD22:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Verdant_Explosion_Druidcraft
+      Object: 2ACD27:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Verdant_Hazard_Druidcraft
+      Object: 2ACD24:Triumvirate - Mage Archetypes.esp
+Name:
+  TargetLanguage: English
+  Value: Druidcraft
+MenuDisplayObject: 191249:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Detrimental
+- NoDuration
+- NoMagnitude
+- NoArea
+- FXPersist
+- NoRecast
+- NoDeathDispel
+BaseCost: 40
+MagicSkill: Alteration
+CastingLight: 19124F:Triumvirate - Mage Archetypes.esp
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+CastType: FireAndForget
+TargetType: TargetActor
+CastingArt: 19124A:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 0.8
+DualCastScale: 1.1
+CastingSoundLevel: Normal
+Sounds:
+- Sound: 03F37A:Skyrim.esm
+- Type: Charge
+  Sound: 0FDA53:Skyrim.esm
+- Type: Ready
+  Sound: 0FDA52:Skyrim.esm
+- Type: Release
+  Sound: 115E1A:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: Nature reclaims target corpse, destroying it and growing a random plant that can be harvested.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 000EDF:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  CompareOperator: NotEqualTo
+  Data:
+    MutagenObjectType: GetActorValueConditionData
+    ActorValue: AlterationPowerModifier
+  ComparisonValue: 1337

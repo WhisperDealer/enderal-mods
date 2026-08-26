@@ -1,0 +1,19 @@
+FormKey: 428EB6:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Violence_Explosion_Bloodlust
+ObjectBounds:
+  First: -2626, -2626, -23
+  Second: 2626, 2626, 2319
+Model:
+  File: Triumvirate\Violence_Explosion_Bloodlust.nif
+  Data: 0x020000000000000000000000
+ImageSpaceModifier: 02F66B:Triumvirate - Mage Archetypes.esp
+Sound1: 423DB4:Triumvirate - Mage Archetypes.esp
+Sound2: 003E81:Triumvirate - Mage Archetypes.esp
+Force: 384
+Radius: 512
+ISRadius: 1024
+Flags:
+- 0x1
+- IgnoreLosCheck
+- IgnoreImageSpaceSwap
+SoundLevel: Normal

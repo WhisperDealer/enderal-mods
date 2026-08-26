@@ -1,0 +1,49 @@
+FormKey: 242730:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_Demon_Effect_ConjureTempleGrim_Proc_Absorb
+VirtualMachineAdapter:
+  Scripts:
+  - Name: magicAbsorbFXScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CasterVFX
+      Object: 0ABF13:Skyrim.esm
+    - MutagenObjectType: ScriptFloatProperty
+      Name: fEffectDurationMax
+      Data: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TargetVFX
+      Object: 0ABF14:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Counterspell
+MenuDisplayObject: 10FEF4:Skyrim.esm
+Flags:
+- Hostile
+- Detrimental
+- NoDuration
+- NoArea
+- FXPersist
+- PowerAffectsMagnitude
+- Painless
+MagicSkill: Illusion
+SpellmakingCastingTime: 0.2
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Magicka
+  Type: Absorb
+CastType: FireAndForget
+TargetType: Touch
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds:
+- Type: Release
+  Sound: 074096:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: Absorbs <mag> points of Magicka if a spell is interrupted.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasMagicEffectConditionData
+    MagicEffect: 24272F:Triumvirate - Mage Archetypes.esp
+  ComparisonValue: 1

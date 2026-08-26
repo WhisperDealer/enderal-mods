@@ -1,0 +1,10 @@
+FormKey: 205A7D:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Holy_Light_Hands
+Time: -1
+Radius: 30
+Color: '#00DAB76D'
+FalloffExponent: 1
+FOV: 90
+NearClip: 1
+FlickerPeriod: 1
+FadeValue: 2

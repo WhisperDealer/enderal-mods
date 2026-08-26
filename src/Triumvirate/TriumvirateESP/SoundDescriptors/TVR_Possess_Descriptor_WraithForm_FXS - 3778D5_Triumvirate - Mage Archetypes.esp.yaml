@@ -1,0 +1,15 @@
+FormKey: 3778D5:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Possess_Descriptor_WraithForm_FXS
+Type: Standard
+Category: 0172A1:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\DLC02\AMB\AshBlowing\AMB_AshBlowing_A_02_LP.wav
+- Data\Sound\FX\DLC02\AMB\AshBlowing\AMB_AshBlowing_A_01_LP.wav
+- Data\Sound\FX\DLC02\AMB\AshBlowing\AMB_AshBlowing_B_01_LP.wav
+OutputModel: 0D78B4:Skyrim.esm
+LoopAndRumble:
+  Loop: Loop
+PercentFrequencyShift: 60
+PercentFrequencyVariance: 10
+Priority: 255
+StaticAttenuation: 9.69

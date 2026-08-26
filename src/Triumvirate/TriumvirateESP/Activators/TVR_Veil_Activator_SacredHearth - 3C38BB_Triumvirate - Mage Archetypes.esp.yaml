@@ -1,0 +1,28 @@
+FormKey: 3C38BB:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Veil_Activator_SacredHearth
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_Hearthport_Activator_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Shaman_Astral_Effect_SacredHearth_Proc
+      Object: 40A7E1:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Shaman_Spell_SacredHearth_Proc
+      Object: 3B9680:Triumvirate - Mage Archetypes.esp
+ObjectBounds:
+  First: -104, -102, -164
+  Second: 92, 93, 705
+Name:
+  TargetLanguage: English
+  Value: Hearth Stones
+Model:
+  File: Triumvirate\Veil_Static_SacredHearth.nif
+  Data: 0x020000000000000000000000
+MarkerColor: '#00CC4C33'
+LoopingSound: 03F2C5:Skyrim.esm
+ActivationSound: 10BF77:Skyrim.esm
+ActivateTextOverride:
+  TargetLanguage: English
+  Value: Return to Cast Point
+Flags: []

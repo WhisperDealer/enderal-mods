@@ -1,0 +1,46 @@
+FormKey: 41EC96:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Violence_Effect_StaveFerocity_Proc_DrainArmor
+VirtualMachineAdapter:
+  Scripts:
+  - Name: magicPlaceExplosionScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ExplosionRef
+      Object: 41ECA4:Triumvirate - Mage Archetypes.esp
+Name:
+  TargetLanguage: English
+  Value: Drain Armor
+MenuDisplayObject: 1E741E:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 330A46:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Recover
+- Detrimental
+- NoArea
+- FXPersist
+- NoRecast
+- PowerAffectsDuration
+- NoDeathDispel
+BaseCost: 0.1
+MagicSkill: Alteration
+TaperWeight: 1
+HitShader: 3CDB05:Triumvirate - Mage Archetypes.esp
+MinimumSkillLevel: 25
+SpellmakingCastingTime: 0.5
+TaperCurve: 1
+TaperDuration: 1
+Archetype:
+  MutagenObjectType: MagicEffectPeakValueModArchetype
+  ActorValue: DamageResist
+CastType: FireAndForget
+TargetType: TargetActor
+SkillUsageMultiplier: 1
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds:
+- Type: Release
+  Sound: 03F2EA:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: Shamanic might reduces armor by <mag> points

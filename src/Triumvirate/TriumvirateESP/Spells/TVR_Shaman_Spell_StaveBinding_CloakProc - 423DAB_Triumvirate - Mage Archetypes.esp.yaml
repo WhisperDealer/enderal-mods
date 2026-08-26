@@ -1,0 +1,18 @@
+FormKey: 423DAB:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Spell_StaveBinding_CloakProc
+Name:
+  TargetLanguage: English
+  Value: Stave of Binding Cloak
+MenuDisplayObject: 1E741E:Triumvirate - Mage Archetypes.esp
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Flags:
+- AreaEffectIgnoresLOS
+CastType: Concentration
+TargetType: Aimed
+Effects:
+- BaseEffect: 423DAA:Triumvirate - Mage Archetypes.esp
+  Data:
+    Duration: 1

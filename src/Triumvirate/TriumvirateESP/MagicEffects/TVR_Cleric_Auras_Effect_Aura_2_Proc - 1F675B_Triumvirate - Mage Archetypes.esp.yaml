@@ -1,0 +1,58 @@
+FormKey: 1F675B:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Cleric_Auras_Effect_Aura_2_Proc
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_Z_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Cleric_Auras_Effect_Aura_2_Proc
+      Object: 1F675B:Triumvirate - Mage Archetypes.esp
+Name:
+  TargetLanguage: English
+  Value: Barrier Area
+MenuDisplayObject: 1CDEBE:Triumvirate - Mage Archetypes.esp
+Flags:
+- NoMagnitude
+- FXPersist
+- HideInUI
+BaseCost: 200
+MagicSkill: Restoration
+TaperWeight: 0.3
+MinimumSkillLevel: 50
+SpellmakingArea: 30
+SpellmakingCastingTime: 0.5
+TaperCurve: 2
+TaperDuration: 2
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+CastType: FireAndForget
+HitEffectArt: 1DD20F:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 0.6
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds:
+- Type: Release
+  Sound: 03D118:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetShouldAttackConditionData
+- MutagenObjectType: ConditionFloat
+  CompareOperator: NotEqualTo
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 013797:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: NotEqualTo
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 01397A:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData

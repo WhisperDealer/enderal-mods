@@ -1,0 +1,16 @@
+FormKey: 0133D1:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Demon_Perk_ConjureRavagor
+Name:
+  TargetLanguage: English
+  Value: Ravagor Cap
+Description:
+  TargetLanguage: English
+  Value: ''
+NumRanks: 1
+Playable: True
+Hidden: True
+Effects:
+- MutagenObjectType: PerkEntryPointModifyValue
+  EntryPoint: ModCommandedActorLimit
+  PerkConditionTabCount: 2
+  Value: 3

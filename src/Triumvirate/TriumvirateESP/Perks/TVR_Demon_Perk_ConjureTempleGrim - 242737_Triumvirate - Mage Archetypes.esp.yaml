@@ -1,0 +1,18 @@
+FormKey: 242737:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Demon_Perk_ConjureTempleGrim
+Name:
+  TargetLanguage: English
+  Value: Temple Grim Mana Scaling
+Description:
+  TargetLanguage: English
+  Value: ''
+NumRanks: 1
+Playable: True
+Hidden: True
+Effects:
+- MutagenObjectType: PerkEntryPointModifyActorValue
+  Priority: 200
+  EntryPoint: ModAttackDamage
+  PerkConditionTabCount: 3
+  ActorValue: Magicka
+  Value: 0.2

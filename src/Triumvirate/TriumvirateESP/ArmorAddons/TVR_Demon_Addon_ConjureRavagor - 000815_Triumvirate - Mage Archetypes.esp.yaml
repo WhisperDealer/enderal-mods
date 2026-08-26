@@ -1,0 +1,19 @@
+FormKey: 000815:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Demon_Addon_ConjureRavagor
+BodyTemplate:
+  FirstPersonFlags:
+  - Body
+  ArmorType: Clothing
+  ActsLike44: True
+Race: 000814:Triumvirate - Mage Archetypes.esp
+Priority:
+  Male: 0
+  Female: 0
+WeightSliderEnabled:
+  Male: False
+  Female: False
+WorldModel:
+  Male:
+    File: Triumvirate\Demon_Actor_Ravagor.nif
+    Data: 0x020000000000000000000000
+FootstepSound: 087597:Skyrim.esm

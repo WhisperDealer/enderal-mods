@@ -1,0 +1,14 @@
+FormKey: 419B2A:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warlock_C000_StaffEnchantment_ConjureGremlin
+Name:
+  TargetLanguage: English
+  Value: Conjure Gremlin
+EnchantmentCost: 43
+CastType: FireAndForget
+EnchantmentAmount: 43
+EnchantType: StaffEnchantment
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 181F41:Triumvirate - Mage Archetypes.esp
+  Data:
+    Duration: 60

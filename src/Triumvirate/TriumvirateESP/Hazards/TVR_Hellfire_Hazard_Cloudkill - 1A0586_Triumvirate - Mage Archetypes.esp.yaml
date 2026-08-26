@@ -1,0 +1,13 @@
+FormKey: 1A0586:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Hellfire_Hazard_Cloudkill
+ObjectBounds:
+  First: -127, -84, -67
+  Second: 127, 84, 111
+Model:
+  File: Triumvirate\Hellfire_Hazard_Cloudkill.nif
+  Data: 0x020000000000000000000000
+Radius: 12
+Lifetime: 30
+TargetInterval: 0.3
+Spell: 1A568E:Triumvirate - Mage Archetypes.esp
+Sound: 1A5690:Triumvirate - Mage Archetypes.esp

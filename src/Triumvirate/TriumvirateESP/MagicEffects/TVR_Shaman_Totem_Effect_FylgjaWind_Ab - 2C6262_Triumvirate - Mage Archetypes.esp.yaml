@@ -1,0 +1,30 @@
+FormKey: 2C6262:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Totem_Effect_FylgjaWind_Ab
+VirtualMachineAdapter:
+  Scripts:
+  - Name: magicSetActorAlphaScript
+    Properties:
+    - MutagenObjectType: ScriptFloatProperty
+      Name: AlphaValue
+      Data: 0.25
+    - MutagenObjectType: ScriptBoolProperty
+      Name: DontFadeBack
+      Data: True
+Name:
+  TargetLanguage: English
+  Value: Wind Fylgja Visuals
+MenuDisplayObject: 09DB72:Skyrim.esm
+Flags:
+- NoDuration
+- FXPersist
+HitShader: 017521:Triumvirate - Mage Archetypes.esp
+EnchantShader: 017521:Triumvirate - Mage Archetypes.esp
+Archetype:
+  MutagenObjectType: MagicEffectPeakValueModArchetype
+  ActorValue: Health
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Wind Fylgja heals <mag> points per second.

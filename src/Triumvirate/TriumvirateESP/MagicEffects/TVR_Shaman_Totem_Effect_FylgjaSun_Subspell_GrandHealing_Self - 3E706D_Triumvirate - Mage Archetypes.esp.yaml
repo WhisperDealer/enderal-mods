@@ -1,0 +1,31 @@
+FormKey: 3E706D:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Totem_Effect_FylgjaSun_Subspell_GrandHealing_Self
+Name:
+  TargetLanguage: English
+  Value: Restore Health
+MenuDisplayObject: 0A0E7D:Skyrim.esm
+Keywords:
+- 01CEB0:Skyrim.esm
+- 0A9B1E:Skyrim.esm
+Flags:
+- NoDuration
+- NoArea
+- FXPersist
+- HideInUI
+- PowerAffectsMagnitude
+MagicSkill: Restoration
+MinimumSkillLevel: 75
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+Projectile: 012FDC:Skyrim.esm
+CastType: FireAndForget
+HitEffectArt: 03F1B4:Skyrim.esm
+DualCastScale: 1
+Sounds:
+- Type: Release
+  Sound: 03F361:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''

@@ -1,0 +1,28 @@
+FormKey: 41EC86:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_R025_Book_ParasiticGrowth
+Name:
+  TargetLanguage: English
+  Value: 'Spell Tome: Parasitic Growth'
+Model:
+  File: Clutter\Books\SpellTomeRestorationLowPoly.nif
+  Data: 0x020000000000000000000000
+BookText:
+  TargetLanguage: English
+  Value: >-
+    <font face'$HandwrittenFont'><font size='40'><p align='center'>
+
+    Parasitic Growth
+Keywords:
+- 0937A2:Skyrim.esm
+- 0937A5:Skyrim.esm
+Flags:
+- 0x4
+Teaches:
+  MutagenObjectType: BookSpell
+  Spell: 27F3B2:Triumvirate - Mage Archetypes.esp
+Value: 97
+Weight: 1
+InventoryArt: 02FBB7:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''

@@ -1,0 +1,10 @@
+FormKey: 4381E0:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Tomes_Litem_Shaman_100_Restoration
+ChanceNone: 1
+Flags:
+- UseAll
+Entries:
+- Data:
+    Level: 1
+    Reference: 414A04:Triumvirate - Mage Archetypes.esp
+    Count: 1

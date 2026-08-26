@@ -1,0 +1,28 @@
+FormKey: 24C957:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Druid_Primal_Effect_CallSnowLeopard_Proc
+Name:
+  TargetLanguage: English
+  Value: Damage Stamina
+MenuDisplayObject: 14F4DC:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Detrimental
+- NoArea
+- FXPersist
+- NoRecast
+- NoDeathDispel
+ResistValue: ResistMagic
+TaperWeight: 1
+SpellmakingCastingTime: 0.5
+TaperCurve: 1
+TaperDuration: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Stamina
+CastType: FireAndForget
+TargetType: Touch
+DualCastScale: 1.1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Drains <mag> points of Stamina.

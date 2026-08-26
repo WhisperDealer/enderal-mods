@@ -1,0 +1,10 @@
+FormKey: 14F4EC:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Static_Diviner_Mark
+ObjectBounds:
+  First: -160, -160, -71
+  Second: 159, 160, 1369
+Model:
+  File: Triumvirate\Veil_Static_Detect_Ingredients.nif
+  Data: 0x020000000000000000000000
+MaxAngle: 90
+Unused: 0x000000

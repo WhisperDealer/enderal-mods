@@ -1,0 +1,50 @@
+FormKey: 3C89D0:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Totem_Effect_CreateWaterTotem_CloakProc_Fake
+Name:
+  TargetLanguage: English
+  Value: Fake Cloak Absorb
+MenuDisplayObject: 35E370:Triumvirate - Mage Archetypes.esp
+Flags:
+- Recover
+- NoHitEvent
+- NoArea
+- HideInUI
+- NoHitEffect
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: ShieldPerks
+  Type: Absorb
+Projectile: 012FCF:Skyrim.esm
+CastType: Concentration
+TargetType: Aimed
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsHostileToActorConditionData
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThan
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetActorValuePercentConditionData
+    ActorValue: Health
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThan
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetActorValuePercentConditionData
+    ActorValue: Magicka
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDiseaseConditionData
+  ComparisonValue: 1

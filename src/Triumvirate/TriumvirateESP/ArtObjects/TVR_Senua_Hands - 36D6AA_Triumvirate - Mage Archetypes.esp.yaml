@@ -1,0 +1,9 @@
+FormKey: 36D6AA:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Senua_Hands
+ObjectBounds:
+  First: -13, -13, 0
+  Second: 14, 13, 0
+Model:
+  File: Triumvirate\Senua_Hands.nif
+  Data: 0x020000000000000000000000
+Type: []

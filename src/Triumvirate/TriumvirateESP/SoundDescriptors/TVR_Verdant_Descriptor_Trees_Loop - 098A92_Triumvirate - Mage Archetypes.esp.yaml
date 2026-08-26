@@ -1,0 +1,14 @@
+FormKey: 098A92:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Verdant_Descriptor_Trees_Loop
+Type: Standard
+Category: 01A0BD:Skyrim.esm
+SoundFiles:
+- fx\amb\rumble\amb_rumble_a_lp.wav
+OutputModel: 06CB4F:Skyrim.esm
+LoopAndRumble:
+  Unknown: 4
+  Loop: Loop
+PercentFrequencyShift: 70
+PercentFrequencyVariance: 10
+Priority: 128
+StaticAttenuation: 1.76

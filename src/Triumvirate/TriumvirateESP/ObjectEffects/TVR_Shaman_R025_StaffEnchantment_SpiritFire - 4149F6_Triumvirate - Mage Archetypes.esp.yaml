@@ -1,0 +1,16 @@
+FormKey: 4149F6:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_R025_StaffEnchantment_SpiritFire
+Name:
+  TargetLanguage: English
+  Value: Spirit Fire
+EnchantmentCost: 117
+CastType: FireAndForget
+EnchantmentAmount: 117
+TargetType: Aimed
+EnchantType: StaffEnchantment
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 3DCE51:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 10
+    Duration: 15

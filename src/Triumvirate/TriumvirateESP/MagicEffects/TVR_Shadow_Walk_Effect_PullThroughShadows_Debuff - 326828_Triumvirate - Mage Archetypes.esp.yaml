@@ -1,0 +1,53 @@
+FormKey: 326828:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shadow_Walk_Effect_PullThroughShadows_Debuff
+Name:
+  TargetLanguage: English
+  Value: Yoink
+MenuDisplayObject: 2FDF85:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 326822:Triumvirate - Mage Archetypes.esp
+- 38BD01:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Recover
+- Detrimental
+- FXPersist
+- PowerAffectsDuration
+- Painless
+BaseCost: 1.8
+MagicSkill: Alteration
+ResistValue: ResistMagic
+CastingLight: 308186:Triumvirate - Mage Archetypes.esp
+HitShader: 016A27:Triumvirate - Mage Archetypes.esp
+MinimumSkillLevel: 75
+SpellmakingArea: 20
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectPeakValueModArchetype
+  ActorValue: DamageResist
+  Association: 326822:Triumvirate - Mage Archetypes.esp
+Projectile: 30D2A0:Triumvirate - Mage Archetypes.esp
+Explosion: 071AD0:Triumvirate - Mage Archetypes.esp
+CastType: FireAndForget
+TargetType: TargetLocation
+CastingArt: 2FDF84:Triumvirate - Mage Archetypes.esp
+SkillUsageMultiplier: 0.8
+DualCastScale: 1
+CastingSoundLevel: Normal
+Sounds:
+- Sound: 03F37A:Skyrim.esm
+- Type: Charge
+  Sound: 03EDD5:Skyrim.esm
+- Type: Ready
+  Sound: 0FDA52:Skyrim.esm
+- Type: Release
+  Sound: 025D9B:Triumvirate - Mage Archetypes.esp
+Description:
+  TargetLanguage: English
+  Value: Pull targets up to <150> feet away to the caster, reducing armor by <mag> points for <dur> seconds.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasMagicEffectKeywordConditionData
+    Keyword: 326829:Triumvirate - Mage Archetypes.esp
+  ComparisonValue: 1

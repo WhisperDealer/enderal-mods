@@ -1,0 +1,20 @@
+FormKey: 3D2C32:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Spell_Worldshatter_Hazard_SandSpirit
+Name:
+  TargetLanguage: English
+  Value: Sand Spirit
+MenuDisplayObject: 109AC2:Skyrim.esm
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 54
+ChargeTime: 1
+CastType: FireAndForget
+TargetType: Touch
+HalfCostPerk: 0C44B9:Skyrim.esm
+Effects:
+- BaseEffect: 3FB4A3:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 0.5
+    Duration: 4

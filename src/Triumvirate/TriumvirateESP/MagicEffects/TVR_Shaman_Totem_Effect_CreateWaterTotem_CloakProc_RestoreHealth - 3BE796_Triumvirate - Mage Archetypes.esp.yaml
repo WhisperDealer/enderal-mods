@@ -1,0 +1,36 @@
+FormKey: 3BE796:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Totem_Effect_CreateWaterTotem_CloakProc_RestoreHealth
+Name:
+  TargetLanguage: English
+  Value: Restore Health
+MenuDisplayObject: 35E370:Triumvirate - Mage Archetypes.esp
+Keywords:
+- 01CEB0:Skyrim.esm
+- 3E706A:Triumvirate - Mage Archetypes.esp
+Flags:
+- NoArea
+- FXPersist
+- PowerAffectsMagnitude
+BaseCost: 5
+TaperWeight: 1
+HitShader: 012FD9:Skyrim.esm
+SpellmakingCastingTime: 0.5
+TaperCurve: 1
+TaperDuration: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+Projectile: 012FCF:Skyrim.esm
+CastType: Concentration
+TargetType: Aimed
+HitEffectArt: 03F810:Skyrim.esm
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: The spirits restore <mag> points of Health and Magicka per second.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsHostileToActorConditionData

@@ -1,0 +1,7 @@
+FormKey: 3B968D:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Veil_Message_SenseEnemies
+Description:
+  TargetLanguage: English
+  Value: You sense an enemy within %.0f feet.
+INAM: 0x00000000
+DisplayTime: 2

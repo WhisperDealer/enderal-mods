@@ -1,0 +1,22 @@
+FormKey: 1BEBAE:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Balefire_Projectile_ScytheOfDagon
+ObjectBounds:
+  First: -107, -116, -42
+  Second: 108, 5, 51
+Model:
+  File: Triumvirate\Balefire_Projectile_ScytheOfDagon.nif
+  Data: 0x020000000000000000000000
+Flags:
+- PassThroughSmallTransparent
+Type: Cone
+Speed: 2200
+Range: 2200
+Light: 19B45C:Triumvirate - Mage Archetypes.esp
+Sound: 001861:Triumvirate - Mage Archetypes.esp
+FadeDuration: 8
+ImpactForce: 6
+ConeSpread: 9.8
+CollisionRadius: 10
+Lifetime: 0.4
+RelaunchInterval: 0.15
+MuzzleFlashModel: ''

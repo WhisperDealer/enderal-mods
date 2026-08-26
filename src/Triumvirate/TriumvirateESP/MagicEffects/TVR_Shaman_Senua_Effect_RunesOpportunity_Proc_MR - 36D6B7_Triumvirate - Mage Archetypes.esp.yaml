@@ -1,0 +1,29 @@
+FormKey: 36D6B7:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Senua_Effect_RunesOpportunity_Proc_MR
+Name:
+  TargetLanguage: English
+  Value: Weakness to Magic
+MenuDisplayObject: 36D6A8:Triumvirate - Mage Archetypes.esp
+Flags:
+- Hostile
+- Recover
+- Detrimental
+- NoArea
+- PowerAffectsMagnitude
+MagicSkill: Restoration
+TaperWeight: 1
+SpellmakingCastingTime: 0.5
+TaperCurve: 1
+TaperDuration: 1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: ResistMagic
+Projectile: 012FCF:Skyrim.esm
+CastType: FireAndForget
+TargetType: TargetActor
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: magic resist by <mag>% for <dur> seconds.

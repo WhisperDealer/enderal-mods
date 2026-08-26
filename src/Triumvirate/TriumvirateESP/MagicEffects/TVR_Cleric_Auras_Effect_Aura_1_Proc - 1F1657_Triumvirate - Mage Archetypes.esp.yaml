@@ -1,0 +1,36 @@
+FormKey: 1F1657:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Cleric_Auras_Effect_Aura_1_Proc
+VirtualMachineAdapter:
+  Scripts:
+  - Name: magiceffectshaderapply
+    Properties:
+    - MutagenObjectType: ScriptBoolProperty
+      Name: bUseDuration
+      Data: True
+    - MutagenObjectType: ScriptObjectProperty
+      Name: EffectShaderFX
+      Object: 01B212:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Holy Burst
+MenuDisplayObject: 1CDEBE:Triumvirate - Mage Archetypes.esp
+Flags:
+- NoArea
+- NoRecast
+- NoDeathDispel
+BaseCost: 1
+MagicSkill: Restoration
+MinimumSkillLevel: 25
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectCloakArchetype
+  Association: 200977:Triumvirate - Mage Archetypes.esp
+CastType: FireAndForget
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds:
+- Type: Release
+  Sound: 03F2EA:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: Solar burst that does <mag> points of damage, doubled against undead.

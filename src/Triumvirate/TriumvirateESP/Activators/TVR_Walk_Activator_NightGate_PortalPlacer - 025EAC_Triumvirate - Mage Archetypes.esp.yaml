@@ -1,0 +1,23 @@
+FormKey: 025EAC:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Walk_Activator_NightGate_PortalPlacer
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_Transporter_Placer_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Tonal_Activator_Transporter_In
+      Object: 2E99F7:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Tonal_Activator_Transporter_Out
+      Object: 2E99F8:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Tonal_Explosion_Transporter_NoSpawn
+      Object: 05AC1D:Triumvirate - Mage Archetypes.esp
+ObjectBounds:
+  First: -27, -27, -16
+  Second: 27, 27, 46
+Model:
+  File: Effects\FXEmptyObject.nif
+  Data: 0x020000000000000000000000
+MarkerColor: '#00CC4C33'
+Flags: []

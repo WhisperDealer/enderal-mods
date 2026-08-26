@@ -1,0 +1,893 @@
+FormKey: 14F4EE:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Diviner_Quest_Mark
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_TVR_Diviner_Quest_Mark_0514F4EE
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Beam_0
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 16
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Beam_1
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 17
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Beam_2
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 18
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Beam_3
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 19
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Beam_4
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 20
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Beam_5
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 21
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Beam_6
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 22
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Beam_7
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 23
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Beam_8
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 24
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Beam_9
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 25
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Beam_A
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 26
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Beam_B
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 27
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Beam_C
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 28
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Beam_D
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 29
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Beam_E
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 30
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Beam_F
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 32
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Player
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Target_0
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Target_1
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Target_2
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Target_3
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Target_4
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Target_5
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Target_6
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Target_7
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Target_8
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 9
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Target_9
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 10
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Target_A
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 11
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Target_B
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 12
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Target_C
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 13
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Target_D
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 14
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Target_E
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 15
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TVR_Target_F
+      Object: 14F4EE:Triumvirate - Mage Archetypes.esp
+      Alias: 31
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Beam
+      Object: 14F4EC:Triumvirate - Mage Archetypes.esp
+  FileName: QF_TVR_Diviner_Quest_Mark_0514F4EE
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_TVR_Diviner_Quest_Mark_0514F4EE
+    FragmentName: Fragment_0
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_TVR_Diviner_Quest_Mark_0514F4EE
+    FragmentName: Fragment_1
+Name:
+  TargetLanguage: English
+  Value: Mark Quest
+Flags:
+- AllowRepeatedStages
+- 0x1000
+Filter: TVR\
+Stages:
+- Flags:
+  - StartUpStage
+  Unknown: 155
+  LogEntries:
+  - Flags: []
+- Index: 200
+  Flags:
+  - ShutDownStage
+  Unknown: 32
+  LogEntries:
+  - Flags: []
+NextAliasID: 33
+Aliases:
+- Name: TVR_Player
+  Flags: []
+  ForcedReference: 000014:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: TVR_Target_0
+  Flags:
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  Conditions:
+  - MutagenObjectType: ConditionGlobal
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetDistanceConditionData
+      UseAliases: True
+    ComparisonValue: 14F4EF:Triumvirate - Mage Archetypes.esp
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Door
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Container
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Key
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 2
+  Name: TVR_Target_1
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  Conditions:
+  - MutagenObjectType: ConditionGlobal
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetDistanceConditionData
+      UseAliases: True
+    ComparisonValue: 14F4EF:Triumvirate - Mage Archetypes.esp
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Door
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Container
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Key
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 3
+  Name: TVR_Target_2
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  Conditions:
+  - MutagenObjectType: ConditionGlobal
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetDistanceConditionData
+      UseAliases: True
+    ComparisonValue: 14F4EF:Triumvirate - Mage Archetypes.esp
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Door
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Container
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Key
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 4
+  Name: TVR_Target_3
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  Conditions:
+  - MutagenObjectType: ConditionGlobal
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetDistanceConditionData
+      UseAliases: True
+    ComparisonValue: 14F4EF:Triumvirate - Mage Archetypes.esp
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Door
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Container
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Key
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 5
+  Name: TVR_Target_4
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  Conditions:
+  - MutagenObjectType: ConditionGlobal
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetDistanceConditionData
+      UseAliases: True
+    ComparisonValue: 14F4EF:Triumvirate - Mage Archetypes.esp
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Door
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Container
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Key
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 6
+  Name: TVR_Target_5
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  Conditions:
+  - MutagenObjectType: ConditionGlobal
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetDistanceConditionData
+      UseAliases: True
+    ComparisonValue: 14F4EF:Triumvirate - Mage Archetypes.esp
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Door
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Container
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Key
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 7
+  Name: TVR_Target_6
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  Conditions:
+  - MutagenObjectType: ConditionGlobal
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetDistanceConditionData
+      UseAliases: True
+    ComparisonValue: 14F4EF:Triumvirate - Mage Archetypes.esp
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Door
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Container
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Key
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 8
+  Name: TVR_Target_7
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  Conditions:
+  - MutagenObjectType: ConditionGlobal
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetDistanceConditionData
+      UseAliases: True
+    ComparisonValue: 14F4EF:Triumvirate - Mage Archetypes.esp
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Door
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Container
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Key
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 9
+  Name: TVR_Target_8
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  Conditions:
+  - MutagenObjectType: ConditionGlobal
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetDistanceConditionData
+      UseAliases: True
+    ComparisonValue: 14F4EF:Triumvirate - Mage Archetypes.esp
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Door
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Container
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Key
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 10
+  Name: TVR_Target_9
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  Conditions:
+  - MutagenObjectType: ConditionGlobal
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetDistanceConditionData
+      UseAliases: True
+    ComparisonValue: 14F4EF:Triumvirate - Mage Archetypes.esp
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Door
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Container
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Key
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 11
+  Name: TVR_Target_A
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  Conditions:
+  - MutagenObjectType: ConditionGlobal
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetDistanceConditionData
+      UseAliases: True
+    ComparisonValue: 14F4EF:Triumvirate - Mage Archetypes.esp
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Door
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Container
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Key
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 12
+  Name: TVR_Target_B
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  Conditions:
+  - MutagenObjectType: ConditionGlobal
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetDistanceConditionData
+      UseAliases: True
+    ComparisonValue: 14F4EF:Triumvirate - Mage Archetypes.esp
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Door
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Container
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Key
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 13
+  Name: TVR_Target_C
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  Conditions:
+  - MutagenObjectType: ConditionGlobal
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetDistanceConditionData
+      UseAliases: True
+    ComparisonValue: 14F4EF:Triumvirate - Mage Archetypes.esp
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Door
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Container
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Key
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 14
+  Name: TVR_Target_D
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  Conditions:
+  - MutagenObjectType: ConditionGlobal
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetDistanceConditionData
+      UseAliases: True
+    ComparisonValue: 14F4EF:Triumvirate - Mage Archetypes.esp
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Door
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Container
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Key
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 15
+  Name: TVR_Target_E
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  Conditions:
+  - MutagenObjectType: ConditionGlobal
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetDistanceConditionData
+      UseAliases: True
+    ComparisonValue: 14F4EF:Triumvirate - Mage Archetypes.esp
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Door
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Container
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Key
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 31
+  Name: TVR_Target_F
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  Conditions:
+  - MutagenObjectType: ConditionGlobal
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetDistanceConditionData
+      UseAliases: True
+    ComparisonValue: 14F4EF:Triumvirate - Mage Archetypes.esp
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Door
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Container
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsObjectTypeConditionData
+      FormType: Key
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 16
+  Name: TVR_Beam_0
+  Flags:
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  CreateReferenceToObject:
+    Object: 14F4EC:Triumvirate - Mage Archetypes.esp
+    AliasID: 1
+  VoiceTypes: Null
+- ID: 17
+  Name: TVR_Beam_1
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  CreateReferenceToObject:
+    Object: 14F4EC:Triumvirate - Mage Archetypes.esp
+    AliasID: 2
+  VoiceTypes: Null
+- ID: 18
+  Name: TVR_Beam_2
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  CreateReferenceToObject:
+    Object: 14F4EC:Triumvirate - Mage Archetypes.esp
+    AliasID: 3
+  VoiceTypes: Null
+- ID: 19
+  Name: TVR_Beam_3
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  CreateReferenceToObject:
+    Object: 14F4EC:Triumvirate - Mage Archetypes.esp
+    AliasID: 4
+  VoiceTypes: Null
+- ID: 20
+  Name: TVR_Beam_4
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  CreateReferenceToObject:
+    Object: 14F4EC:Triumvirate - Mage Archetypes.esp
+    AliasID: 5
+  VoiceTypes: Null
+- ID: 21
+  Name: TVR_Beam_5
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  CreateReferenceToObject:
+    Object: 14F4EC:Triumvirate - Mage Archetypes.esp
+    AliasID: 6
+  VoiceTypes: Null
+- ID: 22
+  Name: TVR_Beam_6
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  CreateReferenceToObject:
+    Object: 14F4EC:Triumvirate - Mage Archetypes.esp
+    AliasID: 7
+  VoiceTypes: Null
+- ID: 23
+  Name: TVR_Beam_7
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  CreateReferenceToObject:
+    Object: 14F4EC:Triumvirate - Mage Archetypes.esp
+    AliasID: 8
+  VoiceTypes: Null
+- ID: 24
+  Name: TVR_Beam_8
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  CreateReferenceToObject:
+    Object: 14F4EC:Triumvirate - Mage Archetypes.esp
+    AliasID: 9
+  VoiceTypes: Null
+- ID: 25
+  Name: TVR_Beam_9
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  CreateReferenceToObject:
+    Object: 14F4EC:Triumvirate - Mage Archetypes.esp
+    AliasID: 10
+  VoiceTypes: Null
+- ID: 26
+  Name: TVR_Beam_A
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  CreateReferenceToObject:
+    Object: 14F4EC:Triumvirate - Mage Archetypes.esp
+    AliasID: 11
+  VoiceTypes: Null
+- ID: 27
+  Name: TVR_Beam_B
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  CreateReferenceToObject:
+    Object: 14F4EC:Triumvirate - Mage Archetypes.esp
+    AliasID: 12
+  VoiceTypes: Null
+- ID: 28
+  Name: TVR_Beam_C
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  CreateReferenceToObject:
+    Object: 14F4EC:Triumvirate - Mage Archetypes.esp
+    AliasID: 13
+  VoiceTypes: Null
+- ID: 29
+  Name: TVR_Beam_D
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  CreateReferenceToObject:
+    Object: 14F4EC:Triumvirate - Mage Archetypes.esp
+    AliasID: 14
+  VoiceTypes: Null
+- ID: 30
+  Name: TVR_Beam_E
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  CreateReferenceToObject:
+    Object: 14F4EC:Triumvirate - Mage Archetypes.esp
+    AliasID: 15
+  VoiceTypes: Null
+- ID: 32
+  Name: TVR_Beam_F
+  Flags:
+  - Optional
+  - MatchingRefInLoadedArea
+  - MatchingRefClosest
+  CreateReferenceToObject:
+    Object: 14F4EC:Triumvirate - Mage Archetypes.esp
+    AliasID: 31
+  VoiceTypes: Null

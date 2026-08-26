@@ -1,0 +1,16 @@
+FormKey: 4149F0:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_C000_StaffEnchantment_CreateWaterTotem
+Name:
+  TargetLanguage: English
+  Value: Create Water Totem
+EnchantmentCost: 63
+CastType: FireAndForget
+EnchantmentAmount: 63
+TargetType: TargetLocation
+EnchantType: StaffEnchantment
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 3BE79E:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 5
+    Duration: 60

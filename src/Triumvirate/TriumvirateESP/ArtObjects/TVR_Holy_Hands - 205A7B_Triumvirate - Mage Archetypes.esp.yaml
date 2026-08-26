@@ -1,0 +1,9 @@
+FormKey: 205A7B:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Holy_Hands
+ObjectBounds:
+  First: -11, -11, 0
+  Second: 11, 11, 0
+Model:
+  File: Triumvirate\Holy_Hands.nif
+  Data: 0x020000000000000000000000
+Type: []

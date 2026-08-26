@@ -1,0 +1,16 @@
+FormKey: 41EC5F:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Cleric_I000_StaffEnchantment_Suggestion
+Name:
+  TargetLanguage: English
+  Value: Suggestion
+EnchantmentCost: 42
+CastType: FireAndForget
+EnchantmentAmount: 42
+TargetType: Aimed
+EnchantType: StaffEnchantment
+ChargeTime: 0.5
+Effects:
+- BaseEffect: 1CDEEA:Triumvirate - Mage Archetypes.esp
+  Data:
+    Magnitude: 10
+    Duration: 30

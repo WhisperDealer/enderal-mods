@@ -1,0 +1,12 @@
+FormKey: 00A080:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Hellfire_Descriptor_Subsonic
+Type: Standard
+Category: 01A0BD:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\QST\GreybeardRumble\QST_Greybeard_Rumble_01.wav
+- Data\Sound\FX\QST\GreybeardRumble\QST_Greybeard_Rumble_02.wav
+OutputModel: 0FD93D:Skyrim.esm
+LoopAndRumble: {}
+PercentFrequencyShift: 60
+Priority: 128
+StaticAttenuation: 4.41

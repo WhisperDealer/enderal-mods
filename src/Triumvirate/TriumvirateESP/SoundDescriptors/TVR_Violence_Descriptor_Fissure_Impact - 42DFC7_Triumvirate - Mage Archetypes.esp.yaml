@@ -1,0 +1,16 @@
+FormKey: 42DFC7:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Violence_Descriptor_Fissure_Impact
+Type: Standard
+Category: 0172A1:Skyrim.esm
+SoundFiles:
+- fx\npc\dragon\takeofffx\NPC_Dragon_TakeoffFX_04.wav
+- fx\npc\dragon\takeofffx\NPC_Dragon_TakeoffFX_03.wav
+- fx\npc\dragon\takeofffx\NPC_Dragon_TakeoffFX_02.wav
+- fx\npc\dragon\takeofffx\NPC_Dragon_TakeoffFX_01.wav
+OutputModel: 0ABF1A:Skyrim.esm
+LoopAndRumble:
+  Unknown: 4
+PercentFrequencyShift: 40
+PercentFrequencyVariance: 5
+Priority: 128
+StaticAttenuation: 8.37

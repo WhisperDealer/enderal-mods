@@ -1,0 +1,27 @@
+FormKey: 4056D8:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Shaman_Violence_Effect_Bloodlust_FortifyAttackDamage
+Name:
+  TargetLanguage: English
+  Value: Fortify Attack Damage
+MenuDisplayObject: 1E741E:Triumvirate - Mage Archetypes.esp
+Flags:
+- Recover
+- NoArea
+- HideInUI
+- PowerAffectsDuration
+MagicSkill: Alteration
+CastingLight: 3A524D:Triumvirate - Mage Archetypes.esp
+MinimumSkillLevel: 25
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectPeakValueModArchetype
+  ActorValue: AttackDamageMult
+Projectile: 012FCF:Skyrim.esm
+CastType: FireAndForget
+CastingArt: 1E741F:Triumvirate - Mage Archetypes.esp
+DualCastScale: 1
+CastingSoundLevel: Silent
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

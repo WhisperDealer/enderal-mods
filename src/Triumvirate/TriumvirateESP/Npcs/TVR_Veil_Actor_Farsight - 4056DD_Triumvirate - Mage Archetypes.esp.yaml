@@ -1,0 +1,179 @@
+FormKey: 4056DD:Triumvirate - Mage Archetypes.esp
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
+EditorID: TVR_Veil_Actor_Farsight
+SkyrimMajorRecordFlags:
+- Compressed
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TVR_Farsight_Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerRef
+      Object: 000014:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TVR_Totem_Imod_Fylgja
+      Object: 3B4564:Triumvirate - Mage Archetypes.esp
+    - MutagenObjectType: ScriptFloatProperty
+      Name: TVR_UpdateRate
+      Data: 1
+  - Name: TVR_SwitchToEyes_Script
+    Properties:
+    - MutagenObjectType: ScriptBoolProperty
+      Name: TVR_PlayerControls
+  - Name: TVR_Totem_Script
+Configuration:
+  Flags:
+  - Female
+  - Essential
+  - Unique
+  - DoesNotBleed
+  - LoopedScript
+  - IsGhost
+  - Invulnerable
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 1
+  SpeedMultiplier: 100
+  DispositionBase: 35
+  HealthOffset: 950
+Factions:
+- Faction: 047A01:Skyrim.esm
+  Fluff: 0x000000
+- Faction: 094393:Skyrim.esm
+  Fluff: 0x000000
+Voice: 01F1D5:Skyrim.esm
+Race: 013743:Skyrim.esm
+AIData:
+  EnergyLevel: 50
+  Responsibility: NoCrime
+  Mood: Fear
+Class: 013176:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Eye of the Ancestors
+PlayerSkills:
+  SkillValues:
+  - Key: OneHanded
+    Value: 5
+  - Key: TwoHanded
+    Value: 5
+  - Key: Archery
+    Value: 5
+  - Key: Block
+    Value: 5
+  - Key: Smithing
+    Value: 5
+  - Key: HeavyArmor
+    Value: 5
+  - Key: LightArmor
+    Value: 5
+  - Key: Pickpocket
+    Value: 5
+  - Key: Lockpicking
+    Value: 5
+  - Key: Sneak
+    Value: 5
+  - Key: Alchemy
+    Value: 5
+  - Key: Speech
+    Value: 5
+  - Key: Alteration
+    Value: 5
+  - Key: Conjuration
+    Value: 5
+  - Key: Destruction
+    Value: 5
+  - Key: Illusion
+    Value: 5
+  - Key: Restoration
+    Value: 5
+  - Key: Enchanting
+    Value: 5
+  SkillOffsets:
+  - Key: OneHanded
+    Value: 0
+  - Key: TwoHanded
+    Value: 0
+  - Key: Archery
+    Value: 0
+  - Key: Block
+    Value: 0
+  - Key: Smithing
+    Value: 0
+  - Key: HeavyArmor
+    Value: 0
+  - Key: LightArmor
+    Value: 0
+  - Key: Pickpocket
+    Value: 0
+  - Key: Lockpicking
+    Value: 0
+  - Key: Sneak
+    Value: 0
+  - Key: Alchemy
+    Value: 0
+  - Key: Speech
+    Value: 0
+  - Key: Alteration
+    Value: 0
+  - Key: Conjuration
+    Value: 0
+  - Key: Destruction
+    Value: 0
+  - Key: Illusion
+    Value: 0
+  - Key: Restoration
+    Value: 0
+  - Key: Enchanting
+    Value: 0
+HeadParts:
+- 0EC3C6:Skyrim.esm
+- 0E4DA4:Skyrim.esm
+- 0EC1B2:Skyrim.esm
+HairColor: 0A042F:Skyrim.esm
+NAM5: 255
+Height: 1
+SoundLevel: Normal
+DefaultOutfit: 40F8EC:Triumvirate - Mage Archetypes.esp
+DefaultPackageList: 0E1F94:Skyrim.esm
+HeadTexture: 0F205F:Skyrim.esm
+TextureLighting: '#00C5C994'
+FaceMorph:
+  NoseLongVsShort: -0.2
+  NoseUpVsDown: -0.1
+  JawUpVsDown: -0.2
+  JawNarrowVsWide: -1
+  JawForwardVsBack: -0.5
+  CheeksUpVsDown: 0.5
+  CheeksForwardVsBack: -1
+  EyesUpVsDown: 0.4
+  EyesInVsOut: 0.2
+  BrowsUpVsDown: -0.5
+  BrowsInVsOut: -1
+  BrowsForwardVsBack: -0.2
+  LipsUpVsDown: -0.3
+  LipsInVsOut: 0.1
+  ChinNarrowVsWide: 1
+  ChinUpVsDown: -0.2
+  Unknown: 3.4028235E+38
+FaceParts:
+  Nose: 14
+  Unknown: 4294967295
+  Eyes: 27
+  Mouth: 12
+TintLayers:
+- Index: 27
+  Color: '#00A95452'
+  InterpolationValue: 0.45
+  Preset: 402
+- Index: 30
+  Color: '#00430401'
+  InterpolationValue: 0.42
+  Preset: 418
+- Index: 46
+  Color: '#00000000'
+  InterpolationValue: 0.43
+  Preset: 791
+MajorFlags:
+- 0x40000

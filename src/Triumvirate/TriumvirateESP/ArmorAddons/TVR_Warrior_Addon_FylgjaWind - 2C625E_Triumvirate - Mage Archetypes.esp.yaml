@@ -1,0 +1,22 @@
+FormKey: 2C625E:Triumvirate - Mage Archetypes.esp
+EditorID: TVR_Warrior_Addon_FylgjaWind
+BodyTemplate:
+  FirstPersonFlags:
+  - Body
+  ArmorType: Clothing
+  ActsLike44: True
+Race: 2C625D:Triumvirate - Mage Archetypes.esp
+Priority:
+  Male: 0
+  Female: 0
+WeightSliderEnabled:
+  Male: False
+  Female: False
+Unknown2: 17
+WorldModel:
+  Male:
+    File: Triumvirate\Warrior_Actor_FylgjaSnow.nif
+    Data: 0x020000000000000000000000
+AdditionalRaces:
+- 106C10:Skyrim.esm
+FootstepSound: 0DCE9D:Skyrim.esm
