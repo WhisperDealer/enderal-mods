@@ -121,28 +121,45 @@ admit two ends up on half the share.
 But weighting **cannot make an item findable**, only available. Which tome a shop has stays random
 every restock, so with a large spell list most remain purchasable nowhere even at a healthy share.
 
-**If the player must be able to go and buy a named spell, place it directly** — write the tome into a
-named merchant's `Container` record as an ordinary `Items:` entry. Deterministic, restocks forever,
-and tellable. Enderal's spell merchants, ranked by chest gold (the natural wealth ladder for tiering)
+**If the player must be able to go and buy a named spell, place it directly — into the merchant's
+`<Merchant>_CustomMerchandise` hook, NOT its chest.** Enderal ships **67** of those, one per
+merchant, and **every one is empty**: `UseAll`, no entries, no `ChanceNone`, no `Global`. Each
+merchant's chest already contains its own, so writing there stocks the shop just as
+deterministically while overriding **no container record at all**.
+
+That is the whole point. Merchant chests are the most contested records in Enderal — EGO,
+`EGO SE - Leveling Redone` (50 containers), KataPUMB, KataEmberlord and xxOpenSpells all rewrite
+them — while **no third-party plugin overrides any of the 67 hooks**, and every one of those
+mods keeps the hook in the chests it rewrites. Both conversions in this repo were migrated onto
+the hooks for exactly this reason and each now overrides zero containers.
+
+Enderal's spell merchants, ranked by chest gold (the natural wealth ladder for tiering)
 **[verified]**:
 
-| Chest | FormKey | Gold | Shop |
+| Chest | Gold | Shop | Hook (write HERE) |
 |---|---|---|---|
-| `_00E_Merchant_CCFunkentanz` | `102AD5` | 1800 | Ark, Emberlord and Fireflash |
-| `_00E_Merchant_STTurious` | `118050` | 1430 | Sun Temple, Torius Flameling |
-| `_00E_Merchant_UC_Barnabas` | `13824A` | 1050 | Undercity, Barnabas |
-| `_00E_Merchant_CCSteinschlag` | `0F9320` | 980 | Ark, Ora Stonehand |
-| `_00E_Merchant_MaxusTabbakus02` | `022BF2` | 620 | Duneville, Maxus Tabbakus |
-| `_00E_Merchant_CCMilbert` | `127928` | 530 | Ark, Milbert Foxhand |
+| `_00E_Merchant_CCFunkentanz` `102AD5` | 1800 | Ark, Emberlord and Fireflash | `GabrielleFunkenfrst_` `0302D5` |
+| `_00E_Merchant_STTurious` `118050` | 1430 | Sun Temple, Torius Flameling | `TuriousFlammentrunk_` `0302FE` |
+| `_00E_Merchant_UC_Barnabas` `13824A` | 1050 | Undercity, Barnabas | `Barnabas_` `030302` |
+| `_00E_Merchant_CCSteinschlag` `0F9320` | 980 | Ark, Ora Stonehand | `OraSteinschlag_` `0302E3` |
+| `_00E_Merchant_FlusshaimTarhutieContainer` `05BCD6` | 630 | Riverville, Tarhutie | `Tarhutie_` `0302F7` |
+| `_00E_Merchant_MaxusTabbakus02` `022BF2` | 620 | Duneville, Maxus Tabbakus | **none** |
+| `_00E_Merchant_CCMilbert` `127928` | 530 | Ark, Milbert Foxhand | `MilbertFuchshand_` `0302DE` |
+
+Two practical notes: an empty hook has **no `Entries:` key at all** (Spriggit omits empty
+collections) so you create it rather than append; and **map hook —> merchant by reading the
+chest's own `Items:` list, never by the name** — Adreyo's hook is `Vexin_`, the Ark guard
+smith's is `ArkHofSchmied_`. Not every merchant has one (Maxus Tabbakus does not).
 
 Direct placement for vendors, leveled lists for loot: shops should be a shopping route, loot should
 stay random.
 
-**Check what else overrides the chest before claiming it.** `KataPUMBSpellPack.esp` adds the same 15
-staves to `CCFunkentanz`, `STTurious` and `FlusshaimTarhutieContainer`, and those are their only
-vendor. Overriding one without mastering it deletes them. Where a mod repeats an identical set across
-several chests, **sparing one preserves the whole set** — which is why Apocalypse leaves Tarhutie
-alone and uses Maxus Tabbakus (620) instead of Tarhutie (630).
+**If you must claim a chest anyway, check what else overrides it first.** `KataPUMBSpellPack.esp`
+adds the same 15 staves to `CCFunkentanz`, `STTurious` and `FlusshaimTarhutieContainer`, and those
+are their only vendor. Overriding one without mastering it deletes them. Where a mod repeats an
+identical set across several chests, **sparing one preserves the whole set** — which is how
+Apocalypse used to protect them, using Maxus Tabbakus (620) instead of Tarhutie (630). On the hooks
+that workaround is unnecessary and the Apprentice tier went back to Tarhutie.
 
 Two things that make working distribution look broken: vendor stock is **cached in the save**
 (`iDaysToRespawnVendor: 2`), and `player.additem <LVLI FormID> 1` **resolves a leveled list on the

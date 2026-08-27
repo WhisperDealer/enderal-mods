@@ -77,7 +77,7 @@ Conditions:
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: HasMagicEffectKeywordConditionData
-    Keyword: A00666:Update.esm
+    Keyword: DEAD08:Update.esm
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: IsInListConditionData

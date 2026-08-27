@@ -30,7 +30,7 @@ Keywords:
 - 0806E1:Skyrim.esm
 - 0064A4:Apocalypse - Magic of Skyrim.esp
 - 0207B6:Apocalypse - Magic of Skyrim.esp
-- A00105:Update.esm
+- DEAD07:Update.esm
 - 044D47:Apocalypse - Magic of Skyrim.esp
 Flags:
 - Recover
@@ -84,7 +84,7 @@ Conditions:
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: HasMagicEffectKeywordConditionData
-    Keyword: A00666:Update.esm
+    Keyword: DEAD08:Update.esm
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: IsInListConditionData

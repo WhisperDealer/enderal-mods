@@ -106,22 +106,24 @@ foreach ($row in (Import-Csv -LiteralPath $csv | Where-Object State -eq 'MISSING
 Write-Host "  records with missing references: $($missingByRecord.Count)"
 
 # ------------------------------------------------------------------ where each item is sold
-# Six named merchant chests, in the wealth order the conversion tiers on.
+# Six named merchants, in the wealth order the conversion tiers on. Keyed by the merchant's
+# *_CustomMerchandise hook - SureAI's own empty UseAll list inside each chest - because that is
+# where the stock now lives. We no longer override the chests themselves.
 $merchants = [ordered]@{
-    '102AD5' = 'Ark - Emberlord & Fireflash'
-    '118050' = 'Sun Temple - Torius Flameling'
-    '13824A' = 'Undercity - Barnabas'
-    '0F9320' = 'Ark - Ora Stonehand'
-    '022BF2' = 'Duneville - Maxus Tabbakus'
-    '127928' = 'Ark - Milbert Foxhand'
+    '0302D5' = 'Ark - Emberlord & Fireflash'
+    '0302FE' = 'Sun Temple - Torius Flameling'
+    '030302' = 'Undercity - Barnabas'
+    '0302E3' = 'Ark - Ora Stonehand'
+    '0302F7' = 'Riverville - Tarhutie'
+    '0302DE' = 'Ark - Milbert Foxhand'
 }
 $soldAt = @{}
-foreach ($f in Get-ChildItem -LiteralPath (Join-Path $tree 'Containers') -File -Filter '_00E_Merchant_*.yaml') {
+foreach ($f in Get-ChildItem -LiteralPath (Join-Path $tree 'LeveledItems') -File -Filter '*_CustomMerchandise*.yaml') {
     if ($f.BaseName -notmatch ' - ([0-9A-F]{6})_') { continue }
-    $chest = $Matches[1]
-    if (-not $merchants.Contains($chest)) { continue }
-    foreach ($m in [regex]::Matches([IO.File]::ReadAllText($f.FullName), 'Item: ([0-9A-F]{6}):Apocalypse')) {
-        $soldAt[$m.Groups[1].Value] = $merchants[$chest]
+    $hook = $Matches[1]
+    if (-not $merchants.Contains($hook)) { continue }
+    foreach ($m in [regex]::Matches([IO.File]::ReadAllText($f.FullName), 'Reference: ([0-9A-F]{6}):Apocalypse')) {
+        $soldAt[$m.Groups[1].Value] = $merchants[$hook]
     }
 }
 # Loot: the six ZP_Apoc_* leveled lists this conversion adds.
@@ -132,7 +134,7 @@ foreach ($f in Get-ChildItem -LiteralPath (Join-Path $tree 'LeveledItems') -File
         $lootIn[$m.Groups[1].Value] = $list
     }
 }
-Write-Host "  tomes in merchant chests: $($soldAt.Count); items in ZP leveled lists: $($lootIn.Count)"
+Write-Host "  tomes in merchant hooks: $($soldAt.Count); items in ZP leveled lists: $($lootIn.Count)"
 
 # ------------------------------------------------------------------ per-spell derivation
 function Get-Effects {
@@ -461,14 +463,22 @@ W 'unrelated to the conversion. Harmless -- the victim is still released.'
 W ''
 W '## The shops'
 W ''
-W '| `coc` target | Shop | Gold | Tier | Tomes |'
-W '|---|---|---:|---|---:|'
-W '| `CapitalCityMagierkram` | Ark -- Emberlord and Fireflash | 1800 | Master | 45 |'
-W '| `SuntempleAlchemy` | Sun Temple -- Torius Flameling | 1430 | Expert | 39 |'
-W '| `UndercityBarracks2Barnabas` | Undercity -- Barnabas | 1050 | Adept (Mentalism/Entropy/Elementalism) | 19 |'
-W '| -- | Ark -- Ora Stonehand | 980 | Adept (Psionics/Light Magic) | 14 |'
-W '| -- | Duneville -- Maxus Tabbakus | 620 | Apprentice | 28 |'
-W '| -- | Ark -- Milbert Foxhand | 530 | Novice | 15 |'
+W '| `coc` target | Shop | Gold | Tier | Tomes | Hook |'
+W '|---|---|---:|---|---:|---|'
+W '| `CapitalCityMagierkram` | Ark -- Emberlord and Fireflash | 1800 | Master | 45 | `GabrielleFunkenfrst_CustomMerchandise` |'
+W '| `SuntempleAlchemy` | Sun Temple -- Torius Flameling | 1430 | Expert | 39 | `TuriousFlammentrunk_CustomMerchandise` |'
+W '| `UndercityBarracks2Barnabas` | Undercity -- Barnabas | 1050 | Adept (Mentalism/Entropy/Elementalism) | 19 | `Barnabas_CustomMerchandise` |'
+W '| -- | Ark -- Ora Stonehand | 980 | Adept (Psionics/Light Magic) | 14 | `OraSteinschlag_CustomMerchandise` |'
+W '| -- | Riverville -- Tarhutie | 630 | Apprentice | 28 | `Tarhutie_CustomMerchandise` |'
+W '| -- | Ark -- Milbert Foxhand | 530 | Novice | 15 | `MilbertFuchshand_CustomMerchandise` |'
+W ''
+W 'The three shops without a `coc` target are outdoor Ark and Riverville market stalls -- their chests'
+W 'are placed in `CapitalCityMarketArea`, `CapitalCityStrangerArea` and `Vyn` rather than an interior.'
+W ''
+W 'The stock lives in each merchant''s `*_CustomMerchandise` hook, not in the chest. Those are SureAI''s'
+W 'own empty `UseAll` LeveledItems -- one per merchant, already inside the chest -- so **this'
+W 'conversion overrides no container record of any master**, and nothing it sells can be reverted by'
+W 'an overhaul that rewrites the chest.'
 W ''
 W 'Vendor stock is cached in the save (`iDaysToRespawnVendor: 2`), so a merchant only re-rolls every'
 W 'two in-game days. Sleeping three days is the reliable way to force a restock.'
@@ -486,7 +496,7 @@ W '| `DEAD-SCRIPT-PROP` | A script property points at a missing form. Usually th
 W '| `VANILLA-LIST` | Behaviour depends on a FormList with dangling entries | Does the spell find or affect anything at all |'
 W '| `SUMMON-GAP` | Summons an actor whose gear, perks or death item are missing | Does the summon appear, is it hostile, does it have a weapon |'
 W '| `MISSING-EFFECT` | An effect record the spell references does not exist | Almost certainly broken. Investigate before shipping |'
-W '| `NOT-SOLD` | In no merchant chest and no leveled list -- unobtainable by design (the 15 Daedric/Dwemer summons) | Confirm it is genuinely unreachable, then skip the row |'
+W '| `NOT-SOLD` | Stocked by no merchant and in no leveled list -- unobtainable by design (the 15 Daedric/Dwemer summons) | Confirm it is genuinely unreachable, then skip the row |'
 W ''
 W 'The walk stops one hop past the spell''s magic effects. Going further flagged a third more rows'
 W 'without reaching anything new, so what lies deeper is listed by hand below instead.'
@@ -598,7 +608,7 @@ foreach ($r in ($scrollRows | Sort-Object School, Name)) {
 W ''
 W '## Known-unobtainable by design'
 W ''
-W 'Fifteen Daedric and Dwemer summons are in no merchant chest and no leveled list, following the'
+W 'Fifteen Daedric and Dwemer summons are stocked by no merchant and in no leveled list, following the'
 W '`enderal-magic-porter` rule that Daedra and Dwemer have no place in Enderal''s setting. Their'
 W 'records still ship (removing them would break every FormList and script that indexes them), so'
 W 'they are flagged `NOT-SOLD` above rather than deleted. Nothing to test -- but verify a player'

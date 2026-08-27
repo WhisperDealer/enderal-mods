@@ -2,7 +2,7 @@ FormKey: 012E67:Apocalypse - Magic of Skyrim.esp
 EditorID: WB_ConjureXivilaiLord_Weapon
 Name:
   TargetLanguage: English
-  Value: Daedric Dagger
+  Value: Entropic Dagger
 Model:
   File: Weapons\Daedric\DaedricDagger.nif
   Data: 0x020000000000000000000000

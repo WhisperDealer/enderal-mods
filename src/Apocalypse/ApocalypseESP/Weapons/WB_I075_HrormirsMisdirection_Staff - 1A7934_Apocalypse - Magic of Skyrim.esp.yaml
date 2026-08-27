@@ -2,7 +2,7 @@ FormKey: 1A7934:Apocalypse - Magic of Skyrim.esp
 EditorID: WB_I075_HrormirsMisdirection_Staff
 Name:
   TargetLanguage: English
-  Value: Staff of Hrormir's Misdirection
+  Value: Staff of Misdirection
 Model:
   File: Weapons\Staff02\Staff02.nif
   Data: 0x020000000000000000000000

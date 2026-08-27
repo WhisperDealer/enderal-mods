@@ -56,7 +56,16 @@ Conditions:
   Data:
     MutagenObjectType: GetDeadConditionData
 - MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThan
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetInFactionConditionData
+    Faction: 084D1B:Skyrim.esm
+- MutagenObjectType: ConditionFloat
   CompareOperator: NotEqualTo
+  Flags:
+  - OR
   Data:
     MutagenObjectType: IsHostileToActorConditionData
   ComparisonValue: 1

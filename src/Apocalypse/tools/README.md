@@ -17,6 +17,32 @@ produces a null-pointer CTD during data load. The plugin itself must be rebuilt 
 
 That single fact drives the whole architecture. Do not "simplify" this back into a patch.
 
+## Pinned to Apocalypse 10.3.0
+
+`reference/mods/Apocalypse/esp/` must be **Enai's** plugin, serialized — not a previous release of
+ours. Check `RecordData.yaml`'s `Author:` before running anything: `Enai Siaion` is upstream,
+`Enai Siaion / Whisperdealer` is one of our own builds that got re-ingested, and running the
+pipeline against that would layer our edits on top of themselves.
+
+## Regenerating against a new upstream version
+
+**Wipe `src/Apocalypse/ApocalypseESP/` first, then run 01 → 12 in order.** Step 5 merges Enai's
+records in under an "our edit wins" rule, so anything already in the tree survives untouched — which
+means a regeneration *over the top* of the existing tree does almost nothing.
+
+That wipe is also why every conversion decision has to live in a script. The 10.3.0 bump found four
+that did not, all of them silently reverted by the regeneration:
+
+| Reverted | Now |
+|---|---|
+| the `Enderal - Forgotten Stories.esm` master, hand-added to the header | emitted by step 5, and step 5b **asserts** every master the records reference is declared |
+| three `Dragonborn.esm` references, hand-deleted | step **5b** deletes the list entry containing any DLC FormKey |
+| `WB_IllusionNightmare_MPS_Seidsigil`'s NodeIndex, hand-set to 746 | step **5c**, which re-proves the collision and that 746 is still free |
+| ~32 Elder Scrolls nouns in groups step 1 never scanned | step 1 scans **every** group and carries the missing renames |
+
+The first of those is not a degradation but a hard build failure — Spriggit cannot map an FS FormKey
+without the master — so a regeneration fails loudly. The other three build clean and ship wrong.
+
 ## Order
 
 Run against a fresh `reference/mods/Apocalypse/esp/` produced by `/spriggit-decompile-reference`.
@@ -27,13 +53,15 @@ broken script. Each derives the repo root from its own location, so run them fro
 
 | # | Script | Does |
 |---|---|---|
-| 1 | `01-gen-renames.ps1` | Elder Scrolls proper nouns → Enderal equivalents, across every user-visible string |
+| 1 | `01-gen-renames.ps1` | Elder Scrolls proper nouns → Enderal equivalents, across every user-visible string in **every** record group, plus the five dead load-screen NIFs. Throws if any rename matches nothing |
 | 2 | `02-gen-distribution.ps1` | Builds the six tome/scroll sublists and injects them into Enderal's nine vendor/loot lists |
 | 3 | `03-forward-leveled-lists.ps1` | Rebuilds those nine host lists from the **winning** record — Forgotten Stories overrides eight of them, and building from base Enderal silently reverts FS's edits |
 | 4 | `04-forward-worldspace.ps1` | Replaces Apocalypse's `Tamriel` override of `00003C` with Enderal's `MQP01Home`, **keeping Apocalypse's three persistent refs** — a quest and a faction still point at them |
 | 5 | `05-merge-tree.ps1` | Merges Enai's tree with our edits, drops the 67 staff recipes, re-homes our six new records into Apocalypse's own FormID space, writes the header at form version 1.7 |
+| 5b | `05b-strip-dlc-refs.ps1` | Deletes every list entry holding a `Dawnguard/HearthFires/Dragonborn` FormKey — we drop those masters, so Spriggit cannot map the FormKey and the build fails outright. Then asserts every master the tree references is one the header declares |
+| 5c | `05c-fix-addonnode-index.ps1` | Moves `WB_IllusionNightmare_MPS_Seidsigil` from AddonNode index 110 (Enderal's `_00E_MPSWildWaveFlames`) to 746, re-proving both the collision and that 746 is free |
 | 6 | `06-weight-distribution.ps1` | Duplicates each injected **loot** entry until those lists are ~11–19% Apocalypse. One entry per host list gives 160 tomes the same odds as a single Enderal book — see below. Idempotent; run after 05 |
-| 7 | `07-place-vendor-tomes.ps1` | Writes all 160 tomes **directly** into six named merchant chests, tiered by the chest's gold. This is what actually makes the spells obtainable; the vendor leveled lists no longer carry them. Idempotent — always rebuilds from the Forgotten Stories record |
+| 7 | `07-place-vendor-tomes.ps1` | Writes all 160 tomes **directly** to six named merchants, tiered by the gold in their chest — into SureAI's own `<Merchant>_CustomMerchandise` hooks, so **no container record of any master is overridden**. This is what actually makes the spells obtainable; the vendor leveled lists no longer carry them. Migrates away any leftover chest override. Idempotent — always rebuilds from the Forgotten Stories record |
 | 8 | `08-reprice.ps1` | Rescales all 175 tome and 144 scroll gold values onto Enderal's economy. Apocalypse prices on vanilla Skyrim's ladder, which Enderal does not use. Idempotent — always recomputes from Enai's untouched tree |
 | 9 | `09-arcane-fever-heals.ps1` | Appends Enderal's Arcane Fever effect to the 19 player self-heals (14 spells, 5 scrolls). Every Enderal healing spell pays Fever; Apocalypse's paid nothing. Idempotent — strips its own block and re-appends |
 | 10 | `10-strip-vanilla-navi.ps1` | Cuts Bethesda's navigation map out of the `NAVI` record the CK regenerated, keeping only Apocalypse's own three entries. **3,498 of the plugin's 4,077 missing references were in this one record** |
@@ -41,8 +69,9 @@ broken script. Each derives the repo root from its own location, so run them fro
 | 12 | `12-strip-scroll-menudisplay.ps1` | Removes the dangling `MenuDisplayObject` from all 144 scrolls. Enderal's own 34 scrolls carry none |
 | 13 | `13-gen-test-matrix.ps1` | Generates [`arch-docs/Apocalypse/spell-test-matrix.md`](../../../arch-docs/Apocalypse/spell-test-matrix.md) and, with `-ModIndex`, the console batch files. Not part of the conversion — run it after any change that adds, reprices or re-homes an item |
 
-The AddonNode re-index (`WB_IllusionNightmare_MPS_Seidsigil` 110 → 746) is a single committed record,
-not a script. `verify-addonnode-indices.ps1 -Upstream` is what found the collision.
+The AddonNode re-index (`WB_IllusionNightmare_MPS_Seidsigil` 110 → 746) **used to be** a single
+committed record rather than a script, and the 10.3.0 regeneration duly reverted it to 110 —
+`verify-addonnode-indices.ps1` caught it, which is the only reason it did not ship. It is step 5c now.
 
 The release also ships two loose Papyrus stubs, which are committed files rather than a generator
 step; see [`../Scripts/README.md`](../Scripts/README.md). The reasoning behind steps 10–12 and the
@@ -53,7 +82,8 @@ stubs is in
 
 | Script | Checks |
 |---|---|
-| `verify-plugin-census.ps1 <orig.esp> <built.esp>` | record counts by signature, FormID set, masters, `HEDR`. Expect −67 `COBJ`, +11 `LVLI`, +6 `CONT`, `HEDR 1.7`, no `Dragonborn.esm` |
+| `verify-plugin-census.ps1 <orig.esp> <built.esp>` | record counts by signature, FormID set, masters, `HEDR`. Against 10.3.0 expect `COBJ 0` (all 67 dropped), `LVLI 29`, `CONT 9` (all Apocalypse's own), `WRLD 1`, `HEDR 1.7`, masters Skyrim/Update/FS |
+| `verify-vendor-reachability.ps1` | that the tomes can actually be **bought**: each hook is `UseAll` with no `ChanceNone` and no `Global`, is still carried by its merchant's chest in base Enderal **and in every `reference/mods/` override of that chest**, and covers all 160 tomes exactly once, all priced. Also asserts 0 container overrides |
 | `verify-missing-refs.ps1 [-Baseline N]` | **absolute** audit: everything the tree points at that Enderal does not have, with each surviving reference resolved to its Enderal group and EditorID. Currently **269**. `-Baseline` fails when the count rises |
 | `verify-dangling-diff.ps1` | unresolved references **relative to Enai's original** — a different question. Expect **0 new** |
 | `verify-addonnode-indices.ps1 [-Upstream]` | no `ADDN` index shared with Enderal. Defaults to our tree; `-Upstream` checks Enai's |
@@ -90,7 +120,8 @@ is `1C1E70`). This is not an ESL block — the merged plugin has ~3,890 records 
   half the share of its neighbours. It carries 8x to land in the same band as everything else.
 - **Weighting a leveled list has a ceiling, and the vendor lists hit it.** A list is rolled per draw,
   so which tomes a shop has stays random however heavy the entry is — most of the 160 were
-  purchasable nowhere even at a 38% share. Step 7 replaced that with direct placement and the four
+  purchasable nowhere even at a 38% share. Step 7 replaced that with direct placement (into the
+  merchant hooks) and the four
   `_00ETraderSpellBooksLevel*` overrides were deleted outright, handing those lists back to Forgotten
   Stories. Do not reintroduce them: the tomes would then be sold twice over.
 - **Gold values are Skyrim's, not Enderal's, and nothing warns you.** Apocalypse prices tomes on
@@ -99,16 +130,34 @@ is `1C1E70`). This is not an ESL block — the merged plugin has ~3,890 records 
   scrolls run 10–100 with two at 500. Enai's masters at a 1407 median were 5.6x Enderal's top tome
   and its X-school scrolls at 2500 were 5x Enderal's dearest scroll. Step 8 rescales by a per-tier
   ratio so his internal ordering survives. Re-derive the ratios if a new Apocalypse version reprices.
-- **`KataPUMBSpellPack.esp` adds the same 15 staves to three of the six chests** — `CCFunkentanz`,
-  `STTurious` and `FlusshaimTarhutieContainer` — and those shops are their only vendor. We do not
-  master it, so any chest we claim drops them. Because the set is identical at all three,
-  **Tarhutie is deliberately left unclaimed** and all 15 stay buyable from him; the Apprentice tier
-  went to Maxus Tabbakus (620 gold) instead of Tarhutie (630). Re-run the load-order sweep before
-  moving a tier onto a new chest.
+- **The chest overrides are gone — stock goes into `<Merchant>_CustomMerchandise` instead.**
+  Enderal ships 67 of those, one per merchant, every one an **empty `UseAll` LeveledItem already
+  sitting in that merchant's chest**. Writing there stocks the shop just as deterministically
+  while overriding **no container of any master**. That dissolved a real conflict, not a
+  hypothetical one: `EGO SE - Leveling Redone.esp` overrides **all six** of the chests this step
+  used to claim, and `KataPUMBSpellPack.esp`, `KataEmberlord` and `xxOpenSpells` override some of
+  them too — whichever loaded last simply erased the other's additions. **All five of those mods
+  keep the hook in the chests they rewrite**, so our stock now survives every one of them, and
+  KataPUMB's 15 staves survive us. That is also why **the Apprentice tier moved back to Tarhutie**
+  (630 gold) from Maxus Tabbakus, who was only ever the stand-in and has no hook at all.
+  `verify-vendor-reachability.ps1` re-proves the whole chain rather than trusting this note.
 - **Do not add `(Rank N)` to the tome names.** In Enderal that suffix means the same spell exists at
   another strength, gated on player level (`_01E_`/`_10E_`/`_18E_`/`_28E_`/`_38E_`/`_48E_` = levels
   1/10/18/28/38/48). Apocalypse spells have one version each, and Enderal leaves its own 13
   single-strength tomes unsuffixed for exactly that reason. `Spell Tome: <name>` is correct.
+- **10.3.0 moved Enai's injected keywords.** The five `MAG_*` keywords at `A00105`/`A00106`/`A00108`/
+  `A00170`/`A00666` in `Update.esm`'s space are gone, replaced by seven `Futhark_InjectedKeyword_*`
+  at `DEAD03`–`DEAD11`, and ~15 magic effects and one perk repoint to them. Nothing in Enderal or in
+  any mod under `reference/mods/` defines a record at those IDs, so the injection is safe — but it is
+  worth re-checking on the next bump, because an injected FormID colliding with a real record is the
+  one way this pattern bites.
+- **10.3.0 added one dead-ish reference.** `WB_Des_Spectral3_Effect_Multivortex` gained a
+  `GetInFaction 084D1B:Skyrim.esm` condition. That FormID *survives* in Enderal, but as a placed
+  reference inside `CapitalCityDalGeyssHouse`, not a faction — so the check can never be true. It is
+  one of several `OR`-flagged terms, so the effect still works; left alone deliberately.
+- **Enai's own FormIDs now reach `1C4D39`.** Our six records sit at `1C1E71`–`1C1E76`, in a gap he has
+  skipped past (his `nextObjectID` is `1C7C02`). Re-run the collision check on every bump anyway —
+  `05-merge-tree.ps1` re-homes them and would happily write over an upstream record.
 - Vendor inventories are cached in the save (`iDaysToRespawnVendor: 2`). To test distribution without
   waiting, `player.additem <LVLI FormID> 1` resolves the leveled list directly.
 - **Enderal taxes healing MAGIC, and Apocalypse's heals paid nothing.** Every one of Enderal's own

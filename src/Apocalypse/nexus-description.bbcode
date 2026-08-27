@@ -9,7 +9,7 @@ This conversion fixes that, gives the spells a way into Enderal's economy, remov
 [size=4]⚠ Requirements and install order — read this part[/size]
 
 [list=1]
-[*][b][url=https://www.nexusmods.com/skyrimspecialedition/mods/1090]Apocalypse — Magic of Skyrim by Enai Siaion[/url][/b], version [b]10.2.3[/b] exactly. Install it first and normally. Its two BSAs supply every mesh, texture, sound and asset — this download contains none of them.[/*]
+[*][b][url=https://www.nexusmods.com/skyrimspecialedition/mods/1090]Apocalypse — Magic of Skyrim by Enai Siaion[/url][/b], version [b]10.3.0[/b] exactly. Install it first and normally. Its two BSAs supply every mesh, texture, sound and asset — this download contains none of them.[/*]
 [*]Install this and [b]LET IT OVERWRITE[/b]. It replaces [font=Courier New]Apocalypse - Magic of Skyrim.esp[/font] with a converted build of the same plugin, and adds two loose scripts under [font=Courier New]Scripts\[/font]. Those two [b]must[/b] win over Apocalypse's BSA, so this mod has to sit [b]below Apocalypse in the left-pane (file) order[/b] — which it already must, to win the plugin.[/*]
 [*]Keep [font=Courier New]Apocalypse - Magic of Skyrim.esp[/font] [b]enabled[/b], exactly where it already sits in your load order.[/*]
 [/list]
@@ -49,12 +49,14 @@ All [b]160 spell tomes[/b] are stocked by named merchants, and [b]every one of t
                                                     Destruction
   Ark, Ora Stonehand                 980    Adept  - Illusion,             14
                                                     Restoration
-  Duneville, Maxus Tabbakus          620    Apprentice (rank 025)          28
+  Riverville, Tarhutie               630    Apprentice (rank 025)          28
   Ark, Milbert Foxhand               530    Novice     (rank 000)          15
   ---------------------------------------------------------------------------
                                                                           160[/code]
 
 Each tome is sold at exactly one shop, so the whole spell list is a shopping route rather than a lottery. The Adept tier is split by magic school across the two middle merchants.
+
+[b]The stock is added through SureAI's own extension point, so no merchant record is overridden.[/b] Enderal ships an empty leveled list called [font=Courier New]&lt;Merchant&gt;_CustomMerchandise[/font] for every one of its 67 merchants — a hook the developers built into each shop's chest and never used. This mod writes into six of those instead of rewriting the chests, which means it can add stock to a shop while touching [b]none[/b] of that shop's own records. See Compatibility below for what that buys you.
 
 [b]Loot is separate and stays random.[/b] Apocalypse tomes and its [b]130 scrolls[/b] are also injected into Enderal's own world-loot lists — the ones feeding chests, rucksacks and scroll caches — so they still turn up as finds while you explore. Random is the right shape for loot and the wrong shape for a shop.
 
@@ -305,19 +307,20 @@ Note the last two — Alteration is [i]Mentalism[/i] and Illusion is [i]Psionics
 
 This [b]is[/b] [font=Courier New]Apocalypse - Magic of Skyrim.esp[/font] — it takes the original's place in your load order, exactly where that plugin already sat. It is a full ESP, not ESL-flagged, because it carries all ~3,900 of Apocalypse's own records.
 
-Beyond Apocalypse's own records it touches [b]eleven[/b] Enderal records:
+Beyond Apocalypse's own records it touches [b]twelve[/b] Enderal records — eleven leveled lists and one worldspace header, and [b]not one container, NPC or quest[/b]:
 [list]
-[*][b]Six merchant chests[/b] — [font=Courier New]CCFunkentanz[/font], [font=Courier New]STTurious[/font], [font=Courier New]UC_Barnabas[/font], [font=Courier New]CCSteinschlag[/font], [font=Courier New]MaxusTabbakus02[/font], [font=Courier New]CCMilbert[/font] — each gains its tier of spell tomes[/*]
+[*][b]Six merchant hooks[/b] — [font=Courier New]GabrielleFunkenfrst_[/font], [font=Courier New]TuriousFlammentrunk_[/font], [font=Courier New]Barnabas_[/font], [font=Courier New]OraSteinschlag_[/font], [font=Courier New]Tarhutie_[/font] and [font=Courier New]MilbertFuchshand_CustomMerchandise[/font] — each gains its tier of spell tomes[/*]
 [*][font=Courier New]_00E_SpellBooksLootA[/font] through [font=Courier New]D[/font] — the spellbook loot tiers[/*]
 [*][font=Courier New]00E_ScrollsLowChance[/font] — the scroll loot pool[/*]
+[*][font=Courier New]MQP01Home[/font] — Enderal's own record for worldspace [font=Courier New]00003C[/font], forwarded back over the [i]Tamriel[/i] data the original stamped on it, and carrying three of Apocalypse's own persistent references[/*]
 [/list]
-If another mod edits those same records, the later plugin wins outright and one mod's additions are lost — either order them accordingly or merge with a Bashed/Smashed patch, as with any leveled list or container conflict.
+If another mod edits those same records, the later plugin wins outright and one mod's additions are lost — either order them accordingly or merge with a Bashed/Smashed patch, as with any leveled list conflict. In practice the six merchant hooks are as quiet as records get: [b]nothing else edits them.[/b]
 
-[b]Known conflict — KataPUMB Spell Package.[/b] That mod adds the same 15 staves to three of Enderal's spell merchants: Emberlord and Fireflash, Torius Flameling and Tarhutie in Riverville. This mod claims the first two, so [b]those staves are no longer sold there[/b]. Tarhutie is deliberately left alone for exactly this reason — the staff set is identical at all three shops, so all 15 remain buyable from him, and nothing of KataPUMB's becomes unobtainable. That is also why the Apprentice tier sits with Maxus Tabbakus in Duneville rather than Tarhutie, whose gold is near-identical.
+[b]Overhauls and other spell mods.[/b] Merchant chests are the most heavily contested records in Enderal — [b]EGO[/b], [b]EGO Leveling Redone[/b], [b]KataPUMB Spell Package[/b], [b]Kata's Emberlord[/b] and [b]Open Spells[/b] all rewrite the very shops this mod stocks, and earlier versions of this patch collided with every one of them. Writing into the [font=Courier New]CustomMerchandise[/font] hooks removes the whole class of conflict: those five mods each keep the hook in the chests they rewrite, so [b]this mod's stock survives all of them, in any load order[/b], and none of their additions is lost either. KataPUMB's 15 staves in particular now stay on sale at all three of their shops, Tarhutie included — which is why the Apprentice tier has moved back to him from Maxus Tabbakus.
 
-[b]Compatibility patches planned.[/b] Dedicated patches for [b]KataPUMB Spell Package[/b] and [b]Enderal Gameplay Overhaul (EGO)[/b] are on the way as separate downloads. Neither exists yet — until they do, the KataPUMB note above describes the current behaviour, and EGO is untested against this.
+That is verified against the plugins rather than assumed, but it is a record-level proof: no dedicated compatibility patch has been playtested alongside those mods.
 
-[b]Pinned to Apocalypse 10.2.3.[/b] This ships a rebuilt copy of that exact version's plugin. A newer Apocalypse must not be used with it — install 10.2.3, or wait for this to be refreshed.
+[b]Pinned to Apocalypse 10.3.0.[/b] This ships a rebuilt copy of that exact version's plugin. A newer Apocalypse must not be used with it — install 10.3.0, or wait for this to be refreshed.
 [line]
 [size=4]Known limitations[/size]
 [list]
@@ -327,7 +330,7 @@ If another mod edits those same records, the later plugin wins outright and one 
 [*][b]The Nightmare ground sigil may show the wrong particle effect.[/b] Its addon node index collided with one of Enderal's own effects, which would have replaced an Enderal visual with Apocalypse's. The conflict is resolved in Enderal's favour — protecting the base game — which leaves Apocalypse's mesh looking for a node that has moved. Fixing it properly needs an edited mesh, and this release ships no assets.[/*]
 [*][b]Spell tome tiering is by rank name, not by playtested power.[/b] Which merchant sells a spell follows its Apocalypse rank, not a measurement against Enderal's difficulty curve. Feedback welcome.[/*]
 [*][b]Erodan's Embrace costs a flat 20 Arcane Fever.[/b] Every other heal is priced off the exact number of points it restores, but that one is scripted to heal you to full — there is no number in the record to price, so 20 assumes a late-game health pool. If it feels wrong at your level, say so.[/*]
-[*][b]Merchant inventories get long.[/b] Emberlord and Fireflash goes from 96 entries to 141. SkyUI's category filter handles it, but it is a visibly fuller shop than the base game's.[/*]
+[*][b]Merchant inventories get long.[/b] Emberlord and Fireflash gains 45 spell tomes on top of what it already sells. SkyUI's category filter handles it, but it is a visibly fuller shop than the base game's.[/*]
 [*][b]Tome names carry no "(Rank N)" suffix[/b], unlike most of Enderal's. That is intentional: in Enderal that suffix means the same spell exists at another strength, gated on player level, and Apocalypse spells have exactly one version each. Enderal leaves 13 of its own single-strength tomes unsuffixed for the same reason.[/*]
 [*][b]Requires Enderal SE[/b], which is pinned to Skyrim SE [b]1.5.97[/b]. This is a plugin only, so no SKSE version concerns apply to it.[/*]
 [/list]

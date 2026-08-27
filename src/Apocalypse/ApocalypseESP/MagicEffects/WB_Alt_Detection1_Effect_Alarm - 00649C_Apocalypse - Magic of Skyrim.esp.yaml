@@ -5,7 +5,7 @@ Name:
   Value: Alarm
 MenuDisplayObject: 104F70:Skyrim.esm
 Keywords:
-- A00170:Update.esm
+- DEAD11:Update.esm
 Flags:
 - DispelWithKeywords
 - NoArea

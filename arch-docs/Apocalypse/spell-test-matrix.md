@@ -158,14 +158,22 @@ unrelated to the conversion. Harmless -- the victim is still released.
 
 ## The shops
 
-| `coc` target | Shop | Gold | Tier | Tomes |
-|---|---|---:|---|---:|
-| `CapitalCityMagierkram` | Ark -- Emberlord and Fireflash | 1800 | Master | 45 |
-| `SuntempleAlchemy` | Sun Temple -- Torius Flameling | 1430 | Expert | 39 |
-| `UndercityBarracks2Barnabas` | Undercity -- Barnabas | 1050 | Adept (Mentalism/Entropy/Elementalism) | 19 |
-| -- | Ark -- Ora Stonehand | 980 | Adept (Psionics/Light Magic) | 14 |
-| -- | Duneville -- Maxus Tabbakus | 620 | Apprentice | 28 |
-| -- | Ark -- Milbert Foxhand | 530 | Novice | 15 |
+| `coc` target | Shop | Gold | Tier | Tomes | Hook |
+|---|---|---:|---|---:|---|
+| `CapitalCityMagierkram` | Ark -- Emberlord and Fireflash | 1800 | Master | 45 | `GabrielleFunkenfrst_CustomMerchandise` |
+| `SuntempleAlchemy` | Sun Temple -- Torius Flameling | 1430 | Expert | 39 | `TuriousFlammentrunk_CustomMerchandise` |
+| `UndercityBarracks2Barnabas` | Undercity -- Barnabas | 1050 | Adept (Mentalism/Entropy/Elementalism) | 19 | `Barnabas_CustomMerchandise` |
+| -- | Ark -- Ora Stonehand | 980 | Adept (Psionics/Light Magic) | 14 | `OraSteinschlag_CustomMerchandise` |
+| -- | Riverville -- Tarhutie | 630 | Apprentice | 28 | `Tarhutie_CustomMerchandise` |
+| -- | Ark -- Milbert Foxhand | 530 | Novice | 15 | `MilbertFuchshand_CustomMerchandise` |
+
+The three shops without a `coc` target are outdoor Ark and Riverville market stalls -- their chests
+are placed in `CapitalCityMarketArea`, `CapitalCityStrangerArea` and `Vyn` rather than an interior.
+
+The stock lives in each merchant's `*_CustomMerchandise` hook, not in the chest. Those are SureAI's
+own empty `UseAll` LeveledItems -- one per merchant, already inside the chest -- so **this
+conversion overrides no container record of any master**, and nothing it sells can be reverted by
+an overhaul that rewrites the chest.
 
 Vendor stock is cached in the save (`iDaysToRespawnVendor: 2`), so a merchant only re-rolls every
 two in-game days. Sleeping three days is the reliable way to force a restock.
@@ -183,7 +191,7 @@ this row is where to look first, and what to look at.
 | `VANILLA-LIST` | Behaviour depends on a FormList with dangling entries | Does the spell find or affect anything at all |
 | `SUMMON-GAP` | Summons an actor whose gear, perks or death item are missing | Does the summon appear, is it hostile, does it have a weapon |
 | `MISSING-EFFECT` | An effect record the spell references does not exist | Almost certainly broken. Investigate before shipping |
-| `NOT-SOLD` | In no merchant chest and no leveled list -- unobtainable by design (the 15 Daedric/Dwemer summons) | Confirm it is genuinely unreachable, then skip the row |
+| `NOT-SOLD` | Stocked by no merchant and in no leveled list -- unobtainable by design (the 15 Daedric/Dwemer summons) | Confirm it is genuinely unreachable, then skip the row |
 
 The walk stops one hop past the spell's magic effects. Going further flagged a third more rows
 without reaching anything new, so what lies deeper is listed by hand below instead.
@@ -255,16 +263,16 @@ player.advskill destruction 100000 first, so magnitudes read at full skill.
 | [ ] | **Crackle** | `player.addspell XX109653` | FireAndForget / Aimed | 31 | 50 | Ark - Milbert Foxhand | Does 10 damage to Health and Magicka. |  |
 | [ ] | **Hailstone** | `player.addspell XX02E634` | FireAndForget / Aimed | 31 | 45 | Ark - Milbert Foxhand | An ice crystal that shatters for 15 frost damage to Health and Stamina. Direct hits bypass Frost Resist. |  |
 
-### Apprentice (025) -- Duneville - Maxus Tabbakus
+### Apprentice (025) -- Riverville - Tarhutie
 
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Creeping Cold** | `player.addspell XX0279BD` | Concentration / Aimed | 19 | 90 | Duneville - Maxus Tabbakus | Deals 10 frost damage per second to Health and Stamina. |  |
-| [ ] | **Dragon's Teeth** | `player.addspell XX024361` | FireAndForget / Aimed | 50 | 90 | Duneville - Maxus Tabbakus | Ignites all targets, doing 5 damage for 4 seconds. | DEAD-SCRIPT-PROP |
-| [ ] | **Fracture** | `player.addspell XX0279C0` | FireAndForget / Aimed | 54 | 85 | Duneville - Maxus Tabbakus | A layer of thin ice deals 5 damage to Health and Stamina for 3 seconds. |  |
-| [ ] | **Inferno** | `player.addspell XX022DAB` | FireAndForget | 180 | 90 | Duneville - Maxus Tabbakus | Attunes the caster to fire, equipping the Ember Bolt spell for up to 15 seconds. It deals 40 fire damage. |  |
-| [ ] | **Rift Bolt** | `player.addspell XX0253C2` | FireAndForget / Aimed | 56 | 110 | Duneville - Maxus Tabbakus | Deals 20 shock damage to Health and Magicka and teleports the target backwards. |  |
-| [ ] | **Thundercrack** | `player.addspell XX07C83B` | FireAndForget / Aimed | 43 | 90 | Duneville - Maxus Tabbakus | Deafening close range blast that deals 40 points of shock damage to Health and Magicka. |  |
+| [ ] | **Creeping Cold** | `player.addspell XX0279BD` | Concentration / Aimed | 19 | 90 | Riverville - Tarhutie | Deals 10 frost damage per second to Health and Stamina. |  |
+| [ ] | **Dragon's Teeth** | `player.addspell XX024361` | FireAndForget / Aimed | 50 | 90 | Riverville - Tarhutie | Ignites all targets, doing 5 damage for 4 seconds. | DEAD-SCRIPT-PROP |
+| [ ] | **Fracture** | `player.addspell XX0279C0` | FireAndForget / Aimed | 54 | 85 | Riverville - Tarhutie | A layer of thin ice deals 5 damage to Health and Stamina for 3 seconds. |  |
+| [ ] | **Inferno** | `player.addspell XX022DAB` | FireAndForget | 180 | 90 | Riverville - Tarhutie | Attunes the caster to fire, equipping the Ember Bolt spell for up to 15 seconds. It deals 40 fire damage. |  |
+| [ ] | **Rift Bolt** | `player.addspell XX0253C2` | FireAndForget / Aimed | 56 | 110 | Riverville - Tarhutie | Deals 20 shock damage to Health and Magicka and teleports the target backwards. |  |
+| [ ] | **Thundercrack** | `player.addspell XX07C83B` | FireAndForget / Aimed | 43 | 90 | Riverville - Tarhutie | Deafening close range blast that deals 40 points of shock damage to Health and Magicka. |  |
 
 ### Adept (050) -- Undercity - Barnabas
 
@@ -319,16 +327,16 @@ player.advskill conjuration 100000 first, so magnitudes read at full skill.
 | [ ] | **Bag of Rats** | `player.addspell XX16162D` | FireAndForget | 57 | 30 | Ark - Milbert Foxhand | Summons a Skeever for 30 seconds. | DEAD-REF |
 | [ ] | **Consuming Power** | `player.addspell XX016F92` | FireAndForget / Aimed | 103 | 45 | Ark - Milbert Foxhand | Allied summoned or reanimated minion gains 75% extra attack damage for 10 seconds, then dies. |  |
 
-### Apprentice (025) -- NOT SOLD / Duneville - Maxus Tabbakus
+### Apprentice (025) -- NOT SOLD / Riverville - Tarhutie
 
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
 | [ ] | **Atronach Mark** | `player.addspell XX02CD7E` | FireAndForget / Aimed | 75 | 90 | - | Marks a target for 10 seconds. The mark detonates when the target is struck by a summoned or reanimated minion, dealing <30> magic damage in a <15> foot area. | NOT-SOLD |
-| [ ] | **Conjure Cat Totem** | `player.addspell XX027144` | FireAndForget / TargetLocation | 161 | 85 | Duneville - Maxus Tabbakus | Summons a ancient totem spirit for 60 seconds. It changes between warrior and cat form to heal. (Max. <1>) |  |
-| [ ] | **Conjure Deadeye Captain** | `player.addspell XX037E17` | FireAndForget / TargetLocation | 172 | 95 | Duneville - Maxus Tabbakus | Summons a Deadeye Captain for 60 seconds. Activate a corpse to store it. Activate the Captain to dredge it up. |  |
+| [ ] | **Conjure Cat Totem** | `player.addspell XX027144` | FireAndForget / TargetLocation | 161 | 85 | Riverville - Tarhutie | Summons a ancient totem spirit for 60 seconds. It changes between warrior and cat form to heal. (Max. <1>) |  |
+| [ ] | **Conjure Deadeye Captain** | `player.addspell XX037E17` | FireAndForget / TargetLocation | 172 | 95 | Riverville - Tarhutie | Summons a Deadeye Captain for 60 seconds. Activate a corpse to store it. Activate the Captain to dredge it up. |  |
 | [ ] | **Conjure Dremora Churl** | `player.addspell XX012359` | FireAndForget / TargetLocation | 157 | 145 | - | Summons a Dremora Churl for 60 seconds. When killed, a Dremora Churl is summoned under control of the killer. | NOT-SOLD |
-| [ ] | **Power of the Master** | `player.addspell XX01857E` | FireAndForget | 185 | 170 | Duneville - Maxus Tabbakus | Casts the (beneficial self-targeted) spell in your left hand on all nearby summoned or reanimated minions. |  |
-| [ ] | **Soul Cloak** | `player.addspell XX140B03` | FireAndForget | 141 | 95 | Duneville - Maxus Tabbakus | For 60 seconds, nearby enemies within 15 feet fill a soul gem on death. |  |
+| [ ] | **Power of the Master** | `player.addspell XX01857E` | FireAndForget | 185 | 170 | Riverville - Tarhutie | Casts the (beneficial self-targeted) spell in your left hand on all nearby summoned or reanimated minions. |  |
+| [ ] | **Soul Cloak** | `player.addspell XX140B03` | FireAndForget | 141 | 95 | Riverville - Tarhutie | For 60 seconds, nearby enemies within 15 feet fill a soul gem on death. |  |
 
 ### Adept (050) -- NOT SOLD / Undercity - Barnabas
 
@@ -383,16 +391,16 @@ player.advskill restoration 100000 first, so magnitudes read at full skill.
 | [ ] | **Circle of Strength** | `player.addspell XX036A05` | FireAndForget | 60 | 50 | Ark - Milbert Foxhand | Steals 6 points of Stamina per second from hostiles inside the circle. |  |
 | [ ] | **Wild Healing** | `player.addspell XX082483` | FireAndForget | 80 | 45 | Ark - Milbert Foxhand | Heals the caster 40 points, then heals a random target within range 40 points. |  |
 
-### Apprentice (025) -- Duneville - Maxus Tabbakus
+### Apprentice (025) -- Riverville - Tarhutie
 
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Lamb of Irlanda** | `player.addspell XX036A03` | FireAndForget / Aimed | 83 | 90 | Duneville - Maxus Tabbakus | For 30 seconds, you gain <35>% of the Health the target loses. | RESPITE-INERT |
-| [ ] | **Leech Seed** | `player.addspell XX13E4FD` | FireAndForget / Aimed | 58 | 120 | Duneville - Maxus Tabbakus | Infests a living target with a poison spore for 10 seconds. When the caster falls below full Health, the spore absorbs 5 points of Health per second. |  |
-| [ ] | **Mystic Wind** | `player.addspell XX0E8B77` | FireAndForget | 58 | 90 | Duneville - Maxus Tabbakus | For 10 seconds, restores 5 points of Magicka per second while the caster is sprinting. |  |
-| [ ] | **Necroplague** | `player.addspell XX034D12` | FireAndForget / Aimed | 103 | 160 | Duneville - Maxus Tabbakus | Infects a corpse with a spreading virus that deals 9 disease damage for 30 seconds to nonmechanical foes. |  |
-| [ ] | **Slay Living** | `player.addspell XX003E0F` | FireAndForget / TargetActor | 95 | 85 | Duneville - Maxus Tabbakus | Kills a living target in melee range with <25>% or less remaining health. |  |
-| [ ] | **Welling Blood** | `player.addspell XX01FCD9` | FireAndForget / Aimed | 70 | 95 | Duneville - Maxus Tabbakus | Curses a living target. If the target loses at least <Global=WB_Restoration_WellingBlood_Global_Threshold>% of its maximum Health within 8 seconds, it dies. |  |
+| [ ] | **Lamb of Irlanda** | `player.addspell XX036A03` | FireAndForget / Aimed | 83 | 90 | Riverville - Tarhutie | For 30 seconds, you gain <35>% of the Health the target loses. | RESPITE-INERT |
+| [ ] | **Leech Seed** | `player.addspell XX13E4FD` | FireAndForget / Aimed | 58 | 120 | Riverville - Tarhutie | Infests a living target with a poison spore for 10 seconds. When the caster falls below full Health, the spore absorbs 5 points of Health per second. |  |
+| [ ] | **Mystic Wind** | `player.addspell XX0E8B77` | FireAndForget | 58 | 90 | Riverville - Tarhutie | For 10 seconds, restores 5 points of Magicka per second while the caster is sprinting. |  |
+| [ ] | **Necroplague** | `player.addspell XX034D12` | FireAndForget / Aimed | 103 | 160 | Riverville - Tarhutie | Infects a corpse with a spreading virus that deals 9 disease damage for 30 seconds to nonmechanical foes. |  |
+| [ ] | **Slay Living** | `player.addspell XX003E0F` | FireAndForget / TargetActor | 95 | 85 | Riverville - Tarhutie | Kills a living target in melee range with <25>% or less remaining health. |  |
+| [ ] | **Welling Blood** | `player.addspell XX01FCD9` | FireAndForget / Aimed | 70 | 95 | Riverville - Tarhutie | Curses a living target. If the target loses at least <Global=WB_Restoration_WellingBlood_Global_Threshold>% of its maximum Health within 8 seconds, it dies. |  |
 
 ### Adept (050) -- Ark - Ora Stonehand
 
@@ -447,16 +455,16 @@ player.advskill alteration 100000 first, so magnitudes read at full skill.
 | [ ] | **Longstride** | `player.addspell XX00541E` | Concentration | 13 | 35 | Ark - Milbert Foxhand | While concentrating, grants 20% movement speed and <25> carry weight, tripled when out of combat. |  |
 | [ ] | **Prepare for Adventure** | `player.addspell XX007FFD` | FireAndForget | 48 | 40 | Ark - Milbert Foxhand | Creates a set of basic enchanted mage items (robes, circlet, boots, Destruction staff) in your inventory for 180 seconds. |  |
 
-### Apprentice (025) -- Duneville - Maxus Tabbakus
+### Apprentice (025) -- Riverville - Tarhutie
 
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Baledor's Recital** | `player.addspell XX006FA6` | FireAndForget | 100 | 110 | Duneville - Maxus Tabbakus | Stores the (beneficial self-targeted non-concentration) spell in your left hand and casts it for no cost whenever you enter combat. Empty left hand to reset. |  |
-| [ ] | **Drop Zone** | `player.addspell XX00B646` | FireAndForget / TargetLocation | 50 | 95 | Duneville - Maxus Tabbakus | Creates a ring of cushioning magic at the target location. The caster takes no damage when falling into the ring. |  |
-| [ ] | **Fins of Kilé** | `player.addspell XX007A94` | FireAndForget | 113 | 130 | Duneville - Maxus Tabbakus | You swim 100% faster for 60 seconds. |  |
-| [ ] | **Perilous Path** | `player.addspell XX0803F2` | FireAndForget / Aimed | 80 | 105 | Duneville - Maxus Tabbakus | Lay down a spike barrier that lasts 10 seconds and randomly staggers enemies moving through the spikes. |  |
-| [ ] | **Raise Wall** | `player.addspell XX00CC14` | Concentration | 8 | 105 | Duneville - Maxus Tabbakus | Concentrate to summon a wall from the earth that blocks passage. |  |
-| [ ] | **Wither** | `player.addspell XX12649C` | FireAndForget / Aimed | 62 | 80 | Duneville - Maxus Tabbakus | Reduces movement speed and attack damage by 5% per second, up to <50>%. Lasts 20 seconds. |  |
+| [ ] | **Baledor's Recital** | `player.addspell XX006FA6` | FireAndForget | 100 | 110 | Riverville - Tarhutie | Stores the (beneficial self-targeted non-concentration) spell in your left hand and casts it for no cost whenever you enter combat. Empty left hand to reset. |  |
+| [ ] | **Drop Zone** | `player.addspell XX00B646` | FireAndForget / TargetLocation | 50 | 95 | Riverville - Tarhutie | Creates a ring of cushioning magic at the target location. The caster takes no damage when falling into the ring. |  |
+| [ ] | **Fins of Kilé** | `player.addspell XX007A94` | FireAndForget | 113 | 130 | Riverville - Tarhutie | You swim 100% faster for 60 seconds. |  |
+| [ ] | **Perilous Path** | `player.addspell XX0803F2` | FireAndForget / Aimed | 80 | 105 | Riverville - Tarhutie | Lay down a spike barrier that lasts 10 seconds and randomly staggers enemies moving through the spikes. |  |
+| [ ] | **Raise Wall** | `player.addspell XX00CC14` | Concentration | 8 | 105 | Riverville - Tarhutie | Concentrate to summon a wall from the earth that blocks passage. |  |
+| [ ] | **Wither** | `player.addspell XX12649C` | FireAndForget / Aimed | 62 | 80 | Riverville - Tarhutie | Reduces movement speed and attack damage by 5% per second, up to <50>%. Lasts 20 seconds. |  |
 
 ### Adept (050) -- Undercity - Barnabas
 
@@ -511,16 +519,16 @@ player.advskill illusion 100000 first, so magnitudes read at full skill.
 | [ ] | **Pale Shadow** | `player.addspell XX08558A` | FireAndForget / Aimed | 40 | 55 | Ark - Milbert Foxhand | Target enemy is attacked by its own image for 10 seconds. It deals the same damage but has <1> Health. | DEAD-SCRIPT-PROP |
 | [ ] | **Silvery Barbs** | `player.addspell XX15B843` | FireAndForget / Aimed | 42 | 40 | Ark - Milbert Foxhand | Curses a target for 20 seconds. When the target casts a spell, they get <10>% weakness to magic and you get <10>% magic resistance. This effect stacks. |  |
 
-### Apprentice (025) -- Duneville - Maxus Tabbakus
+### Apprentice (025) -- Riverville - Tarhutie
 
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Backlash** | `player.addspell XX1132DA` | FireAndForget / Aimed | 25 | 95 | Duneville - Maxus Tabbakus | Interrupts target spellcaster. If a spell is interrupted, the target is hit by their own offensive spells, while non-offensive spells are cast on you. |  |
-| [ ] | **Curse of the Silent** | `player.addspell XX017509` | FireAndForget / Aimed | 98 | 120 | Duneville - Maxus Tabbakus | Drains 8 points of Magicka per second for 30 seconds or until the target successfully casts a spell. |  |
-| [ ] | **Illusory Flames** | `player.addspell XX03682F` | Concentration / Aimed | 19 | 75 | Duneville - Maxus Tabbakus | Concentrate to deal <30>% of their current Health as temporary damage that wears off after 2 seconds. |  |
-| [ ] | **Mind Vision** | `player.addspell XX0378A9` | FireAndForget / TargetActor | 90 | 85 | Duneville - Maxus Tabbakus | See through the eyes of target creature or humanoid for 10 seconds. Sheathe to cancel. | DEAD-PERK |
-| [ ] | **Shared Trauma** | `player.addspell XX00C0AC` | FireAndForget / Aimed | 65 | 100 | Duneville - Maxus Tabbakus | For 10 seconds, when target creature or humanoid loses Health, the previous target loses the same amount. | DEAD-PERK |
-| [ ] | **Thoughtsteal** | `player.addspell XX00BB22` | FireAndForget / Aimed | 100 | 90 | Duneville - Maxus Tabbakus | Equip the spells the target has equipped. Lasts for 120 seconds or until unequipped. |  |
+| [ ] | **Backlash** | `player.addspell XX1132DA` | FireAndForget / Aimed | 25 | 95 | Riverville - Tarhutie | Interrupts target spellcaster. If a spell is interrupted, the target is hit by their own offensive spells, while non-offensive spells are cast on you. |  |
+| [ ] | **Curse of the Silent** | `player.addspell XX017509` | FireAndForget / Aimed | 98 | 120 | Riverville - Tarhutie | Drains 8 points of Magicka per second for 30 seconds or until the target successfully casts a spell. |  |
+| [ ] | **Illusory Flames** | `player.addspell XX03682F` | Concentration / Aimed | 19 | 75 | Riverville - Tarhutie | Concentrate to deal <30>% of their current Health as temporary damage that wears off after 2 seconds. |  |
+| [ ] | **Mind Vision** | `player.addspell XX0378A9` | FireAndForget / TargetActor | 90 | 85 | Riverville - Tarhutie | See through the eyes of target creature or humanoid for 10 seconds. Sheathe to cancel. | DEAD-PERK |
+| [ ] | **Shared Trauma** | `player.addspell XX00C0AC` | FireAndForget / Aimed | 65 | 100 | Riverville - Tarhutie | For 10 seconds, when target creature or humanoid loses Health, the previous target loses the same amount. | DEAD-PERK |
+| [ ] | **Thoughtsteal** | `player.addspell XX00BB22` | FireAndForget / Aimed | 100 | 90 | Riverville - Tarhutie | Equip the spells the target has equipped. Lasts for 120 seconds or until unequipped. |  |
 
 ### Adept (050) -- Ark - Ora Stonehand
 
@@ -719,7 +727,7 @@ All of them at once: `bat apoc-scrolls`, or one at a time with the `additem` bel
 
 ## Known-unobtainable by design
 
-Fifteen Daedric and Dwemer summons are in no merchant chest and no leveled list, following the
+Fifteen Daedric and Dwemer summons are stocked by no merchant and in no leveled list, following the
 `enderal-magic-porter` rule that Daedra and Dwemer have no place in Enderal's setting. Their
 records still ship (removing them would break every FormList and script that indexes them), so
 they are flagged `NOT-SOLD` above rather than deleted. Nothing to test -- but verify a player

@@ -33,7 +33,7 @@ MenuDisplayObject: 11CC26:Apocalypse - Magic of Skyrim.esp
 Keywords:
 - 0207B6:Apocalypse - Magic of Skyrim.esp
 - 044D47:Apocalypse - Magic of Skyrim.esp
-- A00105:Update.esm
+- DEAD07:Update.esm
 Flags:
 - Recover
 - NoMagnitude
@@ -87,7 +87,7 @@ Conditions:
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: HasMagicEffectKeywordConditionData
-    Keyword: A00666:Update.esm
+    Keyword: DEAD08:Update.esm
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: IsInListConditionData
