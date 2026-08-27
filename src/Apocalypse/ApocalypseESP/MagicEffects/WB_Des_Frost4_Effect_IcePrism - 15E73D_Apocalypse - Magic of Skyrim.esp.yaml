@@ -28,7 +28,7 @@ Archetype:
   ActorValue: Health
   Type: DualValueModifier
 Projectile: 0B3CB1:Apocalypse - Magic of Skyrim.esp
-Explosion: 0BCF57:Apocalypse - Magic of Skyrim.esp
+Explosion: 1C4D39:Apocalypse - Magic of Skyrim.esp
 CastType: Concentration
 TargetType: Aimed
 SecondActorValue: Stamina

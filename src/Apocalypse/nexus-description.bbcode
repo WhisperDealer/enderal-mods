@@ -9,7 +9,7 @@ This conversion fixes that, gives the spells a way into Enderal's economy, remov
 [size=4]⚠ Requirements and install order — read this part[/size]
 
 [list=1]
-[*][b][url=https://www.nexusmods.com/skyrimspecialedition/mods/1090]Apocalypse — Magic of Skyrim by Enai Siaion[/url][/b], version [b]10.2.3[/b] exactly. Install it first and normally. Its two BSAs supply every mesh, texture, sound and asset — this download contains none of them.[/*]
+[*][b][url=https://www.nexusmods.com/skyrimspecialedition/mods/1090]Apocalypse — Magic of Skyrim by Enai Siaion[/url][/b], version [b]10.3.0[/b] exactly. Install it first and normally. Its two BSAs supply every mesh, texture, sound and asset — this download contains none of them.[/*]
 [*]Install this and [b]LET IT OVERWRITE[/b]. It replaces [font=Courier New]Apocalypse - Magic of Skyrim.esp[/font] with a converted build of the same plugin, and adds two loose scripts under [font=Courier New]Scripts\[/font]. Those two [b]must[/b] win over Apocalypse's BSA, so this mod has to sit [b]below Apocalypse in the left-pane (file) order[/b] — which it already must, to win the plugin.[/*]
 [*]Keep [font=Courier New]Apocalypse - Magic of Skyrim.esp[/font] [b]enabled[/b], exactly where it already sits in your load order.[/*]
 [/list]
@@ -307,19 +307,20 @@ Note the last two — Alteration is [i]Mentalism[/i] and Illusion is [i]Psionics
 
 This [b]is[/b] [font=Courier New]Apocalypse - Magic of Skyrim.esp[/font] — it takes the original's place in your load order, exactly where that plugin already sat. It is a full ESP, not ESL-flagged, because it carries all ~3,900 of Apocalypse's own records.
 
-Beyond Apocalypse's own records it touches [b]eleven[/b] Enderal records — all of them leveled lists, and [b]not one container, NPC, cell or quest[/b]:
+Beyond Apocalypse's own records it touches [b]twelve[/b] Enderal records — eleven leveled lists and one worldspace header, and [b]not one container, NPC or quest[/b]:
 [list]
 [*][b]Six merchant hooks[/b] — [font=Courier New]GabrielleFunkenfrst_[/font], [font=Courier New]TuriousFlammentrunk_[/font], [font=Courier New]Barnabas_[/font], [font=Courier New]OraSteinschlag_[/font], [font=Courier New]Tarhutie_[/font] and [font=Courier New]MilbertFuchshand_CustomMerchandise[/font] — each gains its tier of spell tomes[/*]
 [*][font=Courier New]_00E_SpellBooksLootA[/font] through [font=Courier New]D[/font] — the spellbook loot tiers[/*]
 [*][font=Courier New]00E_ScrollsLowChance[/font] — the scroll loot pool[/*]
+[*][font=Courier New]MQP01Home[/font] — Enderal's own record for worldspace [font=Courier New]00003C[/font], forwarded back over the [i]Tamriel[/i] data the original stamped on it, and carrying three of Apocalypse's own persistent references[/*]
 [/list]
-If another mod edits those same eleven lists, the later plugin wins outright and one mod's additions are lost — either order them accordingly or merge with a Bashed/Smashed patch, as with any leveled list conflict. In practice the six merchant hooks are as quiet as records get: [b]nothing else edits them.[/b]
+If another mod edits those same records, the later plugin wins outright and one mod's additions are lost — either order them accordingly or merge with a Bashed/Smashed patch, as with any leveled list conflict. In practice the six merchant hooks are as quiet as records get: [b]nothing else edits them.[/b]
 
 [b]Overhauls and other spell mods.[/b] Merchant chests are the most heavily contested records in Enderal — [b]EGO[/b], [b]EGO Leveling Redone[/b], [b]KataPUMB Spell Package[/b], [b]Kata's Emberlord[/b] and [b]Open Spells[/b] all rewrite the very shops this mod stocks, and earlier versions of this patch collided with every one of them. Writing into the [font=Courier New]CustomMerchandise[/font] hooks removes the whole class of conflict: those five mods each keep the hook in the chests they rewrite, so [b]this mod's stock survives all of them, in any load order[/b], and none of their additions is lost either. KataPUMB's 15 staves in particular now stay on sale at all three of their shops, Tarhutie included — which is why the Apprentice tier has moved back to him from Maxus Tabbakus.
 
 That is verified against the plugins rather than assumed, but it is a record-level proof: no dedicated compatibility patch has been playtested alongside those mods.
 
-[b]Pinned to Apocalypse 10.2.3.[/b] This ships a rebuilt copy of that exact version's plugin. A newer Apocalypse must not be used with it — install 10.2.3, or wait for this to be refreshed.
+[b]Pinned to Apocalypse 10.3.0.[/b] This ships a rebuilt copy of that exact version's plugin. A newer Apocalypse must not be used with it — install 10.3.0, or wait for this to be refreshed.
 [line]
 [size=4]Known limitations[/size]
 [list]

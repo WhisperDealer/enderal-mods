@@ -1,0 +1,19 @@
+FormKey: 1C4D39:Apocalypse - Magic of Skyrim.esp
+EditorID: WB_DestructionFrost_Explosion_IcePrism
+ObjectBounds:
+  First: -222, -215, -26
+  Second: 222, 201, 223
+Model:
+  File: Magic\ExplosionFrost01.nif
+  Data: 0x020000000000000000000000
+Sound1: 0BCF59:Apocalypse - Magic of Skyrim.esp
+ImpactDataSet: 018A2E:Skyrim.esm
+Force: 24
+ISRadius: 192
+VerticalOffsetMult: 10
+Flags:
+- 0x1
+- AlwaysUsesWorldOrientation
+- IgnoreLosCheck
+- IgnoreImageSpaceSwap
+SoundLevel: Normal

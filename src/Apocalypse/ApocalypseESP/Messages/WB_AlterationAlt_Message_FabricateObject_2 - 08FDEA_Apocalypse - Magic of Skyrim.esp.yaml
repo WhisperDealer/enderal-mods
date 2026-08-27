@@ -31,3 +31,6 @@ MenuButtons:
 - Text:
     TargetLanguage: English
     Value: Smelter
+- Text:
+    TargetLanguage: English
+    Value: Staff Enchanter

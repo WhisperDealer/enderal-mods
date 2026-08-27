@@ -31,7 +31,7 @@ MenuDisplayObject: 13BEE7:Apocalypse - Magic of Skyrim.esp
 Keywords:
 - 03732D:Apocalypse - Magic of Skyrim.esp
 - 078098:Skyrim.esm
-- A00105:Update.esm
+- DEAD07:Update.esm
 Flags:
 - Hostile
 - Recover
@@ -84,7 +84,7 @@ Conditions:
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: HasKeywordConditionData
-    Keyword: A00666:Update.esm
+    Keyword: DEAD08:Update.esm
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: IsInListConditionData

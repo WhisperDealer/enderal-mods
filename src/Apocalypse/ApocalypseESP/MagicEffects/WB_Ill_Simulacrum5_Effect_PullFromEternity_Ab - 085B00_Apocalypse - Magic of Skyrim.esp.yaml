@@ -17,7 +17,7 @@ Name:
   Value: Pull From Eternity - FX
 MenuDisplayObject: 11CC26:Apocalypse - Magic of Skyrim.esp
 Keywords:
-- A00666:Update.esm
+- DEAD08:Update.esm
 Flags:
 - NoDuration
 - FXPersist

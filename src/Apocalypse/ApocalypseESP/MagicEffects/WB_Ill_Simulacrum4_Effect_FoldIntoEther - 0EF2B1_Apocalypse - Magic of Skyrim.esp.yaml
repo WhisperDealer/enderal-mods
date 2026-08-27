@@ -14,7 +14,7 @@ MenuDisplayObject: 11C6AB:Apocalypse - Magic of Skyrim.esp
 Keywords:
 - 0207BB:Apocalypse - Magic of Skyrim.esp
 - 0207B6:Apocalypse - Magic of Skyrim.esp
-- A00108:Update.esm
+- DEAD10:Update.esm
 Flags:
 - Hostile
 - NoHitEvent
@@ -77,7 +77,7 @@ Conditions:
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: HasMagicEffectKeywordConditionData
-    Keyword: A00666:Update.esm
+    Keyword: DEAD08:Update.esm
 - MutagenObjectType: ConditionFloat
   Data:
     MutagenObjectType: IsEssentialConditionData

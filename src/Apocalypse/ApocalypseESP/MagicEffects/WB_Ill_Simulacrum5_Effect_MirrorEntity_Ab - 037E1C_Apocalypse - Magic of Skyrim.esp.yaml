@@ -5,7 +5,7 @@ Name:
   Value: Mirror Entity - FX
 MenuDisplayObject: 13BEE7:Apocalypse - Magic of Skyrim.esp
 Keywords:
-- A00666:Update.esm
+- DEAD08:Update.esm
 Flags:
 - NoDuration
 - FXPersist

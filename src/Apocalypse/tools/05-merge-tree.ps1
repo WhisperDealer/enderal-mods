@@ -32,15 +32,28 @@ foreach ($f in Get-ChildItem $ref -Recurse -File) {
 "copied from Enai's tree   : $copied"
 "our edits preserved       : $kept"
 
-# --- drop our now-redundant MQP01Home forward: we no longer override 00003C at all ---
-$mq = Join-Path $dst 'Worldspaces\MQP01Home - 00003C_Skyrim.esm'
-if (Test-Path -LiteralPath $mq) {
-  Get-ChildItem $mq -File | ForEach-Object { Remove-Item -LiteralPath $_.FullName -Force }
-  Remove-Item -LiteralPath $mq -Force
-  $ws = Join-Path $dst 'Worldspaces'
-  if ((Test-Path -LiteralPath $ws) -and @(Get-ChildItem $ws).Count -eq 0) { Remove-Item -LiteralPath $ws -Force }
-  "removed the MQP01Home forward (no worldspace override remains)"
+# --- KEEP step 4's MQP01Home forward. ---
+# This block used to delete it, on the reasoning that not overriding 00003C at all is tidier than
+# forwarding Enderal's own record back. That reasoning is wrong, and the committed 10.2.3 tree
+# (which was never regenerated after the block was added) is what is actually correct:
+#
+#   Apocalypse places THREE persistent references inside worldspace 00003C, and two of them are
+#   pointed at by other records in its own plugin - `041153` by `WB_SkyUI_Quest` and `08A1DB` by
+#   `WB_Kyrgar_Faction`. Drop the worldspace and those refs cease to exist, leaving two dangling
+#   references that no audit of ours put there.
+#
+# So step 4's output stands: Enderal's MQP01Home data (from Forgotten Stories, the winning record)
+# carrying Apocalypse's three persistent refs, with no Regions and no Tamriel grid. Assert it is
+# there rather than assuming, since step 4 running is what makes this legal.
+$mq = Join-Path $dst 'Worldspaces\MQP01Home - 00003C_Skyrim.esm\RecordData.yaml'
+if (-not (Test-Path -LiteralPath $mq)) {
+  throw "MQP01Home forward is missing - run 04-forward-worldspace.ps1 before this step"
 }
+$mqText = [IO.File]::ReadAllText($mq)
+foreach ($ref in @('041153', '08500A', '08A1DB')) {
+  if ($mqText -notmatch "FormKey: $ref\:Apocalypse") { throw "MQP01Home forward has lost persistent ref $ref" }
+}
+"MQP01Home forward kept (3 persistent refs intact)"
 
 # --- re-home our six new records into Apocalypse's own FormID space ---
 $map = [ordered]@{
@@ -116,6 +129,8 @@ ModHeader:
     FileSize: 0
   - Master: Update.esm
     FileSize: 0
+  - Master: Enderal - Forgotten Stories.esm
+    FileSize: 0
   INTV: 1
 "@
 [IO.File]::WriteAllText((Join-Path $dst 'RecordData.yaml'), ($header -replace "`r?`n", "`r`n"), $enc)
@@ -131,6 +146,8 @@ $meta = @"
 [IO.File]::WriteAllText((Join-Path $dst 'spriggit-meta.json'), ($meta -replace "`r?`n", "`r`n"), $enc)
 
 ''
+# The tree still carries DLC references at this point; 05b strips them and then asserts that every
+# master the records reference is one this header declares.
 $total = @(Get-ChildItem $dst -Recurse -Filter *.yaml -File | Where-Object { $_.Name -ne 'RecordData.yaml' -or $_.DirectoryName -ne $dst }).Count
 "merged tree total records : $total"
 '-- Dragonborn references remaining --'

@@ -301,6 +301,31 @@ These are distilled from real failures in this workspace's lineage. They cost te
     `000014:Skyrim.esm` (PlayerRef) is **absent from `reference/base/Skyrim/`** despite being valid
     and used by 77 of Enderal's own recipes, so allow-list it rather than chasing it. **[verified]**
 
+12. **A replacement plugin's tree must be reproducible from its `tools/` alone — and the only
+    way to know is to WIPE IT AND RE-RUN.** **[verified 2026-08-27]** `src/<Mod>/<Mod>ESP/` is
+    committed in full but is *derived*; every conversion decision that lives only in the tree is
+    invisible until an upstream version bump deletes it. Bumping Apocalypse 10.2.3 → 10.3.0
+    found **four** such decisions, none of them recorded as a step:
+
+    | Hand edit | How it presented |
+    |---|---|
+    | the `Enderal - Forgotten Stories.esm` master, added to the header by hand | **build failure** — Spriggit cannot map an FS FormKey without it |
+    | three `Dragonborn.esm` references, deleted by hand | build failure, same reason |
+    | an `ADDN` NodeIndex moved off an Enderal collision | **builds clean, ships wrong** — only its verifier caught it |
+    | ~32 Elder Scrolls nouns in record groups the rename script never scanned | builds clean, ships wrong |
+
+    The two that fail loudly are the lucky ones. The other two are the reason to re-run the
+    verifiers after a regeneration and to diff the result against what you last shipped, record
+    by record: a hand edit and an upstream change look identical in that diff, and only the
+    generators tell you which is which. **When you fix a ported record by hand, the fix is not
+    done until it is a script that asserts what it changed.**
+
+    Two traps inside the re-run itself. A merge step with an "our edit wins" rule does almost
+    nothing when run over an existing tree, so a regeneration means **deleting the tree first**.
+    And a rename pass that scans a hand-picked list of record groups will report *"all renames
+    matched"* while leaving every string in the groups it never opened — scan them all, and let
+    the per-rename assertion prove each one landed.
+
 ## FormKey discipline
 
 - **New** records use the patch plugin's own name as the FormKey suffix: `<hex>:<PatchName>.esp`.
