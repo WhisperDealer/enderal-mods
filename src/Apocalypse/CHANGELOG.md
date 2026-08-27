@@ -3,6 +3,15 @@
 Paste each version block into the Nexus **Changelogs** tab. User-facing changes only; repo tooling
 and documentation are not listed.
 
+## 1.2.0
+
+- Updated for **Apocalypse 10.3.0**. You must install that version — this release will not match 10.2.3.
+- Spell tomes are now added through the spare shop slots Enderal itself provides, rather than by rewriting each merchant's inventory. This mod no longer edits a single container record.
+- Because of that, it no longer conflicts with **Enderal Gameplay Overhaul**, **EGO Leveling Redone**, **KataPUMB Spell Package**, **Kata's Emberlord** or **Open Spells** — all of which edit the same shops. Load order between them no longer matters.
+- Fixed: KataPUMB's 15 staves were being removed from Emberlord and Fireflash and from Torius Flameling. They are back.
+- Apprentice tomes moved from Maxus Tabbakus in Duneville to **Tarhutie in Riverville**, the workaround that forced them to Duneville no longer being needed.
+- Enai's own changes for 10.3.0 come with it.
+
 ## 1.1.0
 
 - Fixed: Apocalypse's archive was replacing two scripts SureAI deliberately disabled, switching
