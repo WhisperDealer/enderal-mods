@@ -16,9 +16,11 @@
   regeneration (where 02 already produced the full set) this rewrites them byte-identically and is
   a no-op.
 
-  It exists because the 15 Dremora/Xivilai/Daedra/Atronach/Dwemer summons stopped being cut. They
-  were withheld from distribution because none of those things exist in Enderal; they are named for
-  Enderal now (see `01-gen-renames.ps1`), so 160 tomes becomes 175 and 130 scrolls becomes 144.
+  It exists because the set of withheld summons changed. All 15 Dremora/Xivilai/Daedra/Atronach/
+  Dwemer summons are renamed for Enderal now (see `01-gen-renames.ps1`), so naming withholds nothing;
+  what is left is that most of them have never been cast in game. `00-cut-summons.ps1` holds the one
+  definition of which are still held back -- currently 12 tomes and 11 scrolls, leaving 163 and 133
+  distributed.
 
   The host lists themselves are not touched. `02` injects a reference to each sublist into Enderal's
   loot lists and `06-weight-distribution.ps1` weights those injections; both point at the sublist by
@@ -32,6 +34,8 @@ param()
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
+
+. (Join-Path (Split-Path -Parent $PSCommandPath) '00-cut-summons.ps1')
 
 $repo = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $PSCommandPath)))
 $tree = Join-Path $repo 'src\Apocalypse\ApocalypseESP'
@@ -87,8 +91,10 @@ function Write-Sublist([string]$EditorID, [object[]]$Refs) {
 }
 
 # --- tomes, one sublist per Apocalypse spell rank -------------------------------------------------
-$books = @(Read-Recs 'Books' | Where-Object { $_.EditorID -match '^WB_[ACDIR](000|025|050|075|100)_.+_Book$' })
-if ($books.Count -ne 175) { throw "expected 175 tomes in the tree, found $($books.Count)" }
+$allBooks = @(Read-Recs 'Books' | Where-Object { $_.EditorID -match '^WB_[ACDIR](000|025|050|075|100)_.+_Book$' })
+if ($allBooks.Count -ne $ALL_TOMES) { throw "expected $ALL_TOMES tomes in the tree, found $($allBooks.Count)" }
+$books = @($allBooks | Where-Object { $removed -notcontains ($_.EditorID -replace '_Book$','') })
+if ($books.Count -ne $SHIP_TOMES) { throw "expected $SHIP_TOMES distributable tomes, found $($books.Count)" }
 
 'Tome sublists:'
 $placed = 0
@@ -98,12 +104,14 @@ foreach ($rank in '000', '025', '050', '075', '100') {
     Write-Sublist -EditorID "ZP_Apoc_Tomes_R$rank" -Refs $refs
     $placed += $refs.Count
 }
-if ($placed -ne 175) { throw "sublists hold $placed tomes, expected 175" }
+if ($placed -ne $SHIP_TOMES) { throw "sublists hold $placed tomes, expected $SHIP_TOMES" }
 
 # --- scrolls --------------------------------------------------------------------------------------
-$scrolls = @(Read-Recs 'Scrolls' | Sort-Object EditorID)
-if ($scrolls.Count -ne 144) { throw "expected 144 scrolls in the tree, found $($scrolls.Count)" }
+$allScrolls = @(Read-Recs 'Scrolls')
+if ($allScrolls.Count -ne $ALL_SCROLLS) { throw "expected $ALL_SCROLLS scrolls in the tree, found $($allScrolls.Count)" }
+$scrolls = @($allScrolls | Where-Object { $removed -notcontains ($_.EditorID -replace '_Scroll$','') } | Sort-Object EditorID)
+if ($scrolls.Count -ne $SHIP_SCROLLS) { throw "expected $SHIP_SCROLLS distributable scrolls, found $($scrolls.Count)" }
 "`nScroll sublist:"
 Write-Sublist -EditorID 'ZP_Apoc_Scrolls' -Refs $scrolls
 
-"`nAll 175 tomes and 144 scrolls are in the loot sublists."
+"`n$SHIP_TOMES tomes and $SHIP_SCROLLS scrolls are in the loot sublists; $CUT_TOMES tomes and $CUT_SCROLLS scrolls withheld pending in-game testing."

@@ -11,14 +11,10 @@ $enc     = New-Object System.Text.UTF8Encoding($false)
 
 New-Item -ItemType Directory -Force $out | Out-Null
 
-# --- nothing is cut from distribution any more --------------------------------
-# This list used to hold 15 summons built on Dremora, Xivilai, Daedra, Atronachs and the Dwemer,
-# withheld because none of those exist in Enderal. They are named for Enderal now -- Entropic and
-# Sinistran for the two demon tiers, Elemental for the Atronach, Starling for the Dwemer -- so the
-# reason to withhold them is gone and all 175 tomes and 144 scrolls distribute. See
-# 01-gen-renames.ps1 for the mapping. Keep the variable: it is the documented lever if a future
-# summon ever has to be withheld again.
-$removed = @()
+# --- which summons are withheld ------------------------------------------------
+# One definition, shared with steps 7 and 17. All 15 Daedra/Dwemer summons are RENAMED for Enderal
+# now, so naming withholds nothing; what is left is that 12 of them have never been cast in game.
+. (Join-Path (Split-Path -Parent $PSCommandPath) '00-cut-summons.ps1')
 
 function Read-Recs([string]$dir) {
   Get-ChildItem (Join-Path $apoc "$dir\*.yaml") | ForEach-Object {
@@ -71,7 +67,7 @@ $cutScrolls  = @($scrolls | Where-Object { $s = $_.EditorID -replace '_Scroll$',
 New-LeveledList -Hex '000805' -EditorID 'ZP_Apoc_Scrolls' -Refs $keptScrolls
 
 "`nCut from distribution: $($cutBooks.Count) tomes, $($cutScrolls.Count) scrolls"
-if ($cutBooks.Count -ne 0) { throw "expected 0 cut tomes, got $($cutBooks.Count) - \$removed should be empty" }
+if ($cutBooks.Count -ne $CUT_TOMES) { throw "expected $CUT_TOMES cut tomes, got $($cutBooks.Count)" }
 $cutScrolls | ForEach-Object { "   scroll cut: $($_.EditorID)" }
 
 # --- inject one entry into each Enderal host list -----------------------------

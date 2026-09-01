@@ -15,15 +15,18 @@ and documentation are not listed.
   Endralean Plate.
 - Fixed: two Elder Scrolls place names left in spell descriptions - the Craftlord was summoned
   "to Nirn", and the Sinistran Sorcerer threw a "Ball of Oblivion's flames".
-- **Fifteen summons are renamed for Enderal, and every one of them is now obtainable.** Enderal has
-  no Dremora, no Xivilai, no Daedra, no Dwemer and no Atronachs, so these spells used to be kept out
-  of every shop and loot list -- a sixth of the spellbook no character could reach. They now use
-  Enderal's own words instead: Dremora become **Entropic**, Xivilai become **Sinistran**, the Weeping
-  Daedra becomes a **Weeping Shade**, Atronach Mark becomes **Elemental Mark**, and the Craftlord
-  calls a **Starling** sage rather than a Dwemer one. Kyrkrim is a spirit wolf now, not a daedric one.
-- With that, **all 175 spell tomes and all 144 scrolls are distributed** -- 15 more tomes and 14 more
-  scrolls than before. The merchants gain them at their existing tiers: Emberlord and Fireflash 50,
-  Torius Flameling 45, Tarhutie 30, Barnabas 21.
+- **Fifteen summons are renamed for Enderal.** Enderal has no Dremora, no Xivilai, no Daedra, no
+  Dwemer and no Atronachs, so these spells used to carry names from a world it has never heard of.
+  Dremora become **Entropic**, Xivilai become **Sinistran**, the Weeping Daedra becomes a **Weeping
+  Shade**, Atronach Mark becomes **Elemental Mark**, and the Craftlord calls a **Starling** sage
+  rather than a Dwemer one. Kyrkrim is a spirit wolf now, not a daedric one.
+- **Three of them are now obtainable for the first time**, at their proper tiers: **Conjure Herne**
+  from Torius Flameling, **Conjure Entropic Assassin** and **Conjure Craftlord** from Emberlord and
+  Fireflash. All three were unbuyable and undroppable in every previous release. That is 163 spell
+  tomes and 133 scrolls in circulation, up from 160 and 130.
+- The remaining twelve renamed summons stay out of shops and loot **for now**. They have never been
+  cast in Enderal, and of the first three that were examined, two were broken — see the Herne and
+  Craftlord fixes above. They will be released as each is tested.
 - The **Conjure Entropic Mentor** spell now offers Enderal's five disciplines by name -- Mentalism,
   Entropy, Elementalism, Psionics and Light Magic -- where it used to list Skyrim's schools.
 - Note this renames the spells, not the models: the Entropic and Sinistran summons still look like

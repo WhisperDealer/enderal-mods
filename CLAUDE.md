@@ -925,11 +925,20 @@ Enderal lacks.
 > (`'    Value: Alteration'`). And **a rename does not touch the meshes** — these are still Bethesda's
 > red horned Dremora — so weigh that per mod; it is the one honest argument left for cutting.
 >
-> The corollary matters more than the rename. **A dangling reference on an unreachable record is
-> harmless only while the record stays unreachable.** These summons had been dormant, so nobody had
-> ever looked at them; the moment they ship, Herne's missing quiver and the Craftlord's missing armour
-> stop being audit noise and become the two bugs a player reports. Distribute the content, and the
-> per-subsystem invariant checks above stop being optional.
+> **The corollary matters more than the rename, and it splits the decision in two.** *A dangling
+> reference on an unreachable record is harmless only while the record stays unreachable.* These
+> summons had been dormant, so nobody had ever looked at them — and when the first three were finally
+> examined, **two were broken**: Herne's missing quiver and the Craftlord's missing armour, both
+> invisible for as long as the spells stayed unobtainable.
+>
+> So renaming and shipping are separate calls with very different risk. **Renaming is free** — display
+> strings, nothing to break, and it stops a half-renamed vocabulary. **Shipping is not**: a 2-in-3
+> defect rate on inspection is the real prior for the ones nobody has cast. Rename the lot, ship what
+> you have actually tested, and keep the withheld list as a *testing* backlog rather than a lore
+> judgement — one definition in one file (`00-cut-summons.ps1`), dot-sourced by every step that needs
+> it, each asserting an exact total so a half-done release fails loudly. Apocalypse ships 3 of its 15
+> on that basis. Note this also means the per-subsystem invariant checks above stop being optional the
+> moment dormant content wakes up.
 
 > **Never ship a `NAVI` record built against a different `Skyrim.esm`.** **[verified 2026-08-07]**
 > Add one navmesh — even in your own interior cell — and the Creation Kit regenerates the plugin's

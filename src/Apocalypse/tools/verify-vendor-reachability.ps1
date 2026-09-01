@@ -20,7 +20,7 @@ $ErrorActionPreference = 'Stop'
 #      reference/mods/ that overrides that chest**. A hook nobody's chest contains is inert, and
 #      this is exactly where a late-loading overhaul could quietly cut us out.
 #   3. Every entry resolves to a Book in our own tree.
-#   4. The 175 tomes are covered exactly once each.
+#   4. The 163 distributed tomes are covered exactly once each (12 summons are withheld pending in-game testing; see 00-cut-summons.ps1).
 
 $repo = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $PSCommandPath)))
 $tree = Join-Path $repo 'src\Apocalypse\ApocalypseESP'
@@ -106,7 +106,7 @@ $rows | Format-Table -AutoSize | Out-String | Write-Host
 
 # ---------------------------------------------------------------- 4. coverage
 $total = $seen.Keys.Count
-if ($total -ne 175) { throw "$total tomes stocked, expected 175" }
+if ($total -ne 163) { throw "$total tomes stocked, expected 163" }
 $unpriced = @($seen.Keys | Where-Object { -not $books[$_].Value -or [int]$books[$_].Value -le 0 })
 if ($unpriced.Count -gt 0) { throw "$($unpriced.Count) tome(s) have no gold value - a merchant cannot sell them" }
 
@@ -115,6 +115,6 @@ $owned = @(Get-ChildItem (Join-Path $tree 'Containers') -Filter '*.yaml' -File -
     Where-Object { (Read-Text $_.FullName) -notmatch '(?m)^FormKey: [0-9A-F]{6}:Apocalypse - Magic of Skyrim\.esp' })
 if ($owned.Count -gt 0) { throw "overriding $($owned.Count) container(s) of a master - the hooks exist to avoid that" }
 
-"proof: $total/175 tomes stocked across $($hooks.Count) UseAll hooks, each exactly once, all priced"
+"proof: $total/163 tomes stocked across $($hooks.Count) UseAll hooks, each exactly once, all priced"
 "       every hook is carried by its chest in base Enderal AND in every reference/mods override of it"
 "       0 container records of any master overridden"

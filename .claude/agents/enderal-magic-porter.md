@@ -412,6 +412,14 @@ are ordinary English, not Elder Scrolls proper nouns. Only the race word has to 
 article: *Entropic* takes **an**, so `'a Dremora Champion'` needs its own key before the bare one or
 you ship "Summons a Entropic Champion".
 
+**Renaming and shipping are two decisions, not one.** Renaming is free and should be total — a
+half-renamed set reads worse than either extreme. Shipping is a testing question: content that was
+never distributed has never been cast, so nobody has ever seen it fail. Of the first three Apocalypse
+summons anyone looked at, **two were broken** (no ammunition; no armour). Rename all of them, ship the
+ones you have tested, and keep the rest in a withheld list that is a testing backlog rather than a
+lore judgement. Apocalypse ships 3 of 15 on exactly that basis, with the list in one dot-sourced file
+(`00-cut-summons.ps1`) so no step can disagree with another.
+
 **What a rename does not fix: the meshes.** These are still Bethesda's red horned Dremora and blue
 Xivilai models, and a player who has played Skyrim will recognise them whatever the tooltip says.
 That is a real cost and it is the honest argument for cutting. Weigh it per mod: on Apocalypse the

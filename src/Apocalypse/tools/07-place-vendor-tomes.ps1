@@ -6,7 +6,7 @@ $ErrorActionPreference = 'Stop'
 #
 # WHY DIRECT PLACEMENT. Injecting sublists into Enderal's vendor leveled lists (02/03/06) makes the
 # tomes *available* but never *findable*: a list is rolled per draw, so which spells a shop has is
-# random, most of the 175 are never purchasable anywhere, and a player hunting one specific spell
+# random, most of the 163 are never purchasable anywhere, and a player hunting one specific spell
 # has no route to it. Weighting was raised twice and still did not deliver in play. Direct placement
 # is deterministic - every tome is buyable from one known shop, forever.
 #
@@ -47,10 +47,9 @@ $tree  = Join-Path $repo 'src\Apocalypse\ApocalypseESP'
 $out   = Join-Path $tree 'LeveledItems'
 $enc   = New-Object System.Text.UTF8Encoding($false)
 
-# Nothing is cut any more. This held the 15 Dremora/Xivilai/Daedra/Atronach/Dwemer summons until
-# they were renamed into Enderal's own vocabulary; see 01-gen-renames.ps1 and 02-gen-distribution.ps1.
-# Kept in sync with 02 by the assertion at the end, which requires exactly 175 tomes placed.
-$removed = @()
+# Which summons are withheld: one definition, shared with steps 2 and 17. All 15 Daedra/Dwemer
+# summons are renamed for Enderal now; the 12 still held back are the ones never cast in game.
+. (Join-Path (Split-Path -Parent $PSCommandPath) '00-cut-summons.ps1')
 
 # --- the six merchants --------------------------------------------------------
 #
@@ -59,11 +58,11 @@ $removed = @()
 # stays readable; we never touch that record. The hook<->chest pairing was read out of each
 # chest's own Items list, not guessed from the names.
 $vendors = @(
-  @{ File = 'GabrielleFunkenfrst_CustomMerchandise - 0302D5_Enderal - Forgotten Stories.esm.yaml'; Shop = 'Ark, Emberlord and Fireflash'; Gold = 1800; Rank = '100'; Schools = 'ACDIR'; Expect = 50 }
-  @{ File = 'TuriousFlammentrunk_CustomMerchandise - 0302FE_Enderal - Forgotten Stories.esm.yaml'; Shop = 'Sun Temple, Torius Flameling'; Gold = 1430; Rank = '075'; Schools = 'ACDIR'; Expect = 45 }
-  @{ File = 'Barnabas_CustomMerchandise - 030302_Enderal - Forgotten Stories.esm.yaml';            Shop = 'Undercity, Barnabas';          Gold = 1050; Rank = '050'; Schools = 'ACD';   Expect = 21 }
+  @{ File = 'GabrielleFunkenfrst_CustomMerchandise - 0302D5_Enderal - Forgotten Stories.esm.yaml'; Shop = 'Ark, Emberlord and Fireflash'; Gold = 1800; Rank = '100'; Schools = 'ACDIR'; Expect = 47 }
+  @{ File = 'TuriousFlammentrunk_CustomMerchandise - 0302FE_Enderal - Forgotten Stories.esm.yaml'; Shop = 'Sun Temple, Torius Flameling'; Gold = 1430; Rank = '075'; Schools = 'ACDIR'; Expect = 40 }
+  @{ File = 'Barnabas_CustomMerchandise - 030302_Enderal - Forgotten Stories.esm.yaml';            Shop = 'Undercity, Barnabas';          Gold = 1050; Rank = '050'; Schools = 'ACD';   Expect = 19 }
   @{ File = 'OraSteinschlag_CustomMerchandise - 0302E3_Enderal - Forgotten Stories.esm.yaml';      Shop = 'Ark, Ora Stonehand';           Gold =  980; Rank = '050'; Schools = 'IR';    Expect = 14 }
-  @{ File = 'Tarhutie_CustomMerchandise - 0302F7_Enderal - Forgotten Stories.esm.yaml';            Shop = 'Riverville, Tarhutie';         Gold =  630; Rank = '025'; Schools = 'ACDIR'; Expect = 30 }
+  @{ File = 'Tarhutie_CustomMerchandise - 0302F7_Enderal - Forgotten Stories.esm.yaml';            Shop = 'Riverville, Tarhutie';         Gold =  630; Rank = '025'; Schools = 'ACDIR'; Expect = 28 }
   @{ File = 'MilbertFuchshand_CustomMerchandise - 0302DE_Enderal - Forgotten Stories.esm.yaml';    Shop = 'Ark, Milbert Foxhand';         Gold =  530; Rank = '000'; Schools = 'ACDIR'; Expect = 15 }
 )
 
@@ -91,7 +90,7 @@ $tomes = @($tomes | Where-Object {
   $_.EditorID -match '^WB_[ACDIR](000|025|050|075|100)_.+_Book$' -and
   $removed -notcontains ($_.EditorID -replace '_Book$','')
 })
-if ($tomes.Count -ne 175) { throw "expected 175 distributable tomes, found $($tomes.Count)" }
+if ($tomes.Count -ne $SHIP_TOMES) { throw "expected $SHIP_TOMES distributable tomes, found $($tomes.Count)" }
 
 # --- write each hook ----------------------------------------------------------
 # Always rebuilt from the Forgotten Stories record, never from our own previous output, which makes
@@ -140,7 +139,7 @@ foreach ($v in $vendors) {
 }
 
 # --- final assertions ---------------------------------------------------------
-if ($placed.Keys.Count -ne 175) { throw "placed $($placed.Keys.Count) tomes, expected 175" }
+if ($placed.Keys.Count -ne $SHIP_TOMES) { throw "placed $($placed.Keys.Count) tomes, expected $SHIP_TOMES" }
 $missing = @($tomes | Where-Object { -not $placed.ContainsKey($_.EditorID) })
 if ($missing.Count -gt 0) { throw "not placed: $($missing.EditorID -join ', ')" }
 
