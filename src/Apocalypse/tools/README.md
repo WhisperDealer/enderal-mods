@@ -68,6 +68,7 @@ broken script. Each derives the repo root from its own location, so run them fro
 | 11 | `11-neutralise-populate-lists.ps1` | Empties the **twelve** FormLists behind Apocalypse's runtime list-population, so its loops iterate zero times. Its script `AddForm`s into 83 vanilla leveled lists Enderal does not have — 685 errors on a new game, verified. Clearing `StartGameEnabled` alone does **not** stop it, and the MCM "Repopulate" button is a second entry point with its own six lists |
 | 12 | `12-strip-scroll-menudisplay.ps1` | Removes the dangling `MenuDisplayObject` from all 144 scrolls. Enderal's own 34 scrolls carry none |
 | 14 | `14-magicka-costs.ps1` | Sets `ManualCostCalc` on the 182 player-castable spells and rescales their mana costs onto Enderal's bands. Without the flag the engine derives the cost from effect duration at runtime, which is why a 180 s summon billed 1201. Idempotent — always recomputes from Enai's untouched tree |
+| 15 | `15-summon-ammo.ps1` | Repoints the two archer summons' quivers from vanilla Daedric arrows (`0139C0`, and the `037C14` list of the same) onto Enderal's `_30E_AeternaArrow` `13E219`. Neither vanilla FormID exists here, so Herne and the Dremora Assassin spawned holding a bow with nothing to fire. Idempotent |
 | 13 | `13-gen-test-matrix.ps1` | Generates [`arch-docs/Apocalypse/spell-test-matrix.md`](../../../arch-docs/Apocalypse/spell-test-matrix.md) and, with `-ModIndex`, the console batch files. Not part of the conversion — run it after any change that adds, reprices or re-homes an item |
 
 The AddonNode re-index (`WB_IllusionNightmare_MPS_Seidsigil` 110 → 746) **used to be** a single
@@ -85,10 +86,11 @@ stubs is in
 |---|---|
 | `verify-plugin-census.ps1 <orig.esp> <built.esp>` | record counts by signature, FormID set, masters, `HEDR`. Against 10.3.0 expect `COBJ 0` (all 67 dropped), `LVLI 29`, `CONT 9` (all Apocalypse's own), `WRLD 1`, `HEDR 1.7`, masters Skyrim/Update/FS |
 | `verify-vendor-reachability.ps1` | that the tomes can actually be **bought**: each hook is `UseAll` with no `ChanceNone` and no `Global`, is still carried by its merchant's chest in base Enderal **and in every `reference/mods/` override of that chest**, and covers all 160 tomes exactly once, all priced. Also asserts 0 container overrides |
-| `verify-missing-refs.ps1 [-Baseline N]` | **absolute** audit: everything the tree points at that Enderal does not have, with each surviving reference resolved to its Enderal group and EditorID. Currently **269**. `-Baseline` fails when the count rises |
+| `verify-missing-refs.ps1 [-Baseline N]` | **absolute** audit: everything the tree points at that Enderal does not have, with each surviving reference resolved to its Enderal group and EditorID. Currently **267**. `-Baseline` fails when the count rises |
 | `verify-dangling-diff.ps1` | unresolved references **relative to Enai's original** — a different question. Expect **0 new** |
 | `verify-addonnode-indices.ps1 [-Upstream]` | no `ADDN` index shared with Enderal. Defaults to our tree; `-Upstream` checks Enai's |
 | `verify-magicka-costs.ps1` | that all 175 tome-taught spells carry `ManualCostCalc` and sit inside Enderal's authored cost band for their tier. Fails the build rather than shipping a spell nobody can cast |
+| `verify-summon-ammo.ps1` | that every NPC holding a bow also holds ammunition that resolves — in our tree or in Enderal's masters. Expect **3** archers, all OK. This is the invariant, not the reference: a dead quiver is one line of ~267 in the missing-refs audit and nothing there says it costs a spell its whole function |
 | `verify-plugin-structure.ps1 <esp>` | header, masters, group/record framing |
 | `debug-make-masters.ps1` | builds a hand-written plugin with a chosen master list and no records — the control that isolates a load crash to the header rather than the records |
 

@@ -851,6 +851,28 @@ Enderal lacks.
 > record that probably cost the player nothing, while *Locate Potion* is broken by **seven**. Full
 > worked example in [`arch-docs/Apocalypse/enderal-gap-audit.md`](arch-docs/Apocalypse/enderal-gap-audit.md).
 
+> **A MISSING-reference count tells you what is dead, never what dying costs — so write an INVARIANT
+> check per subsystem, not one aggregate number.** **[verified 2026-09-01]** A player reported that
+> Apocalypse's Conjure Herne "has no arrow ammunition so he doesn't use his bow". The summon spawns,
+> is levelled, is equipped, has 65 Archery, and stands there — everything about it says combat style
+> or AI package. The cause was one inventory line: `0139C0:Skyrim.esm`, vanilla's `DaedricArrow`,
+> which Enderal does not have. `WB_Con_Dremora_Actor_ConjureDremoraAssassin` had the same defect via
+> `037C14` (`BaseArrowDaedric75`) and nobody had noticed.
+>
+> Both were sitting in `verify-missing-refs.ps1`'s CSV the whole time, as 2 lines out of 269 — visually
+> identical to the 267 that genuinely cost nothing. The aggregate had even been *falling*, which reads
+> as progress. What catches this is a check that asserts the thing the player experiences:
+> `verify-summon-ammo.ps1` ignores the reference count entirely and asserts that **no NPC holding a
+> bow lacks resolvable ammunition**. Look for the equivalent per subsystem — an equipped weapon with
+> no strike data, an outfit whose entries all died, a merchant whose stock list is empty.
+>
+> Two smaller lessons from the same fix. **Reach for the mod's own solution before inventing one**:
+> Enai had already shipped `WB_ConjureBearTotem_Ammo` for his other archer summon and it resolves in
+> Enderal untouched, which is what made "substitute an existing arrow" obviously right and "mint a new
+> Ammunition record" obviously not. And **arrows do not follow the 1.6x melee ratio** — Enderal's
+> whole arrow ladder tops out at **10 damage** (`_30E_AeternaArrow 13E219`) against vanilla Daedric's
+> 24, so a ported quiver carried across at face value is 2.4x the host's ceiling.
+
 > **Never ship a `NAVI` record built against a different `Skyrim.esm`.** **[verified 2026-08-07]**
 > Add one navmesh — even in your own interior cell — and the Creation Kit regenerates the plugin's
 > whole NavigationMeshInfoMap, stamping Bethesda's navigation map into it. Apocalypse's was 6,633

@@ -30,7 +30,7 @@ this plugin point at things Enderal has?", which nothing was asking.
 ## What it found, and what happened to it
 
 Before this audit: **4,077 missing-reference occurrences, 617 distinct FormKeys, 261 records.**
-After the fixes: **269 / 203 / 110.**
+After the fixes: **267 / 201 / 109.**
 
 > **A dangling-reference count is not a severity ranking.** 3,498 of the 4,077 were one deletable
 > record that probably cost the player nothing. `Locate Potion` is broken by **seven**.
@@ -43,6 +43,7 @@ After the fixes: **269 / 203 / 110.**
 | 2 | **Apocalypse's BSA overrides two scripts Enderal deliberately gutted.** Its archive holds 206 compiled scripts and 2 collide with Enderal's 5,029: `dgintimidateplayerscript` (2,425 bytes, the full vanilla brawl script, compiled by *Maximilian* of Brawl Bugs Patch) and `dgintimidatealiasscript` (1,983 bytes). Enderal's source for both is **4 lines: `; DUMMY, DO NOTHING`**, and its compiled copies are in `E - Misc.bsa` (confirmed by reading that archive's name table). Apocalypse loads after Enderal, so **its BSA wins**. The restored scripts reach for `dgintimidatequestscript`, `DGIntimidateFaction`, `CR04Running` — none of which Enderal has | Ship SureAI's stubs **loose** under `Scripts/`. Loose beats BSA. See [`../../src/Apocalypse/Scripts/README.md`](../../src/Apocalypse/Scripts/README.md) |
 | 3 | **All 144 scrolls carried a dangling `MenuDisplayObject: 076E8F:Skyrim.esm`.** All 34 of Enderal's own scrolls carry **none** | `12-strip-scroll-menudisplay.ps1` removes the field, matching Enderal's archetype rather than inventing a substitute static |
 | 4 | **Apocalypse's runtime list-population ran and failed 685 times, 60 s into a new game.** Decompiling `WB_PopulateLists_Script` shows `OnUpdate` counts down from the **origin** list's size and indexes the **destination** list in parallel, then calls `CurrentDestinationLitem.AddForm(...)`. The origin lists are Apocalypse's own and full; the destination lists are 54 vanilla book lists, 24 staff and 5 scroll — **83 leveled lists, none of which exists in Enderal**. So every `AddForm` landed on `None`. **[verified in-game — see below]** | `11-neutralise-populate-lists.ps1` empties **twelve** FormLists so every loop iterates zero times |
+| 5 | **The two archer summons had no arrows.** `WB_Con_Dremora_Actor_ConjureHerne` carried `0139C0:Skyrim.esm` ×100 (`DaedricArrow`) and `WB_Con_Dremora_Actor_ConjureDremoraAssassin` carried `037C14:Skyrim.esm` ×250 (`BaseArrowDaedric75`, a leveled list of the same arrow). **Neither FormID exists in Enderal** — both are in `reference/base/SkyrimReal`, neither is in `Skyrim`, `Update` or `EnderalFS`. So each summon spawned holding a bow with an empty quiver and just stood there. Reported from a real playthrough against Herne; the Assassin was found by checking the class rather than the report | `15-summon-ammo.ps1` repoints both onto `13E219:Skyrim.esm` `_30E_AeternaArrow` — Enderal's own best arrow, 10 damage against vanilla Daedric's 24. `verify-summon-ammo.ps1` then asserts the *invariant*: every NPC with a bow has resolvable ammo |
 
 #### Finding 4 in detail — two wrong fixes before the right one
 
@@ -108,6 +109,80 @@ Neither city's navmeshes are named anywhere in the record. The places worth visi
 own two interior cells (whose entries we **kept** — the only regression surface), `cow Vyn -8 -3`, and
 `cow MQP01Home 0 0`.
 
+#### Finding 5 in detail — the class of bug that reads as an AI bug
+
+This one arrived as a player report ("the conjured NPC has no arrow ammunition so he doesn't use his
+bow"), and it is worth recording because of how it presents rather than how it was fixed.
+
+An archer NPC whose quiver FormID does not resolve is **not** visibly a data bug. The summon appears,
+is correctly equipped, is correctly levelled, has 65 Archery — and then stands there. Every instinct
+says combat style, package, or a missing perk. The actual cause is one line of inventory pointing at
+a record Bethesda had and Enderal does not.
+
+It was in the audit CSV the whole time:
+
+```
+"MISSING","Npcs","WB_Con_Dremora_Actor_ConjureHerne …","Item","0139C0:Skyrim.esm","",""
+"MISSING","Npcs","WB_Con_Dremora_Actor_ConjureDremoraAssassin …","Item","037C14:Skyrim.esm","",""
+```
+
+Two of 269 lines, indistinguishable from the 267 that genuinely cost nothing. **A missing-reference
+audit tells you what is dead; it cannot tell you what dying costs.** That is the whole argument for
+writing an invariant check per subsystem rather than watching one aggregate number:
+`verify-summon-ammo.ps1` does not care how many references are missing, only that no NPC ends up
+holding a bow it cannot fire.
+
+**Why a substitution and not a new record.** Enai already solved this once inside the same plugin —
+`WB_Con_Spirit_Actor_ConjureBearTotem` carries his own `WB_ConjureBearTotem_Ammo`, and that record
+happens to resolve cleanly in Enderal (its projectile `0EAFE0`, keyword `0917E7` and NordHero mesh
+all survive). Minting a second one would have meant a mesh, a projectile, a keyword, a FormID and a
+damage number to keep in step with Enderal forever, and it would have resolved to an Elven arrow's
+projectile and mesh anyway. Enai handed Herne an ordinary playable arrow out of the host game; so do
+we.
+
+**Why `_30E_AeternaArrow` specifically.** Enderal's arrow ladder tops out at **10 damage**
+(`_30E_AeternaArrow` `13E219`) where vanilla's Daedric Arrow is 24, so "best arrow" maps to "best
+arrow" and the numbers land where SureAI put them. Herne's Bow is 25 damage against Enderal's best
+bow at 23, so 25 + 10 puts a master-tier summon a shade above the best archer a player can build
+(23 + 10). Carrying vanilla's 24 across, or minting a 30 like the Bear Totem's, would have put it
+half again over that.
+
+Counts are left as authored. The Assassin's 250 was 250 draws at `ChanceNone: 0.25` (~187 arrows) and
+is now a flat 250; for a summon on a despawn timer that is not a real distinction.
+
+**Triumvirate was checked for the same defect and has none** — it ships no bow at all.
+
+#### The `WB_MGRitual*Books` leveled lists — the errors are real and cost nothing
+
+Asked by the same reporter, and the answer is worth keeping because the reasoning generalises.
+
+Each of the five lists shows two classes of xEdit error, and both are genuinely dead:
+
+| Field | Value | In Enderal |
+|---|---|---|
+| `Global:` on all five | `0FDE72`–`0FDE76` (`MGRitualDestBook`, `…Alt…`, `…Conj…`, `…Ill…`, `…Rest…`) | **absent** |
+| one entry each | `0D2B4E` Dragonhide, `0A26FA` Flame Thrall, `0A270C` Fire Storm, `0A271C` Hysteria | **absent** |
+| Restoration has **two** | `0DD647` Bane of the Undead **and** `0FDE7B` Guardian Circle | **absent** |
+
+But nothing reads them. The five lists are referenced by exactly one record — the
+`WB_MGRitualBooks` script property on `WB_NewManager_Quest` `08095C` — and that quest is Apocalypse's
+hook into the **College of Winterhold ritual spell quests**. Its other properties are `MGRitual04`
+`0CD987`, `MGRitual05` `0D0755` and five vanilla vendor chests, none of which exist here either. The
+quest binds its dead forms once at load, logs the `WB_VendorChest` line already documented in
+[`spell-test-matrix.md`](spell-test-matrix.md#log-lines-that-are-expected-not-bugs), and then has no
+stage to advance and no chest to stock.
+
+So the lists are unreachable, the Global that would gate them is unreachable, and the vanilla tome
+inside each is unreachable. **They were left alone deliberately.** Cleaning them would silence ten of
+xEdit's red lines while leaving the quest that owns them just as full of dead bindings — a tidier
+diff, an unchanged game, and one more record to be right about (CLAUDE.md, "Gotchas": an override
+that achieves nothing is still a record you have to be right about).
+
+Note what separates this from finding 5, since both are "a vanilla FormID Enderal does not have".
+Herne's dead arrow sat on a **reachable** record — a spell the player can buy, cast and watch fail.
+These sit on an unreachable one. The audit scores them identically; only tracing what reaches the
+record tells them apart.
+
 ### Left alone, on purpose
 
 Recorded here so the next session does not re-derive them. All are in
@@ -121,7 +196,7 @@ Recorded here so the next session does not re-derive them. All are in
 | **`WB_AlterationAlt_FormList_LocatePotion_Inclusion` is 7 entries, 7 missing** → *Locate Object*'s potion mode can never match | A fix means choosing Enderal equivalents and proving them in-game. Flagged for testing rather than guessed at |
 | **`LocateContainer_Exclusion` is 68-for-68 missing** | It is an *exclusion* list, so the failure mode is over-matching, not silence. Lower stakes, same reasoning |
 | **39 dangling script `Object:` properties** — mostly `SayOnHitByMagicEffectScript.TopicToSay` (an NPC voice line) and `MG01FireEffectScript.MG01` on 14 fire effects (the College-of-Winterhold brazier quest) | Cosmetic or log noise. Removing a property from a vanilla helper script's binding is a bigger change than the defect |
-| **`Kyrgar`, `Dreamscape` and the College ritual quests** — a merchant NPC, a container and five globals from vanilla content Enderal does not have | Apocalypse's own optional side content, already unreachable. A dangling reference on an unreachable record is proven harmless here (CLAUDE.md, "Gotchas") |
+| **`Kyrgar`, `Dreamscape` and the College ritual quests** — a merchant NPC, a container and five globals from vanilla content Enderal does not have. The `WB_MGRitual*Books` leveled lists live here too; [see above](#the-wb_mgritualbooks-leveled-lists--the-errors-are-real-and-cost-nothing) for why their errors are harmless | Apocalypse's own optional side content, already unreachable. A dangling reference on an unreachable record is proven harmless here (CLAUDE.md, "Gotchas") |
 
 ### Not broken, and worth knowing
 
@@ -140,7 +215,7 @@ question is never "how many are dead" but "which behaviours died".
 src\Apocalypse\tools\verify-missing-refs.ps1
 
 # hold the line in CI
-src\Apocalypse\tools\verify-missing-refs.ps1 -Baseline 435
+src\Apocalypse\tools\verify-missing-refs.ps1 -Baseline 267
 ```
 
 `-Baseline` fails when the count *rises*. A non-zero baseline is correct and permanent here: Enai

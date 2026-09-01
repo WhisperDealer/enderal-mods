@@ -3,6 +3,15 @@
 Paste each version block into the Nexus **Changelogs** tab. User-facing changes only; repo tooling
 and documentation are not listed.
 
+## 1.3.1
+
+- Fixed: **Conjure Herne's summon never used his bow.** He was handed a quiver of Daedric Arrows,
+  which do not exist in Enderal, so he spawned with a bow and nothing to fire from it and simply
+  stood there. He now carries Aeterna Arrows, Enderal's own best arrow.
+- Fixed: the same defect on **Conjure Dremora Assassin**, who also draws a bow. Unreported, found
+  while checking Herne.
+- Thanks to the Nexus reporter who found this before starting a playthrough.
+
 ## 1.3.0
 
 - Fixed: **the master-tier spells cost far too much mana to cast.** Apocalypse left every spell's

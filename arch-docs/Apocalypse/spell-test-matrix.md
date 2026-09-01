@@ -203,9 +203,9 @@ of the 319 rows:
 
 | Do | Rows | Why |
 |---|---:|---|
-| **1. Flagged rows** | 56 | The audit says something they touch is missing. Highest chance of finding a real defect per cast |
+| **1. Flagged rows** | 54 | The audit says something they touch is missing. Highest chance of finding a real defect per cast |
 | **2. The "Known gaps" list below** | ~18 | Locate Object's ten modes, Control Weather, the six simulacrum spells. Hand-found, so no flag marks them |
-| **3. NOT-SOLD rows** | 23 | Not casts at all -- one merchant sweep confirms a player cannot reach them |
+| **3. NOT-SOLD rows** | 25 | Not casts at all -- one merchant sweep confirms a player cannot reach them |
 | **4. Everything else** | 240 | The bulk. Lowest yield per row; batch it by school |
 
 **Leave Papyrus logging on for the whole run.** A spell that silently does nothing looks the same
@@ -358,7 +358,7 @@ player.advskill conjuration 100000 first, so magnitudes read at full skill.
 | [ ] | **Conjure Dremora Champion** | `player.addspell XX0128DF` | FireAndForget / TargetLocation | 110 | 285 | - | Summons a Dremora Champion for 60 seconds. Its power attacks deal bonus damage and knock targets airborne. | NOT-SOLD |
 | [ ] | **Conjure Dremora Honor Guard** | `player.addspell XX0133D6` | FireAndForget / TargetLocation | 115 | 295 | - | Summons a Dremora Honor Guard for 60 seconds. It reduces enemy magic resistance within 15 feet by <25>%. | NOT-SOLD |
 | [ ] | **Conjure Dremora Mentor** | `player.addspell XX0C64B1` | FireAndForget / TargetLocation | 120 | 275 | - | Choose a magic school and summon a Dremora Mentor for 90 seconds. It does not fight, but offers training in the chosen school and the school improves <20>% faster. | NOT-SOLD |
-| [ ] | **Conjure Herne** | `player.addspell XX0128E8` | FireAndForget / TargetLocation | 120 | 305 | - | Summons a Herne for 60 seconds. It is accompanied by <3> Spirit Wolves under its command. | SUMMON-GAP<br>NOT-SOLD |
+| [ ] | **Conjure Herne** | `player.addspell XX0128E8` | FireAndForget / TargetLocation | 120 | 305 | - | Summons a Herne for 60 seconds. It is accompanied by <3> Spirit Wolves under its command. | NOT-SOLD |
 | [ ] | **Conjure Xivilai Lord** | `player.addspell XX012370` | FireAndForget / TargetLocation | 105 | 270 | - | Summons a Xivilai Lord for 60 seconds. When summoned, drains all Magicka and has <200>% of this amount. It casts a deadly bolt that costs <150> Magicka. | NOT-SOLD |
 | [ ] | **Monarch Mark** | `player.addspell XX161621` | FireAndForget / Aimed | 90 | 245 | Sun Temple - Torius Flameling | Marks a target for 10 seconds. The mark detonates when the target is struck by a summoned or reanimated minion, dealing <60> magic damage in a <25> foot area. |  |
 | [ ] | **Oathbound Guardian** | `player.addspell XX018AE7` | FireAndForget / TargetActor | 125 | 330 | Sun Temple - Torius Flameling | Living ally is protected by an Oathbound Guardian under his or her command for 60 seconds. |  |
@@ -613,7 +613,7 @@ All of them at once: `bat apoc-scrolls`, or one at a time with the `additem` bel
 | [ ] | **Scroll of Conjure Dremora Assassin** | `player.additem XX03BFAC 1` | 250 | - | Summons a Dremora Assassin for 180 seconds. Its arrows reduce targets below <Global=WB_Conjuration_ConjureDremoraAssassin_Global_Health> Health to <1> for <10> seconds. | SUMMON-GAP<br>NOT-SOLD |
 | [ ] | **Scroll of Conjure Dremora Champion** | `player.additem XX03BA3D 1` | 125 | - | Summons a Dremora Champion for 60 seconds. Its power attacks deal bonus damage and knock targets airborne. | NOT-SOLD |
 | [ ] | **Scroll of Conjure Dremora Churl** | `player.additem XX03BA2B 1` | 30 | - | Summons a Dremora Churl for 60 seconds. When killed, a Dremora Churl is summoned under control of the killer. | NOT-SOLD |
-| [ ] | **Scroll of Conjure Dremora Herne** | `player.additem XX03BA41 1` | 125 | - | Summons a Herne for 60 seconds. It is accompanied by <3> Spirit Wolves under its command. | SUMMON-GAP<br>NOT-SOLD |
+| [ ] | **Scroll of Conjure Dremora Herne** | `player.additem XX03BA41 1` | 125 | - | Summons a Herne for 60 seconds. It is accompanied by <3> Spirit Wolves under its command. | NOT-SOLD |
 | [ ] | **Scroll of Conjure Dremora Honor Guard** | `player.additem XX03BA3F 1` | 125 | - | Summons a Dremora Honor Guard for 60 seconds. It reduces enemy magic resistance within 15 feet by <25>%. | NOT-SOLD |
 | [ ] | **Scroll of Conjure Dremora Mentor** | `player.additem XX03BA47 1` | 125 | - | Choose a magic school and summon a Dremora Mentor for 90 seconds. It does not fight, but offers training in the chosen school and the school improves <20>% faster. | NOT-SOLD |
 | [ ] | **Scroll of Conjure Dremora Pit Fighter** | `player.additem XX03BA31 1` | 60 | - | Summons a Dremora Pit Fighter for 60 seconds. It gains <25>% extra damage for each nearby enemy. | NOT-SOLD |
