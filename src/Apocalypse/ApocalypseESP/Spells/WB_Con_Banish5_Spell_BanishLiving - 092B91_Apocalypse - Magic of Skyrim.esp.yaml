@@ -8,8 +8,9 @@ EquipmentType: 013F44:Skyrim.esm
 Description:
   TargetLanguage: English
   Value: ''
-BaseCost: 1573
+BaseCost: 300
 Flags:
+- ManualCostCalc
 - IgnoreResistance
 - NoDualCastModification
 ChargeTime: 5.5

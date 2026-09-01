@@ -683,8 +683,71 @@ magic effects' display strings in `reference/base/Skyrim/MagicEffects/`, and cor
 > what makes an Enderal mage's talent discounts apply to the ported spell. Set it to the right tier
 > and leave it. All 126 of Triumvirate's `HalfCostPerk` references resolve untouched.
 
-The consequence is good news for ported spell mods: a Skyrim spell's `MagicSkill`, magicka cost and
-skill scaling all work unchanged in Enderal. What does *not* carry over is anything user-visible
+> **A ported spell's MANA COST is computed by the engine unless `ManualCostCalc` is set — and the
+> formula punishes duration, not power.** **[verified 2026-09-01]** A `SPELL` record's stored
+> `BaseCost` is only used when the flag is on. Without it the engine derives the cost at runtime:
+>
+> ```
+> cost = sum over effects of  MGEF.BaseCost * magnitude^1.1 * (duration / 10)^1.1
+> ```
+>
+> **Enderal never relies on that: 271 of the 274 spells its own tomes teach carry `ManualCostCalc`,**
+> so every SureAI cost is a number a designer typed. The three that do not are
+> `_00E_SpellFireExtinguisherMQ04` and the two ranks of Silence — and Silence Rank II at **309** is
+> the most expensive Apprentice-tier spell in the game, which is the tell.
+>
+> **Neither Apocalypse nor Triumvirate sets the flag on a single player spell**, so all 250 of their
+> costs were whatever the Creation Kit's formula produced. The duration term is what wrecks it:
+> Conjure Battlemage is a 50-cost effect with a 180 s duration, so `(180/10)^1.1 = 23.9` and the
+> spell billed **1201**. A long buff or summon is charged for being long.
+>
+> Enderal's authored bands, from its own tome-taught spells (`reference/base/*/Books` →
+> `Teaches.Spell`, joined to `Spells/`, `ManualCostCalc` only):
+>
+> | Tier | n | min | p25 | med | p75 | max |
+> |---|---|---|---|---|---|---|
+> | Novice | 51 | 6 | 14 | 21 | 38 | 140 |
+> | Apprentice | 52 | 12 | 27 | 40 | 55 | 140 |
+> | Adept | 51 | 10 | 34 | 55 | 80 | 200 |
+> | Expert | 57 | 29 | 49 | 65 | 110 | 260 |
+> | Master | 38 | 38 | 68 | 80 | 170 | **310** |
+>
+> Against that, Apocalypse ran 50 / 80 / 170 / 361 / 689 with a **1607** ceiling and Triumvirate
+> 50 / 66 / 168 / 323 / 1189 with a **1484** ceiling — the gap widening with tier, because that is
+> where the long durations live. **310 is the whole-game ceiling and it is not negotiable**, because
+> Enderal's mana pool is small and fixed: the player gains **+8 max mana per level and only when
+> they spend that level's attribute choice on it** (`_00e_epupdatefunctions.psc`), so a mage who
+> never picks anything else ends a playthrough near 400–500. A 700-mana spell is uncastable by any
+> character the game can produce — which is exactly what Apocalypse's mod page reported.
+>
+> **The fix is to set `ManualCostCalc` and author the number**, matching the host's archetype
+> (guardrail 3), not to edit magnitudes or durations. Freezing is behaviourally a no-op — the value
+> the engine was computing is the value already sitting in the record — so the flag and the rescale
+> are one edit. Use a per-tier ratio so the author's ordering inside each tier survives, and floor at
+> Enderal's p25 for the tier so a cheap high-tier utility does not fall to single digits.
+> `src/Apocalypse/tools/14-magicka-costs.ps1` and `src/Triumvirate/tools/18-magicka-costs.ps1` are
+> the worked examples; each has a `verify-magicka-costs.ps1` beside it that re-asserts the flag and
+> the band over the built tree.
+>
+> **EGO makes this worse, and it makes it worse proportionally.** Its `XionManaTweaks 00081F`–`5`
+> perks on the `Player` record apply a flat `ModSpellCost` of **×2.08–×2.26** by spell tier, plus
+> `XionManaSkillScaling 001ED5`–`5` for casting above your skill (see
+> [`arch-docs/EGO/magic-and-talents.md`](arch-docs/EGO/magic-and-talents.md)). Those key off the
+> **casting perk**, i.e. the same `HalfCostPerk` tier tag, so they hit Enderal's spells and a ported
+> mod's identically — which is why rescaling onto Enderal's band is the right fix rather than picking
+> absolute numbers: the relationship survives whether or not EGO is installed.
+>
+> Three traps inside the fix. **Scope it to spells the player can actually hold** — the tome-taught
+> set, plus variants that share a taught spell's EditorID prefix, its exact cost *and* a
+> `HalfCostPerk` of their own (that last test is what separates a player-equippable variant from the
+> procs and hazards a script fires, which bill nothing). **A tome can teach something that is not a
+> spell**: Apocalypse's Enslave the Weak ships a `LesserPower` with no `BaseCost` line at all.
+> And **`ManualCostCalc` also stops the Creation Kit inflating a cost on save**, which is what made
+> Apocalypse's Arcane-Fever'd self-heals dangerous to open in the CK; they are now safe.
+
+The consequence is good news for ported spell mods: a Skyrim spell's `MagicSkill` and skill scaling
+work unchanged in Enderal, and so does the magicka-cost *formula* — but not the numbers it produces,
+which is the block above. What does *not* carry over is anything user-visible
 that names a school — spell tomes, load screens, descriptions — because the player has never heard
 of "the School of Conjuration". Enderal's own magic metaphysics vocabulary, for rewriting those
 strings, is the **Sea of Eventualities** (mages "manifest an eventuality"), **Lost Ones** (its

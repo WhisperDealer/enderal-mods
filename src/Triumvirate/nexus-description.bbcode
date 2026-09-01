@@ -115,7 +115,28 @@ Triumvirate prices on vanilla Skyrim's ladder. Enderal's [b]entire[/b] spell tom
 
 Novice and Apprentice already sat inside Enderal's band and were left alone. The rest is a [b]per-tier ratio[/b], not a flat price, so Enai's own ordering inside each tier survives exactly — the spells he priced high still cost more than their neighbours.
 
-[i]Magicka costs, damage, durations and cooldowns are untouched. Those are Enai's balance, and Enderal uses the same five magic skills under different names, so they work unchanged.[/i]
+[b]3b. Mana costs are Enderal's too.[/b]
+
+Triumvirate never writes a mana cost. It leaves every spell's cost to be calculated by the engine, and that calculation charges for a spell's [b]duration[/b] as much as its power — which is why the archetypes' long summons and auras were the worst offenders. [b]Enderal does the opposite[/b]: 271 of the 274 spells its own tomes teach have a cost typed by hand, and the most expensive spell in the entire game costs [b]310[/b].
+
+Left alone, Triumvirate's Master tier ran at a median of 1189 and a maximum of 1484. Enderal's mana pool cannot pay that. You gain [b]+8 maximum mana per level[/b], and only when you spend that level's attribute point on it — so a mage who never takes a single point of health finishes the game somewhere near 400–500. All five archetype capstones were uncastable by any character the game can produce.
+
+Every spell now carries a written cost on Enderal's scale:
+
+[code]
+  Tier          was              now
+  --------------------------------------------------
+  Novice          4- 152  ->    14- 135   (med  50 -> 45)
+  Apprentice     10- 152  ->    27- 120   (med  66 -> 55)
+  Adept          15- 259  ->    34- 115   (med 168 -> 75)
+  Expert         30- 453  ->    49- 170   (med 323 -> 125)
+  Master         65-1484  ->    68- 225   (med 1189 -> 180)
+
+  Enderal's own, for comparison:  med 21 / 40 / 55 / 65 / 80, ceiling 310[/code]
+
+As with the gold prices this is a [b]per-tier ratio[/b], so Enai's ordering inside each tier is preserved exactly.
+
+[i]Damage, durations, magnitudes, cooldowns and effects are untouched. Those are Enai's balance, and Enderal uses the same five magic skills under different names, so they work unchanged.[/i]
 
 [i]Merchant stock only refreshes every two in-game days, so on an existing save give it 48 hours before judging what a shop carries.[/i]
 
@@ -206,7 +227,7 @@ Every replacement comes from Enderal's own written lore, and where my Apocalypse
 [line]
 [size=4]What is NOT changed[/size]
 [list]
-[*][b]No spell balance changes.[/b] Damage, magicka cost, duration and cooldowns are all Enai's, untouched. Enderal keeps all five of Skyrim's magic skills and only renames them, so Triumvirate's spells scale off your Elementalism, Entropy, Light Magic, Mentalism and Psionics with no conversion at all.[/*]
+[*][b]No spell balance changes, with one deliberate exception.[/b] Damage, duration, magnitude and cooldowns are all Enai's, untouched; only the mana costs were rewritten (see above), and those were never Enai's numbers in the first place but the Creation Kit's arithmetic against a mana pool five times the size of Enderal's. Enderal keeps all five of Skyrim's magic skills and only renames them, so Triumvirate's spells scale off your Elementalism, Entropy, Light Magic, Mentalism and Psionics with no conversion at all.[/*]
 [*][b]No new spells and no removed spells.[/b] All 75 are here. Unlike the Apocalypse conversion, nothing had to be cut for lore: Triumvirate's summons are spirits, ancestors, beasts and Enai's own invented demons, and Enderal's Entropy discipline already raises the dead and binds spirits. There were no Daedra to remove.[/*]
 [*][b]No Enderal records rewritten.[/b] See compatibility, below — this is the part I am most pleased with.[/*]
 [/list]

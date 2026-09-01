@@ -3,6 +3,18 @@
 Paste each version block into the Nexus **Changelogs** tab. User-facing changes only; repo tooling
 and documentation are not listed.
 
+## 1.3.0
+
+- Fixed: **the master-tier spells cost far too much mana to cast.** Apocalypse left every spell's
+  cost to be calculated by the engine, and that calculation charges for a spell's *duration* rather
+  than its power — so Conjure Battlemage came out at 1201 mana, more than twice what a fully
+  invested Enderal mage's whole bar holds. Every spell now has a cost written against Enderal's own
+  scale, where the most expensive spell in the game is 310. Conjure Battlemage is 230.
+- Costs were rescaled per tier, so Enai's relative pricing inside each tier is unchanged — the
+  cheapest novice spell is still the cheapest novice spell. Nothing else about the spells changed:
+  no damage, duration, magnitude or effect was touched.
+- Novice and apprentice spells barely move. The higher the tier, the larger the correction.
+
 ## 1.2.0
 
 - Updated for **Apocalypse 10.3.0**. You must install that version — this release will not match 10.2.3.

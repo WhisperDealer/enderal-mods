@@ -8,8 +8,9 @@ EquipmentType: 013F42:Skyrim.esm
 Description:
   TargetLanguage: English
   Value: ''
-BaseCost: 100
+BaseCost: 70
 Flags:
+- ManualCostCalc
 - IgnoreResistance
 - NoAbsorbOrReflect
 - NoDualCastModification

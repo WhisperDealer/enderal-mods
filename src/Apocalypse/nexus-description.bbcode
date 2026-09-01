@@ -82,7 +82,27 @@ Every tome and scroll is rescaled onto Enderal's economy:
 
 It is a [b]per-tier ratio[/b], not a flat price, so Enai's own ordering inside each tier is preserved exactly — the spells he priced high still cost more than their neighbours. Master tomes still land a little above Enderal's top rank, deliberately: an Enderal spell is bought six times as it ranks up, roughly 760 gold all told, while an Apocalypse spell is a single purchase at full strength.
 
-[i]Magicka costs are left exactly as Enai wrote them. Those are his balance, not inherited pricing, and Enderal uses the same five magic ActorValues, so they work unchanged.[/i]
+[b]1c. Mana costs are Enderal's too — this is the big one.[/b]
+
+Apocalypse never writes a mana cost. It leaves every spell's cost to be calculated by the engine, and that calculation charges for a spell's [b]duration[/b] as much as its power: a 180-second summon is billed twenty-four times its effect's base cost. [b]Enderal does the opposite[/b] — 271 of the 274 spells its own tomes teach have a cost typed by hand, and the most expensive spell in the entire game costs [b]310[/b].
+
+Left alone, Apocalypse's master tier ran at a median of 689 and a maximum of 1607. Enderal's mana pool cannot pay that. You gain [b]+8 maximum mana per level[/b], and only when you spend that level's attribute point on it — so a mage who never takes a single point of health finishes the game somewhere near 400–500. Conjure Battlemage at 1201 was not expensive; it was uncastable by any character the game can produce. That is the report that prompted this.
+
+Every spell now carries a written cost on Enderal's scale:
+
+[code]
+  Tier          Spells  was              now
+  ------------------------------------------------------
+  Novice            3-103  (med   50)      14- 80  (med  40)
+  Apprentice        8-185  (med   80)      27-130  (med  55)
+  Adept            23-300  (med  170)      34-135  (med  75)
+  Expert           25-750  (med  361)      49-225  (med 110)
+  Master           58-1607 (med  689)      68-305  (med 130)
+
+  Enderal's own, for comparison:  med 21 / 40 / 55 / 65 / 80, ceiling 310[/code]
+
+As with the gold prices this is a [b]per-tier ratio[/b], so Enai's ordering inside each tier is preserved exactly. [b]Nothing else about the spells changed[/b] — no damage, duration, magnitude, cooldown or effect was touched, and Enderal keeps all five of Skyrim's magic skills under new names, so everything still scales off your Elementalism, Entropy, Light Magic, Mentalism and Psionics as Enai intended.
+
 
 [i]Merchant stock only refreshes every two in-game days, so on an existing save give it 48 hours before judging what a shop carries.[/i]
 
@@ -287,7 +307,7 @@ Only the two figures Enderal actually establishes as arcanists keep a spell name
 [line]
 [size=4]What is NOT changed[/size]
 [list]
-[*][b]No spell balance changes, with one deliberate exception.[/b] Damage, magicka cost, duration and cooldowns are all Enai's, untouched. Enderal keeps all five of Skyrim's magic skills and only renames them, so Apocalypse's spells scale off your Elementalism, Entropy, Light Magic, Mentalism and Psionics without any conversion at all. The exception is Arcane Fever on the 19 self-heals (see above) — that is not a rebalance of Enai's numbers but the addition of a cost that only exists in Enderal, and without it those spells bypass the game's central survival mechanic entirely.[/*]
+[*][b]No spell balance changes, with two deliberate exceptions.[/b] Damage, duration and cooldowns are all Enai's, untouched. Enderal keeps all five of Skyrim's magic skills and only renames them, so Apocalypse's spells scale off your Elementalism, Entropy, Light Magic, Mentalism and Psionics without any conversion at all. The exceptions are Arcane Fever on the 19 self-heals and the mana costs (both above) — neither is a rebalance of Enai's design. Arcane Fever adds a cost that only exists in Enderal, without which those spells bypass the game's central survival mechanic; the mana costs were never Enai's numbers in the first place, but the Creation Kit's arithmetic against a mana pool five times the size of Enderal's.[/*]
 [*][b]No new spells, no removed records.[/b] The fifteen cut summons are still in Apocalypse; they are simply never handed to you.[/*]
 [*][b]No Enderal records rewritten.[/b] The nine leveled lists are appended to, never edited.[/*]
 [/list]

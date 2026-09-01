@@ -29,8 +29,12 @@ This file is everything that is **specific to magic**. Worked example throughout
 ## The good news, first
 
 **Enderal's five magic schools are renamed vanilla ActorValues — nothing else.** Same `MagicSkill`,
-same magicka costs, same skill scaling, same perk-driven cost reductions. A ported spell's
+same cost *formula*, same skill scaling, same perk-driven cost reductions. A ported spell's
 **mechanics work unchanged and need no conversion at all.**
+
+What does not carry over is the *magnitude* of the numbers on either side of that formula: Enderal's
+mana pool and its authored spell costs are both far smaller than Skyrim's, so a ported cost that the
+engine calculates is wrong even though every mechanism around it is right. See section 2.
 
 | Vanilla `MagicSkill` | Enderal discipline | Higher school |
 |---|---|---|
@@ -43,8 +47,9 @@ same magicka costs, same skill scaling, same perk-driven cost reductions. A port
 **Alteration is Mentalism and Illusion is Psionics.** The intuitive pairing (Illusion→Mentalism) is
 wrong and mis-files every spell in the mod. Check this every time; it reads correctly either way.
 
-So leave damage, cost, duration, cooldowns and scaling exactly as the author wrote them. What breaks
-is everything **user-visible** and everything about **how the player gets the spell**.
+So leave damage, duration, magnitude, cooldowns and scaling exactly as the author wrote them. What
+breaks is everything **user-visible**, everything about **how the player gets the spell**, and the
+two prices — **gold and mana** — neither of which the author ever wrote against Enderal's scale.
 
 ---
 
@@ -167,7 +172,9 @@ spot** — that is how you prove distribution without waiting or starting a new 
 
 ---
 
-## 2. Prices — Enderal's scale is far flatter than Skyrim's
+## 2. Prices — Enderal's scale is far flatter than Skyrim's, in gold AND in mana
+
+### Gold
 
 **[verified]** Enderal's *entire* spell-tome range is **20–350**, with two outliers (Paralyze Rank II
 400, the unique Death Storm 600). Scrolls run **10–100** with two at 500. Vanilla Skyrim's tome ladder
@@ -178,7 +185,59 @@ so a Skyrim-priced master tome costs about what a unique greataxe does.
 Rescale by a **per-tier ratio**, not a flat value, so the author's ordering inside each tier survives.
 Let tiers overlap at the edges — Enderal's own do. See `08-reprice.ps1`.
 
-Leave **magicka** costs alone. Those are the author's balance and they work unchanged.
+### Mana — do NOT leave these alone
+
+**[verified 2026-09-01. An earlier version of this file said "leave magicka costs alone, they are the
+author's balance and work unchanged." That was wrong, and both shipped releases were unplayable at
+the top tier because of it.]**
+
+A `SPELL` only uses its stored `BaseCost` when `ManualCostCalc` is set. Without the flag the engine
+recomputes at runtime:
+
+```
+cost = sum over effects of  MGEF.BaseCost * magnitude^1.1 * (duration / 10)^1.1
+```
+
+**Enderal never relies on that — 271 of the 274 spells its own tomes teach carry the flag**, so every
+SureAI cost is typed by hand. Enai's mods set it on **none** of their player spells, so every cost is
+the CK's formula, and the **duration** term is what wrecks it: Conjure Battlemage is a 50-cost effect
+with a 180 s duration, so `(180/10)^1.1 = 23.9` and the spell billed **1201**.
+
+Enderal's authored bands, and what the two ports actually shipped:
+
+| Tier | Enderal min–max (med) | Apocalypse med | Triumvirate med |
+|---|---|---|---|
+| Novice | 6–140 (21) | 50 | 50 |
+| Apprentice | 12–140 (40) | 80 | 66 |
+| Adept | 10–200 (55) | 170 | 168 |
+| Expert | 29–260 (65) | 361 | 323 |
+| Master | 38–**310** (80) | 689 (max 1607) | 1189 (max 1484) |
+
+**310 is the whole-game ceiling and it is not negotiable.** Enderal's mana pool is small and fixed:
+the player gains **+8 max mana per level, and only when they spend that level's attribute choice on
+it** (`_00e_epupdatefunctions.psc` — the alternatives are +9 Health and +11 Stamina). A mage who
+never picks anything else ends a playthrough near **400–500**. A 700-mana spell cannot be cast by any
+character the game can produce.
+
+**The fix**: set `ManualCostCalc` and author the number. Freezing is behaviourally a no-op — the
+value the engine was computing is already sitting in the record — so the flag and the rescale are one
+edit. Do **not** reach for magnitudes or durations; those are the author's balance and they do work
+unchanged. Use a per-tier ratio so ordering inside each tier survives, and floor at Enderal's p25 for
+the tier (14 / 27 / 34 / 49 / 68) so a cheap high-tier utility does not fall to single digits.
+`src/Apocalypse/tools/14-magicka-costs.ps1` and `src/Triumvirate/tools/18-magicka-costs.ps1` are the
+worked examples, each with a `verify-magicka-costs.ps1` beside it.
+
+Three traps:
+
+- **Scope it to spells the player can hold.** The tome-taught set, plus variants sharing a taught
+  spell's EditorID prefix, its exact cost *and* a `HalfCostPerk` of their own. That last test is what
+  separates a player-equippable variant (Apocalypse's five per-school Conjure Dremora Mentor spells)
+  from the procs, hazards and subspells a script fires, which bill nothing. Exclude `_NPC` variants:
+  an enemy's magicka budget is a different question.
+- **A tome can teach something that is not a spell.** Apocalypse's Enslave the Weak ships a
+  `LesserPower` with no `BaseCost` line at all. Skip it; do not throw.
+- **Read the tier off `HalfCostPerk`, not off the EditorID.** Enai's own tags disagree with his
+  naming in places, and the perk is what Enderal's talents actually read.
 
 ---
 
@@ -355,9 +414,10 @@ watched the summon behave.
   The second shape is the dangerous one: it is invisible to any missing-reference tooling and has to
   be looked for by hand. Grep the mod for `HasPerkConditionData` and check each perk against
   Enderal's `Player` record.
-- **Never open a ported spell in the Creation Kit.** Unless the record carries `ManualCostCalc`, the
-  CK recalculates `BaseCost` on save from the effect list — so adding a fever effect and then opening
-  the record silently inflates its magicka cost. Edit the YAML only.
+- **Never open a ported spell in the Creation Kit until it carries `ManualCostCalc`.** Without the
+  flag the CK recalculates `BaseCost` on save from the effect list — so adding a fever effect and
+  then opening the record silently inflates its magicka cost. Setting the flag (section 2) closes
+  that hole as a side effect, but edit the YAML only regardless.
 - **New perks are invisible.** Enderal has no vanilla perk tree UI; its talents are three-tier Perks
   paired with `WordOfPower` unlocks read through `_00E_TalentLibrary`. A mod that adds perks to
   vanilla trees puts them where the player can never see or buy them. Hang new behaviour off

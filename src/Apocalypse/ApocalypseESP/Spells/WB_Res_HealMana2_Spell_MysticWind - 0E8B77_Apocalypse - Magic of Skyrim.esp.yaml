@@ -8,7 +8,9 @@ EquipmentType: 013F44:Skyrim.esm
 Description:
   TargetLanguage: English
   Value: ''
-BaseCost: 58
+BaseCost: 68
+Flags:
+- ManualCostCalc
 CastType: FireAndForget
 HalfCostPerk: 0C44CA:Skyrim.esm
 Effects:
