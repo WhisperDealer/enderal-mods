@@ -1,6 +1,6 @@
 ---
 name: enderal-magic-porter
-description: Port Skyrim SE SPELL and magic mods into Enderal SE. Use after skyrim-to-enderal-porter has cleared the generic kill-checks, for everything magic-specific — renaming the five schools and the Elder Scrolls gods out of the strings, distributing spell tomes and scrolls through Enderal's own lists and merchants, repricing onto Enderal's economy, and making self-heals pay Arcane Fever. Every rule here was paid for by the Apocalypse port.
+description: Port Skyrim SE SPELL and magic mods into Enderal SE. Use after skyrim-to-enderal-porter has cleared the generic kill-checks, for everything magic-specific — renaming the five schools and the Elder Scrolls gods out of the strings, distributing spell tomes and scrolls through Enderal's own lists and merchants, repricing BOTH the gold and the mana costs onto Enderal's scale (a ported spell's mana cost is the Creation Kit's arithmetic, not the author's design, and it makes the top tier uncastable), and making self-heals pay Arcane Fever. Every rule here was paid for by the Apocalypse and Triumvirate ports.
 tools: Read, Write, Edit, Grep, Glob, Bash
 ---
 
@@ -205,13 +205,13 @@ with a 180 s duration, so `(180/10)^1.1 = 23.9` and the spell billed **1201**.
 
 Enderal's authored bands, and what the two ports actually shipped:
 
-| Tier | Enderal min–max (med) | Apocalypse med | Triumvirate med |
-|---|---|---|---|
-| Novice | 6–140 (21) | 50 | 50 |
-| Apprentice | 12–140 (40) | 80 | 66 |
-| Adept | 10–200 (55) | 170 | 168 |
-| Expert | 29–260 (65) | 361 | 323 |
-| Master | 38–**310** (80) | 689 (max 1607) | 1189 (max 1484) |
+| Tier | Enderal min–max | Enderal med | Enderal p25 / p75 | Apocalypse med | Triumvirate med |
+|---|---|---|---|---|---|
+| Novice | 6–140 | 21 | 14 / 38 | 50 | 50 |
+| Apprentice | 12–140 | 40 | 27 / 55 | 80 | 66 |
+| Adept | 10–200 | 55 | 34 / 80 | 170 | 168 |
+| Expert | 29–260 | 65 | 49 / 110 | 361 | 323 |
+| Master | 38–**310** | 80 | 68 / 170 | 689 (max 1607) | 1189 (max 1484) |
 
 **310 is the whole-game ceiling and it is not negotiable.** Enderal's mana pool is small and fixed:
 the player gains **+8 max mana per level, and only when they spend that level's attribute choice on
@@ -225,7 +225,43 @@ edit. Do **not** reach for magnitudes or durations; those are the author's balan
 unchanged. Use a per-tier ratio so ordering inside each tier survives, and floor at Enderal's p25 for
 the tier (14 / 27 / 34 / 49 / 68) so a cheap high-tier utility does not fall to single digits.
 `src/Apocalypse/tools/14-magicka-costs.ps1` and `src/Triumvirate/tools/18-magicka-costs.ps1` are the
-worked examples, each with a `verify-magicka-costs.ps1` beside it.
+worked examples, each with a `verify-magicka-costs.ps1` beside it. **Copy one and change the paths
+and the five ratios** — do not write a third from scratch.
+
+#### Deriving the ratios
+
+The Enderal side of the table above is fixed; re-measure it only if `reference/base/` is rebuilt.
+The mod side you measure, then pick five numbers:
+
+1. **Measure the mod's tome-taught set by tier.** Walk `Books/` for `MutagenObjectType: BookSpell`
+   → `Spell:`, resolve each into `Spells/`, tier by `HalfCostPerk`, and take min / median / max per
+   tier. Do this against **upstream's** tree, not yours.
+2. **Ratio = Enderal's tier p75 ÷ the mod's tier median**, rounded to two decimals. Aim at **p75, not
+   the median**, on purpose: an Enderal spell is bought six times as it ranks up, while a ported one
+   is a single purchase at terminal power, so it earns a place in the upper half of its tier. That is
+   the same premium the gold reprice takes.
+3. **Then check the ceiling, which overrides step 2.** `mod tier max × ratio` must land inside
+   Enderal's tier max — 140 / 140 / 200 / 260 / **310**. Lower the ratio until it does; the generator
+   throws above 310, deliberately. This is what pulled Apocalypse's Master ratio from the 0.25 that
+   step 2 gives down to **0.19** (1607 × 0.25 = 397, over the ceiling; × 0.19 = 305, under it), and
+   why its Master median lands at 130 rather than 170.
+4. **Floor at Enderal's p25** (14 / 27 / 34 / 49 / 68) and report how many spells the floor binds. A
+   handful is normal; a whole tier on the floor means the ratio is too aggressive.
+5. **Round to 5 above 20**, to the unit below. Enderal's own costs are mostly multiples of 5.
+
+You have slack of a few hundredths either way; nudge a tier up if it was already close to Enderal's
+band before you touched it (Triumvirate's Novice went to 0.90 rather than the 0.76 step 2 gives, for
+exactly that reason). What that produced — the two mods needed visibly different numbers, so do not
+copy either set blind:
+
+| | Novice | Apprentice | Adept | Expert | Master |
+|---|---|---|---|---|---|
+| Apocalypse | 0.80 | 0.70 | 0.45 | 0.30 | 0.19 |
+| Triumvirate | 0.90 | 0.80 | 0.45 | 0.38 | 0.15 |
+
+Expect the low tiers to barely move and the correction to grow with tier. If a mod's Novice ratio
+comes out near 1.0, leave that tier alone — but **still set `ManualCostCalc` on it**, or the engine
+keeps recomputing and a future upstream duration change silently reprices the spell.
 
 Three traps:
 
@@ -471,7 +507,9 @@ Verdict first, then evidence — never a verdict from a name alone (guardrail 1)
 SCHOOLS      : mapped, N spells  (Alteration->Mentalism, Illusion->Psionics confirmed)
 DISTRIBUTION : <mod>'s targets N vanilla lists, M exist in Enderal -> rebuilt via <lists/merchants>
 RUNTIME POP  : N entry points found (quest + MCM button?), K FormLists emptied, 0 AddForm errors
-PRICING      : tome median was X, now Y  (Enderal range 20-350)
+GOLD PRICES  : tome median was X, now Y  (Enderal range 20-350)
+MANA COSTS   : ManualCostCalc set on N player spells; med was A/B/C/D/E now V/W/X/Y/Z,
+               ceiling was M now <=310  (Enderal med 21/40/55/65/80)
 ARCANE FEVER : N self-heals taxed, rates <= 26 burst / 78 over-time; K leech spells left untaxed [why]
 STRINGS      : N renames across tome/spell/scroll/MGEF/ench/description
 SUMMONS      : N cut (Daedra/Dwemer), tomes AND scrolls both withheld; rest kept
@@ -490,3 +528,9 @@ For magic specifically, the things a build cannot tell you are whether the tomes
 **buyable**, whether the fever effect actually **fires**, whether a friendly summon is actually
 **friendly**, and whether the mod's own distribution scripts have actually **stopped**. All need the
 console and a log.
+
+**Mana costs are the cheap one to prove, so prove them.** `player.addspell <FormID>`, equip the
+spell, and read the number the magic menu shows. It is the only check in this file that needs no
+combat, no merchant and no waiting: if `ManualCostCalc` failed to land, the menu still shows the
+engine's derived figure and you will see it immediately. Do one Master-tier spell per school — that
+is five casts and it covers the tier where every real failure has been.
