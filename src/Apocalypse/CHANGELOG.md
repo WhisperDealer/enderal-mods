@@ -3,8 +3,17 @@
 Paste each version block into the Nexus **Changelogs** tab. User-facing changes only; repo tooling
 and documentation are not listed.
 
-## 1.4.0
+## 1.3.0
 
+- Fixed: **the master-tier spells cost far too much mana to cast.** Apocalypse left every spell's
+  cost to be calculated by the engine, and that calculation charges for a spell's *duration* rather
+  than its power — so Conjure Battlemage came out at 1201 mana, more than twice what a fully
+  invested Enderal mage's whole bar holds. Every spell now has a cost written against Enderal's own
+  scale, where the most expensive spell in the game is 310. Conjure Battlemage is 230.
+- Costs were rescaled per tier, so Enai's relative pricing inside each tier is unchanged — the
+  cheapest novice spell is still the cheapest novice spell. Nothing else about the spells changed:
+  no damage, duration, magnitude or effect was touched.
+- Novice and apprentice spells barely move. The higher the tier, the larger the correction.
 - Fixed: **Conjure Herne's summon never used his bow.** He was handed a quiver of Daedric Arrows,
   which do not exist in Enderal, so he spawned with a bow and nothing to fire from it and simply
   stood there. He now carries Aeterna Arrows, Enderal's own best arrow.
@@ -31,19 +40,6 @@ and documentation are not listed.
   Entropy, Elementalism, Psionics and Light Magic -- where it used to list Skyrim's schools.
 - Note this renames the spells, not the models: the Entropic and Sinistran summons still look like
   Bethesda's Dremora and Xivilai.
-- Thanks to the Nexus reporter who found this before starting a playthrough.
-
-## 1.3.0
-
-- Fixed: **the master-tier spells cost far too much mana to cast.** Apocalypse left every spell's
-  cost to be calculated by the engine, and that calculation charges for a spell's *duration* rather
-  than its power — so Conjure Battlemage came out at 1201 mana, more than twice what a fully
-  invested Enderal mage's whole bar holds. Every spell now has a cost written against Enderal's own
-  scale, where the most expensive spell in the game is 310. Conjure Battlemage is 230.
-- Costs were rescaled per tier, so Enai's relative pricing inside each tier is unchanged — the
-  cheapest novice spell is still the cheapest novice spell. Nothing else about the spells changed:
-  no damage, duration, magnitude or effect was touched.
-- Novice and apprentice spells barely move. The higher the tier, the larger the correction.
 
 ## 1.2.0
 
