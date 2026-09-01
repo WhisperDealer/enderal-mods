@@ -873,6 +873,31 @@ Enderal lacks.
 > whole arrow ladder tops out at **10 damage** (`_30E_AeternaArrow 13E219`) against vanilla Daedric's
 > 24, so a ported quiver carried across at face value is 2.4x the host's ceiling.
 
+> **And "the FormID exists" is only half a substitution check — every record type has a second
+> condition that decides whether it does anything.** **[verified 2026-09-01]** The same summon audit
+> found `WB_ConjureCraftlord_Outfit` dressing its wearer in vanilla Dwarven cuirass, boots and
+> gauntlets (`01394D`/`01394C`/`01394E`), none of which Enderal has, against a race whose Skin is
+> `SkinNaked` — so the Craftlord arrived hooded, cloaked and otherwise naked.
+>
+> The trap is in the fix, not the finding. **An `ARMO` renders on an actor only if one of its `ARMA`
+> armatures covers that actor's race's `ArmorRace`**, and `WB_ConjureCraftlord_Race` sets
+> `ArmorRace: 013743` (HighElfRace), not the `DefaultRace 000019` most gear is keyed to. A substitute
+> that resolves perfectly and whose armature omits `013743` builds clean, passes every audit, and puts
+> an invisible cuirass on the summon. Enderal's `_04E_30_EndreleanPlate*` set is safe — its armatures
+> are vanilla's Daedric ones, 27 races including `013743`, which is also why the ARMA EditorIDs still
+> say Daedric — but that had to be read to know it.
+>
+> The general form: after proving a substitute exists, prove the **second** condition its record type
+> carries. An armature's race coverage here; a `LeveledItem`'s `Global` in the tier-gating case above;
+> an MGEF's `TargetType` in the Arcane Fever case. `src/Apocalypse/tools/16-craftlord-outfit.ps1`
+> asserts both before writing.
+>
+> **A verifier for this must assert the objective thing, not the tasteful one.** Its first draft
+> demanded Body, Hands and Feet on every summon and produced **14** failures that were all design —
+> Dremora and Xivilai go barehanded and barefoot, and Apocalypse's Deadeye Captain has no body armour
+> because his race skin *is* the body. Slot coverage is an aesthetic judgement; a dead reference is
+> not. Scope by a flag the record actually carries (`Summonable`) rather than by an exception list.
+
 > **Never ship a `NAVI` record built against a different `Skyrim.esm`.** **[verified 2026-08-07]**
 > Add one navmesh — even in your own interior cell — and the Creation Kit regenerates the plugin's
 > whole NavigationMeshInfoMap, stamping Bethesda's navigation map into it. Apocalypse's was 6,633

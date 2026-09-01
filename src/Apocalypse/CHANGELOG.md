@@ -10,6 +10,11 @@ and documentation are not listed.
   stood there. He now carries Aeterna Arrows, Enderal's own best arrow.
 - Fixed: the same defect on **Conjure Dremora Assassin**, who also draws a bow. Unreported, found
   while checking Herne.
+- Fixed: **the Craftlord summon arrived naked from the neck down.** Its outfit dressed it in
+  Dwarven armour, which Enderal does not have, leaving only the hood and cloak. It now wears
+  Endralean Plate.
+- Fixed: two Elder Scrolls place names left in spell descriptions - the Craftlord was summoned
+  "to Nirn", and the Xivilai Sorcerer threw a "Ball of Oblivion's flames".
 - Thanks to the Nexus reporter who found this before starting a playthrough.
 
 ## 1.3.0

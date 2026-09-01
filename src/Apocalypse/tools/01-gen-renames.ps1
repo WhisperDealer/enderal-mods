@@ -27,6 +27,12 @@ $renames = [ordered]@{
   'Oblivion Unbound'                = 'Sinistra Unbound'
   'Breath of Arkay'                 = 'Breath of Tyr'
   'Talons of Nirn'                  = 'Talons of Vyn'
+  # Two bare place-nouns the table missed until 2026-09-01, because both are phrased differently
+  # from the keys above: 'Talons of Nirn' does not catch 'to Nirn', and 'Oblivion Unbound' does not
+  # catch "Oblivion's flames". Enderal's world is Vyn, and Oblivion maps to Sinistra/Entropy the
+  # same way 'Daedric Crescent' does above.
+  'Dwemer sage to Nirn'             = 'Dwemer sage to Vyn'
+  "Ball of Oblivion's flames"       = 'Ball of entropic flames'
   'Lamb of Mara'                    = 'Lamb of Irlanda'
   "Reynos' Fins"                    = 'Fins of Kil' + [char]0x00E9                # Kile-acute
   # --- items and creatures named for Daedra ---------------------------------

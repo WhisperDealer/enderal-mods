@@ -53,7 +53,7 @@ Sounds:
   Sound: 03F2B1:Skyrim.esm
 Description:
   TargetLanguage: English
-  Value: Calls a Dwemer sage to Nirn for <dur> seconds. Modify its stats with the <Reconfigure Craftlord> spell.
+  Value: Calls a Dwemer sage to Vyn for <dur> seconds. Modify its stats with the <Reconfigure Craftlord> spell.
 Conditions:
 - MutagenObjectType: ConditionFloat
   Flags:
