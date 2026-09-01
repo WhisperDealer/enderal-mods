@@ -4,7 +4,7 @@
 
 Apocalypse adds 373 spells. In Enderal, out of the box, you get [b]none of them[/b] — and not for the reason anyone expects. The mod does not load at all. Not "loads but distributes nothing": the engine skips the plugin outright, silently, with no warning and nothing in any log. Every spell, every scroll, every record is simply not in your game.
 
-This conversion fixes that, gives the spells a way into Enderal's economy, removes the parts that cannot work here, and takes the Daedra out of a world that has never heard of them.
+This conversion fixes that, gives the spells a way into Enderal's economy, removes the parts that cannot work here, and renames the Daedra and Dwemer for a world that has never heard of them.
 [line]
 [size=4]⚠ Requirements and install order — read this part[/size]
 
@@ -37,28 +37,28 @@ Enderal also has no spell tomes at all — it teaches spells from its own spellb
 
 [b]1. Distribution — the part that makes the mod exist.[/b]
 
-All [b]160 spell tomes[/b] are stocked by named merchants, and [b]every one of them is buyable[/b] — no rolling the dice on whether a shop happens to have the spell you want. Vendors are ranked by how much gold they carry, so the richest sells the master spells and the poorest sells the novice ones:
+All [b]175 spell tomes[/b] are stocked by named merchants, and [b]every one of them is buyable[/b] — no rolling the dice on whether a shop happens to have the spell you want. Vendors are ranked by how much gold they carry, so the richest sells the master spells and the poorest sells the novice ones:
 
 [code]
   Merchant                          Gold    Sells                        Tomes
   ---------------------------------------------------------------------------
-  Ark, Emberlord and Fireflash      1800    Master     (rank 100)          45
-  Sun Temple, Torius Flameling      1430    Expert     (rank 075)          39
-  Undercity, Barnabas               1050    Adept  - Alteration,           19
-                                                    Conjuration,
-                                                    Destruction
-  Ark, Ora Stonehand                 980    Adept  - Illusion,             14
-                                                    Restoration
-  Riverville, Tarhutie               630    Apprentice (rank 025)          28
+  Ark, Emberlord and Fireflash      1800    Master     (rank 100)          50
+  Sun Temple, Torius Flameling      1430    Expert     (rank 075)          45
+  Undercity, Barnabas               1050    Adept  - Mentalism,            21
+                                                    Entropy,
+                                                    Elementalism
+  Ark, Ora Stonehand                 980    Adept  - Psionics,             14
+                                                    Light Magic
+  Riverville, Tarhutie               630    Apprentice (rank 025)          30
   Ark, Milbert Foxhand               530    Novice     (rank 000)          15
   ---------------------------------------------------------------------------
-                                                                          160[/code]
+                                                                          175[/code]
 
 Each tome is sold at exactly one shop, so the whole spell list is a shopping route rather than a lottery. The Adept tier is split by magic school across the two middle merchants.
 
 [b]The stock is added through SureAI's own extension point, so no merchant record is overridden.[/b] Enderal ships an empty leveled list called [font=Courier New]&lt;Merchant&gt;_CustomMerchandise[/font] for every one of its 67 merchants — a hook the developers built into each shop's chest and never used. This mod writes into six of those instead of rewriting the chests, which means it can add stock to a shop while touching [b]none[/b] of that shop's own records. See Compatibility below for what that buys you.
 
-[b]Loot is separate and stays random.[/b] Apocalypse tomes and its [b]130 scrolls[/b] are also injected into Enderal's own world-loot lists — the ones feeding chests, rucksacks and scroll caches — so they still turn up as finds while you explore. Random is the right shape for loot and the wrong shape for a shop.
+[b]Loot is separate and stays random.[/b] Apocalypse tomes and all [b]144 scrolls[/b] are also injected into Enderal's own world-loot lists — the ones feeding chests, rucksacks and scroll caches — so they still turn up as finds while you explore. Random is the right shape for loot and the wrong shape for a shop.
 
 Nothing Enderal already sold or dropped is displaced. Both the merchant inventories and the loot lists are [b]added to[/b]; every existing entry is carried through untouched.
 
@@ -122,17 +122,25 @@ Apocalypse's edit to worldspace [font=Courier New]00003C[/font] is replaced with
 
 Apocalypse's three utility references inside it are kept — one of its quests and one of its factions still point at them, and dropping them would break both.
 
-[b]4. Fifteen summons removed.[/b]
+[b]4. Fifteen summons renamed for Enderal.[/b]
 
-Enderal has no Daedra and no Dwemer. These are never added to any vendor or loot list:
+Enderal has no Dremora, no Xivilai, no Daedra, no Dwemer and no Atronachs. Fifteen of Apocalypse's conjuration spells are built on them, and in earlier releases of this patch they were simply never added to any vendor or loot list — a sixth of the spellbook that no character could obtain.
+
+They are named for Enderal now, and they are [b]all fully distributed[/b]. Enderal turns out to have an equivalent for every one of those families, and two of them are exact rather than approximate: Enderal ships Fire, Ice, Mud and Soil [b]Elementals[/b] of its own, and its [i]Dwarven[/i] races [b]are[/b] the [b]Starling[/b] constructs whose ruins dot the map.
 [list]
-[*][b]Dremora[/b] — Churl, Pit Fighter, Champion, Honor Guard, Mentor, Assassin[/*]
-[*][b]Xivilai[/b] — Sorcerer, Lord[/*]
-[*][b]Other Daedra[/b] — Weeping Daedra, Lord of Bindings, Six Demon Bag, Conjure Herne, Conjure Kyrkrim[/*]
-[*][b]Atronach Mark[/b] — summons atronachs onto the marked target[/*]
-[*][b]Conjure Craftlord[/b] — a Dwemer automaton[/*]
+[*][b]Dremora → Entropic[/b] — Churl, Pit Fighter, Champion, Honor Guard, Mentor, Assassin. [i]Entropy[/i] is Enderal's name for Conjuration, and [i]entropists[/i] are a Rhalâta enemy you already fight[/*]
+[*][b]Xivilai → Sinistran[/b] — Sorcerer, Lord. [i]Sinistra[/i] is the higher school above Entropy, so the greater beings take the higher-school name[/*]
+[*][b]Weeping Daedra → Weeping Shade[/b][/*]
+[*][b]Atronach Mark → Elemental Mark[/b][/*]
+[*][b]Conjure Craftlord[/b] — now calls a [b]Starling[/b] sage rather than a Dwemer one[/*]
+[*][b]Conjure Kyrkrim[/b] — now a [b]spirit wolf[/b] mount rather than a daedric one[/*]
+[*][b]Six Demon Bag[/b], [b]Lord of Bindings[/b] and [b]Conjure Herne[/b] keep their names — none of those is an Elder Scrolls word[/*]
 [/list]
-Everything else in Apocalypse's conjuration school stays: the wraiths, liches, totem spirits, the Battlemage, the Necrowitch, the Deadeye Captain, Bag of Rats. Enderal's own magic already raises the dead and binds spirits — [i]Entropy[/i] is one of its five disciplines — so undead and spirit summoning is entirely at home here. Only the Oblivion natives had to go.
+The rank titles are untouched: Churl, Pit Fighter, Champion, Honor Guard, Mentor, Assassin, Sorcerer and Lord are ordinary English, not Elder Scrolls lore. Only the race word changed. The [b]Conjure Entropic Mentor[/b] spell also now offers Enderal's five disciplines by their real names — Mentalism, Entropy, Elementalism, Psionics and Light Magic — instead of the vanilla schools.
+
+[b]One honest caveat:[/b] this renames the spells, not the models. The Entropic and Sinistran summons still use Bethesda's Dremora and Xivilai meshes, which come out of Skyrim's own archives. If you have played Skyrim you will recognise them. The judgement here is that a bound warrior a Rhalâta entropist might summon reads well enough in Enderal to be worth having, and that fifteen unobtainable spells was the worse outcome.
+
+Everything else in Apocalypse's conjuration school was always here and still is: the wraiths, liches, totem spirits, the Battlemage, the Necrowitch, the Deadeye Captain, Bag of Rats. Enderal's own magic already raises the dead and binds spirits, so undead and spirit summoning is entirely at home.
 
 [b]5. Healing spells raise Arcane Fever.[/b]
 
@@ -214,7 +222,7 @@ Every replacement is drawn from Enderal's own written lore — its seven gods, i
 [/tr]
 [tr][td]Daedric Crescent[/td]
 [td][b]Entropic Crescent[/b][/td]
-[td]A bound weapon, so it survives the cull — but not under that name.[/td]
+[td]A bound weapon, and the first record this conversion renamed rather than removed — the same rule the fifteen summons now follow.[/td]
 [/tr]
 [/table]
 
@@ -302,13 +310,34 @@ Only the two figures Enderal actually establishes as arcanists keep a spell name
 [tr][td]Daedric Body / Daedric Wolf [i](internal summon records)[/i][/td]
 [td][b]Summoned Body / Spirit Wolf[/b][/td]
 [/tr]
+[tr][td]Dremora Churl / Pit Fighter / Champion / Honor Guard / Mentor / Assassin[/td]
+[td][b]Entropic[/b] Churl / Pit Fighter / Champion / Honor Guard / Mentor / Assassin[/td]
+[/tr]
+[tr][td]Xivilai Sorcerer / Xivilai Lord[/td]
+[td][b]Sinistran[/b] Sorcerer / [b]Sinistran[/b] Lord[/td]
+[/tr]
+[tr][td]Weeping Daedra[/td]
+[td][b]Weeping Shade[/b][/td]
+[/tr]
+[tr][td]Atronach Mark / Atronach Pulse[/td]
+[td][b]Elemental Mark[/b] / [b]Elemental Pulse[/b]  [i](Enderal has four Elementals of its own)[/i][/td]
+[/tr]
+[tr][td]"a Dwemer sage" [i](Conjure Craftlord)[/i][/td]
+[td][b]a Starling sage[/b]  [i](Enderal's Dwarven races are the Starling constructs)[/i][/td]
+[/tr]
+[tr][td]"the daedric wolf mount Kyrkrim"[/td]
+[td][b]the spirit wolf mount Kyrkrim[/b][/td]
+[/tr]
+[tr][td]Daedric Bow / Sword / Greatsword / Mace / Battleaxe / War Axe [i](summon gear)[/i][/td]
+[td][b]Entropic[/b] Bow / Sword / Greatsword / Mace / Battleaxe / War Axe[/td]
+[/tr]
 [/table]
 
 [line]
 [size=4]What is NOT changed[/size]
 [list]
 [*][b]No spell balance changes, with two deliberate exceptions.[/b] Damage, duration and cooldowns are all Enai's, untouched. Enderal keeps all five of Skyrim's magic skills and only renames them, so Apocalypse's spells scale off your Elementalism, Entropy, Light Magic, Mentalism and Psionics without any conversion at all. The exceptions are Arcane Fever on the 19 self-heals and the mana costs (both above) — neither is a rebalance of Enai's design. Arcane Fever adds a cost that only exists in Enderal, without which those spells bypass the game's central survival mechanic; the mana costs were never Enai's numbers in the first place, but the Creation Kit's arithmetic against a mana pool five times the size of Enderal's.[/*]
-[*][b]No new spells, no removed records.[/b] The fifteen cut summons are still in Apocalypse; they are simply never handed to you.[/*]
+[*][b]No new spells, no removed records, and nothing withheld any more.[/b] Every one of Apocalypse's 175 tomes and 144 scrolls is now obtainable. Earlier releases of this patch kept fifteen Daedra and Dwemer summons out of every shop and loot list; they are renamed for Enderal instead, and they are all in circulation.[/*]
 [*][b]No Enderal records rewritten.[/b] The nine leveled lists are appended to, never edited.[/*]
 [/list]
 For reference, in case you have wondered which Enderal skill governs an Apocalypse spell:

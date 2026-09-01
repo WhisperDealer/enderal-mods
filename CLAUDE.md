@@ -627,7 +627,7 @@ mechanism plus the class of patch it invalidates.
 > Apocalypse port cost: the five renamed schools (Alteration is *Mentalism*, Illusion is *Psionics* —
 > the intuitive pairing is wrong), rebuilding distribution when Enderal has no spell tomes at all,
 > repricing onto a 20–350 range, making self-heals pay Arcane Fever, renaming the Elder Scrolls gods
-> out of every string, and cutting the Daedra and Dwemer summons.
+> out of every string, and renaming the Daedra and Dwemer summons into Enderal's own vocabulary.
 
 **Progression is not Skyrim's.** There is no learn-by-doing and no vanilla perk tree UI. Enderal's
 *talents* are three-tier **Perks** paired with **WordOfPower** unlocks, read back via
@@ -897,6 +897,39 @@ Enderal lacks.
 > Dremora and Xivilai go barehanded and barefoot, and Apocalypse's Deadeye Captain has no body armour
 > because his race skin *is* the body. Slot coverage is an aesthetic judgement; a dead reference is
 > not. Scope by a flag the record actually carries (`Summonable`) rather than by an exception list.
+
+> **RENAME a ported mod's un-Enderal creatures; do not withhold them. Cutting content to avoid a
+> naming problem is the expensive way to solve a cheap one.** **[verified 2026-09-01]** Enderal has no
+> Dremora, Xivilai, Daedra, Dwemer or Atronachs, so Apocalypse's 15 summons built on them were never
+> added to any vendor or loot list — **15 tomes and 14 scrolls, a sixth of the mod's spellbook, that
+> no player could obtain**. Enderal has an equivalent for every one of those families, and two are
+> exact rather than approximate:
+>
+> | Ported | Enderal | Why it is the host's own answer |
+> |---|---|---|
+> | Atronach | **Elemental** | Enderal ships Fire/Ice/Mud/Soil Elementals and tomes that summon them |
+> | Dwemer | **Starling** | Enderal's `Dwarven*Race`s **are** the Starling constructs; its `DwemerRuin` map markers are Starling ruins |
+> | Dremora | **Entropic** | Entropy is Enderal's Conjuration, and *entropists* are a real Rhalâta enemy type |
+> | Xivilai | **Sinistran** | Sinistra is the higher school above Entropy — the greater beings take the higher-school word |
+>
+> Keep the rank words: Churl, Pit Fighter, Champion, Honor Guard, Mentor, Assassin, Sorcerer and Lord
+> are ordinary English, not Elder Scrolls proper nouns. Only the race word has to go — which is why
+> this is a table of ~50 keys rather than a redesign.
+>
+> Three traps in the execution. **Articles**: *Entropic* takes **an**, so `'a Dremora Champion'` needs
+> its own key ahead of the bare one or you ship "Summons a Entropic Champion" — the same trap the
+> `Binds a Daedric Crescent` key already documents. **Never use a bare race or school word as a rename
+> key**: these tables do plain substring replacement over the whole record, and `Conjuration` appears
+> inside `WB_Conjuration_ConjureDremoraAssassin_Global_Health`, which a description names in a live
+> `<Global=…>` lookup — rewrite that and the game reads nothing. Anchor to the field instead
+> (`'    Value: Alteration'`). And **a rename does not touch the meshes** — these are still Bethesda's
+> red horned Dremora — so weigh that per mod; it is the one honest argument left for cutting.
+>
+> The corollary matters more than the rename. **A dangling reference on an unreachable record is
+> harmless only while the record stays unreachable.** These summons had been dormant, so nobody had
+> ever looked at them; the moment they ship, Herne's missing quiver and the Craftlord's missing armour
+> stop being audit noise and become the two bugs a player reports. Distribute the content, and the
+> per-subsystem invariant checks above stop being optional.
 
 > **Never ship a `NAVI` record built against a different `Skyrim.esm`.** **[verified 2026-08-07]**
 > Add one navmesh — even in your own interior cell — and the Creation Kit regenerates the plugin's

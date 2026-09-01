@@ -61,10 +61,10 @@ VirtualMachineAdapter:
       Object: 03BA29:Apocalypse - Magic of Skyrim.esp
     - MutagenObjectType: ScriptStringProperty
       Name: WB_Conjuration_AtronachMark_Highlight_XP
-      Data: The amount of experience granted by the Atronach Mark spell when it triggers.
+      Data: The amount of experience granted by the Elemental Mark spell when it triggers.
     - MutagenObjectType: ScriptStringProperty
       Name: WB_Conjuration_AtronachMark_Setting_XP
-      Data: Atronach Mark
+      Data: Elemental Mark
     - MutagenObjectType: ScriptStringProperty
       Name: WB_Conjuration_ConjureAvengingWraith_Format_Mult
       Data: Stats {0}% Killer
@@ -85,10 +85,10 @@ VirtualMachineAdapter:
       Object: 01A60D:Apocalypse - Magic of Skyrim.esp
     - MutagenObjectType: ScriptStringProperty
       Name: WB_Conjuration_ConjureDremoraAssassin_Highlight_Health
-      Data: A Dremora Assassin will curse targets below this amount of Health with Death Mark, temporarily reducing their Health to 1.
+      Data: A Entropic Assassin will curse targets below this amount of Health with Death Mark, temporarily reducing their Health to 1.
     - MutagenObjectType: ScriptStringProperty
       Name: WB_Conjuration_ConjureDremoraAssassin_Setting_Health
-      Data: Dremora Assassin
+      Data: Entropic Assassin
     - MutagenObjectType: ScriptStringProperty
       Name: WB_Conjuration_ConjureLich_Format_Cost
       Data: Costs {0} Charge

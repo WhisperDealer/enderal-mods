@@ -29,7 +29,7 @@ CastingSoundLevel: Silent
 Sounds: []
 Description:
   TargetLanguage: English
-  Value: Freezes up the Weeping Daedra when spotting it.
+  Value: Freezes up the Weeping Shade when spotting it.
 Conditions:
 - MutagenObjectType: ConditionFloat
   CompareOperator: GreaterThan

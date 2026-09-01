@@ -5,7 +5,7 @@ SkyrimMajorRecordFlags:
 - NotPlayable
 Name:
   TargetLanguage: English
-  Value: Daedric Greatsword
+  Value: Entropic Greatsword
 Model:
   File: Weapons\Daedric\DaedricGreatSword.nif
   Data: 0x020000000000000000000000

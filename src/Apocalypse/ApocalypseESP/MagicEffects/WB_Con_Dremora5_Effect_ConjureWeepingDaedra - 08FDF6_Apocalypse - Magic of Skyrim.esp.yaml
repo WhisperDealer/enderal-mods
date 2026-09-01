@@ -2,7 +2,7 @@ FormKey: 08FDF6:Apocalypse - Magic of Skyrim.esp
 EditorID: WB_Con_Dremora5_Effect_ConjureWeepingDaedra
 Name:
   TargetLanguage: English
-  Value: Conjure Weeping Daedra
+  Value: Conjure Weeping Shade
 MenuDisplayObject: 0A6459:Skyrim.esm
 Keywords:
 - 0A9B1F:Skyrim.esm
@@ -42,4 +42,4 @@ Sounds:
   Sound: 03F2B1:Skyrim.esm
 Description:
   TargetLanguage: English
-  Value: Summons a Weeping Daedra for <dur> seconds. It steals large amounts of Health with its magical attacks, but turns to inert and brittle stone when an enemy looks at it.
+  Value: Summons a Weeping Shade for <dur> seconds. It steals large amounts of Health with its magical attacks, but turns to inert and brittle stone when an enemy looks at it.

@@ -2,7 +2,7 @@ FormKey: 149F83:Apocalypse - Magic of Skyrim.esp
 EditorID: WB_Con_Curse2_Effect_AtronachMark_Proc
 Name:
   TargetLanguage: English
-  Value: Atronach Pulse
+  Value: Elemental Pulse
 MenuDisplayObject: 11F236:Apocalypse - Magic of Skyrim.esp
 Flags:
 - Hostile

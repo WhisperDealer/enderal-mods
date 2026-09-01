@@ -2,7 +2,7 @@ FormKey: 149F81:Apocalypse - Magic of Skyrim.esp
 EditorID: WB_Con_Curse2_Spell_AtronachMark_Proc
 Name:
   TargetLanguage: English
-  Value: Atronach Mark
+  Value: Elemental Mark
 MenuDisplayObject: 11F236:Apocalypse - Magic of Skyrim.esp
 EquipmentType: 013F44:Skyrim.esm
 Description:

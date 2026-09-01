@@ -2,7 +2,7 @@ FormKey: 08BCFF:Apocalypse - Magic of Skyrim.esp
 EditorID: WB_Con_Dremora4_Effect_ConjureDremoraMentor_Des
 Name:
   TargetLanguage: English
-  Value: Conjure Destruction Mentor
+  Value: Conjure Elementalism Mentor
 MenuDisplayObject: 0A6459:Skyrim.esm
 Keywords:
 - 0A9B1F:Skyrim.esm
@@ -43,4 +43,4 @@ Sounds:
   Sound: 03F2B1:Skyrim.esm
 Description:
   TargetLanguage: English
-  Value: Summons a Dremora Mentor for <dur> seconds. It does not fight, but Destruction improves <20>% faster and it can train you in Destruction.
+  Value: Summons an Entropic Mentor for <dur> seconds. It does not fight, but Elementalism improves <20>% faster and it can train you in Elementalism.

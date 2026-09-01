@@ -11,17 +11,14 @@ $enc     = New-Object System.Text.UTF8Encoding($false)
 
 New-Item -ItemType Directory -Force $out | Out-Null
 
-# --- the 15 summons cut as un-Enderal (Daedra + Atronach + Dwemer) -------------
-$removed = @(
-  'WB_C025_ConjureDremoraChurl',      'WB_C050_ConjureDremoraPitFighter',
-  'WB_C075_ConjureDremoraChampion',   'WB_C075_ConjureDremoraHonorGuard',
-  'WB_C075_ConjureDremoraMentor',     'WB_C100_ConjureDremoraAssassin',
-  'WB_C050_ConjureXivilaiSorcerer',   'WB_C075_ConjureXivilaiLord',
-  'WB_C100_ConjureWeepingDaedra',     'WB_C100_ConjureLordOfBindings',
-  'WB_C075_SixDemonBag',              'WB_C075_ConjureHerne',
-  'WB_C100_ConjureKyrkrim',           'WB_C025_AtronachMark',
-  'WB_C100_ConjureCraftlord'
-)
+# --- nothing is cut from distribution any more --------------------------------
+# This list used to hold 15 summons built on Dremora, Xivilai, Daedra, Atronachs and the Dwemer,
+# withheld because none of those exist in Enderal. They are named for Enderal now -- Entropic and
+# Sinistran for the two demon tiers, Elemental for the Atronach, Starling for the Dwemer -- so the
+# reason to withhold them is gone and all 175 tomes and 144 scrolls distribute. See
+# 01-gen-renames.ps1 for the mapping. Keep the variable: it is the documented lever if a future
+# summon ever has to be withheld again.
+$removed = @()
 
 function Read-Recs([string]$dir) {
   Get-ChildItem (Join-Path $apoc "$dir\*.yaml") | ForEach-Object {
@@ -74,7 +71,7 @@ $cutScrolls  = @($scrolls | Where-Object { $s = $_.EditorID -replace '_Scroll$',
 New-LeveledList -Hex '000805' -EditorID 'ZP_Apoc_Scrolls' -Refs $keptScrolls
 
 "`nCut from distribution: $($cutBooks.Count) tomes, $($cutScrolls.Count) scrolls"
-if ($cutBooks.Count -ne 15) { throw "expected 15 cut tomes, got $($cutBooks.Count)" }
+if ($cutBooks.Count -ne 0) { throw "expected 0 cut tomes, got $($cutBooks.Count) - \$removed should be empty" }
 $cutScrolls | ForEach-Object { "   scroll cut: $($_.EditorID)" }
 
 # --- inject one entry into each Enderal host list -----------------------------

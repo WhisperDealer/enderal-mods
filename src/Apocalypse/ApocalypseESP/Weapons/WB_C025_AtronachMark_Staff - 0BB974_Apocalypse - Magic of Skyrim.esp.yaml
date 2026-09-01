@@ -2,7 +2,7 @@ FormKey: 0BB974:Apocalypse - Magic of Skyrim.esp
 EditorID: WB_C025_AtronachMark_Staff
 Name:
   TargetLanguage: English
-  Value: Staff of Atronach Marks
+  Value: Staff of Elemental Marks
 Model:
   File: Weapons\Staff04\Staff04.nif
   Data: 0x020000000000000000000000

@@ -9,16 +9,16 @@ Flags:
 MenuButtons:
 - Text:
     TargetLanguage: English
-    Value: Alteration
+    Value: Mentalism
 - Text:
     TargetLanguage: English
-    Value: Conjuration
+    Value: Entropy
 - Text:
     TargetLanguage: English
-    Value: Destruction
+    Value: Elementalism
 - Text:
     TargetLanguage: English
-    Value: Illusion
+    Value: Psionics
 - Text:
     TargetLanguage: English
-    Value: Restoration
+    Value: Light Magic

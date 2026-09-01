@@ -12,7 +12,7 @@ VirtualMachineAdapter:
       Data: 50
 Name:
   TargetLanguage: English
-  Value: Conjure Xivilai Sorcerer
+  Value: Conjure Sinistran Sorcerer
 MenuDisplayObject: 0A6459:Skyrim.esm
 Keywords:
 - 0A9B1F:Skyrim.esm
@@ -51,4 +51,4 @@ Sounds:
   Sound: 03F2B1:Skyrim.esm
 Description:
   TargetLanguage: English
-  Value: Summons a Xivilai Sorcerer for <dur> seconds. The caster takes <50> points of fire damage.
+  Value: Summons a Sinistran Sorcerer for <dur> seconds. The caster takes <50> points of fire damage.

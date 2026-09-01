@@ -2,7 +2,7 @@ FormKey: 0BB972:Apocalypse - Magic of Skyrim.esp
 EditorID: WB_C025_AtronachMark_StaffEnchantment
 Name:
   TargetLanguage: English
-  Value: Atronach Mark
+  Value: Elemental Mark
 EnchantmentCost: 75
 CastType: FireAndForget
 EnchantmentAmount: 75

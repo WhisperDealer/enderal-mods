@@ -5,7 +5,7 @@ SkyrimMajorRecordFlags:
 - NotPlayable
 Name:
   TargetLanguage: English
-  Value: Daedric War Axe
+  Value: Entropic War Axe
 Model:
   File: Weapons\Daedric\DaedricWarAxe.nif
   Data: 0x020000000000000000000000

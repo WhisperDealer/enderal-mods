@@ -2,7 +2,7 @@ FormKey: 0133D4:Apocalypse - Magic of Skyrim.esp
 EditorID: WB_Con_Dremora4_Spell_ConjureDremoraHonorGuard_Proc
 Name:
   TargetLanguage: English
-  Value: Conjure Dremora Honor Guard
+  Value: Conjure Entropic Honor Guard
 MenuDisplayObject: 10AB43:Skyrim.esm
 EquipmentType: 013F44:Skyrim.esm
 Description:
