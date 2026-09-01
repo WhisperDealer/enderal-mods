@@ -3,6 +3,21 @@
 Paste each version block into the Nexus **Changelogs** tab. User-facing changes only; repo tooling
 and documentation are not listed.
 
+## 1.0.2
+
+- Fixed: **Force of Nature turned the player invisible.** The transformation itself was working —
+  you could attack and cast as the Treewarden — but nothing rendered. Triumvirate's transformation
+  script unequips your weapons and spells and leaves your *armour* on, and armour that stays worn
+  keeps its body, hands and feet slots while no longer having anything to draw there, which hides
+  the Treewarden underneath it. Your armour is now taken off for the duration and put back on when
+  the spell ends. This is what Enderal's own werewolf transformation does, and Skyrim's before it.
+- Fixed: **Wildshape did nothing at all.** The transformation was gated on being *sprinting* at the
+  instant the spell went off, and casting a spell cancels a sprint, so the deer form could
+  essentially never trigger. Wildshape now works whenever you cast it out of combat, and its
+  description no longer mentions sprinting.
+- Both were long-standing conversion issues rather than new ones — they date from the first release.
+  Nothing else about either spell changed: same duration, same speed bonus, same everything else.
+
 ## 1.0.1
 
 - Fixed: **every archetype's capstone spell cost far too much mana to cast.** Triumvirate never
