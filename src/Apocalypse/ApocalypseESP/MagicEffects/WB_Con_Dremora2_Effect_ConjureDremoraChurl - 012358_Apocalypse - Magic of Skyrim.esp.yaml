@@ -2,7 +2,7 @@ FormKey: 012358:Apocalypse - Magic of Skyrim.esp
 EditorID: WB_Con_Dremora2_Effect_ConjureDremoraChurl
 Name:
   TargetLanguage: English
-  Value: Conjure Dremora Churl
+  Value: Conjure Entropic Churl
 MenuDisplayObject: 0A6459:Skyrim.esm
 Keywords:
 - 0A9B1F:Skyrim.esm
@@ -42,4 +42,4 @@ Sounds:
   Sound: 03F2B1:Skyrim.esm
 Description:
   TargetLanguage: English
-  Value: Summons a Dremora Churl for <dur> seconds. When killed, a Dremora Churl is summoned under control of the killer.
+  Value: Summons an Entropic Churl for <dur> seconds. When killed, an Entropic Churl is summoned under control of the killer.

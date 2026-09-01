@@ -2,7 +2,7 @@ FormKey: 0128DF:Apocalypse - Magic of Skyrim.esp
 EditorID: WB_Con_Dremora4_Spell_ConjureDremoraChampion_NPC
 Name:
   TargetLanguage: English
-  Value: Conjure Dremora Champion
+  Value: Conjure Entropic Champion
 MenuDisplayObject: 0A6459:Skyrim.esm
 EquipmentType: 013F44:Skyrim.esm
 Description:

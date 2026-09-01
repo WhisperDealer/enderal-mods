@@ -2,7 +2,7 @@ FormKey: 123E65:Apocalypse - Magic of Skyrim.esp
 EditorID: WB_AbilityFX_ConjurationDwemer_Effect
 Name:
   TargetLanguage: English
-  Value: DwemerBodyArtHolder
+  Value: StarlingBodyArtHolder
 Flags:
 - NoDuration
 - FXPersist

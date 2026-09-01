@@ -2,7 +2,7 @@ FormKey: 08FDEC:Apocalypse - Magic of Skyrim.esp
 EditorID: WB_Con_Dremora5_Effect_ConjureWeepingDaedra_Ab_Cloak
 Name:
   TargetLanguage: English
-  Value: Weeping Daedra - FX - Cloak
+  Value: Weeping Shade - FX - Cloak
 Flags:
 - NoDuration
 - FXPersist

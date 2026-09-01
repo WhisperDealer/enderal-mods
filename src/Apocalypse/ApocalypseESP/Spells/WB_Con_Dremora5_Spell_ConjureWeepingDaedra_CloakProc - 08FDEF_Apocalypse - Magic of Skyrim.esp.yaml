@@ -2,7 +2,7 @@ FormKey: 08FDEF:Apocalypse - Magic of Skyrim.esp
 EditorID: WB_Con_Dremora5_Spell_ConjureWeepingDaedra_CloakProc
 Name:
   TargetLanguage: English
-  Value: Conjure Weeping Daedra
+  Value: Conjure Weeping Shade
 MenuDisplayObject: 11F236:Apocalypse - Magic of Skyrim.esp
 EquipmentType: 013F44:Skyrim.esm
 Description:

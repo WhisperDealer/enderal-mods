@@ -2,7 +2,7 @@ FormKey: 07A7BA:Apocalypse - Magic of Skyrim.esp
 EditorID: WB_C075_ConjureDremoraChampion_Staff
 Name:
   TargetLanguage: English
-  Value: Staff of the Dremora Champion
+  Value: Staff of the Entropic Champion
 Model:
   File: Weapons\Staff04\Staff04.nif
   Data: 0x020000000000000000000000

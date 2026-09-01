@@ -2,7 +2,7 @@ FormKey: 03D5B2:Apocalypse - Magic of Skyrim.esp
 EditorID: WB_C075_ConjureDremoraHonorGuard_Book
 Name:
   TargetLanguage: English
-  Value: 'Spell Tome: Conjure Dremora Honor Guard'
+  Value: 'Spell Tome: Conjure Entropic Honor Guard'
 Model:
   File: Clutter\Books\SpellTomeConjurationLowPoly.nif
   Data: 0x020000000000000000000000
@@ -11,7 +11,7 @@ BookText:
   Value: >-
     <font face'$HandwrittenFont'><font size='40'><p align='center'>
 
-    Conjure Dremora Honor Guard
+    Conjure Entropic Honor Guard
 Keywords:
 - 0937A2:Skyrim.esm
 - 0937A5:Skyrim.esm

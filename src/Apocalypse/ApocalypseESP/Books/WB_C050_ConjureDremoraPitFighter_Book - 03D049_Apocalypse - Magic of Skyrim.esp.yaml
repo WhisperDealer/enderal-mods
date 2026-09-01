@@ -2,7 +2,7 @@ FormKey: 03D049:Apocalypse - Magic of Skyrim.esp
 EditorID: WB_C050_ConjureDremoraPitFighter_Book
 Name:
   TargetLanguage: English
-  Value: 'Spell Tome: Conjure Dremora Pit Fighter'
+  Value: 'Spell Tome: Conjure Entropic Pit Fighter'
 Model:
   File: Clutter\Books\SpellTomeConjurationLowPoly.nif
   Data: 0x020000000000000000000000
@@ -11,7 +11,7 @@ BookText:
   Value: >-
     <font face'$HandwrittenFont'><font size='40'><p align='center'>
 
-    Conjure Dremora Pit Fighter
+    Conjure Entropic Pit Fighter
 Keywords:
 - 0937A2:Skyrim.esm
 - 0937A5:Skyrim.esm

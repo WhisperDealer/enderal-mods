@@ -203,10 +203,10 @@ of the 319 rows:
 
 | Do | Rows | Why |
 |---|---:|---|
-| **1. Flagged rows** | 56 | The audit says something they touch is missing. Highest chance of finding a real defect per cast |
+| **1. Flagged rows** | 54 | The audit says something they touch is missing. Highest chance of finding a real defect per cast |
 | **2. The "Known gaps" list below** | ~18 | Locate Object's ten modes, Control Weather, the six simulacrum spells. Hand-found, so no flag marks them |
-| **3. NOT-SOLD rows** | 23 | Not casts at all -- one merchant sweep confirms a player cannot reach them |
-| **4. Everything else** | 240 | The bulk. Lowest yield per row; batch it by school |
+| **3. NOT-SOLD rows** | 21 | Not casts at all -- one merchant sweep confirms a player cannot reach them |
+| **4. Everything else** | 244 | The bulk. Lowest yield per row; batch it by school |
 
 **Leave Papyrus logging on for the whole run.** A spell that silently does nothing looks the same
 as one that works if you are only watching the screen, and the log is what tells them apart. Cast
@@ -331,10 +331,10 @@ player.advskill conjuration 100000 first, so magnitudes read at full skill.
 
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Atronach Mark** | `player.addspell XX02CD7E` | FireAndForget / Aimed | 50 | 90 | - | Marks a target for 10 seconds. The mark detonates when the target is struck by a summoned or reanimated minion, dealing <30> magic damage in a <15> foot area. | NOT-SOLD |
 | [ ] | **Conjure Cat Totem** | `player.addspell XX027144` | FireAndForget / TargetLocation | 115 | 85 | Riverville - Tarhutie | Summons a ancient totem spirit for 60 seconds. It changes between warrior and cat form to heal. (Max. <1>) |  |
 | [ ] | **Conjure Deadeye Captain** | `player.addspell XX037E17` | FireAndForget / TargetLocation | 120 | 95 | Riverville - Tarhutie | Summons a Deadeye Captain for 60 seconds. Activate a corpse to store it. Activate the Captain to dredge it up. |  |
-| [ ] | **Conjure Dremora Churl** | `player.addspell XX012359` | FireAndForget / TargetLocation | 110 | 145 | - | Summons a Dremora Churl for 60 seconds. When killed, a Dremora Churl is summoned under control of the killer. | NOT-SOLD |
+| [ ] | **Conjure Entropic Churl** | `player.addspell XX012359` | FireAndForget / TargetLocation | 110 | 145 | - | Summons an Entropic Churl for 60 seconds. When killed, an Entropic Churl is summoned under control of the killer. | NOT-SOLD |
+| [ ] | **Elemental Mark** | `player.addspell XX02CD7E` | FireAndForget / Aimed | 50 | 90 | - | Marks a target for 10 seconds. The mark detonates when the target is struck by a summoned or reanimated minion, dealing <30> magic damage in a <15> foot area. | NOT-SOLD |
 | [ ] | **Power of the Master** | `player.addspell XX01857E` | FireAndForget | 130 | 170 | Riverville - Tarhutie | Casts the (beneficial self-targeted) spell in your left hand on all nearby summoned or reanimated minions. |  |
 | [ ] | **Soul Cloak** | `player.addspell XX140B03` | FireAndForget | 100 | 95 | Riverville - Tarhutie | For 60 seconds, nearby enemies within 15 feet fill a soul gem on death. |  |
 
@@ -342,9 +342,9 @@ player.advskill conjuration 100000 first, so magnitudes read at full skill.
 
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Conjure Dremora Pit Fighter** | `player.addspell XX012364` | FireAndForget / TargetLocation | 105 | 170 | - | Summons a Dremora Pit Fighter for 60 seconds. It gains <25>% extra damage for each nearby enemy. | NOT-SOLD |
+| [ ] | **Conjure Entropic Pit Fighter** | `player.addspell XX012364` | FireAndForget / TargetLocation | 105 | 170 | - | Summons an Entropic Pit Fighter for 60 seconds. It gains <25>% extra damage for each nearby enemy. | NOT-SOLD |
 | [ ] | **Conjure Lich** | `player.addspell XX01236A` | FireAndForget / TargetLocation | 110 | 185 | Undercity - Barnabas | Summons a Lich for 60 seconds. Costs <Global=WB_Conjuration_ConjureLich_Global_Cost> points of charge from an equipped enchanted weapon to cast. |  |
-| [ ] | **Conjure Xivilai Sorcerer** | `player.addspell XX1228A8` | FireAndForget / TargetLocation | 105 | 170 | - | Summons a Xivilai Sorcerer for 60 seconds. The caster takes <50> points of fire damage. | NOT-SOLD |
+| [ ] | **Conjure Sinistran Sorcerer** | `player.addspell XX1228A8` | FireAndForget / TargetLocation | 105 | 170 | - | Summons a Sinistran Sorcerer for 60 seconds. The caster takes <50> points of fire damage. | NOT-SOLD |
 | [ ] | **Corpse Explosion** | `player.addspell XX1212EB` | FireAndForget / Aimed | 80 | 170 | Undercity - Barnabas | Violently releases the soul of a corpse, disintegrating it with a magical explosion that deals damage equal to <40>% of the corpse's maximum Health. |  |
 | [ ] | **Entropic Crescent** | `player.addspell XX01A0A4` | FireAndForget / TargetActor | 125 | 205 | Undercity - Barnabas | Binds an Entropic Crescent to a summoned or raised humanoid for 120 seconds. Until discharged, the weapon deals <50> magic damage and staggers targets. |  |
 | [ ] | **Gank** | `player.addspell XX1A1B79` | FireAndForget / Aimed | 110 | 205 | Undercity - Barnabas | Summons all nearby allied minions within <100> feet to attack the target. |  |
@@ -355,11 +355,11 @@ player.advskill conjuration 100000 first, so magnitudes read at full skill.
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
 | [ ] | **Conjure Avenging Wraith** | `player.addspell XX017A8E` | FireAndForget / TargetLocation | 105 | 305 | Sun Temple - Torius Flameling | Summons an Avenging Wraith for 60 seconds. Its stats are equal to <Global=WB_Conjuration_ConjureAvengingWraith_Global_Mult>% of those of the opponent that last killed it (<Global=WB_Conjuration_ConjureAvengingWraith_Global_Health> Health, <Global=WB_Conjuration_ConjureAvengingWraith_Global_Magicka> Magicka, <Global=WB_Conjuration_ConjureAvengingWraith_Global_Stamina> Stamina). |  |
-| [ ] | **Conjure Dremora Champion** | `player.addspell XX0128DF` | FireAndForget / TargetLocation | 110 | 285 | - | Summons a Dremora Champion for 60 seconds. Its power attacks deal bonus damage and knock targets airborne. | NOT-SOLD |
-| [ ] | **Conjure Dremora Honor Guard** | `player.addspell XX0133D6` | FireAndForget / TargetLocation | 115 | 295 | - | Summons a Dremora Honor Guard for 60 seconds. It reduces enemy magic resistance within 15 feet by <25>%. | NOT-SOLD |
-| [ ] | **Conjure Dremora Mentor** | `player.addspell XX0C64B1` | FireAndForget / TargetLocation | 120 | 275 | - | Choose a magic school and summon a Dremora Mentor for 90 seconds. It does not fight, but offers training in the chosen school and the school improves <20>% faster. | NOT-SOLD |
-| [ ] | **Conjure Herne** | `player.addspell XX0128E8` | FireAndForget / TargetLocation | 120 | 305 | - | Summons a Herne for 60 seconds. It is accompanied by <3> Spirit Wolves under its command. | SUMMON-GAP<br>NOT-SOLD |
-| [ ] | **Conjure Xivilai Lord** | `player.addspell XX012370` | FireAndForget / TargetLocation | 105 | 270 | - | Summons a Xivilai Lord for 60 seconds. When summoned, drains all Magicka and has <200>% of this amount. It casts a deadly bolt that costs <150> Magicka. | NOT-SOLD |
+| [ ] | **Conjure Entropic Champion** | `player.addspell XX0128DF` | FireAndForget / TargetLocation | 110 | 285 | - | Summons an Entropic Champion for 60 seconds. Its power attacks deal bonus damage and knock targets airborne. | NOT-SOLD |
+| [ ] | **Conjure Entropic Honor Guard** | `player.addspell XX0133D6` | FireAndForget / TargetLocation | 115 | 295 | - | Summons an Entropic Honor Guard for 60 seconds. It reduces enemy magic resistance within 15 feet by <25>%. | NOT-SOLD |
+| [ ] | **Conjure Entropic Mentor** | `player.addspell XX0C64B1` | FireAndForget / TargetLocation | 120 | 275 | - | Choose a magic school and summon an Entropic Mentor for 90 seconds. It does not fight, but offers training in the chosen school and the school improves <20>% faster. | NOT-SOLD |
+| [ ] | **Conjure Herne** | `player.addspell XX0128E8` | FireAndForget / TargetLocation | 120 | 305 | Sun Temple - Torius Flameling | Summons a Herne for 60 seconds. It is accompanied by <3> Spirit Wolves under its command. |  |
+| [ ] | **Conjure Sinistran Lord** | `player.addspell XX012370` | FireAndForget / TargetLocation | 105 | 270 | - | Summons a Sinistran Lord for 60 seconds. When summoned, drains all Magicka and has <200>% of this amount. It casts a deadly bolt that costs <150> Magicka. | NOT-SOLD |
 | [ ] | **Monarch Mark** | `player.addspell XX161621` | FireAndForget / Aimed | 90 | 245 | Sun Temple - Torius Flameling | Marks a target for 10 seconds. The mark detonates when the target is struck by a summoned or reanimated minion, dealing <60> magic damage in a <25> foot area. |  |
 | [ ] | **Oathbound Guardian** | `player.addspell XX018AE7` | FireAndForget / TargetActor | 125 | 330 | Sun Temple - Torius Flameling | Living ally is protected by an Oathbound Guardian under his or her command for 60 seconds. |  |
 | [ ] | **Six Demon Bag** | `player.addspell XX161619` | FireAndForget | 120 | 240 | - | Summons a Bound Churl for 60 seconds. | NOT-SOLD |
@@ -371,12 +371,12 @@ player.advskill conjuration 100000 first, so magnitudes read at full skill.
 | [ ] | **Banish Living** | `player.addspell XX092B91` | FireAndForget / TargetActor | 300 | 440 | Ark - Emberlord & Fireflash | Banish a living creature into the Sea of Eventualities. Items (except quest items) are lost forever. (Creatures banished: <Global=WB_Conjuration_BanishLiving_Global_Counter>) | DEAD-SCRIPT-PROP |
 | [ ] | **Conjure Battlemage** | `player.addspell XX08868C` | FireAndForget / TargetLocation | 230 | 390 | Ark - Emberlord & Fireflash | Call upon the services of a lower ranking Battlemage for 180 seconds. Activate to purchase permanent upgrades. |  |
 | [ ] | **Conjure Bear Totem** | `player.addspell XX04734D` | FireAndForget / TargetLocation | 280 | 365 | Ark - Emberlord & Fireflash | Summons a ancient totem spirit for 240 seconds. It changes between hunter and bear form to heal. (Max. <1>) |  |
-| [ ] | **Conjure Craftlord** | `player.addspell XX123E5B` | FireAndForget / TargetLocation | 250 | 370 | - | Calls a Dwemer sage to Nirn for 180 seconds. Modify its stats with the <Reconfigure Craftlord> spell. | NOT-SOLD |
-| [ ] | **Conjure Dremora Assassin** | `player.addspell XX0128F7` | FireAndForget / TargetLocation | 230 | 335 | - | Summons a Dremora Assassin for 180 seconds. Its arrows reduce targets below <Global=WB_Conjuration_ConjureDremoraAssassin_Global_Health> Health to <1> for <10> seconds. | SUMMON-GAP<br>NOT-SOLD |
-| [ ] | **Conjure Kyrkrim** | `player.addspell XX100032` | FireAndForget / TargetLocation | 135 | 425 | - | Summons the daedric wolf mount Kyrkrim for 180 seconds. When ridden, low level creatures and people flee in terror. | NOT-SOLD |
+| [ ] | **Conjure Craftlord** | `player.addspell XX123E5B` | FireAndForget / TargetLocation | 250 | 370 | Ark - Emberlord & Fireflash | Calls a Starling sage to Vyn for 180 seconds. Modify its stats with the <Reconfigure Craftlord> spell. |  |
+| [ ] | **Conjure Entropic Assassin** | `player.addspell XX0128F7` | FireAndForget / TargetLocation | 230 | 335 | Ark - Emberlord & Fireflash | Summons an Entropic Assassin for 180 seconds. Its arrows reduce targets below <Global=WB_Conjuration_ConjureDremoraAssassin_Global_Health> Health to <1> for <10> seconds. | SUMMON-GAP |
+| [ ] | **Conjure Kyrkrim** | `player.addspell XX100032` | FireAndForget / TargetLocation | 135 | 425 | - | Summons the spirit wolf mount Kyrkrim for 180 seconds. When ridden, low level creatures and people flee in terror. | NOT-SOLD |
 | [ ] | **Conjure Lord of Bindings** | `player.addspell XX019B2D` | FireAndForget / TargetLocation | 240 | 335 | - | Summons a Lord of Bindings for 180 seconds. It does not fight, but rapidly summons Churls in combat. | NOT-SOLD |
 | [ ] | **Conjure Nether Lich** | `player.addspell XX0128FA` | FireAndForget / TargetLocation | 275 | 405 | Ark - Emberlord & Fireflash | Summons a Nether Lich for 180 seconds. It inflicts a damaging disease, lowers skill levels and raises the dead. |  |
-| [ ] | **Conjure Weeping Daedra** | `player.addspell XX08FDED` | FireAndForget / TargetLocation | 110 | 415 | - | Summons a Weeping Daedra for 120 seconds. It steals large amounts of Health with its magical attacks, but turns to inert and brittle stone when an enemy looks at it. | SUMMON-GAP<br>DEAD-PERK<br>NOT-SOLD |
+| [ ] | **Conjure Weeping Shade** | `player.addspell XX08FDED` | FireAndForget / TargetLocation | 110 | 415 | - | Summons a Weeping Shade for 120 seconds. It steals large amounts of Health with its magical attacks, but turns to inert and brittle stone when an enemy looks at it. | SUMMON-GAP<br>DEAD-PERK<br>NOT-SOLD |
 | [ ] | **Necrowitch** | `player.addspell XX016F95` | FireAndForget | 130 | 380 | Ark - Emberlord & Fireflash | Summons the corpse of an ancient sorceress to reanimate for 600 seconds and teaches her the (ranged, touch or cloak) elemental spell in your left hand. | DEAD-SCRIPT-PROP |
 
 ## Light Magic -- *Restoration* (35 spells)
@@ -602,30 +602,30 @@ All of them at once: `bat apoc-scrolls`, or one at a time with the `additem` bel
 | [ ] | **Scroll of Thrumming Stone** | `player.additem XX03A9CD 1` | 250 | ZP_Apoc_Scrolls | Magical vibrating rock that emits a tremor every <8> seconds, staggering enemies and inflicting 40% weakness to magic for 2 seconds. Emits <5> pulses. |  |
 | [ ] | **Scroll of Undermine** | `player.additem XX03A457 1` | 60 | ZP_Apoc_Scrolls | For 30 seconds, shifting earth causes the target to lose its balance when swinging a melee weapon, staggering the target and draining <30> points of Stamina. |  |
 | [ ] | **Scroll of Wither** | `player.additem XX03A453 1` | 30 | ZP_Apoc_Scrolls | Reduces movement speed and attack damage by 5% per second, up to <50>%. Lasts 20 seconds. |  |
-| [ ] | **Scroll of Atronach Mark** | `player.additem XX03BA26 1` | 30 | - | Marks a target for 10 seconds. The mark detonates when the target is struck by a summoned or reanimated minion, dealing <30> magic damage in a <15> foot area. | NOT-SOLD |
 | [ ] | **Scroll of Banish Living** | `player.additem XX03BFAB 1` | 250 | ZP_Apoc_Scrolls | Banish a living creature into the Sea of Eventualities. Items (except quest items) are lost forever. (Creatures banished: <Global=WB_Conjuration_BanishLiving_Global_Counter>) | DEAD-SCRIPT-PROP |
 | [ ] | **Scroll of Conjure Avenging Wraith** | `player.additem XX03BA22 1` | 125 | ZP_Apoc_Scrolls | Summons an Avenging Wraith for 60 seconds. Its stats are equal to <Global=WB_Conjuration_ConjureAvengingWraith_Global_Mult>% of those of the opponent that last killed it (<Global=WB_Conjuration_ConjureAvengingWraith_Global_Health> Health, <Global=WB_Conjuration_ConjureAvengingWraith_Global_Magicka> Magicka, <Global=WB_Conjuration_ConjureAvengingWraith_Global_Stamina> Stamina). |  |
 | [ ] | **Scroll of Conjure Battlemage** | `player.additem XX0896DC 1` | 250 | ZP_Apoc_Scrolls | Call upon the services of a lower ranking Battlemage for 180 seconds. Activate to purchase permanent upgrades. |  |
 | [ ] | **Scroll of Conjure Bear Totem** | `player.additem XX047E29 1` | 250 | ZP_Apoc_Scrolls | Summons a ancient totem spirit for 240 seconds. It changes between hunter and bear form to heal. (Max. <1>) |  |
 | [ ] | **Scroll of Conjure Cat Totem** | `player.additem XX03BA2E 1` | 30 | ZP_Apoc_Scrolls | Summons a ancient totem spirit for 60 seconds. It changes between warrior and cat form to heal. (Max. <1>) |  |
-| [ ] | **Scroll of Conjure Craftlord** | `player.additem XX03BFB1 1` | 250 | - | Calls a Dwemer sage to Nirn for 180 seconds. Modify its stats with the <Reconfigure Craftlord> spell. | NOT-SOLD |
+| [ ] | **Scroll of Conjure Craftlord** | `player.additem XX03BFB1 1` | 250 | ZP_Apoc_Scrolls | Calls a Starling sage to Vyn for 180 seconds. Modify its stats with the <Reconfigure Craftlord> spell. |  |
 | [ ] | **Scroll of Conjure Deadeye Captain** | `player.additem XX03BA2D 1` | 30 | ZP_Apoc_Scrolls | Summons a Deadeye Captain for 60 seconds. Activate a corpse to store it. Activate the Captain to dredge it up. |  |
-| [ ] | **Scroll of Conjure Dremora Assassin** | `player.additem XX03BFAC 1` | 250 | - | Summons a Dremora Assassin for 180 seconds. Its arrows reduce targets below <Global=WB_Conjuration_ConjureDremoraAssassin_Global_Health> Health to <1> for <10> seconds. | SUMMON-GAP<br>NOT-SOLD |
-| [ ] | **Scroll of Conjure Dremora Champion** | `player.additem XX03BA3D 1` | 125 | - | Summons a Dremora Champion for 60 seconds. Its power attacks deal bonus damage and knock targets airborne. | NOT-SOLD |
-| [ ] | **Scroll of Conjure Dremora Churl** | `player.additem XX03BA2B 1` | 30 | - | Summons a Dremora Churl for 60 seconds. When killed, a Dremora Churl is summoned under control of the killer. | NOT-SOLD |
-| [ ] | **Scroll of Conjure Dremora Herne** | `player.additem XX03BA41 1` | 125 | - | Summons a Herne for 60 seconds. It is accompanied by <3> Spirit Wolves under its command. | SUMMON-GAP<br>NOT-SOLD |
-| [ ] | **Scroll of Conjure Dremora Honor Guard** | `player.additem XX03BA3F 1` | 125 | - | Summons a Dremora Honor Guard for 60 seconds. It reduces enemy magic resistance within 15 feet by <25>%. | NOT-SOLD |
-| [ ] | **Scroll of Conjure Dremora Mentor** | `player.additem XX03BA47 1` | 125 | - | Choose a magic school and summon a Dremora Mentor for 90 seconds. It does not fight, but offers training in the chosen school and the school improves <20>% faster. | NOT-SOLD |
-| [ ] | **Scroll of Conjure Dremora Pit Fighter** | `player.additem XX03BA31 1` | 60 | - | Summons a Dremora Pit Fighter for 60 seconds. It gains <25>% extra damage for each nearby enemy. | NOT-SOLD |
-| [ ] | **Scroll of Conjure Kyrkrim** | `player.additem XX088681 1` | 250 | - | Summons the daedric wolf mount Kyrkrim for 180 seconds. When ridden, low level creatures and people flee in terror. | NOT-SOLD |
+| [ ] | **Scroll of Conjure Entropic Assassin** | `player.additem XX03BFAC 1` | 250 | ZP_Apoc_Scrolls | Summons an Entropic Assassin for 180 seconds. Its arrows reduce targets below <Global=WB_Conjuration_ConjureDremoraAssassin_Global_Health> Health to <1> for <10> seconds. | SUMMON-GAP |
+| [ ] | **Scroll of Conjure Entropic Champion** | `player.additem XX03BA3D 1` | 125 | - | Summons an Entropic Champion for 60 seconds. Its power attacks deal bonus damage and knock targets airborne. | NOT-SOLD |
+| [ ] | **Scroll of Conjure Entropic Churl** | `player.additem XX03BA2B 1` | 30 | - | Summons an Entropic Churl for 60 seconds. When killed, an Entropic Churl is summoned under control of the killer. | NOT-SOLD |
+| [ ] | **Scroll of Conjure Entropic Honor Guard** | `player.additem XX03BA3F 1` | 125 | - | Summons an Entropic Honor Guard for 60 seconds. It reduces enemy magic resistance within 15 feet by <25>%. | NOT-SOLD |
+| [ ] | **Scroll of Conjure Entropic Mentor** | `player.additem XX03BA47 1` | 125 | - | Choose a magic school and summon an Entropic Mentor for 90 seconds. It does not fight, but offers training in the chosen school and the school improves <20>% faster. | NOT-SOLD |
+| [ ] | **Scroll of Conjure Entropic Pit Fighter** | `player.additem XX03BA31 1` | 60 | - | Summons an Entropic Pit Fighter for 60 seconds. It gains <25>% extra damage for each nearby enemy. | NOT-SOLD |
+| [ ] | **Scroll of Conjure Herne** | `player.additem XX03BA41 1` | 125 | ZP_Apoc_Scrolls | Summons a Herne for 60 seconds. It is accompanied by <3> Spirit Wolves under its command. |  |
+| [ ] | **Scroll of Conjure Kyrkrim** | `player.additem XX088681 1` | 250 | - | Summons the spirit wolf mount Kyrkrim for 180 seconds. When ridden, low level creatures and people flee in terror. | NOT-SOLD |
 | [ ] | **Scroll of Conjure Lich** | `player.additem XX03BA33 1` | 60 | ZP_Apoc_Scrolls | Summons a Lich for 60 seconds. Costs <Global=WB_Conjuration_ConjureLich_Global_Cost> points of charge from an equipped enchanted weapon to cast. |  |
 | [ ] | **Scroll of Conjure Lord of Bindings** | `player.additem XX066E4F 1` | 250 | - | Summons a Lord of Bindings for 180 seconds. It does not fight, but rapidly summons Churls in combat. | NOT-SOLD |
 | [ ] | **Scroll of Conjure Nether Lich** | `player.additem XX03BFAF 1` | 250 | ZP_Apoc_Scrolls | Summons a Nether Lich for 180 seconds. It inflicts a damaging disease, lowers skill levels and raises the dead. |  |
-| [ ] | **Scroll of Conjure Weeping Daedra** | `player.additem XX05F25A 1` | 250 | - | Summons a Weeping Daedra for 120 seconds. It steals large amounts of Health with its magical attacks, but turns to inert and brittle stone when an enemy looks at it. | SUMMON-GAP<br>DEAD-PERK<br>NOT-SOLD |
-| [ ] | **Scroll of Conjure Xivilai Lord** | `player.additem XX03BA43 1` | 125 | - | Summons a Xivilai Lord for 60 seconds. When summoned, drains all Magicka and has <200>% of this amount. It casts a deadly bolt that costs <150> Magicka. | NOT-SOLD |
-| [ ] | **Scroll of Conjure Xivilai Sorcerer** | `player.additem XX03BA35 1` | 60 | - | Summons a Xivilai Sorcerer for 60 seconds. The caster takes <50> points of fire damage. | NOT-SOLD |
+| [ ] | **Scroll of Conjure Sinistran Lord** | `player.additem XX03BA43 1` | 125 | - | Summons a Sinistran Lord for 60 seconds. When summoned, drains all Magicka and has <200>% of this amount. It casts a deadly bolt that costs <150> Magicka. | NOT-SOLD |
+| [ ] | **Scroll of Conjure Sinistran Sorcerer** | `player.additem XX03BA35 1` | 60 | - | Summons a Sinistran Sorcerer for 60 seconds. The caster takes <50> points of fire damage. | NOT-SOLD |
+| [ ] | **Scroll of Conjure Weeping Shade** | `player.additem XX05F25A 1` | 250 | - | Summons a Weeping Shade for 120 seconds. It steals large amounts of Health with its magical attacks, but turns to inert and brittle stone when an enemy looks at it. | SUMMON-GAP<br>DEAD-PERK<br>NOT-SOLD |
 | [ ] | **Scroll of Consuming Power** | `player.additem XX03BA24 1` | 15 | ZP_Apoc_Scrolls | Allied summoned or reanimated minion gains 75% extra attack damage for 10 seconds, then dies. |  |
 | [ ] | **Scroll of Corpse Explosion** | `player.additem XX03BA38 1` | 60 | ZP_Apoc_Scrolls | Violently releases the soul of a corpse, disintegrating it with a magical explosion that deals damage equal to <40>% of the corpse's maximum Health. |  |
+| [ ] | **Scroll of Elemental Mark** | `player.additem XX03BA26 1` | 30 | - | Marks a target for 10 seconds. The mark detonates when the target is struck by a summoned or reanimated minion, dealing <30> magic damage in a <15> foot area. | NOT-SOLD |
 | [ ] | **Scroll of Entropic Crescent** | `player.additem XX03BA37 1` | 60 | ZP_Apoc_Scrolls | Binds an Entropic Crescent to a summoned or raised humanoid for 120 seconds. Until discharged, the weapon deals <50> magic damage and staggers targets. |  |
 | [ ] | **Scroll of Gank** | `player.additem XX1A791C 1` | 60 | ZP_Apoc_Scrolls | Summons all nearby allied minions within <100> feet to attack the target. |  |
 | [ ] | **Scroll of Monarch Mark** | `player.additem XX1644FF 1` | 125 | ZP_Apoc_Scrolls | Marks a target for 10 seconds. The mark detonates when the target is struck by a summoned or reanimated minion, dealing <60> magic damage in a <25> foot area. |  |
@@ -733,22 +733,19 @@ records still ship (removing them would break every FormList and script that ind
 they are flagged `NOT-SOLD` above rather than deleted. Nothing to test -- but verify a player
 cannot reach them:
 
-- [ ] `WB_Con_Curse2_Spell_AtronachMark` -- **Atronach Mark** is not offered by any merchant and does not drop
-- [ ] `WB_Con_Human5_Spell_ConjureCraftlord` -- **Conjure Craftlord** is not offered by any merchant and does not drop
-- [ ] `WB_Con_Dremora5_Spell_ConjureDremoraAssassin_NPC` -- **Conjure Dremora Assassin** is not offered by any merchant and does not drop
-- [ ] `WB_Con_Dremora4_Spell_ConjureDremoraChampion_NPC` -- **Conjure Dremora Champion** is not offered by any merchant and does not drop
-- [ ] `WB_Con_Dremora2_Spell_ConjureDremoraChurl_NPC` -- **Conjure Dremora Churl** is not offered by any merchant and does not drop
-- [ ] `WB_Con_Dremora4_Spell_ConjureDremoraHonorGuard_NPC` -- **Conjure Dremora Honor Guard** is not offered by any merchant and does not drop
-- [ ] `WB_Con_Dremora4_Spell_ConjureDremoraMentor` -- **Conjure Dremora Mentor** is not offered by any merchant and does not drop
-- [ ] `WB_Con_Dremora3_Spell_ConjureDremoraPitFighter_NPC` -- **Conjure Dremora Pit Fighter** is not offered by any merchant and does not drop
-- [ ] `WB_Con_Dremora4_Spell_ConjureHerne_NPC` -- **Conjure Herne** is not offered by any merchant and does not drop
+- [ ] `WB_Con_Dremora4_Spell_ConjureDremoraChampion_NPC` -- **Conjure Entropic Champion** is not offered by any merchant and does not drop
+- [ ] `WB_Con_Dremora2_Spell_ConjureDremoraChurl_NPC` -- **Conjure Entropic Churl** is not offered by any merchant and does not drop
+- [ ] `WB_Con_Dremora4_Spell_ConjureDremoraHonorGuard_NPC` -- **Conjure Entropic Honor Guard** is not offered by any merchant and does not drop
+- [ ] `WB_Con_Dremora4_Spell_ConjureDremoraMentor` -- **Conjure Entropic Mentor** is not offered by any merchant and does not drop
+- [ ] `WB_Con_Dremora3_Spell_ConjureDremoraPitFighter_NPC` -- **Conjure Entropic Pit Fighter** is not offered by any merchant and does not drop
 - [ ] `WB_Con_Daedric5_Spell_ConjureKyrkrim` -- **Conjure Kyrkrim** is not offered by any merchant and does not drop
 - [ ] `WB_Con_Dremora5_Spell_ConjureLordOfBindings_NPC` -- **Conjure Lord of Bindings** is not offered by any merchant and does not drop
-- [ ] `WB_Con_Dremora5_Spell_ConjureWeepingDaedra_NPC` -- **Conjure Weeping Daedra** is not offered by any merchant and does not drop
-- [ ] `WB_Con_Xivilai4_Spell_ConjureXivilaiLord_NPC` -- **Conjure Xivilai Lord** is not offered by any merchant and does not drop
-- [ ] `WB_Con_Xivilai3_Spell_ConjureXivilaiSorcerer_NPC` -- **Conjure Xivilai Sorcerer** is not offered by any merchant and does not drop
+- [ ] `WB_Con_Xivilai4_Spell_ConjureXivilaiLord_NPC` -- **Conjure Sinistran Lord** is not offered by any merchant and does not drop
+- [ ] `WB_Con_Xivilai3_Spell_ConjureXivilaiSorcerer_NPC` -- **Conjure Sinistran Sorcerer** is not offered by any merchant and does not drop
+- [ ] `WB_Con_Dremora5_Spell_ConjureWeepingDaedra_NPC` -- **Conjure Weeping Shade** is not offered by any merchant and does not drop
+- [ ] `WB_Con_Curse2_Spell_AtronachMark` -- **Elemental Mark** is not offered by any merchant and does not drop
 - [ ] `WB_Con_Dremora4_Spell_SixDemonBag` -- **Six Demon Bag** is not offered by any merchant and does not drop
 
-**Note the inconsistency:** 15 tomes are withheld but only 14 of the matching scrolls are. 
+**Note the inconsistency:** 12 tomes are withheld but only 14 of the matching scrolls are. 
 `WB_C075_SixDemonBag`'s scroll is still in `ZP_Apoc_Scrolls`, so that summon *is* reachable, once,
 from a scroll. Either sell the tome or pull the scroll -- it should not be half-in.

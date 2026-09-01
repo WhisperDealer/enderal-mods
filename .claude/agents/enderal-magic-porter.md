@@ -389,22 +389,56 @@ next to Enderal's and is the consistent choice.
 
 ---
 
-## 5. Summons — no Daedra, no Dwemer
+## 5. Summons — no Daedra, no Dwemer, so RENAME them rather than cut them
 
-Cut them: Dremora, Xivilai, anything Oblivion-native, and Dwemer automatons. Apocalypse lost 15.
-Removal means **never distributing** them — leave the records dormant rather than deleting, which
-avoids breaking whatever points at them.
+Enderal has no Dremora, no Xivilai, no Daedra, no Dwemer and no Atronachs. The first instinct is to
+withhold every summon built on one, and that is what Apocalypse did: **15 tomes and 14 scrolls were
+never added to a vendor or a loot list.** It works, it is cheap, and it is the wrong default —
+**[revised 2026-09-01]**. It cost the player a sixth of the mod's spellbook to avoid a naming
+problem, and a naming problem is the one thing this pipeline is already built to fix.
 
-Everything else stays. Enderal's own magic raises the dead and binds spirits — **Entropy** is one of
-its five disciplines — so wraiths, liches, totem spirits and necromancy are entirely at home. Only
-the Oblivion natives have to go.
+Rename instead. Enderal has an equivalent for each family, and two of them are exact:
 
-**Cutting distribution leaves the records behind, and they carry dangling references.** That is fine
-and intended — the actor records for cut summons keep pointing at vanilla Dremora gear, perks and
-death items. An audit will flag them; do not chase them. A dangling reference on a record the player
-cannot reach is proven harmless here. What *does* need checking is that the cut is complete: verify
-each cut spell's **tome and scroll** are both undistributed. Apocalypse withheld 15 tomes but only 14
-scrolls, so one summon stayed reachable, once, from a scroll nobody noticed.
+| Ported family | Enderal | Why |
+|---|---|---|
+| Atronach | **Elemental** | Enderal ships Fire, Ice, Mud and Soil Elementals, and tomes that summon them |
+| Dwemer | **Starling** | Enderal's `Dwarven*Race`s *are* the Starling constructs; `DwemerRuin` map markers are Starling ruins |
+| Dremora | **Entropic** | Entropy is Enderal's Conjuration, and *entropists* are a real Rhalâta enemy type |
+| Xivilai | **Sinistran** | Sinistra is the higher school above Entropy — the greater beings get the higher-school word |
+| Daedra (the Weeping Daedra) | **Shade** | plain English; Enderal's own summons are spirits and elementals |
+
+Keep the rank words — Churl, Pit Fighter, Champion, Honor Guard, Mentor, Assassin, Sorcerer, Lord
+are ordinary English, not Elder Scrolls proper nouns. Only the race word has to go. Watch the
+article: *Entropic* takes **an**, so `'a Dremora Champion'` needs its own key before the bare one or
+you ship "Summons a Entropic Champion".
+
+**Renaming and shipping are two decisions, not one.** Renaming is free and should be total — a
+half-renamed set reads worse than either extreme. Shipping is a testing question: content that was
+never distributed has never been cast, so nobody has ever seen it fail. Of the first three Apocalypse
+summons anyone looked at, **two were broken** (no ammunition; no armour). Rename all of them, ship the
+ones you have tested, and keep the rest in a withheld list that is a testing backlog rather than a
+lore judgement. Apocalypse ships 3 of 15 on exactly that basis, with the list in one dot-sourced file
+(`00-cut-summons.ps1`) so no step can disagree with another.
+
+**What a rename does not fix: the meshes.** These are still Bethesda's red horned Dremora and blue
+Xivilai models, and a player who has played Skyrim will recognise them whatever the tooltip says.
+That is a real cost and it is the honest argument for cutting. Weigh it per mod: on Apocalypse the
+summons are 15 of 175 tomes and the models are generic enough to read as "something a Rhalâta
+entropist would bind", so shipping them beat withholding them. On a mod where the Daedric identity
+*is* the content — a Mehrunes Dagon questline, say — cutting is still right.
+
+If you do cut, cutting means **never distributing**, not deleting: leave the records dormant so
+nothing that points at them breaks. **Cut distribution leaves dangling references behind and that is
+fine** — the actor records keep pointing at vanilla gear, perks and death items, an audit will flag
+them, and a dangling reference on a record the player cannot reach is proven harmless here. But note
+the corollary now that these summons SHIP: those dangling references stop being harmless the moment
+the player can reach the record. Apocalypse's Herne stood holding a bow with no arrows and its
+Craftlord arrived naked, both from exactly that class of reference, and both were only found because
+a player reported one of them.
+
+And whichever you choose, **check that it is complete on both halves**: verify each spell's tome
+*and* its scroll. Apocalypse withheld 15 tomes but only 14 scrolls, so one summon stayed reachable,
+once, from a scroll nobody noticed.
 
 ### Allied summons and charmed targets need a faction Enderal does not have
 
@@ -512,7 +546,8 @@ MANA COSTS   : ManualCostCalc set on N player spells; med was A/B/C/D/E now V/W/
                ceiling was M now <=310  (Enderal med 21/40/55/65/80)
 ARCANE FEVER : N self-heals taxed, rates <= 26 burst / 78 over-time; K leech spells left untaxed [why]
 STRINGS      : N renames across tome/spell/scroll/MGEF/ench/description
-SUMMONS      : N cut (Daedra/Dwemer), tomes AND scrolls both withheld; rest kept
+SUMMONS      : N renamed (Atronach->Elemental, Dwemer->Starling, Dremora->Entropic,
+               Xivilai->Sinistran); any still cut have tome AND scroll both withheld
 DEAD RIDERS  : N effects apply absent perks, K gate on present-but-unobtainable ones
 RANK SUFFIX  : none added [single-strength spells, matching Enderal's own 13]
 

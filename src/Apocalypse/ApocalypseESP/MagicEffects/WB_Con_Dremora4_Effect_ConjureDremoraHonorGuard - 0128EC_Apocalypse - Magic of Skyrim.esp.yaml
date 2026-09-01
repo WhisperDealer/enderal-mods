@@ -2,7 +2,7 @@ FormKey: 0128EC:Apocalypse - Magic of Skyrim.esp
 EditorID: WB_Con_Dremora4_Effect_ConjureDremoraHonorGuard
 Name:
   TargetLanguage: English
-  Value: Conjure Dremora Honor Guard
+  Value: Conjure Entropic Honor Guard
 MenuDisplayObject: 0A6459:Skyrim.esm
 Keywords:
 - 0A9B1F:Skyrim.esm
@@ -42,4 +42,4 @@ Sounds:
   Sound: 03F2B1:Skyrim.esm
 Description:
   TargetLanguage: English
-  Value: Summons a Dremora Honor Guard for <dur> seconds. It reduces enemy magic resistance within 15 feet by <25>%.
+  Value: Summons an Entropic Honor Guard for <dur> seconds. It reduces enemy magic resistance within 15 feet by <25>%.

@@ -56,7 +56,7 @@ Items:
     Item: 0D82B9:Apocalypse - Magic of Skyrim.esp
     Count: 1
 - Item:
-    Item: 037C14:Skyrim.esm
+    Item: 13E219:Skyrim.esm
     Count: 250
 AIData:
   Aggression: VeryAggressive
@@ -70,7 +70,7 @@ Keywords:
 Class: 023C0D:Skyrim.esm
 Name:
   TargetLanguage: English
-  Value: Dremora Assassin
+  Value: Entropic Assassin
 ShortName:
   TargetLanguage: English
   Value: Tanchelm

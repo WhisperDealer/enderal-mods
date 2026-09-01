@@ -9,7 +9,7 @@ VirtualMachineAdapter:
       Object: 07AD21:Apocalypse - Magic of Skyrim.esp
 Name:
   TargetLanguage: English
-  Value: Conjure Xivilai Lord
+  Value: Conjure Sinistran Lord
 MenuDisplayObject: 0A6459:Skyrim.esm
 Keywords:
 - 0A9B1F:Skyrim.esm
@@ -48,4 +48,4 @@ Sounds:
   Sound: 03F2B1:Skyrim.esm
 Description:
   TargetLanguage: English
-  Value: Summons a Xivilai Lord for <dur> seconds. When summoned, drains all Magicka and has <200>% of this amount. It casts a deadly bolt that costs <150> Magicka.
+  Value: Summons a Sinistran Lord for <dur> seconds. When summoned, drains all Magicka and has <200>% of this amount. It casts a deadly bolt that costs <150> Magicka.

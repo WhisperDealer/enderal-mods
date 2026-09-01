@@ -11,17 +11,10 @@ $enc     = New-Object System.Text.UTF8Encoding($false)
 
 New-Item -ItemType Directory -Force $out | Out-Null
 
-# --- the 15 summons cut as un-Enderal (Daedra + Atronach + Dwemer) -------------
-$removed = @(
-  'WB_C025_ConjureDremoraChurl',      'WB_C050_ConjureDremoraPitFighter',
-  'WB_C075_ConjureDremoraChampion',   'WB_C075_ConjureDremoraHonorGuard',
-  'WB_C075_ConjureDremoraMentor',     'WB_C100_ConjureDremoraAssassin',
-  'WB_C050_ConjureXivilaiSorcerer',   'WB_C075_ConjureXivilaiLord',
-  'WB_C100_ConjureWeepingDaedra',     'WB_C100_ConjureLordOfBindings',
-  'WB_C075_SixDemonBag',              'WB_C075_ConjureHerne',
-  'WB_C100_ConjureKyrkrim',           'WB_C025_AtronachMark',
-  'WB_C100_ConjureCraftlord'
-)
+# --- which summons are withheld ------------------------------------------------
+# One definition, shared with steps 7 and 17. All 15 Daedra/Dwemer summons are RENAMED for Enderal
+# now, so naming withholds nothing; what is left is that 12 of them have never been cast in game.
+. (Join-Path (Split-Path -Parent $PSCommandPath) '00-cut-summons.ps1')
 
 function Read-Recs([string]$dir) {
   Get-ChildItem (Join-Path $apoc "$dir\*.yaml") | ForEach-Object {
@@ -74,7 +67,7 @@ $cutScrolls  = @($scrolls | Where-Object { $s = $_.EditorID -replace '_Scroll$',
 New-LeveledList -Hex '000805' -EditorID 'ZP_Apoc_Scrolls' -Refs $keptScrolls
 
 "`nCut from distribution: $($cutBooks.Count) tomes, $($cutScrolls.Count) scrolls"
-if ($cutBooks.Count -ne 15) { throw "expected 15 cut tomes, got $($cutBooks.Count)" }
+if ($cutBooks.Count -ne $CUT_TOMES) { throw "expected $CUT_TOMES cut tomes, got $($cutBooks.Count)" }
 $cutScrolls | ForEach-Object { "   scroll cut: $($_.EditorID)" }
 
 # --- inject one entry into each Enderal host list -----------------------------

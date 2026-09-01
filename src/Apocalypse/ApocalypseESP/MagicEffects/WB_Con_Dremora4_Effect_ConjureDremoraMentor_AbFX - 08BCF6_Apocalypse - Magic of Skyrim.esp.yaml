@@ -25,7 +25,7 @@ VirtualMachineAdapter:
         Object: 08BD08:Apocalypse - Magic of Skyrim.esp
 Name:
   TargetLanguage: English
-  Value: Conjure Dremora Mentor
+  Value: Conjure Entropic Mentor
 MenuDisplayObject: 0A6459:Skyrim.esm
 Flags:
 - NoDuration

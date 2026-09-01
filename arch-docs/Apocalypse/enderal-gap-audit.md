@@ -30,7 +30,7 @@ this plugin point at things Enderal has?", which nothing was asking.
 ## What it found, and what happened to it
 
 Before this audit: **4,077 missing-reference occurrences, 617 distinct FormKeys, 261 records.**
-After the fixes: **269 / 203 / 110.**
+After the fixes: **264 / 198 / 108.**
 
 > **A dangling-reference count is not a severity ranking.** 3,498 of the 4,077 were one deletable
 > record that probably cost the player nothing. `Locate Potion` is broken by **seven**.
@@ -43,6 +43,8 @@ After the fixes: **269 / 203 / 110.**
 | 2 | **Apocalypse's BSA overrides two scripts Enderal deliberately gutted.** Its archive holds 206 compiled scripts and 2 collide with Enderal's 5,029: `dgintimidateplayerscript` (2,425 bytes, the full vanilla brawl script, compiled by *Maximilian* of Brawl Bugs Patch) and `dgintimidatealiasscript` (1,983 bytes). Enderal's source for both is **4 lines: `; DUMMY, DO NOTHING`**, and its compiled copies are in `E - Misc.bsa` (confirmed by reading that archive's name table). Apocalypse loads after Enderal, so **its BSA wins**. The restored scripts reach for `dgintimidatequestscript`, `DGIntimidateFaction`, `CR04Running` — none of which Enderal has | Ship SureAI's stubs **loose** under `Scripts/`. Loose beats BSA. See [`../../src/Apocalypse/Scripts/README.md`](../../src/Apocalypse/Scripts/README.md) |
 | 3 | **All 144 scrolls carried a dangling `MenuDisplayObject: 076E8F:Skyrim.esm`.** All 34 of Enderal's own scrolls carry **none** | `12-strip-scroll-menudisplay.ps1` removes the field, matching Enderal's archetype rather than inventing a substitute static |
 | 4 | **Apocalypse's runtime list-population ran and failed 685 times, 60 s into a new game.** Decompiling `WB_PopulateLists_Script` shows `OnUpdate` counts down from the **origin** list's size and indexes the **destination** list in parallel, then calls `CurrentDestinationLitem.AddForm(...)`. The origin lists are Apocalypse's own and full; the destination lists are 54 vanilla book lists, 24 staff and 5 scroll — **83 leveled lists, none of which exists in Enderal**. So every `AddForm` landed on `None`. **[verified in-game — see below]** | `11-neutralise-populate-lists.ps1` empties **twelve** FormLists so every loop iterates zero times |
+| 5 | **The two archer summons had no arrows.** `WB_Con_Dremora_Actor_ConjureHerne` carried `0139C0:Skyrim.esm` ×100 (`DaedricArrow`) and `WB_Con_Dremora_Actor_ConjureDremoraAssassin` carried `037C14:Skyrim.esm` ×250 (`BaseArrowDaedric75`, a leveled list of the same arrow). **Neither FormID exists in Enderal** — both are in `reference/base/SkyrimReal`, neither is in `Skyrim`, `Update` or `EnderalFS`. So each summon spawned holding a bow with an empty quiver and just stood there. Reported from a real playthrough against Herne; the Assassin was found by checking the class rather than the report | `15-summon-ammo.ps1` repoints both onto `13E219:Skyrim.esm` `_30E_AeternaArrow` — Enderal's own best arrow, 10 damage against vanilla Daedric's 24. `verify-summon-ammo.ps1` then asserts the *invariant*: every NPC with a bow has resolvable ammo |
+| 6 | **The Craftlord summon was naked from the neck down.** `WB_ConjureCraftlord_Outfit` 123E5E holds five entries; two are Apocalypse's own and cover only `Hair`+`Circlet` (the hood) and `Amulet` (the cloak). The other three are Bethesda's Dwarven cuirass, boots and gauntlets (`01394D`/`01394C`/`01394E`), absent from Enderal — so Body, Hands and Feet were all empty, against a race whose Skin is `SkinNaked` 000D64 | `16-craftlord-outfit.ps1` repoints them onto `_04E_30_EndreleanPlateArmor` `138273`, `…Gauntlets` `138272` and `…Boots` `138274` — Enderal's top *ordinary* heavy plate, not one of its unique `HSet`/`MSet` artefacts. `verify-summon-outfits.ps1` then asserts every summon outfit entry resolves and renders |
 
 #### Finding 4 in detail — two wrong fixes before the right one
 
@@ -108,6 +110,120 @@ Neither city's navmeshes are named anywhere in the record. The places worth visi
 own two interior cells (whose entries we **kept** — the only regression surface), `cow Vyn -8 -3`, and
 `cow MQP01Home 0 0`.
 
+#### Finding 5 in detail — the class of bug that reads as an AI bug
+
+This one arrived as a player report ("the conjured NPC has no arrow ammunition so he doesn't use his
+bow"), and it is worth recording because of how it presents rather than how it was fixed.
+
+An archer NPC whose quiver FormID does not resolve is **not** visibly a data bug. The summon appears,
+is correctly equipped, is correctly levelled, has 65 Archery — and then stands there. Every instinct
+says combat style, package, or a missing perk. The actual cause is one line of inventory pointing at
+a record Bethesda had and Enderal does not.
+
+It was in the audit CSV the whole time:
+
+```
+"MISSING","Npcs","WB_Con_Dremora_Actor_ConjureHerne …","Item","0139C0:Skyrim.esm","",""
+"MISSING","Npcs","WB_Con_Dremora_Actor_ConjureDremoraAssassin …","Item","037C14:Skyrim.esm","",""
+```
+
+Two of 269 lines, indistinguishable from the 267 that genuinely cost nothing. **A missing-reference
+audit tells you what is dead; it cannot tell you what dying costs.** That is the whole argument for
+writing an invariant check per subsystem rather than watching one aggregate number:
+`verify-summon-ammo.ps1` does not care how many references are missing, only that no NPC ends up
+holding a bow it cannot fire.
+
+**Why a substitution and not a new record.** Enai already solved this once inside the same plugin —
+`WB_Con_Spirit_Actor_ConjureBearTotem` carries his own `WB_ConjureBearTotem_Ammo`, and that record
+happens to resolve cleanly in Enderal (its projectile `0EAFE0`, keyword `0917E7` and NordHero mesh
+all survive). Minting a second one would have meant a mesh, a projectile, a keyword, a FormID and a
+damage number to keep in step with Enderal forever, and it would have resolved to an Elven arrow's
+projectile and mesh anyway. Enai handed Herne an ordinary playable arrow out of the host game; so do
+we.
+
+**Why `_30E_AeternaArrow` specifically.** Enderal's arrow ladder tops out at **10 damage**
+(`_30E_AeternaArrow` `13E219`) where vanilla's Daedric Arrow is 24, so "best arrow" maps to "best
+arrow" and the numbers land where SureAI put them. Herne's Bow is 25 damage against Enderal's best
+bow at 23, so 25 + 10 puts a master-tier summon a shade above the best archer a player can build
+(23 + 10). Carrying vanilla's 24 across, or minting a 30 like the Bear Totem's, would have put it
+half again over that.
+
+Counts are left as authored. The Assassin's 250 was 250 draws at `ChanceNone: 0.25` (~187 arrows) and
+is now a flat 250; for a summon on a despawn timer that is not a real distinction.
+
+**Triumvirate was checked for the same defect and has none** — it ships no bow at all.
+
+#### The `WB_MGRitual*Books` leveled lists — the errors are real and cost nothing
+
+Asked by the same reporter, and the answer is worth keeping because the reasoning generalises.
+
+Each of the five lists shows two classes of xEdit error, and both are genuinely dead:
+
+| Field | Value | In Enderal |
+|---|---|---|
+| `Global:` on all five | `0FDE72`–`0FDE76` (`MGRitualDestBook`, `…Alt…`, `…Conj…`, `…Ill…`, `…Rest…`) | **absent** |
+| one entry each | `0D2B4E` Dragonhide, `0A26FA` Flame Thrall, `0A270C` Fire Storm, `0A271C` Hysteria | **absent** |
+| Restoration has **two** | `0DD647` Bane of the Undead **and** `0FDE7B` Guardian Circle | **absent** |
+
+But nothing reads them. The five lists are referenced by exactly one record — the
+`WB_MGRitualBooks` script property on `WB_NewManager_Quest` `08095C` — and that quest is Apocalypse's
+hook into the **College of Winterhold ritual spell quests**. Its other properties are `MGRitual04`
+`0CD987`, `MGRitual05` `0D0755` and five vanilla vendor chests, none of which exist here either. The
+quest binds its dead forms once at load, logs the `WB_VendorChest` line already documented in
+[`spell-test-matrix.md`](spell-test-matrix.md#log-lines-that-are-expected-not-bugs), and then has no
+stage to advance and no chest to stock.
+
+So the lists are unreachable, the Global that would gate them is unreachable, and the vanilla tome
+inside each is unreachable. **They were left alone deliberately.** Cleaning them would silence ten of
+xEdit's red lines while leaving the quest that owns them just as full of dead bindings — a tidier
+diff, an unchanged game, and one more record to be right about (CLAUDE.md, "Gotchas": an override
+that achieves nothing is still a record you have to be right about).
+
+Note what separates this from finding 5, since both are "a vanilla FormID Enderal does not have".
+Herne's dead arrow sat on a **reachable** record — a spell the player can buy, cast and watch fail.
+These sit on an unreachable one. The audit scores them identically; only tracing what reaches the
+record tells them apart.
+
+#### Finding 6 in detail -- "it resolves" is not "it renders"
+
+The Craftlord fix is a one-line-per-slot substitution, and the only interesting part of it is the
+check that nearly went unmade.
+
+An `ARMO` appears on an actor only if one of its `ARMA` armatures covers that actor's race's
+**`ArmorRace`**. `WB_ConjureCraftlord_Race` sets `ArmorRace: 013743` (HighElfRace) -- not the
+`DefaultRace 000019` most gear is keyed to. So the substitute armour had to be checked twice: that
+the FormID exists in Enderal, and that its armature lists `013743`.
+
+A first read of Enderal's three armatures (`DaedricCuirassAA` `098BB3`, `DaedricGlovesAA` `098BB5`,
+`DaedricBootsAA` `098BB4` -- Endralean Plate is Enderal's reskin of the Daedric set, which is why the
+armature EditorIDs still say Daedric) truncated their `AdditionalRaces` at three entries and made it
+look as though `013743` was **absent**, i.e. as though this swap would build clean, pass every audit,
+and put an invisible cuirass on the summon. Reading the full list -- 27 races, `013743` among them --
+is what made the fix safe. Vanilla's Dwarven armatures list the same 27, so it is a like-for-like
+swap.
+
+**Generalise it: a substitution audit that only asks "does the FormID exist" is half a check.** The
+other half is whatever second condition the record type carries -- an armature's race coverage here,
+a leveled list's `Global` in the tier-gating case, an MGEF's delivery type in the Arcane Fever case.
+`16-craftlord-outfit.ps1` asserts the slot and the race coverage before it writes anything, and
+`verify-summon-outfits.ps1` re-asserts both over the built tree.
+
+**What that verifier deliberately does not assert.** Its first draft demanded Body, Hands and Feet on
+every summon and reported **14** failures, every one of them design: Dremora and Xivilai go
+barehanded and barefoot throughout Apocalypse, and `WB_Con_Undead_Actor_ConjureDeadeyeCaptain` has no
+body armour because his race skin *is* the body. Slot coverage is an aesthetic judgement; a dead
+reference is not. The shipped check asserts the objective thing -- every entry resolves, and any
+armour among them renders on its wearer.
+
+Two smaller notes. **`WB_Kyrgar_Actor` has the identical defect and is deliberately left alone** --
+three dead vanilla *Orcish* pieces -- because it is a placed merchant stranded in `MQP01Home`, the
+worldspace `00003C` resolves to in Enderal, where no player meets it. That is why the verifier scopes
+itself to `Summonable`. And the same pass caught **two Elder Scrolls place-nouns the rename table had
+missed**, both because they are phrased differently from its keys: the Craftlord was summoned *"to
+Nirn"* (`'Talons of Nirn'` does not catch it) and the Xivilai Sorcerer threw a *"Ball of Oblivion's
+flames"* (`'Oblivion Unbound'` does not catch it). Both are now keys of their own in
+`01-gen-renames.ps1`.
+
 ### Left alone, on purpose
 
 Recorded here so the next session does not re-derive them. All are in
@@ -115,13 +231,13 @@ Recorded here so the next session does not re-derive them. All are in
 
 | Finding | Why it stays |
 |---|---|
-| **15 Daedric/Dwemer summon tomes and 14 matching scrolls are in no chest and no leveled list** (160 of 175 tomes placed, 130 of 144 scrolls) | Deliberate — the `enderal-magic-porter` rule that Daedra and Dwemer have no place in Enderal's setting. The records still ship because removing them would break every FormList and script that indexes them. **But `WB_C075_SixDemonBag`'s scroll ships while its tome does not**, so that one summon is reachable once, from a scroll. That inconsistency is real and unresolved |
+| **15 Daedric/Dwemer summon tomes and 14 matching scrolls were in no chest and no leveled list** — **partly reversed, 2026-09-01** | They were withheld because Enderal has no Dremora, Xivilai, Daedra, Dwemer or Atronachs. **All 15 are renamed now** — Entropic and Sinistran for the two demon tiers, Elemental for the Atronach, Starling for the Dwemer, Shade for the Weeping Daedra — so naming withholds nothing. **Three ship** (Herne, Entropic Assassin, Craftlord: the ones fixed and on the test checklist), taking distribution to 163 tomes and 133 scrolls. **Twelve are still held back, on testing grounds rather than lore grounds** — nobody had ever cast them, and two of the first three examined were broken. `00-cut-summons.ps1` is the single definition; move a spell out of it as it is verified. The `WB_C075_SixDemonBag` tome/scroll asymmetry noted here is moot while it stays cut |
 | **25 magic effects apply vanilla perks Enderal lacks** — `Disintegrate 0F3F0E`, `Deep Freeze 0F3933`, `Intense Flames 0F392E`, `0153D2`, Illusion `059B76` | These are riders on effects that otherwise work. Repointing them at Enderal perks is a design change, not a port fix, and needs its own analysis |
 | **16 effect items gate on `Respite 0581F9`** — present in Enderal, but on no perk tree and not on the `Player` record, so permanently inert | Same. Note it is **invisible to a missing-reference scan** because the record exists; it has to be looked for by hand. The base magnitudes are the real numbers |
 | **`WB_AlterationAlt_FormList_LocatePotion_Inclusion` is 7 entries, 7 missing** → *Locate Object*'s potion mode can never match | A fix means choosing Enderal equivalents and proving them in-game. Flagged for testing rather than guessed at |
 | **`LocateContainer_Exclusion` is 68-for-68 missing** | It is an *exclusion* list, so the failure mode is over-matching, not silence. Lower stakes, same reasoning |
 | **39 dangling script `Object:` properties** — mostly `SayOnHitByMagicEffectScript.TopicToSay` (an NPC voice line) and `MG01FireEffectScript.MG01` on 14 fire effects (the College-of-Winterhold brazier quest) | Cosmetic or log noise. Removing a property from a vanilla helper script's binding is a bigger change than the defect |
-| **`Kyrgar`, `Dreamscape` and the College ritual quests** — a merchant NPC, a container and five globals from vanilla content Enderal does not have | Apocalypse's own optional side content, already unreachable. A dangling reference on an unreachable record is proven harmless here (CLAUDE.md, "Gotchas") |
+| **`Kyrgar`, `Dreamscape` and the College ritual quests** — a merchant NPC, a container and five globals from vanilla content Enderal does not have. Kyrgar's outfit carries the same three dead vanilla armour pieces the Craftlord's did (Orcish rather than Dwarven), and stays dead for the same reason — he is placed in `MQP01Home`. The `WB_MGRitual*Books` leveled lists live here too; [see above](#the-wb_mgritualbooks-leveled-lists--the-errors-are-real-and-cost-nothing) for why their errors are harmless | Apocalypse's own optional side content, already unreachable. A dangling reference on an unreachable record is proven harmless here (CLAUDE.md, "Gotchas") |
 
 ### Not broken, and worth knowing
 
@@ -140,7 +256,7 @@ question is never "how many are dead" but "which behaviours died".
 src\Apocalypse\tools\verify-missing-refs.ps1
 
 # hold the line in CI
-src\Apocalypse\tools\verify-missing-refs.ps1 -Baseline 435
+src\Apocalypse\tools\verify-missing-refs.ps1 -Baseline 264
 ```
 
 `-Baseline` fails when the count *rises*. A non-zero baseline is correct and permanent here: Enai

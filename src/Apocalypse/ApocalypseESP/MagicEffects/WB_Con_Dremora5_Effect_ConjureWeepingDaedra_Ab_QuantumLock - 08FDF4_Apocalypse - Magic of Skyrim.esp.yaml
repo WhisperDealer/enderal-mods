@@ -11,7 +11,7 @@ VirtualMachineAdapter:
       Name: WB_IsInvulnerable
 Name:
   TargetLanguage: English
-  Value: Weeping Daedra - Quantum Lock
+  Value: Weeping Shade - Quantum Lock
 Flags:
 - Recover
 - Detrimental

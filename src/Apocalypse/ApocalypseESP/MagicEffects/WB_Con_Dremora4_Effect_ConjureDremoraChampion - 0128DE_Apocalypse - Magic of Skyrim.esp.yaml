@@ -2,7 +2,7 @@ FormKey: 0128DE:Apocalypse - Magic of Skyrim.esp
 EditorID: WB_Con_Dremora4_Effect_ConjureDremoraChampion
 Name:
   TargetLanguage: English
-  Value: Conjure Dremora Champion
+  Value: Conjure Entropic Champion
 MenuDisplayObject: 0A6459:Skyrim.esm
 Keywords:
 - 0A9B1F:Skyrim.esm
@@ -42,4 +42,4 @@ Sounds:
   Sound: 03F2B1:Skyrim.esm
 Description:
   TargetLanguage: English
-  Value: Summons a Dremora Champion for <dur> seconds. Its power attacks deal bonus damage and knock targets airborne.
+  Value: Summons an Entropic Champion for <dur> seconds. Its power attacks deal bonus damage and knock targets airborne.
