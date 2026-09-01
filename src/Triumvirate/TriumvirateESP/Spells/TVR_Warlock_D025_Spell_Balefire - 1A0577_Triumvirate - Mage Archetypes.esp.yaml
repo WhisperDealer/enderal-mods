@@ -8,7 +8,9 @@ EquipmentType: 013F44:Skyrim.esm
 Description:
   TargetLanguage: English
   Value: ''
-BaseCost: 47
+BaseCost: 40
+Flags:
+- ManualCostCalc
 CastType: FireAndForget
 TargetType: TargetActor
 Range: 20

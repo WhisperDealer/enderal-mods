@@ -8,8 +8,9 @@ EquipmentType: 013F44:Skyrim.esm
 Description:
   TargetLanguage: English
   Value: ''
-BaseCost: 800
+BaseCost: 150
 Flags:
+- ManualCostCalc
 - IgnoreResistance
 - NoAbsorbOrReflect
 CastType: FireAndForget

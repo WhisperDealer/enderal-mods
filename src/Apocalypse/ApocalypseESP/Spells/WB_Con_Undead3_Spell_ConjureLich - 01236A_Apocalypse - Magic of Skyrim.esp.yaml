@@ -8,8 +8,9 @@ EquipmentType: 013F44:Skyrim.esm
 Description:
   TargetLanguage: English
   Value: ''
-BaseCost: 244
+BaseCost: 110
 Flags:
+- ManualCostCalc
 - NoAbsorbOrReflect
 ChargeTime: 0.5
 CastType: FireAndForget

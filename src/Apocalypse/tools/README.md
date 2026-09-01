@@ -26,7 +26,7 @@ pipeline against that would layer our edits on top of themselves.
 
 ## Regenerating against a new upstream version
 
-**Wipe `src/Apocalypse/ApocalypseESP/` first, then run 01 → 12 in order.** Step 5 merges Enai's
+**Wipe `src/Apocalypse/ApocalypseESP/` first, then run 01 → 14 in order.** Step 5 merges Enai's
 records in under an "our edit wins" rule, so anything already in the tree survives untouched — which
 means a regeneration *over the top* of the existing tree does almost nothing.
 
@@ -67,6 +67,7 @@ broken script. Each derives the repo root from its own location, so run them fro
 | 10 | `10-strip-vanilla-navi.ps1` | Cuts Bethesda's navigation map out of the `NAVI` record the CK regenerated, keeping only Apocalypse's own three entries. **3,498 of the plugin's 4,077 missing references were in this one record** |
 | 11 | `11-neutralise-populate-lists.ps1` | Empties the **twelve** FormLists behind Apocalypse's runtime list-population, so its loops iterate zero times. Its script `AddForm`s into 83 vanilla leveled lists Enderal does not have — 685 errors on a new game, verified. Clearing `StartGameEnabled` alone does **not** stop it, and the MCM "Repopulate" button is a second entry point with its own six lists |
 | 12 | `12-strip-scroll-menudisplay.ps1` | Removes the dangling `MenuDisplayObject` from all 144 scrolls. Enderal's own 34 scrolls carry none |
+| 14 | `14-magicka-costs.ps1` | Sets `ManualCostCalc` on the 182 player-castable spells and rescales their mana costs onto Enderal's bands. Without the flag the engine derives the cost from effect duration at runtime, which is why a 180 s summon billed 1201. Idempotent — always recomputes from Enai's untouched tree |
 | 13 | `13-gen-test-matrix.ps1` | Generates [`arch-docs/Apocalypse/spell-test-matrix.md`](../../../arch-docs/Apocalypse/spell-test-matrix.md) and, with `-ModIndex`, the console batch files. Not part of the conversion — run it after any change that adds, reprices or re-homes an item |
 
 The AddonNode re-index (`WB_IllusionNightmare_MPS_Seidsigil` 110 → 746) **used to be** a single
@@ -87,6 +88,7 @@ stubs is in
 | `verify-missing-refs.ps1 [-Baseline N]` | **absolute** audit: everything the tree points at that Enderal does not have, with each surviving reference resolved to its Enderal group and EditorID. Currently **269**. `-Baseline` fails when the count rises |
 | `verify-dangling-diff.ps1` | unresolved references **relative to Enai's original** — a different question. Expect **0 new** |
 | `verify-addonnode-indices.ps1 [-Upstream]` | no `ADDN` index shared with Enderal. Defaults to our tree; `-Upstream` checks Enai's |
+| `verify-magicka-costs.ps1` | that all 175 tome-taught spells carry `ManualCostCalc` and sit inside Enderal's authored cost band for their tier. Fails the build rather than shipping a spell nobody can cast |
 | `verify-plugin-structure.ps1 <esp>` | header, masters, group/record framing |
 | `debug-make-masters.ps1` | builds a hand-written plugin with a chosen master list and no records — the control that isolates a load crash to the header rather than the records |
 
@@ -188,6 +190,15 @@ is `1C1E70`). This is not an ESL block — the merged plugin has ~3,890 records 
   `Player` NPC and Enderal has no vanilla perk UI, so every `HasPerk 0581F9` effect item in
   Apocalypse — the Stamina twin on each heal — is permanently inert. The base magnitudes are the real
   heal numbers, which is what step 9's rates are derived from.
-- **Never open these 19 records in the Creation Kit.** None carries `ManualCostCalc`, so the CK
-  recalculates `BaseCost` on save and would silently inflate every one of them by the fever effect's
-  contribution. Edit the YAML only.
+- **Mana costs were the Creation Kit's arithmetic, not Enai's design, and they made the top tier
+  uncastable.** A `SPELL` only uses its stored `BaseCost` when `ManualCostCalc` is set; without it the
+  engine recomputes at runtime as `MGEF.BaseCost * magnitude^1.1 * (duration/10)^1.1` summed over the
+  effects. **Enderal sets the flag on 271 of the 274 spells its own tomes teach** — every SureAI cost
+  is typed by hand — and Apocalypse set it on **none** of its 175. The duration term does the damage:
+  Conjure Battlemage is a 50-cost effect with a 180 s duration, so it billed **1201** against a mana
+  pool that tops out near 400–500 (`+8` per level, and only if the player spends that level's
+  attribute choice on it). Step 14 sets the flag and rescales; Conjure Battlemage is now 230.
+- **Now that these records carry `ManualCostCalc`, the Creation Kit can no longer inflate them.**
+  Before step 14 none of the 19 fever-taxed self-heals had the flag, so opening one in the CK would
+  silently recalculate `BaseCost` upward by the fever effect's contribution. That hole is closed as a
+  side effect. Edit the YAML only anyway.

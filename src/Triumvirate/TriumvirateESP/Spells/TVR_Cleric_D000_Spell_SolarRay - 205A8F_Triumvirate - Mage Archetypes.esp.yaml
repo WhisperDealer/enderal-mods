@@ -9,6 +9,8 @@ Description:
   TargetLanguage: English
   Value: ''
 BaseCost: 14
+Flags:
+- ManualCostCalc
 CastType: Concentration
 TargetType: Aimed
 HalfCostPerk: 0F2CA8:Skyrim.esm

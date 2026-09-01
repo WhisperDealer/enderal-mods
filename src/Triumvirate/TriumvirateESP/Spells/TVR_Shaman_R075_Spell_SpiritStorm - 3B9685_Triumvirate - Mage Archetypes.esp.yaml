@@ -8,7 +8,9 @@ EquipmentType: 013F44:Skyrim.esm
 Description:
   TargetLanguage: English
   Value: ''
-BaseCost: 58
+BaseCost: 49
+Flags:
+- ManualCostCalc
 CastType: Concentration
 TargetType: Aimed
 HalfCostPerk: 0C44C9:Skyrim.esm

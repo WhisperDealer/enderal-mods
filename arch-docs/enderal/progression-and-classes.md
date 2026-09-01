@@ -197,6 +197,61 @@ Beyond levelling: skill books and quest rewards. Examples **[verified]**:
 `_00E_TalentBookAchievementUnlocked` (`02ED7B:Enderal - Forgotten Stories.esm`) tracks the related
 achievement. **[verified]**
 
+## Mana is small, fixed, and spell costs are authored against it
+
+**[verified 2026-09-01]** The player's maximum mana comes from one place: the level-up prompt in
+`_00e_epupdatefunctions.psc`, which offers **+9 Health, +8 Mana or +11 Stamina** and grants exactly
+one of the three.
+
+```papyrus
+int iMessage = _00E_Levelup.show(PlayerLevel.GetValueInt(), Player.GetBaseAV("Health"), ...)
+...
+elseif iMessage == 1
+    Player.SetActorValue("Magicka", Player.GetBaseAV("Magicka")+8)
+```
+
+So a mage who spends **every** level on mana and never takes a point of health ends a normal
+playthrough somewhere near **400–500** — 100 to start plus 8 a level. There is no learn-by-doing
+multiplier and no per-school pool. That single number is what every spell in the game is priced
+against.
+
+### The authored cost bands
+
+A `SPELL` record's `BaseCost` is only what the game charges when the `ManualCostCalc` flag is set.
+Without it the engine recomputes at runtime from the effects — `MGEF.BaseCost * magnitude^1.1 *
+(duration / 10)^1.1`, summed. **Enderal does not use that**: 271 of the 274 spells its own tomes
+teach carry the flag, so SureAI typed every cost by hand. (The exceptions are
+`_00E_SpellFireExtinguisherMQ04` and the two ranks of Silence, and Silence Rank II's **309** is the
+most expensive Apprentice-tier spell in the game precisely because nobody typed it.)
+
+Measured over those authored spells, keyed by tier through the vanilla school perk in
+`HalfCostPerk`:
+
+| Tier | n | min | p25 | med | p75 | max |
+|---|---|---|---|---|---|---|
+| Novice | 51 | 6 | 14 | 21 | 38 | 140 |
+| Apprentice | 52 | 12 | 27 | 40 | 55 | 140 |
+| Adept | 51 | 10 | 34 | 55 | 80 | 200 |
+| Expert | 57 | 29 | 49 | 65 | 110 | 260 |
+| Master | 38 | 38 | 68 | 80 | 170 | **310** |
+
+Two things to read off it. The curve is **flat** — a master spell is under four times a novice one,
+where Skyrim's ladder is closer to twenty — and **310 is the ceiling for the whole game**
+(`_60E_FS_Mystical_SummonAtrocity` at 315 is the only thing above it, and it is not tome-taught).
+Against a 400–500 pool that ceiling is about half a maxed mage's bar, which is the design: the most
+expensive thing in Enderal is castable twice.
+
+Talents discount from there. All three class lines cover the full tier ladder through
+`SpellHasCastingPerkConditionData` — `_00E_Class_Elementalist_P02/P05/P07/P09`,
+`_00E_Class_Sinistrope_P02/P05/P06/P07/P09` and `_00E_Class_Thaumaturge_P02/P05/P07/P09`, with
+`ModSpellCost` values of 0.65–0.7 at the top. So a master-tier spell a specialised mage has fully
+invested in still bills roughly two-thirds of its `BaseCost`.
+
+> **Consequence for a ported spell mod.** Its costs are almost certainly auto-calculated, and the
+> duration term inflates long buffs and summons out of all proportion — Apocalypse's Conjure
+> Battlemage was a 50-cost effect with a 180 s duration and billed **1201**. Set `ManualCostCalc`
+> and author the number. See CLAUDE.md, "A ported spell's MANA COST is computed by the engine".
+
 ## Checklist for a progression-touching patch
 
 - [ ] Does the perk exist in a `*Perks` FormList bound to a registered tree? If not, how does the

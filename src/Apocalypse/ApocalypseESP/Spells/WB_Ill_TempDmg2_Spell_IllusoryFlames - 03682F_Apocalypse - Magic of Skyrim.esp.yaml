@@ -8,8 +8,9 @@ EquipmentType: 013F44:Skyrim.esm
 Description:
   TargetLanguage: English
   Value: ''
-BaseCost: 19
+BaseCost: 27
 Flags:
+- ManualCostCalc
 - IgnoreResistance
 ChargeTime: 0.5
 CastType: Concentration
