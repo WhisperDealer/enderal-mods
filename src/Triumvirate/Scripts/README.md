@@ -1,87 +1,40 @@
-# Why this release ships four Papyrus scripts
+# Why this release ships three Papyrus scripts
 
-## TVR_Wildshape_Script (Enai's, patched — WD-37)
+## It used to ship a fourth, and that is worth recording
 
-`TVR_Wildshape_Script.pex` is Enai's transformation script rebuilt with one change, shipped loose so
-it beats the copy in `Triumvirate - Mage Archetypes.bsa`.
+`TVR_Wildshape_Script` — Enai's player-transformation script — was patched three times during WD-37
+and every version has been reverted. The script this release ships is **Enai's own, from his BSA,
+untouched**. The history matters because the reasoning behind each attempt was sound and each one was
+still wrong.
 
-Two magic effects bind it, and they are the mod's **only** two player transformations —
-`TVR_Druid_Verdant_Effect_ForceOfNature` and `TVR_Druid_Verdant_Effect_Wildshape_MorphEffect`. Both
-were reported broken in Enderal, which is what made this one subsystem rather than two bugs.
+The bug: **Force of Nature** transforms the player into the Treewarden, who renders nothing — they
+attack and cast normally with no body. **Wildshape**, on the same script, is fine.
 
-## The change: Bethesda's call order
-
-`PlayerWerewolfChangeScript.psc` is the shipped, proven recipe for "the player becomes a beast race
-and renders". Read end to end, Enai's script does almost none of it:
-
-| Step | Bethesda | Enai |
+| Attempt | Theory | Why it died |
 |---|---|---|
-| `Game.SetBeastForm(True)` | **before** `SetRace` | after everything |
-| `DisablePlayerControls` `aiDisablePOVType` | `1` | `0` |
-| `Game.ForceThirdPerson()` | before `SetRace` | after the unequips |
-| `Game.ForceFirstPerson()` | never called | before `SetRace` |
-| `Game.ShowFirstPersonGeometry(false)` | yes | never |
-| `Game.SetInCharGen(true, …)` | around `SetRace` | never |
+| 1. Strip worn armour around the race change | A race skin renders per biped slot; armour left on keeps slots 32/33/37, draws nothing and suppresses the skin. Both Bethesda's `PlayerWerewolfChangeScript` and SureAI's `LycantropheTransformSC` do unequip gear right after `SetRace`. | Didn't fix it. Worse, it threw `Cannot cast from None to Form[]` on save-restored effects (so gear stayed off) and set off **45** `GetSlotMask()` errors per cast in another mod's unequip handler. |
+| 2. `QueueNiNodeUpdate` + delay | Reloading a save mid-transform shows the Treewarden **correctly**, so every record is right and only the live 3D rebuild is missing. | Didn't fix it. |
+| 3. Bethesda's full call order | `PlayerWerewolfChangeScript` sets beast form *before* `SetRace`, forces third person first, calls `ShowFirstPersonGeometry(false)`, and wraps the race change in `Game.SetInCharGen` — Enai does none of it, and SureAI independently agrees on `SetInCharGen`. | Overtaken: a bare `player.setrace` from the console, with no Triumvirate script involved at all, reproduces the invisibility. The fault is not in this script. |
 
-SureAI's `LycantropheTransformSC` agrees with Bethesda on the one easiest to dismiss: it also wraps
-its race change in `Game.SetInCharGen`. Two independent proven implementations calling it is the
-reason to make the call, rather than reasoning about what it "should" do — chargen mode is the state
-the engine itself uses when a race change has to rebuild the player, which is exactly the missing
-step.
-
-The script now follows that order on both transitions, and keeps the `QueueNiNodeUpdate` redraw from
-the previous attempt after it. Two smaller repairs came along: `ForceFirstPerson()` is gone, and the
-weapon unequips are guarded, which removes two `Cannot unequip a None item` errors per cast for an
-unarmed caster.
-
-**This ships instrumented.** `TVR_Trace` (default on) writes the player's race before and after every
-transition to the Papyrus log. This is the third attempt at this bug; the first two were each
-defensible and each failed, so if this one fails the log should say where instead of costing another
-round of hypotheses.
-
-## Two wrong answers worth recording
-
-**Attempt 1 — an armour strip.** The theory: a race skin renders per biped slot, so armour left on
-across the `SetRace` keeps slots 32/33/37, draws nothing, and suppresses the skin. Both proven
-archetypes *do* unequip gear right after `SetRace`, so it looked well founded. It was wrong three
-ways, and only a Papyrus log showed the last two:
-
-1. It never fixed the invisibility — the save reload that displayed the Treewarden happened *with the
-   armour already stripped*, so the strip was never the variable.
-2. It threw on that path: an `ActiveMagicEffect` restored from a save comes back detached (`[None]`),
-   and reading its `Form[]` variable errors with `Cannot cast from None to Form[]` before any guard
-   helps, so the restore aborted and the player's gear stayed off.
-3. It fired up to 31 unequip events per cast, setting off **45** `Cannot call GetSlotMask() on a None
-   object` errors in an unrelated mod's `OnObjectUnequipped` handler.
-
-The lesson: two proven archetypes agreeing that a mechanism is real is good evidence about the
-*mechanism* and none at all that it is *this bug*. Don't keep a fix that failed its test because the
-reasoning behind it was sound.
-
-**Attempt 2 — `QueueNiNodeUpdate` alone.** Motivated by the anchor fact that reloading a save while
-transformed shows the Treewarden correctly, so every record is right and only the live transition is
-wrong. It did not fix it either, and is kept only as a cheap belt-and-braces step *after* the
-corrected order.
-
-## Still open
-
-A Papyrus log from the reporting modlist also shows RaceMenu broken at the bind level — `Unable to
+**What is actually established.** The records are correct (the save reload proves it). The script is
+irrelevant (the console `setrace` proves it). The fault is in the live race-switch path on the
+reporting setup. A Papyrus log from that list shows RaceMenu broken at the bind level — `Unable to
 bind script RaceMenuPluginXPMSE … because their base types do not match` ×12 — with all six plugin
-aliases throwing `Cannot call OnChangeRace() on a None object` from `RaceMenuLoad.OnRaceSwitchComplete`
-on **every** player race change (×36). RaceMenu/NiOverride owns body rendering for *humanoid* actors,
-which is exactly what separates the two transformations: Force of Nature's race is humanoid
-(`DefaultMale.hkx`, head parts, tint masks), Wildshape's is a `Critter` creature race NiOverride does
-not touch — and Wildshape renders.
+aliases throwing `Cannot call OnChangeRace() on a None object` from
+`RaceMenuLoad.OnRaceSwitchComplete` on **every** player race change (×36). RaceMenu/NiOverride owns
+body rendering for *humanoid* actors, and that is exactly the line the two results fall on: Force of
+Nature's race is humanoid (`DefaultMale.hkx`, head parts, tint masks); Wildshape's is a `Critter`
+creature race NiOverride does not touch.
 
-`player.setrace TVR_Verdant_Race_ForceOfNature` from the console (an **EditorID**, not a FormID —
-`SetRace` rejects FormIDs) takes this script out of the equation entirely and settles whether the
-fault is ours or the list's.
+**Why the script override went away entirely.** With Force of Nature withheld from distribution
+(`tools/20-withhold-force-of-nature.ps1`), every code path those three attempts touched had Force of
+Nature as its only consumer — Wildshape sets `TVR_UnequipItems` to `False`, so it never enters the
+block at all. Keeping a modified copy of a third-party script forever, to carry unproven changes
+against the one transformation that works, is a maintenance burden with no upside.
 
-`QueueNiNodeUpdate` is an **SKSE** function; it lives in the SKSE tree, not the vanilla one, so the
-SKSE tree must precede vanilla on `-i` or the compile fails to resolve it. A correct build is
-**5724 bytes**. `src/Triumvirate/tools/verify-druid-transformations.ps1` asserts the shipped `.pex`
-contains `QueueNiNodeUpdate` and does **not** contain `StripArmor` — `build.ps1` fails on a *missing*
-`.pex` but cannot detect a stale one.
+**The lesson worth keeping:** two proven archetypes agreeing that a mechanism is real is good
+evidence about the *mechanism*, and none at all that it is *this bug*. Don't keep a fix that failed
+its test because the reasoning behind it was sound.
 
 # TVR_PopulateSpellBooks_Script (ours - WD-16)
 

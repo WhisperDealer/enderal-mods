@@ -21,9 +21,10 @@
     3. The Wildshape morph effect is not gated behind a movement state a hand-cast spell cannot
        satisfy, and its description does not promise a trigger that no longer exists.
 
-    4. The loose TVR_Wildshape_Script.pex we ship is OUR build - it must contain QueueNiNodeUpdate
-       and must NOT contain StripArmor, the reverted first attempt. build.ps1 fails on a MISSING
-       .pex but cannot detect a STALE one, and a stale one here ships a known-bad script.
+    4. Force of Nature is NOT reachable from any leveled list or container, and Wildshape still IS.
+       Force of Nature is withheld (20-withhold-force-of-nature.ps1) because the player renders
+       invisible on at least one setup for reasons outside this mod. Withholding is only real while
+       nothing yields the tome, and a regenerated tree would quietly put it back.
 
   Exits non-zero on any failure.
 #>
@@ -146,23 +147,37 @@ if ($mgefFile) {
     else { Pass "description matches the trigger" }
 }
 
-# --- 4. the loose .pex is OUR build --------------------------------------------------------------
-Write-Host "`n[3] shipped TVR_Wildshape_Script.pex"
+# --- 4. Force of Nature withheld, Wildshape still sold ------------------------------------------
+Write-Host "`n[3] distribution"
 
-if (-not (Test-Path $pex)) {
-    Fail "TVR_Wildshape_Script.pex is not in Scripts/compiled - Enai's BSA copy would win and the invisibility returns"
-} else {
-    $bytes = [System.IO.File]::ReadAllBytes($pex)
-    $ascii = -join ($bytes | ForEach-Object { if ($_ -ge 32 -and $_ -lt 127) { [char]$_ } else { "`n" } })
-    # QueueNiNodeUpdate marks our build. StripArmor must NOT come back: it was removed after a
-    # Papyrus log showed it threw on save-restored effects and spammed another mod's unequip handler.
-    if ($ascii -match 'StripArmor') { Fail "TVR_Wildshape_Script.pex still contains StripArmor - the removed armour strip has come back" }
-    else { Pass "no StripArmor" }
-    foreach ($sym in 'QueueNiNodeUpdate', 'ForceRedraw') {
-        if ($ascii -match $sym) { Pass "contains $sym" }
-        else { Fail "TVR_Wildshape_Script.pex does not contain $sym - it is Enai's build or a stale one, recompile it" }
+$FoNTome     = '41EC7C:Triumvirate - Mage Archetypes.esp'   # TVR_Druid_A025_Book_ForceOfNature
+$FoNTierList = '43820F:Triumvirate - Mage Archetypes.esp'   # its tier list, deliberately orphaned
+$WildTome    = '41EC7D:Triumvirate - Mage Archetypes.esp'   # TVR_Druid_A050_Book_Wildshape
+
+$leaks = @()
+$wildReachable = $false
+foreach ($file in Get-ChildItem -Path $ours -Recurse -Filter '*.yaml') {
+    $name = $file.Name
+    $text = Read-Text $file.FullName
+    if ($text -match ('Reference:\s*' + [regex]::Escape($WildTome))) { $wildReachable = $true }
+
+    # The tome record itself and the orphaned tier list are allowed to name them; nothing else is.
+    if ($name -like 'TVR_Druid_A025_Book_ForceOfNature - *')    { continue }
+    if ($name -like 'TVR_Tomes_Litem_Druid_025_Alteration - *') { continue }
+    foreach ($fk in @($FoNTome, $FoNTierList)) {
+        if ($text -match ('Reference:\s*' + [regex]::Escape($fk))) { $leaks += ("{0} -> {1}" -f $name, $fk) }
     }
 }
+
+if ($leaks.Count -gt 0) {
+    $leaks | ForEach-Object { Fail "Force of Nature is still distributed: $_" }
+} else {
+    Pass "Force of Nature is not yielded by any leveled list or container"
+}
+
+# The withhold must not have taken Wildshape with it - that one is verified working in-game.
+if ($wildReachable) { Pass "Wildshape is still distributed" }
+else { Fail "the Wildshape tome is no longer yielded by anything - the withhold overreached" }
 
 Write-Host ""
 if ($failures.Count -gt 0) {

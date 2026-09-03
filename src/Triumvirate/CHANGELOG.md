@@ -5,21 +5,20 @@ and documentation are not listed.
 
 ## 1.0.2
 
-- Improved: **Force of Nature's transformation now forces your character model to be rebuilt**, on
-  the way in and on the way back. This does *not* yet fix the report of the Treewarden being
-  invisible — see below — but the transformation no longer relies on the game noticing the race
-  change by itself.
-- **Known issue: Force of Nature can still appear invisible on some setups.** The model itself is
-  correct; reloading a save while transformed displays it perfectly. On the modlist where this was
-  reported, RaceMenu is failing to load its own scripts and errors on *every* player race change,
-  which is the current suspect. Wildshape is unaffected. If you hit this, please report your load
-  order — and check whether RaceMenu is installed and working.
-- Fixed: **Wildshape did nothing at all.** The transformation was gated on being *sprinting* at the
-  instant the spell went off, and casting a spell cancels a sprint, so the deer form could
+- Fixed: **Wildshape did nothing at all.** The transformation was gated on your being *sprinting* at
+  the instant the spell went off, and casting a spell cancels a sprint, so the deer form could
   essentially never trigger. Wildshape now works whenever you cast it out of combat, and its
-  description no longer mentions sprinting.
-- Both were long-standing conversion issues rather than new ones — they date from the first release.
-  Nothing else about either spell changed: same duration, same speed bonus, same everything else.
+  description no longer mentions sprinting. Nothing else about the spell changed — same duration,
+  same speed bonus.
+- Changed: **Force of Nature is no longer sold by any vendor.** On at least one setup the Treewarden
+  renders invisible — you attack and cast normally but have no body — and the cause is not in this
+  mod: the records are provably correct (reloading a save while transformed displays the Treewarden
+  perfectly), and changing race from the console, with none of Triumvirate's scripts involved,
+  reproduces it. Until that is understood we would rather not sell a spell that may arrive broken.
+  **The spell and its tome still exist** — nothing is deleted, and if you already own it your save is
+  unaffected.
+- Both of these were long-standing conversion issues rather than new ones; they date from the first
+  release.
 
 ## 1.0.1
 
