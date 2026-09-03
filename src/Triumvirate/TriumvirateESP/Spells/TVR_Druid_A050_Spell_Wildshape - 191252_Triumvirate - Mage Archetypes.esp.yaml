@@ -26,21 +26,6 @@ Effects:
     Data:
       MutagenObjectType: IsInCombatConditionData
   - MutagenObjectType: ConditionFloat
-    Data:
-      MutagenObjectType: IsRunningConditionData
-    ComparisonValue: 1
-  - MutagenObjectType: ConditionFloat
-    Flags:
-    - OR
-    Data:
-      MutagenObjectType: IsSprintingConditionData
-    ComparisonValue: 1
-  - MutagenObjectType: ConditionFloat
-    Data:
-      MutagenObjectType: HasKeywordConditionData
-      Keyword: 29DA0D:Triumvirate - Mage Archetypes.esp
-    ComparisonValue: 1
-  - MutagenObjectType: ConditionFloat
     Flags:
     - OR
     Data:

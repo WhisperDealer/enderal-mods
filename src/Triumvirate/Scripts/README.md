@@ -1,9 +1,44 @@
 # Why this release ships three Papyrus scripts
 
-## TVR_PopulateSpellBooks_Script (ours - WD-16)
+## It used to ship a fourth, and that is worth recording
 
-`TVR_PopulateSpellBooks_Script.pex` is the one script this release actually authors: a
-replacement for Enai's distribution script, shipped loose so it beats the copy in
+`TVR_Wildshape_Script` — Enai's player-transformation script — was patched three times during WD-37
+and every version has been reverted. The script this release ships is **Enai's own, from his BSA,
+untouched**. The history matters because the reasoning behind each attempt was sound and each one was
+still wrong.
+
+The bug: **Force of Nature** transforms the player into the Treewarden, who renders nothing — they
+attack and cast normally with no body. **Wildshape**, on the same script, is fine.
+
+| Attempt | Theory | Why it died |
+|---|---|---|
+| 1. Strip worn armour around the race change | A race skin renders per biped slot; armour left on keeps slots 32/33/37, draws nothing and suppresses the skin. Both Bethesda's `PlayerWerewolfChangeScript` and SureAI's `LycantropheTransformSC` do unequip gear right after `SetRace`. | Didn't fix it. Worse, it threw `Cannot cast from None to Form[]` on save-restored effects (so gear stayed off) and set off **45** `GetSlotMask()` errors per cast in another mod's unequip handler. |
+| 2. `QueueNiNodeUpdate` + delay | Reloading a save mid-transform shows the Treewarden **correctly**, so every record is right and only the live 3D rebuild is missing. | Didn't fix it. |
+| 3. Bethesda's full call order | `PlayerWerewolfChangeScript` sets beast form *before* `SetRace`, forces third person first, calls `ShowFirstPersonGeometry(false)`, and wraps the race change in `Game.SetInCharGen` — Enai does none of it, and SureAI independently agrees on `SetInCharGen`. | Overtaken: a bare `player.setrace` from the console, with no Triumvirate script involved at all, reproduces the invisibility. The fault is not in this script. |
+
+**What is actually established.** The records are correct (the save reload proves it). The script is
+irrelevant (the console `setrace` proves it). The fault is in the live race-switch path on the
+reporting setup. A Papyrus log from that list shows RaceMenu broken at the bind level — `Unable to
+bind script RaceMenuPluginXPMSE … because their base types do not match` ×12 — with all six plugin
+aliases throwing `Cannot call OnChangeRace() on a None object` from
+`RaceMenuLoad.OnRaceSwitchComplete` on **every** player race change (×36). RaceMenu/NiOverride owns
+body rendering for *humanoid* actors, and that is exactly the line the two results fall on: Force of
+Nature's race is humanoid (`DefaultMale.hkx`, head parts, tint masks); Wildshape's is a `Critter`
+creature race NiOverride does not touch.
+
+**Why the script override went away entirely.** With Force of Nature withheld from distribution
+(`tools/20-withhold-force-of-nature.ps1`), every code path those three attempts touched had Force of
+Nature as its only consumer — Wildshape sets `TVR_UnequipItems` to `False`, so it never enters the
+block at all. Keeping a modified copy of a third-party script forever, to carry unproven changes
+against the one transformation that works, is a maintenance burden with no upside.
+
+**The lesson worth keeping:** two proven archetypes agreeing that a mechanism is real is good
+evidence about the *mechanism*, and none at all that it is *this bug*. Don't keep a fix that failed
+its test because the reasoning behind it was sound.
+
+# TVR_PopulateSpellBooks_Script (ours - WD-16)
+
+`TVR_PopulateSpellBooks_Script.pex` is a replacement for Enai's distribution script, shipped loose so it beats the copy in
 `Triumvirate - Mage Archetypes.bsa`. The original makes 76 calls against Skyrim NPCs, merchant
 chests and staff leveled lists - none of which exist in Enderal - and would log that many
 `Cannot call ... on a None object` errors at game start. Distribution was rebuilt at the record

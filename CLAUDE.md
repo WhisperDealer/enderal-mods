@@ -71,6 +71,25 @@ confirmed by compiling real Enderal scripts (`_00E_TalentLibrary`, `_00E_Game_Ta
 > package ships `tools/net10.0` only), failing with a `DotnetToolSettings.xml was not found` error
 > that never mentions .NET.
 
+## Knowledge base (oculory-rag) — search it before answering
+
+If the `oculory-rag` MCP tools are available, use them **before** answering from memory and
+before grepping `reference/` by hand:
+
+- **`search`** — the written knowledge base: engine behaviour, record patterns, SPID, Spriggit
+  and Mutagen workflow, third-party mod analyses, prior art and design notes.
+- **`game_search` / `game_read`** — the decompiled game files themselves: ~331k records and
+  ~19k Papyrus scripts, looked up by EditorID, FormID, FormKey or in-game name. Prefer these
+  over walking `reference/` by hand; they are indexed and answer in milliseconds.
+- Pass `game="enderal"` for this repo. Enderal ships a MODIFIED `Skyrim.esm`, so a
+  vanilla-Skyrim answer is often the wrong one.
+
+Cite the doc id or FormKey a claim rests on, and keep the `[verified]` / `[community]` /
+`[unverified]` marks honest — retrieved text is evidence, not proof.
+
+These tools are an optional local index. If they are not present, work in this repo exactly as
+before: nothing here depends on them.
+
 ## Enderal ground truth
 
 Everything in this section was read off the installed game, not recalled. Re-verify with the same
@@ -325,6 +344,55 @@ These are distilled from real failures in this workspace's lineage. They cost te
     And a rename pass that scans a hand-picked list of record groups will report *"all renames
     matched"* while leaving every string in the groups it never opened — scan them all, and let
     the per-rename assertion prove each one landed.
+
+13. **Find the reproduction that does NOT involve your code before you debug your code.**
+    **[verified 2026-09-03]** A player reported Triumvirate's *Force of Nature* leaving them
+    invisible — transformed, attacking and casting normally, with no body. It cost **three fix
+    attempts, two of them shipped**, and it was never this repo's bug. Two observations settled it,
+    and both were available on day one:
+
+    | Observation | What it exonerates |
+    |---|---|
+    | **Reloading a save mid-transform renders the model correctly** | every *record* — race, skin ARMO, armature, mesh, BSA. A fresh actor build draws them perfectly, so nothing static is wrong |
+    | **`player.setrace <EditorID>` from the console reproduces it** | every *script* — no mod code runs, so the fault is in the host's live race-switch path |
+
+    Between them there was nothing of ours left to blame. Ask for that pair of tests **first**;
+    they cost the reporter a minute and they bound the search before you open a single record.
+    Note `setrace` takes an **EditorID, not a FormID** — passing the FormID `help` prints returns
+    "race id doesn't exist", which reads like the race is broken and is just wrong syntax.
+
+    **A working sibling is the best control you have.** Triumvirate has exactly two player
+    transformations. Wildshape rendered and Force of Nature did not, and the difference was not
+    subtle once looked for: Wildshape's race is a `Critter` creature race, Force of Nature's is
+    humanoid (`DefaultMale.hkx`, head parts, tint masks) — and RaceMenu/NiOverride, which the
+    reporter's Papyrus log showed failing to bind and throwing `Cannot call OnChangeRace()` on
+    **every** player race change, owns body rendering for humanoid actors only. Enumerate the
+    feature's siblings and ask what separates the broken one from the working one.
+
+    **Turn Papyrus logging on early, and read it for your own script too.** The log named the
+    culprit *and* caught a defect in the fix: the armour strip threw
+    `Cannot cast from None to Form[]` because an `ActiveMagicEffect` restored from a save comes
+    back detached (`[None]`) and reading its `Form[]` variable fails before any guard helps — so
+    the restore aborted and left the player's gear off. It also showed that strip firing 31
+    unequip events per cast and setting off 45 errors in an unrelated mod's `OnObjectUnequipped`
+    handler. None of that is visible from the records.
+
+    **The trap that made this expensive: two proven archetypes agreeing that a mechanism is real
+    is good evidence about the MECHANISM, and none at all that it is THIS bug.** Both Bethesda's
+    `PlayerWerewolfChangeScript` and SureAI's `LycantropheTransformSC` unequip gear immediately
+    after `SetRace`, so "worn armour suppresses the race skin" looked well founded — and it was
+    real, and it was not the bug. Guardrail 3 says prefer the proven archetype when *authoring*;
+    it does not license using one as a diagnosis. A fix that fails its test is wrong however good
+    its reasoning, and keeping it "belt and braces" is how a second defect ships. Revert it.
+
+    **When the fault is outside the mod, withhold rather than work around.** Enderal lists are
+    large and a conversion cannot fix another mod's race handling. Force of Nature was removed
+    from its leveled lists and vendor hooks — records intact, nothing deleted, re-enabling is one
+    entry, and the withhold script carries the exact line — and the patched script was dropped
+    entirely rather than carrying unproven changes against the transformation that *does* work.
+    Same shape as the Apocalypse summons: ship what has been tested, keep the rest as a testing
+    backlog. And assert **both** halves in the verifier — that the withheld item is unreachable
+    *and* that its working sibling still is — or the next tree regeneration silently undoes one.
 
 ## FormKey discipline
 

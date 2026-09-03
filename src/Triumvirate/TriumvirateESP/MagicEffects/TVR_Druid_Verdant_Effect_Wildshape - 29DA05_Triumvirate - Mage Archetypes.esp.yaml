@@ -36,7 +36,7 @@ Sounds:
   Sound: 115E1A:Triumvirate - Mage Archetypes.esp
 Description:
   TargetLanguage: English
-  Value: Assume the form of a Deer while sprinting out of combat, moving <30>% faster, for <dur> seconds.
+  Value: Assume the form of a Deer while out of combat, moving <30>% faster, for <dur> seconds.
 Conditions:
 - MutagenObjectType: ConditionFloat
   Data:

@@ -3,6 +3,23 @@
 Paste each version block into the Nexus **Changelogs** tab. User-facing changes only; repo tooling
 and documentation are not listed.
 
+## 1.0.2
+
+- Fixed: **Wildshape did nothing at all.** The transformation was gated on your being *sprinting* at
+  the instant the spell went off, and casting a spell cancels a sprint, so the deer form could
+  essentially never trigger. Wildshape now works whenever you cast it out of combat, and its
+  description no longer mentions sprinting. Nothing else about the spell changed — same duration,
+  same speed bonus.
+- Changed: **Force of Nature is no longer sold by any vendor.** On at least one setup the Treewarden
+  renders invisible — you attack and cast normally but have no body — and the cause is not in this
+  mod: the records are provably correct (reloading a save while transformed displays the Treewarden
+  perfectly), and changing race from the console, with none of Triumvirate's scripts involved,
+  reproduces it. Until that is understood we would rather not sell a spell that may arrive broken.
+  **The spell and its tome still exist** — nothing is deleted, and if you already own it your save is
+  unaffected.
+- Both of these were long-standing conversion issues rather than new ones; they date from the first
+  release.
+
 ## 1.0.1
 
 - Fixed: **every archetype's capstone spell cost far too much mana to cast.** Triumvirate never
