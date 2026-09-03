@@ -2,30 +2,49 @@
 
 ## TVR_Wildshape_Script (Enai's, patched — WD-37)
 
-`TVR_Wildshape_Script.pex` is Enai's transformation script rebuilt with one change: it now strips
-worn **armour** on transform and restores it on finish. Shipped loose so it beats the copy in
-`Triumvirate - Mage Archetypes.bsa`.
+`TVR_Wildshape_Script.pex` is Enai's transformation script rebuilt with two changes, shipped loose so
+it beats the copy in `Triumvirate - Mage Archetypes.bsa`.
 
 Two magic effects bind it, and they are the mod's **only** two player transformations —
 `TVR_Druid_Verdant_Effect_ForceOfNature` and `TVR_Druid_Verdant_Effect_Wildshape_MorphEffect`. Both
 were reported broken in Enderal, which is what made this one subsystem rather than two bugs.
 
-Upstream unequips weapons and spells only. A race skin renders per biped slot, so the player's
-Enderal armour keeps slots 32/33/37 across the `SetRace` — the engine carries equipped items over —
-and its armatures do not cover the new race, so those slots draw nothing *and* suppress the skin
-beneath. The player fights and casts with no body. Both proven archetypes for this mechanic unequip
-gear immediately after `SetRace`: Bethesda's `PlayerWerewolfChangeScript` and SureAI's
-`LycantropheTransformSC`, the latter restoring through its `playerTransformStorage` quest.
+## What was actually wrong, and a wrong answer worth recording
 
-We record and remove exactly the worn armour rather than calling `UnequipAll()`, because `UnequipAll`
-would also strip weapons — which upstream deliberately keeps for Wildshape — with nothing to put them
-back.
+The first fix shipped for this was the **armour strip**, on the theory that a race skin renders per
+biped slot and the player's Enderal armour keeps slots 32/33/37 across the `SetRace`, drawing nothing
+and suppressing the skin beneath. It is a tidy mechanism, both proven archetypes do unequip gear
+immediately after `SetRace` (Bethesda's `PlayerWerewolfChangeScript`, SureAI's
+`LycantropheTransformSC`), and **it did not fix the invisibility.**
 
-`GetWornForm` is an **SKSE** function; it is in the SKSE tree, not the vanilla one, so the SKSE tree
-must precede vanilla on `-i` or the compile fails to resolve it. A correct build is **5123 bytes**.
+What killed it was one observation from a player: **reloading a save while transformed shows the
+Treewarden correctly** — with the armour still stripped, so the strip cannot be the variable. A fresh
+actor build renders the model perfectly, which means the race, skin ARMO, armature, mesh and BSA are
+all correct and the whole static search was the wrong tree. The real defect is that nothing rebuilds
+the player's 3D at cast time.
+
+The armour strip is **kept** anyway: it matches the host's archetype, Wildshape was verified working
+with it in place, and removing it at the same time as adding the real fix would change two variables
+at once. It is belt-and-braces, not the diagnosis. We record and remove exactly the worn armour
+rather than calling `UnequipAll()`, because `UnequipAll` would also strip weapons — which upstream
+deliberately keeps for Wildshape — with nothing to put them back.
+
+## The fix that worked
+
+The script forces the player's 3D to rebuild after the race change.
+
+Upstream does try — `ForceFirstPerson()` early, `ForceThirdPerson()` late — and Wildshape survives on
+that while Force of Nature does not. The difference is what each has to load: Wildshape reuses
+`SkinReinDeer`, already resident, whereas Force of Nature needs a 7.2 MB mesh out of the BSA. The
+camera toggle fires before it has streamed in. So the script now waits `TVR_RedrawDelay` (0.5 s) and
+calls SKSE's `QueueNiNodeUpdate()`, the direct equivalent of what a reload does.
+
+`GetWornForm` and `QueueNiNodeUpdate` are **SKSE** functions; they are in the SKSE tree, not the
+vanilla one, so the SKSE tree must precede vanilla on `-i` or the compile fails to resolve them.
+A correct build is **5712 bytes**.
 `src/Triumvirate/tools/verify-druid-transformations.ps1` asserts the shipped `.pex` is ours by
-looking for `GetWornForm` inside it — `build.ps1` fails on a *missing* `.pex` but cannot detect a
-stale one, and a stale one here silently reintroduces the invisibility.
+looking for `QueueNiNodeUpdate` inside it — `build.ps1` fails on a *missing* `.pex` but cannot detect
+a stale one, and a stale one here silently reintroduces the invisibility.
 
 # TVR_PopulateSpellBooks_Script (ours - WD-16)
 

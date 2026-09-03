@@ -158,7 +158,9 @@ if (-not (Test-Path $pex)) {
 } else {
     $bytes = [System.IO.File]::ReadAllBytes($pex)
     $ascii = -join ($bytes | ForEach-Object { if ($_ -ge 32 -and $_ -lt 127) { [char]$_ } else { "`n" } })
-    foreach ($sym in 'GetWornForm', 'StripArmor', 'RestoreArmor') {
+    # QueueNiNodeUpdate is the load-bearing one: it is what actually fixed the Force of Nature
+    # invisibility, and its absence means we shipped a build from before that fix.
+    foreach ($sym in 'QueueNiNodeUpdate', 'ForceRedraw', 'GetWornForm', 'StripArmor', 'RestoreArmor') {
         if ($ascii -match $sym) { Pass "contains $sym" }
         else { Fail "TVR_Wildshape_Script.pex does not contain $sym - it is Enai's build or a stale one, recompile it" }
     }

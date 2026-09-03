@@ -15,25 +15,30 @@
       TVR_Druid_Verdant_Effect_Wildshape_MorphEffect    29DA04   ("Wildshape", Druid Deer)
 
   Force of Nature was reported invisible in Enderal - the player transforms, attacks and casts
-  normally, but nothing renders. The cause is not a dead reference, a missing asset or a skeleton
-  mismatch (all three were checked and ruled out; see the WD-37 ticket). It is that the script never
-  unequips worn ARMOUR.
+  normally, but nothing renders. The cause is NOT a dead reference, a missing asset, a skeleton
+  mismatch or a lost RNAM (all four were checked and ruled out; see the WD-37 ticket). It is that
+  nothing rebuilds the player's 3D at cast time. See ForceRedraw below.
 
-  A race skin renders per biped slot. TVR_Verdant_Armor_ForceOfNature claims Body/Hands/Feet/Tail,
-  and the Treewarden mesh lives on the Body slot. The player's Enderal armour keeps slots 32/33/37
-  across a SetRace - the engine carries equipped items over - and its armatures do not cover
-  TVR_Verdant_Race_ForceOfNature, so those slots draw nothing AND suppress the skin underneath.
-  The result is an actor that fights and casts but has no body.
+  A WRONG ANSWER WORTH KEEPING
 
-  Upstream unequips weapons and spells only (TVR_UnequipItems), never armour. Both proven
-  archetypes for this exact mechanic do unequip it, immediately after SetRace:
+  The first fix shipped for this was the armour strip, on the theory that a race skin renders per
+  biped slot and the player's Enderal armour keeps slots 32/33/37 across the SetRace, drawing
+  nothing and suppressing the skin beneath. Upstream unequips weapons and spells only
+  (TVR_UnequipItems), never armour, and both proven archetypes for this mechanic DO unequip it,
+  immediately after SetRace:
 
       Bethesda   PlayerWerewolfChangeScript.psc   SetRace(WerewolfBeastRace) then UnequipAll()
       SureAI     LycantropheTransformSC.psc       SetRace(WerewolfBeastRace) then UnequipAll(),
                                                   restoring through playerTransformStorage
 
-  So the engine does not hide worn gear in beast form by itself, and the host game already answers
-  this question its own way. CLAUDE.md guardrail 3 - prefer the proven archetype.
+  So the engine does not hide worn gear in beast form by itself. It is a tidy mechanism backed by two
+  archetypes, and it DID NOT FIX the invisibility. What killed it was a player reloading a save
+  mid-transform and seeing the Treewarden render correctly - with the armour already stripped, so the
+  strip cannot be the variable.
+
+  The strip is KEPT because it matches the host's archetype and Wildshape was verified working with
+  it in place; removing it alongside the real fix would change two variables at once. It is
+  belt-and-braces, not the diagnosis.
 
   We do NOT call UnequipAll(). It would also strip weapons, which upstream deliberately keeps for
   Wildshape (TVR_UnequipItems is False there), and nothing would put them back. Instead we record
@@ -67,9 +72,15 @@ String property TVR_HelpMessageType auto
 ; absent VMAD property takes the script's default. Set it False on a record to opt that
 ; transformation out.
 Bool property TVR_StripArmor = true auto
-{Unequip worn armour for the duration of the transformation and restore it afterwards. Without
- this the new race's skin is suppressed by armour slots that no longer render, and the player is
- invisible.}
+{Unequip worn armour for the duration of the transformation and restore it afterwards. This mirrors
+ Bethesda's and SureAI's own transformation scripts; it is not what caused the Force of Nature
+ invisibility - see TVR_RedrawDelay - but it is the host's archetype and Wildshape was verified
+ working with it in place.}
+
+; ENDERAL FIX (WD-37). See ForceRedraw below for why this exists and how it was diagnosed.
+Float property TVR_RedrawDelay = 0.5 auto
+{Seconds to let the new race's skin stream in before forcing the player's 3D to rebuild. 0 disables
+ the rebuild entirely.}
 
 ;-- Variables ---------------------------------------
 Shout OriginalShout
@@ -127,6 +138,46 @@ function RestoreArmor(Actor akTarget)
 	endIf
 endFunction
 
+;/ ------------------------------------------------------------------------------------------------
+  ENDERAL FIX (WD-37) - force the player's 3D to rebuild after the race change.
+
+  This is the actual cause of the "Force of Nature is invisible but attacks work and can cast
+  spells" report, and it was diagnosed by one observation from a player: RELOADING A SAVE WHILE
+  TRANSFORMED SHOWS THE TREEWARDEN CORRECTLY. That rules out every static explanation at once - the
+  race, the skin ARMO, its armature, the mesh and the BSA are all correct, because a fresh actor
+  build renders them perfectly. The only thing wrong is that nothing rebuilds the player's 3D at
+  cast time, so the old body is torn down and the new one is never drawn.
+
+  Upstream does try: it calls ForceFirstPerson() early and ForceThirdPerson() late, which is the
+  usual idiom for making the engine re-derive the player's 3D. Wildshape survives on that, and Force
+  of Nature does not. The difference is what each has to load. Wildshape's race reuses an Enderal
+  skin that is already resident (SkinReinDeer, ArmorRace DeerRace), while Force of Nature's is a new
+  ARMO over Triumvirate\Verdant_Actor_ForceOfNature.nif - a 7.2 MB mesh that has to come out of the
+  BSA. The camera toggle fires before it has streamed in, so the rebuild finds nothing to draw and
+  never runs again.
+
+  So: wait, then rebuild. QueueNiNodeUpdate is SKSE's "re-derive this actor's 3D" call and is the
+  direct equivalent of what a save reload does; the camera toggle is kept as a second lever because
+  it is what upstream already relies on and it costs nothing. Both are cheap and idempotent.
+
+  Deliberately NOT done: raising the wait until it "always works". A fixed delay long enough for any
+  disk is a delay every player feels on every cast. If 0.5 s proves marginal the honest fix is to
+  poll GetWornForm/Is3DLoaded rather than to inflate a constant - but measure before assuming, since
+  a reload demonstrably needs no such margin.
+------------------------------------------------------------------------------------------------ /;
+function ForceRedraw(Actor akTarget, Bool abToggleCamera)
+
+	if TVR_RedrawDelay <= 0.0
+		return
+	endIf
+	Utility.Wait(TVR_RedrawDelay)
+	akTarget.QueueNiNodeUpdate()
+	if abToggleCamera
+		game.ForceFirstPerson()
+		game.ForceThirdPerson()
+	endIf
+endFunction
+
 function OnEffectFinish(Actor akTarget, Actor akCaster)
 
 	TVR_Imod.Apply(1.00000)
@@ -163,6 +214,10 @@ function OnEffectFinish(Actor akTarget, Actor akCaster)
 		TVR_Primal_VFX_Wildshape.Play(akTarget as objectreference, 6.00000, none)
 	endIf
 	game.SetBeastForm(false)
+	; ENDERAL FIX (WD-37): same staleness applies changing back. No camera toggle here - upstream
+	; does not force a view on the way out, and yanking it would be a visible regression for anyone
+	; who plays in first person.
+	ForceRedraw(akTarget, false)
 endFunction
 
 function OnEffectStart(Actor akTarget, Actor akCaster)
@@ -209,6 +264,9 @@ function OnEffectStart(Actor akTarget, Actor akCaster)
 	if TVR_HelpMessage
 		TVR_HelpMessage.ShowAsHelpMessage(TVR_HelpMessageType, (TVR_HelpMessageDuration_Global.GetValue() as Int) as Float, 0 as Float, TVR_HelpMessageRate_Global.GetValue() as Int)
 	endIf
+	; ENDERAL FIX (WD-37): last, so every equipment change above has already settled and nothing
+	; invalidates the rebuild after it runs.
+	ForceRedraw(akTarget, true)
 endFunction
 
 ; Skipped compiler generated GetState
