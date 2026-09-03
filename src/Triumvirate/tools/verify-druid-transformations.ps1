@@ -12,7 +12,7 @@
   So this asserts the things a player actually experiences, per subsystem:
 
     1. Every magic effect binding TVR_Wildshape_Script - i.e. every player transformation in the
-       mod - names a TVR_Race that exists, and does not opt out of the armour strip.
+       mod - names a TVR_Race that exists.
 
     2. That race's skin can actually RENDER on it. "The FormID exists" is half a check; the second
        condition for an ARMO is that one of its armatures covers the wearer's ArmorRace (or the
@@ -21,10 +21,9 @@
     3. The Wildshape morph effect is not gated behind a movement state a hand-cast spell cannot
        satisfy, and its description does not promise a trigger that no longer exists.
 
-    4. The loose TVR_Wildshape_Script.pex we ship is OUR build - it must contain GetWornForm, the
-       SKSE call that does the armour strip. Enai's copy in the BSA does not, and if the import
-       order or the compile step regressed we would ship his again and silently reintroduce the
-       invisibility. build.ps1 fails on a MISSING .pex but cannot detect a STALE one.
+    4. The loose TVR_Wildshape_Script.pex we ship is OUR build - it must contain QueueNiNodeUpdate
+       and must NOT contain StripArmor, the reverted first attempt. build.ps1 fails on a MISSING
+       .pex but cannot detect a STALE one, and a stale one here ships a known-bad script.
 
   Exits non-zero on any failure.
 #>
@@ -77,11 +76,9 @@ foreach ($f in Get-ChildItem -LiteralPath (Join-Path $ours 'MagicEffects') -Filt
     if ($t -notmatch '(?m)^\s*- Name: TVR_Wildshape_Script\s*$') { continue }
     $ed   = [regex]::Match($t, '(?m)^EditorID: (.+?)(?=\r?$)')
     $race = [regex]::Match($t, '(?ms)Name: TVR_Race\r?\n\s*Object: (.+?)(?=\r?$)')
-    $strip = [regex]::Match($t, '(?ms)Name: TVR_StripArmor\r?\n\s*Data: (\w+)')
     $transforms += [pscustomobject]@{
         EditorID = if ($ed.Success) { $ed.Groups[1].Value.Trim() } else { $f.BaseName }
         Race     = if ($race.Success) { $race.Groups[1].Value.Trim() } else { $null }
-        StripOff = ($strip.Success -and $strip.Groups[1].Value -eq 'False')
     }
 }
 
@@ -93,7 +90,6 @@ if ($transforms.Count -eq 0) {
 
 foreach ($tr in $transforms) {
     if (-not $tr.Race) { Fail "$($tr.EditorID): no TVR_Race property"; continue }
-    if ($tr.StripOff) { Fail "$($tr.EditorID): TVR_StripArmor is False - its skin will be suppressed by worn armour" }
 
     $raceText = Find-Record -FormKey $tr.Race -Groups @('Races')
     if (-not $raceText) { Fail "$($tr.EditorID): TVR_Race $($tr.Race) resolves to no RACE record"; continue }
@@ -158,9 +154,11 @@ if (-not (Test-Path $pex)) {
 } else {
     $bytes = [System.IO.File]::ReadAllBytes($pex)
     $ascii = -join ($bytes | ForEach-Object { if ($_ -ge 32 -and $_ -lt 127) { [char]$_ } else { "`n" } })
-    # QueueNiNodeUpdate is the load-bearing one: it is what actually fixed the Force of Nature
-    # invisibility, and its absence means we shipped a build from before that fix.
-    foreach ($sym in 'QueueNiNodeUpdate', 'ForceRedraw', 'GetWornForm', 'StripArmor', 'RestoreArmor') {
+    # QueueNiNodeUpdate marks our build. StripArmor must NOT come back: it was removed after a
+    # Papyrus log showed it threw on save-restored effects and spammed another mod's unequip handler.
+    if ($ascii -match 'StripArmor') { Fail "TVR_Wildshape_Script.pex still contains StripArmor - the removed armour strip has come back" }
+    else { Pass "no StripArmor" }
+    foreach ($sym in 'QueueNiNodeUpdate', 'ForceRedraw') {
         if ($ascii -match $sym) { Pass "contains $sym" }
         else { Fail "TVR_Wildshape_Script.pex does not contain $sym - it is Enai's build or a stale one, recompile it" }
     }

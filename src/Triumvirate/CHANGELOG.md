@@ -5,15 +5,15 @@ and documentation are not listed.
 
 ## 1.0.2
 
-- Fixed: **Force of Nature turned the player invisible.** The transformation itself was working —
-  you could attack and cast as the Treewarden — but nothing rendered. The cause was that the game
-  never rebuilt your character's model after the change: the Treewarden's body is a large file that
-  has to be read off disk, and Triumvirate asked for the redraw before it had finished loading, so
-  there was nothing to draw and it never tried again. (The tell was that reloading a save while
-  transformed showed the Treewarden perfectly.) The redraw now waits for the model and is forced
-  properly, on the way in and on the way back.
-- Your armour is also taken off for the duration and put back on when the spell ends, which is what
-  Enderal's own werewolf transformation does, and Skyrim's before it.
+- Improved: **Force of Nature's transformation now forces your character model to be rebuilt**, on
+  the way in and on the way back. This does *not* yet fix the report of the Treewarden being
+  invisible — see below — but the transformation no longer relies on the game noticing the race
+  change by itself.
+- **Known issue: Force of Nature can still appear invisible on some setups.** The model itself is
+  correct; reloading a save while transformed displays it perfectly. On the modlist where this was
+  reported, RaceMenu is failing to load its own scripts and errors on *every* player race change,
+  which is the current suspect. Wildshape is unaffected. If you hit this, please report your load
+  order — and check whether RaceMenu is installed and working.
 - Fixed: **Wildshape did nothing at all.** The transformation was gated on being *sprinting* at the
   instant the spell went off, and casting a spell cancels a sprint, so the deer form could
   essentially never trigger. Wildshape now works whenever you cast it out of combat, and its

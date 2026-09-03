@@ -2,8 +2,8 @@
   TVR_Wildshape_Script - Enai Siaion's, rebuilt for Enderal (WD-37).
 
   This is Enai's script, decompiled from Triumvirate - Mage Archetypes.bsa with Champollion and
-  reproduced verbatim except for the block marked "ENDERAL FIX" and the two calls into it. Nothing
-  else about the transformation's behaviour is changed: the same properties, the same order of
+  reproduced verbatim except for the block marked "ENDERAL FIX" and its two call sites. Nothing else
+  about the transformation's behaviour is changed: the same properties, the same order of
   operations, the same spell/weapon handling, including the TVR_SpellImmuneFromUnequip test, which
   reads backwards from its name but is preserved as found rather than "corrected" on a guess.
 
@@ -15,39 +15,35 @@
       TVR_Druid_Verdant_Effect_Wildshape_MorphEffect    29DA04   ("Wildshape", Druid Deer)
 
   Force of Nature was reported invisible in Enderal - the player transforms, attacks and casts
-  normally, but nothing renders. The cause is NOT a dead reference, a missing asset, a skeleton
-  mismatch or a lost RNAM (all four were checked and ruled out; see the WD-37 ticket). It is that
-  nothing rebuilds the player's 3D at cast time. See ForceRedraw below.
+  normally, but nothing renders. Ruled out with evidence, in this order: a dead reference, a missing
+  asset, a skeleton/rig mismatch, a lost RNAM, and worn armour suppressing the skin. See the WD-37
+  ticket for how each died.
 
-  A WRONG ANSWER WORTH KEEPING
+  AN ARMOUR STRIP LIVED HERE, AND IT WAS WRONG THREE WAYS
 
-  The first fix shipped for this was the armour strip, on the theory that a race skin renders per
-  biped slot and the player's Enderal armour keeps slots 32/33/37 across the SetRace, drawing
-  nothing and suppressing the skin beneath. Upstream unequips weapons and spells only
-  (TVR_UnequipItems), never armour, and both proven archetypes for this mechanic DO unequip it,
-  immediately after SetRace:
+  The first fix shipped for this unequipped worn armour around the race change, on the theory that a
+  race skin renders per biped slot and the player's Enderal armour keeps slots 32/33/37 across the
+  SetRace, drawing nothing and suppressing the skin beneath. Both proven archetypes DO unequip gear
+  immediately after SetRace - Bethesda's PlayerWerewolfChangeScript and SureAI's
+  LycantropheTransformSC - so it looked well founded.
 
-      Bethesda   PlayerWerewolfChangeScript.psc   SetRace(WerewolfBeastRace) then UnequipAll()
-      SureAI     LycantropheTransformSC.psc       SetRace(WerewolfBeastRace) then UnequipAll(),
-                                                  restoring through playerTransformStorage
+  It has been removed. A Papyrus log settled it:
 
-  So the engine does not hide worn gear in beast form by itself. It is a tidy mechanism backed by two
-  archetypes, and it DID NOT FIX the invisibility. What killed it was a player reloading a save
-  mid-transform and seeing the Treewarden render correctly - with the armour already stripped, so the
-  strip cannot be the variable.
+    1. It did not fix the invisibility. A player reloaded a save mid-transform and saw the Treewarden
+       render correctly WITH the armour already stripped, so the strip was never the variable.
+    2. It threw on that very path. An ActiveMagicEffect restored from a save comes back detached
+       ("[None]"), and reading its Form[] variable errors with "Cannot cast from None to Form[]"
+       before any guard can help - so RestoreArmor aborted and the player's gear stayed off.
+    3. It set off 45 "Cannot call GetSlotMask() on a None object" errors per cast in an unrelated
+       mod's OnObjectUnequipped handler, because it fires up to 31 unequip events in a tight loop.
 
-  The strip is KEPT because it matches the host's archetype and Wildshape was verified working with
-  it in place; removing it alongside the real fix would change two variables at once. It is
-  belt-and-braces, not the diagnosis.
+  The lesson worth keeping: two proven archetypes agreeing on a mechanism is good evidence that the
+  mechanism is real, and none at all that it is THIS bug. Do not keep a fix that failed its test
+  because the reasoning behind it was sound.
 
-  We do NOT call UnequipAll(). It would also strip weapons, which upstream deliberately keeps for
-  Wildshape (TVR_UnequipItems is False there), and nothing would put them back. Instead we record
-  and remove exactly the worn armour, and restore exactly that, leaving Enai's weapon and spell
-  handling alone.
-
-  Compile with ENDERAL'S source tree FIRST on -i (see Scripts/README.md). GetWornForm is an SKSE
-  function - it lives in the SKSE tree, not the vanilla one - so the SKSE tree must precede vanilla
-  on the path or this will not resolve.
+  Compile with ENDERAL'S source tree FIRST on -i (see Scripts/README.md). QueueNiNodeUpdate is an
+  SKSE function - it lives in the SKSE tree, not the vanilla one - so the SKSE tree must precede
+  vanilla on the path or this will not resolve.
 ------------------------------------------------------------------------------------------------ /;
 scriptName TVR_Wildshape_Script extends activemagiceffect
 
@@ -68,16 +64,7 @@ String property TVR_AnimEvent auto
 race property TVR_Race auto
 String property TVR_HelpMessageType auto
 
-; ENDERAL FIX (WD-37). Defaults True so both magic effects inherit it with no record edit - an
-; absent VMAD property takes the script's default. Set it False on a record to opt that
-; transformation out.
-Bool property TVR_StripArmor = true auto
-{Unequip worn armour for the duration of the transformation and restore it afterwards. This mirrors
- Bethesda's and SureAI's own transformation scripts; it is not what caused the Force of Nature
- invisibility - see TVR_RedrawDelay - but it is the host's archetype and Wildshape was verified
- working with it in place.}
-
-; ENDERAL FIX (WD-37). See ForceRedraw below for why this exists and how it was diagnosed.
+; ENDERAL FIX (WD-37). See ForceRedraw below.
 Float property TVR_RedrawDelay = 0.5 auto
 {Seconds to let the new race's skin stream in before forcing the player's 3D to rebuild. 0 disables
  the rebuild entirely.}
@@ -90,80 +77,39 @@ race OriginalRace
 spell OriginalSpell
 Bool IsWeaponDrawn
 
-; ENDERAL FIX (WD-37). Worn armour, indexed by biped slot bit, recorded at transform time.
-Form[] StoredArmor
-
 ;-- Functions ---------------------------------------
 
 ; Skipped compiler generated GotoState
 
 ;/ ------------------------------------------------------------------------------------------------
-  ENDERAL FIX (WD-37) - strip and restore worn armour around the race change.
-
-  31 iterations, not 32: biped slots 30..60 map to bits 0..30, and bit 31 would need 1 << 31, which
-  overflows a signed Papyrus Int. Slot 61 (FX01) is not an armour slot, so nothing is lost.
-
-  A single cuirass answers GetWornForm for several slots, so StoredArmor holds duplicates. That is
-  harmless in both directions - UnequipItem and EquipItem on an item already in the target state are
-  no-ops - and it keeps the restore exactly symmetric with the strip.
------------------------------------------------------------------------------------------------- /;
-function StripArmor(Actor akTarget)
-
-	StoredArmor = new Form[31]
-	Int i = 0
-	Int slot = 1
-	while i < 31
-		Form worn = akTarget.GetWornForm(slot)
-		if worn
-			StoredArmor[i] = worn
-			akTarget.UnequipItem(worn, false, true)
-		endIf
-		i += 1
-		slot = slot * 2
-	endWhile
-endFunction
-
-function RestoreArmor(Actor akTarget)
-
-	if StoredArmor
-		Int i = 0
-		while i < StoredArmor.Length
-			Form worn = StoredArmor[i]
-			if worn
-				akTarget.EquipItem(worn, false, true)
-			endIf
-			i += 1
-		endWhile
-		StoredArmor = none
-	endIf
-endFunction
-
-;/ ------------------------------------------------------------------------------------------------
   ENDERAL FIX (WD-37) - force the player's 3D to rebuild after the race change.
 
-  This is the actual cause of the "Force of Nature is invisible but attacks work and can cast
-  spells" report, and it was diagnosed by one observation from a player: RELOADING A SAVE WHILE
-  TRANSFORMED SHOWS THE TREEWARDEN CORRECTLY. That rules out every static explanation at once - the
-  race, the skin ARMO, its armature, the mesh and the BSA are all correct, because a fresh actor
-  build renders them perfectly. The only thing wrong is that nothing rebuilds the player's 3D at
-  cast time, so the old body is torn down and the new one is never drawn.
+  Motivated by one observation from a player: RELOADING A SAVE WHILE TRANSFORMED SHOWS THE TREEWARDEN
+  CORRECTLY. That rules out every static explanation at once - the race, the skin ARMO, its armature,
+  the mesh and the BSA are all correct, because a fresh actor build renders them perfectly. What a
+  reload does and a live SetRace does not is rebuild the player's 3D.
 
-  Upstream does try: it calls ForceFirstPerson() early and ForceThirdPerson() late, which is the
-  usual idiom for making the engine re-derive the player's 3D. Wildshape survives on that, and Force
-  of Nature does not. The difference is what each has to load. Wildshape's race reuses an Enderal
-  skin that is already resident (SkinReinDeer, ArmorRace DeerRace), while Force of Nature's is a new
-  ARMO over Triumvirate\Verdant_Actor_ForceOfNature.nif - a 7.2 MB mesh that has to come out of the
-  BSA. The camera toggle fires before it has streamed in, so the rebuild finds nothing to draw and
-  never runs again.
+  QueueNiNodeUpdate is SKSE's "re-derive this actor's 3D" call and is the closest Papyrus equivalent
+  of that rebuild. The camera toggle is kept as a second lever because it is what upstream already
+  relies on (ForceFirstPerson early, ForceThirdPerson late) and it costs nothing. Both are cheap and
+  idempotent.
 
-  So: wait, then rebuild. QueueNiNodeUpdate is SKSE's "re-derive this actor's 3D" call and is the
-  direct equivalent of what a save reload does; the camera toggle is kept as a second lever because
-  it is what upstream already relies on and it costs nothing. Both are cheap and idempotent.
+  HONEST STATUS: this has NOT been shown to fix the invisibility. It is retained because the reload
+  evidence still says a rebuild is the missing step, and because it is harmless - but the live
+  suspect has moved outside this script. A Papyrus log from the reporting modlist shows RaceMenu
+  broken at the bind level ("Unable to bind script RaceMenuPluginXPMSE ... base types do not match",
+  12 times) and all six of its plugin aliases throwing "Cannot call OnChangeRace() on a None object"
+  from RaceMenuLoad.OnRaceSwitchComplete on every single player race change. RaceMenu/NiOverride owns
+  the player's body rendering for HUMANOID actors, which is exactly what separates the two
+  transformations: Force of Nature's race is humanoid (DefaultMale.hkx, head parts, tint masks) while
+  Wildshape's is a Critter creature race that NiOverride does not touch - and Wildshape renders.
 
-  Deliberately NOT done: raising the wait until it "always works". A fixed delay long enough for any
-  disk is a delay every player feels on every cast. If 0.5 s proves marginal the honest fix is to
-  poll GetWornForm/Is3DLoaded rather than to inflate a constant - but measure before assuming, since
-  a reload demonstrably needs no such margin.
+  Before tuning anything here, settle that with `player.setrace` from the console, which takes this
+  script out of the equation entirely.
+
+  Deliberately NOT done: raising TVR_RedrawDelay until it "always works". A fixed delay long enough
+  for any disk is a delay every player feels on every cast, and inflating a constant to chase a bug
+  that may not be a timing bug at all is how a workaround becomes permanent.
 ------------------------------------------------------------------------------------------------ /;
 function ForceRedraw(Actor akTarget, Bool abToggleCamera)
 
@@ -186,10 +132,6 @@ function OnEffectFinish(Actor akTarget, Actor akCaster)
 		akTarget.SetRace(OriginalRace)
 	else
 		debug.Trace("TRIUMVIRATE ERROR: Race was changed during Morph Effect!", 2)
-	endIf
-	; ENDERAL FIX (WD-37): after the original race is back, so the armour's armatures match again.
-	if TVR_StripArmor
-		RestoreArmor(akTarget)
 	endIf
 	if TVR_Primal_Explosion_Wildshape
 		akTarget.PlaceAtMe(TVR_Primal_Explosion_Wildshape as form, 1, false, false)
@@ -232,10 +174,6 @@ function OnEffectStart(Actor akTarget, Actor akCaster)
 	OriginalRace = akTarget.GetRace()
 	akTarget.DrawWeapon()
 	akTarget.SetRace(TVR_Race)
-	; ENDERAL FIX (WD-37): immediately after SetRace, where both proven archetypes put it.
-	if TVR_StripArmor
-		StripArmor(akTarget)
-	endIf
 	game.ForceFirstPerson()
 	game.DisablePlayerControls(false, TVR_DisableFight, true, false, false, true, true, true, 0)
 	if TVR_UnequipItems

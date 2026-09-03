@@ -2,49 +2,69 @@
 
 ## TVR_Wildshape_Script (Enai's, patched — WD-37)
 
-`TVR_Wildshape_Script.pex` is Enai's transformation script rebuilt with two changes, shipped loose so
+`TVR_Wildshape_Script.pex` is Enai's transformation script rebuilt with one change, shipped loose so
 it beats the copy in `Triumvirate - Mage Archetypes.bsa`.
 
 Two magic effects bind it, and they are the mod's **only** two player transformations —
 `TVR_Druid_Verdant_Effect_ForceOfNature` and `TVR_Druid_Verdant_Effect_Wildshape_MorphEffect`. Both
 were reported broken in Enderal, which is what made this one subsystem rather than two bugs.
 
-## What was actually wrong, and a wrong answer worth recording
+## The change
 
-The first fix shipped for this was the **armour strip**, on the theory that a race skin renders per
-biped slot and the player's Enderal armour keeps slots 32/33/37 across the `SetRace`, drawing nothing
-and suppressing the skin beneath. It is a tidy mechanism, both proven archetypes do unequip gear
-immediately after `SetRace` (Bethesda's `PlayerWerewolfChangeScript`, SureAI's
-`LycantropheTransformSC`), and **it did not fix the invisibility.**
+The script forces the player's 3D to rebuild after the race change: it waits `TVR_RedrawDelay`
+(0.5 s), calls SKSE's `QueueNiNodeUpdate()`, and re-toggles the camera. Applied on the way back too,
+without the camera toggle so first-person players aren't yanked into third.
 
-What killed it was one observation from a player: **reloading a save while transformed shows the
-Treewarden correctly** — with the armour still stripped, so the strip cannot be the variable. A fresh
-actor build renders the model perfectly, which means the race, skin ARMO, armature, mesh and BSA are
-all correct and the whole static search was the wrong tree. The real defect is that nothing rebuilds
-the player's 3D at cast time.
+The motivation is one observation: **reloading a save while transformed shows the Treewarden
+correctly.** A fresh actor build renders it perfectly, so the race, skin ARMO, armature, mesh and BSA
+are all correct, and what a reload does that a live `SetRace` does not is rebuild the player's 3D.
 
-The armour strip is **kept** anyway: it matches the host's archetype, Wildshape was verified working
-with it in place, and removing it at the same time as adding the real fix would change two variables
-at once. It is belt-and-braces, not the diagnosis. We record and remove exactly the worn armour
-rather than calling `UnequipAll()`, because `UnequipAll` would also strip weapons — which upstream
-deliberately keeps for Wildshape — with nothing to put them back.
+**Honest status: this has not been shown to fix the invisibility.** It is retained because the reload
+evidence still says a rebuild is the missing step and because it is harmless, but the live suspect
+has moved outside this script — see below.
 
-## The fix that worked
+## An armour strip lived here, and it was wrong three ways
 
-The script forces the player's 3D to rebuild after the race change.
+The first fix shipped for WD-37 unequipped worn armour around the race change, on the theory that a
+race skin renders per biped slot and the player's armour keeps slots 32/33/37 across the `SetRace`,
+drawing nothing and suppressing the skin beneath. Both proven archetypes *do* unequip gear
+immediately after `SetRace` — Bethesda's `PlayerWerewolfChangeScript` and SureAI's
+`LycantropheTransformSC` — so it looked well founded. **It has been removed.** A Papyrus log settled
+it:
 
-Upstream does try — `ForceFirstPerson()` early, `ForceThirdPerson()` late — and Wildshape survives on
-that while Force of Nature does not. The difference is what each has to load: Wildshape reuses
-`SkinReinDeer`, already resident, whereas Force of Nature needs a 7.2 MB mesh out of the BSA. The
-camera toggle fires before it has streamed in. So the script now waits `TVR_RedrawDelay` (0.5 s) and
-calls SKSE's `QueueNiNodeUpdate()`, the direct equivalent of what a reload does.
+1. It did not fix the invisibility. The reload that showed the Treewarden happened *with the armour
+   already stripped*, so the strip was never the variable.
+2. It threw on that very path — an `ActiveMagicEffect` restored from a save comes back detached
+   (`[None]`), and reading its `Form[]` variable errors with `Cannot cast from None to Form[]` before
+   any guard can help, so the restore aborted and the player's gear stayed off.
+3. It set off **45** `Cannot call GetSlotMask() on a None object` errors per cast in an unrelated
+   mod's `OnObjectUnequipped` handler, because it fires up to 31 unequip events in a tight loop.
 
-`GetWornForm` and `QueueNiNodeUpdate` are **SKSE** functions; they are in the SKSE tree, not the
-vanilla one, so the SKSE tree must precede vanilla on `-i` or the compile fails to resolve them.
-A correct build is **5712 bytes**.
-`src/Triumvirate/tools/verify-druid-transformations.ps1` asserts the shipped `.pex` is ours by
-looking for `QueueNiNodeUpdate` inside it — `build.ps1` fails on a *missing* `.pex` but cannot detect
-a stale one, and a stale one here silently reintroduces the invisibility.
+The lesson worth keeping: two proven archetypes agreeing that a mechanism is real is good evidence
+about the *mechanism*, and none at all that it is *this bug*. Don't keep a fix that failed its test
+because the reasoning behind it was sound.
+
+## Where the invisibility actually points now
+
+A Papyrus log from the reporting modlist shows **RaceMenu broken at the bind level** — `Unable to
+bind script RaceMenuPluginXPMSE to RaceMenuPluginXPMSE (0A000800) because their base types do not
+match`, twelve times — and all six of its plugin aliases throwing `Cannot call OnChangeRace() on a
+None object` from `RaceMenuLoad.OnRaceSwitchComplete` on **every** player race change (36
+occurrences).
+
+RaceMenu/NiOverride owns the player's body rendering for *humanoid* actors, and that is exactly what
+separates the two transformations. Force of Nature's race is humanoid — `DefaultMale.hkx`, head
+parts, tint masks — while Wildshape's is a `Critter` creature race NiOverride does not touch. And
+Wildshape renders.
+
+Settle it with `player.setrace` from the console before tuning anything in this script: that takes
+the script out of the equation entirely.
+
+`QueueNiNodeUpdate` is an **SKSE** function; it lives in the SKSE tree, not the vanilla one, so the
+SKSE tree must precede vanilla on `-i` or the compile fails to resolve it. A correct build is
+**4573 bytes**. `src/Triumvirate/tools/verify-druid-transformations.ps1` asserts the shipped `.pex`
+contains `QueueNiNodeUpdate` and does **not** contain `StripArmor` — `build.ps1` fails on a *missing*
+`.pex` but cannot detect a stale one, and a stale one here reintroduces a known-bad script.
 
 # TVR_PopulateSpellBooks_Script (ours - WD-16)
 
