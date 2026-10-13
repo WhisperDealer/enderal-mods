@@ -23,6 +23,14 @@ The player installs Enai's mod for its assets and this release replaces the plug
 That makes the author's permissions and on-page credit a release requirement, not a nicety. Settle
 both before WD-18 packages anything.
 
+## Open: school review
+
+**Deferred, not started.** Some archetype sets are in the wrong Enderal discipline for both lore
+and perks (Warlock and Shadow Mage Destruction → Entropy, Shaman Restoration → Entropy), plus one
+upstream half-cost-perk bug. Read
+[`arch-docs/Triumvirate/school-review.md`](../../arch-docs/Triumvirate/school-review.md) before
+the next balance pass.
+
 ## What is already known
 
 Read **[`arch-docs/Triumvirate/ingest-census.md`](../../arch-docs/Triumvirate/ingest-census.md)**
