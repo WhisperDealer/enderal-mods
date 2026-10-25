@@ -663,7 +663,7 @@ Currently released:
 | `RelentlessSword` | `Relentless Sword - Enderal.esp` | johnskyrim's *Relentless Sword SE* rebuilt for Enderal: clean masters (his plugin masters the three DLC stubs), shadowsteel-tier stats, blueprint + Handicraft-50 gating instead of a Skyforge recipe that could never fire, and FS-style dismantle recipes. **New content shipped as a standalone plugin, carrying no assets** — the player installs his mod for the meshes and disables his ESP |
 | `BiggieTraits` | `Biggie Traits.esp` | Shazdeh's Fallout-style trait system, converted for Enderal — form version lowered to 1.70, DLC masters dropped, and the traits with no Enderal target removed (the five Skyrim city houses, standing stones, Divine shrines, shouts, vanilla perk points). 30 of 38 traits survive. A **replacement plugin**; its generators live in `src/BiggieTraits/tools/` |
 | `Triumvirate` | `Triumvirate - Mage Archetypes.esp` | Enai Siaion's five mage archetypes (75 spells), converted for Enderal — DLC masters dropped, Elder Scrolls nouns renamed, and distribution rebuilt from a script that made 76 calls against absent Skyrim receivers onto ten Enderal merchant chests, with Expert/Master confined to Ark and the Undercity. A **replacement plugin** (its two BSAs are named after the plugin); generators in `src/Triumvirate/tools/`, still on `feat/triumvirate-conversion` |
-| `KittytailConversions` | one `<Mod> - Enderal.esp` per mod: `Holy Templar Magic - Enderal.esp`, `Ancient Blood II - Enderal.esp` | Kittytail's Skyrim magic mods, one **ESL override patch** per mod in a single FOMOD release where the user ticks only the mods they have. Both originals load as shipped (HEDR 1.70), so they are patched, not replaced. **Holy Templar Magic** *substitutes* its Dawnguard visuals with vanilla's Turn Undead family and sells its tomes through Halda (Sun Temple). It is reported working in-game. **Ancient Blood Magic II** *copies* 70 dead Dawnguard/Dragonborn/vanilla records into the patch (see "Enderal ships the DLC assets" above) and sells its 14 tomes through the Undercity Fence. Generators and verifiers in `src/KittytailConversions/<Mod>/tools/`, shared code in `src/KittytailConversions/tools/`; see `src/KittytailConversions/README.md` |
+| `KittytailConversions` | one `<Mod> - Enderal.esp` per mod: `Holy Templar Magic - Enderal.esp`, `Ancient Blood II - Enderal.esp`, `Dark Hierophant - Enderal.esp` | Kittytail's Skyrim magic mods, one **ESL override patch** per mod in a single FOMOD release where the user ticks only the mods they have. All three originals load as shipped (HEDR 1.70), so they are patched, not replaced. **Holy Templar Magic** *substitutes* its Dawnguard visuals with vanilla's Turn Undead family and sells its tomes through Halda (Sun Temple). **Ancient Blood Magic II** *copies* 70 dead Dawnguard/Dragonborn/vanilla records into the patch (see "Enderal ships the DLC assets" above) and sells its 14 tomes through the Undercity Fence. Both are reported working in-game. **Dark Hierophant Magic** crafted its tomes at an altar in a Dawnguard cell, from black soul gems Enderal has two of; its tomes are sold through Mirella Godshand (Ark) instead. Generators and verifiers in `src/KittytailConversions/<Mod>/tools/`, shared code in `src/KittytailConversions/tools/`; see `src/KittytailConversions/README.md` |
 
 > **Merchant hooks and loot lists are shared ground between this repo's own releases.** Two
 > plugins here that both override the same `<Merchant>_CustomMerchandise` (or `_00E_SpellBooksLoot*`)
@@ -674,7 +674,7 @@ Currently released:
 > | Apocalypse | `_00E_SpellBooksLootA–D`, `00E_ScrollsLowChance`; hooks Barnabas, GabrielleFunkenfrst, MilbertFuchshand, OraSteinschlag, Tarhutie, TuriousFlammentrunk |
 > | Triumvirate | hooks Akatyr, ArkHofSchmied, BashHole, BibliothekarMarius, SisterEnvy, UndercityHehler02, Vexin, **and all three Shrouded Mages** (`Wildmage_Duneville`, `Wildmage_FrostcliffTavern`, `Wildmage_Undercity`) |
 > | Relentless Sword | `_00ETraderCraftingPlansC` |
-> | Kittytail Conversions | hooks HaldaHammerschlag (Holy Templar Magic), UndercityHehler01 (Ancient Blood Magic II) |
+> | Kittytail Conversions | hooks HaldaHammerschlag (Holy Templar Magic), UndercityHehler01 (Ancient Blood Magic II), Mirella (Dark Hierophant Magic) |
 >
 > **Regenerate the list rather than trusting it**. An earlier version of this table was built
 > from a name pattern that skipped hook names containing underscores, and it missed Triumvirate's
@@ -954,6 +954,14 @@ vanilla Skyrim vendor and loot leveled lists** — and **not one of those 54 exi
 Neither do the five College-of-Winterhold ritual globals it gates on (`0FDE72`–`0FDE76`), nor the
 `Tamriel` worldspace it places its containers in. The mod loads, its 373 spells are all present and
 mechanically fine, and the player can never obtain a single one.
+
+> **Distribution can be a recipe, and then the INGREDIENTS are the distribution.** **[verified
+> 2026-10-25]** Dark Hierophant Magic sells nothing: its ten tomes are crafted at an altar placed in
+> a Dawnguard cell. Every ingredient resolves in Enderal, and that is the trap. The recipes need 20
+> filled black soul gems, and Enderal contains **two**: one in a container, one placed in the world,
+> none in any leveled list. "The FormID exists" is not "the player can get enough of it". For a
+> crafting route, count each ingredient's leveled-list, container and placed-reference
+> occurrences before deciding to rehome the bench. Here the answer was to sell the tomes.
 
 This generalises: **Enderal's `Skyrim.esm` is Enderal**, so a vanilla FormID is only present if
 Enderal happened to keep it. Bethesda's leveled-list IDs largely did *not* survive. So for any mod

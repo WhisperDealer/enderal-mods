@@ -133,5 +133,53 @@ function Remove-KtTopLevelBlock([string]$Text, [string]$Key) {
     return @(($out -join "`r`n"), $removed)
 }
 
+# Copy dead records (DLC records Enderal stubs, or vanilla records it deleted) into a patch as new
+# records, from reference/base/*Real. Follows each copied record's own references until nothing dead
+# is left; refs to the copies are remapped; strings are de-localized; EditorIDs get $EdidPrefix.
+# FormIDs are assigned from $FirstId in sorted source order, so an unchanged copy set regenerates
+# the same IDs. Returns the old->new FormKey map; the caller applies it to its own records.
+function Copy-KtDeadRecords {
+    param(
+        [Parameter(Mandatory)][string[]]$Seeds,
+        [Parameter(Mandatory)][hashtable]$Index,
+        [Parameter(Mandatory)][string]$OutDir,
+        [Parameter(Mandatory)][string]$PatchKey,
+        [Parameter(Mandatory)][string]$EdidPrefix,
+        [int]$FirstId = 0x810,
+        [hashtable]$Subst = @{}
+    )
+    $fkRx = '([0-9A-F]{6}):([^\r\n]+?\.(?:esm|esp|esl))(?=\r?\n|$)'
+    $copy = [ordered]@{}
+    $q = New-Object System.Collections.Queue
+    foreach ($s in ($Seeds | Sort-Object -Unique)) { $q.Enqueue($s) }
+    while ($q.Count) {
+        $fk = $q.Dequeue()
+        if ($copy.Contains($fk)) { continue }
+        if (-not $Index.Real.ContainsKey($fk)) { throw "Dead record $fk has no source YAML in reference/base/*Real" }
+        $t = Read-KtText $Index.Real[$fk]
+        foreach ($s in $Subst.Keys) { $t = $t.Replace($s, $Subst[$s]) }
+        $copy[$fk] = @{ Path = $Index.Real[$fk]; Text = $t }
+        foreach ($m in [regex]::Matches($t, $fkRx)) {
+            $ref = "$($m.Groups[1].Value):$($m.Groups[2].Value)"
+            if ($ref -ne $fk -and -not $Index.Enderal.ContainsKey($ref)) { $q.Enqueue($ref) }
+        }
+    }
+    $map = @{}; $n = $FirstId
+    foreach ($fk in ($copy.Keys | Sort-Object)) { $map[$fk] = ('{0:X6}:{1}' -f $n, $PatchKey); $n++ }
+    if ($n -gt 0x1000) { throw 'ESL FormID range exhausted' }
+    foreach ($fk in $copy.Keys) {
+        $src = $copy[$fk]
+        $grp = ($src.Path -split '\\base\\')[1].Split('\')[1]
+        $edid = [regex]::Match($src.Text, '(?m)^EditorID: (\S+)').Groups[1].Value
+        if (-not $edid) { throw "$fk has no EditorID" }
+        $t = $src.Text
+        foreach ($k in $map.Keys) { $t = $t.Replace($k, $map[$k]) }
+        $t = ConvertTo-KtUnlocalized $t
+        $t = [regex]::Replace($t, '(?m)^EditorID: \S+', "EditorID: $EdidPrefix$edid")
+        Write-KtText (Join-Path (Join-Path $OutDir $grp) "$EdidPrefix$edid - $($map[$fk].Substring(0, 6))_$PatchKey.yaml") $t
+    }
+    return $map
+}
+
 # Round to 5 above 20, to the unit below (Enderal's own costs and prices are mostly multiples of 5).
 function Get-KtRound5([double]$v) { if ($v -le 20) { return [int][math]::Round($v) } return [int]([math]::Round($v / 5) * 5) }

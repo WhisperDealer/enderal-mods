@@ -25,6 +25,15 @@
                                 <type name="Optional"/>
                             </typeDescriptor>
                         </plugin>
+                        <plugin name="Dark Hierophant Magic">
+                            <description>Enderal patch for Kittytail's Dark Hierophant Magic (Ghostlight.esl). The original's tomes are crafted at the Ghostlight Altar in a Dawnguard temple Enderal does not have, from black soul gems Enderal barely contains, so this patch sells all ten tomes through Mirella Godshand in Ark instead. Rescales mana costs (up to 4500) and tome prices onto Enderal's scale and restores the tomes' inventory art. Requires Dark Hierophant Magic. Load this patch after Ghostlight.esl.</description>
+                            <files>
+                                <file source="DarkHierophant\Dark Hierophant - Enderal.esp" destination="Dark Hierophant - Enderal.esp"/>
+                            </files>
+                            <typeDescriptor>
+                                <type name="Optional"/>
+                            </typeDescriptor>
+                        </plugin>
                     </plugins>
                 </group>
             </optionalFileGroups>

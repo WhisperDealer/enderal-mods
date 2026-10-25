@@ -1,0 +1,28 @@
+FormKey: 000832:Ghostlight.esl
+EditorID: _BL_SpellTome50C
+Name:
+  TargetLanguage: English
+  Value: 'Spell Tome: Penance Aura - Open'
+Model:
+  File: DLC01\Clutter\Books\DLC01DwemerBookLowPoly.nif
+  Data: 0x020000000000000000000000
+BookText:
+  TargetLanguage: English
+  Value: >-
+    <font face'$HandwrittenFont'><font size='40'><p align='center'>
+
+    Penance
+Keywords:
+- 0937A2:Skyrim.esm
+- 0937A5:Skyrim.esm
+Flags:
+- 0x4
+Teaches:
+  MutagenObjectType: BookSpell
+  Spell: 000826:Ghostlight.esl
+Value: 180
+Weight: 1
+InventoryArt: 000810:Dark Hierophant - Enderal.esp
+Description:
+  TargetLanguage: English
+  Value: ''

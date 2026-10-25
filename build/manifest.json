@@ -73,6 +73,10 @@
         {
           "yamlSource": "src/KittytailConversions/AncientBloodII/AncientBloodIIESP",
           "dest": "AncientBloodII/Ancient Blood II - Enderal.esp"
+        },
+        {
+          "yamlSource": "src/KittytailConversions/DarkHierophant/DarkHierophantESP",
+          "dest": "DarkHierophant/Dark Hierophant - Enderal.esp"
         }
       ],
       "assets": [

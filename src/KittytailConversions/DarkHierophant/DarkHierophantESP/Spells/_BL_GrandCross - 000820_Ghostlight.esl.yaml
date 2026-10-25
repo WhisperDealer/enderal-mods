@@ -1,0 +1,32 @@
+FormKey: 000820:Ghostlight.esl
+EditorID: _BL_GrandCross
+Name:
+  TargetLanguage: English
+  Value: Grand Cross
+MenuDisplayObject: 00083A:Ghostlight.esl
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 110
+Flags:
+- ManualCostCalc
+- AreaEffectIgnoresLOS
+- NoAbsorbOrReflect
+ChargeTime: 0.5
+CastType: FireAndForget
+TargetType: Aimed
+HalfCostPerk: 0C44C1:Skyrim.esm
+Effects:
+- BaseEffect: 000803:Ghostlight.esl
+  Data:
+    Magnitude: 120
+    Area: 36
+- BaseEffect: 0153D3:Skyrim.esm
+  Data:
+    Magnitude: 0.25
+    Area: 36
+- BaseEffect: 000804:Ghostlight.esl
+  Data:
+    Magnitude: 120
+    Area: 36

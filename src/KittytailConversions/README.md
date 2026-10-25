@@ -14,7 +14,8 @@ replacement.
 | Mod | Original plugin | Patch | Status |
 |---|---|---|---|
 | [Holy Templar Magic](https://www.nexusmods.com/skyrimspecialedition/mods/113360) (v1.5) | `Lightpower.esl` | `Holy Templar Magic - Enderal.esp` | **working in-game** (user-tested 2026-10-25) |
-| [Ancient Blood Magic II](https://www.nexusmods.com/skyrimspecialedition/mods/115106) (v1.63) | `AncientBloodII.esl` | `Ancient Blood II - Enderal.esp` | builds and verifies; **not yet tested in-game** |
+| [Ancient Blood Magic II](https://www.nexusmods.com/skyrimspecialedition/mods/115106) (v1.63) | `AncientBloodII.esl` | `Ancient Blood II - Enderal.esp` | **reported working in-game** (2026-10-25) |
+| [Dark Hierophant Magic](https://www.nexusmods.com/skyrimspecialedition/mods/108499) (v1.43) | `Ghostlight.esl` | `Dark Hierophant - Enderal.esp` | builds and verifies; **not yet tested in-game** |
 
 Shared code lives in `tools/KittytailCommon.ps1`: the cached FormKey index over `reference/base`,
 the converter that collapses localized strings to English, and the list and block removers.
@@ -121,11 +122,51 @@ precedent on Aimed spells (see CLAUDE.md). **No NPC distribution**: Kittytail's 
 to vampires, and Enderal has no vampire, blood-mage or necromancer faction to aim at. The original
 ini stays harmless.
 
-### Not yet established
+### Status
 
-- **In-game**: the bat effects and swarms, the Stone Gargoyle (rendering, abilities, footsteps),
+- **In-game: reported working** on 2026-10-25. Which of the following the test covered was not
+  recorded: the bat effects and swarms, the Stone Gargoyle (rendering, abilities, footsteps),
   the Herald of Torment, The Eternal Legion summoning three soldiers with working bows, the Fence's
   stock, and Bats Form / Harvest of Bats as lesser powers.
 - **Copied records** are Bethesda's own data, unchanged apart from FormIDs and strings. They have
   never been tested *as records in a third-party ESL on Enderal*; the asset check proves the files
   exist, not that the effects look right.
+
+## Dark Hierophant Magic (`DarkHierophant/`)
+
+Ten tomes of radiant "searing light" magic, all Elementalism (Destruction), Adept to Master:
+Penance, its two aura modes and the bound Penance Arm; Grand Cross, Retribution, Absolution and
+Inhibition; Ordinance of Light and Mass Inhibition. ~140 records, ESL, HEDR **1.70**, 2 `_BL_`
+scripts with **no** collision with Enderal's script names.
+
+```powershell
+& $Tools.spriggitCli serialize --InputPath "<download>\Ghostlight.esl" `
+  --OutputPath reference\mods\DarkHierophant\GhostlightESL --GameRelease EnderalSE `
+  --PackageName Spriggit.Yaml.Skyrim --PackageVersion 0.40.0
+powershell -File src\KittytailConversions\DarkHierophant\tools\01-generate-patch.ps1
+powershell -File src\KittytailConversions\DarkHierophant\tools\verify-patch.ps1 -GameData "<Enderal>\Data"
+```
+
+The cleanest of the three. The player's spells reach 119 of the mod's 142 records, and exactly
+**one** dead reference: the tomes' inventory art. Kittytail built everything else from vanilla
+records Enderal kept.
+
+| Problem in the original | Evidence | Patch |
+|---|---|---|
+| **The tomes are crafted, at an altar Enderal does not have.** All ten are recipes at the *Ghostlight Altar*, a workbench placed only in the Forgotten Vale temple (`DLC1FalmerTemple01`, a Dawnguard cell). | the altar's only placement is in that cell | Sold instead by **Mirella Godshand** in Ark (`_00E_CapitalCity_Mirella`, a master mage trainer whose chest already stocks Enderal's spell-book list, 2,135 gold) through her empty `Mirella_CustomMerchandise 0302DF` hook. FS, EGO and Leveling Redone all keep that hook. The recipes, altar and temple cell are left alone: unreachable, harmless |
+| Moving the altar into Enderal would not have fixed it. | The ten recipes need **20 filled black soul gems** and 20 ghost wrappings. Enderal contains **two** filled black soul gems (one container, one placed) and ghost wrappings only in 12 fixed containers, none in any leveled list | — |
+| Mana costs up to **4,500** (Ordinance of Light). | Enderal's ceiling is 310 | Per-tier ratio (Adept 0.22, Expert 0.088, Master 0.055). The ratios are severe because the source is. Adept 55–105, Expert 80–115, Master 90 / 250. Absolution is Concentration: **50/s**, Enderal's Expert Elementalism concentration ceiling |
+| Every tome priced at 100. | the recipe was the real cost | Authored per tier against the other two Kittytail patches: Adept 180, Expert 270, Master 340 |
+| Tome inventory art is a Dawnguard static (`HighPolyDLC01DwemerBook01`). | Enderal ships its mesh, `clutter\books\book02\…\dlc01dwemerbook_highpoly.nif` | Copied into the patch (`0x810`) |
+
+No strings needed renaming. No Arcane Fever: nothing in the mod heals. **No NPC distribution**:
+Kittytail's ini gives the NPC variants to Gelebor and Vyrthur, two unique Dawnguard Snow Elves with
+no Enderal counterpart, and the original ini stays harmless. Kittytail's `Ghostlight.ini` raises
+the engine's particle cap (`[Particles] iMaxDesired=9750`). The engine reads it on Enderal as on
+Skyrim, so leave it installed: the large light effects need it.
+
+### Not yet established
+
+- **In-game**: all ten spells (the Ordinance dome and the Inhibition restraints especially, since
+  both are scripted), the bound Penance Arm one- and two-handed, Mirella's stock, and the copied
+  inventory art.

@@ -1,0 +1,45 @@
+FormKey: 0302DF:Enderal - Forgotten Stories.esm
+EditorID: Mirella_CustomMerchandise
+Flags:
+- UseAll
+Entries:
+- Data:
+    Level: 1
+    Reference: 000830:Ghostlight.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 000834:Ghostlight.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 00082C:Ghostlight.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 000831:Ghostlight.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 000832:Ghostlight.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 000897:Ghostlight.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 00082D:Ghostlight.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 00082E:Ghostlight.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 00082F:Ghostlight.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 000833:Ghostlight.esl
+    Count: 1
