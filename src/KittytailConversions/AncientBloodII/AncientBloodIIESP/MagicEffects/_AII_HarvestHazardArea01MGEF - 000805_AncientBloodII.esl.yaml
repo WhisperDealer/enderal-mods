@@ -1,0 +1,44 @@
+FormKey: 000805:AncientBloodII.esl
+EditorID: _AII_HarvestHazardArea01MGEF
+Name:
+  TargetLanguage: English
+  Value: Harvest
+MenuDisplayObject: 00083C:AncientBloodII.esl
+Keywords:
+- 0A9B1F:Skyrim.esm
+- 101BDE:Skyrim.esm
+Flags:
+- NoArea
+- FXPersist
+- NoRecast
+- PowerAffectsMagnitude
+- NoDeathDispel
+BaseCost: 41
+MagicSkill: Destruction
+ResistValue: ResistMagic
+CastingLight: 07479A:Skyrim.esm
+MinimumSkillLevel: 100
+SpellmakingArea: 50
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectSpawnHazardArchetype
+  Association: 000823:AncientBloodII.esl
+Projectile: 000848:Ancient Blood II - Enderal.esp
+Explosion: 0E41F0:Skyrim.esm
+CastType: FireAndForget
+CastingArt: 0ABF02:Skyrim.esm
+ImpactData: 00084A:Ancient Blood II - Enderal.esp
+SkillUsageMultiplier: 1
+DualCastScale: 1
+ImageSpaceModifier: 08AFD0:Skyrim.esm
+Sounds:
+- Sound: 03F208:Skyrim.esm
+- Type: Charge
+  Sound: 0FDA53:Skyrim.esm
+- Type: Ready
+  Sound: 0FDA52:Skyrim.esm
+- Type: Release
+  Sound: 000826:Ancient Blood II - Enderal.esp
+Description:
+  TargetLanguage: English
+  Value: Targets take <mag> points of damage for <dur> seconds.

@@ -1,0 +1,42 @@
+FormKey: 00083B:AncientBloodII.esl
+EditorID: _AII_CascadingTormentMagickaMGEF
+Name:
+  TargetLanguage: English
+  Value: Cascading Torment
+MenuDisplayObject: 00083C:AncientBloodII.esl
+Keywords:
+- 01CEAF:Skyrim.esm
+- 0A9B1F:Skyrim.esm
+Flags:
+- Hostile
+- Detrimental
+- NoArea
+- FXPersist
+- HideInUI
+- PowerAffectsMagnitude
+- NoDeathDispel
+MagicSkill: Destruction
+ResistValue: ResistShock
+CastingLight: 000838:AncientBloodII.esl
+HitShader: 000842:AncientBloodII.esl
+MinimumSkillLevel: 75
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Magicka
+Projectile: 000835:AncientBloodII.esl
+CastType: Concentration
+TargetType: Aimed
+CastingArt: 0008EE:AncientBloodII.esl
+ImpactData: 015C7B:Skyrim.esm
+SkillUsageMultiplier: 1.5
+DualCastScale: 1
+ImageSpaceModifier: 0ABF17:Skyrim.esm
+Sounds:
+- Sound: 03F208:Skyrim.esm
+- Type: Release
+  Sound: 000826:Ancient Blood II - Enderal.esp
+- Type: ConcentrationCastLoop
+  Sound: 000834:AncientBloodII.esl
+Description:
+  TargetLanguage: English
+  Value: ''

@@ -1,0 +1,43 @@
+FormKey: 000868:AncientBloodII.esl
+EditorID: _AII_UmbralLaceratorHazardDamageMGEF
+Name:
+  TargetLanguage: English
+  Value: Umbral Lacerator
+MenuDisplayObject: 00083C:AncientBloodII.esl
+Flags:
+- Hostile
+- Detrimental
+- FXPersist
+- NoRecast
+- PowerAffectsMagnitude
+BaseCost: 4
+MagicSkill: Destruction
+ResistValue: ResistMagic
+HitShader: 000832:Ancient Blood II - Enderal.esp
+SpellmakingCastingTime: 0.5
+SecondActorValueWeight: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+  Type: DualValueModifier
+Projectile: 000836:Ancient Blood II - Enderal.esp
+CastType: FireAndForget
+TargetType: Touch
+SecondActorValue: Stamina
+HitEffectArt: 00084C:Ancient Blood II - Enderal.esp
+ImpactData: 00084A:Ancient Blood II - Enderal.esp
+SkillUsageMultiplier: 1
+DualCastScale: 1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsRaceConditionData
+    Race: 00085A:AncientBloodII.esl
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsRaceConditionData
+    Race: 000800:AncientBloodII.esl

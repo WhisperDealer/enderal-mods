@@ -1,0 +1,32 @@
+FormKey: 000860:Lightpower.esl
+EditorID: _LIP_HolyShieldCounterSpellMGEF
+Name:
+  TargetLanguage: English
+  Value: Reflector Beam
+MenuDisplayObject: 1097CA:Skyrim.esm
+Flags:
+- Hostile
+- Detrimental
+- PowerAffectsMagnitude
+- NoDeathDispel
+BaseCost: 2.7
+MagicSkill: Restoration
+TaperWeight: 0.01
+HitShader: 0E7557:Skyrim.esm
+SpellmakingArea: 30
+SpellmakingCastingTime: 0.5
+TaperDuration: 0.1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+Projectile: 000861:Lightpower.esl
+Explosion: 000862:Lightpower.esl
+CastType: FireAndForget
+TargetType: Aimed
+ImpactData: 04C6DA:Skyrim.esm
+SkillUsageMultiplier: 0.5
+DualCastScale: 1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: Sunlight beam dealing <mag> points of damage to multiple targets.

@@ -1,0 +1,24 @@
+FormKey: 000819:AncientBloodII.esl
+EditorID: _AII_Power_BatWarpHarvest
+Name:
+  TargetLanguage: English
+  Value: Harvest of Bats
+MenuDisplayObject: 00083C:AncientBloodII.esl
+EquipmentType: 025BEE:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: For <8> seconds, opponents within the storm are devoured by vampiric bats.
+BaseCost: 300
+Flags:
+- ManualCostCalc
+- NoAbsorbOrReflect
+Type: LesserPower
+CastType: FireAndForget
+Effects:
+- BaseEffect: 00080A:AncientBloodII.esl
+  Data:
+    Duration: 3
+- BaseEffect: 00080C:AncientBloodII.esl
+  Data:
+    Magnitude: 150
+    Duration: 2

@@ -1,0 +1,61 @@
+FormKey: 030306:Enderal - Forgotten Stories.esm
+EditorID: UndercityHehler01_CustomMerchandise
+Flags:
+- UseAll
+Entries:
+- Data:
+    Level: 1
+    Reference: 00081B:AncientBloodII.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 00081C:AncientBloodII.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 00081D:AncientBloodII.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 00084D:AncientBloodII.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 00084E:AncientBloodII.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 00084F:AncientBloodII.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 0008AB:AncientBloodII.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 0008AC:AncientBloodII.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 0008AD:AncientBloodII.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 0008AE:AncientBloodII.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 000902:AncientBloodII.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 000907:AncientBloodII.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 00090F:AncientBloodII.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 00091B:AncientBloodII.esl
+    Count: 1

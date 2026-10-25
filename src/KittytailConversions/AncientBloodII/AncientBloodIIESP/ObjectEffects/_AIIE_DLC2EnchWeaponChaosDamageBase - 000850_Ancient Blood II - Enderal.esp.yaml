@@ -1,0 +1,26 @@
+FormKey: 000850:Ancient Blood II - Enderal.esp
+VersionControl: 1978415
+EditorID: _AIIE_DLC2EnchWeaponChaosDamageBase
+Version2: 3
+Name:
+  TargetLanguage: English
+  Value: Chaos Damage
+EnchantmentCost: 19
+CastType: FireAndForget
+EnchantmentAmount: 19
+TargetType: Touch
+EnchantType: Enchantment
+BaseEnchantment: 000850:Ancient Blood II - Enderal.esp
+Effects:
+- BaseEffect: 00084D:Ancient Blood II - Enderal.esp
+  Data:
+    Magnitude: 10
+    Duration: 1
+- BaseEffect: 00084F:Ancient Blood II - Enderal.esp
+  Data:
+    Magnitude: 10
+    Duration: 1
+- BaseEffect: 00084E:Ancient Blood II - Enderal.esp
+  Data:
+    Magnitude: 10
+    Duration: 1

@@ -1,0 +1,52 @@
+FormKey: 00081C:Lightpower.esl
+EditorID: _LIP_WrathoftheHeavensCloakDamageMGEF
+VirtualMachineAdapter:
+  Scripts:
+  - Name: magicPlaceExplosionScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ExplosionRef
+      Object: 000842:Lightpower.esl
+Name:
+  TargetLanguage: English
+  Value: Hallowed Flare
+MenuDisplayObject: 1097CA:Skyrim.esm
+Flags:
+- Hostile
+- Detrimental
+- NoArea
+- FXPersist
+- HideInUI
+- PowerAffectsMagnitude
+- NoDeathDispel
+BaseCost: 1.5
+MagicSkill: Restoration
+CastingLight: 03F1B5:Skyrim.esm
+TaperWeight: 0.3
+HitShader: 10B2DF:Skyrim.esm
+MinimumSkillLevel: 75
+TaperCurve: 2
+TaperDuration: 0.1
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+Projectile: 000839:Lightpower.esl
+Explosion: 000842:Lightpower.esl
+CastType: Concentration
+TargetType: Aimed
+CastingArt: 0E755B:Skyrim.esm
+SkillUsageMultiplier: 1.4
+DualCastScale: 1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasMagicEffectConditionData
+    MagicEffect: 00081D:Lightpower.esl
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsHostileToActorConditionData
+  ComparisonValue: 1

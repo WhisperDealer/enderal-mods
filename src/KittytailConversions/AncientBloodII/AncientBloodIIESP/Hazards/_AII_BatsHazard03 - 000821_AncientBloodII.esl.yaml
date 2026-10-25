@@ -1,0 +1,17 @@
+FormKey: 000821:AncientBloodII.esl
+EditorID: _AII_BatsHazard03
+ObjectBounds:
+  First: -990, -1103, -507
+  Second: 990, 1103, 1068
+Model:
+  File: AncientBlood\BloodHarvestStorm.nif
+  Data: 0x020000000000000000000000
+Radius: 51
+Lifetime: 40
+TargetInterval: 0.5
+Flags:
+- InheritDurationFromSpawnSpell
+- InheritRadiusFromSpawnSpell
+Spell: 000814:AncientBloodII.esl
+Light: 0008AF:AncientBloodII.esl
+Sound: 000838:Ancient Blood II - Enderal.esp

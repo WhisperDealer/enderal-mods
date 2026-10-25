@@ -1,0 +1,16 @@
+FormKey: 000838:Ancient Blood II - Enderal.esp
+VersionControl: 8679453
+EditorID: _AIIE_MAGNightCloakBatsHitLPM
+FormVersion: 43
+Version2: 1
+Type: Standard
+Category: 0172A1:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\DLC01\MAG\NightCloak\MAG_Night_Cloak_Bats_Hit_01_LPM.wav
+OutputModel: 0E324B:Skyrim.esm
+LoopAndRumble:
+  Loop: EnvelopeFast
+PercentFrequencyVariance: 7
+Priority: 128
+Variance: 2
+StaticAttenuation: 11.45

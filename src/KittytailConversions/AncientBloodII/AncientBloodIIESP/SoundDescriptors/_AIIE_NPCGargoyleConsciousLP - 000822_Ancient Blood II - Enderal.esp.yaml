@@ -1,0 +1,16 @@
+FormKey: 000822:Ancient Blood II - Enderal.esp
+VersionControl: 5468178
+EditorID: _AIIE_NPCGargoyleConsciousLP
+FormVersion: 43
+Version2: 3
+Type: Standard
+Category: 09F254:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\DLC01\NPC\Gargoyle\DLC01_NPC_Gargoyle_Conscious_LP.wav
+OutputModel: 05A28A:Skyrim.esm
+LoopAndRumble:
+  Loop: Loop
+PercentFrequencyVariance: 10
+Priority: 128
+Variance: 4
+StaticAttenuation: 3.96

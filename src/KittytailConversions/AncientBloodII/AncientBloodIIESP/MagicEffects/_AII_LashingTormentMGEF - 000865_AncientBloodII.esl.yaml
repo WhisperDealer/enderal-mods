@@ -1,0 +1,54 @@
+FormKey: 000865:AncientBloodII.esl
+EditorID: _AII_LashingTormentMGEF
+VirtualMachineAdapter:
+  Scripts:
+  - Name: magicAbsorbFXScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CasterVFX
+      Object: 0ABEFC:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TargetVFX
+      Object: 0ABEFB:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TrapImod
+      Object: 0ABF17:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Lashing Torment
+MenuDisplayObject: 0435A5:Skyrim.esm
+Keywords:
+- 01CEAF:Skyrim.esm
+- 101BDE:Skyrim.esm
+Flags:
+- Hostile
+- Detrimental
+- NoArea
+- FXPersist
+- PowerAffectsMagnitude
+- NoDeathDispel
+BaseCost: 1.95
+MagicSkill: Destruction
+ResistValue: ResistShock
+CastingLight: 000838:AncientBloodII.esl
+HitShader: 000842:AncientBloodII.esl
+MinimumSkillLevel: 75
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+  Type: Absorb
+Projectile: 0008BC:AncientBloodII.esl
+CastType: FireAndForget
+TargetType: Aimed
+CastingArt: 0008EE:AncientBloodII.esl
+ImpactData: 015C7B:Skyrim.esm
+SkillUsageMultiplier: 1.4
+DualCastScale: 1
+ImageSpaceModifier: 0ABF17:Skyrim.esm
+Sounds:
+- Sound: 03F208:Skyrim.esm
+- Type: Release
+  Sound: 000826:Ancient Blood II - Enderal.esp
+Description:
+  TargetLanguage: English
+  Value: Lightning that does <mag> points of damage to Magicka. Absorbs Health for the amount of damage inflicted.

@@ -1,0 +1,16 @@
+FormKey: 00081A:Ancient Blood II - Enderal.esp
+VersionControl: 5468178
+EditorID: _AIIE_NPCGargoyleFootWalkRSD
+FormVersion: 43
+Version2: 4
+Type: Standard
+Category: 000F72:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\DLC01\NPC\Gargoyle\Footstep\NPC_Gargoyle_Foot_03.wav
+- Data\Sound\FX\DLC01\NPC\Gargoyle\Footstep\NPC_Gargoyle_Foot_04.wav
+OutputModel: 0ABEF3:Skyrim.esm
+LoopAndRumble: {}
+PercentFrequencyVariance: 9
+Priority: 128
+Variance: 5
+StaticAttenuation: 4.85

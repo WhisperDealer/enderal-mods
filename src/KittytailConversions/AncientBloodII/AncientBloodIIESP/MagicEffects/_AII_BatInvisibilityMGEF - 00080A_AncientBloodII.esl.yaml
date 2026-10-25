@@ -1,0 +1,29 @@
+FormKey: 00080A:AncientBloodII.esl
+EditorID: _AII_BatInvisibilityMGEF
+Name:
+  TargetLanguage: English
+  Value: Bats Form
+MenuDisplayObject: 00083C:AncientBloodII.esl
+Keywords:
+- 01EA6F:Skyrim.esm
+Flags:
+- Recover
+- NoMagnitude
+- NoArea
+- FXPersist
+BaseCost: 100
+HitShader: 00084B:Ancient Blood II - Enderal.esp
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Invisibility
+  Type: Invisibility
+CastType: FireAndForget
+HitEffectArt: 0339C8:Skyrim.esm
+SkillUsageMultiplier: 0.25
+DualCastScale: 1
+ImageSpaceModifier: 0ABF17:Skyrim.esm
+CastingSoundLevel: Normal
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

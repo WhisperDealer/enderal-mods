@@ -1,0 +1,30 @@
+FormKey: 000900:AncientBloodII.esl
+EditorID: _AII_Spell_SummonEternalLegion
+Name:
+  TargetLanguage: English
+  Value: The Eternal Legion
+MenuDisplayObject: 00083C:AncientBloodII.esl
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 225
+Flags:
+- ManualCostCalc
+- IgnoreResistance
+- NoAbsorbOrReflect
+ChargeTime: 0.5
+CastType: FireAndForget
+TargetType: TargetLocation
+Range: 48
+HalfCostPerk: 0C44BE:Skyrim.esm
+Effects:
+- BaseEffect: 0008FD:AncientBloodII.esl
+  Data:
+    Duration: 120
+- BaseEffect: 0008FE:AncientBloodII.esl
+  Data:
+    Duration: 120
+- BaseEffect: 0008FF:AncientBloodII.esl
+  Data:
+    Duration: 120

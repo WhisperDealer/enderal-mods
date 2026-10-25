@@ -1,0 +1,20 @@
+SpriggitSource:
+  PackageName: Spriggit.Yaml.Skyrim
+  Version: 0.40
+ModKey: Dark Hierophant - Enderal.esp
+GameRelease: EnderalSE
+ModHeader:
+  Flags:
+  - Small
+  Stats:
+    Version: 1.7
+  Author: WhisperDealer (Dark Hierophant Magic by Kittytail)
+  Description: Enderal conversion patch for Kittytail's Dark Hierophant Magic. Requires Ghostlight.esl.
+  MasterReferences:
+  - Master: Skyrim.esm
+    FileSize: 0
+  - Master: Enderal - Forgotten Stories.esm
+    FileSize: 0
+  - Master: Ghostlight.esl
+    FileSize: 0
+  INTV: 1

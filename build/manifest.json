@@ -60,6 +60,28 @@
         "from": "src/Triumvirate/Scripts/compiled",
         "to": "Scripts"
       }
+    },
+    {
+      "$comment": "Enderal conversions of Kittytail's Skyrim magic mods - one ESL OVERRIDE PATCH per mod, each mastering that mod's own plugin (no replacement, so nothing of Kittytail's is redistributed). A FOMOD because the user ticks only the patches for the mods they actually have; each mod's files are staged under its own subfolder and installed to the Data root. Add a mod by adding a plugin + its assets here and a <plugin> to build/staging/Kittytail Conversions/fomod/ModuleConfig.xml. See src/KittytailConversions/README.md.",
+      "name": "Kittytail Conversions",
+      "archiveName": "Kittytail Conversions",
+      "plugins": [
+        {
+          "yamlSource": "src/KittytailConversions/HolyTemplarMagic/HolyTemplarMagicESP",
+          "dest": "HolyTemplarMagic/Holy Templar Magic - Enderal.esp"
+        },
+        {
+          "yamlSource": "src/KittytailConversions/AncientBloodII/AncientBloodIIESP",
+          "dest": "AncientBloodII/Ancient Blood II - Enderal.esp"
+        },
+        {
+          "yamlSource": "src/KittytailConversions/DarkHierophant/DarkHierophantESP",
+          "dest": "DarkHierophant/Dark Hierophant - Enderal.esp"
+        }
+      ],
+      "assets": [
+        { "from": "src/KittytailConversions/HolyTemplarMagic/Holy Templar Magic - Enderal_DISTR.ini", "to": "HolyTemplarMagic" }
+      ]
     }
   ]
 }

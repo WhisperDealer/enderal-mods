@@ -1,0 +1,71 @@
+FormKey: 00090D:AncientBloodII.esl
+EditorID: _AII_BanquetMGEF
+VirtualMachineAdapter:
+  Scripts:
+  - Name: DLC1MagicEatenByBatsScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BloodSprayBleedImpactSetRed
+      Object: 0F457B:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1BatsEatenBloodSplats
+      Object: 000834:Ancient Blood II - Enderal.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1VampBatsEatenByBatsSkinFXS
+      Object: 000835:Ancient Blood II - Enderal.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1VampireBatsVFX
+      Object: 000845:Ancient Blood II - Enderal.esp
+  - Name: magicAbsorbFXScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CasterVFX
+      Object: 000831:Ancient Blood II - Enderal.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TargetVFX
+      Object: 000830:Ancient Blood II - Enderal.esp
+Name:
+  TargetLanguage: English
+  Value: Banquet
+MenuDisplayObject: 00083C:AncientBloodII.esl
+Keywords:
+- 101BDE:Skyrim.esm
+Flags:
+- Hostile
+- Detrimental
+- FXPersist
+- PowerAffectsMagnitude
+- NoDeathDispel
+BaseCost: 3
+MagicSkill: Destruction
+ResistValue: ResistMagic
+CastingLight: 000838:AncientBloodII.esl
+TaperWeight: 1
+HitShader: 000832:Ancient Blood II - Enderal.esp
+MinimumSkillLevel: 50
+SpellmakingArea: 10
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+  Type: Absorb
+Projectile: 000833:AncientBloodII.esl
+CastType: FireAndForget
+TargetType: Aimed
+CastingArt: 0008EC:AncientBloodII.esl
+HitEffectArt: 000833:Ancient Blood II - Enderal.esp
+ImpactData: 00090C:AncientBloodII.esl
+SkillUsageMultiplier: 1
+DualCastScale: 1
+ImageSpaceModifier: 0ABF17:Skyrim.esm
+Sounds:
+- Sound: 03C8F8:Skyrim.esm
+- Type: Charge
+  Sound: 03EDD5:Skyrim.esm
+- Type: Ready
+  Sound: 03F1F0:Skyrim.esm
+- Type: Release
+  Sound: 000826:Ancient Blood II - Enderal.esp
+Description:
+  TargetLanguage: English
+  Value: Absorbs <mag> Health per second for <dur> seconds and leaves behind swarms of vampiric bats.

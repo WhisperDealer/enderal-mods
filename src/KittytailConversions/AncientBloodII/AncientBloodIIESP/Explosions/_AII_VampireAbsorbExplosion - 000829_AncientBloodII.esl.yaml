@@ -1,0 +1,19 @@
+FormKey: 000829:AncientBloodII.esl
+EditorID: _AII_VampireAbsorbExplosion
+ObjectBounds:
+  First: -235, -235, -26
+  Second: 235, 235, 223
+Model:
+  File: DLC01\Magic\DLC1VampireAbsorbExplosion.nif
+  Data: 0x020000000000000000000000
+ImageSpaceModifier: 08AFD0:Skyrim.esm
+Sound1: 000E00:Skyrim.esm
+Sound2: 000827:Ancient Blood II - Enderal.esp
+Force: 5
+Radius: 200
+ISRadius: 1024
+VerticalOffsetMult: 0.1
+Flags:
+- 0x1
+- IgnoreImageSpaceSwap
+SoundLevel: Normal

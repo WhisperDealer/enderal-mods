@@ -1,0 +1,148 @@
+FormKey: 0008B6:AncientBloodII.esl
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
+EditorID: _AII_EternalM1_OnehandedShield
+SkyrimMajorRecordFlags:
+- Compressed
+VirtualMachineAdapter:
+  Scripts:
+  - Name: defaultIgnoreFriendlyHits
+ObjectBounds:
+  First: -29, -34, 0
+  Second: 29, 34, 144
+Configuration:
+  Flags:
+  - Respawn
+  - AutoCalcStats
+  - Summonable
+  StaminaOffset: 400
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 24
+  CalcMaxLevel: 100
+  SpeedMultiplier: 115
+  HealthOffset: 800
+Factions:
+- Faction: 000013:Skyrim.esm
+  Fluff: 0x000000
+- Faction: 02430D:Skyrim.esm
+  Fluff: 0x000000
+Voice: 01F1CD:Skyrim.esm
+Race: 00085C:AncientBloodII.esl
+WornArmor: 0008A4:AncientBloodII.esl
+AttackRace: 00085C:AncientBloodII.esl
+Perks:
+- Perk: 058F68:Skyrim.esm
+  Rank: 1
+  Fluff: 0x000000
+- Perk: 103A90:Skyrim.esm
+  Rank: 1
+  Fluff: 0x000000
+- Perk: 106253:Skyrim.esm
+  Rank: 1
+  Fluff: 0x000000
+- Perk: 0008D8:AncientBloodII.esl
+  Rank: 1
+  Fluff: 0x000000
+Items:
+- Item:
+    Item: 0008A9:AncientBloodII.esl
+    Count: 1
+- Item:
+    Item: 0008B0:AncientBloodII.esl
+    Count: 1
+AIData:
+  Aggression: VeryAggressive
+  Confidence: Foolhardy
+  EnergyLevel: 50
+  Assistance: HelpsAllies
+Class: 023C0C:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Abyss Flayer
+PlayerSkills:
+  SkillValues:
+  - Key: OneHanded
+    Value: 65
+  - Key: TwoHanded
+    Value: 65
+  - Key: Archery
+    Value: 15
+  - Key: Block
+    Value: 48
+  - Key: Smithing
+    Value: 15
+  - Key: HeavyArmor
+    Value: 49
+  - Key: LightArmor
+    Value: 15
+  - Key: Pickpocket
+    Value: 15
+  - Key: Lockpicking
+    Value: 15
+  - Key: Sneak
+    Value: 32
+  - Key: Alchemy
+    Value: 15
+  - Key: Speech
+    Value: 15
+  - Key: Alteration
+    Value: 15
+  - Key: Conjuration
+    Value: 15
+  - Key: Destruction
+    Value: 20
+  - Key: Illusion
+    Value: 20
+  - Key: Restoration
+    Value: 15
+  - Key: Enchanting
+    Value: 15
+  SkillOffsets:
+  - Key: OneHanded
+    Value: 0
+  - Key: TwoHanded
+    Value: 0
+  - Key: Archery
+    Value: 0
+  - Key: Block
+    Value: 0
+  - Key: Smithing
+    Value: 0
+  - Key: HeavyArmor
+    Value: 0
+  - Key: LightArmor
+    Value: 0
+  - Key: Pickpocket
+    Value: 0
+  - Key: Lockpicking
+    Value: 0
+  - Key: Sneak
+    Value: 0
+  - Key: Alchemy
+    Value: 0
+  - Key: Speech
+    Value: 0
+  - Key: Alteration
+    Value: 0
+  - Key: Conjuration
+    Value: 0
+  - Key: Destruction
+    Value: 0
+  - Key: Illusion
+    Value: 0
+  - Key: Restoration
+    Value: 0
+  - Key: Enchanting
+    Value: 0
+  Health: 1180
+  Magicka: 100
+  Stamina: 615
+CombatStyle: 0559F6:Skyrim.esm
+NAM5: 255
+Height: 1
+Weight: 1
+SoundLevel: Normal
+TextureLighting: '#00808080'
+MajorFlags:
+- 0x40000

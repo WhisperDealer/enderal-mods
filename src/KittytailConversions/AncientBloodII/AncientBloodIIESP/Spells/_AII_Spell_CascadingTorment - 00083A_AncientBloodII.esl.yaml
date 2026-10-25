@@ -1,0 +1,25 @@
+FormKey: 00083A:AncientBloodII.esl
+EditorID: _AII_Spell_CascadingTorment
+Name:
+  TargetLanguage: English
+  Value: Cascading Torment
+MenuDisplayObject: 00083C:AncientBloodII.esl
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 50
+Flags:
+- ManualCostCalc
+CastType: Concentration
+TargetType: Aimed
+HalfCostPerk: 0C44C1:Skyrim.esm
+Effects:
+- BaseEffect: 000836:AncientBloodII.esl
+  Data:
+    Magnitude: 40
+    Duration: 2
+- BaseEffect: 00083B:AncientBloodII.esl
+  Data:
+    Magnitude: 40
+    Duration: 2

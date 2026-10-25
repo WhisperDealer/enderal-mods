@@ -1,0 +1,15 @@
+FormKey: 000810:Dark Hierophant - Enderal.esp
+VersionControl: 946203
+EditorID: _BLE_HighPolyDLC01DwemerBook01
+FormVersion: 43
+Version2: 1
+ObjectBounds:
+  First: -9, -12, -2
+  Second: 9, 11, 2
+Model:
+  File: Clutter\Books\Book02\Character Assets\DLC01DwemerBook_HighPoly.nif
+  Data: 0x020000000000000000000000
+MaxAngle: 90
+Unused: '[]'
+DNAMDataTypeState:
+- Break0

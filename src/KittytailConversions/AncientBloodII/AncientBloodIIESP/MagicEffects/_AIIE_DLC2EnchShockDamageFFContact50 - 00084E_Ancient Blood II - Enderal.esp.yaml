@@ -1,0 +1,42 @@
+FormKey: 00084E:Ancient Blood II - Enderal.esp
+VersionControl: 1978415
+EditorID: _AIIE_DLC2EnchShockDamageFFContact50
+Version2: 6
+Name:
+  TargetLanguage: English
+  Value: Shock Damage
+MenuDisplayObject: 09FA64:Skyrim.esm
+Keywords:
+- 01CEAF:Skyrim.esm
+Flags:
+- Hostile
+- Detrimental
+- NoArea
+- FXPersist
+- PowerAffectsMagnitude
+BaseCost: 7
+MagicSkill: Destruction
+ResistValue: ResistShock
+HitShader: 05D607:Skyrim.esm
+EnchantShader: 05D607:Skyrim.esm
+SecondActorValueWeight: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+  Type: DualValueModifier
+Projectile: 02F773:Skyrim.esm
+CastType: FireAndForget
+TargetType: Touch
+SecondActorValue: Magicka
+ImpactData: 075346:Skyrim.esm
+DualCastScale: 1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: 50% chance for each element of fire, frost and shock to do <mag> points of damage.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThanOrEqualTo
+  Data:
+    MutagenObjectType: GetRandomPercentConditionData
+  ComparisonValue: 50

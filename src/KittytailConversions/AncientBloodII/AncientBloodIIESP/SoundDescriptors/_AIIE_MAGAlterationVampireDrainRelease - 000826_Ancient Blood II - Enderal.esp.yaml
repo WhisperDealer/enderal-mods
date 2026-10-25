@@ -1,0 +1,16 @@
+FormKey: 000826:Ancient Blood II - Enderal.esp
+VersionControl: 5468178
+EditorID: _AIIE_MAGAlterationVampireDrainRelease
+FormVersion: 43
+Version2: 2
+Type: Standard
+Category: 07F80B:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\DLC01\MAG\Alteration\MAG_Alteration_VampireDrainRelease_01.wav
+OutputModel: 0FD93D:Skyrim.esm
+LoopAndRumble:
+  Unknown: 4
+  RumbleValues: 1
+PercentFrequencyVariance: 5
+Priority: 128
+StaticAttenuation: 1.32

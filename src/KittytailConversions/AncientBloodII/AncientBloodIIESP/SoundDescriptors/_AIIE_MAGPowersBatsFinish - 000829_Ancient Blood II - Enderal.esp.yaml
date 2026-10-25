@@ -1,0 +1,14 @@
+FormKey: 000829:Ancient Blood II - Enderal.esp
+VersionControl: 2584595
+EditorID: _AIIE_MAGPowersBatsFinish
+FormVersion: 43
+Version2: 1
+Type: Standard
+Category: 0172A1:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\DLC01\MAG\Powers\MAG_Powers_BatsFinish_01.wav
+OutputModel: 0FD93D:Skyrim.esm
+LoopAndRumble:
+  Unknown: 4
+Priority: 88
+StaticAttenuation: 1.76

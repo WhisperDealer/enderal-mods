@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fomod>
+    <Name>Kittytail Conversions</Name>
+    <Author>WhisperDealer</Author>
+    <Version>1.0.0</Version>
+    <Description>Enderal SE conversion patches for Kittytail's Skyrim magic mods. Install each original mod first, then tick the patch for each one you have.</Description>
+    <Groups>
+        <element>Gameplay</element>
+        <element>Magic</element>
+    </Groups>
+</fomod>

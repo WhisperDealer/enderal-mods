@@ -1,0 +1,18 @@
+FormKey: 000836:Ancient Blood II - Enderal.esp
+VersionControl: 79110
+EditorID: _AIIE_DLC1BatsDmgProjectile
+Version2: 3
+Name:
+  TargetLanguage: English
+  Value: Preloader for Night Cloak
+Model:
+  File: DLC01\Magic\DLC1BatsAbsorbTargetPointFX.nif
+  Data: 0x020000000000000000000000
+Type: Flame
+Speed: 1000
+Range: 10000
+FadeDuration: 0.5
+CollisionRadius: 10
+RelaunchInterval: 0.25
+MuzzleFlashModel: ''
+SoundLevel: 1

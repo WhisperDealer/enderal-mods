@@ -1,0 +1,28 @@
+FormKey: 000822:Ghostlight.esl
+EditorID: _BL_Discharge
+Name:
+  TargetLanguage: English
+  Value: Absolution
+MenuDisplayObject: 00083A:Ghostlight.esl
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 50
+Flags:
+- ManualCostCalc
+- NoAbsorbOrReflect
+ChargeTime: 0.4
+CastType: Concentration
+TargetType: Aimed
+CastDuration: 2.9
+HalfCostPerk: 0C44C1:Skyrim.esm
+Effects:
+- BaseEffect: 000801:Ghostlight.esl
+  Data:
+    Magnitude: 120
+    Duration: 1
+- BaseEffect: 000802:Ghostlight.esl
+  Data:
+    Magnitude: 120
+    Duration: 1

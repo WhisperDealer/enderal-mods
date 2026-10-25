@@ -1,0 +1,21 @@
+FormKey: 000848:Ancient Blood II - Enderal.esp
+VersionControl: 5468178
+EditorID: _AIIE_DLC1VampireAbsorbProjectile
+FormVersion: 43
+Version2: 5
+ObjectBounds:
+  First: -36, -353, -15
+  Second: 37, 44, 14
+Model:
+  File: DLC01\Magic\DLC1VampireAbsorbProj01.nif
+  Data: 0x020000000000000000000000
+Type: Missile
+Speed: 2500
+Range: 10000
+Light: 0ABEFE:Skyrim.esm
+FadeDuration: 8
+ImpactForce: 0.5
+CollisionRadius: 24
+RelaunchInterval: 0.25
+MuzzleFlashModel: ''
+SoundLevel: 1

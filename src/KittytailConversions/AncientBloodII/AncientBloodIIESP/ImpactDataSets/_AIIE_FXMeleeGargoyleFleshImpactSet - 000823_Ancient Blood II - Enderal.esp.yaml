@@ -1,0 +1,48 @@
+FormKey: 000823:Ancient Blood II - Enderal.esp
+VersionControl: 5468178
+EditorID: _AIIE_FXMeleeGargoyleFleshImpactSet
+FormVersion: 43
+Version2: 1
+Impacts:
+- Material: 012F3D:Skyrim.esm
+  Impact: 000824:Ancient Blood II - Enderal.esp
+- Material: 012F3F:Skyrim.esm
+  Impact: 000824:Ancient Blood II - Enderal.esp
+- Material: 0388FB:Skyrim.esm
+  Impact: 000824:Ancient Blood II - Enderal.esp
+- Material: 0388FC:Skyrim.esm
+  Impact: 000824:Ancient Blood II - Enderal.esp
+- Material: 05A28F:Skyrim.esm
+  Impact: 000824:Ancient Blood II - Enderal.esp
+- Material: 05ADD4:Skyrim.esm
+  Impact: 000824:Ancient Blood II - Enderal.esp
+- Material: 0774B6:Skyrim.esm
+  Impact: 0193C2:Skyrim.esm
+- Material: 0774C0:Skyrim.esm
+  Impact: 0193C1:Skyrim.esm
+- Material: 0774C1:Skyrim.esm
+  Impact: 0193C0:Skyrim.esm
+- Material: 0774C2:Skyrim.esm
+  Impact: 0189FC:Skyrim.esm
+- Material: 09150B:Skyrim.esm
+  Impact: 05CEFB:Skyrim.esm
+- Material: 09644C:Skyrim.esm
+  Impact: 05CEF8:Skyrim.esm
+- Material: 097786:Skyrim.esm
+  Impact: 097784:Skyrim.esm
+- Material: 0C1AD7:Skyrim.esm
+  Impact: 000824:Ancient Blood II - Enderal.esp
+- Material: 0D309F:Skyrim.esm
+  Impact: 000824:Ancient Blood II - Enderal.esp
+- Material: 0E64A9:Skyrim.esm
+  Impact: 0E64A8:Skyrim.esm
+- Material: 0E7714:Skyrim.esm
+  Impact: 000824:Ancient Blood II - Enderal.esp
+- Material: 0F0EA8:Skyrim.esm
+  Impact: 000824:Ancient Blood II - Enderal.esp
+- Material: 0F7B65:Skyrim.esm
+  Impact: 000824:Ancient Blood II - Enderal.esp
+- Material: 0F7B68:Skyrim.esm
+  Impact: 000824:Ancient Blood II - Enderal.esp
+- Material: 100752:Skyrim.esm
+  Impact: 000824:Ancient Blood II - Enderal.esp

@@ -1,0 +1,15 @@
+FormKey: 000853:Ancient Blood II - Enderal.esp
+VersionControl: 943891
+EditorID: _AIIE_HighPolyBookMQ103
+FormVersion: 39
+Version2: 3
+ObjectBounds:
+  First: -9, -12, -4
+  Second: 9, 11, 2
+Model:
+  File: Clutter\Books\Book02\Character Assets\Book02MQ103.nif
+  Data: 0xDC3A906064647300B5139F09F53EA87C64647300B5139F09F393DE8864647300B5139F099AF5BEC164647300B5139F09
+MaxAngle: 90
+Unused: '[]'
+DNAMDataTypeState:
+- Break0

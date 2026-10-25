@@ -1,0 +1,28 @@
+FormKey: 00081B:AncientBloodII.esl
+EditorID: _AII_SpellTomeConjureGargoyleStone
+Name:
+  TargetLanguage: English
+  Value: 'Spell Tome: Conjure Stone Gargoyle'
+Model:
+  File: Clutter\Books\BookMQ103LowPoly.nif
+  Data: 0x020000000000000000000000
+BookText:
+  TargetLanguage: English
+  Value: >-
+    <font face'$HandwrittenFont'><font size='40'><p align='center'>
+
+    Conjure Stone Gargoyle
+Keywords:
+- 0937A2:Skyrim.esm
+- 0937A5:Skyrim.esm
+Flags:
+- 0x4
+Teaches:
+  MutagenObjectType: BookSpell
+  Spell: 000816:AncientBloodII.esl
+Value: 290
+Weight: 1
+InventoryArt: 000853:Ancient Blood II - Enderal.esp
+Description:
+  TargetLanguage: English
+  Value: ''

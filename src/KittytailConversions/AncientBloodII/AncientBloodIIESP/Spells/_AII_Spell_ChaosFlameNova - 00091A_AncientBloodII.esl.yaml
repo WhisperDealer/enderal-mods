@@ -1,0 +1,29 @@
+FormKey: 00091A:AncientBloodII.esl
+VersionControl: 12410
+EditorID: _AII_Spell_ChaosFlameNova
+Name:
+  TargetLanguage: English
+  Value: Entropic Flame
+MenuDisplayObject: 00083C:AncientBloodII.esl
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 140
+Flags:
+- ManualCostCalc
+- IgnoreResistance
+- NoAbsorbOrReflect
+ChargeTime: 0.5
+CastType: FireAndForget
+HalfCostPerk: 0C44C0:Skyrim.esm
+Effects:
+- BaseEffect: 000917:AncientBloodII.esl
+  Data:
+    Magnitude: 25
+    Area: 50
+- BaseEffect: 000919:AncientBloodII.esl
+  Data:
+    Magnitude: 25
+    Area: 50
+    Duration: 60

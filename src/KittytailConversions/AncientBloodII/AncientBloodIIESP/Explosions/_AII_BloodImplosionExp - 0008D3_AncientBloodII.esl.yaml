@@ -1,0 +1,18 @@
+FormKey: 0008D3:AncientBloodII.esl
+EditorID: _AII_BloodImplosionExp
+ObjectBounds:
+  First: -212, -285, -11
+  Second: 212, 278, 374
+Model:
+  File: AncientBlood\BloodImplosionExp.nif
+  Data: 0x020000000000000000000000
+ImageSpaceModifier: 0008D6:AncientBloodII.esl
+Sound1: 000843:Ancient Blood II - Enderal.esp
+Sound2: 0FAE83:Skyrim.esm
+Force: 128
+Radius: 320
+ISRadius: 1024
+Flags:
+- 0x1
+- IgnoreImageSpaceSwap
+SoundLevel: Normal

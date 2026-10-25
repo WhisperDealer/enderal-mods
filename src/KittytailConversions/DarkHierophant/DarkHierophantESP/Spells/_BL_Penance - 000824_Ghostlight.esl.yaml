@@ -1,0 +1,29 @@
+FormKey: 000824:Ghostlight.esl
+EditorID: _BL_Penance
+Name:
+  TargetLanguage: English
+  Value: Penance
+MenuDisplayObject: 00083A:Ghostlight.esl
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 55
+Flags:
+- ManualCostCalc
+- AreaEffectIgnoresLOS
+- NoAbsorbOrReflect
+ChargeTime: 0.01
+CastType: FireAndForget
+TargetType: Aimed
+HalfCostPerk: 0C44C0:Skyrim.esm
+Effects:
+- BaseEffect: 00080D:Ghostlight.esl
+  Data:
+    Magnitude: 60
+- BaseEffect: 0153D3:Skyrim.esm
+  Data:
+    Magnitude: 0.25
+- BaseEffect: 00080E:Ghostlight.esl
+  Data:
+    Magnitude: 60

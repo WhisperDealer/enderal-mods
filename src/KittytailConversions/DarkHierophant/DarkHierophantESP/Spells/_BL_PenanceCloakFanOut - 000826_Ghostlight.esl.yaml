@@ -1,0 +1,31 @@
+FormKey: 000826:Ghostlight.esl
+EditorID: _BL_PenanceCloakFanOut
+Name:
+  TargetLanguage: English
+  Value: Penance Aura - Fanning
+MenuDisplayObject: 00083A:Ghostlight.esl
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 105
+Flags:
+- ManualCostCalc
+- AreaEffectIgnoresLOS
+- NoAbsorbOrReflect
+- NoDualCastModification
+ChargeTime: 0.5
+CastType: FireAndForget
+HalfCostPerk: 0C44C0:Skyrim.esm
+Effects:
+- BaseEffect: 00080F:Ghostlight.esl
+  Data:
+    Magnitude: 12
+    Duration: 12
+- BaseEffect: 00081A:Ghostlight.esl
+  Data:
+    Duration: 12
+- BaseEffect: 00088F:Ghostlight.esl
+  Data:
+    Magnitude: 12
+    Duration: 12

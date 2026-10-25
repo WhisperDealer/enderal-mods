@@ -1,0 +1,31 @@
+FormKey: 000837:Ancient Blood II - Enderal.esp
+VersionControl: 8679452
+EditorID: _AIIE_SOMStereoRad04000_verb
+FormVersion: 43
+Data:
+  Flags:
+  - AttenuatesWithDistance
+  ReverbSendPercent: 0.3333333333333333
+Type: DefinedSpeakerOutput
+OutputChannels:
+  Channel0:
+    L: 100
+    R: 100
+    RL: 50
+    RR: 50
+    BL: 50
+    BR: 50
+  Channel1:
+    L: 100
+    RL: 100
+    BL: 100
+  Channel2:
+    R: 100
+    RR: 100
+    BR: 100
+Attenuation:
+  Unknown: 16768104
+  MinDistance: 150
+  MaxDistance: 4000
+  Curve: 0x6432140500
+  Unknown2: 0x000000

@@ -1,0 +1,7 @@
+FormKey: 000866:Lightpower.esl
+EditorID: _LIP_Injector_Update13
+Flags:
+- StartGameEnabled
+- 0x10
+- RunOnce
+NextAliasID: 0

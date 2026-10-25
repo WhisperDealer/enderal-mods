@@ -1,0 +1,29 @@
+FormKey: 0302FF:Enderal - Forgotten Stories.esm
+EditorID: HaldaHammerschlag_CustomMerchandise
+Flags:
+- UseAll
+Entries:
+- Data:
+    Level: 1
+    Reference: 000832:Lightpower.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 000831:Lightpower.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 000833:Lightpower.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 00082F:Lightpower.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 000830:Lightpower.esl
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 00082E:Lightpower.esl
+    Count: 1
