@@ -1,0 +1,22 @@
+FormKey: 000825:Lightpower.esl
+EditorID: _LIP_Sanctuary
+Name:
+  TargetLanguage: English
+  Value: Sanctuary
+MenuDisplayObject: 1097CA:Skyrim.esm
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 145
+Flags:
+- ManualCostCalc
+- NoAbsorbOrReflect
+ChargeTime: 0.5
+CastType: FireAndForget
+HalfCostPerk: 0C44CA:Skyrim.esm
+Effects:
+- BaseEffect: 000815:Lightpower.esl
+  Data:
+    Magnitude: 1
+    Duration: 30

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://qconsulting.ca/fo3/ModConfig5.0.xsd">
+    <moduleName>Kittytail Conversions</moduleName>
+    <installSteps order="Explicit">
+        <installStep name="Choose patches">
+            <optionalFileGroups order="Explicit">
+                <group name="Kittytail mods you have installed" type="SelectAny">
+                    <plugins order="Explicit">
+                        <plugin name="Holy Templar Magic">
+                            <description>Enderal patch for Kittytail's Holy Templar Magic (Lightpower.esl). Repoints its Dawnguard visual effects onto Enderal's own Light Magic effects, rescales mana costs and tome prices onto Enderal's scale, makes Consecrate Dead's heal pay Arcane Fever, and sells all six tomes at Halda Stronghand's shop in the Sun Temple. Requires Holy Templar Magic and SPID. Load this patch after Lightpower.esl.</description>
+                            <files>
+                                <file source="HolyTemplarMagic\Holy Templar Magic - Enderal.esp" destination="Holy Templar Magic - Enderal.esp"/>
+                                <file source="HolyTemplarMagic\Holy Templar Magic - Enderal_DISTR.ini" destination="Holy Templar Magic - Enderal_DISTR.ini"/>
+                            </files>
+                            <typeDescriptor>
+                                <type name="Optional"/>
+                            </typeDescriptor>
+                        </plugin>
+                    </plugins>
+                </group>
+            </optionalFileGroups>
+        </installStep>
+    </installSteps>
+</config>

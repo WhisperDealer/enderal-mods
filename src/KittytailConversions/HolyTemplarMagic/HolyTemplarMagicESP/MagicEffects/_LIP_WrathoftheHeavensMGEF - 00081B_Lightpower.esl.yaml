@@ -1,0 +1,36 @@
+FormKey: 00081B:Lightpower.esl
+EditorID: _LIP_WrathoftheHeavensMGEF
+Name:
+  TargetLanguage: English
+  Value: Wrath of the Heavens
+MenuDisplayObject: 1097CA:Skyrim.esm
+Keywords:
+- 0B62E4:Skyrim.esm
+Flags:
+- DispelWithKeywords
+- NoArea
+- FXPersist
+- HideInUI
+- NoRecast
+- PowerAffectsMagnitude
+- NoDeathDispel
+BaseCost: 3.2
+MagicSkill: Restoration
+CastingLight: 03F1B5:Skyrim.esm
+TaperWeight: 0.3
+HitShader: 10B2DF:Skyrim.esm
+MinimumSkillLevel: 100
+SpellmakingCastingTime: 0.5
+TaperCurve: 2
+TaperDuration: 2
+Archetype:
+  MutagenObjectType: MagicEffectCloakArchetype
+  Association: 000828:Lightpower.esl
+CastType: FireAndForget
+CastingArt: 0E755B:Skyrim.esm
+HitEffectArt: 000847:Lightpower.esl
+DualCastScale: 1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

@@ -1,0 +1,27 @@
+FormKey: 000829:Lightpower.esl
+EditorID: _LIP_WrathoftheHeavens
+Name:
+  TargetLanguage: English
+  Value: Wrath of the Heavens
+MenuDisplayObject: 1097CA:Skyrim.esm
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 195
+Flags:
+- ManualCostCalc
+- IgnoreResistance
+- NoAbsorbOrReflect
+ChargeTime: 0.5
+CastType: FireAndForget
+HalfCostPerk: 0C44CA:Skyrim.esm
+Effects:
+- BaseEffect: 00081A:Lightpower.esl
+  Data:
+    Magnitude: 80
+    Duration: 120
+- BaseEffect: 00081B:Lightpower.esl
+  Data:
+    Magnitude: 45
+    Duration: 120
