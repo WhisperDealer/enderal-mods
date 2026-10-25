@@ -1,0 +1,22 @@
+FormKey: 00081C:Ancient Blood II - Enderal.esp
+VersionControl: 5468178
+EditorID: _AIIE_NPCGargoyleFootWalkRImpact
+FormVersion: 43
+Version2: 2
+Duration: 0.25
+Orientation: ProjectileReflection
+AngleThreshold: 15
+PlacementRadius: 16
+SoundLevel: Normal
+Decal:
+  MinWidth: 8
+  MaxWidth: 32
+  MinHeight: 8
+  MaxHeight: 32
+  Depth: 32
+  Shininess: 4
+  ParallaxScale: 1
+  ParallaxPasses: 4
+  Unknown: 11825
+  Color: '#00FFFFFF'
+Sound1: 00081A:Ancient Blood II - Enderal.esp

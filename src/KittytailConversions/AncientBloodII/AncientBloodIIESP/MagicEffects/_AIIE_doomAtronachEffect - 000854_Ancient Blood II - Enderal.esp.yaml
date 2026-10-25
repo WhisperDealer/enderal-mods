@@ -1,0 +1,19 @@
+FormKey: 000854:Ancient Blood II - Enderal.esp
+VersionControl: 79110
+EditorID: _AIIE_doomAtronachEffect
+Version2: 10
+Name:
+  TargetLanguage: English
+  Value: The Atronach Stone
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- Recover
+- PowerAffectsMagnitude
+Archetype:
+  MutagenObjectType: MagicEffectPeakValueModArchetype
+  ActorValue: AbsorbChance
+DualCastScale: 1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

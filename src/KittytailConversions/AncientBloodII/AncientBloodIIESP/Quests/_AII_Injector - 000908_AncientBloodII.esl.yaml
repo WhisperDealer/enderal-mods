@@ -1,0 +1,43 @@
+FormKey: 000908:AncientBloodII.esl
+EditorID: _AII_Injector
+VirtualMachineAdapter:
+  Scripts:
+  - Name: _AII_InjectScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ListToAddA
+      Object: 000800:Ancient Blood II - Enderal.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ListToAddB
+      Object: 000800:Ancient Blood II - Enderal.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NewSpellTomesList
+      Object: 00091C:AncientBloodII.esl
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PerkToAdd
+      Object: 0008FB:AncientBloodII.esl
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SpellTome50A
+      Object: 0008AE:AncientBloodII.esl
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SpellTome50B
+      Object: 00090F:AncientBloodII.esl
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SpellTome75A
+      Object: 0008AD:AncientBloodII.esl
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SpellTome75B
+      Object: 000907:AncientBloodII.esl
+  Versioning:
+  - Break0
+  ExtraBindDataVersion: 0
+  FileName: ''
+Flags:
+- StartGameEnabled
+- 0x10
+- RunOnce
+Stages:
+- Index: 10
+  Flags:
+  - StartUpStage
+NextAliasID: 0

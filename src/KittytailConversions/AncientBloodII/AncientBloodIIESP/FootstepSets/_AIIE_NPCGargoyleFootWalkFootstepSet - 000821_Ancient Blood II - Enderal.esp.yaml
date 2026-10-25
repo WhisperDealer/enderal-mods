@@ -1,0 +1,20 @@
+FormKey: 000821:Ancient Blood II - Enderal.esp
+VersionControl: 5468178
+EditorID: _AIIE_NPCGargoyleFootWalkFootstepSet
+FormVersion: 43
+Version2: 2
+WalkForwardFootsteps:
+- 01AEBC:Skyrim.esm
+- 01AEBB:Skyrim.esm
+RunForwardFootsteps:
+- 01AEBC:Skyrim.esm
+- 01AEBB:Skyrim.esm
+WalkForwardAlternateFootsteps:
+- 01AEBC:Skyrim.esm
+- 01AEBB:Skyrim.esm
+RunForwardAlternateFootsteps:
+- 000820:Ancient Blood II - Enderal.esp
+- 00081F:Ancient Blood II - Enderal.esp
+WalkForwardAlternateFootsteps2:
+- 000820:Ancient Blood II - Enderal.esp
+- 00081F:Ancient Blood II - Enderal.esp

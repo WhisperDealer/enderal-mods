@@ -1,0 +1,9 @@
+FormKey: 000833:Ancient Blood II - Enderal.esp
+VersionControl: 2453529
+EditorID: _AIIE_DLC1VampBatsEatenByEffect
+FormVersion: 43
+Model:
+  File: DLC01\Magic\DLC1VampBatsEatenByEffect.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

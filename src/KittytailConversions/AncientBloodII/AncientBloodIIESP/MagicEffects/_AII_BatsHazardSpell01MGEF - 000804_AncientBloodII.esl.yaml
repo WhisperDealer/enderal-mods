@@ -1,0 +1,41 @@
+FormKey: 000804:AncientBloodII.esl
+EditorID: _AII_BatsHazardSpell01MGEF
+Name:
+  TargetLanguage: English
+  Value: Vampiric Bats
+MenuDisplayObject: 00083C:AncientBloodII.esl
+Keywords:
+- 101BDE:Skyrim.esm
+Flags:
+- Hostile
+- Detrimental
+- FXPersist
+- NoRecast
+- PowerAffectsMagnitude
+BaseCost: 4
+MagicSkill: Destruction
+ResistValue: ResistMagic
+HitShader: 000841:Ancient Blood II - Enderal.esp
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+  Type: Absorb
+Projectile: 000836:Ancient Blood II - Enderal.esp
+CastType: FireAndForget
+TargetType: Touch
+HitEffectArt: 000840:Ancient Blood II - Enderal.esp
+ImpactData: 00084A:Ancient Blood II - Enderal.esp
+SkillUsageMultiplier: 1
+DualCastScale: 1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  CompareOperator: NotEqualTo
+  Data:
+    MutagenObjectType: GetIsRaceConditionData
+    Race: 000800:AncientBloodII.esl
+  ComparisonValue: 1

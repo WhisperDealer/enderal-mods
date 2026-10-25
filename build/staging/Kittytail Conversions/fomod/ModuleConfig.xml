@@ -16,6 +16,15 @@
                                 <type name="Optional"/>
                             </typeDescriptor>
                         </plugin>
+                        <plugin name="Ancient Blood Magic II">
+                            <description>Enderal patch for Kittytail's Ancient Blood Magic II (AncientBloodII.esl). Restores its Dawnguard-based effects - the vampire bat swarms, the drain impacts, the Stone Gargoyle's abilities and the Eternal Legion's dragonbone gear - by copying those records into the patch (Enderal ships the meshes and sounds; only the records were missing). Rescales mana costs and tome prices onto Enderal's scale and sells all fourteen tomes through the Fence in the Undercity barracks. The two boss fights live in Dawnguard locations Enderal does not have and are not reachable. Requires Ancient Blood Magic II. Load this patch after AncientBloodII.esl.</description>
+                            <files>
+                                <file source="AncientBloodII\Ancient Blood II - Enderal.esp" destination="Ancient Blood II - Enderal.esp"/>
+                            </files>
+                            <typeDescriptor>
+                                <type name="Optional"/>
+                            </typeDescriptor>
+                        </plugin>
                     </plugins>
                 </group>
             </optionalFileGroups>

@@ -69,6 +69,10 @@
         {
           "yamlSource": "src/KittytailConversions/HolyTemplarMagic/HolyTemplarMagicESP",
           "dest": "HolyTemplarMagic/Holy Templar Magic - Enderal.esp"
+        },
+        {
+          "yamlSource": "src/KittytailConversions/AncientBloodII/AncientBloodIIESP",
+          "dest": "AncientBloodII/Ancient Blood II - Enderal.esp"
         }
       ],
       "assets": [

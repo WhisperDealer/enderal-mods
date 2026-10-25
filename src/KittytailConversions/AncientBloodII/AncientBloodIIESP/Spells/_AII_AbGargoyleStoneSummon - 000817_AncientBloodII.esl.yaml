@@ -1,0 +1,30 @@
+FormKey: 000817:AncientBloodII.esl
+EditorID: _AII_AbGargoyleStoneSummon
+Name:
+  TargetLanguage: English
+  Value: Resistances
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 369
+Flags:
+- IgnoreResistance
+- NoAbsorbOrReflect
+Type: Ability
+Effects:
+- BaseEffect: 053124:Skyrim.esm
+  Data:
+    Magnitude: 50
+- BaseEffect: 000854:Ancient Blood II - Enderal.esp
+  Data:
+    Magnitude: 25
+- BaseEffect: 0CAB90:Skyrim.esm
+  Data:
+    Magnitude: 100
+- BaseEffect: 0AA024:Skyrim.esm
+  Data:
+    Magnitude: 75
+- BaseEffect: 0424E2:Skyrim.esm
+  Data:
+    Magnitude: 15

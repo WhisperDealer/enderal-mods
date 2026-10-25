@@ -1,0 +1,21 @@
+FormKey: 000855:Ancient Blood II - Enderal.esp
+VersionControl: 79110
+EditorID: _AIIE_EnchWeaponNightingaleSword04
+Version2: 7
+Name:
+  TargetLanguage: English
+  Value: Nightingale's Talon
+EnchantmentCost: 145
+CastType: FireAndForget
+EnchantmentAmount: 145
+TargetType: Touch
+EnchantType: Enchantment
+Effects:
+- BaseEffect: 0AA155:Skyrim.esm
+  Data:
+    Magnitude: 20
+    Duration: 1
+- BaseEffect: 0AA157:Skyrim.esm
+  Data:
+    Magnitude: 25
+    Duration: 1

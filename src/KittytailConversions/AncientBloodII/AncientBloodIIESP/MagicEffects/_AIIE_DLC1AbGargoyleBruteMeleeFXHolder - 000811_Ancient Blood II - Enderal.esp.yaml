@@ -1,0 +1,28 @@
+FormKey: 000811:Ancient Blood II - Enderal.esp
+VersionControl: 79110
+EditorID: _AIIE_DLC1AbGargoyleBruteMeleeFXHolder
+Version2: 4
+VirtualMachineAdapter:
+  Scripts:
+  - Name: DLC1GargoyleBruteHandFXScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TargetVFX
+      Object: 000812:Ancient Blood II - Enderal.esp
+Name:
+  TargetLanguage: English
+  Value: GargoyleMeleeArtHolder
+Flags:
+- NoDuration
+- FXPersist
+- HideInUI
+- PowerAffectsMagnitude
+BaseCost: 5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+DualCastScale: 1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

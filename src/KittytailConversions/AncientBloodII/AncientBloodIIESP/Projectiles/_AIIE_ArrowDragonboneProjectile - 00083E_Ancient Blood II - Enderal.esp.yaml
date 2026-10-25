@@ -1,0 +1,26 @@
+FormKey: 00083E:Ancient Blood II - Enderal.esp
+VersionControl: 79110
+EditorID: _AIIE_ArrowDragonboneProjectile
+Version2: 5
+ObjectBounds:
+  First: -4, -299, -9
+  Second: 4, 0, 9
+Name:
+  TargetLanguage: English
+  Value: Dragonbone Arrow
+Model:
+  File: DLC01\Weapons\Dragonbone\ArrowFlight.nif
+  Data: 0x020000000000000000000000
+Flags:
+- CanBePickedUp
+Type: Arrow
+Gravity: 0.35
+Speed: 3600
+Range: 60000
+Sound: 03F2B4:Skyrim.esm
+FadeDuration: 5
+ImpactForce: 1
+CollisionRadius: 0.5
+RelaunchInterval: 0.25
+MuzzleFlashModel: ''
+SoundLevel: 1

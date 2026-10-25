@@ -1,0 +1,19 @@
+FormKey: 00082B:Ancient Blood II - Enderal.esp
+VersionControl: 79110
+EditorID: _AIIE_DLC1GargoyleAbilites
+Version2: 6
+Name:
+  TargetLanguage: English
+  Value: Gargoyle Abilities
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Type: Ability
+Effects:
+- BaseEffect: 0CAB90:Skyrim.esm
+  Data:
+    Magnitude: 250
+- BaseEffect: 0AA024:Skyrim.esm
+  Data:
+    Magnitude: 100

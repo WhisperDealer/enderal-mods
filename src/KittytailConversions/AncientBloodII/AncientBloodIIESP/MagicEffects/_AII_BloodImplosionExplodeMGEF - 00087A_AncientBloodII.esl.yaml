@@ -1,0 +1,34 @@
+FormKey: 00087A:AncientBloodII.esl
+EditorID: _AII_BloodImplosionExplodeMGEF
+VirtualMachineAdapter:
+  Scripts:
+  - Name: magicPlaceExplosionScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ExplosionRef
+      Object: 0008D3:AncientBloodII.esl
+Name:
+  TargetLanguage: English
+  Value: Blood Implosion
+MenuDisplayObject: 00083C:AncientBloodII.esl
+Flags:
+- Detrimental
+- NoDuration
+- NoArea
+- FXPersist
+- HideInUI
+- PowerAffectsDuration
+MagicSkill: Destruction
+ResistValue: ResistMagic
+HitShader: 000832:Ancient Blood II - Enderal.esp
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+CastType: FireAndForget
+DualCastScale: 1
+ImageSpaceModifier: 0008D6:AncientBloodII.esl
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''

@@ -1,0 +1,24 @@
+FormKey: 000888:AncientBloodII.esl
+EditorID: _AII_Spell_SummonUmbralFamiliar
+Name:
+  TargetLanguage: English
+  Value: Conjure Herald of Torment
+MenuDisplayObject: 00083C:AncientBloodII.esl
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+BaseCost: 160
+Flags:
+- ManualCostCalc
+- IgnoreResistance
+- NoAbsorbOrReflect
+ChargeTime: 0.5
+CastType: FireAndForget
+TargetType: TargetLocation
+Range: 32
+HalfCostPerk: 0C44BD:Skyrim.esm
+Effects:
+- BaseEffect: 000867:AncientBloodII.esl
+  Data:
+    Duration: 60

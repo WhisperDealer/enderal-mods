@@ -1,0 +1,58 @@
+FormKey: 000816:Ancient Blood II - Enderal.esp
+VersionControl: 79110
+EditorID: _AIIE_GargoyleBodyPartData
+Version2: 6
+Model:
+  File: Actors\DLC01\VampireBrute\Character Assets\skeleton.nif
+  Data: 0x020000000000000000000000
+Parts:
+- Name:
+    TargetLanguage: English
+    Value: Fly Grab
+  PartNode: NPC Spine1 [Spn1]
+  VatsTarget: NPC Spine1 [Spn1]
+  IkStartNode: BASE Meshes\Actors\Giant\Character Assets\skeleton.nif
+  DamageMult: 1
+  Type: FlyGrab
+  HealthPercent: 5
+  ActorValue: 255
+  ToHitChance: 100
+  ExplodableDebrisScale: 1
+  SeverableDebrisScale: 1
+  LimbReplacementScale: 1
+  LimbReplacementModel: ''
+  GoreTargetBone: BASE Meshes\Actors\Giant\Character Assets\skeleton.nif
+  TextureFilesHashes: '[]'
+- Name:
+    TargetLanguage: English
+    Value: Torso
+  PartNode: NPC COM [COM ]
+  VatsTarget: NPC Spine1 [Spn1]
+  IkStartNode: BASE Meshes\Actors\Giant\Character Assets\skeleton.nif
+  DamageMult: 1
+  HealthPercent: 5
+  ActorValue: 255
+  ToHitChance: 100
+  ExplodableDebrisScale: 1
+  SeverableDebrisScale: 1
+  LimbReplacementScale: 1
+  LimbReplacementModel: ''
+  GoreTargetBone: BASE Meshes\Actors\Giant\Character Assets\skeleton.nif
+  TextureFilesHashes: '[]'
+- Name:
+    TargetLanguage: English
+    Value: Head
+  PartNode: NPC Head [Head]
+  VatsTarget: NPC Head [Head]
+  IkStartNode: BASE Meshes\Actors\Giant\Character Assets\skeleton.nif
+  DamageMult: 1
+  Type: Head
+  HealthPercent: 5
+  ActorValue: 255
+  ToHitChance: 100
+  ExplodableDebrisScale: 1
+  SeverableDebrisScale: 1
+  LimbReplacementScale: 1
+  LimbReplacementModel: ''
+  GoreTargetBone: BASE Meshes\Actors\Giant\Character Assets\skeleton.nif
+  TextureFilesHashes: '[]'

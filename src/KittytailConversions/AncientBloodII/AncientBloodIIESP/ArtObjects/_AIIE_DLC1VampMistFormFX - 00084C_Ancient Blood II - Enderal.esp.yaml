@@ -1,0 +1,13 @@
+FormKey: 00084C:Ancient Blood II - Enderal.esp
+VersionControl: 5468178
+EditorID: _AIIE_DLC1VampMistFormFX
+FormVersion: 43
+Version2: 2
+ObjectBounds:
+  First: -45, -15, 0
+  Second: 45, 11, 151
+Model:
+  File: DLC01\Magic\DLC1VampMistFormFX.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

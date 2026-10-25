@@ -1,0 +1,16 @@
+FormKey: 000825:Ancient Blood II - Enderal.esp
+VersionControl: 5468178
+EditorID: _AIIE_FXMeleeGargoyleFlesh
+FormVersion: 43
+Version2: 4
+Type: Standard
+Category: 0172A1:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\DLC01\FX\Gargoyle\FX_Gargoyle_Melee_01.wav
+- Data\Sound\FX\DLC01\FX\Gargoyle\FX_Gargoyle_Melee_02.wav
+OutputModel: 0D78B4:Skyrim.esm
+LoopAndRumble: {}
+PercentFrequencyVariance: 10
+Priority: 128
+Variance: 5
+StaticAttenuation: 7.49

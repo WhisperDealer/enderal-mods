@@ -1,0 +1,21 @@
+FormKey: 00082C:Ancient Blood II - Enderal.esp
+VersionControl: 79110
+EditorID: _AIIE_DLC1crGargoyleAbsorbHealth
+Version2: 7
+Name:
+  TargetLanguage: English
+  Value: Absorb Health
+MenuDisplayObject: 0435A5:Skyrim.esm
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Flags:
+- ManualCostCalc
+CastType: FireAndForget
+TargetType: Touch
+Effects:
+- BaseEffect: 00082D:Ancient Blood II - Enderal.esp
+  Data:
+    Magnitude: 12
+    Duration: 1

@@ -1,0 +1,39 @@
+FormKey: 000883:AncientBloodII.esl
+EditorID: _AII_BloodTendrilsHazardSpeedMGEF
+Name:
+  TargetLanguage: English
+  Value: Phantom Thorns
+MenuDisplayObject: 00083C:AncientBloodII.esl
+Flags:
+- Hostile
+- Recover
+- Detrimental
+- FXPersist
+- NoRecast
+- PowerAffectsMagnitude
+BaseCost: 4
+MagicSkill: Destruction
+HitShader: 000835:Ancient Blood II - Enderal.esp
+SpellmakingCastingTime: 0.5
+Archetype:
+  MutagenObjectType: MagicEffectPeakValueModArchetype
+  ActorValue: SpeedMult
+Projectile: 000836:Ancient Blood II - Enderal.esp
+CastType: FireAndForget
+TargetType: Touch
+ImpactData: 00084A:Ancient Blood II - Enderal.esp
+SkillUsageMultiplier: 1
+DualCastScale: 1
+Sounds: []
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsRaceConditionData
+    Race: 00085C:AncientBloodII.esl
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsRaceConditionData
+    Race: 00085B:AncientBloodII.esl

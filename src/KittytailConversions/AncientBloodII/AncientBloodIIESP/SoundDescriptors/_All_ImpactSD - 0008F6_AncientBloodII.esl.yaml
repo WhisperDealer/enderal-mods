@@ -1,0 +1,12 @@
+FormKey: 0008F6:AncientBloodII.esl
+EditorID: _All_ImpactSD
+Type: Standard
+Category: 0172A1:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\TRP\Molag Bal\TRP_Molag_Bal_Close_01.wav
+OutputModel: 000837:Ancient Blood II - Enderal.esp
+LoopAndRumble: {}
+PercentFrequencyShift: 14
+PercentFrequencyVariance: 2
+Priority: 128
+StaticAttenuation: 8.37

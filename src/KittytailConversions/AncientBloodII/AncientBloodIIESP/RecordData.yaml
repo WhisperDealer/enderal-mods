@@ -1,0 +1,20 @@
+SpriggitSource:
+  PackageName: Spriggit.Yaml.Skyrim
+  Version: 0.40
+ModKey: Ancient Blood II - Enderal.esp
+GameRelease: EnderalSE
+ModHeader:
+  Flags:
+  - Small
+  Stats:
+    Version: 1.7
+  Author: WhisperDealer (Ancient Blood Magic II by Kittytail)
+  Description: Enderal conversion patch for Kittytail's Ancient Blood Magic II. Requires AncientBloodII.esl.
+  MasterReferences:
+  - Master: Skyrim.esm
+    FileSize: 0
+  - Master: Enderal - Forgotten Stories.esm
+    FileSize: 0
+  - Master: AncientBloodII.esl
+    FileSize: 0
+  INTV: 1

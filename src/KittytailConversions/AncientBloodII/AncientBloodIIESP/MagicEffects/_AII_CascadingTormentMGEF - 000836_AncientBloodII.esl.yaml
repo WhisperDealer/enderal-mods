@@ -1,0 +1,57 @@
+FormKey: 000836:AncientBloodII.esl
+EditorID: _AII_CascadingTormentMGEF
+VirtualMachineAdapter:
+  Scripts:
+  - Name: magicAbsorbFXScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CasterVFX
+      Object: 0ABEFC:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TargetVFX
+      Object: 0ABEFB:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TrapImod
+      Object: 0ABF17:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Cascading Torment
+MenuDisplayObject: 00083C:AncientBloodII.esl
+Keywords:
+- 01CEAF:Skyrim.esm
+- 101BDE:Skyrim.esm
+- 0A9B1F:Skyrim.esm
+Flags:
+- Hostile
+- Detrimental
+- NoArea
+- FXPersist
+- PowerAffectsMagnitude
+- NoDeathDispel
+BaseCost: 1.95
+MagicSkill: Destruction
+ResistValue: ResistShock
+CastingLight: 000838:AncientBloodII.esl
+HitShader: 000842:AncientBloodII.esl
+MinimumSkillLevel: 75
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+  Type: Absorb
+Projectile: 000835:AncientBloodII.esl
+CastType: Concentration
+TargetType: Aimed
+CastingArt: 0008EE:AncientBloodII.esl
+ImpactData: 015C7B:Skyrim.esm
+SkillUsageMultiplier: 3
+DualCastScale: 1
+ImageSpaceModifier: 0ABF17:Skyrim.esm
+Sounds:
+- Sound: 03F208:Skyrim.esm
+- Type: Release
+  Sound: 000826:Ancient Blood II - Enderal.esp
+- Type: ConcentrationCastLoop
+  Sound: 000834:AncientBloodII.esl
+Description:
+  TargetLanguage: English
+  Value: Absorbs <mag> points of Health per second. Lightning that does <mag> points of damage to Magicka per second.

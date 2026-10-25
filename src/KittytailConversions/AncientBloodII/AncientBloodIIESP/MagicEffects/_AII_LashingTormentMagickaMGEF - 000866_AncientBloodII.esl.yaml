@@ -1,0 +1,38 @@
+FormKey: 000866:AncientBloodII.esl
+EditorID: _AII_LashingTormentMagickaMGEF
+Name:
+  TargetLanguage: English
+  Value: Lashing Torment
+MenuDisplayObject: 0435A5:Skyrim.esm
+Keywords:
+- 01CEAF:Skyrim.esm
+Flags:
+- Hostile
+- Detrimental
+- NoArea
+- FXPersist
+- HideInUI
+- PowerAffectsMagnitude
+- NoDeathDispel
+MagicSkill: Destruction
+ResistValue: ResistShock
+CastingLight: 000838:AncientBloodII.esl
+HitShader: 000842:AncientBloodII.esl
+MinimumSkillLevel: 75
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Magicka
+Projectile: 0008BC:AncientBloodII.esl
+CastType: FireAndForget
+TargetType: Aimed
+CastingArt: 0008EE:AncientBloodII.esl
+ImpactData: 015C7B:Skyrim.esm
+SkillUsageMultiplier: 1
+DualCastScale: 1
+Sounds:
+- Sound: 03F208:Skyrim.esm
+- Type: Release
+  Sound: 000826:Ancient Blood II - Enderal.esp
+Description:
+  TargetLanguage: English
+  Value: ''

@@ -1,0 +1,17 @@
+FormKey: 000843:Ancient Blood II - Enderal.esp
+VersionControl: 5468178
+EditorID: _AIIE_FXExplosionAurielsSunNear
+FormVersion: 43
+Version2: 2
+Type: Standard
+Category: 0172A1:Skyrim.esm
+SoundFiles:
+- Data\Sound\FX\DLC01\FX\Explosions\AurielsSun\FX_Explosion_AurielsSun_Near_01.wav
+- Data\Sound\FX\DLC01\FX\Explosions\AurielsSun\FX_Explosion_AurielsSun_Near_02.wav
+OutputModel: 0E324B:Skyrim.esm
+LoopAndRumble:
+  Unknown: 1
+PercentFrequencyVariance: 2
+Priority: 88
+Variance: 3
+StaticAttenuation: 4.41

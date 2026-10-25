@@ -1,0 +1,67 @@
+FormKey: 00087B:AncientBloodII.esl
+EditorID: _AII_BloodImplosionMainEffectMGEF
+VirtualMachineAdapter:
+  Scripts:
+  - Name: _AII_BloodImplosionMainEffectScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: spellToCast
+      Object: 000898:AncientBloodII.esl
+  - Name: magicAbsorbFXScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CasterVFX
+      Object: 0ABEFC:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TargetVFX
+      Object: 0ABEFB:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TrapImod
+      Object: 0ABF17:Skyrim.esm
+  - Name: magicPlaceExplosionScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ExplosionRef
+      Object: 0008D5:AncientBloodII.esl
+Name:
+  TargetLanguage: English
+  Value: Blood Implosion
+MenuDisplayObject: 00083C:AncientBloodII.esl
+Flags:
+- Hostile
+- Detrimental
+- NoArea
+- FXPersist
+MagicSkill: Destruction
+CastingLight: 000838:AncientBloodII.esl
+HitShader: 0ABEFF:Skyrim.esm
+MinimumSkillLevel: 100
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  ActorValue: Health
+  Type: Absorb
+Projectile: 0008C3:AncientBloodII.esl
+CastType: FireAndForget
+TargetType: Aimed
+CastingArt: 0008EC:AncientBloodII.esl
+HitEffectArt: 074795:Skyrim.esm
+SkillUsageMultiplier: 10
+DualCastScale: 1
+ImageSpaceModifier: 000846:Ancient Blood II - Enderal.esp
+CastingSoundLevel: Normal
+Sounds:
+- Sound: 03C8F8:Skyrim.esm
+- Type: Charge
+  Sound: 03EDD5:Skyrim.esm
+- Type: Ready
+  Sound: 03F1F0:Skyrim.esm
+- Type: Release
+  Sound: 0008F8:AncientBloodII.esl
+Description:
+  TargetLanguage: English
+  Value: Absorbs <mag> points of Health per second for <dur> seconds. Target takes <180> damage every <6> seconds.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasMagicEffectConditionData
+    MagicEffect: 00087B:AncientBloodII.esl

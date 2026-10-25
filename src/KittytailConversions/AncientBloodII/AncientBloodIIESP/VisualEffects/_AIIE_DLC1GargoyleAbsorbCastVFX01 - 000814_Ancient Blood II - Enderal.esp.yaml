@@ -1,0 +1,9 @@
+FormKey: 000814:Ancient Blood II - Enderal.esp
+VersionControl: 5468178
+EditorID: _AIIE_DLC1GargoyleAbsorbCastVFX01
+FormVersion: 43
+Version2: 2
+EffectArt: 0ABEF9:Skyrim.esm
+Shader: 000813:Ancient Blood II - Enderal.esp
+Flags:
+- RotateToFaceTarget

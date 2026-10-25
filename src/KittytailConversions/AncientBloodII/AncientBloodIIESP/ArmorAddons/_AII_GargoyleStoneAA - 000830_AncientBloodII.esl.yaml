@@ -1,0 +1,24 @@
+FormKey: 000830:AncientBloodII.esl
+EditorID: _AII_GargoyleStoneAA
+BodyTemplate:
+  FirstPersonFlags:
+  - Head
+  - Body
+  ArmorType: Clothing
+  ActsLike44: True
+Race: 000910:AncientBloodII.esl
+Priority:
+  Male: 0
+  Female: 0
+WeightSliderEnabled:
+  Male: False
+  Female: False
+Unknown2: 17
+WorldModel:
+  Male:
+    File: AncientBlood\GargoyleActor_Stone.nif
+    Data: 0x020000000000000000000000
+  Female:
+    File: AncientBlood\GargoyleActor_Stone.nif
+    Data: 0x020000000000000000000000
+FootstepSound: 000821:Ancient Blood II - Enderal.esp

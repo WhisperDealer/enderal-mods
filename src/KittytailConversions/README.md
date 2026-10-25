@@ -13,7 +13,11 @@ replacement.
 
 | Mod | Original plugin | Patch | Status |
 |---|---|---|---|
-| [Holy Templar Magic](https://www.nexusmods.com/skyrimspecialedition/mods/113360) (v1.5) | `Lightpower.esl` | `Holy Templar Magic - Enderal.esp` | builds and verifies; **not yet tested in-game** |
+| [Holy Templar Magic](https://www.nexusmods.com/skyrimspecialedition/mods/113360) (v1.5) | `Lightpower.esl` | `Holy Templar Magic - Enderal.esp` | **working in-game** (user-tested 2026-10-25) |
+| [Ancient Blood Magic II](https://www.nexusmods.com/skyrimspecialedition/mods/115106) (v1.63) | `AncientBloodII.esl` | `Ancient Blood II - Enderal.esp` | builds and verifies; **not yet tested in-game** |
+
+Shared code lives in `tools/KittytailCommon.ps1`: the cached FormKey index over `reference/base`,
+the converter that collapses localized strings to English, and the list and block removers.
 
 ## Adding the next mod
 
@@ -22,12 +26,20 @@ replacement.
 2. Run the kill-checks from `.claude/agents/skyrim-to-enderal-porter.md`: HEDR at offset 30, SKSE
    DLLs, BSA script names against `reference/base/EnderalScripts`, then resolve every external
    FormKey against `reference/base/Skyrim` + `EnderalFS` **and** the `*Real` vanilla trees.
-3. Copy `HolyTemplarMagic/tools/` as the starting point: one generator that wipes and rebuilds the
-   patch tree, plus one verifier.
+3. Decide **substitute or copy** for the dead DLC references. Kittytail's mods lean heavily on
+   Dawnguard's effects. Enderal's `Dawnguard.esm` is a stub, but **the assets ship with every
+   Enderal SE install**, inside its copies of the SE `Skyrim - *.bsa` archives. So:
+   - a handful of visuals with an obvious Enderal equivalent → **substitute**
+     (`HolyTemplarMagic/tools/`, the simpler shape);
+   - effects that *are* the mod (bats, gargoyles) → **copy the records** into the patch from
+     `reference/base/*Real` (`AncientBloodII/tools/`). Run its verifier with `-GameData`, which
+     proves every copied mesh and sound exists.
+   Voice types are the exception: the engine finds voice files by plugin name, so a copied voice type
+   is silent. Substitute an Enderal `Cr*Voice` instead.
 4. **Pick a merchant hook no other release in this repo overrides.** Two patches here that override
-   the same `<Merchant>_CustomMerchandise` would delete each other's stock. Holy Templar Magic owns
-   `HaldaHammerschlag_CustomMerchandise`. Apocalypse and Triumvirate own 13 more, and Apocalypse also
-   owns the four `_00E_SpellBooksLoot*` lists. That last point is why no patch here injects into loot lists.
+   the same `<Merchant>_CustomMerchandise` would delete each other's stock. CLAUDE.md lists which
+   release owns which; check the list with the `grep` there rather than trusting it. Apocalypse also
+   owns the four `_00E_SpellBooksLoot*` lists, which is why no patch here injects into loot lists.
 5. Add the plugin and its assets to the `Kittytail Conversions` release in `build/manifest.json`,
    staged under `<Mod>/`, and add a `<plugin>` to `build/staging/Kittytail Conversions/fomod/ModuleConfig.xml`.
 
@@ -63,12 +75,57 @@ powershell -File src\KittytailConversions\HolyTemplarMagic\tools\verify-patch.ps
 No strings needed renaming. The mod names no Elder Scrolls gods, and Enderal's own spells use
 "Undead" (Turn Undead, Bane of the Undead).
 
-### Not yet established
+### Status
 
-- **In-game.** The patch builds, the header reads HEDR 1.70 / ESL / masters Skyrim + FS +
-  Lightpower, and all 524 emitted FormKeys resolve. Nobody has cast these spells in Enderal yet.
-  Test the six spells' visuals, Consecrate Dead's ash pile and fever charge, Halda's stock (vendor
-  stock is cached in the save, so use a new game or wait out the 2-day restock), and a Sun Temple
-  guard casting Hallowed Flare.
+- **In-game: reported working** in a modlist on 2026-10-25, after a visit to Halda in the Sun Temple.
+  Which of these the test covered was not recorded: the six spells' visuals, Consecrate Dead's ash
+  pile and fever charge, Halda's stock, and a Sun Temple guard casting Hallowed Flare. The build side
+  is verified: HEDR 1.70 / ESL / masters Skyrim + FS + Lightpower, all 524 FormKeys resolve.
 - **Permissions.** Nexus blocked an automated read of the permissions tab. The patch redistributes
   nothing of Kittytail's, but confirm the terms before publishing anything derived.
+
+## Ancient Blood Magic II (`AncientBloodII/`)
+
+Fourteen tomes of blood and vampire magic: nine Elementalism (Destruction) spells, three Entropy
+(Conjuration) summons and two lesser powers, Adept to Master. ~290 records, ESL, HEDR **1.70**, 8
+`_AII_` scripts in its BSA with **no** collision with Enderal's script names.
+
+```powershell
+& $Tools.spriggitCli serialize --InputPath "<download>\AncientBloodII.esl" `
+  --OutputPath reference\mods\AncientBloodII\AncientBloodIIESL --GameRelease EnderalSE `
+  --PackageName Spriggit.Yaml.Skyrim --PackageVersion 0.40.0
+powershell -File src\KittytailConversions\AncientBloodII\tools\01-generate-patch.ps1
+powershell -File src\KittytailConversions\AncientBloodII\tools\verify-patch.ps1 -GameData "<Enderal>\Data"
+```
+
+The first run builds `reference/kittytail-formkey-index.tsv` (a few minutes). Pass `-Rebuild` to
+`Get-KtFormKeyIndex` after re-serializing `reference/base`.
+
+### What was broken in Enderal, and what the patch does
+
+| Problem in the original | Evidence | Patch |
+|---|---|---|
+| **The mod's identity was built on Dawnguard records.** The bat swarms, the vampire-drain impact set, the bat projectiles and image space, the Stone Gargoyle's race abilities, body part data, class, combat style and footsteps, and the Eternal Legion's dragonbone first-person models and arrows are all Dawnguard records, with a few from Dragonborn. Enderal stubs every one | 189 of the mod's 291 records are reachable from the player's spells. They reach **63** dead references, resolved against `reference/base/*Real` | **70 records copied into the patch** (`0x810–0x855`, EditorIDs prefixed `_AIIE_`) from Bethesda's originals, de-localized to English, following their own references until the set closes. `verify-patch.ps1 -GameData` confirms all 45 of their mesh/sound paths ship with Enderal |
+| Three vanilla records Enderal deleted are things the player sees: the tomes' inventory art (`HighPolyBookMQ103`), the Legion sword's enchantment, and the doom-atronach absorb effect that makes the Stone Gargoyle "resilient against magical threats" | absent from `reference/base/Skyrim` | Copied the same way |
+| Dawnguard voice types on the gargoyle, the Herald of Torment and the Legion | the engine finds voice files by plugin name, so a copied voice type would be silent | `CrTrollVoice`, `CrChaurusVoice`, `CrDraugrVoice` |
+| Sound templates pointing at Dawnguard's `AudioTemplateSkeletonMistman` and vanilla's deleted `AudioTemplateWerewolf` | Enderal has **no** `AudioTemplate*` NPCs | Template blocks removed from the 7 summons; they use their race's sounds |
+| Dragonbone arrows at **25** damage on the Legion archers | Enderal's whole arrow ladder tops out at 10 (`_30E_AeternaArrow`) | 10 |
+| **Distribution was dead.** The inject quest wrote 4 tomes into two vanilla loot lists that don't exist. A Castle Volkihar vendor chest held 3. All 14 drop from two bosses placed in the **Soul Cairn and Castle Volkihar courtyard**, which don't exist in Enderal either | `10FACA`, `04C165` absent; `DLC01SoulCairn`, `DLC1VampireCastleCourtyard` are Dawnguard worldspaces | All 14 tomes stocked by the **Fence in the Undercity barracks** (`_00E_UndercityHehler01`, 1,450-gold chest) through its empty `UndercityHehler01_CustomMerchandise 030306` hook. FS, EGO and Leveling Redone all keep that hook in the chest. The bosses are left alone: unreachable, harmless |
+| The inject script also calls `Game.GetPlayer().AddPerk()`, and that perk is what lets The Eternal Legion summon three soldiers | `_aii_injectscript.psc` | **Not** stripped (the Holy Templar approach would have deleted the perk). Its two dead list properties point at an empty sink list `_AIIE_InjectSink 0x800`, so the script runs cleanly and the perk still lands |
+| Mana costs up to **1038** (The Eternal Legion) | Enderal's ceiling is 310 | Per-tier ratio (Adept 0.49, Expert 0.33, Master 0.215): Adept 70–195, Expert 95–175, Master 115 / 225. Cascading Torment is Concentration, so it is set to **50/s**, Enderal's Expert Elementalism concentration ceiling (Flame Bite 40, Grounding 50). The two lesser powers stay at 150 / 300 |
+| Tome prices 400–1800 | Enderal's 20–350 | 180–340 |
+| One summon named **"Swordstress of Oblivion"** | Oblivion is an Elder Scrolls plane | "Swordstress of Ruin" |
+
+No Arcane Fever: every heal in the mod is an Aimed drain or absorb, and Enderal's fever effect has no
+precedent on Aimed spells (see CLAUDE.md). **No NPC distribution**: Kittytail's ini gives the spells
+to vampires, and Enderal has no vampire, blood-mage or necromancer faction to aim at. The original
+ini stays harmless.
+
+### Not yet established
+
+- **In-game**: the bat effects and swarms, the Stone Gargoyle (rendering, abilities, footsteps),
+  the Herald of Torment, The Eternal Legion summoning three soldiers with working bows, the Fence's
+  stock, and Bats Form / Harvest of Bats as lesser powers.
+- **Copied records** are Bethesda's own data, unchanged apart from FormIDs and strings. They have
+  never been tested *as records in a third-party ESL on Enderal*; the asset check proves the files
+  exist, not that the effects look right.

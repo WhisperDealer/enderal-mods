@@ -1,0 +1,9 @@
+FormKey: 00082E:Ancient Blood II - Enderal.esp
+VersionControl: 2453529
+EditorID: _AIIE_DLC1BatsAbsorbCastPointFX01
+FormVersion: 43
+Model:
+  File: DLC01\Magic\DLC1BatsAbsorbCastPointFX01.nif
+  Data: 0x020000000000000000000000
+Type:
+- MagicCasting

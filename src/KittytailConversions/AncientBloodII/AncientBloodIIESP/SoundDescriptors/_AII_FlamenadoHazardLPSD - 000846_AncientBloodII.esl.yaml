@@ -1,0 +1,13 @@
+FormKey: 000846:AncientBloodII.esl
+EditorID: _AII_FlamenadoHazardLPSD
+Type: Standard
+Category: 0172A1:Skyrim.esm
+SoundFiles:
+- fx\mag\flames\mag_flames_fire_lpm.wav
+OutputModel: 000837:Ancient Blood II - Enderal.esp
+LoopAndRumble:
+  Unknown: 1
+  Loop: EnvelopeFast
+  RumbleValues: 1
+PercentFrequencyShift: 5
+Priority: 128

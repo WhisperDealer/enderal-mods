@@ -135,6 +135,43 @@ with it. This is the single most common source of "the list doesn't launch" repo
 > loads in Enderal with no user action at all; its references into the stub simply resolve to nothing.
 > Note also that the engine's real order puts the DLC **before** `Update.esm`, which is not the order
 > `loadorder.txt` shows.
+>
+> ### Enderal ships the DLC ASSETS, only the RECORDS are stubbed
+>
+> **[verified 2026-10-25]** The stub ESMs hold no records, but Dawnguard's and Dragonborn's meshes,
+> textures, animations and sounds are all in Enderal's `Data`, because Skyrim SE folded the DLC into
+> its base archives and Enderal ships those archives. By path, counting `\dlc01\` alone:
+>
+> | Archive | `\dlc01\` files |
+> |---|---|
+> | `Skyrim - Meshes0.bsa` | 1574 |
+> | `Skyrim - Animations.bsa` | 608 |
+> | `Skyrim - Sounds.bsa` | 498 |
+> | `Skyrim - Textures3/4/0.bsa` | 453 / 110 / 45 |
+> | `E - Meshes.bsa` / `E - Textures1.bsa` | 304 / 50 |
+>
+> So a ported mod's dead DLC reference has a third option besides "leave it dangling" and
+> "substitute an Enderal record". You can **copy the record itself** into your plugin from
+> `reference/base/DawnguardReal` (or `DragonbornReal` / `SkyrimReal`), as a new FormID. Its asset
+> paths resolve, and every Enderal SE player has the files. Ancient Blood Magic II's patch does this
+> for 70 records (vampire-bat effects, gargoyle race data, dragonbone gear) and proves every copied
+> asset path against the archives (`src/KittytailConversions/AncientBloodII/tools/`). Four rules
+> from doing it:
+>
+> - **Follow the closure.** A copied record names other dead records; copy those too until nothing
+>   dead is left, and assert the final count so an upstream change cannot grow it silently.
+> - **De-localize.** The real masters are `Localized`, so every string is a nine-language `Values:`
+>   list. Collapse it to the English `Value:` (and `Value: ''` for empty strings, which is how
+>   Spriggit writes them back) or a non-localized plugin carries the wrong shape.
+> - **Never copy a voice type.** The engine looks voice files up under
+>   `Sound\Voice\<plugin>\<VoiceType>\`, so a copied `VTYP` in your plugin finds nothing.
+>   Substitute one of Enderal's `Cr*Voice` records. Likewise Enderal has **no** `AudioTemplate*`
+>   NPCs: drop a dead sound-template block and the race's sounds apply.
+> - **Re-check balance on copied gear.** `DLC1DragonboneArrow` is 25 damage against Enderal's arrow
+>   ceiling of 10. Copied data carries vanilla's numbers.
+>
+> Substitution is still the better choice when Enderal has an obvious equivalent (Holy Templar Magic's
+> hand effects became Turn Undead's). Copy when the DLC record *is* the feature.
 
 **Stock load order** (`%LOCALAPPDATA%\Enderal Special Edition\plugins.txt`) **[verified]**:
 
@@ -626,15 +663,29 @@ Currently released:
 | `RelentlessSword` | `Relentless Sword - Enderal.esp` | johnskyrim's *Relentless Sword SE* rebuilt for Enderal: clean masters (his plugin masters the three DLC stubs), shadowsteel-tier stats, blueprint + Handicraft-50 gating instead of a Skyforge recipe that could never fire, and FS-style dismantle recipes. **New content shipped as a standalone plugin, carrying no assets** — the player installs his mod for the meshes and disables his ESP |
 | `BiggieTraits` | `Biggie Traits.esp` | Shazdeh's Fallout-style trait system, converted for Enderal — form version lowered to 1.70, DLC masters dropped, and the traits with no Enderal target removed (the five Skyrim city houses, standing stones, Divine shrines, shouts, vanilla perk points). 30 of 38 traits survive. A **replacement plugin**; its generators live in `src/BiggieTraits/tools/` |
 | `Triumvirate` | `Triumvirate - Mage Archetypes.esp` | Enai Siaion's five mage archetypes (75 spells), converted for Enderal — DLC masters dropped, Elder Scrolls nouns renamed, and distribution rebuilt from a script that made 76 calls against absent Skyrim receivers onto ten Enderal merchant chests, with Expert/Master confined to Ark and the Undercity. A **replacement plugin** (its two BSAs are named after the plugin); generators in `src/Triumvirate/tools/`, still on `feat/triumvirate-conversion` |
-| `KittytailConversions` | one `<Mod> - Enderal.esp` per mod — so far `Holy Templar Magic - Enderal.esp` | Kittytail's Skyrim magic mods, one **ESL override patch** per mod in a single FOMOD release. Holy Templar Magic (`Lightpower.esl`) loads as shipped (HEDR 1.70), so it is patched, not replaced: its Dawnguard-only visuals repointed onto vanilla's Turn Undead / Bane of the Undead effects, costs and prices rescaled, its self-heal taxed with Arcane Fever, and its dead inject-script distribution replaced by Halda Stronghand's Sun Temple hook (`HaldaHammerschlag_CustomMerchandise 0302FF`, now **owned by this release**). Generators in `src/KittytailConversions/HolyTemplarMagic/tools/`; see `src/KittytailConversions/README.md` |
+| `KittytailConversions` | one `<Mod> - Enderal.esp` per mod: `Holy Templar Magic - Enderal.esp`, `Ancient Blood II - Enderal.esp` | Kittytail's Skyrim magic mods, one **ESL override patch** per mod in a single FOMOD release where the user ticks only the mods they have. Both originals load as shipped (HEDR 1.70), so they are patched, not replaced. **Holy Templar Magic** *substitutes* its Dawnguard visuals with vanilla's Turn Undead family and sells its tomes through Halda (Sun Temple). It is reported working in-game. **Ancient Blood Magic II** *copies* 70 dead Dawnguard/Dragonborn/vanilla records into the patch (see "Enderal ships the DLC assets" above) and sells its 14 tomes through the Undercity Fence. Generators and verifiers in `src/KittytailConversions/<Mod>/tools/`, shared code in `src/KittytailConversions/tools/`; see `src/KittytailConversions/README.md` |
 
 > **Merchant hooks and loot lists are shared ground between this repo's own releases.** Two
 > plugins here that both override the same `<Merchant>_CustomMerchandise` (or `_00E_SpellBooksLoot*`)
-> silently delete each other's entries for any player running both. Taken so far: Apocalypse holds
-> the four `_00E_SpellBooksLoot*` lists, `00E_ScrollsLowChance` and six hooks (Barnabas, Gabrielle
-> Funkenfrost, Milbert, Ora, Tarhutie, Turious). Triumvirate holds seven (Akatyr, ArkHofSchmied,
-> BashHole, BibliothekarMarius, SisterEnvy, UndercityHehler02, Vexin). Kittytail Conversions holds Halda. **Pick an
-> unclaimed one** for any new release, and add it here.
+> silently delete each other's entries for any player running both. Taken as of 2026-10-25:
+>
+> | Release | Enderal leveled lists it overrides |
+> |---|---|
+> | Apocalypse | `_00E_SpellBooksLootA–D`, `00E_ScrollsLowChance`; hooks Barnabas, GabrielleFunkenfrst, MilbertFuchshand, OraSteinschlag, Tarhutie, TuriousFlammentrunk |
+> | Triumvirate | hooks Akatyr, ArkHofSchmied, BashHole, BibliothekarMarius, SisterEnvy, UndercityHehler02, Vexin, **and all three Shrouded Mages** (`Wildmage_Duneville`, `Wildmage_FrostcliffTavern`, `Wildmage_Undercity`) |
+> | Relentless Sword | `_00ETraderCraftingPlansC` |
+> | Kittytail Conversions | hooks HaldaHammerschlag (Holy Templar Magic), UndercityHehler01 (Ancient Blood Magic II) |
+>
+> **Regenerate the list rather than trusting it**. An earlier version of this table was built
+> from a name pattern that skipped hook names containing underscores, and it missed Triumvirate's
+> three Shrouded Mages:
+>
+> ```bash
+> find src -path '*ESP/LeveledItems/*' \( -name '*_Skyrim.esm.yaml' -o -name '*_Enderal - Forgotten Stories.esm.yaml' \) \
+>   | sed -E 's#^src/([^/]+)/.*/([^/]+) - [0-9A-F]{6}_.*#\2: \1#' | sort
+> ```
+>
+> **Pick an unclaimed one** for any new release, and add it here.
 
 > **B612 is deliberately NOT shipped here.** It is a dependency of Biggie Traits and its `b612.esp`
 > is form version 1.71, so a conversion was written — and then dropped, because **BEES** loads the

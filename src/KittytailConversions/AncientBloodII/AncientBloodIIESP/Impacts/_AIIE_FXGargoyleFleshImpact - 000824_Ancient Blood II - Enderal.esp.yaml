@@ -1,0 +1,25 @@
+FormKey: 000824:Ancient Blood II - Enderal.esp
+VersionControl: 5468178
+EditorID: _AIIE_FXGargoyleFleshImpact
+FormVersion: 43
+Version2: 1
+Model:
+  File: Effects\ImpactEffects\BloodSprayWereWolfImpact01.nif
+  Data: 0x020000000000000000000000
+Duration: 0.25
+Orientation: ProjectileReflection
+AngleThreshold: 15
+PlacementRadius: 16
+SoundLevel: Normal
+Decal:
+  MinWidth: 32
+  MaxWidth: 60
+  MinHeight: 32
+  MaxHeight: 60
+  Depth: 32
+  Shininess: 4
+  ParallaxScale: 1
+  ParallaxPasses: 4
+  Color: '#00FFFFFF'
+TextureSet: 01F827:Skyrim.esm
+Sound1: 000825:Ancient Blood II - Enderal.esp
