@@ -20,7 +20,14 @@ $ErrorActionPreference = 'Stop'
 #      reference/mods/ that overrides that chest**. A hook nobody's chest contains is inert, and
 #      this is exactly where a late-loading overhaul could quietly cut us out.
 #   3. Every entry resolves to a Book in our own tree.
-#   4. The 163 distributed tomes are covered exactly once each (12 summons are withheld pending in-game testing; see 00-cut-summons.ps1).
+#   4. Our OWN merchant - the Riverville Shrouded Mage (18-shrouded-mage-riverville.ps1) - is wired
+#      end to end: a Vendor faction whose MerchantContainer is a ref placed in our tree, whose base is
+#      our container, which the NPC carrying that faction stands in the same cell as.
+#   5. 116 tomes are stocked exactly once each: 110 in hooks, 6 in our own chest. The other 47 of the
+#      163 distributed tomes are Entropy/Psionics above Novice and are loot-only for now; 12 summons
+#      are withheld entirely (00-cut-summons.ps1).
+#   6. No Entropy (C) or Psionics (I) tome is on a respectable shelf. They are forbidden schools in
+#      Enderal; only Barnabas in the Undercity and the Shrouded Mages may carry them.
 
 $repo = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $PSCommandPath)))
 $tree = Join-Path $repo 'src\Apocalypse\ApocalypseESP'
@@ -102,11 +109,60 @@ foreach ($h in $hooks) {
     }
 }
 
+# ---------------------------------------------------------------- 4. our own merchants
+$apoc = 'Apocalypse - Magic of Skyrim.esp'
+$ownVendors = @(Get-ChildItem (Join-Path $tree 'Factions') -Filter "ZP_Apoc_*_$apoc.yaml" -File |   # ours, not Enai's (his Kyrgar is a vendor too)
+    Where-Object { (Read-Text $_.FullName) -match '(?m)^- Vendor\s*$' })
+if ($ownVendors.Count -ne 1) { throw "expected 1 vendor faction of our own (the Riverville Shrouded Mage), found $($ownVendors.Count)" }
+$cellText = @{}
+foreach ($c in Get-ChildItem (Join-Path $tree 'Cells') -Recurse -Filter 'RecordData.yaml' -File) { $cellText[$c.FullName] = Read-Text $c.FullName }
+foreach ($vf in $ownVendors) {
+    $t   = Read-Text $vf.FullName
+    $eid = [regex]::Match($t, '(?m)^EditorID: (.+?)\s*\r?\n').Groups[1].Value
+    $ffk = [regex]::Match($t, '(?m)^FormKey: (.+?)\s*\r?\n').Groups[1].Value
+    $cref = [regex]::Match($t, '(?m)^MerchantContainer: (.+?)\s*\r?$').Groups[1].Value
+    $loc  = [regex]::Match($t, '(?m)^    Link: (.+?)\s*\r?$').Groups[1].Value
+    if (-not $cref) { throw "$eid has no MerchantContainer" }
+    # the chest ref, and the cell it is placed in
+    $hit = @($cellText.Keys | Where-Object { $cellText[$_] -match "(?m)^  FormKey: $([regex]::Escape($cref))\s*\r?$" })
+    if ($hit.Count -ne 1) { throw "$eid's chest ref $cref is placed in $($hit.Count) cells of our tree" }
+    $ct = $cellText[$hit[0]]
+    $cellFk = [regex]::Match($ct, '(?m)^FormKey: (.+?)\s*\r?$').Groups[1].Value
+    if ($cellFk -ne $loc) { throw "$($eid): VendorLocation $loc is not the cell its chest is in ($cellFk)" }
+    $blk = [regex]::Match($ct, "(?ms)^  FormKey: $([regex]::Escape($cref))\s*\r?\n(.*?)(?=^- MutagenObjectType: |\z)").Groups[1].Value
+    $base = [regex]::Match($blk, '(?m)^  Base: (.+?)\s*\r?$').Groups[1].Value
+    $cf = @(Get-ChildItem (Join-Path $tree 'Containers') -Filter "* - $($base -replace ':.*','')_$apoc.yaml" -File)
+    if ($cf.Count -ne 1) { throw "$eid's chest ref $cref has base $base, which is not a container of ours" }
+    # an NPC of ours carrying this faction must stand in the same cell
+    $npcs = @(Get-ChildItem (Join-Path $tree 'Npcs') -Filter "*_$apoc.yaml" -File |
+        Where-Object { (Read-Text $_.FullName) -match "(?m)^- Faction: $([regex]::Escape($ffk))\s*\r?$" })
+    if ($npcs.Count -ne 1) { throw "$eid is carried by $($npcs.Count) NPCs of ours, expected 1" }
+    $nfk = [regex]::Match((Read-Text $npcs[0].FullName), '(?m)^FormKey: (.+?)\s*\r?$').Groups[1].Value
+    if ($ct -notmatch "(?m)^  Base: $([regex]::Escape($nfk))\s*\r?$") { throw "$eid's NPC $nfk is not placed in the chest's cell" }
+    $ctext = Read-Text $cf[0].FullName
+    $crefs = @([regex]::Matches($ctext, '(?m)^    Item: (.+?)\s*\r?$') | ForEach-Object { $_.Groups[1].Value } |
+        Where-Object { $books.ContainsKey($_) })
+    foreach ($r in $crefs) {
+        if ($seen.ContainsKey($r)) { throw "$($books[$r].EditorID) stocked twice: $($seen[$r]) and $eid" }
+        $seen[$r] = $eid
+    }
+    $rows += [pscustomobject]@{ Hook = "$eid (own chest)"; Chest = ($cf[0].Name -split ' - ')[0]; Tomes = $crefs.Count
+        Priced = @($crefs | Where-Object { $books[$_].Value -and [int]$books[$_].Value -gt 0 }).Count; AlsoOvr = '-' }
+}
+
 $rows | Format-Table -AutoSize | Out-String | Write-Host
 
-# ---------------------------------------------------------------- 4. coverage
+# ---------------------------------------------------------------- 5. coverage
 $total = $seen.Keys.Count
-if ($total -ne 163) { throw "$total tomes stocked, expected 163" }
+if ($total -ne 116) { throw "$total tomes stocked, expected 116 (110 in hooks + 6 at the Riverville Shrouded Mage)" }
+
+# ---------------------------------------------------------------- 6. forbidden schools stay off respectable shelves
+$shady = @('Barnabas_CustomMerchandise') + @($ownVendors | ForEach-Object { [regex]::Match((Read-Text $_.FullName), '(?m)^EditorID: (.+?)\s*\r?\n').Groups[1].Value })
+foreach ($r in $seen.Keys) {
+    if ($books[$r].EditorID -match '^WB_[CI]' -and $shady -notcontains $seen[$r]) {
+        throw "$($books[$r].EditorID) is a forbidden-school tome sold by $($seen[$r])"
+    }
+}
 $unpriced = @($seen.Keys | Where-Object { -not $books[$_].Value -or [int]$books[$_].Value -le 0 })
 if ($unpriced.Count -gt 0) { throw "$($unpriced.Count) tome(s) have no gold value - a merchant cannot sell them" }
 
@@ -115,6 +171,7 @@ $owned = @(Get-ChildItem (Join-Path $tree 'Containers') -Filter '*.yaml' -File -
     Where-Object { (Read-Text $_.FullName) -notmatch '(?m)^FormKey: [0-9A-F]{6}:Apocalypse - Magic of Skyrim\.esp' })
 if ($owned.Count -gt 0) { throw "overriding $($owned.Count) container(s) of a master - the hooks exist to avoid that" }
 
-"proof: $total/163 tomes stocked across $($hooks.Count) UseAll hooks, each exactly once, all priced"
+"proof: $total tomes stocked exactly once, all priced: $($hooks.Count) UseAll hooks + $($ownVendors.Count) merchant chest of our own"
+"       no Entropy/Psionics tome at a respectable merchant (Barnabas and the Shrouded Mage only)"
 "       every hook is carried by its chest in base Enderal AND in every reference/mods override of it"
 "       0 container records of any master overridden"

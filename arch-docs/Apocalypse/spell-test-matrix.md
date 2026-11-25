@@ -78,6 +78,13 @@ Nothing below is worth doing until these are green. Each is one launch.
       errors no. It runs the identical loop against its own six `_Replenish` FormLists, so it is
       a separate path from the automatic one and has to be checked separately.
 - [x] All six merchants stock Apocalypse tomes (see the shop table below).
+- [ ] **The Riverville Shrouded Mage** (`coc FlusshaimTavern`, The Drunken Bee) is sitting at the
+      corner bench, and **his face renders** -- no dark-face bug. He has no FaceGen of his own and
+      borrows the Duneville mage's through a Traits template; this is the one part a build cannot prove.
+- [ ] He speaks with the Shrouded Mage voice and his barter line opens his shop: FS's forbidden
+      tomes plus the six Novice Entropy/Psionics tomes. With BOTH Psionics and Entropy below 15 he
+      refuses with FS's "not enough entropy" message instead -- that is FS's gate on every Shrouded Mage.
+- [ ] No Entropy or Psionics tome at Milbert, Tarhutie, Ora, Torius or Emberlord and Fireflash.
 - [x] `player.additem XX1C1E71 5` ... `XX1C1E75 5` each yield Apocalypse tomes, and
       `player.additem XX1C1E76 10` yields Apocalypse scrolls. `additem` resolves a leveled
       list on the spot, so this proves loot distribution without waiting out `iDaysToRespawnVendor: 2`.
@@ -157,12 +164,17 @@ unrelated to the conversion. Harmless -- the victim is still released.
 
 | `coc` target | Shop | Gold | Tier | Tomes | Hook |
 |---|---|---:|---|---:|---|
-| `CapitalCityMagierkram` | Ark -- Emberlord and Fireflash | 1800 | Master | 45 | `GabrielleFunkenfrst_CustomMerchandise` |
-| `SuntempleAlchemy` | Sun Temple -- Torius Flameling | 1430 | Expert | 39 | `TuriousFlammentrunk_CustomMerchandise` |
+| `CapitalCityMagierkram` | Ark -- Emberlord and Fireflash | 1800 | Master (no Entropy/Psionics) | 30 | `GabrielleFunkenfrst_CustomMerchandise` |
+| `SuntempleAlchemy` | Sun Temple -- Torius Flameling | 1430 | Expert (no Entropy/Psionics) | 27 | `TuriousFlammentrunk_CustomMerchandise` |
 | `UndercityBarracks2Barnabas` | Undercity -- Barnabas | 1050 | Adept (Mentalism/Entropy/Elementalism) | 19 | `Barnabas_CustomMerchandise` |
-| -- | Ark -- Ora Stonehand | 980 | Adept (Psionics/Light Magic) | 14 | `OraSteinschlag_CustomMerchandise` |
-| -- | Riverville -- Tarhutie | 630 | Apprentice | 28 | `Tarhutie_CustomMerchandise` |
-| -- | Ark -- Milbert Foxhand | 530 | Novice | 15 | `MilbertFuchshand_CustomMerchandise` |
+| -- | Ark -- Ora Stonehand | 980 | Adept (Light Magic) | 7 | `OraSteinschlag_CustomMerchandise` |
+| -- | Riverville -- Tarhutie | 630 | Apprentice (no Entropy/Psionics) | 18 | `Tarhutie_CustomMerchandise` |
+| -- | Ark -- Milbert Foxhand | 530 | Novice (no Entropy/Psionics) | 9 | `MilbertFuchshand_CustomMerchandise` |
+| `FlusshaimTavern` | Riverville -- Shrouded Mage, The Drunken Bee | 707 | Novice Entropy + Psionics | 6 | own chest `ZP_Apoc_Merchant_Wildmage_RivervilleChest` |
+
+Entropy and Psionics are forbidden schools in Enderal, so the respectable shops sell neither; only
+Barnabas and the Shrouded Mage do. Entropy and Psionics tomes above Novice that Barnabas does not
+carry are loot-only for now.
 
 The three shops without a `coc` target are outdoor Ark and Riverville market stalls -- their chests
 are placed in `CapitalCityMarketArea`, `CapitalCityStrangerArea` and `Vyn` rather than an interior.
@@ -316,24 +328,24 @@ player.advskill destruction 100000 first, so magnitudes read at full skill.
 
 player.advskill conjuration 100000 first, so magnitudes read at full skill.
 
-### Novice (000) -- Ark - Milbert Foxhand
+### Novice (000) -- Riverville - Shrouded Mage
 
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Azure Reconstruction** | `player.addspell XX088694` | Concentration / TargetActor | 14 | 40 | Ark - Milbert Foxhand | Heal a conjured minion 10 points per second. | DEAD-SCRIPT-PROP |
-| [ ] | **Bag of Rats** | `player.addspell XX16162D` | FireAndForget | 45 | 30 | Ark - Milbert Foxhand | Summons a Skeever for 30 seconds. | DEAD-REF |
-| [ ] | **Consuming Power** | `player.addspell XX016F92` | FireAndForget / Aimed | 80 | 45 | Ark - Milbert Foxhand | Allied summoned or reanimated minion gains 75% extra attack damage for 10 seconds, then dies. |  |
+| [ ] | **Azure Reconstruction** | `player.addspell XX088694` | Concentration / TargetActor | 14 | 40 | Riverville - Shrouded Mage | Heal a conjured minion 10 points per second. | DEAD-SCRIPT-PROP |
+| [ ] | **Bag of Rats** | `player.addspell XX16162D` | FireAndForget | 45 | 30 | Riverville - Shrouded Mage | Summons a Skeever for 30 seconds. | DEAD-REF |
+| [ ] | **Consuming Power** | `player.addspell XX016F92` | FireAndForget / Aimed | 80 | 45 | Riverville - Shrouded Mage | Allied summoned or reanimated minion gains 75% extra attack damage for 10 seconds, then dies. |  |
 
-### Apprentice (025) -- NOT SOLD / Riverville - Tarhutie
+### Apprentice (025) -- NOT SOLD
 
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Conjure Cat Totem** | `player.addspell XX027144` | FireAndForget / TargetLocation | 115 | 85 | Riverville - Tarhutie | Summons a ancient totem spirit for 60 seconds. It changes between warrior and cat form to heal. (Max. <1>) |  |
-| [ ] | **Conjure Deadeye Captain** | `player.addspell XX037E17` | FireAndForget / TargetLocation | 120 | 95 | Riverville - Tarhutie | Summons a Deadeye Captain for 60 seconds. Activate a corpse to store it. Activate the Captain to dredge it up. |  |
+| [ ] | **Conjure Cat Totem** | `player.addspell XX027144` | FireAndForget / TargetLocation | 115 | 85 | - | Summons a ancient totem spirit for 60 seconds. It changes between warrior and cat form to heal. (Max. <1>) |  |
+| [ ] | **Conjure Deadeye Captain** | `player.addspell XX037E17` | FireAndForget / TargetLocation | 120 | 95 | - | Summons a Deadeye Captain for 60 seconds. Activate a corpse to store it. Activate the Captain to dredge it up. |  |
 | [ ] | **Conjure Entropic Churl** | `player.addspell XX012359` | FireAndForget / TargetLocation | 110 | 145 | - | Summons an Entropic Churl for 60 seconds. When killed, an Entropic Churl is summoned under control of the killer. | NOT-SOLD |
 | [ ] | **Elemental Mark** | `player.addspell XX02CD7E` | FireAndForget / Aimed | 50 | 90 | - | Marks a target for 10 seconds. The mark detonates when the target is struck by a summoned or reanimated minion, dealing <30> magic damage in a <15> foot area. | NOT-SOLD |
-| [ ] | **Power of the Master** | `player.addspell XX01857E` | FireAndForget | 130 | 170 | Riverville - Tarhutie | Casts the (beneficial self-targeted) spell in your left hand on all nearby summoned or reanimated minions. |  |
-| [ ] | **Soul Cloak** | `player.addspell XX140B03` | FireAndForget | 100 | 95 | Riverville - Tarhutie | For 60 seconds, nearby enemies within 15 feet fill a soul gem on death. |  |
+| [ ] | **Power of the Master** | `player.addspell XX01857E` | FireAndForget | 130 | 170 | - | Casts the (beneficial self-targeted) spell in your left hand on all nearby summoned or reanimated minions. |  |
+| [ ] | **Soul Cloak** | `player.addspell XX140B03` | FireAndForget | 100 | 95 | - | For 60 seconds, nearby enemies within 15 feet fill a soul gem on death. |  |
 
 ### Adept (050) -- NOT SOLD / Undercity - Barnabas
 
@@ -347,34 +359,34 @@ player.advskill conjuration 100000 first, so magnitudes read at full skill.
 | [ ] | **Gank** | `player.addspell XX1A1B79` | FireAndForget / Aimed | 110 | 205 | Undercity - Barnabas | Summons all nearby allied minions within <100> feet to attack the target. |  |
 | [ ] | **Summoning Rune** | `player.addspell XX124EC5` | FireAndForget / TargetLocation | 90 | 150 | Undercity - Barnabas | Cast on a nearby surface, summons an opponent in front of you when triggered. |  |
 
-### Expert (075) -- NOT SOLD / Sun Temple - Torius Flameling
+### Expert (075) -- NOT SOLD
 
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Conjure Avenging Wraith** | `player.addspell XX017A8E` | FireAndForget / TargetLocation | 105 | 305 | Sun Temple - Torius Flameling | Summons an Avenging Wraith for 60 seconds. Its stats are equal to <Global=WB_Conjuration_ConjureAvengingWraith_Global_Mult>% of those of the opponent that last killed it (<Global=WB_Conjuration_ConjureAvengingWraith_Global_Health> Health, <Global=WB_Conjuration_ConjureAvengingWraith_Global_Magicka> Magicka, <Global=WB_Conjuration_ConjureAvengingWraith_Global_Stamina> Stamina). |  |
+| [ ] | **Conjure Avenging Wraith** | `player.addspell XX017A8E` | FireAndForget / TargetLocation | 105 | 305 | - | Summons an Avenging Wraith for 60 seconds. Its stats are equal to <Global=WB_Conjuration_ConjureAvengingWraith_Global_Mult>% of those of the opponent that last killed it (<Global=WB_Conjuration_ConjureAvengingWraith_Global_Health> Health, <Global=WB_Conjuration_ConjureAvengingWraith_Global_Magicka> Magicka, <Global=WB_Conjuration_ConjureAvengingWraith_Global_Stamina> Stamina). |  |
 | [ ] | **Conjure Entropic Champion** | `player.addspell XX0128DF` | FireAndForget / TargetLocation | 110 | 285 | - | Summons an Entropic Champion for 60 seconds. Its power attacks deal bonus damage and knock targets airborne. | NOT-SOLD |
 | [ ] | **Conjure Entropic Honor Guard** | `player.addspell XX0133D6` | FireAndForget / TargetLocation | 115 | 295 | - | Summons an Entropic Honor Guard for 60 seconds. It reduces enemy magic resistance within 15 feet by <25>%. | NOT-SOLD |
 | [ ] | **Conjure Entropic Mentor** | `player.addspell XX0C64B1` | FireAndForget / TargetLocation | 120 | 275 | - | Choose a magic school and summon an Entropic Mentor for 90 seconds. It does not fight, but offers training in the chosen school and the school improves <20>% faster. | NOT-SOLD |
-| [ ] | **Conjure Herne** | `player.addspell XX0128E8` | FireAndForget / TargetLocation | 120 | 305 | Sun Temple - Torius Flameling | Summons a Herne for 60 seconds. It is accompanied by <3> Spirit Wolves under its command. |  |
+| [ ] | **Conjure Herne** | `player.addspell XX0128E8` | FireAndForget / TargetLocation | 120 | 305 | - | Summons a Herne for 60 seconds. It is accompanied by <3> Spirit Wolves under its command. |  |
 | [ ] | **Conjure Sinistran Lord** | `player.addspell XX012370` | FireAndForget / TargetLocation | 105 | 270 | - | Summons a Sinistran Lord for 60 seconds. When summoned, drains all Magicka and has <200>% of this amount. It casts a deadly bolt that costs <150> Magicka. | NOT-SOLD |
-| [ ] | **Monarch Mark** | `player.addspell XX161621` | FireAndForget / Aimed | 90 | 245 | Sun Temple - Torius Flameling | Marks a target for 10 seconds. The mark detonates when the target is struck by a summoned or reanimated minion, dealing <60> magic damage in a <25> foot area. |  |
-| [ ] | **Oathbound Guardian** | `player.addspell XX018AE7` | FireAndForget / TargetActor | 125 | 330 | Sun Temple - Torius Flameling | Living ally is protected by an Oathbound Guardian under his or her command for 60 seconds. |  |
+| [ ] | **Monarch Mark** | `player.addspell XX161621` | FireAndForget / Aimed | 90 | 245 | - | Marks a target for 10 seconds. The mark detonates when the target is struck by a summoned or reanimated minion, dealing <60> magic damage in a <25> foot area. |  |
+| [ ] | **Oathbound Guardian** | `player.addspell XX018AE7` | FireAndForget / TargetActor | 125 | 330 | - | Living ally is protected by an Oathbound Guardian under his or her command for 60 seconds. |  |
 | [ ] | **Six Demon Bag** | `player.addspell XX161619` | FireAndForget | 120 | 240 | - | Summons a Bound Churl for 60 seconds. | NOT-SOLD |
 
-### Master (100) -- NOT SOLD / Ark - Emberlord & Fireflash
+### Master (100) -- NOT SOLD
 
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Banish Living** | `player.addspell XX092B91` | FireAndForget / TargetActor | 300 | 440 | Ark - Emberlord & Fireflash | Banish a living creature into the Sea of Eventualities. Items (except quest items) are lost forever. (Creatures banished: <Global=WB_Conjuration_BanishLiving_Global_Counter>) | DEAD-SCRIPT-PROP |
-| [ ] | **Conjure Battlemage** | `player.addspell XX08868C` | FireAndForget / TargetLocation | 230 | 390 | Ark - Emberlord & Fireflash | Call upon the services of a lower ranking Battlemage for 180 seconds. Activate to purchase permanent upgrades. |  |
-| [ ] | **Conjure Bear Totem** | `player.addspell XX04734D` | FireAndForget / TargetLocation | 280 | 365 | Ark - Emberlord & Fireflash | Summons a ancient totem spirit for 240 seconds. It changes between hunter and bear form to heal. (Max. <1>) |  |
-| [ ] | **Conjure Craftlord** | `player.addspell XX123E5B` | FireAndForget / TargetLocation | 250 | 370 | Ark - Emberlord & Fireflash | Calls a Starling sage to Vyn for 180 seconds. Modify its stats with the <Reconfigure Craftlord> spell. |  |
-| [ ] | **Conjure Entropic Assassin** | `player.addspell XX0128F7` | FireAndForget / TargetLocation | 230 | 335 | Ark - Emberlord & Fireflash | Summons an Entropic Assassin for 180 seconds. Its arrows reduce targets below <Global=WB_Conjuration_ConjureDremoraAssassin_Global_Health> Health to <1> for <10> seconds. | SUMMON-GAP |
+| [ ] | **Banish Living** | `player.addspell XX092B91` | FireAndForget / TargetActor | 300 | 440 | - | Banish a living creature into the Sea of Eventualities. Items (except quest items) are lost forever. (Creatures banished: <Global=WB_Conjuration_BanishLiving_Global_Counter>) | DEAD-SCRIPT-PROP |
+| [ ] | **Conjure Battlemage** | `player.addspell XX08868C` | FireAndForget / TargetLocation | 230 | 390 | - | Call upon the services of a lower ranking Battlemage for 180 seconds. Activate to purchase permanent upgrades. |  |
+| [ ] | **Conjure Bear Totem** | `player.addspell XX04734D` | FireAndForget / TargetLocation | 280 | 365 | - | Summons a ancient totem spirit for 240 seconds. It changes between hunter and bear form to heal. (Max. <1>) |  |
+| [ ] | **Conjure Craftlord** | `player.addspell XX123E5B` | FireAndForget / TargetLocation | 250 | 370 | - | Calls a Starling sage to Vyn for 180 seconds. Modify its stats with the <Reconfigure Craftlord> spell. |  |
+| [ ] | **Conjure Entropic Assassin** | `player.addspell XX0128F7` | FireAndForget / TargetLocation | 230 | 335 | - | Summons an Entropic Assassin for 180 seconds. Its arrows reduce targets below <Global=WB_Conjuration_ConjureDremoraAssassin_Global_Health> Health to <1> for <10> seconds. | SUMMON-GAP |
 | [ ] | **Conjure Kyrkrim** | `player.addspell XX100032` | FireAndForget / TargetLocation | 135 | 425 | - | Summons the spirit wolf mount Kyrkrim for 180 seconds. When ridden, low level creatures and people flee in terror. | NOT-SOLD |
 | [ ] | **Conjure Lord of Bindings** | `player.addspell XX019B2D` | FireAndForget / TargetLocation | 240 | 335 | - | Summons a Lord of Bindings for 180 seconds. It does not fight, but rapidly summons Churls in combat. | NOT-SOLD |
-| [ ] | **Conjure Nether Lich** | `player.addspell XX0128FA` | FireAndForget / TargetLocation | 275 | 405 | Ark - Emberlord & Fireflash | Summons a Nether Lich for 180 seconds. It inflicts a damaging disease, lowers skill levels and raises the dead. |  |
+| [ ] | **Conjure Nether Lich** | `player.addspell XX0128FA` | FireAndForget / TargetLocation | 275 | 405 | - | Summons a Nether Lich for 180 seconds. It inflicts a damaging disease, lowers skill levels and raises the dead. |  |
 | [ ] | **Conjure Weeping Shade** | `player.addspell XX08FDED` | FireAndForget / TargetLocation | 110 | 415 | - | Summons a Weeping Shade for 120 seconds. It steals large amounts of Health with its magical attacks, but turns to inert and brittle stone when an enemy looks at it. | SUMMON-GAP<br>DEAD-PERK<br>NOT-SOLD |
-| [ ] | **Necrowitch** | `player.addspell XX016F95` | FireAndForget | 130 | 380 | Ark - Emberlord & Fireflash | Summons the corpse of an ancient sorceress to reanimate for 600 seconds and teaches her the (ranged, touch or cloak) elemental spell in your left hand. | DEAD-SCRIPT-PROP |
+| [ ] | **Necrowitch** | `player.addspell XX016F95` | FireAndForget | 130 | 380 | - | Summons the corpse of an ancient sorceress to reanimate for 600 seconds and teaches her the (ranged, touch or cloak) elemental spell in your left hand. | DEAD-SCRIPT-PROP |
 
 ## Light Magic -- *Restoration* (35 spells)
 
@@ -508,65 +520,65 @@ player.advskill alteration 100000 first, so magnitudes read at full skill.
 
 player.advskill illusion 100000 first, so magnitudes read at full skill.
 
-### Novice (000) -- Ark - Milbert Foxhand
+### Novice (000) -- Riverville - Shrouded Mage
 
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Dispel Magic** | `player.addspell XX00BB25` | FireAndForget | 45 | 35 | Ark - Milbert Foxhand | Dispels all magical effects (except diseases) on friends and foes. |  |
-| [ ] | **Pale Shadow** | `player.addspell XX08558A` | FireAndForget / Aimed | 30 | 55 | Ark - Milbert Foxhand | Target enemy is attacked by its own image for 10 seconds. It deals the same damage but has <1> Health. | DEAD-SCRIPT-PROP |
-| [ ] | **Silvery Barbs** | `player.addspell XX15B843` | FireAndForget / Aimed | 35 | 40 | Ark - Milbert Foxhand | Curses a target for 20 seconds. When the target casts a spell, they get <10>% weakness to magic and you get <10>% magic resistance. This effect stacks. |  |
+| [ ] | **Dispel Magic** | `player.addspell XX00BB25` | FireAndForget | 45 | 35 | Riverville - Shrouded Mage | Dispels all magical effects (except diseases) on friends and foes. |  |
+| [ ] | **Pale Shadow** | `player.addspell XX08558A` | FireAndForget / Aimed | 30 | 55 | Riverville - Shrouded Mage | Target enemy is attacked by its own image for 10 seconds. It deals the same damage but has <1> Health. | DEAD-SCRIPT-PROP |
+| [ ] | **Silvery Barbs** | `player.addspell XX15B843` | FireAndForget / Aimed | 35 | 40 | Riverville - Shrouded Mage | Curses a target for 20 seconds. When the target casts a spell, they get <10>% weakness to magic and you get <10>% magic resistance. This effect stacks. |  |
 
-### Apprentice (025) -- Riverville - Tarhutie
-
-| OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
-|---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Backlash** | `player.addspell XX1132DA` | FireAndForget / Aimed | 27 | 95 | Riverville - Tarhutie | Interrupts target spellcaster. If a spell is interrupted, the target is hit by their own offensive spells, while non-offensive spells are cast on you. |  |
-| [ ] | **Curse of the Silent** | `player.addspell XX017509` | FireAndForget / Aimed | 70 | 120 | Riverville - Tarhutie | Drains 8 points of Magicka per second for 30 seconds or until the target successfully casts a spell. |  |
-| [ ] | **Illusory Flames** | `player.addspell XX03682F` | Concentration / Aimed | 27 | 75 | Riverville - Tarhutie | Concentrate to deal <30>% of their current Health as temporary damage that wears off after 2 seconds. |  |
-| [ ] | **Mind Vision** | `player.addspell XX0378A9` | FireAndForget / TargetActor | 65 | 85 | Riverville - Tarhutie | See through the eyes of target creature or humanoid for 10 seconds. Sheathe to cancel. | DEAD-PERK |
-| [ ] | **Shared Trauma** | `player.addspell XX00C0AC` | FireAndForget / Aimed | 45 | 100 | Riverville - Tarhutie | For 10 seconds, when target creature or humanoid loses Health, the previous target loses the same amount. | DEAD-PERK |
-| [ ] | **Thoughtsteal** | `player.addspell XX00BB22` | FireAndForget / Aimed | 70 | 90 | Riverville - Tarhutie | Equip the spells the target has equipped. Lasts for 120 seconds or until unequipped. |  |
-
-### Adept (050) -- Ark - Ora Stonehand
+### Apprentice (025) -- NOT SOLD
 
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Blood for Blood** | `player.addspell XX127FA7` | FireAndForget / TargetActor | 75 | 170 | Ark - Ora Stonehand | Cast on a corpse, summons the anguish of its death as an avenging force to reduce the Health of the killer to <1>. |  |
-| [ ] | **Compelling Whispers** | `player.addspell XX058655` | Concentration / Aimed | 34 | 170 | Ark - Ora Stonehand | Concentrate for <5> seconds to force creatures or people to fight for the caster for <60> seconds. | DEAD-PERK |
-| [ ] | **Evil Twin** | `player.addspell XX037332` | Concentration | 34 | 210 | Ark - Ora Stonehand | While concentrating, manifests illusions of nearby enemies to attack them. Illusions take extra damage from attacks. | DEAD-SCRIPT-PROP |
-| [ ] | **Figment of Pain** | `player.addspell XX043CE1` | FireAndForget / TargetActor | 100 | 165 | Ark - Ora Stonehand | Creates an immobile illusion linked to the target for 20 seconds. Damage felt by either is felt by both. |  |
-| [ ] | **Illusory Pyre** | `player.addspell XX032C8B` | FireAndForget / TargetActor | 65 | 165 | Ark - Ora Stonehand | Illusory explosion deals <25>% of their current Health as temporary damage that wears off after 15 seconds. |  |
-| [ ] | **Shadowbond** | `player.addspell XX031C4D` | FireAndForget / TargetActor | 80 | 180 | Ark - Ora Stonehand | Caster and target gain invisibility for 20 seconds. When the invisibility is broken, the caster and target swap places. |  |
-| [ ] | **Sleeping Dogs** | `player.addspell XX1A4A50` | FireAndForget / Aimed | 130 | 165 | Ark - Ora Stonehand | Curses a target for 20 seconds. Whenever the target shouts, spectral forces deal 120 pure damage. |  |
+| [ ] | **Backlash** | `player.addspell XX1132DA` | FireAndForget / Aimed | 27 | 95 | - | Interrupts target spellcaster. If a spell is interrupted, the target is hit by their own offensive spells, while non-offensive spells are cast on you. |  |
+| [ ] | **Curse of the Silent** | `player.addspell XX017509` | FireAndForget / Aimed | 70 | 120 | - | Drains 8 points of Magicka per second for 30 seconds or until the target successfully casts a spell. |  |
+| [ ] | **Illusory Flames** | `player.addspell XX03682F` | Concentration / Aimed | 27 | 75 | - | Concentrate to deal <30>% of their current Health as temporary damage that wears off after 2 seconds. |  |
+| [ ] | **Mind Vision** | `player.addspell XX0378A9` | FireAndForget / TargetActor | 65 | 85 | - | See through the eyes of target creature or humanoid for 10 seconds. Sheathe to cancel. | DEAD-PERK |
+| [ ] | **Shared Trauma** | `player.addspell XX00C0AC` | FireAndForget / Aimed | 45 | 100 | - | For 10 seconds, when target creature or humanoid loses Health, the previous target loses the same amount. | DEAD-PERK |
+| [ ] | **Thoughtsteal** | `player.addspell XX00BB22` | FireAndForget / Aimed | 70 | 90 | - | Equip the spells the target has equipped. Lasts for 120 seconds or until unequipped. |  |
 
-### Expert (075) -- Sun Temple - Torius Flameling
-
-| OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
-|---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Empathic Agony** | `player.addspell XX0A4EF7` | FireAndForget / Aimed | 110 | 285 | Sun Temple - Torius Flameling | For 45 seconds, when the caster loses Health, target creatures or people lose <40>% of this amount. | DEAD-PERK |
-| [ ] | **Enslave the Weak** | `player.addspell XX0306AC` | FireAndForget / Aimed | 195 | 270 | Sun Temple - Torius Flameling | Forces a hostile humanoid below <20>% Health to serve your will permanently until slain. You can only have one slave at a time. Does not work on quest characters. | DEAD-PERK<br>DEAD-SCRIPT-PROP |
-| [ ] | **Fold Into Ether** | `player.addspell XX15B849` | FireAndForget / Aimed | 80 | 280 | Sun Temple - Torius Flameling | Interrupts target spellcaster. If a spell is interrupted, manifests an illusion of the target for 40 seconds. | DEAD-SCRIPT-PROP |
-| [ ] | **Ghostwalk** | `player.addspell XX00AAE8` | FireAndForget | 135 | 290 | Sun Temple - Torius Flameling | Caster is invisible for 10 seconds or until broken, then teleports back to where the spell was cast. |  |
-| [ ] | **Mimic's Cloak** | `player.addspell XX1274CF` | FireAndForget | 130 | 255 | Sun Temple - Torius Flameling | For 60 seconds, the caster copies most (non-concentration) spells cast by others within 20 foot. |  |
-| [ ] | **Mind Control** | `player.addspell XX0378AE` | FireAndForget / Aimed | 140 | 250 | Sun Temple - Torius Flameling | Take control of a humanoid for 30 seconds. In combat, the target will fight back when attacked. The caster cannot act, but can cast spells. Sheathe to cancel. |  |
-| [ ] | **Seidstone** | `player.addspell XX03789F` | FireAndForget / Aimed | 105 | 290 | Sun Temple - Torius Flameling | The stone manifests illusions of nearby dead for 40 seconds. Illusions take extra damage from attacks. |  |
-| [ ] | **Vanish** | `player.addspell XX037E24` | FireAndForget | 205 | 265 | Sun Temple - Torius Flameling | All nearby opponents targeting the caster or searching for the caster leave combat. |  |
-| [ ] | **Veil of Misdirection** | `player.addspell XX15B847` | FireAndForget / TargetActor | 90 | 285 | Sun Temple - Torius Flameling | Curses a target for 30 seconds. Whenever the target casts an armor or cloak spell, it is transferred to the caster. |  |
-
-### Master (100) -- Ark - Emberlord & Fireflash
+### Adept (050) -- NOT SOLD
 
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Harrowing Dirge** | `player.addspell XX0C74EA` | FireAndForget / Aimed | 120 | 405 | Ark - Emberlord & Fireflash | When a cursed creature or humanoid dies, all other cursed targets take unresistable damage equal to <Global=WB_Illusion_HarrowingDirge_Global_Percentage>% of their maximum Health. Lasts 40 seconds. | DEAD-PERK |
-| [ ] | **Hidden Cobra** | `player.addspell XX046DC4` | FireAndForget / TargetActor | 130 | 385 | Ark - Emberlord & Fireflash | Curses a target for 60 seconds. The curse reduces Health to <1> if the target leaves combat for <5> seconds. |  |
-| [ ] | **Last Word** | `player.addspell XX0416BF` | FireAndForget / Aimed | 68 | 375 | Ark - Emberlord & Fireflash | Interrupts target spellcaster. If a spell is interrupted, any other Illusion spells cast on the target within 10 seconds last four times longer and are twice as powerful. |  |
-| [ ] | **Magicka Void** | `player.addspell XX00B5B7` | FireAndForget / Aimed | 140 | 405 | Ark - Emberlord & Fireflash | Reduces the Health percentage of all targets to match their Magicka percentage. |  |
-| [ ] | **Mirror Entity** | `player.addspell XX037E1A` | FireAndForget / Aimed | 165 | 480 | Ark - Emberlord & Fireflash | Control an illusion of target humanoid for 20 seconds. In combat, the illusion will attack opponents in range. The caster cannot act, but can cast spells. Sheathe to cancel. |  |
-| [ ] | **Pull From Eternity** | `player.addspell XX085B03` | FireAndForget / Aimed | 130 | 410 | Ark - Emberlord & Fireflash | Cast on a corpse to capture its ghost. Cast on a target to release the ghost to attack the target for 40 seconds. The ghost takes less damage from attacks. | DEAD-SCRIPT-PROP |
-| [ ] | **Scream of Pain** | `player.addspell XX0321BA` | FireAndForget | 305 | 420 | Ark - Emberlord & Fireflash | Lowers the Health percentage of nearby creatures and humanoids to the caster's Health percentage. The lost Health is restored after 20 seconds. | DEAD-PERK |
-| [ ] | **Shroudwalk** | `player.addspell XX0DD94B` | FireAndForget | 255 | 375 | Ark - Emberlord & Fireflash | You are invisible for 90 seconds. When performing an action that breaks invisibility, you immediately regain invisibility, up to <Global=WB_Illusion_Shroudwalk_Global_BreakCount> times. |  |
-| [ ] | **Spectral Warband** | `player.addspell XX085579` | FireAndForget | 240 | 420 | Ark - Emberlord & Fireflash | Manifests illusions of all allies in combat for 60 seconds. Illusions take extra damage from attacks. | DEAD-SCRIPT-PROP |
-| [ ] | **Wyrd** | `player.addspell XX05E21C` | FireAndForget | 210 | 410 | Ark - Emberlord & Fireflash | The hand of fate chooses a random nearby target. It takes <20>% of its current Health for each nearby target as temporary damage that wears off after 30 seconds. |  |
+| [ ] | **Blood for Blood** | `player.addspell XX127FA7` | FireAndForget / TargetActor | 75 | 170 | - | Cast on a corpse, summons the anguish of its death as an avenging force to reduce the Health of the killer to <1>. |  |
+| [ ] | **Compelling Whispers** | `player.addspell XX058655` | Concentration / Aimed | 34 | 170 | - | Concentrate for <5> seconds to force creatures or people to fight for the caster for <60> seconds. | DEAD-PERK |
+| [ ] | **Evil Twin** | `player.addspell XX037332` | Concentration | 34 | 210 | - | While concentrating, manifests illusions of nearby enemies to attack them. Illusions take extra damage from attacks. | DEAD-SCRIPT-PROP |
+| [ ] | **Figment of Pain** | `player.addspell XX043CE1` | FireAndForget / TargetActor | 100 | 165 | - | Creates an immobile illusion linked to the target for 20 seconds. Damage felt by either is felt by both. |  |
+| [ ] | **Illusory Pyre** | `player.addspell XX032C8B` | FireAndForget / TargetActor | 65 | 165 | - | Illusory explosion deals <25>% of their current Health as temporary damage that wears off after 15 seconds. |  |
+| [ ] | **Shadowbond** | `player.addspell XX031C4D` | FireAndForget / TargetActor | 80 | 180 | - | Caster and target gain invisibility for 20 seconds. When the invisibility is broken, the caster and target swap places. |  |
+| [ ] | **Sleeping Dogs** | `player.addspell XX1A4A50` | FireAndForget / Aimed | 130 | 165 | - | Curses a target for 20 seconds. Whenever the target shouts, spectral forces deal 120 pure damage. |  |
+
+### Expert (075) -- NOT SOLD
+
+| OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
+|---|---|---|---|---:|---:|---|---|---|
+| [ ] | **Empathic Agony** | `player.addspell XX0A4EF7` | FireAndForget / Aimed | 110 | 285 | - | For 45 seconds, when the caster loses Health, target creatures or people lose <40>% of this amount. | DEAD-PERK |
+| [ ] | **Enslave the Weak** | `player.addspell XX0306AC` | FireAndForget / Aimed | 195 | 270 | - | Forces a hostile humanoid below <20>% Health to serve your will permanently until slain. You can only have one slave at a time. Does not work on quest characters. | DEAD-PERK<br>DEAD-SCRIPT-PROP |
+| [ ] | **Fold Into Ether** | `player.addspell XX15B849` | FireAndForget / Aimed | 80 | 280 | - | Interrupts target spellcaster. If a spell is interrupted, manifests an illusion of the target for 40 seconds. | DEAD-SCRIPT-PROP |
+| [ ] | **Ghostwalk** | `player.addspell XX00AAE8` | FireAndForget | 135 | 290 | - | Caster is invisible for 10 seconds or until broken, then teleports back to where the spell was cast. |  |
+| [ ] | **Mimic's Cloak** | `player.addspell XX1274CF` | FireAndForget | 130 | 255 | - | For 60 seconds, the caster copies most (non-concentration) spells cast by others within 20 foot. |  |
+| [ ] | **Mind Control** | `player.addspell XX0378AE` | FireAndForget / Aimed | 140 | 250 | - | Take control of a humanoid for 30 seconds. In combat, the target will fight back when attacked. The caster cannot act, but can cast spells. Sheathe to cancel. |  |
+| [ ] | **Seidstone** | `player.addspell XX03789F` | FireAndForget / Aimed | 105 | 290 | - | The stone manifests illusions of nearby dead for 40 seconds. Illusions take extra damage from attacks. |  |
+| [ ] | **Vanish** | `player.addspell XX037E24` | FireAndForget | 205 | 265 | - | All nearby opponents targeting the caster or searching for the caster leave combat. |  |
+| [ ] | **Veil of Misdirection** | `player.addspell XX15B847` | FireAndForget / TargetActor | 90 | 285 | - | Curses a target for 30 seconds. Whenever the target casts an armor or cloak spell, it is transferred to the caster. |  |
+
+### Master (100) -- NOT SOLD
+
+| OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
+|---|---|---|---|---:|---:|---|---|---|
+| [ ] | **Harrowing Dirge** | `player.addspell XX0C74EA` | FireAndForget / Aimed | 120 | 405 | - | When a cursed creature or humanoid dies, all other cursed targets take unresistable damage equal to <Global=WB_Illusion_HarrowingDirge_Global_Percentage>% of their maximum Health. Lasts 40 seconds. | DEAD-PERK |
+| [ ] | **Hidden Cobra** | `player.addspell XX046DC4` | FireAndForget / TargetActor | 130 | 385 | - | Curses a target for 60 seconds. The curse reduces Health to <1> if the target leaves combat for <5> seconds. |  |
+| [ ] | **Last Word** | `player.addspell XX0416BF` | FireAndForget / Aimed | 68 | 375 | - | Interrupts target spellcaster. If a spell is interrupted, any other Illusion spells cast on the target within 10 seconds last four times longer and are twice as powerful. |  |
+| [ ] | **Magicka Void** | `player.addspell XX00B5B7` | FireAndForget / Aimed | 140 | 405 | - | Reduces the Health percentage of all targets to match their Magicka percentage. |  |
+| [ ] | **Mirror Entity** | `player.addspell XX037E1A` | FireAndForget / Aimed | 165 | 480 | - | Control an illusion of target humanoid for 20 seconds. In combat, the illusion will attack opponents in range. The caster cannot act, but can cast spells. Sheathe to cancel. |  |
+| [ ] | **Pull From Eternity** | `player.addspell XX085B03` | FireAndForget / Aimed | 130 | 410 | - | Cast on a corpse to capture its ghost. Cast on a target to release the ghost to attack the target for 40 seconds. The ghost takes less damage from attacks. | DEAD-SCRIPT-PROP |
+| [ ] | **Scream of Pain** | `player.addspell XX0321BA` | FireAndForget | 305 | 420 | - | Lowers the Health percentage of nearby creatures and humanoids to the caster's Health percentage. The lost Health is restored after 20 seconds. | DEAD-PERK |
+| [ ] | **Shroudwalk** | `player.addspell XX0DD94B` | FireAndForget | 255 | 375 | - | You are invisible for 90 seconds. When performing an action that breaks invisibility, you immediately regain invisibility, up to <Global=WB_Illusion_Shroudwalk_Global_BreakCount> times. |  |
+| [ ] | **Spectral Warband** | `player.addspell XX085579` | FireAndForget | 240 | 420 | - | Manifests illusions of all allies in combat for 60 seconds. Illusions take extra damage from attacks. | DEAD-SCRIPT-PROP |
+| [ ] | **Wyrd** | `player.addspell XX05E21C` | FireAndForget | 210 | 410 | - | The hand of fate chooses a random nearby target. It takes <20>% of its current Health for each nearby target as temporary damage that wears off after 30 seconds. |  |
 
 ## Scrolls (144)
 

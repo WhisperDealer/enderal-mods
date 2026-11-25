@@ -126,6 +126,14 @@ foreach ($f in Get-ChildItem -LiteralPath (Join-Path $tree 'LeveledItems') -File
         $soldAt[$m.Groups[1].Value] = $merchants[$hook]
     }
 }
+# Our own merchant: the Riverville Shrouded Mage's chest (18-shrouded-mage-riverville.ps1) holds its
+# tomes directly rather than through a hook.
+$ownChest = Join-Path $tree 'Containers\ZP_Apoc_Merchant_Wildmage_RivervilleChest - 1C1E79_Apocalypse - Magic of Skyrim.esp.yaml'
+if (Test-Path -LiteralPath $ownChest) {
+    foreach ($m in [regex]::Matches([IO.File]::ReadAllText($ownChest), 'Item: ([0-9A-F]{6}):Apocalypse')) {
+        $soldAt[$m.Groups[1].Value] = 'Riverville - Shrouded Mage'
+    }
+}
 # Loot: the six ZP_Apoc_* leveled lists this conversion adds.
 $lootIn = @{}
 foreach ($f in Get-ChildItem -LiteralPath (Join-Path $tree 'LeveledItems') -File -Filter 'ZP_Apoc_*.yaml') {
@@ -383,6 +391,13 @@ W '- [x] Open Apocalypse''s MCM and press **Repopulate**. Same expectation: trac
 W '      errors no. It runs the identical loop against its own six `_Replenish` FormLists, so it is'
 W '      a separate path from the automatic one and has to be checked separately.'
 W '- [x] All six merchants stock Apocalypse tomes (see the shop table below).'
+W '- [ ] **The Riverville Shrouded Mage** (`coc FlusshaimTavern`, The Drunken Bee) is sitting at the'
+W '      corner bench, and **his face renders** -- no dark-face bug. He has no FaceGen of his own and'
+W '      borrows the Duneville mage''s through a Traits template; this is the one part a build cannot prove.'
+W '- [ ] He speaks with the Shrouded Mage voice and his barter line opens his shop: FS''s forbidden'
+W '      tomes plus the six Novice Entropy/Psionics tomes. With BOTH Psionics and Entropy below 15 he'
+W '      refuses with FS''s "not enough entropy" message instead -- that is FS''s gate on every Shrouded Mage.'
+W '- [ ] No Entropy or Psionics tome at Milbert, Tarhutie, Ora, Torius or Emberlord and Fireflash.'
 W ("- [x] ``player.additem {0}1C1E71 5`` ... ``{0}1C1E75 5`` each yield Apocalypse tomes, and" -f $idx)
 W ("      ``player.additem {0}1C1E76 10`` yields Apocalypse scrolls. ``additem`` resolves a leveled" -f $idx)
 W '      list on the spot, so this proves loot distribution without waiting out `iDaysToRespawnVendor: 2`.'
@@ -462,12 +477,17 @@ W '## The shops'
 W ''
 W '| `coc` target | Shop | Gold | Tier | Tomes | Hook |'
 W '|---|---|---:|---|---:|---|'
-W '| `CapitalCityMagierkram` | Ark -- Emberlord and Fireflash | 1800 | Master | 45 | `GabrielleFunkenfrst_CustomMerchandise` |'
-W '| `SuntempleAlchemy` | Sun Temple -- Torius Flameling | 1430 | Expert | 39 | `TuriousFlammentrunk_CustomMerchandise` |'
+W '| `CapitalCityMagierkram` | Ark -- Emberlord and Fireflash | 1800 | Master (no Entropy/Psionics) | 30 | `GabrielleFunkenfrst_CustomMerchandise` |'
+W '| `SuntempleAlchemy` | Sun Temple -- Torius Flameling | 1430 | Expert (no Entropy/Psionics) | 27 | `TuriousFlammentrunk_CustomMerchandise` |'
 W '| `UndercityBarracks2Barnabas` | Undercity -- Barnabas | 1050 | Adept (Mentalism/Entropy/Elementalism) | 19 | `Barnabas_CustomMerchandise` |'
-W '| -- | Ark -- Ora Stonehand | 980 | Adept (Psionics/Light Magic) | 14 | `OraSteinschlag_CustomMerchandise` |'
-W '| -- | Riverville -- Tarhutie | 630 | Apprentice | 28 | `Tarhutie_CustomMerchandise` |'
-W '| -- | Ark -- Milbert Foxhand | 530 | Novice | 15 | `MilbertFuchshand_CustomMerchandise` |'
+W '| -- | Ark -- Ora Stonehand | 980 | Adept (Light Magic) | 7 | `OraSteinschlag_CustomMerchandise` |'
+W '| -- | Riverville -- Tarhutie | 630 | Apprentice (no Entropy/Psionics) | 18 | `Tarhutie_CustomMerchandise` |'
+W '| -- | Ark -- Milbert Foxhand | 530 | Novice (no Entropy/Psionics) | 9 | `MilbertFuchshand_CustomMerchandise` |'
+W '| `FlusshaimTavern` | Riverville -- Shrouded Mage, The Drunken Bee | 707 | Novice Entropy + Psionics | 6 | own chest `ZP_Apoc_Merchant_Wildmage_RivervilleChest` |'
+W ''
+W 'Entropy and Psionics are forbidden schools in Enderal, so the respectable shops sell neither; only'
+W 'Barnabas and the Shrouded Mage do. Entropy and Psionics tomes above Novice that Barnabas does not'
+W 'carry are loot-only for now.'
 W ''
 W 'The three shops without a `coc` target are outdoor Ark and Riverville market stalls -- their chests'
 W 'are placed in `CapitalCityMarketArea`, `CapitalCityStrangerArea` and `Vyn` rather than an interior.'
