@@ -59,5 +59,8 @@ Items:
 - Item:
     Item: 41EC6B:Triumvirate - Mage Archetypes.esp
     Count: 1
+- Item:
+    Item: 4C0D62:Triumvirate - Mage Archetypes.esp
+    Count: 1
 MajorFlags:
 - NavMeshGenerationBoundingBox

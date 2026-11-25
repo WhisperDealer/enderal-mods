@@ -76,8 +76,8 @@ merchant above should show all three price bands.
 | ☐ | Shrouded Mage, Frostcliff Tavern | `coc SchneefelstaverneInterior` | **No** Triumvirate tomes or staves |
 | ☐ | Adreyo, Riverville | — | **No** Triumvirate tomes |
 | ☐ | Any merchant | — | **No** Druid Call spells, Shaman totems/Fylgjas or Cleric Psionics (Suggestion, Exile, Spirit Guardian, Obedience, Exodus) |
-| ☐ | House of the Apothecarii, Undercity | `coc UndercityBarracks2ApothekariUpper`, pick the **Expert** lock | The chest beside the *Old Ban Totem* blueprint holds **10 tomes** (five Druid Call spells, Shaman's three totems and two Fylgjas) and **3 totem staves**, one each, plus its own items. It does not restock |
-| ☐ | Sun Temple, Secret Vault | `coc FSSuntempleYeroCave` (in play: the key from Yero's strongbox, quest "Secrets") | A **Chest** at the north end of Yero's unholy altar holds the **5 Cleric Psionics tomes** (Suggestion, Exile, Spirit Guardian, Obedience, Exodus) and **3 staves** (Suggestion, Exile, Obedience), one each. It does not restock. Check it sits on the floor and is not clipping into the altar, the divider or the rock |
+| ☐ | House of the Apothecarii, Undercity | `coc UndercityBarracks2ApothekariUpper`, pick the **Expert** lock | The chest beside the *Old Ban Totem* blueprint holds **10 tomes** (five Druid Call spells, Shaman's three totems and two Fylgjas) and **3 totem staves**, one each, plus its own items and a **"Note from the Apothecarii"**. It does not restock |
+| ☐ | Sun Temple, Secret Vault | `coc FSSuntempleYeroCave` (in play: the key from Yero's strongbox, quest "Secrets") | A **Chest** at the north end of Yero's unholy altar holds the **5 Cleric Psionics tomes** (Suggestion, Exile, Spirit Guardian, Obedience, Exodus) and **3 staves** (Suggestion, Exile, Obedience), one each, and **"Yero's Diary (Fourth Letter)"**. It does not restock. Check it sits on the floor and is not clipping into the altar, the divider or the rock |
 
 ---
 

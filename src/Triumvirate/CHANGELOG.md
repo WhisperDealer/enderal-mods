@@ -17,6 +17,7 @@ and documentation are not listed.
   - The Cleric's Psionics spells (Suggestion, Exile, Spirit Guardian, Obedience, Exodus) are in a
     chest at Yero's unholy altar, in the Sun Temple's secret vault (the Forgotten Stories quest
     "Secrets"), one copy of each with three staves. They do not restock.
+  - Each hiding place has a letter explaining how the spells got there.
 
   Before this, each line was spread across three or four merchants and Expert/Master tomes were
   sold only in Ark and the Undercity. Adreyo, Akatyr, Marius, the Ark guard blacksmith, the Bash

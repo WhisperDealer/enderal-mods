@@ -357,7 +357,8 @@ $script:TvrVendors = @(
 $script:TvrStashes = @(
     @{ File = '_00E_NQ29_BossChest - 14BECE_Skyrim.esm.yaml'; Master = 'Skyrim'
        Where = 'House of the Apothecarii, Undercity (Expert-locked room)'
-       Lines = @('Druid_Conjuration', 'Shaman_Conjuration'); Keep = @('14BEC9:Skyrim.esm') }
+       Lines = @('Druid_Conjuration', 'Shaman_Conjuration'); Keep = @('14BEC9:Skyrim.esm')
+       Notes = @('TVR_Note_ApothecariiConfiscation') }
     @{ File = 'TVR_Cleric_Container_PsionicsStash - 4C0D60_Triumvirate - Mage Archetypes.esp.yaml'
        Template = 'ChestLarge01EMPTY - 08EA5D_Skyrim.esm.yaml'; Master = 'Skyrim'
        FormKey = '4C0D60:Triumvirate - Mage Archetypes.esp'; EditorID = 'TVR_Cleric_Container_PsionicsStash'
@@ -365,7 +366,25 @@ $script:TvrStashes = @(
        Ref = '4C0D61:Triumvirate - Mage Archetypes.esp'
        Position = '-2985, 1530, 1343'; Rotation = '0, 0, 4.9062448'
        Where = "Sun Temple, Secret Vault (Yero's unholy altar)"
-       Lines = @('Cleric_Illusion'); Keep = @() }
+       Lines = @('Cleric_Illusion'); Keep = @()
+       Notes = @('TVR_Note_YeroFourthLetter') }
+)
+
+# NOTES: lore letters our own, one in each stash, built by 15 step 4c from Template (Dal'Galar's
+# plain bordered letter, FS's copy: no script, no Teaches) with the text in tools/notes/<EditorID>.txt.
+#   Yero's Fourth Letter sits between FS's Third Letter (Sira's death) and his Memorial Book (MQ02):
+#   why he bent Light Magic into Psionics, before the Red Madness took him.
+#   The Apothecarii's record of what they seized from Samael Dal'Galar when he left Ark (MQ11a:
+#   "Healer of the Poor", quarrel with the League), and what the Old Ban Totem does to the Blind
+#   Miner (_00E_NQ29_MythsAndLegends_Volume_01: "a Psionic totem may break the invulnerability ...
+#   Solely the Apothecarii could have access to this knowledge"). It deliberately says nothing of
+#   Maya, the Black Stone or Calia - MQ11a's spoilers.
+$script:TvrNoteTemplate = '_00E_MQ11a_DalGalarFinalLetter - 036743_Skyrim.esm.yaml'
+$script:TvrNotes = @(
+    @{ EditorID = 'TVR_Note_YeroFourthLetter'; FormKey = '4C0D62:Triumvirate - Mage Archetypes.esp'
+       Title = "Yero's Diary (Fourth Letter)" }
+    @{ EditorID = 'TVR_Note_ApothecariiConfiscation'; FormKey = '4C0D63:Triumvirate - Mage Archetypes.esp'
+       Title = 'Note from the Apothecarii' }
 )
 # Lines nobody sells or stashes yet: UNOBTAINABLE until homed. The proofs in 15/17 assert exactly
 # that, so homing one is a deliberate edit here.

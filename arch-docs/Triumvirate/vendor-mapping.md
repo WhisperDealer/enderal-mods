@@ -92,6 +92,13 @@ Sun Temple merchant:
   the lock gets Master-tier summons early. Nothing else touches this chest: not FS, not EGO, nothing
   in `reference/mods/`, and no NQ29 script reads or empties it. The override is copied from the
   `Skyrim.esm` record and keeps its own items (3 × `0028E8` and the blueprint); step 15 asserts both.
+  It also holds **"Note from the Apothecarii"** (`TVR_Note_ApothecariiConfiscation` `4C0D63`), the
+  League's record of seizing these tomes from Count Samael Dal'Galar's wagons when he left Ark, and
+  of the Old Ban Totem being the one thing that breaks the Blind Miner's warding. Both threads are
+  the game's own: MQ11a's "Healer of the Poor" who quarrelled with the League, and
+  `_00E_NQ29_MythsAndLegends_Volume_01`, which says a Psionic totem may break the Blind Miner's
+  invulnerability and that only the Apothecarii would have it. It says nothing of Maya, the Black
+  Stone or Calia.
 - **Cleric Psionics** (Suggestion, Exile, Spirit Guardian, Obedience, Exodus) is **stashed** in
   Yero's secret vault under the Sun Temple (`FSSuntempleYeroCave` `03E73A`). Yero was a Holy Order
   magister taken by the Red Madness, so a cleric's forbidden mind magic sits at his **unholy altar**
@@ -101,13 +108,21 @@ Sun Temple merchant:
   one each. It is placed as `4C0D61` at `(-2985, 1530, 1343)`, turned to the altar's own heading,
   just past the altar's north end: on the navmesh, clear of the altar, the divider and the jars.
   The cell override is FS's copy (FS wins it), cut before `NavigationMeshes:` and carrying only our
-  ref; nothing in EGO or `reference/mods/` touches the cell. The player reaches the vault through
+  ref; nothing in EGO or `reference/mods/` touches the cell. Beside the tomes lies
+  **"Yero's Diary (Fourth Letter)"** (`TVR_Note_YeroFourthLetter` `4C0D62`), written to Sira between
+  FS's Third Letter and his MQ02 Memorial Book: why he bent Light Magic into Psionics to change
+  minds after her death, with the first hints of the Red Madness. The player reaches the vault through
   FS's side quest **"Secrets"** (`FS_NQ04`): the key in Yero's strongbox opens the trap door in
   Yero's Tower. **Not yet seen in game**: the placement is computed from bounds and navmesh, so
   confirm the chest is not clipping into the floor or the rock (`RockCliff06`'s box reaches z 1375
   there).
 
 Every non-vendor line now has a home, so `$script:TvrUnhomedLines` is empty.
+
+**The notes** are `$script:TvrNotes` in `00-common.ps1`, built by step 15 (4c) from Dal'Galar's
+plain bordered letter (`_00E_MQ11a_DalGalarFinalLetter` `036743`, FS's copy: no script, teaches
+nothing), with their text in `tools/notes/<EditorID>.txt`. Edit the text there, never in the Book
+YAML, which is rebuilt every run.
 
 The proofs in 15 and 17 assert all of this, so homing a line is a deliberate edit in
 `00-common.ps1`. Every summon spell in base Enderal is Entropy too, so moving the summon lines to
@@ -208,7 +223,8 @@ master under `GameRelease.EnderalSE`.
   - after WD-16c (CustomMerchandise hooks): SHA-256 `43B8EF1E…161510`, 739,071 bytes
   - after one-vendor-per-archetype: SHA-256 `4D62DC89…3FC95ACB`, 737,067 bytes
   - after Cleric to Torius and the Entropy stash: SHA-256 `E432103B…60CD809F`, 737,063 bytes
-  - after the Psionics chest in Yero's vault: SHA-256 `5A0FCDA3…AF44639C`, **737,771 bytes**
+  - after the Psionics chest in Yero's vault: SHA-256 `5A0FCDA3…AF44639C`, 737,771 bytes
+  - after the two lore notes: SHA-256 `57397E28…7295B10A`, **742,177 bytes**
 - `HEDR` 1.70, masters `Skyrim.esm, Update.esm, Enderal - Forgotten Stories.esm` — re-read out of
   the built binary at offset 30, not assumed.
 - Both `15-distribution.ps1` and `17-tier-gating.ps1` are **idempotent**: a second run reports 0

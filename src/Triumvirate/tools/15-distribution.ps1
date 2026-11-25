@@ -284,6 +284,52 @@ foreach ($v in $vendors) {
     Write-Host ("  4. {0}: {1} entries ({2} tome bundles, {3} staves; {4})" -f $v.Merchant, $n, $nBundles, ($n - $nBundles), ($v.Archetypes -join ', '))
 }
 
+# 4c. The lore notes (00-common.ps1 $script:TvrNotes): one Book each, rebuilt every run from the
+# template letter with our FormKey/EditorID/title and the text in tools/notes/<EditorID>.txt. The
+# template's own scripts and Version2 are dropped; every other field is the template's.
+$booksDir = Join-Path $root 'Books'
+$noteKeys = @{}
+$tplPath = Join-Path (Join-Path $repo 'reference\base\EnderalFS\Books') $script:TvrNoteTemplate
+if (-not (Test-Path -LiteralPath $tplPath)) { throw "note template not found: $($script:TvrNoteTemplate)" }
+$tpl = @(Get-YamlLines $tplPath)
+# split the template into top-level blocks: a key line at column 0 plus everything under it
+# (a '- ' item at column 0 belongs to the key above it - CLAUDE.md's YAML sequence trap)
+$blocks = New-Object System.Collections.ArrayList
+foreach ($ln in $tpl) {
+    if ($ln -match '^[A-Za-z]\w*:') { [void]$blocks.Add(@{ Key = ($ln -split ':')[0]; Lines = New-Object System.Collections.ArrayList }) }
+    if ($blocks.Count -eq 0) { throw "note template does not start with a key" }
+    if ($ln -ne '') { [void]$blocks[$blocks.Count - 1].Lines.Add($ln) }
+}
+foreach ($k in 'FormKey', 'EditorID', 'Name', 'BookText', 'Teaches', 'Description') {
+    if (@($blocks | Where-Object { $_.Key -eq $k }).Count -ne 1) { throw "note template lacks exactly one $k" }
+}
+if ((@($blocks | Where-Object { $_.Key -eq 'Teaches' })[0].Lines -join "`n") -notmatch 'BookTeachesNothing') { throw "note template teaches something" }
+foreach ($nt in $script:TvrNotes) {
+    $txtPath = Join-Path (Join-Path $PSScriptRoot 'notes') "$($nt.EditorID).txt"
+    if (-not (Test-Path -LiteralPath $txtPath)) { throw "note text not found: $txtPath" }
+    $body = @((Read-YamlText $txtPath).TrimEnd() -split "`r?`n")
+    if ($body.Count -lt 5) { throw "$($nt.EditorID): note text is suspiciously short" }
+    $out = @()
+    foreach ($b in $blocks) {
+        switch ($b.Key) {
+            'FormKey'               { $out += "FormKey: $($nt.FormKey)" }
+            'EditorID'              { $out += "EditorID: $($nt.EditorID)" }
+            'Version2'              { }
+            'VirtualMachineAdapter' { }
+            'Name'                  { $out += 'Name:'; $out += '  TargetLanguage: English'; $out += ("  Value: '" + ($nt.Title -replace "'", "''") + "'") }
+            'BookText'              { $out += 'BookText:'; $out += '  TargetLanguage: English'; $out += '  Value: |-'
+                                      foreach ($l in $body) { if ($l -eq '') { $out += '' } else { $out += "    $l" } } }
+            'Description'           { $out += 'Description:'; $out += '  TargetLanguage: English'; $out += "  Value: ''" }
+            default                 { $out += @($b.Lines) }
+        }
+    }
+    $out += ''
+    $dst = Join-Path $booksDir ("{0} - {1}.yaml" -f $nt.EditorID, ($nt.FormKey -replace ':', '_'))
+    Set-YamlLines -Path $dst -Lines $out
+    $noteKeys[$nt.EditorID] = $nt.FormKey
+    Write-Host ("  4c. note {0}: '{1}' ({2} lines of text)" -f $nt.EditorID, $nt.Title, $body.Count)
+}
+
 # 4d. The stashes (00-common.ps1): rebuilt from the master's copy every run, with each stashed
 # line's five tome Books and its staves appended to the container's Items list, one of each.
 $containersDir = Join-Path $root 'Containers'
@@ -301,6 +347,7 @@ foreach ($st in $script:TvrStashes) {
     $nTomes = $adds.Count
     if ($nTomes -ne 5 * $st.Lines.Count) { throw "$($st.File): $nTomes tomes for $($st.Lines.Count) lines, want 5 each" }
     foreach ($ln in $st.Lines) { $adds += Get-LineStaves -Line $ln }
+    foreach ($ne in $st.Notes) { if (-not $noteKeys.ContainsKey($ne)) { throw "$($st.File) names unknown note $ne" }; $adds += $noteKeys[$ne] }
     $lines = @(Get-YamlLines $srcPath)
     if ($isNew) {
         # our own record: retarget FormKey + EditorID, and create the Items key the empty template
@@ -327,7 +374,7 @@ foreach ($st in $script:TvrStashes) {
     $out = @($lines[0..($end - 1)]) + $insert
     if ($end -lt $lines.Count) { $out += $lines[$end..($lines.Count - 1)] }
     Set-YamlLines -Path (Join-Path $containersDir $st.File) -Lines $out
-    Write-Host ("  4d. stash {0}: +{1} tomes, +{2} staves ({3})" -f $st.Where, $nTomes, ($adds.Count - $nTomes), ($st.Lines -join ', '))
+    Write-Host ("  4d. stash {0}: +{1} tomes, +{2} staves, +{3} note(s) ({4})" -f $st.Where, $nTomes, ($adds.Count - $nTomes - $st.Notes.Count), $st.Notes.Count, ($st.Lines -join ', '))
 }
 
 # 4e. Place each new stash chest: override its cell from the WINNING plugin's copy, cut at the first
@@ -493,10 +540,19 @@ foreach ($st in $script:TvrStashes) {
     $ours = @([regex]::Matches($t, '(?m)^    Item: ([0-9A-F]{6}:Triumvirate - Mage Archetypes\.esp)(?=\r?$)') | ForEach-Object { $_.Groups[1].Value })
     $want = @()
     foreach ($ln in $st.Lines) { $want += Get-LineTomes -Line $ln; $want += Get-LineStaves -Line $ln }
+    foreach ($ne in $st.Notes) { $want += $noteKeys[$ne] }
     if ((@($ours | Sort-Object) -join ',') -ne (@($want | Sort-Object) -join ',')) { throw "stash $($st.File) holds the wrong items" }
     foreach ($k in $st.Keep) { if ($t -notmatch ('Item: ' + [regex]::Escape($k))) { throw "stash $($st.File) lost its own $k" } }
     if ($t -match 'Respawns') { throw "stash $($st.File) respawns - a one-copy tome would come back, or vanish" }
     foreach ($fk in $ours) { $stashed[$fk] = $st.File }
+}
+# f. every note is in exactly one stash, teaches nothing, and carries its own text
+foreach ($nt in $script:TvrNotes) {
+    $holders = @($script:TvrStashes | Where-Object { $_.Notes -contains $nt.EditorID })
+    if ($holders.Count -ne 1) { throw "note $($nt.EditorID) is in $($holders.Count) stashes, want 1" }
+    $bt = Read-YamlText (Join-Path $booksDir ("{0} - {1}.yaml" -f $nt.EditorID, ($nt.FormKey -replace ':', '_')))
+    if ($bt -notmatch 'BookTeachesNothing' -or $bt -match 'VirtualMachineAdapter') { throw "note $($nt.EditorID) teaches something or carries a script" }
+    if ($bt -notmatch ('(?m)^  Value: ' + [regex]::Escape("'" + ($nt.Title -replace "'", "''") + "'"))) { throw "note $($nt.EditorID) lost its title" }
 }
 # e. the only master cells we override are the new stashes' cells, each carrying no navmesh and
 #    exactly one ref - ours, of our stash chest. TVR_Cell (Triumvirate's own interior) is exempt.
