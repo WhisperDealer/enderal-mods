@@ -382,8 +382,11 @@ $script:TvrStashes = @(
        Notes = @('TVR_Note_YeroFourthLetter') }
 )
 
-# NOTES: lore letters our own, one in each stash, built by 15 step 4c from Template (Dal'Galar's
-# plain bordered letter, FS's copy: no script, no Teaches) with the text in tools/notes/<EditorID>.txt.
+# NOTES: lore letters our own, one in each stash, built by 15 step 4c from a template Book (FS's
+# copy; its scripts are dropped, it must teach nothing) with the text in tools/notes/<EditorID>.txt.
+# Default template: Dal'Galar's plain bordered letter. A single loose sheet CLIPS text that runs past
+# one page (verified in game: ~420 words at size 16 lost its last line), so a long note takes a bound
+# template that turns pages - Yero's uses FS's own diary letter (JournalYero.nif), like his others.
 #   Yero's Fourth Letter sits between FS's Third Letter (Sira's death) and his Memorial Book (MQ02):
 #   why he bent Light Magic into Psionics, before the Red Madness took him.
 #   The Apothecarii's record of what they seized from Samael Dal'Galar when he left Ark (MQ11a:
@@ -394,7 +397,8 @@ $script:TvrStashes = @(
 $script:TvrNoteTemplate = '_00E_MQ11a_DalGalarFinalLetter - 036743_Skyrim.esm.yaml'
 $script:TvrNotes = @(
     @{ EditorID = 'TVR_Note_YeroFourthLetter'; FormKey = '4C0D62:Triumvirate - Mage Archetypes.esp'
-       Title = "Yero's Diary (Fourth Letter)" }
+       Title = "Yero's Diary (Fourth Letter)"
+       Template = '_00E_MQ02_YerosTagebuch_3 - 02EE4B_Enderal - Forgotten Stories.esm.yaml' }
     @{ EditorID = 'TVR_Note_ApothecariiConfiscation'; FormKey = '4C0D63:Triumvirate - Mage Archetypes.esp'
        Title = 'Note from the Apothecarii' }
 )

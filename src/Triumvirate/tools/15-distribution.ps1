@@ -303,22 +303,27 @@ foreach ($v in $vendors) {
 # template's own scripts and Version2 are dropped; every other field is the template's.
 $booksDir = Join-Path $root 'Books'
 $noteKeys = @{}
-$tplPath = Join-Path (Join-Path $repo 'reference\base\EnderalFS\Books') $script:TvrNoteTemplate
-if (-not (Test-Path -LiteralPath $tplPath)) { throw "note template not found: $($script:TvrNoteTemplate)" }
-$tpl = @(Get-YamlLines $tplPath)
-# split the template into top-level blocks: a key line at column 0 plus everything under it
-# (a '- ' item at column 0 belongs to the key above it - CLAUDE.md's YAML sequence trap)
-$blocks = New-Object System.Collections.ArrayList
-foreach ($ln in $tpl) {
-    if ($ln -match '^[A-Za-z]\w*:') { [void]$blocks.Add(@{ Key = ($ln -split ':')[0]; Lines = New-Object System.Collections.ArrayList }) }
-    if ($blocks.Count -eq 0) { throw "note template does not start with a key" }
-    if ($ln -ne '') { [void]$blocks[$blocks.Count - 1].Lines.Add($ln) }
+# Split a template Book into top-level blocks: a key line at column 0 plus everything under it
+# (a '- ' item at column 0 belongs to the key above it - CLAUDE.md's YAML sequence trap).
+function Get-NoteTemplateBlocks { param([string]$Name)
+    $tplPath = Join-Path (Join-Path $repo 'reference\base\EnderalFS\Books') $Name
+    if (-not (Test-Path -LiteralPath $tplPath)) { throw "note template not found: $Name" }
+    $blocks = New-Object System.Collections.ArrayList
+    foreach ($ln in @(Get-YamlLines $tplPath)) {
+        if ($ln -match '^[A-Za-z]\w*:') { [void]$blocks.Add(@{ Key = ($ln -split ':')[0]; Lines = New-Object System.Collections.ArrayList }) }
+        if ($blocks.Count -eq 0) { throw "note template $Name does not start with a key" }
+        if ($ln -ne '') { [void]$blocks[$blocks.Count - 1].Lines.Add($ln) }
+    }
+    foreach ($k in 'FormKey', 'EditorID', 'Name', 'BookText', 'Teaches', 'Description') {
+        if (@($blocks | Where-Object { $_.Key -eq $k }).Count -ne 1) { throw "note template $Name lacks exactly one $k" }
+    }
+    if ((@($blocks | Where-Object { $_.Key -eq 'Teaches' })[0].Lines -join "`n") -notmatch 'BookTeachesNothing') { throw "note template $Name teaches something" }
+    return ,$blocks
 }
-foreach ($k in 'FormKey', 'EditorID', 'Name', 'BookText', 'Teaches', 'Description') {
-    if (@($blocks | Where-Object { $_.Key -eq $k }).Count -ne 1) { throw "note template lacks exactly one $k" }
-}
-if ((@($blocks | Where-Object { $_.Key -eq 'Teaches' })[0].Lines -join "`n") -notmatch 'BookTeachesNothing') { throw "note template teaches something" }
 foreach ($nt in $script:TvrNotes) {
+    $tplName = $script:TvrNoteTemplate
+    if ($nt.ContainsKey('Template')) { $tplName = $nt.Template }
+    $blocks = Get-NoteTemplateBlocks -Name $tplName
     $txtPath = Join-Path (Join-Path $PSScriptRoot 'notes') "$($nt.EditorID).txt"
     if (-not (Test-Path -LiteralPath $txtPath)) { throw "note text not found: $txtPath" }
     $body = @((Read-YamlText $txtPath).TrimEnd() -split "`r?`n")
