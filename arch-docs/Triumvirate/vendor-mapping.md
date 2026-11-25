@@ -56,42 +56,66 @@ copy, so the 76 dead calls are gone entirely.
 
 ## The merchants
 
+**One merchant per archetype.** Each sells that archetype's whole line, Novice through Master, plus
+its staves, and no other merchant sells any of it. The table lives once, in
+`tools/00-common.ps1` (`$script:TvrVendors`), and both `15-distribution.ps1` and
+`17-tier-gating.ps1` read it, so the two steps cannot disagree.
+
 **We override none of these chests.** Stock goes into each merchant's `*_CustomMerchandise` hook
-instead — see [Where the stock actually goes](#where-the-stock-actually-goes) below. The mod's
-entire override surface against its masters is **ten `LeveledItem`s and zero `Container`s**, and
-all ten are clear of EGO and of Apocalypse.
+(see [Where the stock actually goes](#where-the-stock-actually-goes) above). The mod's entire
+override surface against its masters is **four `LeveledItem`s and zero `Container`s**.
 
-> **This replaced an earlier design that overrode the ten chests, and that design was conflicting.**
-> The doc used to claim all ten chests were free of EGO's 319 container overrides. They were not:
-> **`_00E_Merchant_CCBlacksmithArkGuard` `02EFBD`**, **`_00E_Merchant_Rhalata_SisterEnvyContainer`
-> `01E893`** and **`_00E_Merchant_UCHehler02` `030309`** are all in EGO's `## Containers (319)`
-> section, and our plugin loads after EGO, so it silently reverted EGO's changes to those three
-> (guardrail 5). Re-homing them looked hard, because **EGO owns essentially all of Ark's commerce**:
-> of the capital's 55 merchant chests only **six** are EGO-clear and all six are 250–405 gold; every
-> Ark chest at 900+ is EGO's.
->
-> Moving to the hooks dissolved the problem rather than solving it — there is no chest override left
-> to conflict. The lesson is recorded in CLAUDE.md: **check claim sets by FormKey, and prefer the
-> hook to the chest.**
+| Archetype | Merchant (hook) | Chest (NOT overridden) | Cell, resolved from the chest's placed ref | Gold |
+|---|---|---|---|---:|
+| Shadow | Sister Envy (`SisterEnvy_` `0302ED`) | `_00E_Merchant_Rhalata_SisterEnvyContainer` `01E893:FS` | `FSNQR03RhalataTemple` | 2700 |
+| Cleric | **Halda Stronghand** (`HaldaHammerschlag_` `0302FF`) | `_00E_Merchant_STHalda` `118055:Skyrim.esm` | `SuntempleArmory` | 3500 |
+| Warlock | Shrouded Mage, Undercity (`Wildmage_Undercity_` `0302F0`) | `_00E_FS_Merchant_Wildmage_UndercityBarracks1` `01E900:FS` | `UndercityBarracks1` | 630 |
+| Druid + Shaman | **Torius Flameling** (`TuriousFlammentrunk_` `0302FE`) | `_00E_Merchant_STTurious` `118050:Skyrim.esm` | `SuntempleAlchemy` | 1430 |
 
-| Chest (we do NOT override it) | Who / where | Gold | Sells | Why |
-|---|---|---:|---|---|
-| `_00E_Merchant_FlusshaimAdreyoContainer` `05BCD4:Skyrim.esm` | Adreyo, Riverville general trader | 380 | Druid, Cleric | The starting town's shop — sells mushrooms, herbs and arcana books already; early access for the two "respectable" lines |
-| `_00E_FS_Merchant_Wildmage_FrostcliffTavern` `01E904:FS` | Shrouded Mage, Frostcliff Tavern | 674 | Druid, Shaman + **Druid staves** | FS's Shrouded Mages literally sell forbidden spell literature; the mountain one is the nature-magic seller |
-| `_00E_FS_Merchant_Wildmage_Duneville` `01E90A:FS` | Shrouded Mage, Duneville | 707 | Shaman, Druid + **Shaman staves** | The desert-village Shrouded Mage — the closest thing Enderal has to a tribal spirit-seller |
-| `_00E_Merchant_DunevilleSmithHunter` `02F2BF:FS` | Duneville smith & hunter | 2200 | Shaman | The tribal smith — the Baldor Iron-Shaper analogue from the original roster |
-| `_00E_FS_Merchant_Wildmage_UndercityBarracks1` `01E900:FS` | Shrouded Mage, Undercity barracks | 630 | Warlock, Shadow | The Shrouded Mage who works out of the Undercity — forbidden magic in the underworld |
-| `_00E_Merchant_Rhalata_SisterEnvyContainer` `01E893:FS` | Sister Envy, the Rhalata | 2700 | Warlock, Shadow + **Warlock staves** | The murder-cult quartermaster: soul gems, poisons, scrolls. The Babette/Atub slot, and the richest vendor in the set |
-| `_00E_FS_UndercityBashHole_Merchant` `02F2F0:FS` | The Bash Hole, Undercity | 2200 | Warlock | An underworld dive trading in everything |
-| `_00E_Merchant_UCHehler02` `030309:FS` | The Fence, Undercity | 1450 | Shadow + **Shadow staves** | *Hehler* = fence, and **"Fence" is literally his in-game name** — the Gulum-Ei slot, verbatim |
-| `_00E_Merchant_CCMarius` `046AEF:Skyrim.esm` | Marius, Ark bookseller | 250 | Cleric, Shadow + **Cleric staves** | Ark's bookshop (42 titles, including the Holy Order's own literature) — the natural home of any spell tome |
-| `_00E_Merchant_CCBlacksmithArkGuard` `02EFBD:FS` | Ark guard blacksmith | 2200 | Cleric | The Order's garrison smith — the paladin-facing seller |
+The Sun Temple has exactly these two merchants. Halda is
+the armory smith (not flagged Essential) and Torius the alchemist (Essential). Their EditorIDs are
+German (`Hammerschlag`, `Flammentrunk`); the English display names are read from the NPC records'
+`Name` blocks.
 
-The table's **Sells** column is the Novice/Apprentice/Adept line. Source counts for those:
-**36 spells at 3 vendors, the 9 Shadow Mage ones at 4**. Each archetype's **staves** (26 total)
-sit at one flavour-fit vendor apiece. Expert and Master are Ark/Undercity only — see below.
+What each hook carries, per archetype: the three per-school parent bundles
+(`TVR_Tomes_Litem_<Arch>_<School>`, Novice/Apprentice/Adept), the six Expert/Master tier bundles
+(`TVR_Tomes_Litem_<Arch>_075|100_<School>`, added by step 17), and every `TVR_<Arch>_*_Staff_*`.
+Staves: Shadow 4, Cleric 4, Warlock 8, Druid + Shaman 10, which is all 26.
 
-## Tier gating — where the top two tiers are sold
+### Shared ground: two of the four hooks are also written by other releases here
+
+| Hook | Also written by | Effect for a player running both |
+|---|---|---|
+| `TuriousFlammentrunk_` | **Apocalypse** (its Apprentice tier) | The later-loading plugin's entries win; the other's vanish without error |
+| `HaldaHammerschlag_` | **Holy Templar Magic** (Kittytail Conversions, not yet on `main`) | Same |
+
+Accepted deliberately for this release: Apocalypse is due its own redistribution, which should move
+off Torius. Before shipping Kittytail Conversions or the next Apocalypse update, resolve both,
+either by moving one side or by shipping a merge patch. **The chests are no escape route:** EGO and
+`EGO SE - Leveling Redone` override both Sun Temple chests, and KataPUMB overrides Torius's.
+
+> **Sister Envy is the only Shadow vendor, and she is in a Forgotten Stories quest location.** Her
+> chest is in `FSNQR03RhalataTemple`, not the Undercity. Under the previous layout that was why she
+> sold only the low tiers. Now the whole Shadow line depends on the player reaching her. Confirm in
+> game when she becomes reachable (checklist, Test B).
+
+### History: the layouts this replaced
+
+1. **Ten chest overrides (WD-16).** This conflicted: `_00E_Merchant_CCBlacksmithArkGuard` `02EFBD`,
+   `_00E_Merchant_Rhalata_SisterEnvyContainer` `01E893` and `_00E_Merchant_UCHehler02` `030309` are
+   all in EGO's `## Containers (319)`, so our plugin silently reverted EGO's changes to those three
+   (guardrail 5). The lesson is in CLAUDE.md: **check claim sets by FormKey, and prefer the hook to
+   the chest.**
+2. **Ten hooks, Expert/Master confined to Ark and the Undercity (WD-16b/c).** Each line sat at three
+   or four merchants (Adreyo, the Frostcliff and Duneville Shrouded Mages, Akatyr, the Undercity
+   Shrouded Mage, Sister Envy, the Bash Hole, the Fence, Marius, the Ark guard smith). The top two
+   tiers were sold only by the five Ark/Undercity merchants. It was correct, but it was hard to tell
+   a player where to find a given spell.
+3. **Four hooks, one per archetype (this layout).** Step 15 deletes any hook no longer in the table
+   and rebuilds the four from the FS master's copy on every run, so a stale layout cannot survive a
+   re-run.
+
+## Tier gating
 
 `tools/17-tier-gating.ps1`, run after `15-distribution.ps1`.
 
@@ -101,40 +125,18 @@ of the 75 tomes were unobtainable no matter which chest they sat in. See
 [`enderal-gap-audit.md`](enderal-gap-audit.md#the-skill-tier-globals) for the evidence. Dropping
 the `Global:` line lets Enai's authored `ChanceNone: 1` stand.
 
-With the gate gone all ten vendors would sell all five tiers, so **Expert and Master are cut out
-of the 15 per-school parent bundles and placed at the five Ark/Undercity merchants instead** —
-into their `CustomMerchandise` hooks, like everything else. No new records: the `_075_`/`_100_`
-tier bundles already exist and are already `UseAll`-with-one-entry.
+Step 17 still cuts Expert/Master out of the 15 per-school parent bundles and places the `_075_`/`_100_`
+tier bundles in a hook directly. That structure dates from the Ark/Undercity confinement. It is kept
+because it produces the right result: the hook is now the archetype's own vendor, so the vendor
+ends up with all five tiers.
 
-| Merchant (hook) | Cell (resolved from the chest's placed ref) | Expert/Master it carries |
-|---|---|---|
-| Marius (`BibliothekarMarius_CustomMerchandise`) | `CapitalCityBibliothek` — Ark, the library | Cleric, Shadow, **Druid, Shaman** |
-| Ark guard blacksmith (`ArkHofSchmied_CustomMerchandise`) | `CapitalCityCastleWorld` — Ark, the castle | Cleric |
-| Shrouded Mage (`Wildmage_Undercity_CustomMerchandise`) | `UndercityBarracks1` | Warlock, Shadow, **Druid, Shaman** |
-| The Bash Hole (`BashHole_CustomMerchandise`) | `UndercityBarracks3BashHole` | Warlock |
-| The Fence (`UndercityHehler02_CustomMerchandise`) | `UndercityBarracks0FalseDogTavern` | Shadow |
-
-Druid and Shaman have no Ark/Undercity vendor of their own, so restricting the top tiers to those
-five merchants would have left 12 tomes with nowhere to go — re-breaking a sixth of the mod while
-fixing 45. They are added to the two shops that can carry anything: **Marius** (a library, 42
-titles) and the **Undercity Shrouded Mage** (FS's Shrouded Mages sell forbidden spell literature). Every
-archetype ends with **at least two** Expert/Master sources.
-
-> **Sister Envy is not Undercity.** Her chest sits in `FSNQR03RhalataTemple`, not the Undercity —
-> checked by resolving the container's placed ref rather than by reading the name. So the richest
-> vendor in the set (2700 gold) carries the low tiers only.
-
-The generator asserts all of it: 75/75 tomes obtainable, 15 per tier, every Expert/Master tome
-sourced **only** from those five merchants and from at least two of them, every lower-tier tome
-still at three or more. It also asserts the plugin overrides **zero** container records, and
-refuses to let a merchant hook stock the vestigial
-`TVR_Tomes_Litem_All*` family, which belongs to Enai's debug chest.
-
-> **The Cleric caveat.** Enderal has no priest-merchants at all — its temples do not trade, and
-> the two Sun Temple vendors are claimed (STTurious by Apocalypse, STHalda by EGO). The Cleric
-> line therefore goes to the *civic/Order-adjacent* vendors — the capital's bookshop, the
-> garrison smith, the starting town's trader — rather than to literal priests. Recorded here so
-> nobody "fixes" it onto an EGO-claimed chest later.
+The generators assert all of it: 75 tomes resolved, 15 per tier, **every tome except withheld ones
+sold by exactly one merchant, and that merchant is its archetype's vendor**, every staff at exactly
+one merchant, no merchant stocking an archetype the table does not give it, **zero** container
+overrides, and no hook stocking the vestigial `TVR_Tomes_Litem_All*` family, which belongs to Enai's
+debug chest. Withheld tomes (`$script:TvrWithheldTomes`, currently Force of Nature) may be present
+or absent, so 15 and 17 hold on either side of `20-withhold-force-of-nature.ps1`. Before this
+change, 17 could not be re-run after 20.
 
 ## Decisions the ticket asked for
 
@@ -150,7 +152,7 @@ refuses to let a merchant hook stock the vestigial
 The 14 vanilla merchant-chest overrides, the 6 vanilla `Services*` faction overrides, the 8 TVR
 satellite chests and the 9 TVR `*_Faction_Services*` factions — plus the satellite chests'
 placed refs in `TVR_Cell` (the holding-cell markers for Hurl/Exile stay). After this pass the
-plugin overrides **nothing of any master except the ten chest records above**, and the dead-ref
+plugin overrides **nothing of any master except the merchant hooks above** (ten at the time, four now), and the dead-ref
 audit reads **40**, all documented deliberate leaves (TwinSouls 13, ElementalPotency 10,
 MasterOfTheMind 1, the orphaned Stone quest's 16).
 
@@ -164,18 +166,19 @@ master under `GameRelease.EnderalSE`.
   silent leveled-list drops. Spriggit stays pinned at 0.40.0.
   - after WD-16 (chest overrides): SHA-256 `6C7BB02F…CAD29C`, 745,728 bytes
   - after WD-16b (tier gating): SHA-256 `881505F7…7164C7`, 745,651 bytes
-  - after WD-16c (CustomMerchandise hooks): SHA-256 `43B8EF1E…161510`, **739,071 bytes**
+  - after WD-16c (CustomMerchandise hooks): SHA-256 `43B8EF1E…161510`, 739,071 bytes
+  - after one-vendor-per-archetype: SHA-256 `4D62DC89…3FC95ACB`, **737,067 bytes**
 - `HEDR` 1.70, masters `Skyrim.esm, Update.esm, Enderal - Forgotten Stories.esm` — re-read out of
   the built binary at offset 30, not assumed.
 - Both `15-distribution.ps1` and `17-tier-gating.ps1` are **idempotent**: a second run reports 0
   changes and re-proves every invariant.
-- Override surface against the masters is **10 records, all `LeveledItem`, zero `Container`** —
-  asserted by the generator, and each of the ten confirmed absent from EGO's conflict index and
-  from Apocalypse's tree.
+- Override surface against the masters is **4 records, all `LeveledItem`, zero `Container`** —
+  asserted by the generator. None is in EGO's conflict index; two are shared with this repo's own
+  releases (see [Shared ground](#shared-ground-two-of-the-four-hooks-are-also-written-by-other-releases-here)).
 - Missing-reference audit still reads **40**, the documented pre-existing baseline: no new
   dangling references.
 - In-game proof (WD-18): visit one vendor per archetype and confirm the low tiers appear in
-  barter; then **specifically confirm an Expert- or Master-tier tome at Marius or an Undercity
-  merchant, and its absence from Adreyo and the two Shrouded Mages** — the lower tiers appearing
-  proves nothing about the 45 that were gated. Confirm game start produces **zero** `TVR_`
+  barter; then **specifically confirm an Expert- or Master-tier tome at each of the four**, and
+  no Triumvirate stock at a former vendor such as Marius. The lower tiers appearing proves nothing
+  about the 45 that were gated. See `distribution-test-checklist.md`. Confirm game start produces **zero** `TVR_`
   Papyrus errors.

@@ -1,5 +1,5 @@
-FormKey: 0302D9:Enderal - Forgotten Stories.esm
-EditorID: ArkHofSchmied_CustomMerchandise
+FormKey: 0302FF:Enderal - Forgotten Stories.esm
+EditorID: HaldaHammerschlag_CustomMerchandise
 Flags:
 - UseAll
 Entries:
@@ -14,6 +14,22 @@ Entries:
 - Data:
     Level: 1
     Reference: 43D31E:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 41EC68:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 41EC69:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 41EC6A:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 41EC6B:Triumvirate - Mage Archetypes.esp
     Count: 1
 - Data:
     Level: 1

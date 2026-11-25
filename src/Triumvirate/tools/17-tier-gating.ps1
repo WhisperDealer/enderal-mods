@@ -1,4 +1,4 @@
-# 17 - Ungate the high tiers, then re-home Expert/Master into Ark and the Undercity (WD-16b).
+# 17 - Ungate the high tiers, then hand Expert/Master to each archetype's one vendor (WD-16b).
 #
 # TWO defects, one pass.
 #
@@ -13,24 +13,18 @@
 #    resolves the chain STRUCTURALLY and never reads ChanceNone. Dropping the `Global:` line lets
 #    the authored `ChanceNone: 1` stand (a 1% miss per restock, which is Enai's own value).
 #
-# 2. EXPERT/MASTER WERE EVERYWHERE. With the gate gone, all 10 vendors would sell all 5 tiers.
-#    The top two tiers are pulled out of the per-school parent bundles and placed at the five
-#    Ark/Undercity merchants instead, so the capital and the underworld are the only places high
-#    magic is sold. Locations verified by resolving each merchant's chest ref to its cell - by the
-#    record, not by the name, which is how Sister Envy turned out not to qualify:
-#      Marius              -> CapitalCityBibliothek             (Ark, the library)
-#      Ark Guard Smith     -> CapitalCityCastleWorld            (Ark, the castle worldspace)
-#      Shrouded Mage       -> UndercityBarracks1
-#      Bash Hole           -> UndercityBarracks3BashHole
-#      The Fence (Hehler)  -> UndercityBarracks0FalseDogTavern
-#      Sister Envy         -> FSNQR03RhalataTemple  <- NOT Undercity; low tiers only, despite
-#                                                      being the richest vendor in the set
+# 2. EXPERT/MASTER GO TO THE SAME ONE VENDOR. Distribution is one merchant per archetype
+#    ($script:TvrVendors in 00-common.ps1): Shadow -> Sister Envy, Cleric -> Halda Stronghand,
+#    Warlock -> the Undercity Shrouded Mage, Druid + Shaman -> Torius Flameling. 15 writes each
+#    archetype's per-school parent bundles (Novice/Apprentice/Adept) into its vendor's hook; this
+#    step cuts Expert/Master out of those parents and writes the 075/100 tier bundles into the SAME
+#    hook directly. The end state is that each vendor sells its archetypes' whole line and nobody
+#    else sells any of it.
 #
-# Druid and Shaman have no Ark/Undercity vendor of their own, so their high tiers would have
-# nowhere to go and we would have re-broken 12 tomes while fixing 45. They are added to the two
-# shops that can justify carrying anything: Marius (a library, 42 titles) and the Undercity
-# Shrouded Mage (FS's Shrouded Mages sell forbidden spell literature - they already stock the
-# _00E_Lehrbuch<School> skill books for all five schools). Every archetype ends with >=2 sources.
+#    History: this step used to confine Expert/Master to five Ark/Undercity merchants while Novice-
+#    Adept sat at ten vendors across the map. That layout was retired for one-vendor-per-archetype;
+#    the cut-and-place structure was kept because it still produces the right hooks and keeps the
+#    parent bundles' shape (three common tiers) stable across the change.
 #
 # WHERE IT WRITES: the merchants' `*_CustomMerchandise` hooks, the same empty SureAI leveled lists
 # 15-distribution.ps1 populates - NOT their chests. See that script's header for why.
@@ -49,25 +43,15 @@ $root = Get-EspRoot
 $lvli = Join-Path $root 'LeveledItems'
 
 $ARCHETYPES = @('Druid', 'Shadow', 'Warlock', 'Cleric', 'Shaman')
-$HIGH = @('075', '100')          # Expert, Master - Ark/Undercity only
+$HIGH = @('075', '100')          # Expert, Master - placed directly in the vendor hook
 $COMMON = @('000', '025', '050') # Novice, Apprentice, Adept - unchanged vendors
 
-# Which archetypes' Expert/Master each Ark/Undercity merchant carries, written to that merchant's
-# CustomMerchandise hook. The first entries are the merchant's existing archetypes (distribution
-# is unchanged); Druid/Shaman are the two additions forced by reachability, and they go only to
-# the library and the Shrouded Mage.
-$highVendors = @(
-    @{ File = 'BibliothekarMarius_CustomMerchandise - 0302D2_Enderal - Forgotten Stories.esm.yaml'
-       Where = 'Marius (Ark library)';       Archetypes = @('Cleric', 'Shadow', 'Druid', 'Shaman') }
-    @{ File = 'ArkHofSchmied_CustomMerchandise - 0302D9_Enderal - Forgotten Stories.esm.yaml'
-       Where = 'Ark guard blacksmith';       Archetypes = @('Cleric') }
-    @{ File = 'Wildmage_Undercity_CustomMerchandise - 0302F0_Enderal - Forgotten Stories.esm.yaml'
-       Where = 'Shrouded Mage (Undercity)';  Archetypes = @('Warlock', 'Shadow', 'Druid', 'Shaman') }
-    @{ File = 'BashHole_CustomMerchandise - 0302CC_Enderal - Forgotten Stories.esm.yaml'
-       Where = 'The Bash Hole (Undercity)';  Archetypes = @('Warlock') }
-    @{ File = 'UndercityHehler02_CustomMerchandise - 030307_Enderal - Forgotten Stories.esm.yaml'
-       Where = 'The Fence (Undercity)';      Archetypes = @('Shadow') }
-)
+# Expert/Master go to the same hook 15 stocked with the archetype's common tiers - one vendor per
+# archetype, from the shared table in 00-common.ps1.
+$highVendors = @($script:TvrVendors | ForEach-Object { @{ File = $_.File; Where = $_.Merchant; Archetypes = $_.Archetypes } })
+$vendorOfArch = @{}
+foreach ($v in $highVendors) { foreach ($a in $v.Archetypes) { $vendorOfArch[$a] = $v.File } }
+foreach ($a in $ARCHETYPES) { if (-not $vendorOfArch.ContainsKey($a)) { throw "no vendor for archetype $a" } }
 
 # ------------------------------------------------------------------ record lookups
 $fkOf = @{}   # EditorID -> FormKey
@@ -132,20 +116,22 @@ foreach ($a in $ARCHETYPES) {
             if ($n -le 0) { throw "failed to trim $t from TVR_Tomes_Litem_${a}_${sc}" }
             $trimmed++
         }
-        # whatever happened above, the parent must now be exactly the three common tiers
+        # whatever happened above, the parent must now be exactly the three common tiers - less any
+        # withheld tier bundle, which 20-withhold-force-of-nature.ps1 cuts after this step has run
         $text = Read-YamlText $parent
         $refs = @([regex]::Matches($text, '(?m)^    Reference: (.+?)(?=\r?$)') | ForEach-Object { $_.Groups[1].Value })
-        if ($refs.Count -ne 3) { throw "TVR_Tomes_Litem_${a}_${sc} has $($refs.Count) entries, want 3" }
-        foreach ($t in $COMMON) {
-            $key = Get-TierBundleKey -Arch $a -Tier $t -School $sc
-            if ($refs -notcontains $key) { throw "TVR_Tomes_Litem_${a}_${sc} lost its $t tier" }
+        $commonKeys = @($COMMON | ForEach-Object { Get-TierBundleKey -Arch $a -Tier $_ -School $sc })
+        $extra = @($refs | Where-Object { $commonKeys -notcontains $_ })
+        if ($extra.Count -gt 0) { throw "TVR_Tomes_Litem_${a}_${sc} carries $($extra.Count) non-common entries" }
+        foreach ($key in $commonKeys) {
+            if ($refs -notcontains $key -and $script:TvrWithheldTierBundles -notcontains $key) { throw "TVR_Tomes_Litem_${a}_${sc} lost tier bundle $key" }
         }
     }
 }
 if ($trimmed -gt 0 -and $trimmed -ne 30) { throw "expected to trim 30 parent entries, did $trimmed" }
 Write-Host "  2. Expert/Master cut from the 15 parent bundles: $trimmed entries (each now Novice/Apprentice/Adept)"
 
-# ------------------------------------------------------------------ 3. place them in Ark / the Undercity
+# ------------------------------------------------------------------ 3. place them with the archetype's vendor
 function Add-LeveledEntries {
     param([string]$Path, [string[]]$FormKeys)
     $lines = @(Get-YamlLines $Path | Where-Object { $_.Trim() -ne '' })
@@ -193,6 +179,7 @@ Write-Host "  3. Expert/Master bundles placed: $placed"
 $tomeOf = @{}       # tier-bundle FormKey -> tome FormKey
 $tierOf = @{}       # tier-bundle FormKey -> '000'..'100'
 $childrenOf = @{}   # parent-bundle FormKey -> tier-bundle FormKeys
+$archOfTb = @{}     # tier-bundle FormKey -> archetype
 # Enai also ships a vestigial `TVR_Tomes_Litem_All*` family - a partial, never-finished set (only
 # Alteration at 000 and Destruction at 000-075). `TVR_Tomes_Litem_All` is referenced solely by his
 # debug chest TVR_Any_Container_CheatChest and the other five by nothing at all, so they are no
@@ -205,12 +192,12 @@ foreach ($eid in $fkOf.Keys) {
         if ($refs.Count -ne 1) { throw "$eid has $($refs.Count) entries, want 1" }
         $tomeOf[$fkOf[$eid]] = $refs[0]
         $tierOf[$fkOf[$eid]] = $Matches[2]
+        $archOfTb[$fkOf[$eid]] = $Matches[1]
     } elseif ($eid -match '^TVR_Tomes_Litem_(Druid|Shadow|Warlock|Cleric|Shaman)_[A-Z]') {
         $childrenOf[$fkOf[$eid]] = $refs
     }
 }
 
-$arkUnder = @($highVendors | ForEach-Object { $_.File })
 $sources = @{}   # tome FormKey -> list of chest file names
 foreach ($f in Get-ChildItem -LiteralPath $lvli -Filter '*_CustomMerchandise*.yaml') {
     $text = Read-YamlText $f.FullName
@@ -234,24 +221,26 @@ if ($allTomes.Count -ne 75) { throw "chain resolves $($allTomes.Count) tomes, wa
 $tierOfTome = @{}
 foreach ($tb in $tomeOf.Keys) { $tierOfTome[$tomeOf[$tb]] = $tierOf[$tb] }
 
-$unreachable = @($allTomes | Where-Object { -not $sources.ContainsKey($_) })
-if ($unreachable.Count -gt 0) { throw "$($unreachable.Count) tomes are unobtainable" }
+$archOfTome = @{}
+foreach ($tb in $tomeOf.Keys) { $archOfTome[$tomeOf[$tb]] = $archOfTb[$tb] }
 
-$leaked = @()
-$thin = @()
+# Withheld tomes (00-common.ps1) may be reachable or not, so this proof holds on either side of
+# 20-withhold-force-of-nature.ps1. Every other tome must be sold by exactly one merchant: the one
+# its archetype maps to.
+$wrong = @()
 foreach ($tome in $allTomes) {
-    $t = $tierOfTome[$tome]
-    $srcs = @($sources[$tome] | Sort-Object -Unique)
-    if ($HIGH -contains $t) {
-        $outside = @($srcs | Where-Object { $arkUnder -notcontains $_ })
-        if ($outside.Count -gt 0) { $leaked += "$tome ($t) sold outside Ark/Undercity by $($outside -join ', ')" }
-        if ($srcs.Count -lt 2) { $thin += "$tome ($t) has only $($srcs.Count) source" }
-    } else {
-        if ($srcs.Count -lt 3) { $thin += "$tome ($t) has only $($srcs.Count) sources" }
+    $srcs = @()
+    if ($sources.ContainsKey($tome)) { $srcs = @($sources[$tome] | Sort-Object -Unique) }
+    if ($script:TvrWithheldTomes -contains $tome) {
+        if ($srcs.Count -gt 0 -and ($srcs.Count -ne 1 -or $srcs[0] -ne $vendorOfArch[$archOfTome[$tome]])) { $wrong += "$tome (withheld) sold by $($srcs -join ', ')" }
+        continue
+    }
+    if ($srcs.Count -eq 0) { $wrong += "$tome ($($tierOfTome[$tome]), $($archOfTome[$tome])) is unobtainable"; continue }
+    if ($srcs.Count -ne 1 -or $srcs[0] -ne $vendorOfArch[$archOfTome[$tome]]) {
+        $wrong += "$tome ($($tierOfTome[$tome]), $($archOfTome[$tome])) sold by $($srcs -join ', ')"
     }
 }
-if ($leaked.Count -gt 0) { $leaked | ForEach-Object { Write-Host "    $_" }; throw "$($leaked.Count) high-tier tomes escape Ark/Undercity" }
-if ($thin.Count -gt 0) { $thin | ForEach-Object { Write-Host "    $_" }; throw "$($thin.Count) tomes are under-stocked" }
+if ($wrong.Count -gt 0) { $wrong | ForEach-Object { Write-Host "    $_" }; throw "$($wrong.Count) tomes are not sold by exactly their archetype's one vendor" }
 
 $byTier = @{}
 foreach ($tome in $allTomes) {
@@ -260,5 +249,5 @@ foreach ($tome in $allTomes) {
     $byTier[$t]++
 }
 $summary = @($byTier.Keys | Sort-Object | ForEach-Object { "$_=$($byTier[$_])" }) -join ' '
-Write-Host "  proof: 75/75 tomes obtainable ($summary); all 30 Expert/Master confined to the 5 Ark/Undercity hooks"
+Write-Host "  proof: 75 tomes resolved ($summary); every non-withheld tome sold by exactly its archetype's one vendor"
 Write-Host "17 - done"

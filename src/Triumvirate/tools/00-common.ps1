@@ -303,3 +303,41 @@ function Update-TreeStrings {
     }
     return $n
 }
+
+# ------------------------------------------------------------------ the vendor map
+# ONE merchant per archetype. Each sells that archetype's whole line - all five tiers - plus its
+# staves. 15-distribution.ps1 writes the Novice/Apprentice/Adept parent bundles and the staves into
+# each hook; 17-tier-gating.ps1 adds the Expert/Master tier bundles to the SAME hook. Both read this
+# table, so the two steps cannot disagree about who sells what.
+#
+# `File` is the merchant's SureAI `*_CustomMerchandise` hook (an empty UseAll FS record - see the
+# header of 15). The hook<->chest pairing was read out of each chest's own Items list and each chest
+# was resolved to its cell by its placed ref, never guessed from a name:
+#   SisterEnvy_          -> _00E_Merchant_Rhalata_SisterEnvyContainer 01E893  (FSNQR03RhalataTemple)
+#   HaldaHammerschlag_   -> _00E_Merchant_STHalda   118055                     (SuntempleArmory)
+#   Wildmage_Undercity_  -> _00E_FS_Merchant_Wildmage_UndercityBarracks1 01E900 (UndercityBarracks1)
+#   TuriousFlammentrunk_ -> _00E_Merchant_STTurious 118050                     (SuntempleAlchemy)
+#
+# SHARED GROUND: Halda's hook is also written by Kittytail's Holy Templar Magic patch and Torius's by
+# Apocalypse. Two plugins overriding one hook = the later-loading one's stock wins outright for a
+# player running both. Accepted for now (Apocalypse is due its own redistribution); see CLAUDE.md's
+# merchant-hook table before shipping.
+$script:TvrVendors = @(
+    @{ File = 'SisterEnvy_CustomMerchandise - 0302ED_Enderal - Forgotten Stories.esm.yaml'
+       Merchant = 'Sister Envy, the Rhalata';               Archetypes = @('Shadow') }
+    @{ File = 'HaldaHammerschlag_CustomMerchandise - 0302FF_Enderal - Forgotten Stories.esm.yaml'
+       Merchant = 'Halda Stronghand, Sun Temple armory';    Archetypes = @('Cleric') }
+    @{ File = 'Wildmage_Undercity_CustomMerchandise - 0302F0_Enderal - Forgotten Stories.esm.yaml'
+       Merchant = 'Shrouded Mage, Undercity';               Archetypes = @('Warlock') }
+    @{ File = 'TuriousFlammentrunk_CustomMerchandise - 0302FE_Enderal - Forgotten Stories.esm.yaml'
+       Merchant = 'Torius Flameling, Sun Temple alchemist'; Archetypes = @('Druid', 'Shaman') }
+)
+
+# Tomes deliberately kept off every vendor (20-withhold-force-of-nature.ps1). The distribution
+# proofs allow these to be reachable or not, so 15/17 stay correct whichever side of 20 they run.
+$script:TvrWithheldTomes = @(
+    '41EC7C:Triumvirate - Mage Archetypes.esp'   # TVR_Druid_A025_Book_ForceOfNature
+)
+$script:TvrWithheldTierBundles = @(
+    '43820F:Triumvirate - Mage Archetypes.esp'   # TVR_Druid_025_Alteration - holds only the tome above
+)

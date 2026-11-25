@@ -3,6 +3,24 @@
 Paste each version block into the Nexus **Changelogs** tab. User-facing changes only; repo tooling
 and documentation are not listed.
 
+## 1.0.3
+
+- Changed: **each archetype now has one merchant, who sells its whole line.** That means every
+  tier from Novice to Master, plus its staves:
+  - **Shadow**: Sister Envy, the Rhalata
+  - **Cleric**: Halda Stronghand, the Sun Temple armory
+  - **Warlock**: the Shrouded Mage in the Undercity barracks
+  - **Druid** and **Shaman**: Torius Flameling, the Sun Temple alchemist
+
+  Before this, each line was spread across three or four merchants and Expert/Master tomes were
+  sold only in Ark and the Undercity. Adreyo, Akatyr, Marius, the Ark guard blacksmith, the Bash
+  Hole, the Fence and the Frostcliff and Duneville Shrouded Mages no longer sell Triumvirate spells.
+- Known: **Apocalypse (Enderal conversion) also stocks Torius Flameling** through the same list. With
+  both installed, only the plugin that loads later adds to his shop. Load this one after Apocalypse
+  to keep Druid and Shaman for sale. Apocalypse's distribution is being reworked to move off him.
+- On an existing save, merchants restock every two in-game days, so the old shops can keep their
+  Triumvirate stock until then.
+
 ## 1.0.2
 
 - Fixed: **Wildshape did nothing at all.** The transformation was gated on your being *sprinting* at

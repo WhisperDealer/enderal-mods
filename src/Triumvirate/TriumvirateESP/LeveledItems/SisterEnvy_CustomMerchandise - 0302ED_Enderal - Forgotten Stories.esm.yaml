@@ -5,18 +5,6 @@ Flags:
 Entries:
 - Data:
     Level: 1
-    Reference: 43D329:Triumvirate - Mage Archetypes.esp
-    Count: 1
-- Data:
-    Level: 1
-    Reference: 43D32A:Triumvirate - Mage Archetypes.esp
-    Count: 1
-- Data:
-    Level: 1
-    Reference: 43D32B:Triumvirate - Mage Archetypes.esp
-    Count: 1
-- Data:
-    Level: 1
     Reference: 43D323:Triumvirate - Mage Archetypes.esp
     Count: 1
 - Data:
@@ -29,33 +17,41 @@ Entries:
     Count: 1
 - Data:
     Level: 1
-    Reference: 419B42:Triumvirate - Mage Archetypes.esp
+    Reference: 419B18:Triumvirate - Mage Archetypes.esp
     Count: 1
 - Data:
     Level: 1
-    Reference: 419B43:Triumvirate - Mage Archetypes.esp
+    Reference: 419B17:Triumvirate - Mage Archetypes.esp
     Count: 1
 - Data:
     Level: 1
-    Reference: 419B44:Triumvirate - Mage Archetypes.esp
+    Reference: 419B19:Triumvirate - Mage Archetypes.esp
     Count: 1
 - Data:
     Level: 1
-    Reference: 419B45:Triumvirate - Mage Archetypes.esp
+    Reference: 419B1A:Triumvirate - Mage Archetypes.esp
     Count: 1
 - Data:
     Level: 1
-    Reference: 419B4D:Triumvirate - Mage Archetypes.esp
+    Reference: 4381EA:Triumvirate - Mage Archetypes.esp
     Count: 1
 - Data:
     Level: 1
-    Reference: 419B4A:Triumvirate - Mage Archetypes.esp
+    Reference: 4381EB:Triumvirate - Mage Archetypes.esp
     Count: 1
 - Data:
     Level: 1
-    Reference: 419B4B:Triumvirate - Mage Archetypes.esp
+    Reference: 4381EC:Triumvirate - Mage Archetypes.esp
     Count: 1
 - Data:
     Level: 1
-    Reference: 419B4C:Triumvirate - Mage Archetypes.esp
+    Reference: 4381ED:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4381EE:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4381EF:Triumvirate - Mage Archetypes.esp
     Count: 1
