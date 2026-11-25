@@ -26,14 +26,17 @@
 # chain is chest -> CustomMerchandise -> archetype/school bundle -> tier bundle -> tome, every
 # link UseAll.
 #
-# Vendor selection is documented in arch-docs/Triumvirate/vendor-mapping.md. Hook records are
+# Vendor selection is documented in arch-docs/Triumvirate/vendor-mapping.md: ONE merchant per
+# archetype line (Shadow -> Sister Envy, Warlock -> the Undercity Shrouded Mage, Druid + Shaman +
+# Cleric -> Torius Flameling, less the Entropy/Psionics lines, which are unhomed for now), defined
+# in 00-common.ps1. Hook records are
 # copied VERBATIM from the FS reference tree (they are FS records; guardrail 5) before our
 # entries are appended - note the empty ones have **no `Entries:` key at all**, because Spriggit
 # omits an empty collection, so the key has to be created rather than appended to.
 #
 # What dies: the 14 vanilla chest overrides, the 6 vanilla Services* faction overrides, the 8
 # TVR satellite chests and the 9 TVR Services factions (37 records - after which the plugin
-# overrides NOTHING of any master except the 10 new chest records). The populate quest keeps
+# overrides NOTHING of any master except the CustomMerchandise hooks). The populate quest keeps
 # only the two live pieces of its script - starting the Conversion quest and the mod-ready
 # message - via a stripped VMAD plus the loose replacement script in
 # src/Triumvirate/Scripts/ (which beats the BSA's copy).
@@ -54,22 +57,11 @@ $repo = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $PSScriptRoot
 $refFS  = Join-Path $repo 'reference\base\EnderalFS\LeveledItems'
 
 # ------------------------------------------------------------------ the vendor mapping
-# `File` is the merchant's *_CustomMerchandise hook, all ten of them FS records. `Merchant` is
-# the chest that already contains it - recorded only so the mapping stays readable; we never
-# touch that record. The hook<->chest pairing was read out of each chest's own Items list, not
-# guessed from the names (Adreyo's hook is called Vexin_, the Ark guard smith's ArkHofSchmied_).
-$vendors = @(
-    @{ File = 'Vexin_CustomMerchandise - 0302F8_Enderal - Forgotten Stories.esm.yaml';                       Merchant = 'Adreyo, Riverville';        Archetypes = @('Druid','Cleric');   Staves = $null }
-    @{ File = 'Wildmage_FrostcliffTavern_CustomMerchandise - 0302EF_Enderal - Forgotten Stories.esm.yaml';    Merchant = 'Shrouded Mage, Frostcliff'; Archetypes = @('Druid','Shaman');   Staves = 'Druid' }
-    @{ File = 'Wildmage_Duneville_CustomMerchandise - 0302EE_Enderal - Forgotten Stories.esm.yaml';           Merchant = 'Shrouded Mage, Duneville';  Archetypes = @('Shaman','Druid');   Staves = 'Shaman' }
-    @{ File = 'Akatyr_CustomMerchandise - 0302EA_Enderal - Forgotten Stories.esm.yaml';                       Merchant = 'Duneville smith & hunter';  Archetypes = @('Shaman');           Staves = $null }
-    @{ File = 'Wildmage_Undercity_CustomMerchandise - 0302F0_Enderal - Forgotten Stories.esm.yaml';           Merchant = 'Shrouded Mage, Undercity';  Archetypes = @('Warlock','Shadow'); Staves = $null }
-    @{ File = 'SisterEnvy_CustomMerchandise - 0302ED_Enderal - Forgotten Stories.esm.yaml';                   Merchant = 'Sister Envy, the Rhalata';  Archetypes = @('Warlock','Shadow'); Staves = 'Warlock' }
-    @{ File = 'BashHole_CustomMerchandise - 0302CC_Enderal - Forgotten Stories.esm.yaml';                     Merchant = 'The Bash Hole, Undercity';  Archetypes = @('Warlock');          Staves = $null }
-    @{ File = 'UndercityHehler02_CustomMerchandise - 030307_Enderal - Forgotten Stories.esm.yaml';            Merchant = 'The Fence, Undercity';      Archetypes = @('Shadow');           Staves = 'Shadow' }
-    @{ File = 'BibliothekarMarius_CustomMerchandise - 0302D2_Enderal - Forgotten Stories.esm.yaml';           Merchant = 'Marius, Ark library';       Archetypes = @('Cleric','Shadow');  Staves = 'Cleric' }
-    @{ File = 'ArkHofSchmied_CustomMerchandise - 0302D9_Enderal - Forgotten Stories.esm.yaml';                Merchant = 'Ark guard blacksmith';      Archetypes = @('Cleric');           Staves = $null }
-)
+# One merchant per archetype line, defined once in 00-common.ps1 ($script:TvrVendors and
+# $script:TvrUnhomedLines) and shared with 17-tier-gating.ps1. Each hook gets its archetypes'
+# per-school parent bundles and staves, less the unhomed lines; 17 then adds the Expert/Master tier bundles to the same hook. We never touch the
+# merchant's chest record.
+$vendors = $script:TvrVendors
 
 # ------------------------------------------------------------------ record lookups
 function Find-OwnRecords {
@@ -92,12 +84,46 @@ if ($bundles.Count -ne 15) { throw "expected 15 archetype/school tome bundles, f
 $staves = Find-OwnRecords -Group 'Weapons' -Pattern '^TVR_(Druid|Shadow|Warlock|Cleric|Shaman)_[ACDIR]\d{3}_Staff_'
 if ($staves.Count -ne 26) { throw "expected 26 staves, found $($staves.Count)" }
 
-function Get-ArchBundles { param([string]$Arch)
-    return ,@($bundles.Keys | Where-Object { $_ -like "TVR_Tomes_Litem_${Arch}_*" } | Sort-Object | ForEach-Object { $bundles[$_] })
+# A line is archetype + school ('Druid_Conjuration'). Lines in $script:TvrUnhomedLines have no
+# merchant yet, so a vendor taking an archetype gets every line of it EXCEPT those.
+function Get-StaffLine { param([string]$Eid)
+    $m = [regex]::Match($Eid, '^TVR_([A-Za-z]+)_([ACDIR])\d{3}_Staff_')
+    if (-not $m.Success) { throw "unparseable staff EditorID $Eid" }
+    return "$($m.Groups[1].Value)_$($script:TvrSchoolLetter[$m.Groups[2].Value])"
 }
-function Get-ArchStaves { param([string]$Arch)
-    return ,@($staves.Keys | Where-Object { $_ -like "TVR_${Arch}_*" } | Sort-Object | ForEach-Object { $staves[$_] })
+# archetype by archetype, in the vendor table's order, so a hook's entry order is stable
+function Get-VendorBundles { param([hashtable]$Vendor)
+    $out = @()
+    foreach ($a in $Vendor.Archetypes) {
+        $out += @($bundles.Keys | Where-Object { $_ -like "TVR_Tomes_Litem_${a}_*" -and
+            (Test-VendorSellsLine -Vendor $Vendor -Line ($_ -replace '^TVR_Tomes_Litem_', '')) } | Sort-Object | ForEach-Object { $bundles[$_] })
+    }
+    return ,$out
 }
+function Get-VendorStaves { param([hashtable]$Vendor)
+    $out = @()
+    foreach ($a in $Vendor.Archetypes) {
+        $out += @($staves.Keys | Where-Object { $_ -like "TVR_${a}_*" -and (Test-VendorSellsLine -Vendor $Vendor -Line (Get-StaffLine $_)) } |
+            Sort-Object | ForEach-Object { $staves[$_] })
+    }
+    return ,$out
+}
+# every one of the 15 lines is sold by exactly one vendor or is a non-vendor line
+foreach ($bk in $bundles.Keys) { [void](Get-VendorOfLine -Line ($bk -replace '^TVR_Tomes_Litem_', '')) }
+# "unhomed" below means NOT AT ANY MERCHANT: the truly unhomed lines plus the stashed ones.
+$unhomedBundles = @($script:TvrNonVendorLines | ForEach-Object {
+    if (-not $bundles.ContainsKey("TVR_Tomes_Litem_$_")) { throw "non-vendor line '$_' names no bundle" }
+    $bundles["TVR_Tomes_Litem_$_"] })
+$unhomedStaves = @($staves.Keys | Where-Object { $script:TvrNonVendorLines -contains (Get-StaffLine $_) } | ForEach-Object { $staves[$_] })
+$tomeBooks = Find-OwnRecords -Group 'Books' -Pattern '^TVR_(Druid|Shadow|Warlock|Cleric|Shaman)_[ACDIR]\d{3}_Book_'
+if ($tomeBooks.Count -ne 75) { throw "expected 75 tome Books, found $($tomeBooks.Count)" }
+function Get-LineTomes { param([string]$Line)
+    return ,@($tomeBooks.Keys | Where-Object { (Get-StaffLine ($_ -replace '_Book_', '_Staff_')) -eq $Line } | Sort-Object | ForEach-Object { $tomeBooks[$_] })
+}
+function Get-LineStaves { param([string]$Line)
+    return ,@($staves.Keys | Where-Object { (Get-StaffLine $_) -eq $Line } | Sort-Object | ForEach-Object { $staves[$_] })
+}
+$stashFiles = @($script:TvrStashes | ForEach-Object { $_.File })
 
 # ------------------------------------------------------------------ 1. delete the dead machinery
 $deleted = 0
@@ -212,7 +238,8 @@ if ($htext -notmatch 'Master: Enderal - Forgotten Stories\.esm') {
 # ------------------------------------------------------------------ 4. populate the CustomMerchandise hooks
 # 4a. Migration: this script used to override the ten merchant CONT records. Any left behind are
 # stale - the whole point of the hooks is that we override no container at all.
-$staleChests = @(Get-ChildItem (Join-Path $root 'Containers') -Filter '_00E_*.yaml' -ErrorAction SilentlyContinue)
+$staleChests = @(Get-ChildItem (Join-Path $root 'Containers') -Filter '_00E_*.yaml' -ErrorAction SilentlyContinue |
+    Where-Object { $stashFiles -notcontains $_.Name })
 foreach ($p in $staleChests) { Remove-Item -LiteralPath $p.FullName -Force }
 if ($staleChests.Count -gt 0) {
     Write-Host "  4a. stale merchant-chest overrides removed: $($staleChests.Count) (superseded by the CustomMerchandise hooks)"
@@ -236,29 +263,169 @@ function Add-LeveledEntries {
     return $FormKeys.Count
 }
 
+# 4b. Hooks no longer in the vendor table are stale - an earlier layout spread the archetypes over
+# ten merchants. Delete them so the plugin stops overriding records it no longer needs.
+$wanted = @($vendors | ForEach-Object { $_.File })
+$staleHooks = @(Get-ChildItem (Join-Path $root 'LeveledItems') -Filter '*_CustomMerchandise - *.yaml' |
+    Where-Object { $_.Name -notin $wanted })
+foreach ($p in $staleHooks) { Remove-Item -LiteralPath $p.FullName -Force }
+if ($staleHooks.Count -gt 0) {
+    Write-Host ("  4b. stale hook overrides removed: {0} ({1})" -f $staleHooks.Count, (($staleHooks | ForEach-Object { ($_.Name -split '_CustomMerchandise')[0] }) -join ', '))
+}
+
+# 4c. (Re)build every hook from the FS master's copy. Rebuilding rather than appending makes this
+# step deterministic whatever the hook held before - including an old layout's archetypes. It also
+# drops any Expert/Master entries 17 added, so 17 must run after this (it is idempotent).
 $created = 0
 foreach ($v in $vendors) {
     $srcPath = Join-Path $refFS $v.File
     if (-not (Test-Path -LiteralPath $srcPath)) { throw "reference hook not found: $($v.File)" }
     $dst = Join-Path (Join-Path $root 'LeveledItems') $v.File
     $adds = @()
-    foreach ($arch in $v.Archetypes) { $adds += Get-ArchBundles -Arch $arch }
-    if ($v.Staves) { $adds += Get-ArchStaves -Arch $v.Staves }
-    if (Test-Path -LiteralPath $dst) {
-        $t = Read-YamlText $dst
-        $missing = @($adds | Where-Object { $t -notmatch [regex]::Escape($_) })
-        if ($missing.Count -gt 0) { throw "$($v.File) exists but lacks $($missing.Count) entries - delete it and re-run" }
-        Write-Host ("  4. {0}: already present" -f $v.Merchant)
-        continue
-    }
+    $adds += Get-VendorBundles -Vendor $v
+    $nBundles = $adds.Count
+    if ($nBundles -eq 0) { throw "$($v.Merchant) would sell nothing" }
+    $adds += Get-VendorStaves -Vendor $v
     # the hook must genuinely be an empty UseAll list in the master, or we are misreading it
     $srcText = Read-YamlText $srcPath
     if ($srcText -notmatch '(?m)^- UseAll\s*$') { throw "$($v.File) is not UseAll - re-check the hook" }
     if ($srcText -match '(?m)^Entries:\s*$') { throw "$($v.File) is not empty in the master - re-check the hook" }
-    Copy-Item -LiteralPath $srcPath -Destination $dst
+    Copy-Item -LiteralPath $srcPath -Destination $dst -Force
     $n = Add-LeveledEntries -Path $dst -FormKeys $adds
     $created++
-    Write-Host ("  4. {0}: +{1} entries ({2} tome bundles{3})" -f $v.Merchant, $n, (3 * $v.Archetypes.Count), $(if ($v.Staves) { ", $($v.Staves) staves" } else { '' }))
+    $what = $v.Archetypes -join ', '
+    if ($v.ContainsKey('Lines')) { $what = $v.Lines -join ', ' }
+    Write-Host ("  4. {0}: {1} entries ({2} tome bundles, {3} staves; {4})" -f $v.Merchant, $n, $nBundles, ($n - $nBundles), $what)
+}
+
+# 4c. The lore notes (00-common.ps1 $script:TvrNotes): one Book each, rebuilt every run from the
+# template letter with our FormKey/EditorID/title and the text in tools/notes/<EditorID>.txt. The
+# template's own scripts and Version2 are dropped; every other field is the template's.
+$booksDir = Join-Path $root 'Books'
+$noteKeys = @{}
+# Split a template Book into top-level blocks: a key line at column 0 plus everything under it
+# (a '- ' item at column 0 belongs to the key above it - CLAUDE.md's YAML sequence trap).
+function Get-NoteTemplateBlocks { param([string]$Name)
+    $tplPath = Join-Path (Join-Path $repo 'reference\base\EnderalFS\Books') $Name
+    if (-not (Test-Path -LiteralPath $tplPath)) { throw "note template not found: $Name" }
+    $blocks = New-Object System.Collections.ArrayList
+    foreach ($ln in @(Get-YamlLines $tplPath)) {
+        if ($ln -match '^[A-Za-z]\w*:') { [void]$blocks.Add(@{ Key = ($ln -split ':')[0]; Lines = New-Object System.Collections.ArrayList }) }
+        if ($blocks.Count -eq 0) { throw "note template $Name does not start with a key" }
+        if ($ln -ne '') { [void]$blocks[$blocks.Count - 1].Lines.Add($ln) }
+    }
+    foreach ($k in 'FormKey', 'EditorID', 'Name', 'BookText', 'Teaches', 'Description') {
+        if (@($blocks | Where-Object { $_.Key -eq $k }).Count -ne 1) { throw "note template $Name lacks exactly one $k" }
+    }
+    if ((@($blocks | Where-Object { $_.Key -eq 'Teaches' })[0].Lines -join "`n") -notmatch 'BookTeachesNothing') { throw "note template $Name teaches something" }
+    return ,$blocks
+}
+foreach ($nt in $script:TvrNotes) {
+    $tplName = $script:TvrNoteTemplate
+    if ($nt.ContainsKey('Template')) { $tplName = $nt.Template }
+    $blocks = Get-NoteTemplateBlocks -Name $tplName
+    $txtPath = Join-Path (Join-Path $PSScriptRoot 'notes') "$($nt.EditorID).txt"
+    if (-not (Test-Path -LiteralPath $txtPath)) { throw "note text not found: $txtPath" }
+    $body = @((Read-YamlText $txtPath).TrimEnd() -split "`r?`n")
+    if ($body.Count -lt 5) { throw "$($nt.EditorID): note text is suspiciously short" }
+    $out = @()
+    foreach ($b in $blocks) {
+        switch ($b.Key) {
+            'FormKey'               { $out += "FormKey: $($nt.FormKey)" }
+            'EditorID'              { $out += "EditorID: $($nt.EditorID)" }
+            'Version2'              { }
+            'VirtualMachineAdapter' { }
+            'Name'                  { $out += 'Name:'; $out += '  TargetLanguage: English'; $out += ("  Value: '" + ($nt.Title -replace "'", "''") + "'") }
+            'BookText'              { $out += 'BookText:'; $out += '  TargetLanguage: English'; $out += '  Value: |-'
+                                      foreach ($l in $body) { if ($l -eq '') { $out += '' } else { $out += "    $l" } } }
+            'Description'           { $out += 'Description:'; $out += '  TargetLanguage: English'; $out += "  Value: ''" }
+            default                 { $out += @($b.Lines) }
+        }
+    }
+    $out += ''
+    $dst = Join-Path $booksDir ("{0} - {1}.yaml" -f $nt.EditorID, ($nt.FormKey -replace ':', '_'))
+    Set-YamlLines -Path $dst -Lines $out
+    $noteKeys[$nt.EditorID] = $nt.FormKey
+    Write-Host ("  4c. note {0}: '{1}' ({2} lines of text)" -f $nt.EditorID, $nt.Title, $body.Count)
+}
+
+# 4d. The stashes (00-common.ps1): rebuilt from the master's copy every run, with each stashed
+# line's five tome Books and its staves appended to the container's Items list, one of each.
+$containersDir = Join-Path $root 'Containers'
+if (-not (Test-Path -LiteralPath $containersDir)) { New-Item -ItemType Directory -Path $containersDir | Out-Null }
+$staleStash = @(Get-ChildItem $containersDir -Filter '_00E_*.yaml' | Where-Object { $stashFiles -notcontains $_.Name })
+if ($staleStash.Count -gt 0) { throw "unexpected master container overrides: $(($staleStash | ForEach-Object { $_.Name }) -join ', ')" }
+foreach ($st in $script:TvrStashes) {
+    $isNew = $st.ContainsKey('Template')
+    $srcName = $st.File
+    if ($isNew) { $srcName = $st.Template }
+    $srcPath = Join-Path (Join-Path (Join-Path $repo "reference\base\$($st.Master)") 'Containers') $srcName
+    if (-not (Test-Path -LiteralPath $srcPath)) { throw "reference stash container not found: $srcName" }
+    $adds = @()
+    foreach ($ln in $st.Lines) { $adds += Get-LineTomes -Line $ln }
+    $nTomes = $adds.Count
+    if ($nTomes -ne 5 * $st.Lines.Count) { throw "$($st.File): $nTomes tomes for $($st.Lines.Count) lines, want 5 each" }
+    foreach ($ln in $st.Lines) { $adds += Get-LineStaves -Line $ln }
+    foreach ($ne in $st.Notes) { if (-not $noteKeys.ContainsKey($ne)) { throw "$($st.File) names unknown note $ne" }; $adds += $noteKeys[$ne] }
+    $lines = @(Get-YamlLines $srcPath)
+    if ($isNew) {
+        # our own record: retarget FormKey + EditorID, and create the Items key the empty template
+        # lacks (Spriggit omits empty collections) where Spriggit writes it - before MajorFlags
+        if ($lines[0] -notmatch '^FormKey: ') { throw "$srcName does not start with its FormKey" }
+        $lines[0] = "FormKey: $($st.FormKey)"
+        $ei = @(0..($lines.Count - 1) | Where-Object { $lines[$_] -match '^EditorID: ' })
+        if ($ei.Count -ne 1) { throw "$srcName has $($ei.Count) EditorID lines" }
+        $lines[$ei[0]] = "EditorID: $($st.EditorID)"
+        if ([array]::IndexOf($lines, 'Items:') -ge 0) { throw "template $srcName is not empty" }
+        if ((Read-YamlText $srcPath) -match 'Respawns|VirtualMachineAdapter') { throw "template $srcName respawns or carries a script" }
+        $mf = [array]::IndexOf($lines, 'MajorFlags:')
+        if ($mf -lt 0) { $mf = $lines.Count }
+        $tail = @()
+        if ($mf -lt $lines.Count) { $tail = @($lines[$mf..($lines.Count - 1)]) }
+        $lines = @($lines[0..($mf - 1)]) + @('Items:') + $tail
+    }
+    $at = [array]::IndexOf($lines, 'Items:')
+    if ($at -lt 0) { throw "$($st.File) has no Items: list" }
+    $end = $at + 1
+    while ($end -lt $lines.Count -and $lines[$end] -match '^(- |  )') { $end++ }
+    $insert = @()
+    foreach ($fk in $adds) { $insert += '- Item:'; $insert += "    Item: $fk"; $insert += '    Count: 1' }
+    $out = @($lines[0..($end - 1)]) + $insert
+    if ($end -lt $lines.Count) { $out += $lines[$end..($lines.Count - 1)] }
+    Set-YamlLines -Path (Join-Path $containersDir $st.File) -Lines $out
+    Write-Host ("  4d. stash {0}: +{1} tomes, +{2} staves, +{3} note(s) ({4})" -f $st.Where, $nTomes, ($adds.Count - $nTomes - $st.Notes.Count), $st.Notes.Count, ($st.Lines -join ', '))
+}
+
+# 4e. Place each new stash chest: override its cell from the WINNING plugin's copy, cut at the first
+# of NavigationMeshes/Persistent/Temporary (no navmesh override, no existing ref re-listed), and
+# list only our one ref under Temporary. The block/sub-block GroupRecordData.yaml files are copied
+# from the same master, never retyped.
+$placed = @($script:TvrStashes | Where-Object { $_.ContainsKey('Cell') })
+foreach ($st in $placed) {
+    $srcDir = Join-Path $repo "reference\base\$($st.CellMaster)\$($st.Cell)"
+    $src = Join-Path $srcDir 'RecordData.yaml'
+    if (-not (Test-Path -LiteralPath $src)) { throw "reference cell not found: $($st.CellMaster)\$($st.Cell)" }
+    $cl = @(Get-YamlLines $src)
+    $cut = @(0..($cl.Count - 1) | Where-Object { $cl[$_] -match '^(NavigationMeshes|Persistent|Temporary):' })
+    if ($cut.Count -eq 0) { throw "$($st.Cell) has no child groups to cut at" }
+    $out = @($cl[0..($cut[0] - 1)]) + @(
+        'Temporary:'
+        '- MutagenObjectType: PlacedObject'
+        "  FormKey: $($st.Ref)"
+        "  Base: $($st.FormKey)"
+        '  Placement:'
+        "    Position: $($st.Position)"
+        "    Rotation: $($st.Rotation)"
+        '')
+    $dstDir = Join-Path $root $st.Cell
+    if (-not (Test-Path -LiteralPath $dstDir)) { New-Item -ItemType Directory -Path $dstDir -Force | Out-Null }
+    Set-YamlLines -Path (Join-Path $dstDir 'RecordData.yaml') -Lines $out
+    foreach ($g in @((Split-Path -Parent $st.Cell), (Split-Path -Parent (Split-Path -Parent $st.Cell)))) {
+        $gs = Join-Path (Join-Path $repo "reference\base\$($st.CellMaster)") (Join-Path $g 'GroupRecordData.yaml')
+        if (-not (Test-Path -LiteralPath $gs)) { throw "reference group record not found: $g" }
+        Copy-Item -LiteralPath $gs -Destination (Join-Path (Join-Path $root $g) 'GroupRecordData.yaml') -Force
+    }
+    Write-Host ("  4e. placed {0} in {1} (ref {2})" -f $st.EditorID, (Split-Path -Leaf $st.Cell), $st.Ref)
 }
 
 # ------------------------------------------------------------------ 5. reprice the top tiers
@@ -307,7 +474,7 @@ foreach ($p in $allText.Keys) {
 }
 if ($left.Count -gt 0) { $left | ForEach-Object { Write-Host "    remaining: $_" }; throw "$($left.Count) references to deleted records survive" }
 
-# b. the only non-TVR-keyed records are the 10 CustomMerchandise hooks - and in particular this
+# b. the only non-TVR-keyed records are the CustomMerchandise hooks in the vendor table - and in particular this
 #    plugin must now override NO container of any master, which is what buys the EGO/Apocalypse/
 #    KataPUMB freedom the header describes.
 $foreign = @()
@@ -316,21 +483,22 @@ foreach ($p in $allText.Keys) {
     $fk = [regex]::Match($allText[$p], '(?m)^FormKey: (.+?)(?=\r?$)').Groups[1].Value
     if ($fk -and $fk -notmatch 'Triumvirate') { $foreign += (Split-Path -Leaf $p) }
 }
-$expected = @($vendors | ForEach-Object { $_.File })
+$expected = @($vendors | ForEach-Object { $_.File }) + @($script:TvrStashes | Where-Object { -not $_.ContainsKey('Template') } | ForEach-Object { $_.File })
 $unexpected = @($foreign | Where-Object { $_ -notin $expected })
-if ($unexpected.Count -gt 0 -or $foreign.Count -ne 10) {
+if ($unexpected.Count -gt 0 -or $foreign.Count -ne $expected.Count) {
     $unexpected | ForEach-Object { Write-Host "    unexpected override: $_" }
-    throw "override set is wrong: $($foreign.Count) foreign-keyed records (want exactly the 10 hooks)"
+    throw "override set is wrong: $($foreign.Count) foreign-keyed records (want exactly the $($expected.Count) hooks + stashes)"
 }
 $ownedContainers = @(Get-ChildItem (Join-Path $root 'Containers') -Filter '*.yaml' -ErrorAction SilentlyContinue |
-    Where-Object { (Read-YamlText $_.FullName) -notmatch '(?m)^FormKey: [0-9A-F]{6}:Triumvirate' })
+    Where-Object { $stashFiles -notcontains $_.Name -and (Read-YamlText $_.FullName) -notmatch '(?m)^FormKey: [0-9A-F]{6}:Triumvirate' })
 if ($ownedContainers.Count -gt 0) {
     $ownedContainers | ForEach-Object { Write-Host "    still overriding container: $($_.Name)" }
     throw "$($ownedContainers.Count) master container overrides survive - the hooks exist to avoid exactly this"
 }
 
-# c. every tome reachable from >=3 chests, every staff from >=1
+# c. every tome and every staff sold by exactly ONE merchant - the one its archetype maps to
 $tierBundleOf = @{}   # parent bundle fk -> tier bundle fks
+$archOfBundle = @{}   # parent bundle fk -> archetype
 $tomeOf = @{}         # tier bundle fk -> tome fk
 foreach ($f in Get-ChildItem (Join-Path $root 'LeveledItems') -Filter 'TVR_Tomes_*.yaml') {
     $t = Read-YamlText $f.FullName
@@ -338,19 +506,26 @@ foreach ($f in Get-ChildItem (Join-Path $root 'LeveledItems') -Filter 'TVR_Tomes
     $refs = @([regex]::Matches($t, '(?m)^    Reference: (.+?)(?=\r?$)') | ForEach-Object { $_.Groups[1].Value })
     $eid = ($f.Name -split ' - ')[0]
     if ($eid -match '^TVR_Tomes_Litem_\w+_\d{3}_') { if ($refs.Count -eq 1) { $tomeOf[$fk] = $refs[0] } }
-    elseif ($eid -match '^TVR_Tomes_Litem_(Druid|Shadow|Warlock|Cleric|Shaman)_[A-Z]') { $tierBundleOf[$fk] = $refs }
+    elseif ($eid -match '^TVR_Tomes_Litem_(Druid|Shadow|Warlock|Cleric|Shaman)_[A-Z]') { $tierBundleOf[$fk] = $refs; $archOfBundle[$fk] = ($eid -replace '^TVR_Tomes_Litem_', '') }
 }
 $sources = @{}
+$misfiled = @()
 foreach ($v in $vendors) {
     $t = Read-YamlText (Join-Path (Join-Path $root 'LeveledItems') $v.File)
     $items = @([regex]::Matches($t, '(?m)^    Reference: (.+?)(?=\r?$)') | ForEach-Object { $_.Groups[1].Value })
     foreach ($it in $items) {
+        if ($archOfBundle.ContainsKey($it) -and -not (Test-VendorSellsLine -Vendor $v -Line $archOfBundle[$it])) { $misfiled += "$($v.Merchant) sells $($archOfBundle[$it])" }
+        if ($unhomedBundles -contains $it -or $unhomedStaves -contains $it) { $misfiled += "$($v.Merchant) sells an unhomed line's $it" }
         if ($tierBundleOf.ContainsKey($it)) {
             foreach ($tb in $tierBundleOf[$it]) {
                 if ($tomeOf.ContainsKey($tb)) { $tome = $tomeOf[$tb]; if (-not $sources[$tome]) { $sources[$tome] = 0 }; $sources[$tome]++ }
             }
         }
-        if ($it -in $staves.Values) { if (-not $sources[$it]) { $sources[$it] = 0 }; $sources[$it]++ }
+        if ($it -in $staves.Values) {
+            $sLine = Get-StaffLine ($staves.Keys | Where-Object { $staves[$_] -eq $it } | Select-Object -First 1)
+            if (-not (Test-VendorSellsLine -Vendor $v -Line $sLine)) { $misfiled += "$($v.Merchant) sells a $sLine staff" }
+            if (-not $sources[$it]) { $sources[$it] = 0 }; $sources[$it]++
+        }
     }
 }
 $tomes = @($tomeOf.Values | Sort-Object -Unique)
@@ -359,18 +534,74 @@ if ($tomes.Count -ne 75) { throw "tome chain resolves $($tomes.Count) tomes, wan
 # Order-independence: 17-tier-gating.ps1 cuts Expert/Master out of the parent bundles and places
 # those tier bundles at the Ark/Undercity hooks directly, so once it has run the parents reach 45
 # of the 75 and 17 owns the proof for the other 30. Assert on what the parents actually carry
-# rather than hardcoding 75, or this step fails purely because it ran second.
-$viaParents = @($tomes | Where-Object { $sources.ContainsKey($_) })
-if ($viaParents.Count -notin @(45, 75)) {
-    throw "parent bundles reach $($viaParents.Count) tomes; expected 75 (before 17-tier-gating) or 45 (after)"
+# rather than hardcoding 75, or this step fails purely because it ran second. Withheld tomes
+# (00-common.ps1) are left out of the count: 20 cuts them from their parent after both steps.
+if ($misfiled.Count -gt 0) { $misfiled | Sort-Object -Unique | ForEach-Object { Write-Host "    $_" }; throw "a merchant stocks a line the vendor table does not give it" }
+# Each unhomed line is 5 tomes (3 common tiers), none sold; the withheld tome sits in a homed line.
+$viaParents = @($tomes | Where-Object { $sources.ContainsKey($_) -and $script:TvrWithheldTomes -notcontains $_ })
+$nUnhomed = $script:TvrNonVendorLines.Count
+$wantBefore = 75 - 5 * $nUnhomed - $script:TvrWithheldTomes.Count
+$wantAfter  = 45 - 3 * $nUnhomed - $script:TvrWithheldTomes.Count
+if ($viaParents.Count -notin @($wantAfter, $wantBefore)) {
+    throw "parent bundles reach $($viaParents.Count) non-withheld tomes; expected $wantBefore (before 17-tier-gating) or $wantAfter (after)"
 }
-$short = @($viaParents | Where-Object { $sources[$_] -lt 3 })
-if ($short.Count -gt 0) { throw "$($short.Count) tomes have fewer than 3 vendor sources" }
-$noStaff = @($staves.Values | Where-Object { -not $sources.ContainsKey($_) })
+$multi = @($tomes | Where-Object { $sources.ContainsKey($_) -and $sources[$_] -ne 1 })
+if ($multi.Count -gt 0) { throw "$($multi.Count) tomes are sold by more than one merchant - one vendor per archetype" }
+$noStaff = @($staves.Values | Where-Object { -not $sources.ContainsKey($_) -and $unhomedStaves -notcontains $_ })
 if ($noStaff.Count -gt 0) { throw "$($noStaff.Count) staves unplaced" }
-$counts = $viaParents | ForEach-Object { $sources[$_] } | Group-Object | Sort-Object Name
-Write-Host ("  proof: {0}/75 tomes at >=3 vendors (source counts: {1}); 26/26 staves placed" -f
-    $viaParents.Count, (($counts | ForEach-Object { "$($_.Count)x$($_.Name)" }) -join ', '))
+if ($unhomedStaves.Count -ne 6) { throw "expected 6 staves in the non-vendor lines, found $($unhomedStaves.Count)" }
+
+# d. each stash holds exactly its lines' tomes and staves, once each, and nothing else of ours; and
+#    no stashed item is also anywhere else in the plugin's leveled lists or containers
+$stashed = @{}
+foreach ($st in $script:TvrStashes) {
+    $t = Read-YamlText (Join-Path $containersDir $st.File)
+    $ours = @([regex]::Matches($t, '(?m)^    Item: ([0-9A-F]{6}:Triumvirate - Mage Archetypes\.esp)(?=\r?$)') | ForEach-Object { $_.Groups[1].Value })
+    $want = @()
+    foreach ($ln in $st.Lines) { $want += Get-LineTomes -Line $ln; $want += Get-LineStaves -Line $ln }
+    foreach ($ne in $st.Notes) { $want += $noteKeys[$ne] }
+    if ((@($ours | Sort-Object) -join ',') -ne (@($want | Sort-Object) -join ',')) { throw "stash $($st.File) holds the wrong items" }
+    foreach ($k in $st.Keep) { if ($t -notmatch ('Item: ' + [regex]::Escape($k))) { throw "stash $($st.File) lost its own $k" } }
+    if ($t -match 'Respawns') { throw "stash $($st.File) respawns - a one-copy tome would come back, or vanish" }
+    foreach ($fk in $ours) { $stashed[$fk] = $st.File }
+}
+# f. every note is in exactly one stash, teaches nothing, and carries its own text
+foreach ($nt in $script:TvrNotes) {
+    $holders = @($script:TvrStashes | Where-Object { $_.Notes -contains $nt.EditorID })
+    if ($holders.Count -ne 1) { throw "note $($nt.EditorID) is in $($holders.Count) stashes, want 1" }
+    $bt = Read-YamlText (Join-Path $booksDir ("{0} - {1}.yaml" -f $nt.EditorID, ($nt.FormKey -replace ':', '_')))
+    if ($bt -notmatch 'BookTeachesNothing' -or $bt -match 'VirtualMachineAdapter') { throw "note $($nt.EditorID) teaches something or carries a script" }
+    if ($bt -notmatch ('(?m)^  Value: ' + [regex]::Escape("'" + ($nt.Title -replace "'", "''") + "'"))) { throw "note $($nt.EditorID) lost its title" }
+}
+# e. the only master cells we override are the new stashes' cells, each carrying no navmesh and
+#    exactly one ref - ours, of our stash chest. TVR_Cell (Triumvirate's own interior) is exempt.
+$cellFiles = @(Get-ChildItem (Join-Path $root 'Cells') -Recurse -Filter 'RecordData.yaml' | Where-Object {
+    (Read-YamlText $_.FullName) -notmatch '(?m)^FormKey: [0-9A-F]{6}:Triumvirate' })
+$wantCells = @($placed | ForEach-Object { Join-Path (Join-Path $root $_.Cell) 'RecordData.yaml' })
+if ((@($cellFiles | ForEach-Object { $_.FullName } | Sort-Object) -join '|') -ne (@($wantCells | Sort-Object) -join '|')) {
+    $cellFiles | ForEach-Object { Write-Host "    master cell override: $($_.FullName.Substring($root.Length + 1))" }
+    throw "master cell overrides are not exactly the $($placed.Count) stash cell(s)"
+}
+foreach ($st in $placed) {
+    $t = Read-YamlText (Join-Path (Join-Path $root $st.Cell) 'RecordData.yaml')
+    if ($t -match '(?m)^(NavigationMeshes|Persistent):') { throw "$($st.Cell) carries a navmesh or persistent refs" }
+    if (([regex]::Matches($t, '(?m)^- MutagenObjectType: ')).Count -ne 1) { throw "$($st.Cell) must carry exactly one ref" }
+    if ($t -notmatch ('(?m)^  FormKey: ' + [regex]::Escape($st.Ref) + '\r?\n  Base: ' + [regex]::Escape($st.FormKey) + '(?=\r?$)')) { throw "$($st.Cell) does not place $($st.EditorID)" }
+    if (-not (Test-Path -LiteralPath (Join-Path $containersDir $st.File))) { throw "$($st.File) missing" }
+}
+foreach ($p in $allText.Keys) {
+    if ($stashFiles -contains (Split-Path -Leaf $p)) { continue }
+    # a player can reach our items only through a merchant hook or a container; the tomes' own tier
+    # bundles and Enai's debug chest (TVR_Any_Container_CheatChest) legitimately name them
+    $leaf = Split-Path -Leaf $p
+    if (-not ($leaf -like '*_CustomMerchandise - *' -or ($p -match '\\Containers\\' -and $leaf -notlike 'TVR_Any_Container_CheatChest*'))) { continue }
+    foreach ($fk in $stashed.Keys) {
+        if ($allText[$p] -match ('(?m)^\s+(Item|Reference): ' + [regex]::Escape($fk))) { throw "stashed $fk is also in $(Split-Path -Leaf $p)" }
+    }
+}
+$multiStaff = @($staves.Values | Where-Object { $unhomedStaves -notcontains $_ -and $sources[$_] -ne 1 })
+if ($multiStaff.Count -gt 0) { throw "$($multiStaff.Count) staves sold by more than one merchant" }
+Write-Host ("  proof: {0} non-withheld tomes reach their one line vendor via the parent bundles; {1}/26 staves at exactly one vendor; stashed: {2} items in {3} chest(s), {4} placed by us; unhomed and unsold: {5}" -f $viaParents.Count, (26 - $unhomedStaves.Count), $stashed.Count, $script:TvrStashes.Count, $placed.Count, $(if ($script:TvrUnhomedLines.Count) { $script:TvrUnhomedLines -join ', ' } else { 'none' }))
 
 # Reachable is not the same as obtainable: a tier bundle still carrying vanilla's PC<School><Tier>
 # gate yields NOTHING however many vendors stock it, and reading only Reference: is exactly how

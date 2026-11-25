@@ -1,295 +1,161 @@
 [size=5]Triumvirate — Enderal Conversion[/size]
 
-[i]Enai Siaion's five mage archetypes, rebuilt so Enderal can actually sell you the spells — and so the Shaman stops praying to the All-Maker.[/i]
-
-Triumvirate adds 75 spells across five archetypes: Druid, Shadow Mage, Warlock, Cleric and Shaman. In Enderal, out of the box, the mod [b]loads perfectly[/b] and every one of those spells is in your game — and you can never obtain a single one of them.
-
-That is the whole problem, and it is a quiet one. There is no crash, no missing master, no error message. The spells exist. The tomes exist. They are simply not for sale anywhere in Vyn, and nothing in the game will ever put one in your hands.
-
-This conversion gives them a way in, removes the parts that cannot work here, and takes Tamriel out of the writing.
+[i]Enai Siaion's five mage archetypes, rebuilt so Enderal can actually give you the spells, and so the Shaman stops praying to the All-Maker.[/i]
 [line]
-[size=4]⚠ Requirements and install order — read this part[/size]
+[size=4]Overview[/size]
+
+Triumvirate adds [b]75 spells and 26 staves[/b] across five archetypes: Druid, Shadow Mage, Warlock, Cleric and Shaman. In Enderal, out of the box, it [b]loads perfectly and you can never obtain a single spell[/b]. There is no crash and no error. Its distribution script hands the tomes to Skyrim merchants and loot lists, and not one of them exists in Enderal.
+
+This conversion is Triumvirate's own plugin, rebuilt for Enderal:
+
+[list]
+[*][b]Every spell has a home.[/b] Each spell line is sold by one named Enderal merchant, Novice to Master, plus its staves. The lines Enderal outlaws (Entropy and Psionics for the Sun Temple's archetypes) are hidden in the world instead, one copy each, with a letter explaining how they got there.[/*]
+[*][b]The high tiers can actually appear.[/b] Vanilla gates Adept, Expert and Master tomes on skill globals that only a Skyrim quest ever lowers. Enderal does not have that quest, so 45 of the 75 tomes could never show up. The gate is removed.[/*]
+[*][b]Enderal prices and mana costs.[/b] Tomes are repriced onto Enderal's 20–350 gold range, and every spell gets a written mana cost on Enderal's scale (the original Master tier cost up to 1,484 mana; Enderal's dearest spell is 310). Damage, durations and effects are untouched.[/*]
+[*][b]Clean masters and no Skyrim leftovers.[/b] The three DLC masters (260 dead references), four injected Skyrim cells and an override of Enderal's prologue worldspace are all removed.[/*]
+[*][b]Enderal's own scripts protected.[/b] Triumvirate's archive overwrites two of Enderal's deliberately emptied brawl scripts; Enderal's versions are shipped loose so they win again.[/*]
+[*][b]Tamriel is gone from the text.[/b] Hircine, Azra, Oblivion and the All-Maker are renamed into Enderal's own vocabulary (listed per archetype below), and the five schools use Enderal's names.[/*]
+[/list]
+[line]
+[size=4]Requirements and install order[/size]
 
 [list=1]
-[*][b][url=https://www.nexusmods.com/skyrimspecialedition/mods/39170]Triumvirate — Mage Archetypes by Enai Siaion[/url][/b], version [b]1.8.0[/b] exactly. Install it first and normally. Its two BSAs — 29 MB of meshes and 37 MB of textures — supply every asset. [b]This download contains none of them.[/b][/*]
-[*]Install this and [b]LET IT OVERWRITE[/b]. It replaces [font=Courier New]Triumvirate - Mage Archetypes.esp[/font] with a converted build of the same plugin, and adds three loose scripts under [font=Courier New]Scripts\[/font]. Those [b]must[/b] win over Triumvirate's BSA, so this mod has to sit [b]below Triumvirate in the left-pane (file) order[/b] — which it already must, to win the plugin.[/*]
-[*]Keep [font=Courier New]Triumvirate - Mage Archetypes.esp[/font] [b]enabled[/b], exactly where it already sits in your load order.[/*]
+[*][b]Enderal: Forgotten Stories (Special Edition).[/b] Checked against version [b]2.1.4.4[/b].[/*]
+[*][b][url=https://www.nexusmods.com/skyrimspecialedition/mods/39170]Triumvirate — Mage Archetypes by Enai Siaion[/url][/b], version [b]1.8.0[/b] exactly. Install it first and normally. Its two BSAs supply every mesh and texture. [b]This download contains none of them.[/b][/*]
+[*][b]This mod, installed over it and allowed to OVERWRITE.[/b] It replaces [font=Courier New]Triumvirate - Mage Archetypes.esp[/font] with the converted plugin and adds three loose scripts under [font=Courier New]Scripts\[/font]. It must sit [b]below Triumvirate in MO2's left pane[/b] (file order).[/*]
+[*]Keep [font=Courier New]Triumvirate - Mage Archetypes.esp[/font] [b]enabled[/b]. Do not rename it: the BSAs only load while a plugin of that exact name is active, which is why this is a replacement and not a patch.[/*]
 [/list]
 
-[b]No other requirements at all.[/b] No SKSE plugin, no SkyUI/MCM, no PapyrusUtil. All 106 of Triumvirate's compiled scripts were decompiled and audited for this conversion: [b]zero hardcoded FormIDs, zero hex literals, zero imports, zero SKSE calls.[/b] Every mechanic is driven by properties filled from the plugin records, which is the single best thing that can be true of a mod you are porting.
+[b]Nothing else is needed:[/b] no SKSE plugin, no SkyUI/MCM, no PapyrusUtil. [b]Do not use it with any other Triumvirate version[/b]; it is a rebuild of 1.8.0's records.
 
-[b]Do not use this with any other version of Triumvirate.[/b] It is a rebuild of 1.8.0's records by ID; a different version moves them.
+[i]Merchant stock refreshes every two in-game days. On an existing save, give a shop 48 hours before judging what it carries.[/i]
 [line]
-[size=4]Why a replacement and not a patch[/size]
+[size=4]The archetypes[/size]
 
-If you have used my Apocalypse conversion, the reason here is [b]not[/b] the same one.
+Tiers run [b]Novice → Apprentice → Adept → Expert → Master[/b]. Enderal renames the five schools: Alteration is [b]Mentalism[/b], Conjuration is [b]Entropy[/b], Destruction is [b]Elementalism[/b], Illusion is [b]Psionics[/b] and Restoration is [b]Light Magic[/b]. Spells marked [b]†[/b] were renamed for Enderal; the original name follows.
 
-Apocalypse had to be rebuilt because its header form version was 1.71 and Enderal's engine silently refuses to load those. [b]Triumvirate is already 1.70[/b] — bytes [font=Courier New]9A 99 D9 3F[/font] at file offset 30. It loads fine. That ceiling never applies here.
+[size=3][b]Shadow Mage[/b][/size] — Mentalism, Elementalism, Psionics
 
-What forces a replacement instead is the [b]BSAs[/b]. Both are named after the plugin — [font=Courier New]Triumvirate - Mage Archetypes.bsa[/font] and [font=Courier New]… - Textures.bsa[/font] — and the engine only loads an archive while a plugin of that exact name is present. Ship the fixes as a separate patch ESP and the original plugin has to stay, taking its broken distribution with it. Rename it and 66 MB of assets stop loading. So the plugin itself gets rebuilt and shipped under its own name, which is what this is.
-[line]
-[size=4]What was actually wrong[/size]
-
-[b]1. The distribution is a script that talks to a game that isn't there.[/b]
-
-Triumvirate hands out its spells at runtime, from a quest that starts with a new game. Its script makes [b]76 calls[/b]: [font=Courier New]AddToFaction[/font] on ten named Skyrim NPCs (turning priests and herbalists into vendors), [font=Courier New]AddItem[/font] of tome bundles into fourteen vanilla merchant chests, and [font=Courier New]AddForm[/font] of staves into vanilla staff loot lists.
-
-Enderal replaced [font=Courier New]Skyrim.esm[/font] wholesale — it [i]is[/i] base Enderal, not Bethesda's game — so [b]not one of those receivers exists[/b]. Danica Pure-Spring, Maramal, Hamal, Runil: none of them are people here. The quest runs at game start, calls 76 methods on nothing, logs 76 errors, and reports success.
-
-[b]2. Two thirds of the tomes were behind a lock with no key.[/b]
-
-This one is nastier, and it survived the first version of this conversion.
-
-Vanilla Skyrim gates spell-tome availability on your skill level: the Adept, Expert and Master leveled lists carry [font=Courier New]Global: PC<School><Tier>[/font], and when a leveled list names a global, [b]that global's value is the list's chance of yielding nothing[/b]. In vanilla those globals start at 100 — a 100% chance of nothing — and a World Interactions quest zeroes them as your skill rises.
-
-[b]Enderal does not have that quest.[/b] It exists in Bethesda's [font=Courier New]Skyrim.esm[/font] and in neither Enderal's nor Forgotten Stories. No Enderal script mentions those globals. Across Enderal's entire record tree, the only file that references [font=Courier New]PCAlterationAdept[/font] is the global's own record. They sit at 100 forever.
-
-So even after the tomes were re-homed onto living merchants, [b]45 of the 75 could never appear[/b] — every Adept, Expert and Master spell in the mod. The lock is real, the key was never shipped, and nothing about it is visible from a record audit, because the global resolves perfectly well. It just never changes.
-
-[b]3. It injects four Skyrim cells and overwrites an Enderal worldspace.[/b]
-
-Triumvirate overrides [font=Courier New]RiftenHouseofClanSnowShod[/font], [font=Courier New]MarkarthTempleofDibella[/font], [font=Courier New]SolitudeTempleoftheDivines[/font] and exterior [font=Courier New]Riverwood[/font] — none of which exist in Enderal, so the overrides [i]create[/i] four Skyrim cells. It also edits worldspace [font=Courier New]00003C[/font], which in Skyrim is [b]Tamriel[/b] but in Enderal is [b]MQP01Home[/b], the prologue house.
-
-[b]4. It masters all three DLC, with 260 references into them.[/b]
-
-Enderal's [font=Courier New]Dawnguard.esm[/font], [font=Courier New]HearthFires.esm[/font] and [font=Courier New]Dragonborn.esm[/font] are empty stubs — 1–2 records between the three of them. Every one of those 260 references resolves to nothing.
-
-[b]5. Its BSA overwrites two of Enderal's own scripts.[/b]
-
-Triumvirate's archive ships [font=Courier New]dgintimidateplayerscript[/font] and [font=Courier New]dgintimidatealiasscript[/font] — the full vanilla brawl scripts, from Brawl Bugs Patch, compiled in 2016. Enderal deliberately guts both down to four lines of [font=Courier New]; DUMMY, DO NOTHING[/font]. Triumvirate loads after Enderal, so its BSA wins, and Skyrim's brawl system comes back on a game that removed it — reaching for a faction and a quest Enderal does not have.
-
-[i](If you also use my Apocalypse conversion: yes, it is the same defect, from the same source. Both Enai mods bundle the Brawl Bugs Patch. It is now two for two.)[/i]
-[line]
-[size=4]What this conversion does[/size]
-
-[b]1. Distribution — the part that makes the mod exist.[/b]
-
-All [b]75 spell tomes and 26 staves[/b] are stocked by named Enderal merchants, deterministically. Not a lottery: each merchant's stock is fixed, restocks forever, and you can be told where to go.
-
-[code]
-  Merchant                    Where                  Gold   Sells
-  ------------------------------------------------------------------------
-  Adreyo                      Riverville              380   Druid, Cleric
-  Shrouded Mage               Frostcliff Tavern       674   Druid, Shaman  + Druid staves
-  Shrouded Mage               Duneville               707   Shaman, Druid  + Shaman staves
-  Smith & Hunter              Duneville              2200   Shaman
-  Shrouded Mage               Undercity barracks      630   Warlock, Shadow
-  Sister Envy                 the Rhalata            2700   Warlock, Shadow + Warlock staves
-  The Bash Hole               Undercity              2200   Warlock
-  The Fence                   Undercity              1450   Shadow         + Shadow staves
-  Marius                      Ark library             250   Cleric, Shadow + Cleric staves
-  Guard Blacksmith            Ark garrison           2200   Cleric
-  ------------------------------------------------------------------------[/code]
-
-Every archetype's line is carried by [b]three[/b] separate merchants (the Shadow Mage's by four), so no single shop is a bottleneck and no single mod conflict can cut you off from a whole archetype.
-
-The merchants were picked for fit, not convenience. Forgotten Stories' [b]Shrouded Mages[/b] are the natural home for this — they already deal in forbidden spell literature and stock the skill textbooks for all five disciplines. [b]Sister Envy[/b] is the Rhalata's quartermaster, which is exactly the shelf a Warlock buys from. [b]The Fence[/b] in the Undercity moves what nobody should be selling. [b]Marius[/b] runs Ark's library, 42 titles deep.
-
-[b]2. Expert and Master magic is only sold in Ark and the Undercity.[/b]
-
-With the skill gate removed, every vendor would otherwise sell every tier. Instead the top two tiers are pulled out and sold only in the capital and the underworld beneath it:
-
-[code]
-  Marius, Ark library         Cleric, Shadow, Druid, Shaman
-  Guard Blacksmith, Ark       Cleric
-  Shrouded Mage, Undercity    Warlock, Shadow, Druid, Shaman
-  The Bash Hole, Undercity    Warlock
-  The Fence, Undercity        Shadow[/code]
-
-Novice, Apprentice and Adept stay where they are — the village Shrouded Mages and the starting-town trader keep their full lower range. If you want a master spell you go to Ark. Every archetype keeps at least two high-tier sources, so this is a journey, not a chokepoint.
-
-[i]Sister Envy is the richest vendor in the set and deliberately does not carry the top tiers: the Rhalata's temple is not in the Undercity, whatever the atmosphere suggests.[/i]
-
-[b]3. Prices are Enderal's, not Skyrim's.[/b]
-
-Triumvirate prices on vanilla Skyrim's ladder. Enderal's [b]entire[/b] spell tome range is [b]20–350[/b] gold, with two exceptions in the whole game. Left alone, a Master tome would sit on the shelf at roughly 1,500 gold — about what a unique greataxe costs.
-
-[code]
-  Tier          was              now
-  --------------------------------------------------
-  Novice         41-  54        41-  54   (unchanged)
-  Apprentice     89- 105        89- 105   (unchanged)
-  Adept         300- 400  ->   129- 172   (x0.43)
-  Expert        608- 683  ->   213- 239   (x0.35)
-  Master       1239-1500  ->   285- 345   (x0.23)[/code]
-
-Novice and Apprentice already sat inside Enderal's band and were left alone. The rest is a [b]per-tier ratio[/b], not a flat price, so Enai's own ordering inside each tier survives exactly — the spells he priced high still cost more than their neighbours.
-
-[b]3b. Mana costs are Enderal's too.[/b]
-
-Triumvirate never writes a mana cost. It leaves every spell's cost to be calculated by the engine, and that calculation charges for a spell's [b]duration[/b] as much as its power — which is why the archetypes' long summons and auras were the worst offenders. [b]Enderal does the opposite[/b]: 271 of the 274 spells its own tomes teach have a cost typed by hand, and the most expensive spell in the entire game costs [b]310[/b].
-
-Left alone, Triumvirate's Master tier ran at a median of 1189 and a maximum of 1484. Enderal's mana pool cannot pay that. You gain [b]+8 maximum mana per level[/b], and only when you spend that level's attribute point on it — so a mage who never takes a single point of health finishes the game somewhere near 400–500. All five archetype capstones were uncastable by any character the game can produce.
-
-Every spell now carries a written cost on Enderal's scale:
-
-[code]
-  Tier          was              now
-  --------------------------------------------------
-  Novice          4- 152  ->    14- 135   (med  50 -> 45)
-  Apprentice     10- 152  ->    27- 120   (med  66 -> 55)
-  Adept          15- 259  ->    34- 115   (med 168 -> 75)
-  Expert         30- 453  ->    49- 170   (med 323 -> 125)
-  Master         65-1484  ->    68- 225   (med 1189 -> 180)
-
-  Enderal's own, for comparison:  med 21 / 40 / 55 / 65 / 80, ceiling 310[/code]
-
-As with the gold prices this is a [b]per-tier ratio[/b], so Enai's ordering inside each tier is preserved exactly.
-
-[i]Damage, durations, magnitudes, cooldowns and effects are untouched. Those are Enai's balance, and Enderal uses the same five magic skills under different names, so they work unchanged.[/i]
-
-[i]Merchant stock only refreshes every two in-game days, so on an existing save give it 48 hours before judging what a shop carries.[/i]
-
-[b]4. The DLC masters are gone.[/b]
-
-All 260 DLC references resolved and removed — six whole-record overrides deleted, 185 dead list entries stripped, 35 fields substituted with Enderal equivalents. The finished plugin masters [b]Skyrim.esm and Update.esm only[/b].
-
-The substitutions matter more than the deletions. The Druid's [font=Courier New]Verdant[/font] ingredient list was 36 Hearthfires garden planters, and [font=Courier New]Druidcraft[/font] spawns from it every cast — stripped alone, the spell would grow nothing and log an error each time. It is refilled with [b]24 of Enderal's own wild plants[/b], every one verified to have an English name and an ingredient yield. Wild herbs and mushrooms rather than the original's cabbages: a corpse feeding the wild, which is the spell's own fiction.
-
-[b]5. The Skyrim cells and the prologue house.[/b]
-
-The four injected cells, the [font=Courier New]Tamriel[/font] worldspace override and the 17 references living inside them are deleted. Triumvirate's own [font=Courier New]TVR_Cell[/font] — the Night Gate portal interior — stays, because it is self-contained and the Warlock's Hurl mechanic needs it.
-
-[b]6. Two silent bugs found by reading records.[/b]
-
-[list]
-[*][b]The Shaman's master rune had no release sound.[/b] [font=Courier New]Shield of Awe[/font]'s release descriptor was copied from a civil-war ambience sound and kept its condition — [font=Courier New]CWDistantCatapultsAMB == 1[/font]. That global is dead in Enderal, so the sound never played. Condition removed; the audio itself is vanilla and ships with Enderal.[/*]
-[*][b]The Cleric's merchant chest stocked the wrong item.[/b] It contained [font=Courier New]0C891B[/font] — vanilla's Amulet of Mara. In Enderal that FormID is [font=Courier New]_04E_30_Unique_SongOfTheWinter[/font], an unrelated unique weapon. [i]This is the third mod in my workspace to hit that exact ID.[/i][/*]
-[/list]
-
-[b]7. Enderal's brawl stubs are shipped loose.[/b]
-
-Both of Enderal's four-line [font=Courier New]dgintimidate*[/font] stubs are re-shipped as loose files, which beat any BSA. They are SureAI's own scripts, copied verbatim. This is why load order matters — see the install section.
-
-[b]8. Elder Scrolls names replaced.[/b]
-
-See the table below. A verification pass scans every player-facing string in the finished plugin against a lexicon of Elder Scrolls gods, princes, races, holds and factions — deliberately wider than anything the mod ever contained — and asserts [b]zero[/b].
-[line]
-[size=4]The renamed spells[/size]
-
-Every replacement comes from Enderal's own written lore, and where my Apocalypse conversion already made a call, this uses the same one — two Enai spell packs disagreeing about who the god of mercy is would be worse than either choice alone.
-
-[b]The four real decisions[/b]
-
-[table][tr][td][b]Triumvirate[/b][/td]
-[td][b]This conversion[/b][/td]
-[td][b]Why[/b][/td]
-[/tr]
-[tr][td]Call Hound of Hircine[/td]
-[td][b]Call the Glacier Hound[/b][/td]
-[td]Enderal's seven Light-Born are a civic pantheon — there is [i]no[/i] god of the wild, the beast or the hunt to reassign Hircine to. So the Druid loses the patron rather than gaining a wrong one. The Glacier Hound is a real Enderal creature, and already the actor this summon should read as.[/td]
-[/tr]
-[tr][td]Mark of Hircine[/td]
-[td][b]Mark of the Wild[/b][/td]
-[td]Same decision.[/td]
-[/tr]
-[tr][td]Hurl Into Oblivion[/td]
-[td][b]Hurl Into Sinistra[/b][/td]
-[td]Sinistra is Enderal's dark higher school — Entropy and Psionics. The same call Apocalypse shipped for [i]Oblivion Unbound[/i].[/td]
-[/tr]
-[tr][td]Azra's Wrath[/td]
-[td][b]Shadow's Wrath[/b][/td]
-[td]Azra Nightwielder is Elder Scrolls apocrypha with no Enderal counterpart, and no Enderal mage is established well enough to hang a destruction spell on. The attribution is dropped rather than transferred.[/td]
-[/tr]
-[tr][td]Eye of the All-Maker[/td]
-[td][b]Eye of the Ancestors[/b][/td]
-[td]The All-Maker and the Earth Bones are Skaal religion with no Enderal referent. The Shaman's frame becomes the ancestors — Enderal ships an Ancestral Spirit faction, and Triumvirate's own internal prefix for this line is already "Ancestors".[/td]
-[/tr]
-[tr][td]Staff of Earth Bones[/td]
-[td][b]Staff of Fissures[/b][/td]
-[td]Named for its spell, following both Enai's staff convention ([i]Staff of Suggestions[/i]) and Enderal's ([i]Staff of Fireball[/i]).[/td]
-[/tr]
+[table][tr][td][b]Tier[/b][/td][td][b]Mentalism[/b][/td][td][b]Elementalism[/b][/td][td][b]Psionics[/b][/td][/tr]
+[tr][td]Novice[/td][td]Shadow Stride[/td][td]Draining Touch[/td][td]Gather Shadows[/td][/tr]
+[tr][td]Apprentice[/td][td]Step Through Shadows[/td][td]Shadow's Wrath †[/td][td]Darkness[/td][/tr]
+[tr][td]Adept[/td][td]Shadow Dance[/td][td]Nightblade[/td][td]Reveal Secrets[/td][/tr]
+[tr][td]Expert[/td][td]Pull Through Shadows[/td][td]Draining Shroud[/td][td]Possession[/td][/tr]
+[tr][td]Master[/td][td]Night Gate[/td][td]Draining Mist[/td][td]Nightfall[/td][/tr]
 [/table]
-
-[b]Kept deliberately[/b] — [font=Courier New]Fylgja[/font], [font=Courier New]Goodberry[/font] and [font=Courier New]Horned Lord[/font] are Norse and D&D loans, not Elder Scrolls terms. None collides with Enderal vocabulary and all three read as generic. The Warlock's demons keep Enai's own invented names — Gremlin, Temple Grim, Ravagor, Magister, Leviathan, Oathbreaker — because not one of them is an Elder Scrolls word.
-
-[b]Everything else[/b]
-
-[table][tr][td][b]Triumvirate[/b][/td]
-[td][b]This conversion[/b][/td]
-[/tr]
-[tr][td]"the School of Alteration / Conjuration / Destruction / Illusion / Restoration"[/td]
-[td][b]Mentalism / Entropy / Elementalism / Psionics / Light Magic[/b][/td]
-[/tr]
-[tr][td]The Cleric's Aid buffs — "Fortify Skills: Alteration" etc.[/td]
-[td][b]Enderal's own skill names[/b], as they appear in your character sheet[/td]
-[/tr]
-[tr][td]Draugr, undead references[/td]
-[td][b]Lost Ones[/b][/td]
-[/tr]
-[tr][td]Oblivion, as a place[/td]
-[td][b]Sinistra[/b] / [b]the Sea of Eventualities[/b][/td]
-[/tr]
-[tr][td]"Daedric" on internal summon records[/td]
-[td][b]"Demon"[/b][/td]
-[/tr]
-[/table]
-[line]
-[size=4]What is NOT changed[/size]
 [list]
-[*][b]No spell balance changes, with one deliberate exception.[/b] Damage, duration, magnitude and cooldowns are all Enai's, untouched; only the mana costs were rewritten (see above), and those were never Enai's numbers in the first place but the Creation Kit's arithmetic against a mana pool five times the size of Enderal's. Enderal keeps all five of Skyrim's magic skills and only renames them, so Triumvirate's spells scale off your Elementalism, Entropy, Light Magic, Mentalism and Psionics with no conversion at all.[/*]
-[*][b]No new spells and no removed spells.[/b] All 75 are here. Unlike the Apocalypse conversion, nothing had to be cut for lore: Triumvirate's summons are spirits, ancestors, beasts and Enai's own invented demons, and Enderal's Entropy discipline already raises the dead and binds spirits. There were no Daedra to remove.[/*]
-[*][b]No Enderal records rewritten.[/b] See compatibility, below — this is the part I am most pleased with.[/*]
+[*][b]Where:[/b] all of it, with the Staffs of Shadow Step, Shadow Pull, Draining and Darkness, from [b]Sister Envy[/b], the Rhalâta's quartermaster. She deals in soul gems, poisons and scrolls, the shelf a Shadow Mage buys from. Her shop is in the Rhalâta temple, reached through Forgotten Stories' Rhalâta quests.[/*]
+[*][b]† Shadow's Wrath[/b] was [i]Azra's Wrath[/i]. Azra Nightwielder has no Enderal counterpart, so the attribution is dropped.[/*]
 [/list]
 
-For reference, in case you have wondered which Enderal skill governs a Triumvirate spell:
+[size=3][b]Warlock[/b][/size] — Entropy, Elementalism, Psionics
 
-[code]
-  Skyrim school     Enderal discipline    Higher school
-  Destruction       Elementalism          (its own art)
-  Conjuration       Entropy               Sinistra
-  Restoration       Light Magic           Thaumaturgy
-  Alteration        Mentalism             Thaumaturgy
-  Illusion          Psionics              Sinistra[/code]
+[table][tr][td][b]Tier[/b][/td][td][b]Entropy[/b][/td][td][b]Elementalism[/b][/td][td][b]Psionics[/b][/td][/tr]
+[tr][td]Novice[/td][td]Conjure Gremlin[/td][td]Eldritch Blast[/td][td]Weaken[/td][/tr]
+[tr][td]Apprentice[/td][td]Conjure Temple Grim[/td][td]Balefire[/td][td]Frailty[/td][/tr]
+[tr][td]Adept[/td][td]Conjure Ravagor[/td][td]Witch Bolt[/td][td]Iron Maiden[/td][/tr]
+[tr][td]Expert[/td][td]Conjure Magister[/td][td]Cloudkill[/td][td]Life Tap[/td][/tr]
+[tr][td]Master[/td][td]Conjure Leviathan[/td][td]Hurl Into Sinistra †[/td][td]Decrepify[/td][/tr]
+[/table]
+[list]
+[*][b]Where:[/b] split between two sisters. [b]Aurora Leklerk[/b], the eccentric recluse in her tower by the plantations near Duneville, keeps the forbidden [b]Entropy and Psionics[/b], with the Staffs of Weakness, Frailty, the Iron Maiden and Life Tap. Her sister [b]Tarhutie[/b], Riverville's spell merchant, sells the [b]Elementalism[/b], with the Staffs of Eldritch Blasts, Balefire, Witch Bolts and Cloudkill.[/*]
+[*][b]† Hurl Into Sinistra[/b] was [i]Hurl Into Oblivion[/i]. Sinistra is Enderal's dark higher school, above Entropy and Psionics.[/*]
+[*]The demons keep Enai's own invented names (Gremlin, Temple Grim, Ravagor, Magister, Leviathan, Oathbreaker); none is an Elder Scrolls word.[/*]
+[/list]
 
-Note the last two — Alteration is [i]Mentalism[/i] and Illusion is [i]Psionics[/i], not the pairing you would guess.
+[size=3][b]Druid[/b][/size] — Mentalism, Entropy, Light Magic
 
-[code]
-  Archetype     Disciplines                              Spells  Staves
-  ---------------------------------------------------------------------
-  Druid         Mentalism, Entropy, Light Magic            15       4
-  Shadow Mage   Mentalism, Elementalism, Psionics          15       4
-  Warlock       Entropy, Elementalism, Psionics            15       8
-  Cleric        Elementalism, Psionics, Light Magic        15       4
-  Shaman        Mentalism, Entropy, Light Magic            15       6
-  ---------------------------------------------------------------------
-                                                           75      26[/code]
+[table][tr][td][b]Tier[/b][/td][td][b]Mentalism[/b][/td][td][b]Entropy[/b][/td][td][b]Light Magic[/b][/td][/tr]
+[tr][td]Novice[/td][td]Druidcraft[/td][td]Call Raven[/td][td]Spirit of the Oak[/td][/tr]
+[tr][td]Apprentice[/td][td]Force of Nature ‡[/td][td]Call Rattlesnakes[/td][td]Parasitic Growth[/td][/tr]
+[tr][td]Adept[/td][td]Wildshape[/td][td]Call Gray Wolf[/td][td]Spirit of Thornbriar[/td][/tr]
+[tr][td]Expert[/td][td]Impenetrable Grove[/td][td]Call Snow Leopard[/td][td]Bramble Growth[/td][/tr]
+[tr][td]Master[/td][td]Chase the Horizon[/td][td]Call the Glacier Hound †[/td][td]Spirit of the Sun[/td][/tr]
+[/table]
+[list]
+[*][b]Where:[/b] Mentalism and Light Magic, with the Staffs of Druids, the Grove, Parasitic Growth and Brambles, from [b]Torius Flameling[/b], the Sun Temple's alchemist.[/*]
+[*][b]Entropy is illegal in Enderal[/b], so the Sun Temple will not sell the Call spells. One copy of each is hidden away in the Undercity: [spoiler]an Expert-locked room upstairs in the House of the Apothecarii, in the chest beside the Old Ban Totem blueprint, with a note from the Apothecarii[/spoiler]. They do not restock.[/*]
+[*][b]† Call the Glacier Hound[/b] was [i]Call Hound of Hircine[/i], and its [i]Mark of Hircine[/i] is now [b]Mark of the Wild[/b]. Enderal has no god of the hunt to give Hircine's place to, so the Druid loses the patron rather than gaining a wrong one. The Glacier Hound is a real Enderal creature.[/*]
+[*][b]‡ Force of Nature is not distributed[/b] in this version; see Known limitations.[/*]
+[*]Druidcraft's plant list was 36 Hearthfire garden planters that do not exist here. It now grows 24 of Enderal's own wild herbs and mushrooms.[/*]
+[/list]
+
+[size=3][b]Cleric[/b][/size] — Elementalism, Psionics, Light Magic
+
+[table][tr][td][b]Tier[/b][/td][td][b]Elementalism[/b][/td][td][b]Psionics[/b][/td][td][b]Light Magic[/b][/td][/tr]
+[tr][td]Novice[/td][td]Solar Ray[/td][td]Suggestion[/td][td]Aid[/td][/tr]
+[tr][td]Apprentice[/td][td]Holy Fire[/td][td]Exile[/td][td]Aura of Might[/td][/tr]
+[tr][td]Adept[/td][td]Consecrated Ground[/td][td]Spirit Guardian[/td][td]Aura of Vigor[/td][/tr]
+[tr][td]Expert[/td][td]Holy Shock[/td][td]Obedience[/td][td]Aura of Thorns[/td][/tr]
+[tr][td]Master[/td][td]Storm of Vengeance[/td][td]Exodus[/td][td]Mass Immortality[/td][/tr]
+[/table]
+[list]
+[*][b]Where:[/b] Elementalism and Light Magic, with the Staff of the Sun, from [b]Torius Flameling[/b] at the Sun Temple.[/*]
+[*][b]Psionics is illegal in Enderal[/b]. These five were a fallen magister's secret: [spoiler]they lie in a chest beside the unholy altar in Yero's secret vault beneath the Sun Temple, reached through the Forgotten Stories quest "Secrets", with the Staffs of Suggestions, Exile and Obedience and the last of Yero's letters to Sira[/spoiler]. They do not restock.[/*]
+[*]The Aid buffs name Enderal's own skills, as they appear on your character sheet.[/*]
+[/list]
+
+[size=3][b]Shaman[/b][/size] — Mentalism, Entropy, Light Magic
+
+[table][tr][td][b]Tier[/b][/td][td][b]Mentalism[/b][/td][td][b]Entropy[/b][/td][td][b]Light Magic[/b][/td][/tr]
+[tr][td]Novice[/td][td]Eye of the Ancestors †[/td][td]Create Water Totem[/td][td]Visions of Opportunity[/td][/tr]
+[tr][td]Apprentice[/td][td]Stave of Ferocity[/td][td]Create Tree Totem[/td][td]Spirit Fire[/td][/tr]
+[tr][td]Adept[/td][td]Fissure[/td][td]Summon Wind Fylgja[/td][td]Visions of Healing[/td][/tr]
+[tr][td]Expert[/td][td]Stave of Binding[/td][td]Create Earth Totem[/td][td]Spirit Storm[/td][/tr]
+[tr][td]Master[/td][td]Sacred Hearth[/td][td]Summon Sun Fylgja[/td][td]Shield of Awe[/td][/tr]
+[/table]
+[list]
+[*][b]Where:[/b] Mentalism and Light Magic, with the Staffs of Fissures, Spirits and Greater Spirits, from [b]Torius Flameling[/b] at the Sun Temple.[/*]
+[*][b]The totems and Fylgjas are Entropy[/b], so they are hidden with the Druid's Call spells, one copy each, together with the Staffs of Water, Trees and Earth: [spoiler]in the Expert-locked room of the House of the Apothecarii, in the Undercity[/spoiler].[/*]
+[*][b]† Eye of the Ancestors[/b] was [i]Eye of the All-Maker[/i], and the [b]Staff of Fissures[/b] was the [i]Staff of Earth Bones[/i]. Both are Skaal religion with no Enderal referent; the Shaman's frame becomes the ancestors, which is already Triumvirate's own internal name for the line.[/*]
+[*]Shield of Awe's release sound never played (it was gated on a Skyrim civil-war global). Fixed.[/*]
+[/list]
+
+[b]Kept deliberately:[/b] Fylgja, Goodberry and Horned Lord are Norse and D&D loans, not Elder Scrolls terms. Elsewhere, "Draugr" and undead became [b]Lost Ones[/b], Oblivion as a place became [b]Sinistra[/b] or [b]the Sea of Eventualities[/b], and "Daedric" on internal summon records became "Demon".
 [line]
 [size=4]Compatibility and load order[/size]
 
-This [b]is[/b] [font=Courier New]Triumvirate - Mage Archetypes.esp[/font] — it takes the original's place in your load order, exactly where that plugin already sat. It is a full ESP, not ESL-flagged, because it carries all of Triumvirate's own records.
+This [b]is[/b] [font=Courier New]Triumvirate - Mage Archetypes.esp[/font]. It takes the original's place in your load order, where that plugin already sat. It is a full ESP, not ESL-flagged, because it carries all of Triumvirate's records.
 
-[b]It overrides no container, no NPC, no cell and no faction belonging to Enderal.[/b] Beyond Triumvirate's own records it touches [b]ten records, and all ten are leveled lists that were empty[/b].
-
-That is worth explaining, because it is the reason this mod is unusually safe to install. Enderal ships [b]67 leveled lists named [font=Courier New]<Merchant>_CustomMerchandise[/font][/b] — one per merchant, each already sitting inside that merchant's chest — and [b]every single one of them is empty[/b]. They are an extension point SureAI built and never filled. Putting stock there instead of editing the merchant's chest means:
-
+[b]It overrides no merchant chest, no NPC and no faction belonging to Enderal.[/b] Beyond Triumvirate's own records it touches six:
 [list]
-[*][b]No conflict with Enderal Gameplay Overhaul.[/b] EGO overrides 319 container records — including three of the ten merchants this mod stocks — but [b]none[/b] of the 67 hooks.[/*]
-[*][b]No conflict with my Apocalypse conversion[/b], which stocks six Enderal merchant chests directly.[/*]
-[*][b]No conflict with KataPUMB Spell Package[/b], which adds staves to three of them.[/*]
-[*][b]No conflict with any other mod using the same hooks[/b], unless it happens to claim the same ten — in which case order them and only the additions are at stake, never a merchant's whole inventory.[/*]
+[*][b]Four leveled lists that were empty.[/b] Enderal ships 67 [font=Courier New]<Merchant>_CustomMerchandise[/font] lists, one inside each merchant's chest and every one of them empty, an extension point SureAI never filled. Stock goes there, so the merchants' chests are never edited.[/*]
+[*][b]One quest-reward chest[/b] (the Apothecarii stash), which no other mod touches.[/*]
+[*][b]One interior cell[/b] (Yero's vault), only to place a chest of its own. No navmesh and no existing object is changed.[/*]
 [/list]
 
-If you have used a mod that edits merchant chests and lost half a shop's stock to load order, this is the shape of the fix.
+[list]
+[*][b]Enderal SE - Gameplay Overhaul (EGO)[/b] and [b]EGO SE - Leveling Redone:[/b] compatible in any order. They rewrite several of these merchants' chests and keep the lists this mod fills.[/*]
+[*][b]KataPUMB Spell Package:[/b] compatible. It adds staves to Torius's and Tarhutie's chests directly.[/*]
+[*][b]Apocalypse — Enderal Conversion:[/b] both mods stock [b]Torius Flameling[/b] and [b]Tarhutie[/b] through the same lists, so with both installed only the later-loading plugin's additions appear in those two shops. Load this mod after Apocalypse to keep Druid, Shaman, Cleric and Warlock Elementalism for sale; that costs Apocalypse its Apprentice and Expert tomes. Apocalypse's distribution is being reworked to move off both.[/*]
+[*][b]Any other mod using the same lists:[/b] only the additions are at stake, never a merchant's whole inventory.[/*]
+[/list]
 
-[b]Pinned to Triumvirate 1.8.0.[/b] This ships a rebuilt copy of that exact version's plugin. A newer Triumvirate must not be used with it — install 1.8.0, or wait for this to be refreshed.
+[b]Pinned to Triumvirate 1.8.0.[/b] A newer Triumvirate must not be used with this until it is refreshed.
 [line]
 [size=4]Known limitations[/size]
 
-Four of Triumvirate's mechanics lean on vanilla Skyrim perks that Enderal does not have. In every case I chose the behaviour that degrades cleanly over inventing an Enderal perk to stand in, and wrote it down rather than hoping you would not notice:
-
 [list]
-[*][b]The Druid's doubled summons never fire.[/b] Twin Souls gates the two-at-once variants of the summon spells. With the perk absent the check is false forever, so the single-summon versions always fire instead. Enderal has no two-summons perk to repoint at.[/*]
-[*][b]The Warlock's summons are always base strength.[/b] Same shape: Elemental Potency gates the [i]Potent[/i] variants of all ten conjurations. The base variants carry "does not have the perk", which is now true forever, so they always win. Enderal's Sinistrope line was checked for a substitute — Mystical Binding is summoned [i]weapons[/i], not summoned creatures.[/*]
-[*][b]The Shadow Mage's possession never affects Dwarven constructs.[/b] Its condition is "not an automaton OR the target has Master of the Mind". With the perk dead the OR collapses to "not an automaton" — which is exactly vanilla's behaviour for a player who has not taken it.[/*]
-[*][b]Three Spirit Guardian variants are unreachable.[/b] Triumvirate ships a guardian per race including Argonian, Khajiit and Orc. Those races exist in Enderal only as unused shells, so no player can be one. The script falls back to the first entry, so [b]every Enderal race gets a guardian[/b] — the three extra actors are simply never selected. Left in place rather than deleted; they are harmless.[/*]
-[*][b]Wildshape is untested against Enderal's engine flags.[/b] It calls [font=Courier New]Game.SetBeastForm[/font], an engine-level werewolf flag that cannot be judged by reading records. It is on the test list. If it misbehaves in Enderal, say so and I will look.[/*]
-[*][b]Spell tiering follows Enai's ranks, not playtesting against Enderal's curve.[/b] Which merchant sells a spell follows its Triumvirate rank, not a measurement against Enderal's difficulty. Feedback welcome.[/*]
-[*][b]Tome names carry no "(Rank N)" suffix[/b], unlike most of Enderal's. That is intentional: in Enderal that suffix means the same spell exists at another strength gated on player level, and Triumvirate spells have exactly one version each. Enderal leaves 13 of its own single-strength tomes unsuffixed for the same reason.[/*]
-[*][b]Requires Enderal SE[/b], which is pinned to Skyrim SE [b]1.5.97[/b]. This is a plugin and three loose scripts, so no SKSE version concerns apply to it.[/*]
+[*][b]Force of Nature is withheld.[/b] On some setups it leaves the player invisible while transformed. That reproduces with a plain console race change and no mod scripts at all, so it is outside this mod. The spell is intact; it is simply not sold. Wildshape, the Druid's other transformation, works.[/*]
+[*][b]The hidden Entropy and Psionics tomes are one copy each and do not restock.[/b] Read them before you sell them.[/*]
+[*][b]Aurora Leklerk[/b] is part of the Forgotten Stories quest "Cuthbert's Legacy". Her shop has no quest condition on it, but whether she trades before that quest is done is not yet confirmed in game.[/*]
+[*][b]The Druid's doubled summons never fire.[/b] Twin Souls, the vanilla perk that gates them, does not exist in Enderal, so the single-summon versions always fire.[/*]
+[*][b]The Warlock's summons are always base strength.[/b] Same reason: Elemental Potency gates the [i]Potent[/i] variants. Enderal's Sinistrope line has no summoned-creature perk to stand in.[/*]
+[*][b]The Shadow Mage's Possession never affects automatons[/b] (Starling constructs), because the Master of the Mind perk is absent. That is vanilla's behaviour for a player without the perk.[/*]
+[*][b]Three Spirit Guardian variants are never chosen.[/b] Triumvirate ships one per race, including Argonian, Khajiit and Orc, which no Enderal player can be. Every Enderal race still gets a guardian.[/*]
+[*][b]Tiers follow Enai's ranks[/b], not playtesting against Enderal's difficulty curve. Feedback welcome.[/*]
+[*][b]Tome names carry no "(Rank N)" suffix.[/b] In Enderal that suffix means the same spell exists at another strength; Triumvirate's spells have one version each, like Enderal's 13 unsuffixed tomes.[/*]
+[*][b]Non-English games[/b] show the two places this mod touches (the Apothecarii chest and Yero's vault) with English names, because the plugin is not localized.[/*]
 [/list]
 [line]
 [size=4]Credits[/size]
 
-[b]Enai Siaion[/b] (with [b]Mihail[/b] for creature assets) — Triumvirate: all 75 spells, the five archetypes, every design decision and every asset. [b]This release is his plugin, modified.[/b] It contains no assets, no spells and no ideas of its own; it exists so his work reaches you in a different game. Redistributed under the mod's stated permissions, which allow modification and re-upload with credit. [url=https://www.nexusmods.com/skyrimspecialedition/mods/39170]Go and endorse the original[/url] — you need it installed anyway.
-[b]SureAI[/b] — Enderal: Forgotten Stories, the two brawl stubs shipped here verbatim, the 67 unused merchant hooks that made the distribution conflict-free, and the written lore every replacement name was taken from.
+[b]Enai Siaion[/b] (with [b]Mihail[/b] for creature assets) — Triumvirate: all 75 spells, the five archetypes, every design decision and every asset. [b]This release is his plugin, modified.[/b] It exists so his work reaches you in a different game. Redistributed under the mod's stated permissions, which allow modification and re-upload with credit. [url=https://www.nexusmods.com/skyrimspecialedition/mods/39170]Go and endorse the original[/url]; you need it installed anyway.
+
+[b]SureAI[/b] — Enderal: Forgotten Stories, the two brawl scripts shipped here verbatim, the 67 unused merchant lists that made the distribution conflict-free, and the lore every new name and both letters were drawn from.
+[line]
+[size=4]Source code[/size]
+
+Everything that built this plugin is public: the plugin as text, the scripts that regenerate it from Triumvirate 1.8.0, and the checks that prove each change.
+
+[url=https://github.com/WhisperDealer/enderal-mods/tree/main/src/Triumvirate]github.com/WhisperDealer/enderal-mods — src/Triumvirate[/url]

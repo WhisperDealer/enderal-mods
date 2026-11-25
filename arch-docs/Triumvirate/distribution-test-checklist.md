@@ -1,8 +1,9 @@
-# Triumvirate — distribution test checklist (WD-16b)
+# Triumvirate — distribution test checklist
 
-In-game proof for the two changes in `tools/17-tier-gating.ps1`: the **45 ungated tomes**, and
-**Expert/Master confined to Ark and the Undercity**. Everything below is verified static — this is
-the part only launching the game can settle.
+In-game proof for the distribution built by `tools/15-distribution.ps1` and
+`tools/17-tier-gating.ps1`: the **45 ungated tomes**, and **one merchant per archetype**, each selling
+that archetype's whole line (all five tiers plus its staves). Everything below has been verified
+statically. Only launching the game can settle the rest.
 
 ## First: find the plugin's load-order prefix
 
@@ -45,47 +46,55 @@ If you would rather add a tome directly (to test the spell rather than the list)
 
 ---
 
-## Test B — Expert/Master really are Ark + Undercity only
+## Test B — each archetype's one vendor sells its whole line
 
 Vendor stock is **cached in the save**: `iDaysToRespawnVendor` is 2, so a merchant only re-rolls
 every two in-game days. Use a **fresh save**, or `wait` 48+ hours before opening a shop, or the
 inventory you see is the one from before this change.
 
-### Should HAVE Expert/Master
-
-| ☐ | Where | `coc` target | Expect high tiers for |
+| ☐ | Merchant | `coc` target | Expect |
 |---|---|---|---|
-| ☐ | Marius, Ark library | `coc CapitalCityBibliothek` | Cleric, Shadow, **Druid, Shaman** |
-| ☐ | Shrouded Mage, Undercity | `coc UndercityBarracks1` | Warlock, Shadow, **Druid, Shaman** |
-| ☐ | The Bash Hole | `coc UndercityBarracks3BashHole` | Warlock |
-| ☐ | The Fence, the False Dog | `coc UndercityBarracks0FalseDogTavern` | Shadow |
+| ☐ | Sister Envy | `coc FSNQR03RhalataTemple` | **Shadow**: 15 tomes, Novice → Master, + 4 Shadow staves |
+| ☐ | Aurora Leklerk | Aurora's Tower, by the plantations near Duneville | **Warlock Entropy + Psionics**: 10 tomes, Novice → Master, + 4 staves. Also note whether she trades **before** "Cuthbert's Legacy" |
+| ☐ | Tarhutie | Riverville | **Warlock Elementalism**: 5 tomes, Novice → Master, + 4 staves |
+| ☐ | Shrouded Mage, Undercity | `coc UndercityBarracks1` | **No** Triumvirate tomes or staves |
+| ☐ | Torius Flameling | `coc SuntempleAlchemy` | **Druid** (9 tomes: Mentalism + Light Magic, no Force of Nature), **Shaman** (10: no totems or Fylgjas), **Cleric** (10: no Psionics), + 8 staves |
+| ☐ | Halda Stronghand | `coc SuntempleArmory` | **No** Triumvirate tomes or staves |
 
-Marius is the single best check — he should carry high-tier tomes for **four of the five**
-archetypes, including Druid and Shaman, which he sells at no other tier.
+Low tiers are priced **41–105 gold**, Adept about **130–170**, and Expert/Master **210+**. Every
+merchant above should show all three price bands.
 
-### Should NOT have Expert/Master
+> **Sister Envy is in a Forgotten Stories quest location.** If `coc FSNQR03RhalataTemple` lands you
+> somewhere she is not, note at what point in the story she becomes reachable. She is the
+> **only** Shadow vendor now.
+
+---
+
+## Test C — the old vendors are empty of Triumvirate
 
 | ☐ | Where | `coc` target | Expect |
 |---|---|---|---|
-| ☐ | Shrouded Mage, Frostcliff Tavern | `coc SchneefelstaverneInterior` | Druid + Shaman tomes, but **nothing above Adept** |
-| ☐ | Shrouded Mage / smith, Duneville | `coc DuenenhaimMain` | Shaman + Druid tomes, **nothing above Adept** |
-
-This half is the actual gating test. A quick way to read it: the low tiers are priced **41–105
-gold** and Adept sits around **130–170**; anything at **210+** is Expert or Master and should not be
-in these two shops.
+| ☐ | Marius, Ark library | `coc CapitalCityBibliothek` | **No** Triumvirate tomes or staves |
+| ☐ | Shrouded Mage, Frostcliff Tavern | `coc SchneefelstaverneInterior` | **No** Triumvirate tomes or staves |
+| ☐ | Adreyo, Riverville | — | **No** Triumvirate tomes |
+| ☐ | Any merchant | — | **No** Druid Call spells, Shaman totems/Fylgjas or Cleric Psionics (Suggestion, Exile, Spirit Guardian, Obedience, Exodus) |
+| ☐ | House of the Apothecarii, Undercity | `coc UndercityBarracks2ApothekariUpper`, pick the **Expert** lock | The chest beside the *Old Ban Totem* blueprint holds **10 tomes** (five Druid Call spells, Shaman's three totems and two Fylgjas) and **3 totem staves**, one each, plus its own items and a **"Note from the Apothecarii"**. It does not restock |
+| ☐ | Sun Temple, Secret Vault | `coc FSSuntempleYeroCave` (in play: the key from Yero's strongbox, quest "Secrets") | A **Chest** at the north end of Yero's unholy altar holds the **5 Cleric Psionics tomes** (Suggestion, Exile, Spirit Guardian, Obedience, Exodus) and **3 staves** (Suggestion, Exile, Obedience), one each, and **"Yero's Diary (Fourth Letter)"**. It does not restock. Check it sits on the floor and is not clipping into the altar, the divider or the rock |
 
 ---
 
-## Test C — the low tiers did not move
+## Test D — the shared hook with Apocalypse
+
+Only relevant if Apocalypse (Enderal conversion) is installed: it also writes Torius Flameling's
+`TuriousFlammentrunk_CustomMerchandise`.
 
 | ☐ | Check |
 |---|---|
-| ☐ | Frostcliff and Duneville still stock their Druid/Shaman lines up to Adept — the change should have taken **nothing** away below the top two tiers |
-| ☐ | Marius still stocks Cleric and Shadow at the low tiers too, not only the high ones |
+| ☐ | With Triumvirate loading **after** Apocalypse, Torius sells the Druid/Shaman line (and Apocalypse's own additions to him are absent, which is expected) |
 
 ---
 
-## Test D — no new script noise
+## Test E — no new script noise
 
 | ☐ | Check |
 |---|---|
@@ -98,10 +107,9 @@ Enderal's. Turn both back to `0` afterwards.
 
 ---
 
-## If Test A fails
+## If Test A or B fails
 
 The tome record exists (`help` found it), so a failure means the list still refuses to yield. Check
-the built plugin actually has the fix — the `Global:` line should be gone from all 45 Adept/Expert/
-Master tier bundles, and the built `.esp` should be **739,071 bytes / SHA-256 `43B8EF1E…161510`**.
-A stale `.esp` in the deploy folder is the likeliest cause; see guardrail 7 — rule out "never
-loaded" before debugging "loaded but broken".
+the built plugin actually has the change. The built `.esp` should be **737,067 bytes / SHA-256
+`4D62DC89…3FC95ACB`**. A stale `.esp` in the deploy folder is the likeliest cause; see guardrail 7 —
+rule out "never loaded" before debugging "loaded but broken".

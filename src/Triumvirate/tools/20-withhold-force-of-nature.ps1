@@ -23,10 +23,10 @@
 #
 # The two paths the tome could reach a player by, both closed here:
 #
-#   1. VENDORS. TVR_Tomes_Litem_Druid_Alteration (43D320) carries three tier lists and is written
-#      into three of Enderal's CustomMerchandise hooks - Vexin (Adreyo), and the Duneville and
-#      Frostcliff Tavern Shrouded Mages. Dropping tier list 43820F from it removes the tome from all
-#      three at once, and touches none of the other Druid tomes.
+#   1. VENDORS. TVR_Tomes_Litem_Druid_Alteration (43D320) carries the common tier lists and is
+#      written into the Druid vendor's CustomMerchandise hook (Torius Flameling, Sun Temple - see
+#      $script:TvrVendors in 00-common.ps1). Dropping tier list 43820F from it removes the tome from
+#      sale, and touches none of the other Druid tomes.
 #   2. THE DEV CHEAT CHEST. TVR_Tomes_Litem_All (442449) lists every tome directly and is the
 #      contents of Enai's TVR_Any_Container_CheatChest. 07-fix-script-bindings.ps1 already removed
 #      the alias that filled it, so it is unreachable - but "unreachable" is exactly the state the

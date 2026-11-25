@@ -1,0 +1,66 @@
+FormKey: 4C0D60:Triumvirate - Mage Archetypes.esp
+MajorRecordFlagsRaw: 134217728
+EditorID: TVR_Cleric_Container_PsionicsStash
+SkyrimMajorRecordFlags:
+- 0x8000000
+ObjectBounds:
+  First: -65, -34, 0
+  Second: 65, 34, 85
+Name:
+  TargetLanguage: English
+  Values:
+  - Language: Chinese
+    String: 箱子
+  - Language: Czech
+    String: Truhla
+  - Language: English
+    String: Chest
+  - Language: French
+    String: Coffre
+  - Language: German
+    String: Truhe
+  - Language: Italian
+    String: Baule
+  - Language: Japanese
+    String: 箱
+  - Language: Korean
+    String: 상자
+  - Language: Polish
+    String: Kufer
+  - Language: Russian
+    String: Сундук
+  - Language: Spanish
+    String: Cofre
+Model:
+  File: Clutter\Ruins\Ruins_LargeChest.nif
+  Data: 0x020000000200000000000000D26475EC646473003BBB212F6DE3F86E646473003BBB212F
+Items:
+- Item:
+    Item: 41EC76:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 41EC77:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 41EC78:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 41EC79:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 41EC7A:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 41EC69:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 41EC6A:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 41EC6B:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 4C0D62:Triumvirate - Mage Archetypes.esp
+    Count: 1
+MajorFlags:
+- NavMeshGenerationBoundingBox

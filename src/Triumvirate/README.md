@@ -5,13 +5,17 @@ cleric and shaman), converted for Enderal SE. Tracked as epic **WD-7**.
 
 **Status: converted and building.** The DLC masters are off, the five archetype passes are done,
 the naming close-out holds at zero Elder Scrolls nouns, distribution has been rebuilt onto
-Enderal merchants (WD-16) and tier-gated (WD-16b), and mana costs are authored against Enderal's own
+Enderal merchants (WD-16), one per archetype (see `arch-docs/Triumvirate/vendor-mapping.md`), and tier-gated (WD-16b), and mana costs are authored against Enderal's own
 bands rather than left to the engine's duration-driven formula (`tools/18-magicka-costs.ps1`).
 `build/manifest.json` carries the release, so CI builds it on every push and attaches the archive to
 the PR.
 
 **Not yet proven in game** — see
 [`arch-docs/Triumvirate/distribution-test-checklist.md`](../../arch-docs/Triumvirate/distribution-test-checklist.md).
+
+> **Checked against Enderal SE 2.1.4.4** (engine 1.7.104), 2026-11-25. No record this plugin overrides or
+> references was removed; the generators and verifiers all pass on the re-serialized reference with no change to
+> the tree. Details: `arch-docs/enderal/update-2.1.4.4.md`.
 
 ## Shape
 

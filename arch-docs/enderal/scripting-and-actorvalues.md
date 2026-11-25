@@ -11,6 +11,8 @@ in the tree: `_00E_FS_` (Forgotten Stories), `_00E_A0_`–`_00E_A3_` (ability/ta
 `_00E_Class_` and `_00E_Affinity_` (progression), `_00E_Game_` (core systems), `_00E_Phasmalist_` /
 `_00E_Theriantrophist_` (FS classes), plus `_fs_`, `_sag_`, `_60E_`, `_40E_`.
 
+> **Changed in 2.1.4.4:** 1,125 `_00E_` scripts of 4,808 total; 736 scripts removed and 515 added. See [2.1.4.4 update](update-2.1.4.4.md).
+
 Auto-generated Papyrus fragments keep Bethesda's conventions: `tif__########` (topic-info
 fragments), `qf__*` (quest fragments), `PRKF_*` (perk fragments), `pf_*` (package fragments).
 
@@ -19,6 +21,8 @@ fragments), `qf__*` (quest fragments), `PRKF_*` (perk fragments), `pf_*` (packag
 Enderal ships its own copy of 55 script names that also exist in vanilla. **All 55 differ from the
 vanilla file — not one is an accidental identical duplicate.** **[verified]** by byte comparison of
 `reference/base/EnderalScripts` against `reference/base/VanillaScripts`.
+
+> **Changed in 2.1.4.4:** **448** names now collide with vanilla (was 56), and the two `dgintimidate*` DUMMY stubs are **no longer shipped**. Enderal's records attach the `_00E_DGIntimidate*` versions (extending `ReferenceAlias`), and already did in 2.0.12.4. See [2.1.4.4 update](update-2.1.4.4.md).
 
 Two are explicit `; DUMMY, DO NOTHING` stubs — Enderal has **deleted the vanilla brawl/intimidate
 system**: **[verified]**
@@ -47,6 +51,8 @@ you.
 |---|---|---|
 | **`LastFlattered`** | **Arcane Fever** (stored negated) | `_00E_FS_AlchAddArcaneFever`: `akTarget.ModAV("LastFlattered", -fArcaneFeverAdd)` then displays `-1*(akTarget.GetAV("LastFlattered"))`. 28 uses across the tree. **[verified]** |
 | **`DragonSouls`** | **Memory Points** (display mirror of the `TalentPoints` global) | `Game.GetPlayer().SetAV("dragonsouls", TalentPoints.GetValueInt())` in `_00e_class_perkscript.psc`, `_00e_erinnerungslehrbuch.psc`, `_00e_lehrbuch_plus1memorypointsc.psc`, `_00e_mqp03_functions.psc` and others. 8 uses. **[verified]** |
+
+> **Changed in 2.1.4.4:** `_00E_FS_AlchAddArcaneFever` is removed; potions use `_00E_AlchArcaneFever`, and the spell path `11A4B6` is now an engine ValueModifier on `LastFlattered`. Fever is still stored negated in `LastFlattered`. See [2.1.4.4 update](update-2.1.4.4.md).
 
 ### Rules
 
@@ -91,6 +97,8 @@ Where the systems live. Read the script before patching anything near it.
 | Theriantrophy (FS) | `_00E_Theriantrophist_*` | werewolf, chymikum alchemy |
 | Player housing | `_00E_PlayerHousing*` (~12 scripts) | build mode, furniture |
 
+> **Changed in 2.1.4.4:** `_00E_Game_SkillmenuSC` is removed. Affinities live in `_00E_AffinityControl`; no `_00E_` script registers for `"Journal Menu"` any more. See [2.1.4.4 update](update-2.1.4.4.md).
+
 ## Working with Enderal scripts
 
 - **Read, don't decompile.** Real source ships in `ScriptsEnderal.zip`. Champollion output is a
@@ -105,3 +113,5 @@ Where the systems live. Read the script before patching anything near it.
 - **The compiler needs all three source trees** — Enderal, SKSE, vanilla — in that order, and the
   flags file `TESV_Papyrus_Flags.flg` only exists in the vanilla tree. See the `papyrus-compile`
   skill.
+
+> **Changed in 2.1.4.4:** Enderal now runs **SSE 1.7.104** with SKSE 2.3.1. SKSE `.dll`s must be 1.7.104 builds. See [2.1.4.4 update](update-2.1.4.4.md).

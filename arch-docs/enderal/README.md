@@ -30,6 +30,8 @@ came from so you can re-check them:
 Regenerate the record trees with `/spriggit-decompile-reference`; see CLAUDE.md → "What's in
 `reference/base/`". Counts below were taken on **2026-08-01** against **Enderal SE 2.0.12.4**.
 
+> **Enderal SE 2.1.4.4** (engine 1.7.104) changed a great deal. Read [`update-2.1.4.4.md`](update-2.1.4.4.md) before trusting a count or script name below. The 2.0.12.4 trees are kept at `reference/base-2.0.12.4/` for comparison.
+
 **If you can't cite it, mark it.** These documents use the same confidence convention as CLAUDE.md:
 
 - **[verified]** — read directly out of a record or script in `reference/base/`

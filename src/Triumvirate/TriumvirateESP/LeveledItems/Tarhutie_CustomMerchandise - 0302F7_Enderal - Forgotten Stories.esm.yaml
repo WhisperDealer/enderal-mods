@@ -1,0 +1,33 @@
+FormKey: 0302F7:Enderal - Forgotten Stories.esm
+EditorID: Tarhutie_CustomMerchandise
+Flags:
+- UseAll
+Entries:
+- Data:
+    Level: 1
+    Reference: 43D32A:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 419B42:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 419B43:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 419B44:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 419B45:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4381F9:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 4381FA:Triumvirate - Mage Archetypes.esp
+    Count: 1

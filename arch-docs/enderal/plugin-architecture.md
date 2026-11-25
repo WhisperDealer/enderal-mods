@@ -17,6 +17,8 @@ that *is* the base Enderal game. **[verified]**
 | Main worldspace | **`Vyn`** | Tamriel |
 | Climates | `SternenstadtClimate`, `SkyrimClimate`, `DefaultClimate`, `UnderwaterClimate` | vanilla set |
 
+> **Changed in 2.1.4.4:** `Skyrim.esm` is **202,099,845 bytes**, 86,723 records, still `mcarofano`. The stock plugin list is now **`Skyrim.ccc`** (`plugins.txt` is empty) and adds four header-only Creation Club plugins plus `_ResourcePack.esl`. The Dawnguard and Dragonborn stubs gained 2 and 1 records. FS's NAVI `000802` is gone. See [2.1.4.4 update](update-2.1.4.4.md).
+
 Verify it yourself in one line — the author field is in the TES4 header:
 
 ```bash

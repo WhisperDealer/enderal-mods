@@ -92,12 +92,33 @@ before: nothing here depends on them.
 
 ## Enderal ground truth
 
+> ## ⚠ Enderal SE 2.1.4.4 (installed 2026-10-27) changed the ground under this file
+>
+> **[verified 2026-11-25 from the installed files; nothing yet verified in game.]** Much of what
+> follows was measured on **2.0.12.4**. Where a statement is now wrong it carries a
+> **2.1.4.4** note; the full diff is in [`arch-docs/enderal/update-2.1.4.4.md`](arch-docs/enderal/update-2.1.4.4.md). The ones that change how you work:
+>
+> - **The engine is SSE 1.7.104, not 1.5.97** (`skse64_1_7_104.dll`, SKSE 2.3.1). Every SKSE plugin
+>   must be a **1.7.104** build. The 1.5.97 rule below is now backwards.
+> - **The `HEDR` 1.71 ceiling is very probably gone** (1.6+ engines read 1.71) and **BEES is
+>   moot**. Both are unverified in game. Keep authoring at 1.70.
+> - **Arcane Fever moved into the engine.** `11A4B6` is now a ValueModifier that skips Mental Expert
+>   players, and a new `0493DF` covers them at 0.67×. **A taxed heal must carry both.**
+> - The stock plugin list lives in **`Skyrim.ccc`** (`plugins.txt` is empty) and adds five
+>   header-only plugins (four Creation Club + `_ResourcePack.esl`) whose BSAs are real.
+> - **FS no longer round-trips in Spriggit 0.40.0**: its NAVI now has a null FormKey, like `Skyrim.esm`.
+> - Scripts: 736 removed, 515 added; `_00E_Game_SkillmenuSC` and both `dgintimidate*` stubs are gone;
+>   **448** names now collide with vanilla (was 56). SKSE's `.psc` is no longer shipped loose.
+> - The 2.0.12.4 trees are kept at `reference/base-2.0.12.4/` for diffing.
+
 Everything in this section was read off the installed game, not recalled. Re-verify with the same
 commands if the install moves or updates.
 
 **Install** — Enderal SE is a *separate Steam app* with its own copy of the engine; it is not a mod
 folder inside Skyrim SE. On this machine:
-`C:/Gaming/steamapps/common/Enderal Special Edition` (version **2.0.12.4**). **[verified]**
+`C:/Gaming/steamapps/common/Enderal Special Edition` (version **2.0.12.4**; **2.1.4.4** since 2026-10-27). **[verified]**
+
+> **2.1.4.4:** the folder now ships `skse64_1_7_104.dll` and `SkyrimSE.exe` **1.7.104.0**. The rest of this paragraph describes 2.0.12.4.
 
 **Engine / SKSE version.** The game folder ships `skse64_1_5_97.dll` — Enderal SE is pinned to
 **SSE 1.5.97**, not 1.6.x. **[verified]** Every SKSE plugin (`.dll`) in the list must be a **1.5.97
@@ -135,6 +156,8 @@ with it. This is the single most common source of "the list doesn't launch" repo
 > loads in Enderal with no user action at all; its references into the stub simply resolve to nothing.
 > Note also that the engine's real order puts the DLC **before** `Update.esm`, which is not the order
 > `loadorder.txt` shows.
+
+> **2.1.4.4:** `plugins.txt` is now empty. The stock list is `Skyrim.ccc` in the game root: four header-only Creation Club plugins, `_ResourcePack.esl`, then FS and SkyUI. The Dawnguard and Dragonborn stubs now hold 3 and 2 records.
 
 **Stock load order** (`%LOCALAPPDATA%\Enderal Special Edition\plugins.txt`) **[verified]**:
 
@@ -227,13 +250,13 @@ Regenerate any of these with `/spriggit-decompile-reference`; the script trees a
 
 | Folder | Source | Contents |
 |---|---|---|
-| `Skyrim/` | `Skyrim.esm` | **87322 records — this is BASE ENDERAL, not vanilla Skyrim.** Start here for base-game content |
+| `Skyrim/` | `Skyrim.esm` | **2.1.4.4: 86,723 records** (FS 14,944, Update 860; the 2.0.12.4 trees are at `reference/base-2.0.12.4/`). **87322 records — this is BASE ENDERAL, not vanilla Skyrim.** Start here for base-game content |
 | `EnderalFS/` | `Enderal - Forgotten Stories.esm` | 14061 records across 86 types — the FS expansion, overriding the above |
 | `Update/` | `Update.esm` | 404 records |
 | `SkyUI_SE/` | `SkyUI_SE.esp` | 8 records (SkyUI is built into Enderal) |
 | `Dawnguard-stub/`, `Dragonborn-stub/`, `HearthFires-stub/` | the DLC ESMs | **1–2 records each — they are empty stubs** (see below) |
 | `SkyrimReal/`, `UpdateReal/`, `DawnguardReal/`, `HearthFiresReal/`, `DragonbornReal/` | the **real** Bethesda masters from `skyrimSeRoot` | 853721 / 14032 / 93218 / 17480 / 176956 records. **What Bethesda actually had at a FormID** — the other half of every port audit (see below) |
-| `EnderalScripts/source/scripts/` | `ScriptsEnderal.zip` | **5029 real `.psc`** from SureAI — not decompiles |
+| `EnderalScripts/source/scripts/` | `ScriptsEnderal.zip` | **4808 real `.psc` in 2.1.4.4** (5029 in 2.0.12.4) from SureAI — not decompiles |
 | `SKSEScripts/` | `Data/Source/Scripts` | 74 SKSE-extended vanilla types |
 | `VanillaScripts/Source/Scripts/` | Skyrim SE `Scripts.zip` | 14301 `.psc` **plus `TESV_Papyrus_Flags.flg`** |
 
@@ -257,6 +280,8 @@ lookup copies are the same files — there is no second copy to drift.
 > line, then on read-back parses the next line as the FormKey and throws
 > `Malformed FormKey string: 89103`. **[verified]** The serialized tree is complete and correct for
 > grepping — we never deserialize a reference tree — so this is a caveat, not a problem.
+>
+> **2.1.4.4: no longer true.** FS's `000802` NAVI is gone and FS now carries a null-FormKey NAVI, so FS fails the round-trip check too. Its tree is still complete for lookup.
 >
 > **Enderal's own NAVI record is unaffected**: it has a real FormKey
 > (`000802:Enderal - Forgotten Stories.esm`) and `EnderalFS/` passed its round-trip check. **[verified]**
@@ -476,6 +501,8 @@ Scripts go through extract → decompile → edit → compile → package. Use t
 
 ### The import path is first-wins, and Enderal must be first
 
+> **2.1.4.4:** **448** script names now exist in both trees (was 56), so the first-wins `-i` order below matters far more. Both `dgintimidate*` stubs are gone from Enderal.
+
 There are **three** Papyrus source trees in an Enderal setup, and **55 script names exist in both
 Enderal's and Skyrim's** — `critter.psc`, `dgintimidateplayerscript.psc`, `dragonactorscript.psc`,
 the `default*` handlers, and so on. Compile against the wrong copy and you get code built on vanilla
@@ -508,7 +535,7 @@ a good copy in the second: with `-i="broken;good"` the compile **failed** on the
 | Tree | Source | `tools.json` key |
 |---|---|---|
 | Enderal (~5000 `.psc`) | `<gameDataDir>/ScriptsEnderal.zip` → its `source/scripts/` | `papyrusSource.enderal` |
-| SKSE (74 `.psc`) | `<gameDataDir>/Source/Scripts` — already loose in an Enderal install | `papyrusSource.skse` |
+| SKSE (74 `.psc`) | **2.1.4.4 no longer ships it loose.** Use the retained 2.0.12.4 copy at `reference/base/SKSEScripts` (SKSE's API only grows) | `papyrusSource.skse` |
 | Vanilla (~14300 `.psc`) | `<skyrimSeRoot>/Data/Scripts.zip` → its `Source/Scripts/` | `papyrusSource.vanilla` |
 
 **Flags file.** `TESV_Papyrus_Flags.flg` ships only in the **vanilla** `Scripts.zip` — neither
@@ -624,7 +651,7 @@ Currently released:
 | `Apocalypse` | `Apocalypse - Magic of Skyrim.esp` | Enai Siaion's spell pack, converted for Enderal — form version lowered to 1.70, Elder Scrolls proper nouns renamed, and distribution rebuilt onto Enderal's own vendor and loot lists. A **replacement plugin**; see the form-version ceiling below for why it cannot be a patch |
 | `RelentlessSword` | `Relentless Sword - Enderal.esp` | johnskyrim's *Relentless Sword SE* rebuilt for Enderal: clean masters (his plugin masters the three DLC stubs), shadowsteel-tier stats, blueprint + Handicraft-50 gating instead of a Skyforge recipe that could never fire, and FS-style dismantle recipes. **New content shipped as a standalone plugin, carrying no assets** — the player installs his mod for the meshes and disables his ESP |
 | `BiggieTraits` | `Biggie Traits.esp` | Shazdeh's Fallout-style trait system, converted for Enderal — form version lowered to 1.70, DLC masters dropped, and the traits with no Enderal target removed (the five Skyrim city houses, standing stones, Divine shrines, shouts, vanilla perk points). 30 of 38 traits survive. A **replacement plugin**; its generators live in `src/BiggieTraits/tools/` |
-| `Triumvirate` | `Triumvirate - Mage Archetypes.esp` | Enai Siaion's five mage archetypes (75 spells), converted for Enderal — DLC masters dropped, Elder Scrolls nouns renamed, and distribution rebuilt from a script that made 76 calls against absent Skyrim receivers onto ten Enderal merchant chests, with Expert/Master confined to Ark and the Undercity. A **replacement plugin** (its two BSAs are named after the plugin); generators in `src/Triumvirate/tools/`, still on `feat/triumvirate-conversion` |
+| `Triumvirate` | `Triumvirate - Mage Archetypes.esp` | Enai Siaion's five mage archetypes (75 spells), converted for Enderal — DLC masters dropped, Elder Scrolls nouns renamed, and distribution rebuilt from a script that made 76 calls against absent Skyrim receivers onto one Enderal merchant per archetype through SureAI's `*_CustomMerchandise` hooks (Sister Envy for Shadow; the Warlock split between the sisters Aurora Leklerk, Entropy + Psionics, and Tarhutie, Elementalism; Torius Flameling for Druid + Shaman + Cleric). **The Entropy and Psionics lines are kept off merchants** (those schools are illegal in Enderal): Druid/Shaman Entropy is stashed once in the Expert-locked room of the House of the Apothecarii (`_00E_NQ29_BossChest` `14BECE`, the plugin's one container override), and Cleric Psionics in a new chest of its own (`4C0D60`, placed as `4C0D61` by overriding FS's `FSSuntempleYeroCave` cell) at Yero's unholy altar; both are `$script:TvrStashes`. **Torius's and Tarhutie's hooks are shared with Apocalypse**: the later-loading plugin wins, accepted until Apocalypse is redistributed. A **replacement plugin** (its two BSAs are named after the plugin); generators in `src/Triumvirate/tools/`, still on `feat/triumvirate-conversion` |
 
 > **B612 is deliberately NOT shipped here.** It is a dependency of Biggie Traits and its `b612.esp`
 > is form version 1.71, so a conversion was written — and then dropped, because **BEES** loads the
@@ -700,7 +727,7 @@ mechanism plus the class of patch it invalidates.
 **Progression is not Skyrim's.** There is no learn-by-doing and no vanilla perk tree UI. Enderal's
 *talents* are three-tier **Perks** paired with **WordOfPower** unlocks, read back via
 `_00E_TalentLibrary.GetPlayerTalentLevel(Perk01, Perk02, Perk03)` and
-`GetTalentLevel(Word01, Word02, Word03)`. **[verified]** The character sheet is a **custom menu** —
+`GetTalentLevel(Word01, Word02, Word03)`. **[verified]** The character sheet is a **custom menu** (**2.1.4.4:** `_00E_Game_SkillmenuSC` is removed and affinities moved to `_00E_AffinityControl`; the menu is presumably drawn by `EnderalSE.dll`, unverified) —
 `_00E_Game_SkillmenuSC`, a script on a ReferenceAlias that registers for `"Journal Menu"` and draws
 Enderal's own UI. **[verified]**
 
@@ -841,6 +868,8 @@ talent cooldown/control quests (`_00E_Game_TalentControlSC`, `_00E_Game_TalentCo
 > opposite ("Enderal has no healing potions") for a while, from an English-only name search;
 > Enderal's EditorIDs are German and `Genesungstrank` displays as *"Health Potion (Cheap)"*. **Search
 > `reference/base/Skyrim/Ingestibles/` by effect FormKey, not by English name.**
+> **2.1.4.4 recipe:** attach **both** `11A4B6` (magnitude M) and `0493DF:Skyrim.esm` (`…_MentalExpert`, 0.67×M), the way Enderal's own heals now do. `11A4B6` alone charges a Mental Expert player nothing. The 2.0.12.4 recipe follows.
+>
 > Attach `11A4B6:Skyrim.esm` (`_00E_IncreaseArcaneFeverFFSelf`, FireAndForget/**Self**) as an extra
 > effect item with `Magnitude` + `Duration: 1`; its script applies the Mental Expert reduction for
 > you. Concentration casts need `106EA4` paired with FS's `02F42E` instead. Price against Enderal's
@@ -1019,6 +1048,8 @@ Enderal lacks.
 > overriding. Keep only the entries whose `NavigationMesh` FormKey is your own plugin's and delete the
 > rest — `src/Apocalypse/tools/10-strip-vanilla-navi.ps1` does exactly that.
 
+> **2.1.4.4 correction:** Enderal's records attach `_00E_DGIntimidate*` scripts (extending `ReferenceAlias`), and **already did in 2.0.12.4**. So a ported BSA's vanilla-named `dgintimidate*` copies were never on Enderal's live path, and in 2.1.4.4 Enderal does not ship those names at all. The check below still finds real collisions, but this example was dead code, not a revived brawl system.
+>
 > **A ported mod's BSA can silently overwrite Enderal's own scripts — check it.** **[verified
 > 2026-08-07]** Enderal replaces 55 vanilla script names, and a mod's archive loads *after* Enderal's
 > because its plugin does. Apocalypse's BSA ships `dgintimidateplayerscript.pex` and
@@ -1180,7 +1211,8 @@ readable and leaves Enderal's own list contents byte-identical.
 >
 > Both releases here have now moved. Triumvirate originally overrode ten chests and collided with
 > EGO on three; Apocalypse overrode six and collided with all five of the mods above. Each is now
-> at **zero container overrides** — ten `LeveledItem`s and six respectively — and both sets of
+> at **zero merchant-container overrides** — ten `LeveledItem`s and six respectively (Triumvirate
+> has since gone to four hooks plus one non-merchant stash chest and one cell that places its own) — and both sets of
 > vendor picks stopped having to dodge anybody. Apocalypse's Apprentice tier moved **back** to
 > Tarhutie (630 gold) from the Maxus Tabbakus stand-in as a direct result. Note Maxus is one of the
 > merchants SureAI left **without** a hook, so not every chest has this escape route.
@@ -1337,6 +1369,8 @@ These are **engine-hardcoded** FormIDs — Bethesda's own code depends on them, 
 
 > ### THE FORM-VERSION CEILING: Enderal will not load a plugin whose `HEDR` version is 1.71
 >
+> **2.1.4.4: describes the 1.5.97 engine.** On 1.7.104 the ceiling is very probably lifted. Prove it once in game (enable a 1.71 plugin, `help <record> 4`) before shipping anything that depends on it.
+>
 > **[verified in-game 2026-08-02. Read this before porting any Skyrim mod.]**
 >
 > Enderal SE runs SSE **1.5.97**, and that engine **silently refuses any plugin written at `HEDR`
@@ -1387,6 +1421,8 @@ These are **engine-hardcoded** FormIDs — Bethesda's own code depends on them, 
 >
 > ### BEES LIFTS THE CEILING — check for it before rebuilding anything
 >
+> **2.1.4.4: moot.** BEES backports 1.71 support to 1.5.97, and Enderal no longer runs 1.5.97.
+>
 > **[verified in-game 2026-08-05 — this corrects the section above, which describes the STOCK
 > engine.]** **Backported Extended ESL Support (BEES)** by Nukem
 > (`BackportedESLSupport.dll`, Nexus 106441) makes 1.5.97 load 1.71 plugins. Its export table
@@ -1426,6 +1462,8 @@ These are **engine-hardcoded** FormIDs — Bethesda's own code depends on them, 
 > `src/Apocalypse/tools/README.md` now overstates the case.
 
 > ### Proving an SKSE plugin is 1.5.97-capable WITHOUT launching the game
+>
+> **2.1.4.4: the target is now 1.7.104.** A `Query`-only DLL will **not** load. A DLL needs `SKSEPlugin_Version` and a 1.7.104 address-library build; SKSE 2.3.1's changelog says 1.7.x plugins must be rebuilt for the address-library change. The table below is the 1.5.97 reading.
 >
 > **[verified 2026-08-05]** SE-era SKSE (1.5.97) calls a DLL's **`SKSEPlugin_Query`** export. The
 > AE-era entry point is **`SKSEPlugin_Version`**. So reading the PE export table decides

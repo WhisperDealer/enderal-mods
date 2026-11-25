@@ -3,6 +3,36 @@
 Paste each version block into the Nexus **Changelogs** tab. User-facing changes only; repo tooling
 and documentation are not listed.
 
+## 1.0.3
+
+- Changed: **each archetype now has one merchant.** That merchant sells every tier from Novice to
+  Master, plus the staves:
+  - **Shadow**: Sister Envy, the Rhalata
+  - **Warlock**: split between two sisters. Aurora Leklerk, in her tower near Duneville, sells
+    Entropy and Psionics; Tarhutie in Riverville sells Elementalism
+  - **Druid**, **Shaman** and **Cleric**: Torius Flameling, the Sun Temple alchemist
+- Changed: **Entropy and Psionics spells are no longer sold at the Sun Temple**, because both
+  schools are illegal in Enderal.
+  - The Druid's Call spells and the Shaman's totems and Fylgjas are **hidden in the Undercity**, one
+    copy of each, behind an Expert lock in the House of the Apothecarii. They do not restock.
+  - The Cleric's Psionics spells (Suggestion, Exile, Spirit Guardian, Obedience, Exodus) are in a
+    chest at Yero's unholy altar, in the Sun Temple's secret vault (the Forgotten Stories quest
+    "Secrets"), one copy of each with three staves. They do not restock.
+  - Each hiding place has a letter explaining how the spells got there.
+
+  Before this, each line was spread across three or four merchants and Expert/Master tomes were
+  sold only in Ark and the Undercity. Adreyo, Akatyr, Marius, the Ark guard blacksmith, the Bash
+  Hole, the Fence and all three Shrouded Mages no longer sell Triumvirate spells.
+- Known: **Apocalypse (Enderal conversion) also stocks Torius Flameling and Tarhutie** through the
+  same lists. With both installed, only the plugin that loads later adds to those two shops. Load
+  this one after Apocalypse to keep Druid, Shaman, Cleric and Warlock Elementalism for sale; that
+  costs Apocalypse its Apprentice and Expert tomes. Apocalypse's distribution is being reworked to
+  move off both.
+- Checked against **Enderal SE 2.1.4.4**: everything this mod changes or depends on is still
+  present in the update's data files, and no change was needed for it.
+- On an existing save, merchants restock every two in-game days, so the old shops can keep their
+  Triumvirate stock until then.
+
 ## 1.0.2
 
 - Fixed: **Wildshape did nothing at all.** The transformation was gated on your being *sprinting* at
