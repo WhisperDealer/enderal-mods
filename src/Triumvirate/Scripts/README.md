@@ -73,6 +73,13 @@ after Enderal, so its BSA wins**, and Skyrim's brawl/intimidate system comes bac
 removed it. The restored `dgintimidatealiasscript` reaches for `DGIntimidateFaction`, which Enderal
 does not have.
 
+> **Enderal 2.1.4.4 (2026-10-27) correction.** Enderal's records attach `_00E_DGIntimidatePlayerScript`
+> and `_00E_DGIntimidateAliasScript` (both extend `ReferenceAlias`), **and already did in 2.0.12.4**.
+> Nothing in Enderal ever attached or extended the vanilla-named scripts, so the BSA's copies were dead
+> code rather than a revived brawl system. In 2.1.4.4 Enderal no longer ships the vanilla names at all,
+> so the two loose stubs here shadow nothing. They are kept because they are harmless and removing
+> them is a separate release decision; see `arch-docs/enderal/update-2.1.4.4.md`.
+
 Triumvirate's BSA also carries seven more Bethesda scripts — `bladessparringscript`,
 `c00jorrvaskrfightathisscript`, `c00jorrvaskrfightnjadascript`, `c00trainerscript`,
 `c00vilkasscript`, `companionssinglecombatantscript`, `ms11calixtoscript`. All seven are vanilla

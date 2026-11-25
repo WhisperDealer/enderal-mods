@@ -130,6 +130,8 @@ magic effects, and the difference in where the number comes from is a live trap.
 | `_00E_IncreaseArcaneFeverFFSelf` | `11A4B6:Skyrim.esm` | FireAndForget, **Self**, `Archetype: Type: Script` → `_00E_ArkanistenfieberBlitzheilungSCN`. Used by all five FlashHeals, both Boon scrolls and Mystical Panacea |
 | `_00E_IncreaseArcaneFeverConcSelf` | `106EA4:Skyrim.esm` | Concentration, `Archetype: ActorValue → LastFlattered`. Used by the six Boons |
 
+> **Changed in 2.1.4.4:** `11A4B6` is now a **ValueModifier on `LastFlattered`**, conditioned on the player **lacking** Mental Expert. A new `0493DF` (`…_MentalExpert`) covers players **with** the perk at 0.67×, and Enderal's heals carry both. **Attach both effects**; `11A4B6` alone now charges a Mental Expert nothing. See [2.1.4.4 update](update-2.1.4.4.md).
+
 ```papyrus
 ; _00E_ArkanistenfieberBlitzheilungSCN  — the FireAndForget path
 fMagnitude = Self.GetMagnitude()                      ; <- the EFFECT ITEM's Magnitude, not Area
@@ -148,6 +150,8 @@ Two consequences:
   `ComparisonValue: 1`. Base Enderal shipped only the first half, so taking Mental Expert made Boons
   cost *zero* fever; FS's `02F42E` is the fix.
 - The script fires on `akCaster == PlayerREF || akTarget == PlayerREF`.
+
+> **No longer true in 2.1.4.4**: see the note above.
 
 ### The reference rates, for pricing a ported heal
 

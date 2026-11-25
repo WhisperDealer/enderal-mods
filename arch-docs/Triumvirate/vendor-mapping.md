@@ -177,6 +177,10 @@ master under `GameRelease.EnderalSE`.
   releases (see [Shared ground](#shared-ground-two-of-the-four-hooks-are-also-written-by-other-releases-here)).
 - Missing-reference audit still reads **40**, the documented pre-existing baseline: no new
   dangling references.
+- **Re-verified against Enderal 2.1.4.4** (2026-11-25): all four hooks are still empty `UseAll` FS records
+  held by their merchants' (FS) chests, and those chests are still placed in the same four cells. Steps 15/17/20
+  and every `verify-*` script pass on the new reference with the tree unchanged, and none of the plugin's
+  1,414 master references died.
 - In-game proof (WD-18): visit one vendor per archetype and confirm the low tiers appear in
   barter; then **specifically confirm an Expert- or Master-tier tome at each of the four**, and
   no Triumvirate stock at a former vendor such as Marius. The lower tiers appearing proves nothing

@@ -6,6 +6,8 @@ numbers — it is a different system implemented in Papyrus on top of the same e
 **Primary source:** `_00E_Game_SkillmenuSC` (`_00e_game_skillmenusc.psc`, 1082 lines),
 `_00E_EPUpdateFunctions` (`_00e_epupdatefunctions.psc`), `_00E_TalentLibrary`. All **[verified]**.
 
+> **Changed in 2.1.4.4:** `_00E_Game_SkillmenuSC` is removed. Affinities now live in `_00E_AffinityControl` (ReferenceAlias, "a new affinity system that requires FS"). Where the character menu is drawn is unverified, presumably `EnderalSE.dll`. The analysis below describes 2.0.12.4. See [2.1.4.4 update](update-2.1.4.4.md).
+
 ## No learning by doing
 
 Skills do not rise from use. Enderal runs its own XP curve and hands out points you spend manually.

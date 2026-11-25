@@ -18,6 +18,8 @@ and documentation are not listed.
 - Known: **Apocalypse (Enderal conversion) also stocks Torius Flameling** through the same list. With
   both installed, only the plugin that loads later adds to his shop. Load this one after Apocalypse
   to keep Druid and Shaman for sale. Apocalypse's distribution is being reworked to move off him.
+- Checked against **Enderal SE 2.1.4.4**: everything this mod changes or depends on is still
+  present in the update's data files, and no change was needed for it.
 - On an existing save, merchants restock every two in-game days, so the old shops can keep their
   Triumvirate stock until then.
 

@@ -13,6 +13,10 @@ the PR.
 **Not yet proven in game** — see
 [`arch-docs/Triumvirate/distribution-test-checklist.md`](../../arch-docs/Triumvirate/distribution-test-checklist.md).
 
+> **Checked against Enderal SE 2.1.4.4** (engine 1.7.104), 2026-11-25. No record this plugin overrides or
+> references was removed; the generators and verifiers all pass on the re-serialized reference with no change to
+> the tree. Details: `arch-docs/enderal/update-2.1.4.4.md`.
+
 ## Shape
 
 A **replacement plugin**, the same shape as `src/Apocalypse/`. It ships under the original filename

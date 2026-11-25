@@ -63,6 +63,8 @@ The Phasmalist's summoned apparition takes a combat style from
 Enderal ships `dgintimidateplayerscript.psc` and `dgintimidatealiasscript.psc` as explicit
 `; DUMMY, DO NOTHING` stubs — 4 lines where vanilla has 59. **[verified]**
 
+> **Changed in 2.1.4.4:** neither stub ships any more, and Enderal's records attach `_00E_DGIntimidate*` scripts. A mod's vanilla-named copies are dead code. See [2.1.4.4 update](update-2.1.4.4.md).
+
 Consequences:
 
 - Any mod that hooks brawl start/end, or expects `DGIntimidateQuest` to run, is hooking nothing.
@@ -112,4 +114,5 @@ Both FS classes add combat mechanics that a combat overhaul can collide with:
 - [ ] Does it retune combat styles? Six of them are the Phasmalist's summon — player-facing.
 - [ ] Does it ship a `.pex` whose name collides with one of Enderal's 55 overridden scripts?
 - [ ] Is every SKSE `.dll` it depends on a **1.5.97** build?
+  - **Changed in 2.1.4.4:** that is now a **1.7.104** build.
 - [ ] Tested with **and** without Forgotten Stories?

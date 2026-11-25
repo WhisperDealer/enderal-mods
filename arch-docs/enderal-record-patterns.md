@@ -58,6 +58,8 @@ Enderal's character sheet is a custom menu (`_00E_Game_SkillmenuSC`, a Reference
 registered for `"Journal Menu"`), and its *talents* are three-tier **Perks** paired with
 **WordOfPower** unlocks, read back through `_00E_TalentLibrary`:
 
+> **Changed in 2.1.4.4:** `_00E_Game_SkillmenuSC` is removed; see [the update notes](enderal/update-2.1.4.4.md).
+
 ```papyrus
 int Function GetPlayerTalentLevel(Perk Perk01, Perk Perk02, Perk Perk03) Global
     if Player.HasPerk(Perk03)
