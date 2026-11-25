@@ -343,14 +343,33 @@ $script:TvrVendors = @(
 #   _00E_NQ29_BossChest 14BECE:Skyrim.esm, placed as 14BECF in UndercityBarracks2ApothekariUpper
 #   ("House of the Apothecarii", Undercity), in the room behind the Expert-locked door 0DE7AC. It
 #   holds the "Old Ban Totem" blueprint (_00E_CraftingPlan_NQ29_ProtectionTotem 14BEC9).
+#
+# A stash with a Template is a NEW chest of our own: the template container is copied under our
+# FormKey/EditorID, and placed by overriding Cell (copied from CellMaster, the winning plugin, with
+# its NavigationMeshes and every existing ref dropped - CLAUDE.md's add-one-object recipe) with one
+# Temporary ref. Keep lists the master items an overridden stash must still hold.
+#   Cleric Psionics: Yero's secret vault under the Sun Temple (FSSuntempleYeroCave 03E73A, "Sun
+#   Temple, Secret Vault"). Yero was a Holy Order magister taken by the Red Madness; the chest sits
+#   at the north end of his unholy altar (MS11UnholyAltar01 ref 043DFE). Reached through FS's
+#   "Secrets" quest (FS_NQ04): the key from Yero's strongbox opens the trap door in Yero's Tower.
+#   No plugin in reference/mods and nothing in EGO touches the cell; FS overrides it, so FS's copy
+#   is the one we carry.
 $script:TvrStashes = @(
     @{ File = '_00E_NQ29_BossChest - 14BECE_Skyrim.esm.yaml'; Master = 'Skyrim'
        Where = 'House of the Apothecarii, Undercity (Expert-locked room)'
-       Lines = @('Druid_Conjuration', 'Shaman_Conjuration') }
+       Lines = @('Druid_Conjuration', 'Shaman_Conjuration'); Keep = @('14BEC9:Skyrim.esm') }
+    @{ File = 'TVR_Cleric_Container_PsionicsStash - 4C0D60_Triumvirate - Mage Archetypes.esp.yaml'
+       Template = 'ChestLarge01EMPTY - 08EA5D_Skyrim.esm.yaml'; Master = 'Skyrim'
+       FormKey = '4C0D60:Triumvirate - Mage Archetypes.esp'; EditorID = 'TVR_Cleric_Container_PsionicsStash'
+       Cell = 'Cells\2\0\FSSuntempleYeroCave - 03E73A_Skyrim.esm'; CellMaster = 'EnderalFS'
+       Ref = '4C0D61:Triumvirate - Mage Archetypes.esp'
+       Position = '-2985, 1530, 1343'; Rotation = '0, 0, 4.9062448'
+       Where = "Sun Temple, Secret Vault (Yero's unholy altar)"
+       Lines = @('Cleric_Illusion'); Keep = @() }
 )
 # Lines nobody sells or stashes yet: UNOBTAINABLE until homed. The proofs in 15/17 assert exactly
 # that, so homing one is a deliberate edit here.
-$script:TvrUnhomedLines = @('Cleric_Illusion')
+$script:TvrUnhomedLines = @()
 # Every line NOT stocked by a merchant hook - 15/17 keep these out of every hook.
 $script:TvrNonVendorLines = @($script:TvrUnhomedLines) + @($script:TvrStashes | ForEach-Object { $_.Lines })
 $script:TvrSchoolLetter = @{ A = 'Alteration'; C = 'Conjuration'; D = 'Destruction'; I = 'Illusion'; R = 'Restoration' }

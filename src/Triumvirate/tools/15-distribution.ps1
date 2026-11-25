@@ -291,14 +291,33 @@ if (-not (Test-Path -LiteralPath $containersDir)) { New-Item -ItemType Directory
 $staleStash = @(Get-ChildItem $containersDir -Filter '_00E_*.yaml' | Where-Object { $stashFiles -notcontains $_.Name })
 if ($staleStash.Count -gt 0) { throw "unexpected master container overrides: $(($staleStash | ForEach-Object { $_.Name }) -join ', ')" }
 foreach ($st in $script:TvrStashes) {
-    $srcPath = Join-Path (Join-Path (Join-Path $repo "reference\base\$($st.Master)") 'Containers') $st.File
-    if (-not (Test-Path -LiteralPath $srcPath)) { throw "reference stash container not found: $($st.File)" }
+    $isNew = $st.ContainsKey('Template')
+    $srcName = $st.File
+    if ($isNew) { $srcName = $st.Template }
+    $srcPath = Join-Path (Join-Path (Join-Path $repo "reference\base\$($st.Master)") 'Containers') $srcName
+    if (-not (Test-Path -LiteralPath $srcPath)) { throw "reference stash container not found: $srcName" }
     $adds = @()
     foreach ($ln in $st.Lines) { $adds += Get-LineTomes -Line $ln }
     $nTomes = $adds.Count
     if ($nTomes -ne 5 * $st.Lines.Count) { throw "$($st.File): $nTomes tomes for $($st.Lines.Count) lines, want 5 each" }
     foreach ($ln in $st.Lines) { $adds += Get-LineStaves -Line $ln }
     $lines = @(Get-YamlLines $srcPath)
+    if ($isNew) {
+        # our own record: retarget FormKey + EditorID, and create the Items key the empty template
+        # lacks (Spriggit omits empty collections) where Spriggit writes it - before MajorFlags
+        if ($lines[0] -notmatch '^FormKey: ') { throw "$srcName does not start with its FormKey" }
+        $lines[0] = "FormKey: $($st.FormKey)"
+        $ei = @(0..($lines.Count - 1) | Where-Object { $lines[$_] -match '^EditorID: ' })
+        if ($ei.Count -ne 1) { throw "$srcName has $($ei.Count) EditorID lines" }
+        $lines[$ei[0]] = "EditorID: $($st.EditorID)"
+        if ([array]::IndexOf($lines, 'Items:') -ge 0) { throw "template $srcName is not empty" }
+        if ((Read-YamlText $srcPath) -match 'Respawns|VirtualMachineAdapter') { throw "template $srcName respawns or carries a script" }
+        $mf = [array]::IndexOf($lines, 'MajorFlags:')
+        if ($mf -lt 0) { $mf = $lines.Count }
+        $tail = @()
+        if ($mf -lt $lines.Count) { $tail = @($lines[$mf..($lines.Count - 1)]) }
+        $lines = @($lines[0..($mf - 1)]) + @('Items:') + $tail
+    }
     $at = [array]::IndexOf($lines, 'Items:')
     if ($at -lt 0) { throw "$($st.File) has no Items: list" }
     $end = $at + 1
@@ -309,6 +328,38 @@ foreach ($st in $script:TvrStashes) {
     if ($end -lt $lines.Count) { $out += $lines[$end..($lines.Count - 1)] }
     Set-YamlLines -Path (Join-Path $containersDir $st.File) -Lines $out
     Write-Host ("  4d. stash {0}: +{1} tomes, +{2} staves ({3})" -f $st.Where, $nTomes, ($adds.Count - $nTomes), ($st.Lines -join ', '))
+}
+
+# 4e. Place each new stash chest: override its cell from the WINNING plugin's copy, cut at the first
+# of NavigationMeshes/Persistent/Temporary (no navmesh override, no existing ref re-listed), and
+# list only our one ref under Temporary. The block/sub-block GroupRecordData.yaml files are copied
+# from the same master, never retyped.
+$placed = @($script:TvrStashes | Where-Object { $_.ContainsKey('Cell') })
+foreach ($st in $placed) {
+    $srcDir = Join-Path $repo "reference\base\$($st.CellMaster)\$($st.Cell)"
+    $src = Join-Path $srcDir 'RecordData.yaml'
+    if (-not (Test-Path -LiteralPath $src)) { throw "reference cell not found: $($st.CellMaster)\$($st.Cell)" }
+    $cl = @(Get-YamlLines $src)
+    $cut = @(0..($cl.Count - 1) | Where-Object { $cl[$_] -match '^(NavigationMeshes|Persistent|Temporary):' })
+    if ($cut.Count -eq 0) { throw "$($st.Cell) has no child groups to cut at" }
+    $out = @($cl[0..($cut[0] - 1)]) + @(
+        'Temporary:'
+        '- MutagenObjectType: PlacedObject'
+        "  FormKey: $($st.Ref)"
+        "  Base: $($st.FormKey)"
+        '  Placement:'
+        "    Position: $($st.Position)"
+        "    Rotation: $($st.Rotation)"
+        '')
+    $dstDir = Join-Path $root $st.Cell
+    if (-not (Test-Path -LiteralPath $dstDir)) { New-Item -ItemType Directory -Path $dstDir -Force | Out-Null }
+    Set-YamlLines -Path (Join-Path $dstDir 'RecordData.yaml') -Lines $out
+    foreach ($g in @((Split-Path -Parent $st.Cell), (Split-Path -Parent (Split-Path -Parent $st.Cell)))) {
+        $gs = Join-Path (Join-Path $repo "reference\base\$($st.CellMaster)") (Join-Path $g 'GroupRecordData.yaml')
+        if (-not (Test-Path -LiteralPath $gs)) { throw "reference group record not found: $g" }
+        Copy-Item -LiteralPath $gs -Destination (Join-Path (Join-Path $root $g) 'GroupRecordData.yaml') -Force
+    }
+    Write-Host ("  4e. placed {0} in {1} (ref {2})" -f $st.EditorID, (Split-Path -Leaf $st.Cell), $st.Ref)
 }
 
 # ------------------------------------------------------------------ 5. reprice the top tiers
@@ -366,7 +417,7 @@ foreach ($p in $allText.Keys) {
     $fk = [regex]::Match($allText[$p], '(?m)^FormKey: (.+?)(?=\r?$)').Groups[1].Value
     if ($fk -and $fk -notmatch 'Triumvirate') { $foreign += (Split-Path -Leaf $p) }
 }
-$expected = @($vendors | ForEach-Object { $_.File }) + $stashFiles
+$expected = @($vendors | ForEach-Object { $_.File }) + @($script:TvrStashes | Where-Object { -not $_.ContainsKey('Template') } | ForEach-Object { $_.File })
 $unexpected = @($foreign | Where-Object { $_ -notin $expected })
 if ($unexpected.Count -gt 0 -or $foreign.Count -ne $expected.Count) {
     $unexpected | ForEach-Object { Write-Host "    unexpected override: $_" }
@@ -443,8 +494,25 @@ foreach ($st in $script:TvrStashes) {
     $want = @()
     foreach ($ln in $st.Lines) { $want += Get-LineTomes -Line $ln; $want += Get-LineStaves -Line $ln }
     if ((@($ours | Sort-Object) -join ',') -ne (@($want | Sort-Object) -join ',')) { throw "stash $($st.File) holds the wrong items" }
-    if ($t -notmatch 'Item: 14BEC9:Skyrim\.esm') { throw "stash $($st.File) lost its own blueprint" }
+    foreach ($k in $st.Keep) { if ($t -notmatch ('Item: ' + [regex]::Escape($k))) { throw "stash $($st.File) lost its own $k" } }
+    if ($t -match 'Respawns') { throw "stash $($st.File) respawns - a one-copy tome would come back, or vanish" }
     foreach ($fk in $ours) { $stashed[$fk] = $st.File }
+}
+# e. the only master cells we override are the new stashes' cells, each carrying no navmesh and
+#    exactly one ref - ours, of our stash chest. TVR_Cell (Triumvirate's own interior) is exempt.
+$cellFiles = @(Get-ChildItem (Join-Path $root 'Cells') -Recurse -Filter 'RecordData.yaml' | Where-Object {
+    (Read-YamlText $_.FullName) -notmatch '(?m)^FormKey: [0-9A-F]{6}:Triumvirate' })
+$wantCells = @($placed | ForEach-Object { Join-Path (Join-Path $root $_.Cell) 'RecordData.yaml' })
+if ((@($cellFiles | ForEach-Object { $_.FullName } | Sort-Object) -join '|') -ne (@($wantCells | Sort-Object) -join '|')) {
+    $cellFiles | ForEach-Object { Write-Host "    master cell override: $($_.FullName.Substring($root.Length + 1))" }
+    throw "master cell overrides are not exactly the $($placed.Count) stash cell(s)"
+}
+foreach ($st in $placed) {
+    $t = Read-YamlText (Join-Path (Join-Path $root $st.Cell) 'RecordData.yaml')
+    if ($t -match '(?m)^(NavigationMeshes|Persistent):') { throw "$($st.Cell) carries a navmesh or persistent refs" }
+    if (([regex]::Matches($t, '(?m)^- MutagenObjectType: ')).Count -ne 1) { throw "$($st.Cell) must carry exactly one ref" }
+    if ($t -notmatch ('(?m)^  FormKey: ' + [regex]::Escape($st.Ref) + '\r?\n  Base: ' + [regex]::Escape($st.FormKey) + '(?=\r?$)')) { throw "$($st.Cell) does not place $($st.EditorID)" }
+    if (-not (Test-Path -LiteralPath (Join-Path $containersDir $st.File))) { throw "$($st.File) missing" }
 }
 foreach ($p in $allText.Keys) {
     if ($stashFiles -contains (Split-Path -Leaf $p)) { continue }
@@ -458,7 +526,7 @@ foreach ($p in $allText.Keys) {
 }
 $multiStaff = @($staves.Values | Where-Object { $unhomedStaves -notcontains $_ -and $sources[$_] -ne 1 })
 if ($multiStaff.Count -gt 0) { throw "$($multiStaff.Count) staves sold by more than one merchant" }
-Write-Host ("  proof: {0} non-withheld tomes reach their one line vendor via the parent bundles; {1}/26 staves at exactly one vendor; stashed: {2} items; unhomed and unsold: {3}" -f $viaParents.Count, (26 - $unhomedStaves.Count), $stashed.Count, ($script:TvrUnhomedLines -join ', '))
+Write-Host ("  proof: {0} non-withheld tomes reach their one line vendor via the parent bundles; {1}/26 staves at exactly one vendor; stashed: {2} items in {3} chest(s), {4} placed by us; unhomed and unsold: {5}" -f $viaParents.Count, (26 - $unhomedStaves.Count), $stashed.Count, $script:TvrStashes.Count, $placed.Count, $(if ($script:TvrUnhomedLines.Count) { $script:TvrUnhomedLines -join ', ' } else { 'none' }))
 
 # Reachable is not the same as obtainable: a tier bundle still carrying vanilla's PC<School><Tier>
 # gate yields NOTHING however many vendors stock it, and reading only Reference: is exactly how

@@ -1,0 +1,61 @@
+FormKey: 03E73A:Skyrim.esm
+EditorID: FSSuntempleYeroCave
+Name:
+  TargetLanguage: English
+  Values:
+  - Language: Chinese
+    String: 太阳神殿，秘密地下室
+  - Language: Czech
+    String: Tajné sklepení
+  - Language: English
+    String: Sun Temple, Secret Vault
+  - Language: French
+    String: Temple du Soleil - Chambre secrète
+  - Language: German
+    String: Sonnentempel, Geheimes Gewölbe
+  - Language: Italian
+    String: Tempio del Sole - Camera blindata segreta
+  - Language: Japanese
+    String: '太陽の聖堂: 秘密の地下室'
+  - Language: Korean
+    String: 태양 신전, 비밀 금고
+  - Language: Polish
+    String: Świątynia Słońca, Sekretna Komnata
+  - Language: Russian
+    String: Храм Солнца, Секретное убежище
+  - Language: Spanish
+    String: Templo del Sol, Bóveda secreta
+Flags:
+- IsInteriorCell
+- HasWater
+Lighting:
+  AmbientColor: '#00231F14'
+  DirectionalColor: '#00072E29'
+  FogNearColor: '#00233635'
+  FogFar: 14000
+  FogPower: 0.9
+  AmbientColors:
+    DirectionalXPlus: '#00392E20'
+    DirectionalXMinus: '#002E2E1D'
+    DirectionalYPlus: '#0034301F'
+    DirectionalYMinus: '#00342B1F'
+    DirectionalZPlus: '#0018150E'
+    DirectionalZMinus: '#004F462F'
+    Specular: '#00000000'
+    Scale: 1
+  FogFarColor: '#000C3632'
+  FogMax: 0.3
+  LightFadeBegin: 17000
+  LightFadeEnd: 18000
+LightingTemplate: 0E6598:Skyrim.esm
+WaterHeight: 0
+Water: 0E717C:Skyrim.esm
+AcousticSpace: 02B961:Skyrim.esm
+Music: 01BECD:Skyrim.esm
+Temporary:
+- MutagenObjectType: PlacedObject
+  FormKey: 4C0D61:Triumvirate - Mage Archetypes.esp
+  Base: 4C0D60:Triumvirate - Mage Archetypes.esp
+  Placement:
+    Position: -2985, 1530, 1343
+    Rotation: 0, 0, 4.9062448

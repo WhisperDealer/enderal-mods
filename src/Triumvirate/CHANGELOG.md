@@ -14,8 +14,9 @@ and documentation are not listed.
   schools are illegal in Enderal.
   - The Druid's Call spells and the Shaman's totems and Fylgjas are **hidden in the Undercity**, one
     copy of each, behind an Expert lock in the House of the Apothecarii. They do not restock.
-  - The Cleric's Psionics spells (Suggestion, Exile, Spirit Guardian, Obedience, Exodus) are not
-    available in this version.
+  - The Cleric's Psionics spells (Suggestion, Exile, Spirit Guardian, Obedience, Exodus) are in a
+    chest at Yero's unholy altar, in the Sun Temple's secret vault (the Forgotten Stories quest
+    "Secrets"), one copy of each with three staves. They do not restock.
 
   Before this, each line was spread across three or four merchants and Expert/Master tomes were
   sold only in Ark and the Undercity. Adreyo, Akatyr, Marius, the Ark guard blacksmith, the Bash

@@ -16,7 +16,7 @@
 # 2. EXPERT/MASTER GO TO THE SAME ONE VENDOR. Distribution is one merchant per archetype line
 #    ($script:TvrVendors in 00-common.ps1): Shadow -> Sister Envy, Warlock -> the Undercity
 #    Shrouded Mage, Druid + Shaman + Cleric -> Torius Flameling, EXCEPT the Entropy/Psionics lines
-#    in $script:TvrUnhomedLines, which no merchant sells yet. 15 writes each
+#    in $script:TvrNonVendorLines, which no merchant sells (15 stashes them). 15 writes each
 #    archetype's per-school parent bundles (Novice/Apprentice/Adept) into its vendor's hook; this
 #    step cuts Expert/Master out of those parents and writes the 075/100 tier bundles into the SAME
 #    hook directly. The end state is that each vendor sells its archetypes' whole line and nobody
