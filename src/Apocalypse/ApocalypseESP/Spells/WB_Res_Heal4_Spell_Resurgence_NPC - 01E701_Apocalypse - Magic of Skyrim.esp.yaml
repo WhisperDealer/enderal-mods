@@ -57,3 +57,14 @@ Effects:
       MutagenObjectType: GetActorValuePercentConditionData
       ActorValue: Health
     ComparisonValue: 0.5
+- BaseEffect: 0493DF:Skyrim.esm
+  Data:
+    Magnitude: 3.35
+    Duration: 1
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    CompareOperator: LessThan
+    Data:
+      MutagenObjectType: GetActorValuePercentConditionData
+      ActorValue: Health
+    ComparisonValue: 0.5

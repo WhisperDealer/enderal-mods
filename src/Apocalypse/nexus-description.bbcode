@@ -18,11 +18,11 @@ This conversion fixes that, gives the spells a way into Enderal's economy, remov
 [line]
 [size=4]Why a replacement and not a patch[/size]
 
-[b]Enderal runs Skyrim SE 1.5.97, and that engine refuses to load any plugin whose header form version is 1.71.[/b] It does not warn you. It does not log it. The plugin is just absent. Apocalypse is 1.71.
+[b]Up to Enderal SE 2.1.4.4, Enderal ran Skyrim SE 1.5.97, and that engine refuses to load any plugin whose header form version is 1.71.[/b] It does not warn you. It does not log it. The plugin is just absent. Apocalypse is 1.71.
 
 You can watch it happen: with Apocalypse installed and enabled, open the console and type [font=Courier New]help wither 4[/font]. Apocalypse defines a spell called Wither. You will get nothing back. Change four bytes in the plugin header — 1.71 to 1.70, every other byte identical — and the spell is there.
 
-A patch loaded on top cannot fix this, because a patch has to declare Apocalypse as a master, and the engine has already skipped it. The patch then binds to a master that does not exist and the game crashes during load, about nine seconds in, at the main menu. So the plugin itself has to be rebuilt at form version 1.70 — which is what this is.
+A patch loaded on top cannot fix this, because a patch has to declare Apocalypse as a master, and the engine has already skipped it. The patch then binds to a master that does not exist and the game crashes during load, about nine seconds in, at the main menu. So the plugin itself has to be rebuilt at form version 1.70 — which is what this is. (Enderal 2.1.4.4 moved to a newer engine that very probably reads 1.71, but nobody has proved that in game yet. A 1.70 plugin loads on both, so this stays at 1.70.)
 
 Once you are rebuilding the plugin anyway, the rest gets fixed properly rather than worked around:
 [list=1]
@@ -179,7 +179,7 @@ So the [b]19 spells and scrolls that heal you[/b] now pay the same tax. The rate
 
 [b]Breath of Tyr is charged per second channelled[/b], the same way it heals — a quick tap costs 5, a full ten-second channel costs 19 for its 500 points. [b]Resurgence only charges when it actually heals[/b]; it does nothing above half health, so it costs nothing there either.
 
-The [b]Mental Expert[/b] perk reduces all of it by a third, exactly as it does for Enderal's own healing — no extra work, it runs through Enderal's own script.
+The [b]Mental Expert[/b] perk reduces all of it by a third, exactly as it does for Enderal's own healing. Each heal carries the same pair of Fever effects Enderal 2.1.4.4 puts on its own Flash Heal and Boon scrolls: the full charge, and a reduced charge that applies in its place once you have the perk.
 
 [i]Spells that heal you by draining an enemy — Decompose, Leech Seed, Lamb of Irlanda, Poisoned Chalice, Nature's Balance — are deliberately left untaxed. They are conditional combat rewards rather than a panic button, and Enderal's Fever mechanic has only ever taxed self-targeted healing.[/i]
 
@@ -389,7 +389,7 @@ That is verified against the plugins rather than assumed, but it is a record-lev
 [*][b]Erodan's Embrace costs a flat 20 Arcane Fever.[/b] Every other heal is priced off the exact number of points it restores, but that one is scripted to heal you to full — there is no number in the record to price, so 20 assumes a late-game health pool. If it feels wrong at your level, say so.[/*]
 [*][b]Merchant inventories get long.[/b] Emberlord and Fireflash gains 45 spell tomes on top of what it already sells. SkyUI's category filter handles it, but it is a visibly fuller shop than the base game's.[/*]
 [*][b]Tome names carry no "(Rank N)" suffix[/b], unlike most of Enderal's. That is intentional: in Enderal that suffix means the same spell exists at another strength, gated on player level, and Apocalypse spells have exactly one version each. Enderal leaves 13 of its own single-strength tomes unsuffixed for the same reason.[/*]
-[*][b]Requires Enderal SE[/b], which is pinned to Skyrim SE [b]1.5.97[/b]. This is a plugin only, so no SKSE version concerns apply to it.[/*]
+[*][b]Requires Enderal SE 2.1.4.4 or later.[/b] The Arcane Fever charge uses the Mental Expert effect that version introduced, which older versions of Enderal do not have. This is a plugin only, so no SKSE version concerns apply to it.[/*]
 [/list]
 [line]
 [size=4]Credits[/size]

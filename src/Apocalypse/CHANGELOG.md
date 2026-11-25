@@ -3,6 +3,17 @@
 Paste each version block into the Nexus **Changelogs** tab. User-facing changes only; repo tooling
 and documentation are not listed.
 
+## Unreleased
+
+- **Updated for Enderal SE 2.1.4.4.** This version requires 2.1.4.4 or later.
+- Fixed: **on Enderal 2.1.4.4, Mental Expert players paid no Arcane Fever for Apocalypse's heals.**
+  2.1.4.4 moved the Fever charge into the engine and split it in two: the full charge now skips
+  anyone with Mental Expert, and a second, reduced charge picks them up. Apocalypse's 19 heals only
+  carried the first. They now carry both, at the same one-third discount Enderal's own heals give.
+  Players without Mental Expert pay exactly what they did before.
+- Brought the prologue worldspace this plugin carries up to date with Enderal 2.1.4.4's version,
+  so it no longer reverts that update's changes (its Czech name, and a cell flag).
+
 ## 1.3.0
 
 - Fixed: **the master-tier spells cost far too much mana to cast.** Apocalypse left every spell's
