@@ -56,42 +56,63 @@ copy, so the 76 dead calls are gone entirely.
 
 ## The merchants
 
-**One merchant per archetype.** Each sells that archetype's whole line, Novice through Master, plus
-its staves, and no other merchant sells any of it. The table lives once, in
-`tools/00-common.ps1` (`$script:TvrVendors`), and both `15-distribution.ps1` and
-`17-tier-gating.ps1` read it, so the two steps cannot disagree.
+**One merchant per archetype line** (a line is one archetype's spells in one school). Each merchant
+sells every tier of its lines, Novice through Master, plus their staves, and no other merchant sells
+any of it. The table lives once, in `tools/00-common.ps1` (`$script:TvrVendors` and
+`$script:TvrUnhomedLines`), and both `15-distribution.ps1` and `17-tier-gating.ps1` read it, so the
+two steps cannot disagree.
 
 **We override none of these chests.** Stock goes into each merchant's `*_CustomMerchandise` hook
 (see [Where the stock actually goes](#where-the-stock-actually-goes) above). The mod's entire
-override surface against its masters is **four `LeveledItem`s and zero `Container`s**.
+override surface against its masters is **three `LeveledItem`s and one `Container`**, the stash
+chest below, which is not a merchant's.
 
 | Archetype | Merchant (hook) | Chest (NOT overridden) | Cell, resolved from the chest's placed ref | Gold |
 |---|---|---|---|---:|
 | Shadow | Sister Envy (`SisterEnvy_` `0302ED`) | `_00E_Merchant_Rhalata_SisterEnvyContainer` `01E893:FS` | `FSNQR03RhalataTemple` | 2700 |
-| Cleric | **Halda Stronghand** (`HaldaHammerschlag_` `0302FF`) | `_00E_Merchant_STHalda` `118055:Skyrim.esm` | `SuntempleArmory` | 3500 |
 | Warlock | Shrouded Mage, Undercity (`Wildmage_Undercity_` `0302F0`) | `_00E_FS_Merchant_Wildmage_UndercityBarracks1` `01E900:FS` | `UndercityBarracks1` | 630 |
-| Druid + Shaman | **Torius Flameling** (`TuriousFlammentrunk_` `0302FE`) | `_00E_Merchant_STTurious` `118050:Skyrim.esm` | `SuntempleAlchemy` | 1430 |
+| Druid, Shaman, Cleric, **except their Entropy/Psionics lines** | **Torius Flameling** (`TuriousFlammentrunk_` `0302FE`) | `_00E_Merchant_STTurious` `118050:Skyrim.esm` | `SuntempleAlchemy` | 1430 |
+| Druid Entropy, Shaman Entropy | **a hidden stash**, not a merchant (`$script:TvrStashes`) | `_00E_NQ29_BossChest` `14BECE:Skyrim.esm`, **overridden** | `UndercityBarracks2ApothekariUpper`, "House of the Apothecarii" | — |
+| Cleric Psionics | **none yet** (`$script:TvrUnhomedLines`) | | | |
 
-The Sun Temple has exactly these two merchants. Halda is
-the armory smith (not flagged Essential) and Torius the alchemist (Essential). Their EditorIDs are
-German (`Hammerschlag`, `Flammentrunk`); the English display names are read from the NPC records'
-`Name` blocks.
+Torius is the Sun Temple's alchemist (Essential); his EditorID is German (`Flammentrunk`), and the
+English display name is read from the NPC record's `Name` block. He takes the holy and nature lines.
 
-What each hook carries, per archetype: the three per-school parent bundles
-(`TVR_Tomes_Litem_<Arch>_<School>`, Novice/Apprentice/Adept), the six Expert/Master tier bundles
-(`TVR_Tomes_Litem_<Arch>_075|100_<School>`, added by step 17), and every `TVR_<Arch>_*_Staff_*`.
-Staves: Shadow 4, Cleric 4, Warlock 8, Druid + Shaman 10, which is all 26.
+**Entropy (Conjuration) and Psionics (Illusion) are illegal in Enderal**, so those lines stay off a
+Sun Temple merchant:
 
-### Shared ground: two of the four hooks are also written by other releases here
+- **Druid Entropy** (the five Call spells) and **Shaman Entropy** (the three totems and the two
+  Fylgja summons) are **stashed**: one copy of each of the 10 tomes and the 3 totem staves sits in
+  `_00E_NQ29_BossChest` (placed ref `14BECF`), in the upstairs room of the House of the Apothecarii
+  in the Undercity, behind the **Expert-locked** door `0DE7AC`, beside the *Old Ban Totem*
+  blueprint (`_00E_CraftingPlan_NQ29_ProtectionTotem` `14BEC9`). The chest does not respawn, so it
+  holds the **Book records themselves**, not the tier bundles, whose authored `ChanceNone: 1` would
+  lose a tome for good 1% of the time. All five tiers are there at once, so a player who can pick
+  the lock gets Master-tier summons early. Nothing else touches this chest: not FS, not EGO, nothing
+  in `reference/mods/`, and no NQ29 script reads or empties it. The override is copied from the
+  `Skyrim.esm` record and keeps its own items (3 × `0028E8` and the blueprint); step 15 asserts both.
+- **Cleric Psionics** (Suggestion, Exile, Spirit Guardian, Obedience, Exodus): 5 tomes and 3 staves
+  that **nobody sells or stashes until a home is chosen**.
+
+The proofs in 15 and 17 assert all of this, so homing a line is a deliberate edit in
+`00-common.ps1`. Every summon spell in base Enderal is Entropy too, so moving the summon lines to
+another school would have no precedent; the totems' `TVR_Totem_Script` also reads the player's
+Conjuration skill.
+
+What each hook carries, per line: its per-school parent bundle (`TVR_Tomes_Litem_<Arch>_<School>`,
+Novice/Apprentice/Adept), its two Expert/Master tier bundles
+(`TVR_Tomes_Litem_<Arch>_075|100_<School>`, added by step 17), and its `TVR_<Arch>_<S>*_Staff_*`.
+Staves: Shadow 4, Warlock 8, Torius 8 (Druid 4, Shaman 3, Cleric 1), the stash 3 (the totems), and
+3 Cleric Psionics staves unhomed.
+
+### Shared ground: one hook is also written by another release here
 
 | Hook | Also written by | Effect for a player running both |
 |---|---|---|
 | `TuriousFlammentrunk_` | **Apocalypse** (its Apprentice tier) | The later-loading plugin's entries win; the other's vanish without error |
-| `HaldaHammerschlag_` | **Holy Templar Magic** (Kittytail Conversions, not yet on `main`) | Same |
 
 Accepted deliberately for this release: Apocalypse is due its own redistribution, which should move
-off Torius. Before shipping Kittytail Conversions or the next Apocalypse update, resolve both,
-either by moving one side or by shipping a merge patch. **The chests are no escape route:** EGO and
+off Torius. Halda Stronghand's hook, which Holy Templar Magic writes, is no longer used here. **The chests are no escape route:** EGO and
 `EGO SE - Leveling Redone` override both Sun Temple chests, and KataPUMB overrides Torius's.
 
 > **Sister Envy is the only Shadow vendor, and she is in a Forgotten Stories quest location.** Her
@@ -111,8 +132,11 @@ either by moving one side or by shipping a merge patch. **The chests are no esca
    Shrouded Mage, Sister Envy, the Bash Hole, the Fence, Marius, the Ark guard smith). The top two
    tiers were sold only by the five Ark/Undercity merchants. It was correct, but it was hard to tell
    a player where to find a given spell.
-3. **Four hooks, one per archetype (this layout).** Step 15 deletes any hook no longer in the table
-   and rebuilds the four from the FS master's copy on every run, so a stale layout cannot survive a
+3. **Four hooks, one per archetype.** Cleric sat at Halda Stronghand, Druid + Shaman at Torius.
+4. **Three hooks and a stash, one home per line (this layout).** Cleric moved to Torius, the
+   Druid/Shaman Entropy lines went to the House of the Apothecarii stash, and Cleric Psionics is
+   unhomed pending a choice. Step 15 deletes any hook no longer in the table and
+   rebuilds the rest from the FS master's copy on every run, so a stale layout cannot survive a
    re-run.
 
 ## Tier gating
@@ -167,14 +191,15 @@ master under `GameRelease.EnderalSE`.
   - after WD-16 (chest overrides): SHA-256 `6C7BB02F…CAD29C`, 745,728 bytes
   - after WD-16b (tier gating): SHA-256 `881505F7…7164C7`, 745,651 bytes
   - after WD-16c (CustomMerchandise hooks): SHA-256 `43B8EF1E…161510`, 739,071 bytes
-  - after one-vendor-per-archetype: SHA-256 `4D62DC89…3FC95ACB`, **737,067 bytes**
+  - after one-vendor-per-archetype: SHA-256 `4D62DC89…3FC95ACB`, 737,067 bytes
+  - after Cleric to Torius and the Entropy stash: SHA-256 `E432103B…60CD809F`, **737,063 bytes**
 - `HEDR` 1.70, masters `Skyrim.esm, Update.esm, Enderal - Forgotten Stories.esm` — re-read out of
   the built binary at offset 30, not assumed.
 - Both `15-distribution.ps1` and `17-tier-gating.ps1` are **idempotent**: a second run reports 0
   changes and re-proves every invariant.
-- Override surface against the masters is **4 records, all `LeveledItem`, zero `Container`** —
-  asserted by the generator. None is in EGO's conflict index; two are shared with this repo's own
-  releases (see [Shared ground](#shared-ground-two-of-the-four-hooks-are-also-written-by-other-releases-here)).
+- Override surface against the masters is **3 `LeveledItem` hooks and 1 `Container` (the stash)** —
+  asserted by the generator. None is in EGO's conflict index; one is shared with this repo's own
+  releases (see [Shared ground](#shared-ground-one-hook-is-also-written-by-another-release-here)).
 - Missing-reference audit still reads **40**, the documented pre-existing baseline: no new
   dangling references.
 - **Re-verified against Enderal 2.1.4.4** (2026-11-25): all four hooks are still empty `UseAll` FS records
@@ -182,7 +207,7 @@ master under `GameRelease.EnderalSE`.
   and every `verify-*` script pass on the new reference with the tree unchanged, and none of the plugin's
   1,414 master references died.
 - In-game proof (WD-18): visit one vendor per archetype and confirm the low tiers appear in
-  barter; then **specifically confirm an Expert- or Master-tier tome at each of the four**, and
+  barter; then **specifically confirm an Expert- or Master-tier tome at each of the three**, and
   no Triumvirate stock at a former vendor such as Marius. The lower tiers appearing proves nothing
   about the 45 that were gated. See `distribution-test-checklist.md`. Confirm game start produces **zero** `TVR_`
   Papyrus errors.

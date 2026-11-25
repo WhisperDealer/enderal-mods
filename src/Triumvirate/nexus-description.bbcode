@@ -64,21 +64,23 @@ Triumvirate's archive ships [font=Courier New]dgintimidateplayerscript[/font] an
 
 [b]1. Distribution — the part that makes the mod exist.[/b]
 
-All [b]75 spell tomes and 26 staves[/b] are stocked by named Enderal merchants, deterministically. Not a lottery: each merchant's stock is fixed, restocks forever, and you can be told where to go.
+[b]60 of the 75 spell tomes and 20 of the 26 staves[/b] are stocked by named Enderal merchants, and 10 more tomes are hidden in the world, deterministically. Not a lottery: each merchant's stock is fixed, restocks forever, and you can be told where to go.
 
-[b]Each archetype has one home.[/b] One merchant sells that archetype's whole line, Novice to Master, plus its staves. Nobody else sells any of it:
+[b]Each archetype has one home.[/b] One merchant sells that archetype's spells, Novice to Master, plus its staves. Nobody else sells any of it:
 
 [code]
   Archetype    Merchant             Where                       Gold
   ------------------------------------------------------------------------
   Shadow       Sister Envy          the Rhalata                 2700
-  Cleric       Halda Stronghand     Sun Temple, the armory      3500
   Warlock      Shrouded Mage        Undercity barracks           630
   Druid        Torius Flameling     Sun Temple, the alchemist   1430
   Shaman       Torius Flameling     Sun Temple, the alchemist   1430
+  Cleric       Torius Flameling     Sun Temple, the alchemist   1430
   ------------------------------------------------------------------------[/code]
 
-The merchants were picked for fit. [b]Sister Envy[/b] is the Rhalata's quartermaster, dealing in soul gems, poisons and scrolls, which is exactly the shelf a Shadow Mage buys from. The Cleric's line lives with the [b]Sun Temple's[/b] own smith, the nearest Enderal comes to a temple that trades. Forgotten Stories' [b]Shrouded Mages[/b] already deal in forbidden spell literature, and the one working out of the Undercity is the Warlock's dealer. The Druid and the Shaman, the two nature-and-spirit lines, share the Sun Temple's [b]alchemist[/b].
+The merchants were picked for fit. [b]Sister Envy[/b] is the Rhalata's quartermaster, dealing in soul gems, poisons and scrolls, which is exactly the shelf a Shadow Mage buys from. Forgotten Stories' [b]Shrouded Mages[/b] already deal in forbidden spell literature, and the one working out of the Undercity is the Warlock's dealer. The Cleric, the Druid and the Shaman, the holy and nature-and-spirit lines, share the [b]Sun Temple's alchemist[/b].
+
+[b]Not for sale:[/b] Entropy and Psionics are illegal in Enderal, so the Sun Temple does not sell those lines. The Druid's Call spells and the Shaman's totems and Fylgjas are hidden away in the Undercity instead, one copy each: look somewhere an apothecary would rather nobody looked. The Cleric's Psionics spells (Suggestion, Exile, Spirit Guardian, Obedience, Exodus) are not available in this version.
 
 [b]2. One shop per archetype, so you know where to go.[/b]
 
@@ -245,13 +247,13 @@ Note the last two — Alteration is [i]Mentalism[/i] and Illusion is [i]Psionics
 
 This [b]is[/b] [font=Courier New]Triumvirate - Mage Archetypes.esp[/font] — it takes the original's place in your load order, exactly where that plugin already sat. It is a full ESP, not ESL-flagged, because it carries all of Triumvirate's own records.
 
-[b]It overrides no container, no NPC, no cell and no faction belonging to Enderal.[/b] Beyond Triumvirate's own records it touches [b]four records, and all four are leveled lists that were empty[/b].
+[b]It overrides no merchant, no NPC, no cell and no faction belonging to Enderal.[/b] Beyond Triumvirate's own records it touches [b]four records[/b]: three leveled lists that were empty, and one quest-reward chest that no other mod touches, where the hidden tomes are.
 
 That is worth explaining, because it is the reason this mod is unusually safe to install. Enderal ships [b]67 leveled lists named [font=Courier New]<Merchant>_CustomMerchandise[/font][/b] — one per merchant, each already sitting inside that merchant's chest — and [b]every single one of them is empty[/b]. They are an extension point SureAI built and never filled. Putting stock there instead of editing the merchant's chest means:
 
 [list]
 [*][b]No conflict with Enderal Gameplay Overhaul.[/b] EGO overrides 319 container records, including both Sun Temple merchants this mod stocks, but [b]none[/b] of the 67 hooks.[/*]
-[*][b]One shared hook with my Apocalypse conversion:[/b] both stock [b]Torius Flameling[/b] through the same list, so with both installed only the later-loading plugin's additions to his shop appear. Apocalypse's distribution is being reworked to move off him; until then, load this mod after Apocalypse if you want Druid and Shaman spells for sale.[/*]
+[*][b]One shared hook with my Apocalypse conversion:[/b] both stock [b]Torius Flameling[/b] through the same list, so with both installed only the later-loading plugin's additions to his shop appear. Apocalypse's distribution is being reworked to move off him; until then, load this mod after Apocalypse if you want Druid, Shaman and Cleric spells for sale.[/*]
 [*][b]No conflict with KataPUMB Spell Package[/b], which adds staves to Torius Flameling's chest directly.[/*]
 [*][b]No conflict with any other mod using the same hooks[/b], unless it happens to claim the same four — in which case order them and only the additions are at stake, never a merchant's whole inventory.[/*]
 [/list]

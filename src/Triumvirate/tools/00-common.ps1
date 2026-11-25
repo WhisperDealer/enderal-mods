@@ -305,33 +305,55 @@ function Update-TreeStrings {
 }
 
 # ------------------------------------------------------------------ the vendor map
-# ONE merchant per archetype. Each sells that archetype's whole line - all five tiers - plus its
-# staves. 15-distribution.ps1 writes the Novice/Apprentice/Adept parent bundles and the staves into
-# each hook; 17-tier-gating.ps1 adds the Expert/Master tier bundles to the SAME hook. Both read this
-# table, so the two steps cannot disagree about who sells what.
+# ONE merchant per archetype LINE (archetype + school, e.g. Druid_Alteration). Each merchant sells
+# every tier of its lines, Novice to Master, plus those lines' staves. 15-distribution.ps1 writes the
+# Novice/Apprentice/Adept parent bundles and the staves into each hook; 17-tier-gating.ps1 adds the
+# Expert/Master tier bundles to the SAME hook. Both read this table, so they cannot disagree.
+#
+# `Archetypes` gives a merchant every line of those archetypes EXCEPT the ones in
+# $script:TvrUnhomedLines below.
 #
 # `File` is the merchant's SureAI `*_CustomMerchandise` hook (an empty UseAll FS record - see the
 # header of 15). The hook<->chest pairing was read out of each chest's own Items list and each chest
 # was resolved to its cell by its placed ref, never guessed from a name:
 #   SisterEnvy_          -> _00E_Merchant_Rhalata_SisterEnvyContainer 01E893  (FSNQR03RhalataTemple)
-#   HaldaHammerschlag_   -> _00E_Merchant_STHalda   118055                     (SuntempleArmory)
 #   Wildmage_Undercity_  -> _00E_FS_Merchant_Wildmage_UndercityBarracks1 01E900 (UndercityBarracks1)
 #   TuriousFlammentrunk_ -> _00E_Merchant_STTurious 118050                     (SuntempleAlchemy)
 #
-# SHARED GROUND: Halda's hook is also written by Kittytail's Holy Templar Magic patch and Torius's by
-# Apocalypse. Two plugins overriding one hook = the later-loading one's stock wins outright for a
-# player running both. Accepted for now (Apocalypse is due its own redistribution); see CLAUDE.md's
-# merchant-hook table before shipping.
+# SHARED GROUND: Torius's hook is also written by Apocalypse. Two plugins overriding one hook = the
+# later-loading one's stock wins outright for a player running both. Accepted for now (Apocalypse is
+# due its own redistribution). Halda Stronghand's hook (Holy Templar Magic's) is no longer used.
 $script:TvrVendors = @(
     @{ File = 'SisterEnvy_CustomMerchandise - 0302ED_Enderal - Forgotten Stories.esm.yaml'
        Merchant = 'Sister Envy, the Rhalata';               Archetypes = @('Shadow') }
-    @{ File = 'HaldaHammerschlag_CustomMerchandise - 0302FF_Enderal - Forgotten Stories.esm.yaml'
-       Merchant = 'Halda Stronghand, Sun Temple armory';    Archetypes = @('Cleric') }
     @{ File = 'Wildmage_Undercity_CustomMerchandise - 0302F0_Enderal - Forgotten Stories.esm.yaml'
        Merchant = 'Shrouded Mage, Undercity';               Archetypes = @('Warlock') }
     @{ File = 'TuriousFlammentrunk_CustomMerchandise - 0302FE_Enderal - Forgotten Stories.esm.yaml'
-       Merchant = 'Torius Flameling, Sun Temple alchemist'; Archetypes = @('Druid', 'Shaman') }
+       Merchant = 'Torius Flameling, Sun Temple alchemist'; Archetypes = @('Druid', 'Shaman', 'Cleric') }
 )
+
+# Entropy (Conjuration) and Psionics (Illusion) are illegal in Enderal, so the Druid/Shaman/Cleric
+# lines in them are kept off Torius Flameling (a Sun Temple merchant).
+#
+# STASHES: lines placed once, as the tomes themselves, in a hidden non-merchant chest instead of a
+# vendor. The chest does not respawn, so it holds Book records directly - NOT the tier bundles,
+# whose authored ChanceNone 1 would lose a tome for good 1% of the time. Overriding this chest is
+# the plugin's one container override; nothing else in Enderal or reference/mods touches it, and no
+# NQ29 script reads or empties it.
+#   _00E_NQ29_BossChest 14BECE:Skyrim.esm, placed as 14BECF in UndercityBarracks2ApothekariUpper
+#   ("House of the Apothecarii", Undercity), in the room behind the Expert-locked door 0DE7AC. It
+#   holds the "Old Ban Totem" blueprint (_00E_CraftingPlan_NQ29_ProtectionTotem 14BEC9).
+$script:TvrStashes = @(
+    @{ File = '_00E_NQ29_BossChest - 14BECE_Skyrim.esm.yaml'; Master = 'Skyrim'
+       Where = 'House of the Apothecarii, Undercity (Expert-locked room)'
+       Lines = @('Druid_Conjuration', 'Shaman_Conjuration') }
+)
+# Lines nobody sells or stashes yet: UNOBTAINABLE until homed. The proofs in 15/17 assert exactly
+# that, so homing one is a deliberate edit here.
+$script:TvrUnhomedLines = @('Cleric_Illusion')
+# Every line NOT stocked by a merchant hook - 15/17 keep these out of every hook.
+$script:TvrNonVendorLines = @($script:TvrUnhomedLines) + @($script:TvrStashes | ForEach-Object { $_.Lines })
+$script:TvrSchoolLetter = @{ A = 'Alteration'; C = 'Conjuration'; D = 'Destruction'; I = 'Illusion'; R = 'Restoration' }
 
 # Tomes deliberately kept off every vendor (20-withhold-force-of-nature.ps1). The distribution
 # proofs allow these to be reachable or not, so 15/17 stay correct whichever side of 20 they run.

@@ -13,9 +13,10 @@
 #    resolves the chain STRUCTURALLY and never reads ChanceNone. Dropping the `Global:` line lets
 #    the authored `ChanceNone: 1` stand (a 1% miss per restock, which is Enai's own value).
 #
-# 2. EXPERT/MASTER GO TO THE SAME ONE VENDOR. Distribution is one merchant per archetype
-#    ($script:TvrVendors in 00-common.ps1): Shadow -> Sister Envy, Cleric -> Halda Stronghand,
-#    Warlock -> the Undercity Shrouded Mage, Druid + Shaman -> Torius Flameling. 15 writes each
+# 2. EXPERT/MASTER GO TO THE SAME ONE VENDOR. Distribution is one merchant per archetype line
+#    ($script:TvrVendors in 00-common.ps1): Shadow -> Sister Envy, Warlock -> the Undercity
+#    Shrouded Mage, Druid + Shaman + Cleric -> Torius Flameling, EXCEPT the Entropy/Psionics lines
+#    in $script:TvrUnhomedLines, which no merchant sells yet. 15 writes each
 #    archetype's per-school parent bundles (Novice/Apprentice/Adept) into its vendor's hook; this
 #    step cuts Expert/Master out of those parents and writes the 075/100 tier bundles into the SAME
 #    hook directly. The end state is that each vendor sells its archetypes' whole line and nobody
@@ -52,6 +53,8 @@ $highVendors = @($script:TvrVendors | ForEach-Object { @{ File = $_.File; Where 
 $vendorOfArch = @{}
 foreach ($v in $highVendors) { foreach ($a in $v.Archetypes) { $vendorOfArch[$a] = $v.File } }
 foreach ($a in $ARCHETYPES) { if (-not $vendorOfArch.ContainsKey($a)) { throw "no vendor for archetype $a" } }
+# Non-vendor lines (unhomed + stashed, 00-common.ps1) get no Expert/Master bundles at any hook.
+function Test-Unhomed { param([string]$Arch, [string]$School) return ($script:TvrNonVendorLines -contains "${Arch}_${School}") }
 
 # ------------------------------------------------------------------ record lookups
 $fkOf = @{}   # EditorID -> FormKey
@@ -156,7 +159,10 @@ foreach ($v in $highVendors) {
     $adds = @()
     foreach ($a in $v.Archetypes) {
         foreach ($t in $HIGH) {
-            foreach ($sc in $schoolsOf[$a]) { $adds += Get-TierBundleKey -Arch $a -Tier $t -School $sc }
+            foreach ($sc in $schoolsOf[$a]) {
+                if (Test-Unhomed $a $sc) { continue }
+                $adds += Get-TierBundleKey -Arch $a -Tier $t -School $sc
+            }
         }
     }
     $text = Read-YamlText $path
@@ -178,6 +184,7 @@ Write-Host "  3. Expert/Master bundles placed: $placed"
 # directly (-> 1 tome).
 $tomeOf = @{}       # tier-bundle FormKey -> tome FormKey
 $tierOf = @{}       # tier-bundle FormKey -> '000'..'100'
+$lineOfTb = @{}     # tier-bundle FormKey -> 'Arch_School'
 $childrenOf = @{}   # parent-bundle FormKey -> tier-bundle FormKeys
 $archOfTb = @{}     # tier-bundle FormKey -> archetype
 # Enai also ships a vestigial `TVR_Tomes_Litem_All*` family - a partial, never-finished set (only
@@ -193,6 +200,7 @@ foreach ($eid in $fkOf.Keys) {
         $tomeOf[$fkOf[$eid]] = $refs[0]
         $tierOf[$fkOf[$eid]] = $Matches[2]
         $archOfTb[$fkOf[$eid]] = $Matches[1]
+        $lineOfTb[$fkOf[$eid]] = "$($Matches[1])_" + ($eid -split '_')[-1]
     } elseif ($eid -match '^TVR_Tomes_Litem_(Druid|Shadow|Warlock|Cleric|Shaman)_[A-Z]') {
         $childrenOf[$fkOf[$eid]] = $refs
     }
@@ -223,14 +231,22 @@ foreach ($tb in $tomeOf.Keys) { $tierOfTome[$tomeOf[$tb]] = $tierOf[$tb] }
 
 $archOfTome = @{}
 foreach ($tb in $tomeOf.Keys) { $archOfTome[$tomeOf[$tb]] = $archOfTb[$tb] }
+$lineOfTome = @{}
+foreach ($tb in $tomeOf.Keys) { $lineOfTome[$tomeOf[$tb]] = $lineOfTb[$tb] }
 
 # Withheld tomes (00-common.ps1) may be reachable or not, so this proof holds on either side of
 # 20-withhold-force-of-nature.ps1. Every other tome must be sold by exactly one merchant: the one
 # its archetype maps to.
 $wrong = @()
+$unhomedTomes = 0
 foreach ($tome in $allTomes) {
     $srcs = @()
     if ($sources.ContainsKey($tome)) { $srcs = @($sources[$tome] | Sort-Object -Unique) }
+    if ($script:TvrNonVendorLines -contains $lineOfTome[$tome]) {
+        if ($srcs.Count -gt 0) { $wrong += "$tome (non-vendor line $($lineOfTome[$tome])) sold by $($srcs -join ', ')" }
+        $unhomedTomes++
+        continue
+    }
     if ($script:TvrWithheldTomes -contains $tome) {
         if ($srcs.Count -gt 0 -and ($srcs.Count -ne 1 -or $srcs[0] -ne $vendorOfArch[$archOfTome[$tome]])) { $wrong += "$tome (withheld) sold by $($srcs -join ', ')" }
         continue
@@ -241,6 +257,7 @@ foreach ($tome in $allTomes) {
     }
 }
 if ($wrong.Count -gt 0) { $wrong | ForEach-Object { Write-Host "    $_" }; throw "$($wrong.Count) tomes are not sold by exactly their archetype's one vendor" }
+if ($unhomedTomes -ne 5 * $script:TvrNonVendorLines.Count) { throw "non-vendor lines hold $unhomedTomes tomes, want $(5 * $script:TvrNonVendorLines.Count)" }
 
 $byTier = @{}
 foreach ($tome in $allTomes) {
@@ -249,5 +266,5 @@ foreach ($tome in $allTomes) {
     $byTier[$t]++
 }
 $summary = @($byTier.Keys | Sort-Object | ForEach-Object { "$_=$($byTier[$_])" }) -join ' '
-Write-Host "  proof: 75 tomes resolved ($summary); every non-withheld tome sold by exactly its archetype's one vendor"
+Write-Host "  proof: 75 tomes resolved ($summary); every homed, non-withheld tome sold by exactly its line's one vendor; $unhomedTomes tomes in non-vendor lines at no merchant (stashed or unhomed - 15 proves the stash)"
 Write-Host "17 - done"

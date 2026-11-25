@@ -1,0 +1,81 @@
+FormKey: 14BECE:Skyrim.esm
+EditorID: _00E_NQ29_BossChest
+Version2: 1
+ObjectBounds:
+  First: -48, -23, 0
+  Second: 48, 26, 49
+Name:
+  TargetLanguage: English
+  Values:
+  - Language: Chinese
+    String: 箱子
+  - Language: Czech
+    String: Truhla
+  - Language: English
+    String: Chest
+  - Language: French
+    String: Coffre
+  - Language: German
+    String: Truhe
+  - Language: Italian
+    String: Baule
+  - Language: Japanese
+    String: 箱
+  - Language: Korean
+    String: 상자
+  - Language: Polish
+    String: Kufer
+  - Language: Russian
+    String: Сундук
+  - Language: Spanish
+    String: Cofre
+Model:
+  File: Clutter\Upperclass\UpperChest01.nif
+  Data: 0x020000000000000000000000
+Items:
+- Item:
+    Item: 0028E8:Skyrim.esm
+    Count: 3
+- Item:
+    Item: 14BEC9:Skyrim.esm
+    Count: 1
+- Item:
+    Item: 41EC80:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 41EC81:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 41EC82:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 41EC83:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 41EC84:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 414A05:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 414A06:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 414A07:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 414A08:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 414A09:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 4149FD:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 4149FE:Triumvirate - Mage Archetypes.esp
+    Count: 1
+- Item:
+    Item: 4149FF:Triumvirate - Mage Archetypes.esp
+    Count: 1
+Weight: 30

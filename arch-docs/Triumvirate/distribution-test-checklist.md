@@ -55,9 +55,9 @@ inventory you see is the one from before this change.
 | ☐ | Merchant | `coc` target | Expect |
 |---|---|---|---|
 | ☐ | Sister Envy | `coc FSNQR03RhalataTemple` | **Shadow**: 15 tomes, Novice → Master, + 4 Shadow staves |
-| ☐ | Halda Stronghand | `coc SuntempleArmory` | **Cleric**: 15 tomes, Novice → Master, + 4 Cleric staves |
 | ☐ | Shrouded Mage, Undercity | `coc UndercityBarracks1` | **Warlock**: 15 tomes, Novice → Master, + 8 Warlock staves |
-| ☐ | Torius Flameling | `coc SuntempleAlchemy` | **Druid** (14 tomes, no Force of Nature) and **Shaman** (15 tomes), + 10 staves |
+| ☐ | Torius Flameling | `coc SuntempleAlchemy` | **Druid** (9 tomes: Mentalism + Light Magic, no Force of Nature), **Shaman** (10: no totems or Fylgjas), **Cleric** (10: no Psionics), + 8 staves |
+| ☐ | Halda Stronghand | `coc SuntempleArmory` | **No** Triumvirate tomes or staves |
 
 Low tiers are priced **41–105 gold**, Adept about **130–170**, and Expert/Master **210+**. Every
 merchant above should show all three price bands.
@@ -75,6 +75,8 @@ merchant above should show all three price bands.
 | ☐ | Marius, Ark library | `coc CapitalCityBibliothek` | **No** Triumvirate tomes or staves |
 | ☐ | Shrouded Mage, Frostcliff Tavern | `coc SchneefelstaverneInterior` | **No** Triumvirate tomes or staves |
 | ☐ | Adreyo, Riverville | — | **No** Triumvirate tomes |
+| ☐ | Any merchant | — | **No** Druid Call spells, Shaman totems/Fylgjas or Cleric Psionics (Suggestion, Exile, Spirit Guardian, Obedience, Exodus) |
+| ☐ | House of the Apothecarii, Undercity | `coc UndercityBarracks2ApothekariUpper`, pick the **Expert** lock | The chest beside the *Old Ban Totem* blueprint holds **10 tomes** (five Druid Call spells, Shaman's three totems and two Fylgjas) and **3 totem staves**, one each, plus its own items. It does not restock |
 
 ---
 

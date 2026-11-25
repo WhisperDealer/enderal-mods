@@ -5,19 +5,24 @@ and documentation are not listed.
 
 ## 1.0.3
 
-- Changed: **each archetype now has one merchant, who sells its whole line.** That means every
-  tier from Novice to Master, plus its staves:
+- Changed: **each archetype now has one merchant.** That merchant sells every tier from Novice to
+  Master, plus the staves:
   - **Shadow**: Sister Envy, the Rhalata
-  - **Cleric**: Halda Stronghand, the Sun Temple armory
   - **Warlock**: the Shrouded Mage in the Undercity barracks
-  - **Druid** and **Shaman**: Torius Flameling, the Sun Temple alchemist
+  - **Druid**, **Shaman** and **Cleric**: Torius Flameling, the Sun Temple alchemist
+- Changed: **Entropy and Psionics spells are no longer sold at the Sun Temple**, because both
+  schools are illegal in Enderal.
+  - The Druid's Call spells and the Shaman's totems and Fylgjas are **hidden in the Undercity**, one
+    copy of each, behind an Expert lock in the House of the Apothecarii. They do not restock.
+  - The Cleric's Psionics spells (Suggestion, Exile, Spirit Guardian, Obedience, Exodus) are not
+    available in this version.
 
   Before this, each line was spread across three or four merchants and Expert/Master tomes were
   sold only in Ark and the Undercity. Adreyo, Akatyr, Marius, the Ark guard blacksmith, the Bash
   Hole, the Fence and the Frostcliff and Duneville Shrouded Mages no longer sell Triumvirate spells.
 - Known: **Apocalypse (Enderal conversion) also stocks Torius Flameling** through the same list. With
   both installed, only the plugin that loads later adds to his shop. Load this one after Apocalypse
-  to keep Druid and Shaman for sale. Apocalypse's distribution is being reworked to move off him.
+  to keep Druid, Shaman and Cleric for sale. Apocalypse's distribution is being reworked to move off him.
 - Checked against **Enderal SE 2.1.4.4**: everything this mod changes or depends on is still
   present in the update's data files, and no change was needed for it.
 - On an existing save, merchants restock every two in-game days, so the old shops can keep their
