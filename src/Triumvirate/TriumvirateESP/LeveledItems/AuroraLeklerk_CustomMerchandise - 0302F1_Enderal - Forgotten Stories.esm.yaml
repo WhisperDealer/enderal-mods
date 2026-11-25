@@ -1,5 +1,5 @@
-FormKey: 0302F0:Enderal - Forgotten Stories.esm
-EditorID: Wildmage_Undercity_CustomMerchandise
+FormKey: 0302F1:Enderal - Forgotten Stories.esm
+EditorID: AuroraLeklerk_CustomMerchandise
 Flags:
 - UseAll
 Entries:
@@ -9,27 +9,7 @@ Entries:
     Count: 1
 - Data:
     Level: 1
-    Reference: 43D32A:Triumvirate - Mage Archetypes.esp
-    Count: 1
-- Data:
-    Level: 1
     Reference: 43D32B:Triumvirate - Mage Archetypes.esp
-    Count: 1
-- Data:
-    Level: 1
-    Reference: 419B42:Triumvirate - Mage Archetypes.esp
-    Count: 1
-- Data:
-    Level: 1
-    Reference: 419B43:Triumvirate - Mage Archetypes.esp
-    Count: 1
-- Data:
-    Level: 1
-    Reference: 419B44:Triumvirate - Mage Archetypes.esp
-    Count: 1
-- Data:
-    Level: 1
-    Reference: 419B45:Triumvirate - Mage Archetypes.esp
     Count: 1
 - Data:
     Level: 1
@@ -53,19 +33,11 @@ Entries:
     Count: 1
 - Data:
     Level: 1
-    Reference: 4381F9:Triumvirate - Mage Archetypes.esp
-    Count: 1
-- Data:
-    Level: 1
     Reference: 4381FD:Triumvirate - Mage Archetypes.esp
     Count: 1
 - Data:
     Level: 1
     Reference: 4381F4:Triumvirate - Mage Archetypes.esp
-    Count: 1
-- Data:
-    Level: 1
-    Reference: 4381FA:Triumvirate - Mage Archetypes.esp
     Count: 1
 - Data:
     Level: 1

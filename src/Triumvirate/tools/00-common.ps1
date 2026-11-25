@@ -317,17 +317,29 @@ function Update-TreeStrings {
 # header of 15). The hook<->chest pairing was read out of each chest's own Items list and each chest
 # was resolved to its cell by its placed ref, never guessed from a name:
 #   SisterEnvy_          -> _00E_Merchant_Rhalata_SisterEnvyContainer 01E893  (FSNQR03RhalataTemple)
-#   Wildmage_Undercity_  -> _00E_FS_Merchant_Wildmage_UndercityBarracks1 01E900 (UndercityBarracks1)
+#   AuroraLeklerk_       -> _00E_FS_NQ07_Merchant_Aurora 024A7C               (Aurora's Tower, Duneville)
+#   Tarhutie_            -> _00E_Merchant_FlusshaimTarhutieContainer 05BCD6   (Riverville)
 #   TuriousFlammentrunk_ -> _00E_Merchant_STTurious 118050                     (SuntempleAlchemy)
+# EGO, EGO SE - Leveling Redone and KataPUMB all override Aurora's and/or Tarhutie's chest, and every
+# one of them keeps the hook. Aurora and Tarhutie are sisters (FS_NQ07, "Cuthbert's Legacy"), so the
+# Warlock's three schools sit with the two of them: Aurora, the recluse in her tower outside town,
+# takes the forbidden Entropy and Psionics; Tarhutie in Riverville takes Elementalism.
 #
-# SHARED GROUND: Torius's hook is also written by Apocalypse. Two plugins overriding one hook = the
+# A vendor sells its Archetypes' lines, less the non-vendor lines below, and - when it has Lines -
+# only those. Every line must land at exactly one vendor or be non-vendor (Get-VendorOfLine).
+#
+# SHARED GROUND: Torius's and Tarhutie's hooks are also written by Apocalypse. Two plugins overriding one hook = the
 # later-loading one's stock wins outright for a player running both. Accepted for now (Apocalypse is
 # due its own redistribution). Halda Stronghand's hook (Holy Templar Magic's) is no longer used.
 $script:TvrVendors = @(
     @{ File = 'SisterEnvy_CustomMerchandise - 0302ED_Enderal - Forgotten Stories.esm.yaml'
        Merchant = 'Sister Envy, the Rhalata';               Archetypes = @('Shadow') }
-    @{ File = 'Wildmage_Undercity_CustomMerchandise - 0302F0_Enderal - Forgotten Stories.esm.yaml'
-       Merchant = 'Shrouded Mage, Undercity';               Archetypes = @('Warlock') }
+    @{ File = 'AuroraLeklerk_CustomMerchandise - 0302F1_Enderal - Forgotten Stories.esm.yaml'
+       Merchant = "Aurora Leklerk, Aurora's Tower";         Archetypes = @('Warlock')
+       Lines = @('Warlock_Conjuration', 'Warlock_Illusion') }
+    @{ File = 'Tarhutie_CustomMerchandise - 0302F7_Enderal - Forgotten Stories.esm.yaml'
+       Merchant = 'Tarhutie, Riverville';                   Archetypes = @('Warlock')
+       Lines = @('Warlock_Destruction') }
     @{ File = 'TuriousFlammentrunk_CustomMerchandise - 0302FE_Enderal - Forgotten Stories.esm.yaml'
        Merchant = 'Torius Flameling, Sun Temple alchemist'; Archetypes = @('Druid', 'Shaman', 'Cleric') }
 )
@@ -391,6 +403,22 @@ $script:TvrNotes = @(
 $script:TvrUnhomedLines = @()
 # Every line NOT stocked by a merchant hook - 15/17 keep these out of every hook.
 $script:TvrNonVendorLines = @($script:TvrUnhomedLines) + @($script:TvrStashes | ForEach-Object { $_.Lines })
+# Does vendor $Vendor (a $script:TvrVendors entry) sell line 'Arch_School'?
+function Test-VendorSellsLine {
+    param([Parameter(Mandatory)][hashtable]$Vendor, [Parameter(Mandatory)][string]$Line)
+    if ($script:TvrNonVendorLines -contains $Line) { return $false }
+    if ($Vendor.Archetypes -notcontains ($Line -split '_')[0]) { return $false }
+    if ($Vendor.ContainsKey('Lines') -and $Vendor.Lines -notcontains $Line) { return $false }
+    return $true
+}
+# The one vendor hook file selling a line, or $null for a non-vendor line. Throws on 0 or 2+.
+function Get-VendorOfLine {
+    param([Parameter(Mandatory)][string]$Line)
+    if ($script:TvrNonVendorLines -contains $Line) { return $null }
+    $hits = @($script:TvrVendors | Where-Object { Test-VendorSellsLine -Vendor $_ -Line $Line })
+    if ($hits.Count -ne 1) { throw "line $Line is sold by $($hits.Count) vendors, want exactly 1" }
+    return $hits[0].File
+}
 $script:TvrSchoolLetter = @{ A = 'Alteration'; C = 'Conjuration'; D = 'Destruction'; I = 'Illusion'; R = 'Restoration' }
 
 # Tomes deliberately kept off every vendor (20-withhold-force-of-nature.ps1). The distribution

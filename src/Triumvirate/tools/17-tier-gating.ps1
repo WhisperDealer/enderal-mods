@@ -14,8 +14,9 @@
 #    the authored `ChanceNone: 1` stand (a 1% miss per restock, which is Enai's own value).
 #
 # 2. EXPERT/MASTER GO TO THE SAME ONE VENDOR. Distribution is one merchant per archetype line
-#    ($script:TvrVendors in 00-common.ps1): Shadow -> Sister Envy, Warlock -> the Undercity
-#    Shrouded Mage, Druid + Shaman + Cleric -> Torius Flameling, EXCEPT the Entropy/Psionics lines
+#    ($script:TvrVendors in 00-common.ps1): Shadow -> Sister Envy, Warlock Entropy + Psionics ->
+#    Aurora Leklerk, Warlock Elementalism -> Tarhutie, Druid + Shaman + Cleric -> Torius Flameling,
+#    EXCEPT the Entropy/Psionics lines
 #    in $script:TvrNonVendorLines, which no merchant sells (15 stashes them). 15 writes each
 #    archetype's per-school parent bundles (Novice/Apprentice/Adept) into its vendor's hook; this
 #    step cuts Expert/Master out of those parents and writes the 075/100 tier bundles into the SAME
@@ -49,12 +50,10 @@ $COMMON = @('000', '025', '050') # Novice, Apprentice, Adept - unchanged vendors
 
 # Expert/Master go to the same hook 15 stocked with the archetype's common tiers - one vendor per
 # archetype, from the shared table in 00-common.ps1.
-$highVendors = @($script:TvrVendors | ForEach-Object { @{ File = $_.File; Where = $_.Merchant; Archetypes = $_.Archetypes } })
-$vendorOfArch = @{}
-foreach ($v in $highVendors) { foreach ($a in $v.Archetypes) { $vendorOfArch[$a] = $v.File } }
-foreach ($a in $ARCHETYPES) { if (-not $vendorOfArch.ContainsKey($a)) { throw "no vendor for archetype $a" } }
-# Non-vendor lines (unhomed + stashed, 00-common.ps1) get no Expert/Master bundles at any hook.
-function Test-Unhomed { param([string]$Arch, [string]$School) return ($script:TvrNonVendorLines -contains "${Arch}_${School}") }
+$highVendors = @($script:TvrVendors)
+foreach ($a in $ARCHETYPES) { if (@($highVendors | Where-Object { $_.Archetypes -contains $a }).Count -eq 0) { throw "no vendor for archetype $a" } }
+# Non-vendor lines (unhomed + stashed, 00-common.ps1) get no Expert/Master bundles at any hook, and a
+# vendor with Lines gets only those (Test-VendorSellsLine, 00-common.ps1).
 
 # ------------------------------------------------------------------ record lookups
 $fkOf = @{}   # EditorID -> FormKey
@@ -160,7 +159,7 @@ foreach ($v in $highVendors) {
     foreach ($a in $v.Archetypes) {
         foreach ($t in $HIGH) {
             foreach ($sc in $schoolsOf[$a]) {
-                if (Test-Unhomed $a $sc) { continue }
+                if (-not (Test-VendorSellsLine -Vendor $v -Line "${a}_${sc}")) { continue }
                 $adds += Get-TierBundleKey -Arch $a -Tier $t -School $sc
             }
         }
@@ -168,13 +167,15 @@ foreach ($v in $highVendors) {
     $text = Read-YamlText $path
     $missing = @($adds | Where-Object { $text -notmatch [regex]::Escape($_) })
     if ($missing.Count -eq 0) {
-        Write-Host ("  3. {0}: already stocked" -f $v.Where)
+        Write-Host ("  3. {0}: already stocked" -f $v.Merchant)
         continue
     }
     if ($missing.Count -ne $adds.Count) { throw "$($v.File) is half-stocked - delete it, re-run 15, then re-run 17" }
     [void](Add-LeveledEntries -Path $path -FormKeys $adds)
     $placed += $adds.Count
-    Write-Host ("  3. {0}: +{1} Expert/Master bundles ({2})" -f $v.Where, $adds.Count, ($v.Archetypes -join ', '))
+    $what = $v.Archetypes -join ', '
+    if ($v.ContainsKey('Lines')) { $what = $v.Lines -join ', ' }
+    Write-Host ("  3. {0}: +{1} Expert/Master bundles ({2})" -f $v.Merchant, $adds.Count, $what)
 }
 Write-Host "  3. Expert/Master bundles placed: $placed"
 
@@ -248,15 +249,15 @@ foreach ($tome in $allTomes) {
         continue
     }
     if ($script:TvrWithheldTomes -contains $tome) {
-        if ($srcs.Count -gt 0 -and ($srcs.Count -ne 1 -or $srcs[0] -ne $vendorOfArch[$archOfTome[$tome]])) { $wrong += "$tome (withheld) sold by $($srcs -join ', ')" }
+        if ($srcs.Count -gt 0 -and ($srcs.Count -ne 1 -or $srcs[0] -ne (Get-VendorOfLine -Line $lineOfTome[$tome]))) { $wrong += "$tome (withheld) sold by $($srcs -join ', ')" }
         continue
     }
     if ($srcs.Count -eq 0) { $wrong += "$tome ($($tierOfTome[$tome]), $($archOfTome[$tome])) is unobtainable"; continue }
-    if ($srcs.Count -ne 1 -or $srcs[0] -ne $vendorOfArch[$archOfTome[$tome]]) {
+    if ($srcs.Count -ne 1 -or $srcs[0] -ne (Get-VendorOfLine -Line $lineOfTome[$tome])) {
         $wrong += "$tome ($($tierOfTome[$tome]), $($archOfTome[$tome])) sold by $($srcs -join ', ')"
     }
 }
-if ($wrong.Count -gt 0) { $wrong | ForEach-Object { Write-Host "    $_" }; throw "$($wrong.Count) tomes are not sold by exactly their archetype's one vendor" }
+if ($wrong.Count -gt 0) { $wrong | ForEach-Object { Write-Host "    $_" }; throw "$($wrong.Count) tomes are not sold by exactly their line's one vendor" }
 if ($unhomedTomes -ne 5 * $script:TvrNonVendorLines.Count) { throw "non-vendor lines hold $unhomedTomes tomes, want $(5 * $script:TvrNonVendorLines.Count)" }
 
 $byTier = @{}

@@ -91,14 +91,25 @@ function Get-StaffLine { param([string]$Eid)
     if (-not $m.Success) { throw "unparseable staff EditorID $Eid" }
     return "$($m.Groups[1].Value)_$($script:TvrSchoolLetter[$m.Groups[2].Value])"
 }
-function Get-ArchBundles { param([string]$Arch)
-    return ,@($bundles.Keys | Where-Object { $_ -like "TVR_Tomes_Litem_${Arch}_*" -and
-        $script:TvrNonVendorLines -notcontains ($_ -replace '^TVR_Tomes_Litem_', '') } | Sort-Object | ForEach-Object { $bundles[$_] })
+# archetype by archetype, in the vendor table's order, so a hook's entry order is stable
+function Get-VendorBundles { param([hashtable]$Vendor)
+    $out = @()
+    foreach ($a in $Vendor.Archetypes) {
+        $out += @($bundles.Keys | Where-Object { $_ -like "TVR_Tomes_Litem_${a}_*" -and
+            (Test-VendorSellsLine -Vendor $Vendor -Line ($_ -replace '^TVR_Tomes_Litem_', '')) } | Sort-Object | ForEach-Object { $bundles[$_] })
+    }
+    return ,$out
 }
-function Get-ArchStaves { param([string]$Arch)
-    return ,@($staves.Keys | Where-Object { $_ -like "TVR_${Arch}_*" -and
-        $script:TvrNonVendorLines -notcontains (Get-StaffLine $_) } | Sort-Object | ForEach-Object { $staves[$_] })
+function Get-VendorStaves { param([hashtable]$Vendor)
+    $out = @()
+    foreach ($a in $Vendor.Archetypes) {
+        $out += @($staves.Keys | Where-Object { $_ -like "TVR_${a}_*" -and (Test-VendorSellsLine -Vendor $Vendor -Line (Get-StaffLine $_)) } |
+            Sort-Object | ForEach-Object { $staves[$_] })
+    }
+    return ,$out
 }
+# every one of the 15 lines is sold by exactly one vendor or is a non-vendor line
+foreach ($bk in $bundles.Keys) { [void](Get-VendorOfLine -Line ($bk -replace '^TVR_Tomes_Litem_', '')) }
 # "unhomed" below means NOT AT ANY MERCHANT: the truly unhomed lines plus the stashed ones.
 $unhomedBundles = @($script:TvrNonVendorLines | ForEach-Object {
     if (-not $bundles.ContainsKey("TVR_Tomes_Litem_$_")) { throw "non-vendor line '$_' names no bundle" }
@@ -271,9 +282,10 @@ foreach ($v in $vendors) {
     if (-not (Test-Path -LiteralPath $srcPath)) { throw "reference hook not found: $($v.File)" }
     $dst = Join-Path (Join-Path $root 'LeveledItems') $v.File
     $adds = @()
-    foreach ($arch in $v.Archetypes) { $adds += Get-ArchBundles -Arch $arch }
+    $adds += Get-VendorBundles -Vendor $v
     $nBundles = $adds.Count
-    foreach ($arch in $v.Archetypes) { $adds += Get-ArchStaves -Arch $arch }
+    if ($nBundles -eq 0) { throw "$($v.Merchant) would sell nothing" }
+    $adds += Get-VendorStaves -Vendor $v
     # the hook must genuinely be an empty UseAll list in the master, or we are misreading it
     $srcText = Read-YamlText $srcPath
     if ($srcText -notmatch '(?m)^- UseAll\s*$') { throw "$($v.File) is not UseAll - re-check the hook" }
@@ -281,7 +293,9 @@ foreach ($v in $vendors) {
     Copy-Item -LiteralPath $srcPath -Destination $dst -Force
     $n = Add-LeveledEntries -Path $dst -FormKeys $adds
     $created++
-    Write-Host ("  4. {0}: {1} entries ({2} tome bundles, {3} staves; {4})" -f $v.Merchant, $n, $nBundles, ($n - $nBundles), ($v.Archetypes -join ', '))
+    $what = $v.Archetypes -join ', '
+    if ($v.ContainsKey('Lines')) { $what = $v.Lines -join ', ' }
+    Write-Host ("  4. {0}: {1} entries ({2} tome bundles, {3} staves; {4})" -f $v.Merchant, $n, $nBundles, ($n - $nBundles), $what)
 }
 
 # 4c. The lore notes (00-common.ps1 $script:TvrNotes): one Book each, rebuilt every run from the
@@ -487,7 +501,7 @@ foreach ($f in Get-ChildItem (Join-Path $root 'LeveledItems') -Filter 'TVR_Tomes
     $refs = @([regex]::Matches($t, '(?m)^    Reference: (.+?)(?=\r?$)') | ForEach-Object { $_.Groups[1].Value })
     $eid = ($f.Name -split ' - ')[0]
     if ($eid -match '^TVR_Tomes_Litem_\w+_\d{3}_') { if ($refs.Count -eq 1) { $tomeOf[$fk] = $refs[0] } }
-    elseif ($eid -match '^TVR_Tomes_Litem_(Druid|Shadow|Warlock|Cleric|Shaman)_[A-Z]') { $tierBundleOf[$fk] = $refs; $archOfBundle[$fk] = $Matches[1] }
+    elseif ($eid -match '^TVR_Tomes_Litem_(Druid|Shadow|Warlock|Cleric|Shaman)_[A-Z]') { $tierBundleOf[$fk] = $refs; $archOfBundle[$fk] = ($eid -replace '^TVR_Tomes_Litem_', '') }
 }
 $sources = @{}
 $misfiled = @()
@@ -495,7 +509,7 @@ foreach ($v in $vendors) {
     $t = Read-YamlText (Join-Path (Join-Path $root 'LeveledItems') $v.File)
     $items = @([regex]::Matches($t, '(?m)^    Reference: (.+?)(?=\r?$)') | ForEach-Object { $_.Groups[1].Value })
     foreach ($it in $items) {
-        if ($archOfBundle.ContainsKey($it) -and $v.Archetypes -notcontains $archOfBundle[$it]) { $misfiled += "$($v.Merchant) sells $($archOfBundle[$it])" }
+        if ($archOfBundle.ContainsKey($it) -and -not (Test-VendorSellsLine -Vendor $v -Line $archOfBundle[$it])) { $misfiled += "$($v.Merchant) sells $($archOfBundle[$it])" }
         if ($unhomedBundles -contains $it -or $unhomedStaves -contains $it) { $misfiled += "$($v.Merchant) sells an unhomed line's $it" }
         if ($tierBundleOf.ContainsKey($it)) {
             foreach ($tb in $tierBundleOf[$it]) {
@@ -503,8 +517,8 @@ foreach ($v in $vendors) {
             }
         }
         if ($it -in $staves.Values) {
-            $sArch = ($staves.Keys | Where-Object { $staves[$_] -eq $it } | Select-Object -First 1) -replace '^TVR_([A-Za-z]+)_.*$', '$1'
-            if ($v.Archetypes -notcontains $sArch) { $misfiled += "$($v.Merchant) sells a $sArch staff" }
+            $sLine = Get-StaffLine ($staves.Keys | Where-Object { $staves[$_] -eq $it } | Select-Object -First 1)
+            if (-not (Test-VendorSellsLine -Vendor $v -Line $sLine)) { $misfiled += "$($v.Merchant) sells a $sLine staff" }
             if (-not $sources[$it]) { $sources[$it] = 0 }; $sources[$it]++
         }
     }
@@ -517,7 +531,7 @@ if ($tomes.Count -ne 75) { throw "tome chain resolves $($tomes.Count) tomes, wan
 # of the 75 and 17 owns the proof for the other 30. Assert on what the parents actually carry
 # rather than hardcoding 75, or this step fails purely because it ran second. Withheld tomes
 # (00-common.ps1) are left out of the count: 20 cuts them from their parent after both steps.
-if ($misfiled.Count -gt 0) { $misfiled | Sort-Object -Unique | ForEach-Object { Write-Host "    $_" }; throw "a merchant stocks an archetype the vendor table does not give it" }
+if ($misfiled.Count -gt 0) { $misfiled | Sort-Object -Unique | ForEach-Object { Write-Host "    $_" }; throw "a merchant stocks a line the vendor table does not give it" }
 # Each unhomed line is 5 tomes (3 common tiers), none sold; the withheld tome sits in a homed line.
 $viaParents = @($tomes | Where-Object { $sources.ContainsKey($_) -and $script:TvrWithheldTomes -notcontains $_ })
 $nUnhomed = $script:TvrNonVendorLines.Count

@@ -55,7 +55,9 @@ inventory you see is the one from before this change.
 | ☐ | Merchant | `coc` target | Expect |
 |---|---|---|---|
 | ☐ | Sister Envy | `coc FSNQR03RhalataTemple` | **Shadow**: 15 tomes, Novice → Master, + 4 Shadow staves |
-| ☐ | Shrouded Mage, Undercity | `coc UndercityBarracks1` | **Warlock**: 15 tomes, Novice → Master, + 8 Warlock staves |
+| ☐ | Aurora Leklerk | Aurora's Tower, by the plantations near Duneville | **Warlock Entropy + Psionics**: 10 tomes, Novice → Master, + 4 staves. Also note whether she trades **before** "Cuthbert's Legacy" |
+| ☐ | Tarhutie | Riverville | **Warlock Elementalism**: 5 tomes, Novice → Master, + 4 staves |
+| ☐ | Shrouded Mage, Undercity | `coc UndercityBarracks1` | **No** Triumvirate tomes or staves |
 | ☐ | Torius Flameling | `coc SuntempleAlchemy` | **Druid** (9 tomes: Mentalism + Light Magic, no Force of Nature), **Shaman** (10: no totems or Fylgjas), **Cleric** (10: no Psionics), + 8 staves |
 | ☐ | Halda Stronghand | `coc SuntempleArmory` | **No** Triumvirate tomes or staves |
 

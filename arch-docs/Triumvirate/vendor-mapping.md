@@ -64,20 +64,32 @@ two steps cannot disagree.
 
 **We override none of these chests.** Stock goes into each merchant's `*_CustomMerchandise` hook
 (see [Where the stock actually goes](#where-the-stock-actually-goes) above). The mod's entire
-override surface against its masters is **three `LeveledItem`s, one `Container` and one `Cell`**:
+override surface against its masters is **four `LeveledItem`s, one `Container` and one `Cell`**:
 the Apothecarii stash chest below, which is not a merchant's, and the cell that places our own
 Psionics chest.
 
 | Archetype | Merchant (hook) | Chest (NOT overridden) | Cell, resolved from the chest's placed ref | Gold |
 |---|---|---|---|---:|
 | Shadow | Sister Envy (`SisterEnvy_` `0302ED`) | `_00E_Merchant_Rhalata_SisterEnvyContainer` `01E893:FS` | `FSNQR03RhalataTemple` | 2700 |
-| Warlock | Shrouded Mage, Undercity (`Wildmage_Undercity_` `0302F0`) | `_00E_FS_Merchant_Wildmage_UndercityBarracks1` `01E900:FS` | `UndercityBarracks1` | 630 |
+| Warlock Entropy, Warlock Psionics | **Aurora Leklerk** (`AuroraLeklerk_` `0302F1`) | `_00E_FS_NQ07_Merchant_Aurora` `024A7C:FS` | Aurora's Tower, by the plantations near Duneville (chest persistent in `Vyn`) | 2135 |
+| Warlock Elementalism | **Tarhutie** (`Tarhutie_` `0302F7`) | `_00E_Merchant_FlusshaimTarhutieContainer` `05BCD6:Skyrim.esm` | Riverville (chest persistent in `Vyn`) | 630 |
 | Druid, Shaman, Cleric, **except their Entropy/Psionics lines** | **Torius Flameling** (`TuriousFlammentrunk_` `0302FE`) | `_00E_Merchant_STTurious` `118050:Skyrim.esm` | `SuntempleAlchemy` | 1430 |
 | Druid Entropy, Shaman Entropy | **a hidden stash**, not a merchant (`$script:TvrStashes`) | `_00E_NQ29_BossChest` `14BECE:Skyrim.esm`, **overridden** | `UndercityBarracks2ApothekariUpper`, "House of the Apothecarii" | — |
 | Cleric Psionics | **a hidden stash**, not a merchant (`$script:TvrStashes`) | `TVR_Cleric_Container_PsionicsStash` `4C0D60`, **our own**, placed as `4C0D61` | `FSSuntempleYeroCave`, "Sun Temple, Secret Vault" (cell **overridden**) | — |
 
 Torius is the Sun Temple's alchemist (Essential); his EditorID is German (`Flammentrunk`), and the
 English display name is read from the NPC record's `Name` block. He takes the holy and nature lines.
+
+**The Warlock is split between two sisters.** Aurora Leklerk and Tarhutie are sisters in Forgotten
+Stories' "Cuthbert's Legacy" (`FS_NQ07`: *"So you really are Tarhutie's sister, aren't you?"*).
+Aurora, the recluse in her tower outside Duneville, takes the two forbidden schools, Entropy and
+Psionics; Tarhutie, Riverville's spell merchant, takes Elementalism. Aurora's chest already stocks
+Enderal's `_00ETraderSpellBooksLevelD`, and her vendor faction `FS_NQ07_AuroraFaction` `024A90`
+carries no conditions; **whether she trades before her quest is done is not yet verified in game.**
+EGO, `EGO SE - Leveling Redone` and KataPUMB override one or both chests, and every one of them
+keeps the hook. A vendor entry can now carry `Lines` to sell only some of an archetype's schools;
+`Get-VendorOfLine` in `00-common.ps1` proves every line lands at exactly one vendor or a stash. The
+Undercity Shrouded Mage (`Wildmage_Undercity_` `0302F0`) is no longer used.
 
 **Entropy (Conjuration) and Psionics (Illusion) are illegal in Enderal**, so those lines stay off a
 Sun Temple merchant:
@@ -132,17 +144,18 @@ Conjuration skill.
 What each hook carries, per line: its per-school parent bundle (`TVR_Tomes_Litem_<Arch>_<School>`,
 Novice/Apprentice/Adept), its two Expert/Master tier bundles
 (`TVR_Tomes_Litem_<Arch>_075|100_<School>`, added by step 17), and its `TVR_<Arch>_<S>*_Staff_*`.
-Staves: Shadow 4, Warlock 8, Torius 8 (Druid 4, Shaman 3, Cleric 1), the Apothecarii stash 3 (the
+Staves: Shadow 4, Aurora 4, Tarhutie 4, Torius 8 (Druid 4, Shaman 3, Cleric 1), the Apothecarii stash 3 (the
 totems) and Yero's vault 3 (Cleric Psionics).
 
-### Shared ground: one hook is also written by another release here
+### Shared ground: two hooks are also written by another release here
 
 | Hook | Also written by | Effect for a player running both |
 |---|---|---|
-| `TuriousFlammentrunk_` | **Apocalypse** (its Apprentice tier) | The later-loading plugin's entries win; the other's vanish without error |
+| `TuriousFlammentrunk_` | **Apocalypse** (its Expert tier, 40 entries) | The later-loading plugin's entries win; the other's vanish without error |
+| `Tarhutie_` | **Apocalypse** (its Apprentice tier, 28 entries, at no other vendor) | Same. With Triumvirate loading later, Apocalypse's Apprentice tier is sold nowhere |
 
 Accepted deliberately for this release: Apocalypse is due its own redistribution, which should move
-off Torius. Halda Stronghand's hook, which Holy Templar Magic writes, is no longer used here. **The chests are no escape route:** EGO and
+off both. Halda Stronghand's hook, which Holy Templar Magic writes, is no longer used here. **The chests are no escape route:** EGO and
 `EGO SE - Leveling Redone` override both Sun Temple chests, and KataPUMB overrides Torius's.
 
 > **Sister Envy is the only Shadow vendor, and she is in a Forgotten Stories quest location.** Her
@@ -163,9 +176,12 @@ off Torius. Halda Stronghand's hook, which Holy Templar Magic writes, is no long
    tiers were sold only by the five Ark/Undercity merchants. It was correct, but it was hard to tell
    a player where to find a given spell.
 3. **Four hooks, one per archetype.** Cleric sat at Halda Stronghand, Druid + Shaman at Torius.
-4. **Three hooks and a stash, one home per line (this layout).** Cleric moved to Torius, the
-   Druid/Shaman Entropy lines went to the House of the Apothecarii stash, and Cleric Psionics to a
-   new chest at Yero's unholy altar in the Sun Temple's secret vault. Step 15 deletes any hook no longer in the table and
+4. **Three hooks and two stashes.** Cleric moved to Torius, the Druid/Shaman Entropy lines went to
+   the House of the Apothecarii stash, and Cleric Psionics to a new chest at Yero's unholy altar in
+   the Sun Temple's secret vault.
+5. **Four hooks and two stashes, one home per line (this layout).** The Warlock left the Undercity
+   Shrouded Mage and was split between the sisters, Aurora (Entropy, Psionics) and Tarhutie
+   (Elementalism). Step 15 deletes any hook no longer in the table and
    rebuilds the rest from the FS master's copy on every run, so a stale layout cannot survive a
    re-run.
 
@@ -224,15 +240,16 @@ master under `GameRelease.EnderalSE`.
   - after one-vendor-per-archetype: SHA-256 `4D62DC89…3FC95ACB`, 737,067 bytes
   - after Cleric to Torius and the Entropy stash: SHA-256 `E432103B…60CD809F`, 737,063 bytes
   - after the Psionics chest in Yero's vault: SHA-256 `5A0FCDA3…AF44639C`, 737,771 bytes
-  - after the two lore notes: SHA-256 `57397E28…7295B10A`, **742,177 bytes**
+  - after the two lore notes: SHA-256 `57397E28…7295B10A`, 742,177 bytes
+  - after the Warlock split (Aurora + Tarhutie): SHA-256 `8A64E160…4EF32E13`, **742,268 bytes**
 - `HEDR` 1.70, masters `Skyrim.esm, Update.esm, Enderal - Forgotten Stories.esm` — re-read out of
   the built binary at offset 30, not assumed.
 - Both `15-distribution.ps1` and `17-tier-gating.ps1` are **idempotent**: a second run reports 0
   changes and re-proves every invariant.
-- Override surface against the masters is **3 `LeveledItem` hooks, 1 `Container` (the Apothecarii
+- Override surface against the masters is **4 `LeveledItem` hooks, 1 `Container` (the Apothecarii
   stash) and 1 `Cell` (`FSSuntempleYeroCave`, one new ref, no navmesh)** —
-  asserted by the generator. None is in EGO's conflict index; one is shared with this repo's own
-  releases (see [Shared ground](#shared-ground-one-hook-is-also-written-by-another-release-here)).
+  asserted by the generator. None is in EGO's conflict index; two are shared with this repo's own
+  releases (see [Shared ground](#shared-ground-two-hooks-are-also-written-by-another-release-here)).
 - Missing-reference audit still reads **40**, the documented pre-existing baseline: no new
   dangling references.
 - **Re-verified against Enderal 2.1.4.4** (2026-11-25): all four hooks are still empty `UseAll` FS records
