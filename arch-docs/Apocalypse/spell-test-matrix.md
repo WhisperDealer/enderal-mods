@@ -70,9 +70,6 @@ Nothing below is worth doing until these are green. Each is one launch.
 - [x] **NAVI strip -- three specific places, not a general sweep.** See "Testing the NAVI strip"
       below. Ark and Riverville are *not* the test; the removed data never named a navmesh in
       either. *All three checked, no issues.*
-- [x] **Brawl / intimidate dialogue behaves as base Enderal does** (it should do nothing special).
-      This is the test of the loose `dgintimidate*` stubs. Confirm the mod sits *below* Apocalypse
-      in MO2's file order, or its BSA wins and the stubs never load.
 - [x] Start a new game, wait 90 seconds, then read the Papyrus log (see below). **Zero**
       `Cannot call AddForm() on a None object` errors. The four `APOCALYPSE DEBUG:` trace lines
       are expected and fine -- the script still runs, it just has nothing to iterate now.

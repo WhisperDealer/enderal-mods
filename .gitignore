@@ -53,8 +53,6 @@ Thumbs.db
 # if a .pex is MISSING but cannot tell that one is STALE. See "CI build & release" in README.md.
 #
 # Add one pair of lines per script-shipping plugin (the /mod-new-plugin skill does this for you):
-!src/Apocalypse/Scripts/compiled/
-!src/Apocalypse/Scripts/compiled/*.pex
 !src/ZenTraits/Scripts/compiled/
 !src/ZenTraits/Scripts/compiled/*.pex
 !src/Triumvirate/Scripts/compiled/
@@ -68,7 +66,7 @@ Thumbs.db
 # Third-party assets a conversion does NOT modify.
 #
 # A replacement plugin ships only what it CHANGED — see the Apocalypse release,
-# which is a single .esp plus two Papyrus stubs. `08-assemble-package.ps1` still
+# which is a single .esp. `08-assemble-package.ps1` still
 # builds a complete, installable Data-layout folder locally for testing and
 # mod-deploy, but the unmodified third-party parts of it are not committed and
 # not published: this repo is public, and redistributing another author's
@@ -78,8 +76,9 @@ Thumbs.db
 # Users install the original mod, then this release over it.
 #
 # Scoped per-mod rather than /src/*/... on purpose: a blanket /src/*/Scripts/
-# would swallow src/Apocalypse/Scripts/, whose two compiled stubs we DO ship,
-# and an excluded directory cannot be re-included from inside.
+# would swallow src/Triumvirate/Scripts/ and src/ZenTraits/Scripts/, whose
+# compiled scripts we DO ship, and an excluded directory cannot be re-included
+# from inside.
 /src/BiggieTraits/SKSE/
 /src/BiggieTraits/Interface/
 /src/BiggieTraits/Scripts/

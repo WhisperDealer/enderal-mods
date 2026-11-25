@@ -8,7 +8,6 @@ had to survive, what is still gapped, and how to prove it works.
 | [`enderal-gap-audit.md`](enderal-gap-audit.md) | **Start here.** What Apocalypse points at that Enderal does not have, what was fixed, and what was deliberately left alone |
 | [`spell-test-matrix.md`](spell-test-matrix.md) | A checkbox row per obtainable item — 175 tome spells, 144 scrolls — with console commands, merchants and risk flags. **Generated**; re-run `13-gen-test-matrix.ps1`, do not hand-edit |
 | [`../../src/Apocalypse/tools/README.md`](../../src/Apocalypse/tools/README.md) | How the conversion is regenerated against a new Apocalypse version, step by step |
-| [`../../src/Apocalypse/Scripts/README.md`](../../src/Apocalypse/Scripts/README.md) | Why the release ships two loose Papyrus scripts that are not ours |
 
 ## The two facts that shape everything here
 

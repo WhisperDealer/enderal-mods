@@ -11,6 +11,9 @@ and documentation are not listed.
   anyone with Mental Expert, and a second, reduced charge picks them up. Apocalypse's 19 heals only
   carried the first. They now carry both, at the same one-third discount Enderal's own heals give.
   Players without Mental Expert pay exactly what they did before.
+- Removed the two loose brawl scripts (`dgintimidate*`) this mod used to ship. Enderal 2.1.4.4 no
+  longer has scripts by those names, so they replaced nothing. The release is now the plugin alone;
+  delete the two files from `Scripts\` if you update over an older version by hand.
 - Brought the prologue worldspace this plugin carries up to date with Enderal 2.1.4.4's version,
   so it no longer reverts that update's changes (its Czech name, and a cell flag).
 

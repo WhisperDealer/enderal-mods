@@ -48,8 +48,10 @@ and the reasoning behind steps 10–12 and the loose Papyrus stubs. The headline
 * **4,077 missing-reference occurrences** across 617 FormKeys, of which 3,498 were one `NAVI` record
   carrying Bethesda's navigation map. The count is not a severity ranking: *Locate Potion* is broken
   by seven, and two single lines cost an archer summon its bow.
-* Its BSA ships the full vanilla `dgintimidate*` scripts over Enderal's deliberate DUMMY stubs,
-  switching Skyrim's brawl system back on in a game built without it.
+* Its BSA ships the full vanilla `dgintimidate*` scripts. Up to 1.3.0 this release shipped
+  Enderal's DUMMY stubs loose over them; Enderal 2.1.4.4 no longer has scripts of those names, and
+  its records always attached the `_00E_DGIntimidate*` versions, so the BSA copies are dead code and
+  the stubs were dropped.
 * All 67 staff recipes are built on Dragonborn content (Staff Enchanter, Heart Stones). Dropped,
   and the `Dragonborn.esm` master with them.
 
@@ -57,15 +59,11 @@ and the reasoning behind steps 10–12 and the loose Papyrus stubs. The headline
 
 ```
 ApocalypseESP/         Spriggit YAML — the source of truth, committed
-Scripts/source/*.psc   Papyrus source, committed
-Scripts/compiled/*.pex committed via a .gitignore exception — CI cannot compile Papyrus
 tools/*.ps1            the numbered generators that rebuild the tree against a new upstream
 ```
 
-`Scripts/` ships two loose `.pex`: verbatim copies of Enderal's `dgintimidate*` DUMMY stubs that
-Apocalypse's BSA would otherwise overwrite with the Brawl Bugs Patch versions. **This mod must sit
-after Apocalypse in MO2's file priority** — which it must anyway, to win the `.esp`. See
-[`Scripts/README.md`](Scripts/README.md).
+The release is the `.esp` alone. **It must sit after Apocalypse in MO2's file priority** to win
+the plugin.
 
 **`ApocalypseESP/` is derived, not authored.** Every conversion decision lives in a numbered script
 under `tools/`, and a version bump is a re-run rather than a re-investigation — wipe the tree, re-run

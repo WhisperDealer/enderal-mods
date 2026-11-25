@@ -77,9 +77,7 @@ The AddonNode re-index (`WB_IllusionNightmare_MPS_Seidsigil` 110 → 746) **used
 committed record rather than a script, and the 10.3.0 regeneration duly reverted it to 110 —
 `verify-addonnode-indices.ps1` caught it, which is the only reason it did not ship. It is step 5c now.
 
-The release also ships two loose Papyrus stubs, which are committed files rather than a generator
-step; see [`../Scripts/README.md`](../Scripts/README.md). The reasoning behind steps 10–12 and the
-stubs is in
+The reasoning behind steps 10–12 is in
 [`arch-docs/Apocalypse/enderal-gap-audit.md`](../../../arch-docs/Apocalypse/enderal-gap-audit.md).
 
 ## Verify
