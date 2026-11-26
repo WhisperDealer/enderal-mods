@@ -351,14 +351,6 @@ Persistent:
   IsIgnoredBySandbox: True
   Placement:
     Position: 6.77184, -3.713595, -164.9242
-- MutagenObjectType: PlacedObject
-  FormKey: 1C1E81:Apocalypse - Magic of Skyrim.esp
-  MajorRecordFlagsRaw: 1024
-  SkyrimMajorRecordFlags:
-  - 0x400
-  Base: 1C1E80:Apocalypse - Magic of Skyrim.esp
-  Placement:
-    Position: 0, 0, -2000
 Temporary:
 - MutagenObjectType: PlacedObject
   FormKey: 0ABFD9:Apocalypse - Magic of Skyrim.esp

@@ -140,12 +140,6 @@ if (Test-Path -LiteralPath $ownChest) {
         $soldAt[$m.Groups[1].Value] = 'Riverville - Shrouded Mage'
     }
 }
-$vildasChest = Join-Path $tree 'Containers\ZP_Apoc_Merchant_VildasChest - 1C1E80_Apocalypse - Magic of Skyrim.esp.yaml'
-if (Test-Path -LiteralPath $vildasChest) {
-    foreach ($m in [regex]::Matches([IO.File]::ReadAllText($vildasChest), 'Item: ([0-9A-F]{6}):Apocalypse')) {
-        $soldAt[$m.Groups[1].Value] = 'Riverville - Priest Vildas'
-    }
-}
 # Loot: the six ZP_Apoc_* leveled lists this conversion adds.
 $lootIn = @{}
 foreach ($f in Get-ChildItem -LiteralPath (Join-Path $tree 'LeveledItems') -File -Filter 'ZP_Apoc_*.yaml') {
@@ -409,9 +403,6 @@ W '      borrows the Duneville mage''s through a Traits template. *Confirmed 202
 W '- [x] He speaks with the Shrouded Mage voice and his barter line opens his shop: FS''s forbidden'
 W '      tomes plus the 16 Novice and Apprentice Entropy/Psionics tomes. With BOTH Psionics and Entropy below 15 he'
 W '      refuses with FS''s "not enough entropy" message instead -- that is FS''s gate on every Shrouded Mage.'
-W '- [ ] **Priest Vildas** (Riverville temple) offers *"I''d like to see your spell tomes."*. He says nothing'
-W '      (his voice has no trade line) and his shop opens with the 6 Apprentice Light Magic tomes.'
-W '      He trades 7:00-20:00, wherever he is.'
 W '- [ ] No Entropy or Psionics tome at Milbert, Eshra, Kurro, Ora, Barnabas, Fitzai or Emberlord and Fireflash.'
 W '- [ ] **No Apocalypse tome at Tarhutie or Torius Flameling** -- Triumvirate stocks those two, and two'
 W '      plugins writing one hook means only the later-loading one''s stock appears.'
@@ -500,8 +491,7 @@ W '| `CapitalCityMagierkram` | Ark -- Emberlord and Fireflash | 1800 | Expert El
 W '| -- | Ark -- Fitzai''s Puzzle Box, Fitzai Galabagadananka | 890 | Expert Mentalism | 9 | `FitzaiGalabagadananka_CustomMerchandise` |'
 W '| `UndercityBarracks2Barnabas` | Undercity -- Barnabas | 1050 | Adept (Mentalism/Elementalism) | 14 | `Barnabas_CustomMerchandise` |'
 W '| -- | Ark -- Ora Stonehand | 980 | Apprentice Mentalism + Adept Light Magic | 13 | `OraSteinschlag_CustomMerchandise` |'
-W '| `FlusshaimShopKurro` | Riverville -- Kurro''s General Store, Kurro Mongerson | 480 | Apprentice Elementalism | 6 | `Kurro_CustomMerchandise` |'
-W '| `FlusshaimTemple` | Riverville -- Priest Vildas | 300 | Apprentice Light Magic | 6 | own chest `ZP_Apoc_Merchant_VildasChest` (silent trade topic) |'
+W '| `FlusshaimShopKurro` | Riverville -- Kurro''s General Store, Kurro Mongerson | 480 | Apprentice Elementalism + Light Magic | 12 | `Kurro_CustomMerchandise` |'
 W '| `CapitalCityMirellasAlchemy` | Ark -- Mirella Godshand | 2135 | Master Mentalism | 10 | `Mirella_CustomMerchandise` |'
 W '| -- | Ark -- Librarian Marius | 250 | Master Light Magic | 10 | `BibliothekarMarius_CustomMerchandise` |'
 W ''
