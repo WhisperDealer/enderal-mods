@@ -97,6 +97,10 @@ $vendors = @(
   # _00E_Merchant_CCStarWarehouse 11B214 (890 gold; 1390 under EGO); FS, EGO and EGO Leveling Redone
   # all carry this hook in it.
   @{ File = 'FitzaiGalabagadananka_CustomMerchandise - 0302D6_Enderal - Forgotten Stories.esm.yaml'; Shop = 'Ark, Fitzai''s Puzzle Box';    Gold =  890; Lines = '075:A'; Expect = 9 }
+  # Master Mentalism: Mirella Godshand's alchemy shop in Ark, whose chest already stocks Enderal's
+  # top-tier spell books (_00ETraderSpellBooksLevelD x10). Chest _00E_Merchant_CCMirellasAlchemy
+  # 106EA7 (2135 gold); EGO and EGO Leveling Redone keep the hook.
+  @{ File = 'Mirella_CustomMerchandise - 0302DF_Enderal - Forgotten Stories.esm.yaml';             Shop = 'Ark, Mirella Godshand';        Gold = 2135; Lines = '100:A'; Expect = 10 }
   # Novice Light Magic + Elementalism: Eshra Miraya, one of the first merchants a player meets in the
   # open world (she trades once her quest is done). Her chest is _00E_TraderSonnenkueste 050FCF;
   # FS, EGO and EGO Leveling Redone all carry this hook in it.
@@ -193,10 +197,10 @@ foreach ($v in $vendors) {
 # The only tomes NOT placed here are the 16 Novice/Apprentice Entropy/Psionics tomes the Riverville
 # Shrouded Mage sells from his own chest (step 18), and $PENDING: lines taken off a merchant and not
 # yet given a new one, loot-only meanwhile. Nothing else may fall through.
-$PENDING     = '^WB_[ADR]100_'     # Master Mentalism/Elementalism/Light Magic, off Emberlord, awaiting a home
-$PLACED_HERE = 117
+$PENDING     = '^WB_[DR]100_'      # Master Elementalism/Light Magic, off Emberlord, awaiting a home
+$PLACED_HERE = 127
 $RIVERVILLE  = 16
-$LOOT_ONLY   = 30
+$LOOT_ONLY   = 20
 if ($placed.Keys.Count -ne $PLACED_HERE) { throw "placed $($placed.Keys.Count) tomes, expected $PLACED_HERE" }
 $unplaced = @($tomes | Where-Object { -not $placed.ContainsKey($_.EditorID) })
 $legal    = @($unplaced | Where-Object { $_.EditorID -notmatch '^WB_[CI]' -and $_.EditorID -notmatch $PENDING })

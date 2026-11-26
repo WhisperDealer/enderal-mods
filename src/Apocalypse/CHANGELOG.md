@@ -28,6 +28,8 @@ and documentation are not listed.
   - Apprentice Elementalism and Light Magic: **Kurro's General Store**, Riverville
   - Apprentice Mentalism: **Ora Stonehand**, Ark, beside her Adept Light Magic
   - Expert Elementalism and Light Magic: **Emberlord and Fireflash**, Ark
+- **Mirella Godshand sells the Master Mentalism tomes** at her alchemy shop in Ark, beside the
+  top-tier spell books she already stocks.
 - **Fitzai Galabagadananka sells the Expert Mentalism tomes** at Fitzai's Puzzle Box in Ark,
   instead of Torius Flameling. Mentalism is the Starlings' art, and with EGO his shop also sells
   Starling gear.

@@ -23,8 +23,8 @@ $ErrorActionPreference = 'Stop'
 #   4. Our OWN merchant - the Riverville Shrouded Mage (18-shrouded-mage-riverville.ps1) - is wired
 #      end to end: a Vendor faction whose MerchantContainer is a ref placed in our tree, whose base is
 #      our container, which the NPC carrying that faction stands in the same cell as.
-#   5. 133 of the 163 distributed tomes are stocked exactly once each: 117 in hooks, 16 in our own
-#      chest. The Master Mentalism/Elementalism/Light Magic 30 are loot-only until re-homed (07's $PENDING).
+#   5. 143 of the 163 distributed tomes are stocked exactly once each: 127 in hooks, 16 in our own
+#      chest. The Master Elementalism/Light Magic 20 are loot-only until re-homed (07's $PENDING).
 #      12 summons are withheld entirely (00-cut-summons.ps1).
 #   7. No hook we write is also written by Triumvirate (src/Triumvirate). Two plugins writing one
 #      LeveledItem is an override conflict - the later one's stock silently replaces the other's.
@@ -157,7 +157,7 @@ $rows | Format-Table -AutoSize | Out-String | Write-Host
 
 # ---------------------------------------------------------------- 5. coverage
 $total = $seen.Keys.Count
-if ($total -ne 133) { throw "$total tomes stocked, expected 133 (117 in hooks + 16 at the Riverville Shrouded Mage)" }
+if ($total -ne 143) { throw "$total tomes stocked, expected 143 (127 in hooks + 16 at the Riverville Shrouded Mage)" }
 
 # ---------------------------------------------------------------- 7. no hook shared with Triumvirate
 $tvr = Join-Path $repo 'src\Triumvirate\TriumvirateESP\LeveledItems'
