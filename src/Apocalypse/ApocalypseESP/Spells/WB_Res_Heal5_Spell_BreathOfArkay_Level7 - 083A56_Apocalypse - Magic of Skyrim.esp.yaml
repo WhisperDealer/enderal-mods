@@ -32,3 +32,7 @@ Effects:
   Data:
     Magnitude: 15
     Duration: 1
+- BaseEffect: 0493DF:Skyrim.esm
+  Data:
+    Magnitude: 10.05
+    Duration: 1

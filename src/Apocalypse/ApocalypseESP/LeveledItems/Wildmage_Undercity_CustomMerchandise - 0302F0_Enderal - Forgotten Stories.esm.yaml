@@ -1,0 +1,53 @@
+FormKey: 0302F0:Enderal - Forgotten Stories.esm
+EditorID: Wildmage_Undercity_CustomMerchandise
+Flags:
+- UseAll
+Entries:
+- Data:
+    Level: 1
+    Reference: 03D04A:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 03D04D:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 03D04C:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 1A1B7B:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 03D04E:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 03E608:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 03E606:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 03E605:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 03E607:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 03E609:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 03E60A:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 1A4A53:Apocalypse - Magic of Skyrim.esp
+    Count: 1

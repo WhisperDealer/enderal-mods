@@ -1,0 +1,29 @@
+FormKey: 0302F3:Enderal - Forgotten Stories.esm
+EditorID: Eshra_CustomMerchandise
+Flags:
+- UseAll
+Entries:
+- Data:
+    Level: 1
+    Reference: 089709:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 03DB1F:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 03DB20:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 03EB7B:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 03EB7C:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Data:
+    Level: 1
+    Reference: 08970F:Apocalypse - Magic of Skyrim.esp
+    Count: 1

@@ -1,0 +1,139 @@
+FormKey: 1C1E79:Apocalypse - Magic of Skyrim.esp
+MajorRecordFlagsRaw: 134217728
+EditorID: ZP_Apoc_Merchant_Wildmage_RivervilleChest
+Version2: 6
+SkyrimMajorRecordFlags:
+- 0x8000000
+ObjectBounds:
+  First: -48, -25, 0
+  Second: 48, 24, 48
+Name:
+  TargetLanguage: English
+  Values:
+  - Language: Chinese
+    String: 箱子
+  - Language: Czech
+    String: Truhla
+  - Language: English
+    String: Chest
+  - Language: French
+    String: Coffre
+  - Language: German
+    String: Truhe
+  - Language: Italian
+    String: Baule
+  - Language: Japanese
+    String: 箱
+  - Language: Korean
+    String: 상자
+  - Language: Polish
+    String: Kufer
+  - Language: Russian
+    String: Сундук
+  - Language: Spanish
+    String: Cofre
+Model:
+  File: Clutter\Containers\Chest01\Chest01.nif
+  Data: 0x020000000000000000000000
+Items:
+- Item:
+    Item: 00000F:Skyrim.esm
+    Count: 707
+- Item:
+    Item: 03AD5B:Skyrim.esm
+    Count: 1
+- Item:
+    Item: 0480ED:Skyrim.esm
+    Count: 1
+- Item:
+    Item: 0480EE:Skyrim.esm
+    Count: 3
+- Item:
+    Item: 08561C:Skyrim.esm
+    Count: 9
+- Item:
+    Item: 08561D:Skyrim.esm
+    Count: 10
+- Item:
+    Item: 08561E:Skyrim.esm
+    Count: 6
+- Item:
+    Item: 08561F:Skyrim.esm
+    Count: 1
+- Item:
+    Item: 085620:Skyrim.esm
+    Count: 9
+- Item:
+    Item: 085621:Skyrim.esm
+    Count: 7
+- Item:
+    Item: 085622:Skyrim.esm
+    Count: 11
+- Item:
+    Item: 085623:Skyrim.esm
+    Count: 6
+- Item:
+    Item: 01E90D:Enderal - Forgotten Stories.esm
+    Count: 30
+- Item:
+    Item: 01EC55:Enderal - Forgotten Stories.esm
+    Count: 1
+- Item:
+    Item: 01EC57:Enderal - Forgotten Stories.esm
+    Count: 6
+- Item:
+    Item: 02ED62:Enderal - Forgotten Stories.esm
+    Count: 1
+- Item:
+    Item: 089706:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Item:
+    Item: 16162F:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Item:
+    Item: 03D042:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Item:
+    Item: 03D048:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Item:
+    Item: 03D046:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Item:
+    Item: 03D047:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Item:
+    Item: 03D044:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Item:
+    Item: 03E5FD:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Item:
+    Item: 08970C:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Item:
+    Item: 15B845:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Item:
+    Item: 03E601:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Item:
+    Item: 03E5FF:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Item:
+    Item: 03E602:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Item:
+    Item: 03E603:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Item:
+    Item: 03E600:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+- Item:
+    Item: 03E604:Apocalypse - Magic of Skyrim.esp
+    Count: 1
+Flags:
+- Respawns
+Weight: 20
+MajorFlags:
+- NavMeshGenerationBoundingBox

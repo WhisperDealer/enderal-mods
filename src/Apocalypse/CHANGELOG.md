@@ -3,6 +3,48 @@
 Paste each version block into the Nexus **Changelogs** tab. User-facing changes only; repo tooling
 and documentation are not listed.
 
+## 2.0.0
+
+- **Updated for Enderal SE 2.1.4.4.** This version requires 2.1.4.4 or later.
+- Fixed: **on Enderal 2.1.4.4, Mental Expert players paid no Arcane Fever for Apocalypse's heals.**
+  2.1.4.4 moved the Fever charge into the engine and split it in two: the full charge now skips
+  anyone with Mental Expert, and a second, reduced charge picks them up. Apocalypse's 19 heals only
+  carried the first. They now carry both, at the same one-third discount Enderal's own heals give.
+  Players without Mental Expert pay exactly what they did before.
+- **Entropy and Psionics are now sold only by the Shrouded Mages**, Forgotten Stories'
+  forbidden-magic dealers. Both are forbidden schools in Enderal, yet Ark's shops and the Sun Temple
+  sold them openly. Milbert, Tarhutie, Ora Stonehand, Torius Flameling, Emberlord and Fireflash and
+  Barnabas no longer carry them. Instead:
+  - Novice and Apprentice: a new Shrouded Mage in Riverville (below)
+  - Adept: the Shrouded Mage in the Undercity
+  - Expert Entropy: the Shrouded Mage in Frostcliff Tavern
+  - Expert Psionics: the Shrouded Mage in Duneville
+- **Eshra Mirâya now sells the Novice Light Magic and Elementalism tomes**, instead of Milbert
+  Foxhand in Ark. She is one of the first merchants you can meet in the open world, and trades once
+  her quest is done. Milbert keeps the Novice Mentalism tomes.
+- **Works alongside Triumvirate (Enderal Conversion).** Both mods used to stock Tarhutie and Torius
+  Flameling through the same lists, so whichever loaded later wiped the other's spells from those
+  two shops. Apocalypse no longer uses either merchant:
+  - Apprentice Elementalism and Light Magic: **Kurro's General Store**, Riverville
+  - Apprentice Mentalism: **Ora Stonehand**, Ark, beside her Adept Light Magic
+  - Expert Elementalism and Light Magic: **Emberlord and Fireflash**, Ark
+- **Master tomes are loot-only**, in all five schools, found through Enderal's level-40 spell-book
+  loot. Base Enderal sells its own Master tier only at random, so no merchant stocks them.
+  This includes **Conjure Entropic Assassin** and **Conjure Craftlord**, which Emberlord and
+  Fireflash used to sell. **Conjure Herne** moves with the Expert Entropy tomes to the Shrouded
+  Mage in Frostcliff Tavern.
+- **Fitzai Galabagadananka sells the Expert Mentalism tomes** at Fitzai's Puzzle Box in Ark,
+  instead of Torius Flameling. Mentalism is the Starlings' art, and with EGO his shop also sells
+  Starling gear.
+- **A new Shrouded Mage sits in The Drunken Bee in Riverville**, selling the Novice and Apprentice
+  Entropy and Psionics tomes beside Forgotten Stories' own forbidden spell books. Like every Shrouded Mage, he
+  will not trade with you until your Psionics or Entropy reaches 15.
+- Removed the two loose brawl scripts (`dgintimidate*`) this mod used to ship. Enderal 2.1.4.4 no
+  longer has scripts by those names, so they replaced nothing. The release is now the plugin alone;
+  delete the two files from `Scripts\` if you update over an older version by hand.
+- Brought the prologue worldspace this plugin carries up to date with Enderal 2.1.4.4's version,
+  so it no longer reverts that update's changes (its Czech name, and a cell flag).
+
 ## 1.3.0
 
 - Fixed: **the master-tier spells cost far too much mana to cast.** Apocalypse left every spell's

@@ -1,0 +1,86 @@
+FormKey: 019C50:Skyrim.esm
+EditorID: FlusshaimTavern
+Name:
+  TargetLanguage: English
+  Values:
+  - Language: Chinese
+    String: 醉蜂
+  - Language: Czech
+    String: U Nachmelené včely
+  - Language: English
+    String: The Drunken Bee
+  - Language: French
+    String: L'Abeille ivre
+  - Language: German
+    String: Zur Betrunkenen Biene
+  - Language: Italian
+    String: L'ape ubriaca
+  - Language: Japanese
+    String: ドランケンビー
+  - Language: Korean
+    String: 술 취한 꿀벌
+  - Language: Polish
+    String: Pijana Pszczoła
+  - Language: Russian
+    String: Пьяная пчела
+  - Language: Spanish
+    String: La Abeja Ebria
+Flags:
+- IsInteriorCell
+- HasWater
+- PublicArea
+- ShowSky
+Lighting:
+  AmbientColor: '#003C3724'
+  DirectionalColor: '#00514F44'
+  FogNearColor: '#00757782'
+  FogFar: 2500
+  DirectionalRotationZ: 90
+  FogClipDistance: 3000
+  FogPower: 1.5
+  AmbientColors:
+    DirectionalXPlus: '#00423725'
+    DirectionalXMinus: '#00353722'
+    DirectionalYPlus: '#003C3924'
+    DirectionalYMinus: '#003C3424'
+    DirectionalZPlus: '#001C1A10'
+    DirectionalZMinus: '#005B5337'
+    Specular: '#00000000'
+    Scale: 1
+  FogFarColor: '#00757782'
+  FogMax: 0.45
+  Inherits:
+  - DirectionalRotation
+  - DirectionalFade
+  - ClipDistance
+  - LightFadeDistances
+LightingTemplate: 0B2157:Skyrim.esm
+WaterHeight: 0
+Location: 01DDF5:Skyrim.esm
+Owner: 07070E:Skyrim.esm
+SkyAndWeatherFromRegion: 037B8B:Skyrim.esm
+AcousticSpace: 0C5D0A:Skyrim.esm
+ImageSpace: 03E148:Skyrim.esm
+Persistent:
+- MutagenObjectType: PlacedNpc
+  FormKey: 1C1E7A:Apocalypse - Magic of Skyrim.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: ZP_Apoc_Wildmage_RivervilleREF
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 1C1E77:Apocalypse - Magic of Skyrim.esp
+  LinkedReferences:
+  - Reference: 14983A:Skyrim.esm
+  Placement:
+    Position: -667.7829, 1891.4133, -1544
+    Rotation: 0, 0, 4.7207985
+  MajorFlags:
+  - Persistent
+- MutagenObjectType: PlacedObject
+  FormKey: 1C1E7B:Apocalypse - Magic of Skyrim.esp
+  MajorRecordFlagsRaw: 1024
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 1C1E79:Apocalypse - Magic of Skyrim.esp
+  Placement:
+    Position: -667.7829, 1891.4133, -1610

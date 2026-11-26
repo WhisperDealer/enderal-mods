@@ -15,12 +15,17 @@ $ErrorActionPreference = 'Stop'
 # price. An untaxed Apocalypse heal beats both. (This script's header used to claim Enderal had no
 # healing potions; that was wrong, from an English-only name search - the EditorIDs are German.)
 #
-# HOW ENDERAL DOES IT. _00E_IncreaseArcaneFeverFFSelf (11A4B6:Skyrim.esm) - FireAndForget, Self (no
-# TargetType line), Archetype Type: Script -> _00E_ArkanistenfieberBlitzheilungSCN. That script reads
-# Self.GetMagnitude() (the EFFECT ITEM's Magnitude, not Area - the potion path 11A4B6's sibling uses
-# is the one that reads Area), applies the Mental Expert reduction itself (x0.67 with perk 069D07),
-# and fires on akCaster == PlayerREF || akTarget == PlayerREF. So records using it need no perk
-# condition of their own.
+# HOW ENDERAL DOES IT (2.1.4.4). Two effects, always together:
+#   _00E_IncreaseArcaneFeverFFSelf              11A4B6  ValueModifier on LastFlattered, conditioned
+#                                                       on Player AND NOT Mental Expert (069D07)
+#   _00E_IncreaseArcaneFeverFFSelf_MentalExpert 0493DF  the same, conditioned on HAVING Mental Expert
+# with the second at 0.67x the first: _07E_SpellFlashHeal pays 5 + 3.35, 01E_ScrollBoon 2.5 + 1.67,
+# FS's Mystical Panacea 10 + 6.7. The conditions live on the MGEFs, so the spell needs none of its own.
+#
+# Before 2.1.4.4, 11A4B6 was a Script archetype that applied the x0.67 itself, and this step attached
+# it alone. On 2.1.4.4 that recipe charges a Mental Expert player NOTHING - the engine skips 11A4B6
+# for them and there was no second effect to pick them up. Enderal's 0.67 products are TRUNCATED to
+# two decimals (2.5 -> 1.67, not 1.68), and so are ours.
 #
 # There is a second effect, _00E_IncreaseArcaneFeverConcSelf (106EA4) for Concentration casts, which
 # needs a two-effect perk-gated pair with FS's 02F42E. It is NOT used here: the only Apocalypse
@@ -51,6 +56,8 @@ $mine = Join-Path $repo 'src\Apocalypse\ApocalypseESP'
 $enc  = New-Object System.Text.UTF8Encoding($false)
 
 $FeverKey                 = '11A4B6:Skyrim.esm'
+$FeverMeKey               = '0493DF:Skyrim.esm'   # the Mental Expert half
+$MentalExpertRatio        = [decimal]0.67
 $BurstHpPerPoint    = 26
 $OverTimeHpPerPoint = 78
 
@@ -120,13 +127,15 @@ foreach ($r in $plan) {
   $cast = [regex]::Match($t, '(?m)^CastType: (.+?)\s*\r?\n').Groups[1].Value
   if ($cast -ne $wantCast) { throw "$($r.EditorId): CastType is '$cast', expected '$wantCast'" }
 
-  # --- idempotency: strip any block we appended before (we always append last)
+  # --- idempotency: strip any block we appended before (we always append last, 11A4B6 first, so
+  #     stripping from 11A4B6 to the end of the file also takes the 0493DF appended after it)
   $existing = [regex]::Matches($t, [regex]::Escape($FeverKey)).Count
   if ($existing -gt 1) { throw "$($r.EditorId): found $existing references to $FeverKey - hand-edited? refusing to guess" }
   if ($existing -eq 1) {
     $t = [regex]::Replace($t, $afStripRx, '')
     if ([regex]::IsMatch($t, [regex]::Escape($FeverKey))) { throw "$($r.EditorId): strip failed" }
   }
+  if ([regex]::IsMatch($t, [regex]::Escape($FeverMeKey))) { throw "$($r.EditorId): $FeverMeKey present without $FeverKey before it - hand-edited? refusing to guess" }
 
   # @() matters: several of these records have exactly one effect, and PowerShell would hand back a
   # bare string whose [-1] is its last CHARACTER.
@@ -173,30 +182,38 @@ foreach ($r in $plan) {
   # --- append. InvariantCulture so 2.5 never writes as 2,5 on a comma-decimal machine.
   $nl = if ($t -match "`r`n") { "`r`n" } else { "`n" }
   $mags = ([double]$af).ToString([Globalization.CultureInfo]::InvariantCulture)
+  # decimal, so 2.5 x 0.67 is exactly 1.675 and truncates to Enderal's 1.67
+  $afMe = [decimal]::Truncate([decimal]$af * $MentalExpertRatio * 100) / 100
+  $magsMe = ([double]$afMe).ToString([Globalization.CultureInfo]::InvariantCulture)
   if (-not $t.EndsWith($nl)) { $t += $nl }
-  $t += "- BaseEffect: $FeverKey$nl  Data:$nl    Magnitude: $mags$nl    Duration: 1$nl"
-  if ($cond -ne '') { $t += ($cond -replace "`r?`n", $nl) + $nl }
+  $condTxt = if ($cond -ne '') { ($cond -replace "`r?`n", $nl) + $nl } else { '' }
+  $t += "- BaseEffect: $FeverKey$nl  Data:$nl    Magnitude: $mags$nl    Duration: 1$nl" + $condTxt
+  $t += "- BaseEffect: $FeverMeKey$nl  Data:$nl    Magnitude: $magsMe$nl    Duration: 1$nl" + $condTxt
 
   [IO.File]::WriteAllText($path, $t, $enc)
 
   # --- read back and verify what actually landed
   $v = [IO.File]::ReadAllText($path)
   if ([regex]::Matches($v, [regex]::Escape($FeverKey)).Count -ne 1) { throw "$($r.EditorId): post-write $FeverKey count wrong" }
+  if ([regex]::Matches($v, [regex]::Escape($FeverMeKey)).Count -ne 1) { throw "$($r.EditorId): post-write $FeverMeKey count wrong" }
   $vb = @(Get-EffectBlocks -Text $v)
-  if ($vb[-1] -notmatch "^- BaseEffect: $([regex]::Escape($FeverKey))") {
-    throw "$($r.EditorId): fever effect is not last - existing effect indices would shift"
+  if ($vb[-2] -notmatch "^- BaseEffect: $([regex]::Escape($FeverKey))" -or
+      $vb[-1] -notmatch "^- BaseEffect: $([regex]::Escape($FeverMeKey))") {
+    throw "$($r.EditorId): the two fever effects are not last, in order - existing effect indices would shift"
   }
-  $vm = [regex]::Match($vb[-1], '(?m)^    Magnitude: ([\d.]+)(?=\r?\n)')
-  if (-not $vm.Success -or [double]::Parse($vm.Groups[1].Value, [Globalization.CultureInfo]::InvariantCulture) -ne $af) {
-    throw "$($r.EditorId): post-write magnitude mismatch"
+  foreach ($pair in @(@($vb[-2], [double]$af), @($vb[-1], [double]$afMe))) {
+    $vm = [regex]::Match($pair[0], '(?m)^    Magnitude: ([\d.]+)(?=\r?\n)')
+    if (-not $vm.Success -or [double]::Parse($vm.Groups[1].Value, [Globalization.CultureInfo]::InvariantCulture) -ne $pair[1]) {
+      throw "$($r.EditorId): post-write magnitude mismatch"
+    }
   }
-  if ($null -ne $r.CondFrom -and $vb[-1] -notmatch '(?m)^  Conditions:') {
-    throw "$($r.EditorId): conditions did not land"
+  if ($null -ne $r.CondFrom -and ($vb[-2] -notmatch '(?m)^  Conditions:' -or $vb[-1] -notmatch '(?m)^  Conditions:')) {
+    throw "$($r.EditorId): conditions did not land on both fever effects"
   }
 
   $rows += [pscustomobject]@{
     Folder = $r.Folder; EditorId = $r.EditorId; Kind = $r.Kind
-    Hp = $hp; Af = $af; Rate = $rate
+    Hp = $hp; Af = $af; AfMe = $afMe; Rate = $rate
     HpPerPt = if ($null -eq $hp) { $null } else { [math]::Round($hp / $af, 1) }
   }
 }
@@ -212,6 +229,9 @@ if ($nSpell -ne 14 -or $nScroll -ne 5) { throw "expected 14 spells / 5 scrolls, 
 $sweep = @(Get-ChildItem $mine -Recurse -Filter *.yaml |
            Where-Object { [IO.File]::ReadAllText($_.FullName) -match [regex]::Escape($FeverKey) })
 if ($sweep.Count -ne 19) { throw "tree sweep: $FeverKey appears in $($sweep.Count) files, expected 19" }
+$sweepMe = @(Get-ChildItem $mine -Recurse -Filter *.yaml |
+             Where-Object { [IO.File]::ReadAllText($_.FullName) -match [regex]::Escape($FeverMeKey) })
+if ($sweepMe.Count -ne 19) { throw "tree sweep: $FeverMeKey appears in $($sweepMe.Count) files, expected 19" }
 
 # the design principle, enforced in code: never more fever-efficient than Enderal's best heal.
 # 1.05 slack absorbs integer rounding on Breath of Tyr Level6-9 (26.3-26.9); all four remain below
@@ -222,9 +242,11 @@ foreach ($x in $rows) {
   if ($x.HpPerPt -gt $ceil) { throw "$($x.EditorId): $($x.HpPerPt) HP/point exceeds the $($x.Kind) ceiling $ceil" }
 }
 
-# guardrail 11: re-resolve the one master FormKey we emit
-$afFile = @(Get-ChildItem (Join-Path $repo 'reference\base') -Recurse -Filter '*11A4B6_Skyrim.esm.yaml')
-if ($afFile.Count -lt 1) { throw "$FeverKey does not resolve in reference/base - is the reference tree built?" }
+# guardrail 11: re-resolve the two master FormKeys we emit. 0493DF only exists from Enderal 2.1.4.4 on.
+foreach ($k in @('11A4B6', '0493DF')) {
+  $afFile = @(Get-ChildItem (Join-Path $repo 'reference\base\Skyrim\MagicEffects') -Filter "*$($k)_Skyrim.esm.yaml")
+  if ($afFile.Count -lt 1) { throw "$($k):Skyrim.esm does not resolve in reference/base/Skyrim - is the 2.1.4.4 reference tree built?" }
+}
 $hdr = [IO.File]::ReadAllText((Join-Path $mine 'RecordData.yaml'))
 if ($hdr -notmatch 'Master: Skyrim\.esm') { throw 'Skyrim.esm is not a declared master' }
 
@@ -235,7 +257,7 @@ foreach ($grp in @('Spells', 'Scrolls')) {
   foreach ($x in @($rows | Where-Object { $_.Folder -eq $grp })) {
     $hpTxt = if ($null -eq $x.Hp) { '   full' } else { '{0,7:0.#}' -f $x.Hp }
     $ppTxt = if ($null -eq $x.HpPerPt) { '     -' } else { '{0,6:0.0}' -f $x.HpPerPt }
-    "  {0,-44} {1,-8} {2} HP  ->  AF {3,-5} ({4} HP/pt)" -f $x.EditorId, $x.Kind, $hpTxt, $x.Af, $ppTxt
+    "  {0,-44} {1,-8} {2} HP  ->  AF {3,-5} / ME {4,-5} ({5} HP/pt)" -f $x.EditorId, $x.Kind, $hpTxt, $x.Af, $x.AfMe, $ppTxt
   }
   ''
 }

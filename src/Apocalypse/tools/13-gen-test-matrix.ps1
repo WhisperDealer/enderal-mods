@@ -111,11 +111,15 @@ Write-Host "  records with missing references: $($missingByRecord.Count)"
 # where the stock now lives. We no longer override the chests themselves.
 $merchants = [ordered]@{
     '0302D5' = 'Ark - Emberlord & Fireflash'
-    '0302FE' = 'Sun Temple - Torius Flameling'
     '030302' = 'Undercity - Barnabas'
     '0302E3' = 'Ark - Ora Stonehand'
-    '0302F7' = 'Riverville - Tarhutie'
+    '0302F4' = 'Riverville - Kurro''s General Store'
     '0302DE' = 'Ark - Milbert Foxhand'
+    '0302F3' = 'Eshra Miraya'
+    '0302D6' = 'Ark - Fitzai''s Puzzle Box'
+    '0302F0' = 'Undercity - Shrouded Mage'
+    '0302EF' = 'Frostcliff Tavern - Shrouded Mage'
+    '0302EE' = 'Duneville - Shrouded Mage'
 }
 $soldAt = @{}
 foreach ($f in Get-ChildItem -LiteralPath (Join-Path $tree 'LeveledItems') -File -Filter '*_CustomMerchandise*.yaml') {
@@ -124,6 +128,14 @@ foreach ($f in Get-ChildItem -LiteralPath (Join-Path $tree 'LeveledItems') -File
     if (-not $merchants.Contains($hook)) { continue }
     foreach ($m in [regex]::Matches([IO.File]::ReadAllText($f.FullName), 'Reference: ([0-9A-F]{6}):Apocalypse')) {
         $soldAt[$m.Groups[1].Value] = $merchants[$hook]
+    }
+}
+# Our own merchant: the Riverville Shrouded Mage's chest (18-shrouded-mage-riverville.ps1) holds its
+# tomes directly rather than through a hook.
+$ownChest = Join-Path $tree 'Containers\ZP_Apoc_Merchant_Wildmage_RivervilleChest - 1C1E79_Apocalypse - Magic of Skyrim.esp.yaml'
+if (Test-Path -LiteralPath $ownChest) {
+    foreach ($m in [regex]::Matches([IO.File]::ReadAllText($ownChest), 'Item: ([0-9A-F]{6}):Apocalypse')) {
+        $soldAt[$m.Groups[1].Value] = 'Riverville - Shrouded Mage'
     }
 }
 # Loot: the six ZP_Apoc_* leveled lists this conversion adds.
@@ -375,9 +387,6 @@ W '- [x] `help "Spell Tome: Alarm" 0` returns a hit (the plugin is not form-vers
 W '- [x] **NAVI strip -- three specific places, not a general sweep.** See "Testing the NAVI strip"'
 W '      below. Ark and Riverville are *not* the test; the removed data never named a navmesh in'
 W '      either. *All three checked, no issues.*'
-W '- [x] **Brawl / intimidate dialogue behaves as base Enderal does** (it should do nothing special).'
-W '      This is the test of the loose `dgintimidate*` stubs. Confirm the mod sits *below* Apocalypse'
-W '      in MO2''s file order, or its BSA wins and the stubs never load.'
 W '- [x] Start a new game, wait 90 seconds, then read the Papyrus log (see below). **Zero**'
 W '      `Cannot call AddForm() on a None object` errors. The four `APOCALYPSE DEBUG:` trace lines'
 W '      are expected and fine -- the script still runs, it just has nothing to iterate now.'
@@ -386,6 +395,17 @@ W '- [x] Open Apocalypse''s MCM and press **Repopulate**. Same expectation: trac
 W '      errors no. It runs the identical loop against its own six `_Replenish` FormLists, so it is'
 W '      a separate path from the automatic one and has to be checked separately.'
 W '- [x] All six merchants stock Apocalypse tomes (see the shop table below).'
+W '- [x] **The Riverville Shrouded Mage** (`coc FlusshaimTavern`, The Drunken Bee) is sitting at the'
+W '      corner bench, and **his face renders** -- no dark-face bug. He has no FaceGen of his own and'
+W '      borrows the Duneville mage''s through a Traits template. *Confirmed 2026-11-25.*'
+W '- [x] He speaks with the Shrouded Mage voice and his barter line opens his shop: FS''s forbidden'
+W '      tomes plus the 16 Novice and Apprentice Entropy/Psionics tomes. With BOTH Psionics and Entropy below 15 he'
+W '      refuses with FS''s "not enough entropy" message instead -- that is FS''s gate on every Shrouded Mage.'
+W '- [ ] No Entropy or Psionics tome at Milbert, Eshra, Kurro, Ora, Barnabas, Fitzai or Emberlord and Fireflash.'
+W '- [ ] **No Apocalypse tome at Tarhutie or Torius Flameling** -- Triumvirate stocks those two, and two'
+W '      plugins writing one hook means only the later-loading one''s stock appears.'
+W '- [ ] The three Forgotten Stories Shrouded Mages carry them: Adept in the Undercity, Expert Entropy'
+W '      at Frostcliff Tavern, Expert Psionics in Duneville (same "not enough entropy" gate below 15).'
 W ("- [x] ``player.additem {0}1C1E71 5`` ... ``{0}1C1E75 5`` each yield Apocalypse tomes, and" -f $idx)
 W ("      ``player.additem {0}1C1E76 10`` yields Apocalypse scrolls. ``additem`` resolves a leveled" -f $idx)
 W '      list on the spot, so this proves loot distribution without waiting out `iDaysToRespawnVendor: 2`.'
@@ -465,12 +485,23 @@ W '## The shops'
 W ''
 W '| `coc` target | Shop | Gold | Tier | Tomes | Hook |'
 W '|---|---|---:|---|---:|---|'
-W '| `CapitalCityMagierkram` | Ark -- Emberlord and Fireflash | 1800 | Master | 45 | `GabrielleFunkenfrst_CustomMerchandise` |'
-W '| `SuntempleAlchemy` | Sun Temple -- Torius Flameling | 1430 | Expert | 39 | `TuriousFlammentrunk_CustomMerchandise` |'
-W '| `UndercityBarracks2Barnabas` | Undercity -- Barnabas | 1050 | Adept (Mentalism/Entropy/Elementalism) | 19 | `Barnabas_CustomMerchandise` |'
-W '| -- | Ark -- Ora Stonehand | 980 | Adept (Psionics/Light Magic) | 14 | `OraSteinschlag_CustomMerchandise` |'
-W '| -- | Riverville -- Tarhutie | 630 | Apprentice | 28 | `Tarhutie_CustomMerchandise` |'
-W '| -- | Ark -- Milbert Foxhand | 530 | Novice | 15 | `MilbertFuchshand_CustomMerchandise` |'
+W '| `CapitalCityMagierkram` | Ark -- Emberlord and Fireflash | 1800 | Expert Elementalism + Light Magic | 18 | `GabrielleFunkenfrst_CustomMerchandise` |'
+W '| -- | Ark -- Fitzai''s Puzzle Box, Fitzai Galabagadananka | 890 | Expert Mentalism | 9 | `FitzaiGalabagadananka_CustomMerchandise` |'
+W '| `UndercityBarracks2Barnabas` | Undercity -- Barnabas | 1050 | Adept (Mentalism/Elementalism) | 14 | `Barnabas_CustomMerchandise` |'
+W '| -- | Ark -- Ora Stonehand | 980 | Apprentice Mentalism + Adept Light Magic | 13 | `OraSteinschlag_CustomMerchandise` |'
+W '| `FlusshaimShopKurro` | Riverville -- Kurro''s General Store, Kurro Mongerson | 480 | Apprentice Elementalism + Light Magic | 12 | `Kurro_CustomMerchandise` |'
+W ''
+W 'Every Master tome (47) is loot-only by design: base Enderal sells its own Master tier only at'
+W 'random, from level 30.'
+W '| -- | Ark -- Milbert Foxhand | 530 | Novice Mentalism | 3 | `MilbertFuchshand_CustomMerchandise` |'
+W '| -- | Eshra Miraya (trades after her quest) | 450 | Novice Light Magic + Elementalism | 6 | `Eshra_CustomMerchandise` |'
+W '| `FlusshaimTavern` | Riverville -- Shrouded Mage, The Drunken Bee | 707 | Novice + Apprentice Entropy and Psionics | 16 | own chest `ZP_Apoc_Merchant_Wildmage_RivervilleChest` |'
+W '| `UndercityBarracks1` | Undercity -- Shrouded Mage | 630 | Adept Entropy and Psionics | 12 | `Wildmage_Undercity_CustomMerchandise` |'
+W '| `SchneefelstaverneInterior` | Frostcliff Tavern -- Shrouded Mage | 674 | Expert Entropy | 4 | `Wildmage_FrostcliffTavern_CustomMerchandise` |'
+W '| `DuenenhaimMain` | Duneville -- Shrouded Mage | 707 | Expert Psionics | 9 | `Wildmage_Duneville_CustomMerchandise` |'
+W ''
+W 'Entropy and Psionics are forbidden schools in Enderal, so the respectable shops sell neither: they'
+W 'are sold only by the four Shrouded Mages, Forgotten Stories'' forbidden-magic dealers, tiered by rank.'
 W ''
 W 'The three shops without a `coc` target are outdoor Ark and Riverville market stalls -- their chests'
 W 'are placed in `CapitalCityMarketArea`, `CapitalCityStrangerArea` and `Vyn` rather than an interior.'
