@@ -78,10 +78,10 @@ Nothing below is worth doing until these are green. Each is one launch.
       errors no. It runs the identical loop against its own six `_Replenish` FormLists, so it is
       a separate path from the automatic one and has to be checked separately.
 - [x] All six merchants stock Apocalypse tomes (see the shop table below).
-- [ ] **The Riverville Shrouded Mage** (`coc FlusshaimTavern`, The Drunken Bee) is sitting at the
+- [x] **The Riverville Shrouded Mage** (`coc FlusshaimTavern`, The Drunken Bee) is sitting at the
       corner bench, and **his face renders** -- no dark-face bug. He has no FaceGen of his own and
-      borrows the Duneville mage's through a Traits template; this is the one part a build cannot prove.
-- [ ] He speaks with the Shrouded Mage voice and his barter line opens his shop: FS's forbidden
+      borrows the Duneville mage's through a Traits template. *Confirmed 2026-11-25.*
+- [x] He speaks with the Shrouded Mage voice and his barter line opens his shop: FS's forbidden
       tomes plus the six Novice Entropy/Psionics tomes. With BOTH Psionics and Entropy below 15 he
       refuses with FS's "not enough entropy" message instead -- that is FS's gate on every Shrouded Mage.
 - [ ] No Entropy or Psionics tome at Milbert, Tarhutie, Ora, Torius or Emberlord and Fireflash.

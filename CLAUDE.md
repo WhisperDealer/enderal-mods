@@ -1319,6 +1319,15 @@ These are **engine-hardcoded** FormIDs — Bethesda's own code depends on them, 
   Spriggit 0.40.0 round-trips this correctly, emitting the canonical
   `GRUP CELL → block → sub-block → CELL → GRUP cellchildren → GRUP celltemp → REFR` nesting, and a
   new `REFR` in an ESL-flagged plugin keeps the flag. **[verified]**
+- **A new NPC in a plugin that ships no assets: give it a TRAITS template on an existing NPC.**
+  **[verified in game 2026-11-25]** A new `NPC_` needs FaceGen files named after its own FormID, and
+  without them it gets the dark-face bug. Setting `Configuration.TemplateFlags: [Traits]` plus
+  `Template: <existing NPC>` makes it borrow that NPC's race, voice, head parts **and FaceGen**; the
+  face renders correctly. The cost is that it looks identical to its template. Factions, packages and
+  inventory stay your own (they are separate template flags). Apocalypse's Riverville Shrouded Mage
+  (`src/Apocalypse/tools/18-shrouded-mage-riverville.ps1`) is the worked example. Note also that a
+  copied FS vendor NPC gets its whole voiced dialogue for free when FS conditions the lines on a
+  *faction* (here `FS_IsVoiceActorWildmage`) rather than on the NPC - check the topic's conditions.
 - **Placing a ref in an EXTERIOR cell needs three scaffolding files, or Spriggit silently drops the
   whole tree.** **[verified 2026-08-03]** An interior cell is one `RecordData.yaml` (see above), but
   a worldspace cell will not build from the cell file alone — the plugin comes out with **zero**

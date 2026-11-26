@@ -27,8 +27,8 @@
   without it, the dark-face bug. So the NPC carries a TRAITS template pointing at the Duneville
   mage `01E907`, and borrows his race, voice, head parts and face. He will look exactly like the
   Duneville mage; they are hooded, and the three FS mages already share a name and a voice.
-  **Whether the template avoids the dark face is the one thing a build cannot prove - check it in
-  game.**
+  [verified in game 2026-11-25] The face renders correctly, he sits, speaks with the Shrouded Mage
+  voice and opens his shop.
 
   RECORDS (Apocalypse's own space, continuing the 1C1E71-76 block in the gap below Enai's 1C4D39):
     1C1E77  NPC_        ZP_Apoc_Wildmage_Riverville                copy of 01E907, Traits template
