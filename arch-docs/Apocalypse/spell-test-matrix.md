@@ -174,8 +174,9 @@ unrelated to the conversion. Harmless -- the victim is still released.
 | -- | Ark -- Ora Stonehand | 980 | Apprentice Mentalism + Adept Light Magic | 13 | `OraSteinschlag_CustomMerchandise` |
 | `FlusshaimShopKurro` | Riverville -- Kurro's General Store, Kurro Mongerson | 480 | Apprentice Elementalism + Light Magic | 12 | `Kurro_CustomMerchandise` |
 | `CapitalCityMirellasAlchemy` | Ark -- Mirella Godshand | 2135 | Master Mentalism | 10 | `Mirella_CustomMerchandise` |
+| -- | Ark -- Librarian Marius | 250 | Master Light Magic | 10 | `BibliothekarMarius_CustomMerchandise` |
 
-The Master Elementalism and Light Magic tomes (20) are loot-only until they get a merchant.
+The Master Elementalism tomes (10) are loot-only until they get a merchant.
 | -- | Ark -- Milbert Foxhand | 530 | Novice Mentalism | 3 | `MilbertFuchshand_CustomMerchandise` |
 | -- | Eshra Miraya (trades after her quest) | 450 | Novice Light Magic + Elementalism | 6 | `Eshra_CustomMerchandise` |
 | `FlusshaimTavern` | Riverville -- Shrouded Mage, The Drunken Bee | 707 | Novice + Apprentice Entropy and Psionics | 16 | own chest `ZP_Apoc_Merchant_Wildmage_RivervilleChest` |
@@ -447,20 +448,20 @@ player.advskill restoration 100000 first, so magnitudes read at full skill.
 | [ ] | **Tree Rings** | `player.addspell XX13DA15` | FireAndForget | 100 | 275 | Ark - Emberlord & Fireflash | Caster receives <10> layers of tough plant skin, each increasing maximum Health by <15> points. Layers gradually fall off over the course of 30 seconds. |  |
 | [ ] | **Willpower** | `player.addspell XX15E71D` | FireAndForget | 49 | 285 | Ark - Emberlord & Fireflash | Transfers all Stamina to Magicka. |  |
 
-### Master (100) -- NOT SOLD
+### Master (100) -- Ark - Librarian Marius
 
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Bloodseeker** | `player.addspell XX048398` | FireAndForget / Aimed | 115 | 505 | - | Casts a homing flare at a target. When it reaches the target, it heals or deals magic damage equal to <Global=WB_Restoration_Bloodseeker_Global_Mult>% of the Health the target gained or lost while it was in flight. |  |
-| [ ] | **Breath of Tyr** | `player.addspell XX12B063` | Concentration | 68 | 380 | - | Accumulate 50 points of divine energy per second while concentrating. After you stop concentrating, the energy is converted into healing. |  |
-| [ ] | **Circle of Death** | `player.addspell XX01220F` | FireAndForget | 130 | 385 | - | Circle instantly kills living targets below <40>% Health. |  |
-| [ ] | **Dust To Dust** | `player.addspell XX11122C` | FireAndForget | 240 | 350 | - | Destroys all undead below <40>% health. |  |
-| [ ] | **Infinite Light** | `player.addspell XX02F66E` | Concentration / Aimed | 68 | 485 | - | Stream of healing energy that diffracts between targets, healing 150 points per second. | DEAD-SCRIPT-PROP |
-| [ ] | **King's Heart** | `player.addspell XX033CCA` | FireAndForget | 120 | 325 | - | A holy spark slowly follows the caster for 60 seconds. When it is nearby, it fortifies most skills by <15>% and heals 15 points per second. |  |
-| [ ] | **Life's Finale** | `player.addspell XX083FA8` | FireAndForget | 195 | 450 | - | Corrupts nearby living targets and the caster for 20 seconds. |  |
-| [ ] | **Malphas' Wrath** | `player.addspell XX0362C7` | FireAndForget | 225 | 340 | - | Attunes the caster to light, equipping the Starstorm spell for up to 30 seconds. This spell deals 100 damage per second to undead while the caster concentrates. |  |
-| [ ] | **Transcendence** | `player.addspell XX086B2E` | FireAndForget | 240 | 395 | - | Blaze with holy energy, replenishing 15 Magicka per second. |  |
-| [ ] | **Worm Shroud** | `player.addspell XX12CB8D` | FireAndForget | 275 | 315 | - | For 120 seconds, destroys corpses within 20 feet, improving Restoration spells by <5>% for <30> seconds. This effect refreshes and stacks up to <10> times. |  |
+| [ ] | **Bloodseeker** | `player.addspell XX048398` | FireAndForget / Aimed | 115 | 505 | Ark - Librarian Marius | Casts a homing flare at a target. When it reaches the target, it heals or deals magic damage equal to <Global=WB_Restoration_Bloodseeker_Global_Mult>% of the Health the target gained or lost while it was in flight. |  |
+| [ ] | **Breath of Tyr** | `player.addspell XX12B063` | Concentration | 68 | 380 | Ark - Librarian Marius | Accumulate 50 points of divine energy per second while concentrating. After you stop concentrating, the energy is converted into healing. |  |
+| [ ] | **Circle of Death** | `player.addspell XX01220F` | FireAndForget | 130 | 385 | Ark - Librarian Marius | Circle instantly kills living targets below <40>% Health. |  |
+| [ ] | **Dust To Dust** | `player.addspell XX11122C` | FireAndForget | 240 | 350 | Ark - Librarian Marius | Destroys all undead below <40>% health. |  |
+| [ ] | **Infinite Light** | `player.addspell XX02F66E` | Concentration / Aimed | 68 | 485 | Ark - Librarian Marius | Stream of healing energy that diffracts between targets, healing 150 points per second. | DEAD-SCRIPT-PROP |
+| [ ] | **King's Heart** | `player.addspell XX033CCA` | FireAndForget | 120 | 325 | Ark - Librarian Marius | A holy spark slowly follows the caster for 60 seconds. When it is nearby, it fortifies most skills by <15>% and heals 15 points per second. |  |
+| [ ] | **Life's Finale** | `player.addspell XX083FA8` | FireAndForget | 195 | 450 | Ark - Librarian Marius | Corrupts nearby living targets and the caster for 20 seconds. |  |
+| [ ] | **Malphas' Wrath** | `player.addspell XX0362C7` | FireAndForget | 225 | 340 | Ark - Librarian Marius | Attunes the caster to light, equipping the Starstorm spell for up to 30 seconds. This spell deals 100 damage per second to undead while the caster concentrates. |  |
+| [ ] | **Transcendence** | `player.addspell XX086B2E` | FireAndForget | 240 | 395 | Ark - Librarian Marius | Blaze with holy energy, replenishing 15 Magicka per second. |  |
+| [ ] | **Worm Shroud** | `player.addspell XX12CB8D` | FireAndForget | 275 | 315 | Ark - Librarian Marius | For 120 seconds, destroys corpses within 20 feet, improving Restoration spells by <5>% for <30> seconds. This effect refreshes and stacks up to <10> times. |  |
 
 ## Mentalism -- *Alteration* (35 spells)
 
