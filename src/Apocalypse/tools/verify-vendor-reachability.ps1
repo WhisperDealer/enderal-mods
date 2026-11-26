@@ -23,8 +23,8 @@ $ErrorActionPreference = 'Stop'
 #   4. Our OWN merchant - the Riverville Shrouded Mage (18-shrouded-mage-riverville.ps1) - is wired
 #      end to end: a Vendor faction whose MerchantContainer is a ref placed in our tree, whose base is
 #      our container, which the NPC carrying that faction stands in the same cell as.
-#   5. 126 of the 163 distributed tomes are stocked exactly once each: 110 in hooks, 16 in our own
-#      chest. The 37 Master Elementalism/Light Magic/Entropy/Psionics tomes are loot-only by design
+#   5. 116 of the 163 distributed tomes are stocked exactly once each: 100 in hooks, 16 in our own
+#      chest. The 47 Master tomes (all five schools) are loot-only by design
 #      (07's $PENDING) - base Enderal sells its own Master tier only at random, from level 30.
 #      12 summons are withheld entirely (00-cut-summons.ps1).
 #   7. No hook we write is also written by Triumvirate (src/Triumvirate). Two plugins writing one
@@ -158,7 +158,7 @@ $rows | Format-Table -AutoSize | Out-String | Write-Host
 
 # ---------------------------------------------------------------- 5. coverage
 $total = $seen.Keys.Count
-if ($total -ne 126) { throw "$total tomes stocked, expected 126 (110 in hooks + 16 at the Riverville Shrouded Mage)" }
+if ($total -ne 116) { throw "$total tomes stocked, expected 116 (100 in hooks + 16 at the Riverville Shrouded Mage)" }
 
 # ---------------------------------------------------------------- 7. no hook shared with Triumvirate
 $tvr = Join-Path $repo 'src\Triumvirate\TriumvirateESP\LeveledItems'

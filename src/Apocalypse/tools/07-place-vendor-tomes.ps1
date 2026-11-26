@@ -98,10 +98,6 @@ $vendors = @(
   # _00E_Merchant_CCStarWarehouse 11B214 (890 gold; 1390 under EGO); FS, EGO and EGO Leveling Redone
   # all carry this hook in it.
   @{ File = 'FitzaiGalabagadananka_CustomMerchandise - 0302D6_Enderal - Forgotten Stories.esm.yaml'; Shop = 'Ark, Fitzai''s Puzzle Box';    Gold =  890; Lines = '075:A'; Expect = 9 }
-  # Master Mentalism: Mirella Godshand's alchemy shop in Ark, whose chest already stocks Enderal's
-  # top-tier spell books (_00ETraderSpellBooksLevelD x10). Chest _00E_Merchant_CCMirellasAlchemy
-  # 106EA7 (2135 gold); EGO and EGO Leveling Redone keep the hook.
-  @{ File = 'Mirella_CustomMerchandise - 0302DF_Enderal - Forgotten Stories.esm.yaml';             Shop = 'Ark, Mirella Godshand';        Gold = 2135; Lines = '100:A'; Expect = 10 }
   # Novice Light Magic + Elementalism: Eshra Miraya, one of the first merchants a player meets in the
   # open world (she trades once her quest is done). Her chest is _00E_TraderSonnenkueste 050FCF;
   # FS, EGO and EGO Leveling Redone all carry this hook in it.
@@ -198,14 +194,14 @@ foreach ($v in $vendors) {
 # The only tomes NOT placed here are the 16 Novice/Apprentice Entropy/Psionics tomes the Riverville
 # Shrouded Mage sells from his own chest (step 18), and $PENDING: lines taken off a merchant and not
 # yet given a new one, loot-only meanwhile. Nothing else may fall through.
-# MASTER TOMES ARE LOOT-ONLY, except Mirella's Master Mentalism. Base Enderal sells its Master tier
-# only at random (its _00ETraderSpellBooksLevelD vendor list yields from player level 30) and leaves
-# several to be found in the world, so Master Elementalism, Light Magic, Entropy and Psionics are
-# found through the ZP_Apoc_Tomes_R100 loot sublist (_00E_SpellBooksLootD, level 40) and not sold.
-$PENDING     = '^WB_[DRCI]100_'    # Master Elementalism/Light Magic/Entropy/Psionics: loot-only
-$PLACED_HERE = 110
+# MASTER TOMES ARE LOOT-ONLY, all five schools (decided 2026-11-26; Mirella's Master Mentalism was
+# removed). Base Enderal sells its Master tier only at random (its _00ETraderSpellBooksLevelD vendor
+# list yields from player level 30) and leaves several to be found in the world, so every Master
+# tome is found through the ZP_Apoc_Tomes_R100 loot sublist (_00E_SpellBooksLootD, level 40).
+$PENDING     = '^WB_[ADRCI]100_'   # every Master tome: loot-only
+$PLACED_HERE = 100
 $RIVERVILLE  = 16
-$LOOT_ONLY   = 37
+$LOOT_ONLY   = 47
 if ($placed.Keys.Count -ne $PLACED_HERE) { throw "placed $($placed.Keys.Count) tomes, expected $PLACED_HERE" }
 $unplaced = @($tomes | Where-Object { -not $placed.ContainsKey($_.EditorID) })
 $legal    = @($unplaced | Where-Object { $_.EditorID -notmatch '^WB_[CI]' -and $_.EditorID -notmatch $PENDING })

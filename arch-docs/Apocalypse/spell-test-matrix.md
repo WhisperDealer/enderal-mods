@@ -173,10 +173,9 @@ unrelated to the conversion. Harmless -- the victim is still released.
 | `UndercityBarracks2Barnabas` | Undercity -- Barnabas | 1050 | Adept (Mentalism/Elementalism) | 14 | `Barnabas_CustomMerchandise` |
 | -- | Ark -- Ora Stonehand | 980 | Apprentice Mentalism + Adept Light Magic | 13 | `OraSteinschlag_CustomMerchandise` |
 | `FlusshaimShopKurro` | Riverville -- Kurro's General Store, Kurro Mongerson | 480 | Apprentice Elementalism + Light Magic | 12 | `Kurro_CustomMerchandise` |
-| `CapitalCityMirellasAlchemy` | Ark -- Mirella Godshand | 2135 | Master Mentalism | 10 | `Mirella_CustomMerchandise` |
 
-Master Elementalism, Light Magic, Entropy and Psionics (37) are loot-only by design: base Enderal
-sells its own Master tier only at random, from level 30. Master Mentalism is the exception (Mirella).
+Every Master tome (47) is loot-only by design: base Enderal sells its own Master tier only at
+random, from level 30.
 | -- | Ark -- Milbert Foxhand | 530 | Novice Mentalism | 3 | `MilbertFuchshand_CustomMerchandise` |
 | -- | Eshra Miraya (trades after her quest) | 450 | Novice Light Magic + Elementalism | 6 | `Eshra_CustomMerchandise` |
 | `FlusshaimTavern` | Riverville -- Shrouded Mage, The Drunken Bee | 707 | Novice + Apprentice Entropy and Psionics | 16 | own chest `ZP_Apoc_Merchant_Wildmage_RivervilleChest` |
@@ -512,20 +511,20 @@ player.advskill alteration 100000 first, so magnitudes read at full skill.
 | [ ] | **Spell Sentinel** | `player.addspell XX161610` | FireAndForget | 120 | 240 | Ark - Fitzai's Puzzle Box | Stores the (beneficial self-targeted non-concentration) spell in your left hand and casts it for no cost every <30> seconds in combat. Empty left hand to reset. |  |
 | [ ] | **Tumble Magnet** | `player.addspell XX00A5EB` | FireAndForget / Aimed | 95 | 280 | Ark - Fitzai's Puzzle Box | Magnetic artifact that exists for 20 seconds, randomly pulling nearby enemies to the center. |  |
 
-### Master (100) -- Ark - Mirella Godshand
+### Master (100) -- NOT SOLD
 
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Acceleration Rune** | `player.addspell XX124EC9` | FireAndForget / TargetLocation | 240 | 350 | Ark - Mirella Godshand | Cast on a nearby surface, launches enemies in the direction they are moving. |  |
-| [ ] | **Battletide** | `player.addspell XX05ECEE` | FireAndForget | 135 | 395 | Ark - Mirella Godshand | Steals 80 points of armor rating from each nearby target for 30 seconds. The caster gains the total amount stolen. |  |
-| [ ] | **Control Weather** | `player.addspell XX084A9C` | FireAndForget | 240 | 395 | Ark - Mirella Godshand | Temporarily summon the weather of your choice. | DEAD-SCRIPT-PROP |
-| [ ] | **Eventuality Grimoire** | `player.addspell XX00C13D` | FireAndForget | 135 | 405 | Ark - Mirella Godshand | Creates a hovering spell tome of the (projectile, non-concentration) spell in your left hand. It repeatedly casts the spell in the direction you are facing for 30 seconds. |  |
-| [ ] | **Milestones** | `player.addspell XX0A59D5` | FireAndForget / TargetLocation | 265 | 405 | Ark - Mirella Godshand | Place up to <5> teleportation anchors and teleport freely between them. |  |
-| [ ] | **Talons of Vyn** | `player.addspell XX07FE79` | FireAndForget | 120 | 400 | Ark - Mirella Godshand | Whenever an enemy in the area is staggered, a spike of rock erupts from the ground, tossing the target and dealing 150 Stamina damage. Lasts 60 seconds. |  |
-| [ ] | **Telekinetic Gauntlet** | `player.addspell XX002E2A` | FireAndForget / Aimed | 110 | 370 | Ark - Mirella Godshand | Telekinetically holds a target in front of the caster for 10 seconds. |  |
-| [ ] | **Thaumaturgic Maelstrom** | `player.addspell XX086B60` | FireAndForget | 120 | 350 | Ark - Mirella Godshand | Nearby foes within 20 feet get <5>% weakness to magic per second, up to <100>%. Lasts 120 seconds. |  |
-| [ ] | **Thrumming Stone** | `player.addspell XX124EC7` | FireAndForget / TargetLocation | 120 | 300 | Ark - Mirella Godshand | Magical vibrating rock that emits a tremor every <8> seconds, staggering enemies and inflicting 40% weakness to magic for 2 seconds. Emits <5> pulses. |  |
-| [ ] | **Wind Running** | `player.addspell XX005F2B` | FireAndForget | 145 | 420 | Ark - Mirella Godshand | Grants the ability to sprint across thin air and immunity to fall damage for 30 seconds. |  |
+| [ ] | **Acceleration Rune** | `player.addspell XX124EC9` | FireAndForget / TargetLocation | 240 | 350 | - | Cast on a nearby surface, launches enemies in the direction they are moving. |  |
+| [ ] | **Battletide** | `player.addspell XX05ECEE` | FireAndForget | 135 | 395 | - | Steals 80 points of armor rating from each nearby target for 30 seconds. The caster gains the total amount stolen. |  |
+| [ ] | **Control Weather** | `player.addspell XX084A9C` | FireAndForget | 240 | 395 | - | Temporarily summon the weather of your choice. | DEAD-SCRIPT-PROP |
+| [ ] | **Eventuality Grimoire** | `player.addspell XX00C13D` | FireAndForget | 135 | 405 | - | Creates a hovering spell tome of the (projectile, non-concentration) spell in your left hand. It repeatedly casts the spell in the direction you are facing for 30 seconds. |  |
+| [ ] | **Milestones** | `player.addspell XX0A59D5` | FireAndForget / TargetLocation | 265 | 405 | - | Place up to <5> teleportation anchors and teleport freely between them. |  |
+| [ ] | **Talons of Vyn** | `player.addspell XX07FE79` | FireAndForget | 120 | 400 | - | Whenever an enemy in the area is staggered, a spike of rock erupts from the ground, tossing the target and dealing 150 Stamina damage. Lasts 60 seconds. |  |
+| [ ] | **Telekinetic Gauntlet** | `player.addspell XX002E2A` | FireAndForget / Aimed | 110 | 370 | - | Telekinetically holds a target in front of the caster for 10 seconds. |  |
+| [ ] | **Thaumaturgic Maelstrom** | `player.addspell XX086B60` | FireAndForget | 120 | 350 | - | Nearby foes within 20 feet get <5>% weakness to magic per second, up to <100>%. Lasts 120 seconds. |  |
+| [ ] | **Thrumming Stone** | `player.addspell XX124EC7` | FireAndForget / TargetLocation | 120 | 300 | - | Magical vibrating rock that emits a tremor every <8> seconds, staggering enemies and inflicting 40% weakness to magic for 2 seconds. Emits <5> pulses. |  |
+| [ ] | **Wind Running** | `player.addspell XX005F2B` | FireAndForget | 145 | 420 | - | Grants the ability to sprint across thin air and immunity to fall damage for 30 seconds. |  |
 
 ## Psionics -- *Illusion* (35 spells)
 

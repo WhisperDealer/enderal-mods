@@ -3,7 +3,7 @@
 Paste each version block into the Nexus **Changelogs** tab. User-facing changes only; repo tooling
 and documentation are not listed.
 
-## Unreleased
+## 2.0.0
 
 - **Updated for Enderal SE 2.1.4.4.** This version requires 2.1.4.4 or later.
 - Fixed: **on Enderal 2.1.4.4, Mental Expert players paid no Arcane Fever for Apocalypse's heals.**
@@ -28,8 +28,11 @@ and documentation are not listed.
   - Apprentice Elementalism and Light Magic: **Kurro's General Store**, Riverville
   - Apprentice Mentalism: **Ora Stonehand**, Ark, beside her Adept Light Magic
   - Expert Elementalism and Light Magic: **Emberlord and Fireflash**, Ark
-- **Mirella Godshand sells the Master Mentalism tomes** at her alchemy shop in Ark, beside the
-  top-tier spell books she already stocks.
+- **Master tomes are loot-only**, in all five schools, found through Enderal's level-40 spell-book
+  loot. Base Enderal sells its own Master tier only at random, so no merchant stocks them.
+  This includes **Conjure Entropic Assassin** and **Conjure Craftlord**, which Emberlord and
+  Fireflash used to sell. **Conjure Herne** moves with the Expert Entropy tomes to the Shrouded
+  Mage in Frostcliff Tavern.
 - **Fitzai Galabagadananka sells the Expert Mentalism tomes** at Fitzai's Puzzle Box in Ark,
   instead of Torius Flameling. Mentalism is the Starlings' art, and with EGO his shop also sells
   Starling gear.

@@ -37,26 +37,48 @@ Enderal also has no spell tomes at all — it teaches spells from its own spellb
 
 [b]1. Distribution — the part that makes the mod exist.[/b]
 
-All [b]163 distributed spell tomes[/b] are stocked by named merchants, and [b]every one of them is buyable[/b] — no rolling the dice on whether a shop happens to have the spell you want. Vendors are ranked by how much gold they carry, so the richest sells the master spells and the poorest sells the novice ones:
+Every Apocalypse spell tome below Master rank is stocked by a named merchant, and [b]every one of them is buyable[/b]: no rolling the dice on whether a shop happens to have the spell you want. Each tome is sold at exactly one shop, so the spell list is a shopping route rather than a lottery.
 
 [code]
-  Merchant                          Gold    Sells                        Tomes
-  ---------------------------------------------------------------------------
-  Ark, Emberlord and Fireflash      1800    Master     (rank 100)          47
-  Sun Temple, Torius Flameling      1430    Expert     (rank 075)          40
-  Undercity, Barnabas               1050    Adept  - Mentalism,            19
-                                                    Entropy,
-                                                    Elementalism
-  Ark, Ora Stonehand                 980    Adept  - Psionics,             14
-                                                    Light Magic
-  Riverville, Tarhutie               630    Apprentice (rank 025)          28
-  Ark, Milbert Foxhand               530    Novice     (rank 000)          15
-  ---------------------------------------------------------------------------
-                                                                          163[/code]
+                Novice       Apprentice   Adept        Expert             Master
+  ------------------------------------------------------------------------------
+  Entropy       Riverville   Riverville   Undercity    Frostcliff Tavern  loot
+                Shrouded M.  Shrouded M.  Shrouded M.  Shrouded Mage
+  Psionics      Riverville   Riverville   Undercity    Duneville          loot
+                Shrouded M.  Shrouded M.  Shrouded M.  Shrouded Mage
+  Light Magic   Eshra        Kurro        Ora          Emberlord and      loot
+                Miraya                    Stonehand    Fireflash
+  Elementalism  Eshra        Kurro        Barnabas     Emberlord and      loot
+                Miraya                                 Fireflash
+  Mentalism     Milbert      Ora          Barnabas     Fitzai's           loot
+                Foxhand      Stonehand                 Puzzle Box[/code]
 
-Each tome is sold at exactly one shop, so the whole spell list is a shopping route rather than a lottery. The Adept tier is split by magic school across the two middle merchants.
+[code]
+  Merchant                                   Tomes
+  -------------------------------------------------
+  Ark, Emberlord and Fireflash                 18
+  Undercity, Barnabas                          14
+  Ark, Ora Stonehand                           13
+  Riverville, Kurro's General Store            12
+  Undercity, Shrouded Mage                     12
+  Ark, Fitzai's Puzzle Box                      9
+  Duneville, Shrouded Mage                      9
+  Eshra Miraya (after her quest)                6
+  Frostcliff Tavern, Shrouded Mage              4
+  Ark, Milbert Foxhand                          3
+  Riverville, The Drunken Bee, Shrouded Mage   16
+  -------------------------------------------------
+                                              116
+  Master tomes, loot only                      47
+                                              163[/code]
 
-[b]The stock is added through SureAI's own extension point, so no merchant record is overridden.[/b] Enderal ships an empty leveled list called [font=Courier New]&lt;Merchant&gt;_CustomMerchandise[/font] for every one of its 67 merchants — a hook the developers built into each shop's chest and never used. This mod writes into six of those instead of rewriting the chests, which means it can add stock to a shop while touching [b]none[/b] of that shop's own records. See Compatibility below for what that buys you.
+[b]Entropy and Psionics are forbidden magic, so only the Shrouded Mages sell them.[/b] These are Forgotten Stories' own forbidden-magic dealers, and like Enderal's, they will not trade with you until your Psionics or Entropy reaches 15. Forgotten Stories has three of them; this mod adds a fourth, in [b]The Drunken Bee in Riverville[/b], selling the Novice and Apprentice tomes so the forbidden schools can be started early. Every other shop sells only Light Magic, Elementalism and Mentalism.
+
+[b]Master tomes are found, not bought.[/b] Base Enderal sells its own Master tier only at random, from level 30, and leaves several of them to be found in the world. All 47 Apocalypse Master tomes follow that rule: they drop from Enderal's level-40 spell-book loot.
+
+[b]Eshra Mirâya trades only once her quest is done[/b], so the Novice Light Magic and Elementalism tomes arrive with her. She is one of the first merchants you can meet in the open world.
+
+[b]The stock is added through SureAI's own extension point, so no merchant record is overridden.[/b] Enderal ships an empty leveled list called [font=Courier New]&lt;Merchant&gt;_CustomMerchandise[/font] for every one of its 67 merchants — a hook the developers built into each shop's chest and never used. This mod writes into ten of those instead of rewriting the chests, which means it can add stock to a shop while touching [b]none[/b] of that shop's own records. See Compatibility below for what that buys you.
 
 [b]Loot is separate and stays random.[/b] Apocalypse tomes and [b]133 scrolls[/b] are also injected into Enderal's own world-loot lists — the ones feeding chests, rucksacks and scroll caches — so they still turn up as finds while you explore. Random is the right shape for loot and the wrong shape for a shop.
 
@@ -140,9 +162,9 @@ The rank titles are untouched: Churl, Pit Fighter, Champion, Honor Guard, Mentor
 
 [b]Three of the fifteen are now obtainable for the first time:[/b]
 [list]
-[*][b]Conjure Herne[/b] — Sun Temple, Torius Flameling[/*]
-[*][b]Conjure Entropic Assassin[/b] — Ark, Emberlord and Fireflash[/*]
-[*][b]Conjure Craftlord[/b] — Ark, Emberlord and Fireflash[/*]
+[*][b]Conjure Herne[/b] — Frostcliff Tavern, Shrouded Mage (Expert Entropy)[/*]
+[*][b]Conjure Entropic Assassin[/b] — Master Entropy, found as loot[/*]
+[*][b]Conjure Craftlord[/b] — Master Entropy, found as loot[/*]
 [/list]
 [b]The other twelve stay out of shops and loot for now, and that is deliberate.[/b] Because they were never distributed, nobody had ever cast one — and when the first three were finally examined, [b]two of them were broken[/b]: Herne stood holding a bow with no arrows he could use, and the Craftlord arrived naked because his outfit was Dwarven armour Enderal does not have. Both are fixed (see below). Rather than release ten more spells on the assumption they are fine, they are being released as each one is tested. They are renamed and ready; they are just not on a shelf yet.
 
@@ -364,16 +386,19 @@ Note the last two — Alteration is [i]Mentalism[/i] and Illusion is [i]Psionics
 
 This [b]is[/b] [font=Courier New]Apocalypse - Magic of Skyrim.esp[/font] — it takes the original's place in your load order, exactly where that plugin already sat. It is a full ESP, not ESL-flagged, because it carries all ~3,900 of Apocalypse's own records.
 
-Beyond Apocalypse's own records it touches [b]twelve[/b] Enderal records — eleven leveled lists and one worldspace header, and [b]not one container, NPC or quest[/b]:
+Beyond Apocalypse's own records it touches [b]seventeen[/b] Enderal records — fifteen leveled lists, one worldspace header and one cell, and [b]not one container, NPC or quest[/b]:
 [list]
-[*][b]Six merchant hooks[/b] — [font=Courier New]GabrielleFunkenfrst_[/font], [font=Courier New]TuriousFlammentrunk_[/font], [font=Courier New]Barnabas_[/font], [font=Courier New]OraSteinschlag_[/font], [font=Courier New]Tarhutie_[/font] and [font=Courier New]MilbertFuchshand_CustomMerchandise[/font] — each gains its tier of spell tomes[/*]
+[*][b]Ten merchant hooks[/b] — [font=Courier New]GabrielleFunkenfrst_[/font], [font=Courier New]Barnabas_[/font], [font=Courier New]OraSteinschlag_[/font], [font=Courier New]Kurro_[/font], [font=Courier New]FitzaiGalabagadananka_[/font], [font=Courier New]MilbertFuchshand_[/font], [font=Courier New]Eshra_[/font] and the three Shrouded Mages' [font=Courier New]Wildmage_Undercity_[/font], [font=Courier New]Wildmage_FrostcliffTavern_[/font] and [font=Courier New]Wildmage_Duneville_CustomMerchandise[/font] — each gains its spell tomes[/*]
+[*][font=Courier New]FlusshaimTavern[/font] — The Drunken Bee in Riverville, which gains the new Shrouded Mage and his chest. The mage, his chest and his merchant faction are this mod's own new records; the cell override carries only those two placed references[/*]
 [*][font=Courier New]_00E_SpellBooksLootA[/font] through [font=Courier New]D[/font] — the spellbook loot tiers[/*]
 [*][font=Courier New]00E_ScrollsLowChance[/font] — the scroll loot pool[/*]
 [*][font=Courier New]MQP01Home[/font] — Enderal's own record for worldspace [font=Courier New]00003C[/font], forwarded back over the [i]Tamriel[/i] data the original stamped on it, and carrying three of Apocalypse's own persistent references[/*]
 [/list]
-If another mod edits those same records, the later plugin wins outright and one mod's additions are lost — either order them accordingly or merge with a Bashed/Smashed patch, as with any leveled list conflict. In practice the six merchant hooks are as quiet as records get: [b]nothing else edits them.[/b]
+If another mod edits those same records, the later plugin wins outright and one mod's additions are lost — either order them accordingly or merge with a Bashed/Smashed patch, as with any leveled list conflict. In practice the merchant hooks are as quiet as records get: [b]nothing else edits them.[/b]
 
-[b]Overhauls and other spell mods.[/b] Merchant chests are the most heavily contested records in Enderal — [b]EGO[/b], [b]EGO Leveling Redone[/b], [b]KataPUMB Spell Package[/b], [b]Kata's Emberlord[/b] and [b]Open Spells[/b] all rewrite the very shops this mod stocks, and earlier versions of this patch collided with every one of them. Writing into the [font=Courier New]CustomMerchandise[/font] hooks removes the whole class of conflict: those five mods each keep the hook in the chests they rewrite, so [b]this mod's stock survives all of them, in any load order[/b], and none of their additions is lost either. KataPUMB's 15 staves in particular now stay on sale at all three of their shops, Tarhutie included — which is why the Apprentice tier has moved back to him from Maxus Tabbakus.
+[b]Overhauls and other spell mods.[/b] Merchant chests are the most heavily contested records in Enderal — [b]EGO[/b], [b]EGO Leveling Redone[/b], [b]KataPUMB Spell Package[/b], [b]Kata's Emberlord[/b] and [b]Open Spells[/b] all rewrite the very shops this mod stocks, and earlier versions of this patch collided with every one of them. Writing into the [font=Courier New]CustomMerchandise[/font] hooks removes the whole class of conflict: those five mods each keep the hook in the chests they rewrite, so [b]this mod's stock survives all of them, in any load order[/b], and none of their additions is lost either. KataPUMB's 15 staves in particular stay on sale at all three of their shops.
+
+[b]Triumvirate (Enderal Conversion).[/b] Both mods used to stock Tarhutie and Torius Flameling through the same hooks, so whichever loaded later wiped the other's spells from those two shops. This mod no longer uses either merchant, so the two run side by side in any order.
 
 That is verified against the plugins rather than assumed, but it is a record-level proof: no dedicated compatibility patch has been playtested alongside those mods.
 
@@ -385,9 +410,10 @@ That is verified against the plugins rather than assumed, but it is a record-lev
 [*][b]Banish Living has no visual effect[/b], and a couple of spells that would have spoken a line stay silent. Both are Apocalypse pointing at vanilla Skyrim records Enderal does not have. They are cosmetic, and inventing replacements would have meant guessing at Enai's intent, so they were left alone and written down instead.[/*]
 [*][b]Scroll inventory previews and one summoned sword's first-person model are missing[/b] — Apocalypse points all 144 scrolls at a vanilla display model Enderal lacks. That reference is left exactly as Enai wrote it, so all 144 behave identically instead of a handful being quietly different.[/*]
 [*][b]The Nightmare ground sigil may show the wrong particle effect.[/b] Its addon node index collided with one of Enderal's own effects, which would have replaced an Enderal visual with Apocalypse's. The conflict is resolved in Enderal's favour — protecting the base game — which leaves Apocalypse's mesh looking for a node that has moved. Fixing it properly needs an edited mesh, and this release ships no assets.[/*]
+[*][b]Milbert Foxhand can die in [i]Divide and Conquer[/i].[/b] If you let Sila kill him, the three Novice Mentalism tomes are no longer for sale anywhere; they still drop as loot.[/*]
 [*][b]Spell tome tiering is by rank name, not by playtested power.[/b] Which merchant sells a spell follows its Apocalypse rank, not a measurement against Enderal's difficulty curve. Feedback welcome.[/*]
 [*][b]Erodan's Embrace costs a flat 20 Arcane Fever.[/b] Every other heal is priced off the exact number of points it restores, but that one is scripted to heal you to full — there is no number in the record to price, so 20 assumes a late-game health pool. If it feels wrong at your level, say so.[/*]
-[*][b]Merchant inventories get long.[/b] Emberlord and Fireflash gains 45 spell tomes on top of what it already sells. SkyUI's category filter handles it, but it is a visibly fuller shop than the base game's.[/*]
+[*][b]Merchant inventories get long.[/b] Emberlord and Fireflash gains 18 spell tomes on top of what it already sells. SkyUI's category filter handles it, but it is a visibly fuller shop than the base game's.[/*]
 [*][b]Tome names carry no "(Rank N)" suffix[/b], unlike most of Enderal's. That is intentional: in Enderal that suffix means the same spell exists at another strength, gated on player level, and Apocalypse spells have exactly one version each. Enderal leaves 13 of its own single-strength tomes unsuffixed for the same reason.[/*]
 [*][b]Requires Enderal SE 2.1.4.4 or later.[/b] The Arcane Fever charge uses the Mental Expert effect that version introduced, which older versions of Enderal do not have. This is a plugin only, so no SKSE version concerns apply to it.[/*]
 [/list]
