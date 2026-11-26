@@ -65,6 +65,11 @@ $enc   = New-Object System.Text.UTF8Encoding($false)
 # Their three hooks are empty UseAll lists in FS, and EGO and EGO Leveling Redone - the only mods in
 # reference/mods/ that override those chests - both keep them.
 #
+# LIGHT MAGIC (R) stays whole on the respectable ladder, DELIBERATELY. About half of Enai's
+# Restoration is death/disease/drain magic (Slay Living, Decompose, Poisoned Chalice, Circle of
+# Death, Life's Finale...), which sits oddly at the Sun Temple and in Ark. Considered and kept
+# (2026-11-26): it gives Light Magic utility beyond healing. Do not split it off to the dealers.
+#
 # `File` is the merchant's *_CustomMerchandise hook - all six are Forgotten Stories records.
 # `Shop` and `Gold` describe the chest that already contains it, recorded so the wealth ladder
 # stays readable; we never touch that record. The hook<->chest pairing was read out of each
