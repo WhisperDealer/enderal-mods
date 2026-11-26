@@ -1,32 +1,8 @@
-FormKey: 0302F7:Enderal - Forgotten Stories.esm
-EditorID: Tarhutie_CustomMerchandise
+FormKey: 0302F4:Enderal - Forgotten Stories.esm
+EditorID: Kurro_CustomMerchandise
 Flags:
 - UseAll
 Entries:
-- Data:
-    Level: 1
-    Reference: 03C51A:Apocalypse - Magic of Skyrim.esp
-    Count: 1
-- Data:
-    Level: 1
-    Reference: 03C51C:Apocalypse - Magic of Skyrim.esp
-    Count: 1
-- Data:
-    Level: 1
-    Reference: 03C51B:Apocalypse - Magic of Skyrim.esp
-    Count: 1
-- Data:
-    Level: 1
-    Reference: 03C519:Apocalypse - Magic of Skyrim.esp
-    Count: 1
-- Data:
-    Level: 1
-    Reference: 03C51D:Apocalypse - Magic of Skyrim.esp
-    Count: 1
-- Data:
-    Level: 1
-    Reference: 03C51E:Apocalypse - Magic of Skyrim.esp
-    Count: 1
 - Data:
     Level: 1
     Reference: 03DB22:Apocalypse - Magic of Skyrim.esp

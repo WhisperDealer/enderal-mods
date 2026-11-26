@@ -23,8 +23,11 @@ $ErrorActionPreference = 'Stop'
 #   4. Our OWN merchant - the Riverville Shrouded Mage (18-shrouded-mage-riverville.ps1) - is wired
 #      end to end: a Vendor faction whose MerchantContainer is a ref placed in our tree, whose base is
 #      our container, which the NPC carrying that faction stands in the same cell as.
-#   5. All 163 distributed tomes are stocked exactly once each: 147 in hooks, 16 in our own chest.
+#   5. 133 of the 163 distributed tomes are stocked exactly once each: 117 in hooks, 16 in our own
+#      chest. The Master Mentalism/Elementalism/Light Magic 30 are loot-only until re-homed (07's $PENDING).
 #      12 summons are withheld entirely (00-cut-summons.ps1).
+#   7. No hook we write is also written by Triumvirate (src/Triumvirate). Two plugins writing one
+#      LeveledItem is an override conflict - the later one's stock silently replaces the other's.
 #   6. Entropy (C) and Psionics (I) - forbidden schools in Enderal - are sold ONLY by the four
 #      Shrouded Mages, and the Shrouded Mages sell nothing else of ours.
 
@@ -154,7 +157,15 @@ $rows | Format-Table -AutoSize | Out-String | Write-Host
 
 # ---------------------------------------------------------------- 5. coverage
 $total = $seen.Keys.Count
-if ($total -ne 163) { throw "$total tomes stocked, expected 163 (147 in hooks + 16 at the Riverville Shrouded Mage)" }
+if ($total -ne 133) { throw "$total tomes stocked, expected 133 (117 in hooks + 16 at the Riverville Shrouded Mage)" }
+
+# ---------------------------------------------------------------- 7. no hook shared with Triumvirate
+$tvr = Join-Path $repo 'src\Triumvirate\TriumvirateESP\LeveledItems'
+if (Test-Path -LiteralPath $tvr) {
+    $theirs = @(Get-ChildItem $tvr -Filter '*_CustomMerchandise - *.yaml' -File | ForEach-Object Name)
+    $shared = @($hooks | Where-Object { $theirs -contains $_.Name } | ForEach-Object { $_.Name -replace ' - .*', '' })
+    if ($shared.Count -gt 0) { throw "hook(s) also written by Triumvirate - one mod's stock would vanish: $($shared -join ', ')" }
+}
 
 # ---------------------------------------------------------------- 6. forbidden schools stay off respectable shelves
 $shady = @('Wildmage_Undercity_CustomMerchandise', 'Wildmage_FrostcliffTavern_CustomMerchandise', 'Wildmage_Duneville_CustomMerchandise') + @($ownVendors | ForEach-Object { [regex]::Match((Read-Text $_.FullName), '(?m)^EditorID: (.+?)\s*\r?\n').Groups[1].Value })
@@ -176,5 +187,6 @@ if ($owned.Count -gt 0) { throw "overriding $($owned.Count) container(s) of a ma
 
 "proof: $total tomes stocked exactly once, all priced: $($hooks.Count) UseAll hooks + $($ownVendors.Count) merchant chest of our own"
 "       Entropy/Psionics only at the four Shrouded Mages, and nothing else there"
+"       no hook shared with Triumvirate"
 "       every hook is carried by its chest in base Enderal AND in every reference/mods override of it"
 "       0 container records of any master overridden"

@@ -22,6 +22,12 @@ and documentation are not listed.
 - **Eshra Mirâya now sells the Novice Light Magic and Elementalism tomes**, instead of Milbert
   Foxhand in Ark. She is one of the first merchants you can meet in the open world, and trades once
   her quest is done. Milbert keeps the Novice Mentalism tomes.
+- **Works alongside Triumvirate (Enderal Conversion).** Both mods used to stock Tarhutie and Torius
+  Flameling through the same lists, so whichever loaded later wiped the other's spells from those
+  two shops. Apocalypse no longer uses either merchant:
+  - Apprentice Elementalism and Light Magic: **Kurro's General Store**, Riverville
+  - Apprentice Mentalism: **Ora Stonehand**, Ark, beside her Adept Light Magic
+  - Expert Elementalism and Light Magic: **Emberlord and Fireflash**, Ark
 - **Fitzai Galabagadananka sells the Expert Mentalism tomes** at Fitzai's Puzzle Box in Ark,
   instead of Torius Flameling. Mentalism is the Starlings' art, and with EGO his shop also sells
   Starling gear.
