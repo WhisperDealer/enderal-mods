@@ -88,9 +88,9 @@ $vendors = @(
   @{ File = 'GabrielleFunkenfrst_CustomMerchandise - 0302D5_Enderal - Forgotten Stories.esm.yaml'; Shop = 'Ark, Emberlord and Fireflash'; Gold = 1800; Lines = '075:DR'; Expect = 18 }
   @{ File = 'Barnabas_CustomMerchandise - 030302_Enderal - Forgotten Stories.esm.yaml';            Shop = 'Undercity, Barnabas';          Gold = 1050; Lines = '050:AD'; Expect = 14 }
   @{ File = 'OraSteinschlag_CustomMerchandise - 0302E3_Enderal - Forgotten Stories.esm.yaml';      Shop = 'Ark, Ora Stonehand';           Gold =  980; Lines = '025:A 050:R'; Expect = 13 }   # Apprentice Mentalism + Adept Light Magic
-  # Apprentice Elementalism + Light Magic: Kurro Mongerson, Kurro's General Store in Riverville. His
+  # Apprentice Elementalism: Kurro Mongerson, Kurro's General Store in Riverville. His
   # chest _00E_Merchant_FlusshaimKurroContainer 05BCD8 (480 gold); EGO and EGO Leveling Redone keep the hook.
-  @{ File = 'Kurro_CustomMerchandise - 0302F4_Enderal - Forgotten Stories.esm.yaml';               Shop = 'Riverville, Kurro''s General Store'; Gold = 480; Lines = '025:DR'; Expect = 12 }
+  @{ File = 'Kurro_CustomMerchandise - 0302F4_Enderal - Forgotten Stories.esm.yaml';               Shop = 'Riverville, Kurro''s General Store'; Gold = 480; Lines = '025:D'; Expect = 6 }   # Apprentice Light Magic: Priest Vildas (step 19)
   @{ File = 'MilbertFuchshand_CustomMerchandise - 0302DE_Enderal - Forgotten Stories.esm.yaml';    Shop = 'Ark, Milbert Foxhand';         Gold =  530; Lines = '000:A'; Expect = 3 }
   # Expert Mentalism: Fitzai Galabagadananka, Fitzai's Puzzle Box in Ark. Mentalism is the Starlings'
   # art and EGO stocks his shop with Starling gear, so the two sit well together. His chest is
@@ -202,17 +202,20 @@ foreach ($v in $vendors) {
 # Shrouded Mage sells from his own chest (step 18), and $PENDING: lines taken off a merchant and not
 # yet given a new one, loot-only meanwhile. Nothing else may fall through.
 $PENDING     = '^WB_D100_'         # Master Elementalism, off Emberlord, awaiting a home
-$PLACED_HERE = 137
+$PLACED_HERE = 131
 $RIVERVILLE  = 16
+$VILDAS      = 6                   # Apprentice Light Magic, Priest Vildas's own chest (step 19)
 $LOOT_ONLY   = 10
 if ($placed.Keys.Count -ne $PLACED_HERE) { throw "placed $($placed.Keys.Count) tomes, expected $PLACED_HERE" }
 $unplaced = @($tomes | Where-Object { -not $placed.ContainsKey($_.EditorID) })
-$legal    = @($unplaced | Where-Object { $_.EditorID -notmatch '^WB_[CI]' -and $_.EditorID -notmatch $PENDING })
+$vild     = @($unplaced | Where-Object { $_.EditorID -match '^WB_R025_' })
+if ($vild.Count -ne $VILDAS) { throw "$($vild.Count) Apprentice Light Magic tomes unplaced, expected $VILDAS (Priest Vildas)" }
+$legal    = @($unplaced | Where-Object { $_.EditorID -notmatch '^WB_[CI]' -and $_.EditorID -notmatch $PENDING -and $_.EditorID -notmatch '^WB_R025_' })
 if ($legal.Count -gt 0) { throw "not placed, and neither Entropy/Psionics nor pending: $($legal.EditorID -join ', ')" }
 $novice   = @($unplaced | Where-Object { $_.EditorID -match '^WB_[CI](000|025)_' })
 if ($novice.Count -ne $RIVERVILLE) { throw "$($novice.Count) Novice/Apprentice Entropy/Psionics tomes unplaced, expected $RIVERVILLE (the Riverville mage)" }
-if ($unplaced.Count - $novice.Count -ne $LOOT_ONLY) { throw "$($unplaced.Count - $novice.Count) tomes loot-only, expected $LOOT_ONLY" }
-if ($PLACED_HERE + $RIVERVILLE + $LOOT_ONLY -ne $SHIP_TOMES) { throw "counts do not add up to $SHIP_TOMES" }
+if ($unplaced.Count - $novice.Count - $vild.Count -ne $LOOT_ONLY) { throw "$($unplaced.Count - $novice.Count - $vild.Count) tomes loot-only, expected $LOOT_ONLY" }
+if ($PLACED_HERE + $RIVERVILLE + $VILDAS + $LOOT_ONLY -ne $SHIP_TOMES) { throw "counts do not add up to $SHIP_TOMES" }
 # and no forbidden tome on a respectable shelf, nor anything else at a Shrouded Mage
 foreach ($k in $placed.Keys) {
   $shady = $placed[$k] -like '*Shrouded Mage'
@@ -231,5 +234,5 @@ if ($owned.Count -gt 0) {
 
 ""
 "$($placed.Keys.Count) tomes placed across $($vendors.Count) CustomMerchandise hooks, each in exactly one."
-"$RIVERVILLE Novice/Apprentice Entropy/Psionics tomes left to the Riverville Shrouded Mage (step 18); $LOOT_ONLY pending a merchant (loot-only)."
+"$RIVERVILLE Novice/Apprentice Entropy/Psionics tomes left to the Riverville Shrouded Mage (step 18); $VILDAS Apprentice Light Magic to Priest Vildas (step 19); $LOOT_ONLY pending a merchant (loot-only)."
 "0 container records of any master overridden."

@@ -25,9 +25,13 @@ and documentation are not listed.
 - **Works alongside Triumvirate (Enderal Conversion).** Both mods used to stock Tarhutie and Torius
   Flameling through the same lists, so whichever loaded later wiped the other's spells from those
   two shops. Apocalypse no longer uses either merchant:
-  - Apprentice Elementalism and Light Magic: **Kurro's General Store**, Riverville
+  - Apprentice Elementalism: **Kurro's General Store**, Riverville
+  - Apprentice Light Magic: **Priest Vildas**, Riverville's temple (below)
   - Apprentice Mentalism: **Ora Stonehand**, Ark, beside her Adept Light Magic
   - Expert Elementalism and Light Magic: **Emberlord and Fireflash**, Ark
+- **Priest Vildas in Riverville is now a merchant**, selling the Apprentice Light Magic tomes. Ask
+  him *"I'd like to see your spell tomes."* His voice has no trading line of its own, so he opens his
+  shop without a word.
 - **Librarian Marius sells the Master Light Magic tomes** in Ark.
 - **Mirella Godshand sells the Master Mentalism tomes** at her alchemy shop in Ark, beside the
   top-tier spell books she already stocks.
@@ -38,8 +42,9 @@ and documentation are not listed.
   Entropy and Psionics tomes beside Forgotten Stories' own forbidden spell books. Like every Shrouded Mage, he
   will not trade with you until your Psionics or Entropy reaches 15.
 - Removed the two loose brawl scripts (`dgintimidate*`) this mod used to ship. Enderal 2.1.4.4 no
-  longer has scripts by those names, so they replaced nothing. The release is now the plugin alone;
-  delete the two files from `Scripts\` if you update over an older version by hand.
+  longer has scripts by those names, so they replaced nothing. Delete the two
+  `dgintimidate*.pex` files from `Scripts\` if you update over an older version by hand. (The
+  release still has one script of its own: Priest Vildas's trade line.)
 - Brought the prologue worldspace this plugin carries up to date with Enderal 2.1.4.4's version,
   so it no longer reverts that update's changes (its Czech name, and a cell flag).
 

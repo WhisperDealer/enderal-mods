@@ -59,11 +59,13 @@ and the reasoning behind steps 10–12 and the loose Papyrus stubs. The headline
 
 ```
 ApocalypseESP/         Spriggit YAML — the source of truth, committed
+Scripts/source/*.psc   our one Papyrus fragment (Priest Vildas's trade line), committed
+Scripts/compiled/*.pex committed via a .gitignore exception — CI cannot compile Papyrus
 tools/*.ps1            the numbered generators that rebuild the tree against a new upstream
 ```
 
-The release is the `.esp` alone. **It must sit after Apocalypse in MO2's file priority** to win
-the plugin.
+The release is the `.esp` plus one loose `.pex` of our own (see [`Scripts/README.md`](Scripts/README.md)).
+**It must sit after Apocalypse in MO2's file priority** to win the plugin.
 
 **`ApocalypseESP/` is derived, not authored.** Every conversion decision lives in a numbered script
 under `tools/`, and a version bump is a re-run rather than a re-investigation — wipe the tree, re-run

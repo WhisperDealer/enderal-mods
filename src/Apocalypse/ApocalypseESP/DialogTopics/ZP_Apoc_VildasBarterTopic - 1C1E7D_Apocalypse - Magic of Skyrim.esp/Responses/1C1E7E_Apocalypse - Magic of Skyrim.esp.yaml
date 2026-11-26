@@ -1,0 +1,29 @@
+FormKey: 1C1E7E:Apocalypse - Magic of Skyrim.esp
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ZP_Apoc_TIF_VildasBarter
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: ZP_Apoc_TIF_VildasBarter
+    OnEnd:
+      ExtraBindDataVersion: 1
+      ScriptName: ZP_Apoc_TIF_VildasBarter
+      FragmentName: Fragment_0
+Flags: {}
+FavorLevel: None
+Responses:
+- EmotionValue: 50
+  ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: ''
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 111E79:Skyrim.esm
+  ComparisonValue: 1

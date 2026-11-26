@@ -84,6 +84,9 @@ Nothing below is worth doing until these are green. Each is one launch.
 - [x] He speaks with the Shrouded Mage voice and his barter line opens his shop: FS's forbidden
       tomes plus the 16 Novice and Apprentice Entropy/Psionics tomes. With BOTH Psionics and Entropy below 15 he
       refuses with FS's "not enough entropy" message instead -- that is FS's gate on every Shrouded Mage.
+- [ ] **Priest Vildas** (Riverville temple) offers *"I'd like to see your spell tomes."*. He says nothing
+      (his voice has no trade line) and his shop opens with the 6 Apprentice Light Magic tomes.
+      He trades 7:00-20:00, wherever he is.
 - [ ] No Entropy or Psionics tome at Milbert, Eshra, Kurro, Ora, Barnabas, Fitzai or Emberlord and Fireflash.
 - [ ] **No Apocalypse tome at Tarhutie or Torius Flameling** -- Triumvirate stocks those two, and two
       plugins writing one hook means only the later-loading one's stock appears.
@@ -172,7 +175,8 @@ unrelated to the conversion. Harmless -- the victim is still released.
 | -- | Ark -- Fitzai's Puzzle Box, Fitzai Galabagadananka | 890 | Expert Mentalism | 9 | `FitzaiGalabagadananka_CustomMerchandise` |
 | `UndercityBarracks2Barnabas` | Undercity -- Barnabas | 1050 | Adept (Mentalism/Elementalism) | 14 | `Barnabas_CustomMerchandise` |
 | -- | Ark -- Ora Stonehand | 980 | Apprentice Mentalism + Adept Light Magic | 13 | `OraSteinschlag_CustomMerchandise` |
-| `FlusshaimShopKurro` | Riverville -- Kurro's General Store, Kurro Mongerson | 480 | Apprentice Elementalism + Light Magic | 12 | `Kurro_CustomMerchandise` |
+| `FlusshaimShopKurro` | Riverville -- Kurro's General Store, Kurro Mongerson | 480 | Apprentice Elementalism | 6 | `Kurro_CustomMerchandise` |
+| `FlusshaimTemple` | Riverville -- Priest Vildas | 300 | Apprentice Light Magic | 6 | own chest `ZP_Apoc_Merchant_VildasChest` (silent trade topic) |
 | `CapitalCityMirellasAlchemy` | Ark -- Mirella Godshand | 2135 | Master Mentalism | 10 | `Mirella_CustomMerchandise` |
 | -- | Ark -- Librarian Marius | 250 | Master Light Magic | 10 | `BibliothekarMarius_CustomMerchandise` |
 
@@ -411,16 +415,16 @@ player.advskill restoration 100000 first, so magnitudes read at full skill.
 | [ ] | **Circle of Strength** | `player.addspell XX036A05` | FireAndForget | 50 | 50 | Eshra Miraya | Steals 6 points of Stamina per second from hostiles inside the circle. |  |
 | [ ] | **Wild Healing** | `player.addspell XX082483` | FireAndForget | 65 | 45 | Eshra Miraya | Heals the caster 40 points, then heals a random target within range 40 points. |  |
 
-### Apprentice (025) -- Riverville - Kurro's General Store
+### Apprentice (025) -- Riverville - Priest Vildas
 
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Lamb of Irlanda** | `player.addspell XX036A03` | FireAndForget / Aimed | 60 | 90 | Riverville - Kurro's General Store | For 30 seconds, you gain <35>% of the Health the target loses. | RESPITE-INERT |
-| [ ] | **Leech Seed** | `player.addspell XX13E4FD` | FireAndForget / Aimed | 40 | 120 | Riverville - Kurro's General Store | Infests a living target with a poison spore for 10 seconds. When the caster falls below full Health, the spore absorbs 5 points of Health per second. |  |
-| [ ] | **Mystic Wind** | `player.addspell XX0E8B77` | FireAndForget | 68 | 90 | Riverville - Kurro's General Store | For 10 seconds, restores 5 points of Magicka per second while the caster is sprinting. |  |
-| [ ] | **Necroplague** | `player.addspell XX034D12` | FireAndForget / Aimed | 70 | 160 | Riverville - Kurro's General Store | Infects a corpse with a spreading virus that deals 9 disease damage for 30 seconds to nonmechanical foes. |  |
-| [ ] | **Slay Living** | `player.addspell XX003E0F` | FireAndForget / TargetActor | 65 | 85 | Riverville - Kurro's General Store | Kills a living target in melee range with <25>% or less remaining health. |  |
-| [ ] | **Welling Blood** | `player.addspell XX01FCD9` | FireAndForget / Aimed | 50 | 95 | Riverville - Kurro's General Store | Curses a living target. If the target loses at least <Global=WB_Restoration_WellingBlood_Global_Threshold>% of its maximum Health within 8 seconds, it dies. |  |
+| [ ] | **Lamb of Irlanda** | `player.addspell XX036A03` | FireAndForget / Aimed | 60 | 90 | Riverville - Priest Vildas | For 30 seconds, you gain <35>% of the Health the target loses. | RESPITE-INERT |
+| [ ] | **Leech Seed** | `player.addspell XX13E4FD` | FireAndForget / Aimed | 40 | 120 | Riverville - Priest Vildas | Infests a living target with a poison spore for 10 seconds. When the caster falls below full Health, the spore absorbs 5 points of Health per second. |  |
+| [ ] | **Mystic Wind** | `player.addspell XX0E8B77` | FireAndForget | 68 | 90 | Riverville - Priest Vildas | For 10 seconds, restores 5 points of Magicka per second while the caster is sprinting. |  |
+| [ ] | **Necroplague** | `player.addspell XX034D12` | FireAndForget / Aimed | 70 | 160 | Riverville - Priest Vildas | Infects a corpse with a spreading virus that deals 9 disease damage for 30 seconds to nonmechanical foes. |  |
+| [ ] | **Slay Living** | `player.addspell XX003E0F` | FireAndForget / TargetActor | 65 | 85 | Riverville - Priest Vildas | Kills a living target in melee range with <25>% or less remaining health. |  |
+| [ ] | **Welling Blood** | `player.addspell XX01FCD9` | FireAndForget / Aimed | 50 | 95 | Riverville - Priest Vildas | Curses a living target. If the target loses at least <Global=WB_Restoration_WellingBlood_Global_Threshold>% of its maximum Health within 8 seconds, it dies. |  |
 
 ### Adept (050) -- Ark - Ora Stonehand
 

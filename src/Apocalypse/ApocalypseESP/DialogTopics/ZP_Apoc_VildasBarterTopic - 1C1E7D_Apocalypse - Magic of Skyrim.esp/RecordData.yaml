@@ -1,0 +1,8 @@
+FormKey: 1C1E7D:Apocalypse - Magic of Skyrim.esp
+EditorID: ZP_Apoc_VildasBarterTopic
+Name:
+  TargetLanguage: English
+  Value: "I'd like to see your spell tomes."
+Branch: 1C1E7C:Apocalypse - Magic of Skyrim.esp
+Quest: 06A1AC:Skyrim.esm
+SubtypeName: CUST
