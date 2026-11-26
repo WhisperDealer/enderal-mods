@@ -75,7 +75,11 @@ $vendors = @(
   @{ File = 'Barnabas_CustomMerchandise - 030302_Enderal - Forgotten Stories.esm.yaml';            Shop = 'Undercity, Barnabas';          Gold = 1050; Rank = '050'; Schools = 'AD';    Expect = 14 }
   @{ File = 'OraSteinschlag_CustomMerchandise - 0302E3_Enderal - Forgotten Stories.esm.yaml';      Shop = 'Ark, Ora Stonehand';           Gold =  980; Rank = '050'; Schools = 'R';     Expect = 7 }
   @{ File = 'Tarhutie_CustomMerchandise - 0302F7_Enderal - Forgotten Stories.esm.yaml';            Shop = 'Riverville, Tarhutie';         Gold =  630; Rank = '025'; Schools = 'ADR';   Expect = 18 }
-  @{ File = 'MilbertFuchshand_CustomMerchandise - 0302DE_Enderal - Forgotten Stories.esm.yaml';    Shop = 'Ark, Milbert Foxhand';         Gold =  530; Rank = '000'; Schools = 'ADR';   Expect = 9 }
+  @{ File = 'MilbertFuchshand_CustomMerchandise - 0302DE_Enderal - Forgotten Stories.esm.yaml';    Shop = 'Ark, Milbert Foxhand';         Gold =  530; Rank = '000'; Schools = 'A';     Expect = 3 }
+  # Novice Light Magic + Elementalism: Eshra Miraya, one of the first merchants a player meets in the
+  # open world (she trades once her quest is done). Her chest is _00E_TraderSonnenkueste 050FCF;
+  # FS, EGO and EGO Leveling Redone all carry this hook in it.
+  @{ File = 'Eshra_CustomMerchandise - 0302F3_Enderal - Forgotten Stories.esm.yaml';               Shop = 'Eshra Miraya';                 Gold =  450; Rank = '000'; Schools = 'DR';    Expect = 6 }
   # the forbidden schools, at the Shrouded Mages
   @{ File = 'Wildmage_Undercity_CustomMerchandise - 0302F0_Enderal - Forgotten Stories.esm.yaml';        Shop = 'Undercity, Shrouded Mage';  Gold = 630; Rank = '050'; Schools = 'CI'; Expect = 12 }
   @{ File = 'Wildmage_FrostcliffTavern_CustomMerchandise - 0302EF_Enderal - Forgotten Stories.esm.yaml'; Shop = 'Frostcliff Tavern, Shrouded Mage'; Gold = 674; Rank = '075'; Schools = 'CI'; Expect = 13 }

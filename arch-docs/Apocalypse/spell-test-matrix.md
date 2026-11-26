@@ -171,7 +171,8 @@ unrelated to the conversion. Harmless -- the victim is still released.
 | `UndercityBarracks2Barnabas` | Undercity -- Barnabas | 1050 | Adept (Mentalism/Elementalism) | 14 | `Barnabas_CustomMerchandise` |
 | -- | Ark -- Ora Stonehand | 980 | Adept (Light Magic) | 7 | `OraSteinschlag_CustomMerchandise` |
 | -- | Riverville -- Tarhutie | 630 | Apprentice (no Entropy/Psionics) | 18 | `Tarhutie_CustomMerchandise` |
-| -- | Ark -- Milbert Foxhand | 530 | Novice (no Entropy/Psionics) | 9 | `MilbertFuchshand_CustomMerchandise` |
+| -- | Ark -- Milbert Foxhand | 530 | Novice Mentalism | 3 | `MilbertFuchshand_CustomMerchandise` |
+| -- | Eshra Miraya (trades after her quest) | 450 | Novice Light Magic + Elementalism | 6 | `Eshra_CustomMerchandise` |
 | `FlusshaimTavern` | Riverville -- Shrouded Mage, The Drunken Bee | 707 | Novice + Apprentice Entropy and Psionics | 16 | own chest `ZP_Apoc_Merchant_Wildmage_RivervilleChest` |
 | `UndercityBarracks1` | Undercity -- Shrouded Mage | 630 | Adept Entropy and Psionics | 12 | `Wildmage_Undercity_CustomMerchandise` |
 | `SchneefelstaverneInterior` | Frostcliff Tavern -- Shrouded Mage | 674 | Expert Entropy and Psionics | 13 | `Wildmage_FrostcliffTavern_CustomMerchandise` |
@@ -268,13 +269,13 @@ Found by reading the records, not by the scan. Test these deliberately.
 
 player.advskill destruction 100000 first, so magnitudes read at full skill.
 
-### Novice (000) -- Ark - Milbert Foxhand
+### Novice (000) -- Eshra Miraya
 
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Blaze** | `player.addspell XX085594` | FireAndForget / Aimed | 25 | 45 | Ark - Milbert Foxhand | Bolt of wildfire that deals 10 damage. | DEAD-SCRIPT-PROP |
-| [ ] | **Crackle** | `player.addspell XX109653` | FireAndForget / Aimed | 25 | 50 | Ark - Milbert Foxhand | Does 10 damage to Health and Magicka. |  |
-| [ ] | **Hailstone** | `player.addspell XX02E634` | FireAndForget / Aimed | 25 | 45 | Ark - Milbert Foxhand | An ice crystal that shatters for 15 frost damage to Health and Stamina. Direct hits bypass Frost Resist. |  |
+| [ ] | **Blaze** | `player.addspell XX085594` | FireAndForget / Aimed | 25 | 45 | Eshra Miraya | Bolt of wildfire that deals 10 damage. | DEAD-SCRIPT-PROP |
+| [ ] | **Crackle** | `player.addspell XX109653` | FireAndForget / Aimed | 25 | 50 | Eshra Miraya | Does 10 damage to Health and Magicka. |  |
+| [ ] | **Hailstone** | `player.addspell XX02E634` | FireAndForget / Aimed | 25 | 45 | Eshra Miraya | An ice crystal that shatters for 15 frost damage to Health and Stamina. Direct hits bypass Frost Resist. |  |
 
 ### Apprentice (025) -- Riverville - Tarhutie
 
@@ -396,13 +397,13 @@ player.advskill conjuration 100000 first, so magnitudes read at full skill.
 
 player.advskill restoration 100000 first, so magnitudes read at full skill.
 
-### Novice (000) -- Ark - Milbert Foxhand
+### Novice (000) -- Eshra Miraya
 
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Bone Spirit** | `player.addspell XX03527C` | FireAndForget / Aimed | 40 | 50 | Ark - Milbert Foxhand | Casts a vengeful spirit that homes in on the target and explodes for 50 points of magic damage to undead. |  |
-| [ ] | **Circle of Strength** | `player.addspell XX036A05` | FireAndForget | 50 | 50 | Ark - Milbert Foxhand | Steals 6 points of Stamina per second from hostiles inside the circle. |  |
-| [ ] | **Wild Healing** | `player.addspell XX082483` | FireAndForget | 65 | 45 | Ark - Milbert Foxhand | Heals the caster 40 points, then heals a random target within range 40 points. |  |
+| [ ] | **Bone Spirit** | `player.addspell XX03527C` | FireAndForget / Aimed | 40 | 50 | Eshra Miraya | Casts a vengeful spirit that homes in on the target and explodes for 50 points of magic damage to undead. |  |
+| [ ] | **Circle of Strength** | `player.addspell XX036A05` | FireAndForget | 50 | 50 | Eshra Miraya | Steals 6 points of Stamina per second from hostiles inside the circle. |  |
+| [ ] | **Wild Healing** | `player.addspell XX082483` | FireAndForget | 65 | 45 | Eshra Miraya | Heals the caster 40 points, then heals a random target within range 40 points. |  |
 
 ### Apprentice (025) -- Riverville - Tarhutie
 
