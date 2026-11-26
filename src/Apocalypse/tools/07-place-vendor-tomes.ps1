@@ -68,8 +68,9 @@ $enc   = New-Object System.Text.UTF8Encoding($false)
 #   Novice + Apprentice  a fourth mage we add in Riverville's inn (18-shrouded-mage-riverville.ps1;
 #                        his chest is ours, so it holds the tomes directly - no hook)
 #   Adept                the Undercity mage   (630 gold; 730 under EGO)
-#   Expert               the Frostcliff mage  (674; 924)
-#   Master               the Duneville mage   (707; 1357)
+#   Expert Entropy       the Frostcliff mage  (674; 924)
+#   Expert Psionics      the Duneville mage   (707; 1357)
+#   Master               loot only (see $PENDING)
 # Their three hooks are empty UseAll lists in FS, and EGO and EGO Leveling Redone - the only mods in
 # reference/mods/ that override those chests - both keep them.
 #
@@ -101,18 +102,14 @@ $vendors = @(
   # top-tier spell books (_00ETraderSpellBooksLevelD x10). Chest _00E_Merchant_CCMirellasAlchemy
   # 106EA7 (2135 gold); EGO and EGO Leveling Redone keep the hook.
   @{ File = 'Mirella_CustomMerchandise - 0302DF_Enderal - Forgotten Stories.esm.yaml';             Shop = 'Ark, Mirella Godshand';        Gold = 2135; Lines = '100:A'; Expect = 10 }
-  # Master Light Magic: Librarian Marius in Ark. Chest _00E_Merchant_CCMarius 046AEF (250 gold - low,
-  # but a merchant's gold only limits what he can BUY from the player). No mod in reference/mods/
-  # overrides the chest or the hook.
-  @{ File = 'BibliothekarMarius_CustomMerchandise - 0302D2_Enderal - Forgotten Stories.esm.yaml';  Shop = 'Ark, Librarian Marius';        Gold =  250; Lines = '100:R'; Expect = 10 }
   # Novice Light Magic + Elementalism: Eshra Miraya, one of the first merchants a player meets in the
   # open world (she trades once her quest is done). Her chest is _00E_TraderSonnenkueste 050FCF;
   # FS, EGO and EGO Leveling Redone all carry this hook in it.
   @{ File = 'Eshra_CustomMerchandise - 0302F3_Enderal - Forgotten Stories.esm.yaml';               Shop = 'Eshra Miraya';                 Gold =  450; Lines = '000:DR'; Expect = 6 }
   # the forbidden schools, at the Shrouded Mages
   @{ File = 'Wildmage_Undercity_CustomMerchandise - 0302F0_Enderal - Forgotten Stories.esm.yaml';        Shop = 'Undercity, Shrouded Mage';  Gold = 630; Lines = '050:CI'; Expect = 12 }
-  @{ File = 'Wildmage_FrostcliffTavern_CustomMerchandise - 0302EF_Enderal - Forgotten Stories.esm.yaml'; Shop = 'Frostcliff Tavern, Shrouded Mage'; Gold = 674; Lines = '075:CI'; Expect = 13 }
-  @{ File = 'Wildmage_Duneville_CustomMerchandise - 0302EE_Enderal - Forgotten Stories.esm.yaml';        Shop = 'Duneville, Shrouded Mage';  Gold = 707; Lines = '100:CI'; Expect = 17 }
+  @{ File = 'Wildmage_FrostcliffTavern_CustomMerchandise - 0302EF_Enderal - Forgotten Stories.esm.yaml'; Shop = 'Frostcliff Tavern, Shrouded Mage'; Gold = 674; Lines = '075:C';  Expect = 4 }    # Expert Entropy
+  @{ File = 'Wildmage_Duneville_CustomMerchandise - 0302EE_Enderal - Forgotten Stories.esm.yaml';        Shop = 'Duneville, Shrouded Mage';  Gold = 707; Lines = '075:I';  Expect = 9 }    # Expert Psionics
 )
 
 New-Item -ItemType Directory -Force $out | Out-Null
@@ -201,10 +198,14 @@ foreach ($v in $vendors) {
 # The only tomes NOT placed here are the 16 Novice/Apprentice Entropy/Psionics tomes the Riverville
 # Shrouded Mage sells from his own chest (step 18), and $PENDING: lines taken off a merchant and not
 # yet given a new one, loot-only meanwhile. Nothing else may fall through.
-$PENDING     = '^WB_D100_'         # Master Elementalism, off Emberlord, awaiting a home
-$PLACED_HERE = 137
+# MASTER TOMES ARE LOOT-ONLY, except Mirella's Master Mentalism. Base Enderal sells its Master tier
+# only at random (its _00ETraderSpellBooksLevelD vendor list yields from player level 30) and leaves
+# several to be found in the world, so Master Elementalism, Light Magic, Entropy and Psionics are
+# found through the ZP_Apoc_Tomes_R100 loot sublist (_00E_SpellBooksLootD, level 40) and not sold.
+$PENDING     = '^WB_[DRCI]100_'    # Master Elementalism/Light Magic/Entropy/Psionics: loot-only
+$PLACED_HERE = 110
 $RIVERVILLE  = 16
-$LOOT_ONLY   = 10
+$LOOT_ONLY   = 37
 if ($placed.Keys.Count -ne $PLACED_HERE) { throw "placed $($placed.Keys.Count) tomes, expected $PLACED_HERE" }
 $unplaced = @($tomes | Where-Object { -not $placed.ContainsKey($_.EditorID) })
 $legal    = @($unplaced | Where-Object { $_.EditorID -notmatch '^WB_[CI]' -and $_.EditorID -notmatch $PENDING })
@@ -231,5 +232,5 @@ if ($owned.Count -gt 0) {
 
 ""
 "$($placed.Keys.Count) tomes placed across $($vendors.Count) CustomMerchandise hooks, each in exactly one."
-"$RIVERVILLE Novice/Apprentice Entropy/Psionics tomes left to the Riverville Shrouded Mage (step 18); $LOOT_ONLY pending a merchant (loot-only)."
+"$RIVERVILLE Novice/Apprentice Entropy/Psionics tomes left to the Riverville Shrouded Mage (step 18); $LOOT_ONLY Master tomes loot-only by design."
 "0 container records of any master overridden."

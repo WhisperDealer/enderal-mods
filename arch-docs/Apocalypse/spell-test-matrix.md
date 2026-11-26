@@ -87,8 +87,8 @@ Nothing below is worth doing until these are green. Each is one launch.
 - [ ] No Entropy or Psionics tome at Milbert, Eshra, Kurro, Ora, Barnabas, Fitzai or Emberlord and Fireflash.
 - [ ] **No Apocalypse tome at Tarhutie or Torius Flameling** -- Triumvirate stocks those two, and two
       plugins writing one hook means only the later-loading one's stock appears.
-- [ ] The three Forgotten Stories Shrouded Mages carry them: Adept in the Undercity, Expert at
-      Frostcliff Tavern, Master in Duneville (same "not enough entropy" gate below 15).
+- [ ] The three Forgotten Stories Shrouded Mages carry them: Adept in the Undercity, Expert Entropy
+      at Frostcliff Tavern, Expert Psionics in Duneville (same "not enough entropy" gate below 15).
 - [x] `player.additem XX1C1E71 5` ... `XX1C1E75 5` each yield Apocalypse tomes, and
       `player.additem XX1C1E76 10` yields Apocalypse scrolls. `additem` resolves a leveled
       list on the spot, so this proves loot distribution without waiting out `iDaysToRespawnVendor: 2`.
@@ -174,15 +174,15 @@ unrelated to the conversion. Harmless -- the victim is still released.
 | -- | Ark -- Ora Stonehand | 980 | Apprentice Mentalism + Adept Light Magic | 13 | `OraSteinschlag_CustomMerchandise` |
 | `FlusshaimShopKurro` | Riverville -- Kurro's General Store, Kurro Mongerson | 480 | Apprentice Elementalism + Light Magic | 12 | `Kurro_CustomMerchandise` |
 | `CapitalCityMirellasAlchemy` | Ark -- Mirella Godshand | 2135 | Master Mentalism | 10 | `Mirella_CustomMerchandise` |
-| -- | Ark -- Librarian Marius | 250 | Master Light Magic | 10 | `BibliothekarMarius_CustomMerchandise` |
 
-The Master Elementalism tomes (10) are loot-only until they get a merchant.
+Master Elementalism, Light Magic, Entropy and Psionics (37) are loot-only by design: base Enderal
+sells its own Master tier only at random, from level 30. Master Mentalism is the exception (Mirella).
 | -- | Ark -- Milbert Foxhand | 530 | Novice Mentalism | 3 | `MilbertFuchshand_CustomMerchandise` |
 | -- | Eshra Miraya (trades after her quest) | 450 | Novice Light Magic + Elementalism | 6 | `Eshra_CustomMerchandise` |
 | `FlusshaimTavern` | Riverville -- Shrouded Mage, The Drunken Bee | 707 | Novice + Apprentice Entropy and Psionics | 16 | own chest `ZP_Apoc_Merchant_Wildmage_RivervilleChest` |
 | `UndercityBarracks1` | Undercity -- Shrouded Mage | 630 | Adept Entropy and Psionics | 12 | `Wildmage_Undercity_CustomMerchandise` |
-| `SchneefelstaverneInterior` | Frostcliff Tavern -- Shrouded Mage | 674 | Expert Entropy and Psionics | 13 | `Wildmage_FrostcliffTavern_CustomMerchandise` |
-| `DuenenhaimMain` | Duneville -- Shrouded Mage | 707 | Master Entropy and Psionics | 17 | `Wildmage_Duneville_CustomMerchandise` |
+| `SchneefelstaverneInterior` | Frostcliff Tavern -- Shrouded Mage | 674 | Expert Entropy | 4 | `Wildmage_FrostcliffTavern_CustomMerchandise` |
+| `DuenenhaimMain` | Duneville -- Shrouded Mage | 707 | Expert Psionics | 9 | `Wildmage_Duneville_CustomMerchandise` |
 
 Entropy and Psionics are forbidden schools in Enderal, so the respectable shops sell neither: they
 are sold only by the four Shrouded Mages, Forgotten Stories' forbidden-magic dealers, tiered by rank.
@@ -384,20 +384,20 @@ player.advskill conjuration 100000 first, so magnitudes read at full skill.
 | [ ] | **Oathbound Guardian** | `player.addspell XX018AE7` | FireAndForget / TargetActor | 125 | 330 | Frostcliff Tavern - Shrouded Mage | Living ally is protected by an Oathbound Guardian under his or her command for 60 seconds. |  |
 | [ ] | **Six Demon Bag** | `player.addspell XX161619` | FireAndForget | 120 | 240 | - | Summons a Bound Churl for 60 seconds. | NOT-SOLD |
 
-### Master (100) -- NOT SOLD / Duneville - Shrouded Mage
+### Master (100) -- NOT SOLD
 
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Banish Living** | `player.addspell XX092B91` | FireAndForget / TargetActor | 300 | 440 | Duneville - Shrouded Mage | Banish a living creature into the Sea of Eventualities. Items (except quest items) are lost forever. (Creatures banished: <Global=WB_Conjuration_BanishLiving_Global_Counter>) | DEAD-SCRIPT-PROP |
-| [ ] | **Conjure Battlemage** | `player.addspell XX08868C` | FireAndForget / TargetLocation | 230 | 390 | Duneville - Shrouded Mage | Call upon the services of a lower ranking Battlemage for 180 seconds. Activate to purchase permanent upgrades. |  |
-| [ ] | **Conjure Bear Totem** | `player.addspell XX04734D` | FireAndForget / TargetLocation | 280 | 365 | Duneville - Shrouded Mage | Summons a ancient totem spirit for 240 seconds. It changes between hunter and bear form to heal. (Max. <1>) |  |
-| [ ] | **Conjure Craftlord** | `player.addspell XX123E5B` | FireAndForget / TargetLocation | 250 | 370 | Duneville - Shrouded Mage | Calls a Starling sage to Vyn for 180 seconds. Modify its stats with the <Reconfigure Craftlord> spell. |  |
-| [ ] | **Conjure Entropic Assassin** | `player.addspell XX0128F7` | FireAndForget / TargetLocation | 230 | 335 | Duneville - Shrouded Mage | Summons an Entropic Assassin for 180 seconds. Its arrows reduce targets below <Global=WB_Conjuration_ConjureDremoraAssassin_Global_Health> Health to <1> for <10> seconds. | SUMMON-GAP |
+| [ ] | **Banish Living** | `player.addspell XX092B91` | FireAndForget / TargetActor | 300 | 440 | - | Banish a living creature into the Sea of Eventualities. Items (except quest items) are lost forever. (Creatures banished: <Global=WB_Conjuration_BanishLiving_Global_Counter>) | DEAD-SCRIPT-PROP |
+| [ ] | **Conjure Battlemage** | `player.addspell XX08868C` | FireAndForget / TargetLocation | 230 | 390 | - | Call upon the services of a lower ranking Battlemage for 180 seconds. Activate to purchase permanent upgrades. |  |
+| [ ] | **Conjure Bear Totem** | `player.addspell XX04734D` | FireAndForget / TargetLocation | 280 | 365 | - | Summons a ancient totem spirit for 240 seconds. It changes between hunter and bear form to heal. (Max. <1>) |  |
+| [ ] | **Conjure Craftlord** | `player.addspell XX123E5B` | FireAndForget / TargetLocation | 250 | 370 | - | Calls a Starling sage to Vyn for 180 seconds. Modify its stats with the <Reconfigure Craftlord> spell. |  |
+| [ ] | **Conjure Entropic Assassin** | `player.addspell XX0128F7` | FireAndForget / TargetLocation | 230 | 335 | - | Summons an Entropic Assassin for 180 seconds. Its arrows reduce targets below <Global=WB_Conjuration_ConjureDremoraAssassin_Global_Health> Health to <1> for <10> seconds. | SUMMON-GAP |
 | [ ] | **Conjure Kyrkrim** | `player.addspell XX100032` | FireAndForget / TargetLocation | 135 | 425 | - | Summons the spirit wolf mount Kyrkrim for 180 seconds. When ridden, low level creatures and people flee in terror. | NOT-SOLD |
 | [ ] | **Conjure Lord of Bindings** | `player.addspell XX019B2D` | FireAndForget / TargetLocation | 240 | 335 | - | Summons a Lord of Bindings for 180 seconds. It does not fight, but rapidly summons Churls in combat. | NOT-SOLD |
-| [ ] | **Conjure Nether Lich** | `player.addspell XX0128FA` | FireAndForget / TargetLocation | 275 | 405 | Duneville - Shrouded Mage | Summons a Nether Lich for 180 seconds. It inflicts a damaging disease, lowers skill levels and raises the dead. |  |
+| [ ] | **Conjure Nether Lich** | `player.addspell XX0128FA` | FireAndForget / TargetLocation | 275 | 405 | - | Summons a Nether Lich for 180 seconds. It inflicts a damaging disease, lowers skill levels and raises the dead. |  |
 | [ ] | **Conjure Weeping Shade** | `player.addspell XX08FDED` | FireAndForget / TargetLocation | 110 | 415 | - | Summons a Weeping Shade for 120 seconds. It steals large amounts of Health with its magical attacks, but turns to inert and brittle stone when an enemy looks at it. | SUMMON-GAP<br>DEAD-PERK<br>NOT-SOLD |
-| [ ] | **Necrowitch** | `player.addspell XX016F95` | FireAndForget | 130 | 380 | Duneville - Shrouded Mage | Summons the corpse of an ancient sorceress to reanimate for 600 seconds and teaches her the (ranged, touch or cloak) elemental spell in your left hand. | DEAD-SCRIPT-PROP |
+| [ ] | **Necrowitch** | `player.addspell XX016F95` | FireAndForget | 130 | 380 | - | Summons the corpse of an ancient sorceress to reanimate for 600 seconds and teaches her the (ranged, touch or cloak) elemental spell in your left hand. | DEAD-SCRIPT-PROP |
 
 ## Light Magic -- *Restoration* (35 spells)
 
@@ -448,20 +448,20 @@ player.advskill restoration 100000 first, so magnitudes read at full skill.
 | [ ] | **Tree Rings** | `player.addspell XX13DA15` | FireAndForget | 100 | 275 | Ark - Emberlord & Fireflash | Caster receives <10> layers of tough plant skin, each increasing maximum Health by <15> points. Layers gradually fall off over the course of 30 seconds. |  |
 | [ ] | **Willpower** | `player.addspell XX15E71D` | FireAndForget | 49 | 285 | Ark - Emberlord & Fireflash | Transfers all Stamina to Magicka. |  |
 
-### Master (100) -- Ark - Librarian Marius
+### Master (100) -- NOT SOLD
 
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Bloodseeker** | `player.addspell XX048398` | FireAndForget / Aimed | 115 | 505 | Ark - Librarian Marius | Casts a homing flare at a target. When it reaches the target, it heals or deals magic damage equal to <Global=WB_Restoration_Bloodseeker_Global_Mult>% of the Health the target gained or lost while it was in flight. |  |
-| [ ] | **Breath of Tyr** | `player.addspell XX12B063` | Concentration | 68 | 380 | Ark - Librarian Marius | Accumulate 50 points of divine energy per second while concentrating. After you stop concentrating, the energy is converted into healing. |  |
-| [ ] | **Circle of Death** | `player.addspell XX01220F` | FireAndForget | 130 | 385 | Ark - Librarian Marius | Circle instantly kills living targets below <40>% Health. |  |
-| [ ] | **Dust To Dust** | `player.addspell XX11122C` | FireAndForget | 240 | 350 | Ark - Librarian Marius | Destroys all undead below <40>% health. |  |
-| [ ] | **Infinite Light** | `player.addspell XX02F66E` | Concentration / Aimed | 68 | 485 | Ark - Librarian Marius | Stream of healing energy that diffracts between targets, healing 150 points per second. | DEAD-SCRIPT-PROP |
-| [ ] | **King's Heart** | `player.addspell XX033CCA` | FireAndForget | 120 | 325 | Ark - Librarian Marius | A holy spark slowly follows the caster for 60 seconds. When it is nearby, it fortifies most skills by <15>% and heals 15 points per second. |  |
-| [ ] | **Life's Finale** | `player.addspell XX083FA8` | FireAndForget | 195 | 450 | Ark - Librarian Marius | Corrupts nearby living targets and the caster for 20 seconds. |  |
-| [ ] | **Malphas' Wrath** | `player.addspell XX0362C7` | FireAndForget | 225 | 340 | Ark - Librarian Marius | Attunes the caster to light, equipping the Starstorm spell for up to 30 seconds. This spell deals 100 damage per second to undead while the caster concentrates. |  |
-| [ ] | **Transcendence** | `player.addspell XX086B2E` | FireAndForget | 240 | 395 | Ark - Librarian Marius | Blaze with holy energy, replenishing 15 Magicka per second. |  |
-| [ ] | **Worm Shroud** | `player.addspell XX12CB8D` | FireAndForget | 275 | 315 | Ark - Librarian Marius | For 120 seconds, destroys corpses within 20 feet, improving Restoration spells by <5>% for <30> seconds. This effect refreshes and stacks up to <10> times. |  |
+| [ ] | **Bloodseeker** | `player.addspell XX048398` | FireAndForget / Aimed | 115 | 505 | - | Casts a homing flare at a target. When it reaches the target, it heals or deals magic damage equal to <Global=WB_Restoration_Bloodseeker_Global_Mult>% of the Health the target gained or lost while it was in flight. |  |
+| [ ] | **Breath of Tyr** | `player.addspell XX12B063` | Concentration | 68 | 380 | - | Accumulate 50 points of divine energy per second while concentrating. After you stop concentrating, the energy is converted into healing. |  |
+| [ ] | **Circle of Death** | `player.addspell XX01220F` | FireAndForget | 130 | 385 | - | Circle instantly kills living targets below <40>% Health. |  |
+| [ ] | **Dust To Dust** | `player.addspell XX11122C` | FireAndForget | 240 | 350 | - | Destroys all undead below <40>% health. |  |
+| [ ] | **Infinite Light** | `player.addspell XX02F66E` | Concentration / Aimed | 68 | 485 | - | Stream of healing energy that diffracts between targets, healing 150 points per second. | DEAD-SCRIPT-PROP |
+| [ ] | **King's Heart** | `player.addspell XX033CCA` | FireAndForget | 120 | 325 | - | A holy spark slowly follows the caster for 60 seconds. When it is nearby, it fortifies most skills by <15>% and heals 15 points per second. |  |
+| [ ] | **Life's Finale** | `player.addspell XX083FA8` | FireAndForget | 195 | 450 | - | Corrupts nearby living targets and the caster for 20 seconds. |  |
+| [ ] | **Malphas' Wrath** | `player.addspell XX0362C7` | FireAndForget | 225 | 340 | - | Attunes the caster to light, equipping the Starstorm spell for up to 30 seconds. This spell deals 100 damage per second to undead while the caster concentrates. |  |
+| [ ] | **Transcendence** | `player.addspell XX086B2E` | FireAndForget | 240 | 395 | - | Blaze with holy energy, replenishing 15 Magicka per second. |  |
+| [ ] | **Worm Shroud** | `player.addspell XX12CB8D` | FireAndForget | 275 | 315 | - | For 120 seconds, destroys corpses within 20 feet, improving Restoration spells by <5>% for <30> seconds. This effect refreshes and stacks up to <10> times. |  |
 
 ## Mentalism -- *Alteration* (35 spells)
 
@@ -562,34 +562,34 @@ player.advskill illusion 100000 first, so magnitudes read at full skill.
 | [ ] | **Shadowbond** | `player.addspell XX031C4D` | FireAndForget / TargetActor | 80 | 180 | Undercity - Shrouded Mage | Caster and target gain invisibility for 20 seconds. When the invisibility is broken, the caster and target swap places. |  |
 | [ ] | **Sleeping Dogs** | `player.addspell XX1A4A50` | FireAndForget / Aimed | 130 | 165 | Undercity - Shrouded Mage | Curses a target for 20 seconds. Whenever the target shouts, spectral forces deal 120 pure damage. |  |
 
-### Expert (075) -- Frostcliff Tavern - Shrouded Mage
+### Expert (075) -- Duneville - Shrouded Mage
 
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Empathic Agony** | `player.addspell XX0A4EF7` | FireAndForget / Aimed | 110 | 285 | Frostcliff Tavern - Shrouded Mage | For 45 seconds, when the caster loses Health, target creatures or people lose <40>% of this amount. | DEAD-PERK |
-| [ ] | **Enslave the Weak** | `player.addspell XX0306AC` | FireAndForget / Aimed | 195 | 270 | Frostcliff Tavern - Shrouded Mage | Forces a hostile humanoid below <20>% Health to serve your will permanently until slain. You can only have one slave at a time. Does not work on quest characters. | DEAD-PERK<br>DEAD-SCRIPT-PROP |
-| [ ] | **Fold Into Ether** | `player.addspell XX15B849` | FireAndForget / Aimed | 80 | 280 | Frostcliff Tavern - Shrouded Mage | Interrupts target spellcaster. If a spell is interrupted, manifests an illusion of the target for 40 seconds. | DEAD-SCRIPT-PROP |
-| [ ] | **Ghostwalk** | `player.addspell XX00AAE8` | FireAndForget | 135 | 290 | Frostcliff Tavern - Shrouded Mage | Caster is invisible for 10 seconds or until broken, then teleports back to where the spell was cast. |  |
-| [ ] | **Mimic's Cloak** | `player.addspell XX1274CF` | FireAndForget | 130 | 255 | Frostcliff Tavern - Shrouded Mage | For 60 seconds, the caster copies most (non-concentration) spells cast by others within 20 foot. |  |
-| [ ] | **Mind Control** | `player.addspell XX0378AE` | FireAndForget / Aimed | 140 | 250 | Frostcliff Tavern - Shrouded Mage | Take control of a humanoid for 30 seconds. In combat, the target will fight back when attacked. The caster cannot act, but can cast spells. Sheathe to cancel. |  |
-| [ ] | **Seidstone** | `player.addspell XX03789F` | FireAndForget / Aimed | 105 | 290 | Frostcliff Tavern - Shrouded Mage | The stone manifests illusions of nearby dead for 40 seconds. Illusions take extra damage from attacks. |  |
-| [ ] | **Vanish** | `player.addspell XX037E24` | FireAndForget | 205 | 265 | Frostcliff Tavern - Shrouded Mage | All nearby opponents targeting the caster or searching for the caster leave combat. |  |
-| [ ] | **Veil of Misdirection** | `player.addspell XX15B847` | FireAndForget / TargetActor | 90 | 285 | Frostcliff Tavern - Shrouded Mage | Curses a target for 30 seconds. Whenever the target casts an armor or cloak spell, it is transferred to the caster. |  |
+| [ ] | **Empathic Agony** | `player.addspell XX0A4EF7` | FireAndForget / Aimed | 110 | 285 | Duneville - Shrouded Mage | For 45 seconds, when the caster loses Health, target creatures or people lose <40>% of this amount. | DEAD-PERK |
+| [ ] | **Enslave the Weak** | `player.addspell XX0306AC` | FireAndForget / Aimed | 195 | 270 | Duneville - Shrouded Mage | Forces a hostile humanoid below <20>% Health to serve your will permanently until slain. You can only have one slave at a time. Does not work on quest characters. | DEAD-PERK<br>DEAD-SCRIPT-PROP |
+| [ ] | **Fold Into Ether** | `player.addspell XX15B849` | FireAndForget / Aimed | 80 | 280 | Duneville - Shrouded Mage | Interrupts target spellcaster. If a spell is interrupted, manifests an illusion of the target for 40 seconds. | DEAD-SCRIPT-PROP |
+| [ ] | **Ghostwalk** | `player.addspell XX00AAE8` | FireAndForget | 135 | 290 | Duneville - Shrouded Mage | Caster is invisible for 10 seconds or until broken, then teleports back to where the spell was cast. |  |
+| [ ] | **Mimic's Cloak** | `player.addspell XX1274CF` | FireAndForget | 130 | 255 | Duneville - Shrouded Mage | For 60 seconds, the caster copies most (non-concentration) spells cast by others within 20 foot. |  |
+| [ ] | **Mind Control** | `player.addspell XX0378AE` | FireAndForget / Aimed | 140 | 250 | Duneville - Shrouded Mage | Take control of a humanoid for 30 seconds. In combat, the target will fight back when attacked. The caster cannot act, but can cast spells. Sheathe to cancel. |  |
+| [ ] | **Seidstone** | `player.addspell XX03789F` | FireAndForget / Aimed | 105 | 290 | Duneville - Shrouded Mage | The stone manifests illusions of nearby dead for 40 seconds. Illusions take extra damage from attacks. |  |
+| [ ] | **Vanish** | `player.addspell XX037E24` | FireAndForget | 205 | 265 | Duneville - Shrouded Mage | All nearby opponents targeting the caster or searching for the caster leave combat. |  |
+| [ ] | **Veil of Misdirection** | `player.addspell XX15B847` | FireAndForget / TargetActor | 90 | 285 | Duneville - Shrouded Mage | Curses a target for 30 seconds. Whenever the target casts an armor or cloak spell, it is transferred to the caster. |  |
 
-### Master (100) -- Duneville - Shrouded Mage
+### Master (100) -- NOT SOLD
 
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Harrowing Dirge** | `player.addspell XX0C74EA` | FireAndForget / Aimed | 120 | 405 | Duneville - Shrouded Mage | When a cursed creature or humanoid dies, all other cursed targets take unresistable damage equal to <Global=WB_Illusion_HarrowingDirge_Global_Percentage>% of their maximum Health. Lasts 40 seconds. | DEAD-PERK |
-| [ ] | **Hidden Cobra** | `player.addspell XX046DC4` | FireAndForget / TargetActor | 130 | 385 | Duneville - Shrouded Mage | Curses a target for 60 seconds. The curse reduces Health to <1> if the target leaves combat for <5> seconds. |  |
-| [ ] | **Last Word** | `player.addspell XX0416BF` | FireAndForget / Aimed | 68 | 375 | Duneville - Shrouded Mage | Interrupts target spellcaster. If a spell is interrupted, any other Illusion spells cast on the target within 10 seconds last four times longer and are twice as powerful. |  |
-| [ ] | **Magicka Void** | `player.addspell XX00B5B7` | FireAndForget / Aimed | 140 | 405 | Duneville - Shrouded Mage | Reduces the Health percentage of all targets to match their Magicka percentage. |  |
-| [ ] | **Mirror Entity** | `player.addspell XX037E1A` | FireAndForget / Aimed | 165 | 480 | Duneville - Shrouded Mage | Control an illusion of target humanoid for 20 seconds. In combat, the illusion will attack opponents in range. The caster cannot act, but can cast spells. Sheathe to cancel. |  |
-| [ ] | **Pull From Eternity** | `player.addspell XX085B03` | FireAndForget / Aimed | 130 | 410 | Duneville - Shrouded Mage | Cast on a corpse to capture its ghost. Cast on a target to release the ghost to attack the target for 40 seconds. The ghost takes less damage from attacks. | DEAD-SCRIPT-PROP |
-| [ ] | **Scream of Pain** | `player.addspell XX0321BA` | FireAndForget | 305 | 420 | Duneville - Shrouded Mage | Lowers the Health percentage of nearby creatures and humanoids to the caster's Health percentage. The lost Health is restored after 20 seconds. | DEAD-PERK |
-| [ ] | **Shroudwalk** | `player.addspell XX0DD94B` | FireAndForget | 255 | 375 | Duneville - Shrouded Mage | You are invisible for 90 seconds. When performing an action that breaks invisibility, you immediately regain invisibility, up to <Global=WB_Illusion_Shroudwalk_Global_BreakCount> times. |  |
-| [ ] | **Spectral Warband** | `player.addspell XX085579` | FireAndForget | 240 | 420 | Duneville - Shrouded Mage | Manifests illusions of all allies in combat for 60 seconds. Illusions take extra damage from attacks. | DEAD-SCRIPT-PROP |
-| [ ] | **Wyrd** | `player.addspell XX05E21C` | FireAndForget | 210 | 410 | Duneville - Shrouded Mage | The hand of fate chooses a random nearby target. It takes <20>% of its current Health for each nearby target as temporary damage that wears off after 30 seconds. |  |
+| [ ] | **Harrowing Dirge** | `player.addspell XX0C74EA` | FireAndForget / Aimed | 120 | 405 | - | When a cursed creature or humanoid dies, all other cursed targets take unresistable damage equal to <Global=WB_Illusion_HarrowingDirge_Global_Percentage>% of their maximum Health. Lasts 40 seconds. | DEAD-PERK |
+| [ ] | **Hidden Cobra** | `player.addspell XX046DC4` | FireAndForget / TargetActor | 130 | 385 | - | Curses a target for 60 seconds. The curse reduces Health to <1> if the target leaves combat for <5> seconds. |  |
+| [ ] | **Last Word** | `player.addspell XX0416BF` | FireAndForget / Aimed | 68 | 375 | - | Interrupts target spellcaster. If a spell is interrupted, any other Illusion spells cast on the target within 10 seconds last four times longer and are twice as powerful. |  |
+| [ ] | **Magicka Void** | `player.addspell XX00B5B7` | FireAndForget / Aimed | 140 | 405 | - | Reduces the Health percentage of all targets to match their Magicka percentage. |  |
+| [ ] | **Mirror Entity** | `player.addspell XX037E1A` | FireAndForget / Aimed | 165 | 480 | - | Control an illusion of target humanoid for 20 seconds. In combat, the illusion will attack opponents in range. The caster cannot act, but can cast spells. Sheathe to cancel. |  |
+| [ ] | **Pull From Eternity** | `player.addspell XX085B03` | FireAndForget / Aimed | 130 | 410 | - | Cast on a corpse to capture its ghost. Cast on a target to release the ghost to attack the target for 40 seconds. The ghost takes less damage from attacks. | DEAD-SCRIPT-PROP |
+| [ ] | **Scream of Pain** | `player.addspell XX0321BA` | FireAndForget | 305 | 420 | - | Lowers the Health percentage of nearby creatures and humanoids to the caster's Health percentage. The lost Health is restored after 20 seconds. | DEAD-PERK |
+| [ ] | **Shroudwalk** | `player.addspell XX0DD94B` | FireAndForget | 255 | 375 | - | You are invisible for 90 seconds. When performing an action that breaks invisibility, you immediately regain invisibility, up to <Global=WB_Illusion_Shroudwalk_Global_BreakCount> times. |  |
+| [ ] | **Spectral Warband** | `player.addspell XX085579` | FireAndForget | 240 | 420 | - | Manifests illusions of all allies in combat for 60 seconds. Illusions take extra damage from attacks. | DEAD-SCRIPT-PROP |
+| [ ] | **Wyrd** | `player.addspell XX05E21C` | FireAndForget | 210 | 410 | - | The hand of fate chooses a random nearby target. It takes <20>% of its current Health for each nearby target as temporary damage that wears off after 30 seconds. |  |
 
 ## Scrolls (144)
 

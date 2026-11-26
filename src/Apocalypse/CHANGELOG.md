@@ -17,8 +17,8 @@ and documentation are not listed.
   Barnabas no longer carry them. Instead:
   - Novice and Apprentice: a new Shrouded Mage in Riverville (below)
   - Adept: the Shrouded Mage in the Undercity
-  - Expert: the Shrouded Mage in Frostcliff Tavern
-  - Master: the Shrouded Mage in Duneville
+  - Expert Entropy: the Shrouded Mage in Frostcliff Tavern
+  - Expert Psionics: the Shrouded Mage in Duneville
 - **Eshra Mirâya now sells the Novice Light Magic and Elementalism tomes**, instead of Milbert
   Foxhand in Ark. She is one of the first merchants you can meet in the open world, and trades once
   her quest is done. Milbert keeps the Novice Mentalism tomes.
@@ -28,7 +28,6 @@ and documentation are not listed.
   - Apprentice Elementalism and Light Magic: **Kurro's General Store**, Riverville
   - Apprentice Mentalism: **Ora Stonehand**, Ark, beside her Adept Light Magic
   - Expert Elementalism and Light Magic: **Emberlord and Fireflash**, Ark
-- **Librarian Marius sells the Master Light Magic tomes** in Ark.
 - **Mirella Godshand sells the Master Mentalism tomes** at her alchemy shop in Ark, beside the
   top-tier spell books she already stocks.
 - **Fitzai Galabagadananka sells the Expert Mentalism tomes** at Fitzai's Puzzle Box in Ark,
