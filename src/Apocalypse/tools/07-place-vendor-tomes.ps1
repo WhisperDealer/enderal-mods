@@ -54,10 +54,16 @@ $enc   = New-Object System.Text.UTF8Encoding($false)
 # --- the six merchants --------------------------------------------------------
 #
 # ENTROPY (C) AND PSIONICS (I) ARE FORBIDDEN SCHOOLS IN ENDERAL, so the five respectable shops -
-# Milbert, Tarhutie, Ora, Torius in the Sun Temple, Emberlord and Fireflash - sell neither. Only
-# Barnabas in the Undercity keeps a forbidden line (Adept Entropy). The Novice and Apprentice tomes of both go to
-# a new Shrouded Mage in Riverville's inn (18-shrouded-mage-riverville.ps1), and everything from
-# Apprentice up that Barnabas does not carry is loot-only until it is given a forbidden dealer.
+# Milbert, Tarhutie, Ora, Torius in the Sun Temple, Emberlord and Fireflash, Barnabas - sell
+# neither. They go to the SHROUDED MAGES, Forgotten Stories' forbidden-magic dealers, whose chests
+# already stock FS's own `_00E_FS_Forbidden_TraderSpellBooks_All`, tiered the same way as the rest:
+#   Novice + Apprentice  a fourth mage we add in Riverville's inn (18-shrouded-mage-riverville.ps1;
+#                        his chest is ours, so it holds the tomes directly - no hook)
+#   Adept                the Undercity mage   (630 gold; 730 under EGO)
+#   Expert               the Frostcliff mage  (674; 924)
+#   Master               the Duneville mage   (707; 1357)
+# Their three hooks are empty UseAll lists in FS, and EGO and EGO Leveling Redone - the only mods in
+# reference/mods/ that override those chests - both keep them.
 #
 # `File` is the merchant's *_CustomMerchandise hook - all six are Forgotten Stories records.
 # `Shop` and `Gold` describe the chest that already contains it, recorded so the wealth ladder
@@ -66,10 +72,14 @@ $enc   = New-Object System.Text.UTF8Encoding($false)
 $vendors = @(
   @{ File = 'GabrielleFunkenfrst_CustomMerchandise - 0302D5_Enderal - Forgotten Stories.esm.yaml'; Shop = 'Ark, Emberlord and Fireflash'; Gold = 1800; Rank = '100'; Schools = 'ADR';   Expect = 30 }
   @{ File = 'TuriousFlammentrunk_CustomMerchandise - 0302FE_Enderal - Forgotten Stories.esm.yaml'; Shop = 'Sun Temple, Torius Flameling'; Gold = 1430; Rank = '075'; Schools = 'ADR';   Expect = 27 }
-  @{ File = 'Barnabas_CustomMerchandise - 030302_Enderal - Forgotten Stories.esm.yaml';            Shop = 'Undercity, Barnabas';          Gold = 1050; Rank = '050'; Schools = 'ACD';   Expect = 19 }
+  @{ File = 'Barnabas_CustomMerchandise - 030302_Enderal - Forgotten Stories.esm.yaml';            Shop = 'Undercity, Barnabas';          Gold = 1050; Rank = '050'; Schools = 'AD';    Expect = 14 }
   @{ File = 'OraSteinschlag_CustomMerchandise - 0302E3_Enderal - Forgotten Stories.esm.yaml';      Shop = 'Ark, Ora Stonehand';           Gold =  980; Rank = '050'; Schools = 'R';     Expect = 7 }
   @{ File = 'Tarhutie_CustomMerchandise - 0302F7_Enderal - Forgotten Stories.esm.yaml';            Shop = 'Riverville, Tarhutie';         Gold =  630; Rank = '025'; Schools = 'ADR';   Expect = 18 }
   @{ File = 'MilbertFuchshand_CustomMerchandise - 0302DE_Enderal - Forgotten Stories.esm.yaml';    Shop = 'Ark, Milbert Foxhand';         Gold =  530; Rank = '000'; Schools = 'ADR';   Expect = 9 }
+  # the forbidden schools, at the Shrouded Mages
+  @{ File = 'Wildmage_Undercity_CustomMerchandise - 0302F0_Enderal - Forgotten Stories.esm.yaml';        Shop = 'Undercity, Shrouded Mage';  Gold = 630; Rank = '050'; Schools = 'CI'; Expect = 12 }
+  @{ File = 'Wildmage_FrostcliffTavern_CustomMerchandise - 0302EF_Enderal - Forgotten Stories.esm.yaml'; Shop = 'Frostcliff Tavern, Shrouded Mage'; Gold = 674; Rank = '075'; Schools = 'CI'; Expect = 13 }
+  @{ File = 'Wildmage_Duneville_CustomMerchandise - 0302EE_Enderal - Forgotten Stories.esm.yaml';        Shop = 'Duneville, Shrouded Mage';  Gold = 707; Rank = '100'; Schools = 'CI'; Expect = 17 }
 )
 
 New-Item -ItemType Directory -Force $out | Out-Null
@@ -145,12 +155,11 @@ foreach ($v in $vendors) {
 }
 
 # --- final assertions ---------------------------------------------------------
-# Every tome NOT placed here must be a forbidden-school one: the 16 Novice/Apprentice tomes the
-# Riverville Shrouded Mage sells (step 18), and the 37 Adept+ ones that are loot-only for now. Nothing
-# from Alteration, Destruction or Restoration may fall through.
-$PLACED_HERE = 110
+# The only tomes NOT placed here are the 16 Novice/Apprentice Entropy/Psionics tomes the Riverville
+# Shrouded Mage sells from his own chest (step 18). Nothing else may fall through.
+$PLACED_HERE = 147
 $RIVERVILLE  = 16
-$LOOT_ONLY   = 37
+$LOOT_ONLY   = 0
 if ($placed.Keys.Count -ne $PLACED_HERE) { throw "placed $($placed.Keys.Count) tomes, expected $PLACED_HERE" }
 $unplaced = @($tomes | Where-Object { -not $placed.ContainsKey($_.EditorID) })
 $legal    = @($unplaced | Where-Object { $_.EditorID -notmatch '^WB_[CI]' })
@@ -159,9 +168,11 @@ $novice   = @($unplaced | Where-Object { $_.EditorID -match '^WB_[CI](000|025)_'
 if ($novice.Count -ne $RIVERVILLE) { throw "$($novice.Count) Novice/Apprentice Entropy/Psionics tomes unplaced, expected $RIVERVILLE (the Riverville mage)" }
 if ($unplaced.Count - $novice.Count -ne $LOOT_ONLY) { throw "$($unplaced.Count - $novice.Count) tomes loot-only, expected $LOOT_ONLY" }
 if ($PLACED_HERE + $RIVERVILLE + $LOOT_ONLY -ne $SHIP_TOMES) { throw "counts do not add up to $SHIP_TOMES" }
-# and no forbidden tome on a respectable shelf - Barnabas (Undercity) is the only exception
+# and no forbidden tome on a respectable shelf, nor anything else at a Shrouded Mage
 foreach ($k in $placed.Keys) {
-  if ($k -match '^WB_[CI]' -and $placed[$k] -ne 'Undercity, Barnabas') { throw "$k is a forbidden-school tome at $($placed[$k])" }
+  $shady = $placed[$k] -like '*Shrouded Mage'
+  if ($k -match '^WB_[CI]' -and -not $shady) { throw "$k is a forbidden-school tome at $($placed[$k])" }
+  if ($k -notmatch '^WB_[CI]' -and $shady)   { throw "$k is not Entropy/Psionics but is at $($placed[$k])" }
 }
 
 # The whole point of the hooks: we must be left overriding no container of any master. Enai's own
@@ -175,5 +186,5 @@ if ($owned.Count -gt 0) {
 
 ""
 "$($placed.Keys.Count) tomes placed across $($vendors.Count) CustomMerchandise hooks, each in exactly one."
-"$RIVERVILLE Novice/Apprentice Entropy/Psionics tomes left to the Riverville Shrouded Mage (step 18); $LOOT_ONLY loot-only."
+"$RIVERVILLE Novice/Apprentice Entropy/Psionics tomes left to the Riverville Shrouded Mage (step 18)."
 "0 container records of any master overridden."

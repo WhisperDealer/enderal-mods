@@ -23,11 +23,10 @@ $ErrorActionPreference = 'Stop'
 #   4. Our OWN merchant - the Riverville Shrouded Mage (18-shrouded-mage-riverville.ps1) - is wired
 #      end to end: a Vendor faction whose MerchantContainer is a ref placed in our tree, whose base is
 #      our container, which the NPC carrying that faction stands in the same cell as.
-#   5. 126 tomes are stocked exactly once each: 110 in hooks, 16 in our own chest. The other 37 of the
-#      163 distributed tomes are Entropy/Psionics Adept and up, loot-only for now; 12 summons
-#      are withheld entirely (00-cut-summons.ps1).
-#   6. No Entropy (C) or Psionics (I) tome is on a respectable shelf. They are forbidden schools in
-#      Enderal; only Barnabas in the Undercity and the Shrouded Mages may carry them.
+#   5. All 163 distributed tomes are stocked exactly once each: 147 in hooks, 16 in our own chest.
+#      12 summons are withheld entirely (00-cut-summons.ps1).
+#   6. Entropy (C) and Psionics (I) - forbidden schools in Enderal - are sold ONLY by the four
+#      Shrouded Mages, and the Shrouded Mages sell nothing else of ours.
 
 $repo = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $PSCommandPath)))
 $tree = Join-Path $repo 'src\Apocalypse\ApocalypseESP'
@@ -76,12 +75,13 @@ foreach ($h in $hooks) {
         $d = Join-Path $repo "reference\base\$tree2\Containers"
         if (-not (Test-Path -LiteralPath $d)) { continue }
         foreach ($c in Get-ChildItem $d -Filter '*.yaml' -File) {
-            if ((Read-Text $c.FullName) -match "(?m)^    Item: $short\:") { $inBase += "$tree2/$(($c.Name -split ' - ')[0])" }
+            if ((Read-Text $c.FullName) -match "(?m)^    Item: $short\:") { $inBase += "$tree2/$(($c.Name -split ' - ')[0])"; $chestKey = [regex]::Match($c.Name, ' - ([0-9A-F]{6}_.+)$').Groups[1].Value }
         }
     }
     if ($inBase.Count -eq 0) { throw "$eid is in no merchant chest at all - nothing would ever draw from it" }
 
-    # every third-party override of that chest must ALSO still carry the hook
+    # every third-party override of that chest must ALSO still carry the hook. Matched by FormKey
+    # (the file-name suffix), not EditorID: EGO renames the Shrouded Mage chests.
     $chest   = ($inBase[-1] -split '/')[-1]
     $dropped = @()
     $kept    = @()
@@ -90,7 +90,7 @@ foreach ($h in $hooks) {
         # conversion re-serialized, so counting it would report us conflicting with ourselves.
         $meta = @(Get-ChildItem $m.FullName -Recurse -Filter 'spriggit-meta.json' -File -ErrorAction SilentlyContinue)
         if ($meta.Count -gt 0 -and (Read-Text $meta[0].FullName) -match 'Apocalypse - Magic of Skyrim\.esp') { continue }
-        foreach ($c in Get-ChildItem $m.FullName -Recurse -Filter "$chest - *.yaml" -File -ErrorAction SilentlyContinue) {
+        foreach ($c in Get-ChildItem $m.FullName -Recurse -Filter "* - $chestKey" -File -ErrorAction SilentlyContinue) {
             if ($c.FullName -notmatch '\\Containers\\') { continue }
             if ((Read-Text $c.FullName) -match "(?m)^    Item: $short\:") { $kept += $m.Name } else { $dropped += $m.Name }
         }
@@ -154,13 +154,16 @@ $rows | Format-Table -AutoSize | Out-String | Write-Host
 
 # ---------------------------------------------------------------- 5. coverage
 $total = $seen.Keys.Count
-if ($total -ne 126) { throw "$total tomes stocked, expected 126 (110 in hooks + 16 at the Riverville Shrouded Mage)" }
+if ($total -ne 163) { throw "$total tomes stocked, expected 163 (147 in hooks + 16 at the Riverville Shrouded Mage)" }
 
 # ---------------------------------------------------------------- 6. forbidden schools stay off respectable shelves
-$shady = @('Barnabas_CustomMerchandise') + @($ownVendors | ForEach-Object { [regex]::Match((Read-Text $_.FullName), '(?m)^EditorID: (.+?)\s*\r?\n').Groups[1].Value })
+$shady = @('Wildmage_Undercity_CustomMerchandise', 'Wildmage_FrostcliffTavern_CustomMerchandise', 'Wildmage_Duneville_CustomMerchandise') + @($ownVendors | ForEach-Object { [regex]::Match((Read-Text $_.FullName), '(?m)^EditorID: (.+?)\s*\r?\n').Groups[1].Value })
 foreach ($r in $seen.Keys) {
     if ($books[$r].EditorID -match '^WB_[CI]' -and $shady -notcontains $seen[$r]) {
         throw "$($books[$r].EditorID) is a forbidden-school tome sold by $($seen[$r])"
+    }
+    if ($books[$r].EditorID -notmatch '^WB_[CI]' -and $shady -contains $seen[$r]) {
+        throw "$($books[$r].EditorID) is not Entropy/Psionics but is sold by Shrouded Mage $($seen[$r])"
     }
 }
 $unpriced = @($seen.Keys | Where-Object { -not $books[$_].Value -or [int]$books[$_].Value -le 0 })
@@ -172,6 +175,6 @@ $owned = @(Get-ChildItem (Join-Path $tree 'Containers') -Filter '*.yaml' -File -
 if ($owned.Count -gt 0) { throw "overriding $($owned.Count) container(s) of a master - the hooks exist to avoid that" }
 
 "proof: $total tomes stocked exactly once, all priced: $($hooks.Count) UseAll hooks + $($ownVendors.Count) merchant chest of our own"
-"       no Entropy/Psionics tome at a respectable merchant (Barnabas and the Shrouded Mage only)"
+"       Entropy/Psionics only at the four Shrouded Mages, and nothing else there"
 "       every hook is carried by its chest in base Enderal AND in every reference/mods override of it"
 "       0 container records of any master overridden"

@@ -11,15 +11,17 @@ and documentation are not listed.
   anyone with Mental Expert, and a second, reduced charge picks them up. Apocalypse's 19 heals only
   carried the first. They now carry both, at the same one-third discount Enderal's own heals give.
   Players without Mental Expert pay exactly what they did before.
-- **Entropy and Psionics are now sold only by Enderal's forbidden-magic dealers.** Both are
-  forbidden schools in Enderal, yet Ark's shops and the Sun Temple sold them openly. Milbert,
-  Tarhutie, Ora Stonehand, Torius Flameling and Emberlord and Fireflash no longer carry them;
-  Barnabas in the Undercity keeps the Adept Entropy tomes.
+- **Entropy and Psionics are now sold only by the Shrouded Mages**, Forgotten Stories'
+  forbidden-magic dealers. Both are forbidden schools in Enderal, yet Ark's shops and the Sun Temple
+  sold them openly. Milbert, Tarhutie, Ora Stonehand, Torius Flameling, Emberlord and Fireflash and
+  Barnabas no longer carry them. Instead:
+  - Novice and Apprentice: a new Shrouded Mage in Riverville (below)
+  - Adept: the Shrouded Mage in the Undercity
+  - Expert: the Shrouded Mage in Frostcliff Tavern
+  - Master: the Shrouded Mage in Duneville
 - **A new Shrouded Mage sits in The Drunken Bee in Riverville**, selling the Novice and Apprentice
   Entropy and Psionics tomes beside Forgotten Stories' own forbidden spell books. Like every Shrouded Mage, he
   will not trade with you until your Psionics or Entropy reaches 15.
-- For now, the Adept, Expert and Master Entropy and Psionics tomes (other than Barnabas's) are
-  found only as loot. They will get dealers of their own before release.
 - Removed the two loose brawl scripts (`dgintimidate*`) this mod used to ship. Enderal 2.1.4.4 no
   longer has scripts by those names, so they replaced nothing. The release is now the plugin alone;
   delete the two files from `Scripts\` if you update over an older version by hand.
