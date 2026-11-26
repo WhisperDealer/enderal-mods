@@ -167,7 +167,8 @@ unrelated to the conversion. Harmless -- the victim is still released.
 | `coc` target | Shop | Gold | Tier | Tomes | Hook |
 |---|---|---:|---|---:|---|
 | `CapitalCityMagierkram` | Ark -- Emberlord and Fireflash | 1800 | Master (no Entropy/Psionics) | 30 | `GabrielleFunkenfrst_CustomMerchandise` |
-| `SuntempleAlchemy` | Sun Temple -- Torius Flameling | 1430 | Expert (no Entropy/Psionics) | 27 | `TuriousFlammentrunk_CustomMerchandise` |
+| `SuntempleAlchemy` | Sun Temple -- Torius Flameling | 1430 | Expert Elementalism + Light Magic | 18 | `TuriousFlammentrunk_CustomMerchandise` |
+| -- | Ark -- Fitzai's Puzzle Box, Fitzai Galabagadananka | 890 | Expert Mentalism | 9 | `FitzaiGalabagadananka_CustomMerchandise` |
 | `UndercityBarracks2Barnabas` | Undercity -- Barnabas | 1050 | Adept (Mentalism/Elementalism) | 14 | `Barnabas_CustomMerchandise` |
 | -- | Ark -- Ora Stonehand | 980 | Adept (Light Magic) | 7 | `OraSteinschlag_CustomMerchandise` |
 | -- | Riverville -- Tarhutie | 630 | Apprentice (no Entropy/Psionics) | 18 | `Tarhutie_CustomMerchandise` |
@@ -492,19 +493,19 @@ player.advskill alteration 100000 first, so magnitudes read at full skill.
 | [ ] | **Thundering Hooves** | `player.addspell XX007A8C` | FireAndForget | 70 | 220 | Undercity - Barnabas | For 180 seconds, your mount is 30% faster, regenerates Stamina and can swim upwards to run on water. Nearby allies riding a mount within 30 feet also benefit. |  |
 | [ ] | **Undermine** | `player.addspell XX002E31` | FireAndForget / Aimed | 75 | 185 | Undercity - Barnabas | For 30 seconds, shifting earth causes the target to lose its balance when swinging a melee weapon, staggering the target and draining <30> points of Stamina. |  |
 
-### Expert (075) -- Sun Temple - Torius Flameling
+### Expert (075) -- Ark - Fitzai's Puzzle Box
 
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Deep Storage** | `player.addspell XX003907` | FireAndForget | 100 | 300 | Sun Temple - Torius Flameling | Grants access to an infinite underground storage space. |  |
-| [ ] | **Detonate Lock** | `player.addspell XX00AB69` | FireAndForget / Aimed | 180 | 350 | Sun Temple - Torius Flameling | Open a lock with a level <25> points or more below your Alteration skill with a shockwave that may alert others. |  |
-| [ ] | **Entomb** | `player.addspell XX04581C` | FireAndForget / Aimed | 140 | 290 | Sun Temple - Torius Flameling | Buries a target permanently, or frees a buried target. Only one victim may be buried at a time. |  |
-| [ ] | **Fabricate Object** | `player.addspell XX003902` | FireAndForget | 185 | 305 | Sun Temple - Torius Flameling | The caster creates a bridge, bed or crafting station of his or her choice. The object disappears after 120 seconds or when entering combat. |  |
-| [ ] | **Grace of Water** | `player.addspell XX0AAF9E` | Concentration | 49 | 235 | Sun Temple - Torius Flameling | Concentrate to become ethereal. Release after attacking to briefly slow time. |  |
-| [ ] | **Instant Forest** | `player.addspell XX0AE5B7` | Concentration / TargetLocation | 49 | 240 | Sun Temple - Torius Flameling | Concentrate to raise a row of trees where the caster points. They block passage, but the caster can destroy them. |  |
-| [ ] | **Knowledge is Power** | `player.addspell XX00CC16` | FireAndForget | 140 | 280 | Sun Temple - Torius Flameling | Copies the (non-concentration) spell in your left hand, granting a power that casts this spell once a day for no cost. Empty left hand to reset. |  |
-| [ ] | **Spell Sentinel** | `player.addspell XX161610` | FireAndForget | 120 | 240 | Sun Temple - Torius Flameling | Stores the (beneficial self-targeted non-concentration) spell in your left hand and casts it for no cost every <30> seconds in combat. Empty left hand to reset. |  |
-| [ ] | **Tumble Magnet** | `player.addspell XX00A5EB` | FireAndForget / Aimed | 95 | 280 | Sun Temple - Torius Flameling | Magnetic artifact that exists for 20 seconds, randomly pulling nearby enemies to the center. |  |
+| [ ] | **Deep Storage** | `player.addspell XX003907` | FireAndForget | 100 | 300 | Ark - Fitzai's Puzzle Box | Grants access to an infinite underground storage space. |  |
+| [ ] | **Detonate Lock** | `player.addspell XX00AB69` | FireAndForget / Aimed | 180 | 350 | Ark - Fitzai's Puzzle Box | Open a lock with a level <25> points or more below your Alteration skill with a shockwave that may alert others. |  |
+| [ ] | **Entomb** | `player.addspell XX04581C` | FireAndForget / Aimed | 140 | 290 | Ark - Fitzai's Puzzle Box | Buries a target permanently, or frees a buried target. Only one victim may be buried at a time. |  |
+| [ ] | **Fabricate Object** | `player.addspell XX003902` | FireAndForget | 185 | 305 | Ark - Fitzai's Puzzle Box | The caster creates a bridge, bed or crafting station of his or her choice. The object disappears after 120 seconds or when entering combat. |  |
+| [ ] | **Grace of Water** | `player.addspell XX0AAF9E` | Concentration | 49 | 235 | Ark - Fitzai's Puzzle Box | Concentrate to become ethereal. Release after attacking to briefly slow time. |  |
+| [ ] | **Instant Forest** | `player.addspell XX0AE5B7` | Concentration / TargetLocation | 49 | 240 | Ark - Fitzai's Puzzle Box | Concentrate to raise a row of trees where the caster points. They block passage, but the caster can destroy them. |  |
+| [ ] | **Knowledge is Power** | `player.addspell XX00CC16` | FireAndForget | 140 | 280 | Ark - Fitzai's Puzzle Box | Copies the (non-concentration) spell in your left hand, granting a power that casts this spell once a day for no cost. Empty left hand to reset. |  |
+| [ ] | **Spell Sentinel** | `player.addspell XX161610` | FireAndForget | 120 | 240 | Ark - Fitzai's Puzzle Box | Stores the (beneficial self-targeted non-concentration) spell in your left hand and casts it for no cost every <30> seconds in combat. Empty left hand to reset. |  |
+| [ ] | **Tumble Magnet** | `player.addspell XX00A5EB` | FireAndForget / Aimed | 95 | 280 | Ark - Fitzai's Puzzle Box | Magnetic artifact that exists for 20 seconds, randomly pulling nearby enemies to the center. |  |
 
 ### Master (100) -- Ark - Emberlord & Fireflash
 

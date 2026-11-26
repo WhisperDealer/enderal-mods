@@ -76,11 +76,16 @@ $enc   = New-Object System.Text.UTF8Encoding($false)
 # chest's own Items list, not guessed from the names.
 $vendors = @(
   @{ File = 'GabrielleFunkenfrst_CustomMerchandise - 0302D5_Enderal - Forgotten Stories.esm.yaml'; Shop = 'Ark, Emberlord and Fireflash'; Gold = 1800; Rank = '100'; Schools = 'ADR';   Expect = 30 }
-  @{ File = 'TuriousFlammentrunk_CustomMerchandise - 0302FE_Enderal - Forgotten Stories.esm.yaml'; Shop = 'Sun Temple, Torius Flameling'; Gold = 1430; Rank = '075'; Schools = 'ADR';   Expect = 27 }
+  @{ File = 'TuriousFlammentrunk_CustomMerchandise - 0302FE_Enderal - Forgotten Stories.esm.yaml'; Shop = 'Sun Temple, Torius Flameling'; Gold = 1430; Rank = '075'; Schools = 'DR';    Expect = 18 }
   @{ File = 'Barnabas_CustomMerchandise - 030302_Enderal - Forgotten Stories.esm.yaml';            Shop = 'Undercity, Barnabas';          Gold = 1050; Rank = '050'; Schools = 'AD';    Expect = 14 }
   @{ File = 'OraSteinschlag_CustomMerchandise - 0302E3_Enderal - Forgotten Stories.esm.yaml';      Shop = 'Ark, Ora Stonehand';           Gold =  980; Rank = '050'; Schools = 'R';     Expect = 7 }
   @{ File = 'Tarhutie_CustomMerchandise - 0302F7_Enderal - Forgotten Stories.esm.yaml';            Shop = 'Riverville, Tarhutie';         Gold =  630; Rank = '025'; Schools = 'ADR';   Expect = 18 }
   @{ File = 'MilbertFuchshand_CustomMerchandise - 0302DE_Enderal - Forgotten Stories.esm.yaml';    Shop = 'Ark, Milbert Foxhand';         Gold =  530; Rank = '000'; Schools = 'A';     Expect = 3 }
+  # Expert Mentalism: Fitzai Galabagadananka, Fitzai's Puzzle Box in Ark. Mentalism is the Starlings'
+  # art and EGO stocks his shop with Starling gear, so the two sit well together. His chest is
+  # _00E_Merchant_CCStarWarehouse 11B214 (890 gold; 1390 under EGO); FS, EGO and EGO Leveling Redone
+  # all carry this hook in it.
+  @{ File = 'FitzaiGalabagadananka_CustomMerchandise - 0302D6_Enderal - Forgotten Stories.esm.yaml'; Shop = 'Ark, Fitzai''s Puzzle Box';    Gold =  890; Rank = '075'; Schools = 'A';     Expect = 9 }
   # Novice Light Magic + Elementalism: Eshra Miraya, one of the first merchants a player meets in the
   # open world (she trades once her quest is done). Her chest is _00E_TraderSonnenkueste 050FCF;
   # FS, EGO and EGO Leveling Redone all carry this hook in it.

@@ -22,6 +22,9 @@ and documentation are not listed.
 - **Eshra Mirâya now sells the Novice Light Magic and Elementalism tomes**, instead of Milbert
   Foxhand in Ark. She is one of the first merchants you can meet in the open world, and trades once
   her quest is done. Milbert keeps the Novice Mentalism tomes.
+- **Fitzai Galabagadananka sells the Expert Mentalism tomes** at Fitzai's Puzzle Box in Ark,
+  instead of Torius Flameling. Mentalism is the Starlings' art, and with EGO his shop also sells
+  Starling gear.
 - **A new Shrouded Mage sits in The Drunken Bee in Riverville**, selling the Novice and Apprentice
   Entropy and Psionics tomes beside Forgotten Stories' own forbidden spell books. Like every Shrouded Mage, he
   will not trade with you until your Psionics or Entropy reaches 15.
