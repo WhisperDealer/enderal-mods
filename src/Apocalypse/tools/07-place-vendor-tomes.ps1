@@ -55,7 +55,7 @@ $enc   = New-Object System.Text.UTF8Encoding($false)
 #
 # ENTROPY (C) AND PSIONICS (I) ARE FORBIDDEN SCHOOLS IN ENDERAL, so the five respectable shops -
 # Milbert, Tarhutie, Ora, Torius in the Sun Temple, Emberlord and Fireflash - sell neither. Only
-# Barnabas in the Undercity keeps a forbidden line (Adept Entropy). The Novice tomes of both go to
+# Barnabas in the Undercity keeps a forbidden line (Adept Entropy). The Novice and Apprentice tomes of both go to
 # a new Shrouded Mage in Riverville's inn (18-shrouded-mage-riverville.ps1), and everything from
 # Apprentice up that Barnabas does not carry is loot-only until it is given a forbidden dealer.
 #
@@ -145,18 +145,18 @@ foreach ($v in $vendors) {
 }
 
 # --- final assertions ---------------------------------------------------------
-# Every tome NOT placed here must be a forbidden-school one: the 6 Novice tomes the Riverville
-# Shrouded Mage sells (step 18), and the 47 higher-rank ones that are loot-only for now. Nothing
+# Every tome NOT placed here must be a forbidden-school one: the 16 Novice/Apprentice tomes the
+# Riverville Shrouded Mage sells (step 18), and the 37 Adept+ ones that are loot-only for now. Nothing
 # from Alteration, Destruction or Restoration may fall through.
 $PLACED_HERE = 110
-$RIVERVILLE  = 6
-$LOOT_ONLY   = 47
+$RIVERVILLE  = 16
+$LOOT_ONLY   = 37
 if ($placed.Keys.Count -ne $PLACED_HERE) { throw "placed $($placed.Keys.Count) tomes, expected $PLACED_HERE" }
 $unplaced = @($tomes | Where-Object { -not $placed.ContainsKey($_.EditorID) })
 $legal    = @($unplaced | Where-Object { $_.EditorID -notmatch '^WB_[CI]' })
 if ($legal.Count -gt 0) { throw "not placed, and not Entropy/Psionics: $($legal.EditorID -join ', ')" }
-$novice   = @($unplaced | Where-Object { $_.EditorID -match '^WB_[CI]000_' })
-if ($novice.Count -ne $RIVERVILLE) { throw "$($novice.Count) Novice Entropy/Psionics tomes unplaced, expected $RIVERVILLE (the Riverville mage)" }
+$novice   = @($unplaced | Where-Object { $_.EditorID -match '^WB_[CI](000|025)_' })
+if ($novice.Count -ne $RIVERVILLE) { throw "$($novice.Count) Novice/Apprentice Entropy/Psionics tomes unplaced, expected $RIVERVILLE (the Riverville mage)" }
 if ($unplaced.Count - $novice.Count -ne $LOOT_ONLY) { throw "$($unplaced.Count - $novice.Count) tomes loot-only, expected $LOOT_ONLY" }
 if ($PLACED_HERE + $RIVERVILLE + $LOOT_ONLY -ne $SHIP_TOMES) { throw "counts do not add up to $SHIP_TOMES" }
 # and no forbidden tome on a respectable shelf - Barnabas (Undercity) is the only exception
@@ -175,5 +175,5 @@ if ($owned.Count -gt 0) {
 
 ""
 "$($placed.Keys.Count) tomes placed across $($vendors.Count) CustomMerchandise hooks, each in exactly one."
-"$RIVERVILLE Novice Entropy/Psionics tomes left to the Riverville Shrouded Mage (step 18); $LOOT_ONLY loot-only."
+"$RIVERVILLE Novice/Apprentice Entropy/Psionics tomes left to the Riverville Shrouded Mage (step 18); $LOOT_ONLY loot-only."
 "0 container records of any master overridden."

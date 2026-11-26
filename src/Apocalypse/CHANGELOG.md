@@ -15,11 +15,11 @@ and documentation are not listed.
   forbidden schools in Enderal, yet Ark's shops and the Sun Temple sold them openly. Milbert,
   Tarhutie, Ora Stonehand, Torius Flameling and Emberlord and Fireflash no longer carry them;
   Barnabas in the Undercity keeps the Adept Entropy tomes.
-- **A new Shrouded Mage sits in The Drunken Bee in Riverville**, selling the six Novice Entropy and
-  Psionics tomes beside Forgotten Stories' own forbidden spell books. Like every Shrouded Mage, he
+- **A new Shrouded Mage sits in The Drunken Bee in Riverville**, selling the Novice and Apprentice
+  Entropy and Psionics tomes beside Forgotten Stories' own forbidden spell books. Like every Shrouded Mage, he
   will not trade with you until your Psionics or Entropy reaches 15.
-- For now, the Entropy and Psionics tomes above Novice (other than Barnabas's) are found only as
-  loot. They will get dealers of their own before release.
+- For now, the Adept, Expert and Master Entropy and Psionics tomes (other than Barnabas's) are
+  found only as loot. They will get dealers of their own before release.
 - Removed the two loose brawl scripts (`dgintimidate*`) this mod used to ship. Enderal 2.1.4.4 no
   longer has scripts by those names, so they replaced nothing. The release is now the plugin alone;
   delete the two files from `Scripts\` if you update over an older version by hand.

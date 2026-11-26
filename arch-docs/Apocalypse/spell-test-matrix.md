@@ -82,7 +82,7 @@ Nothing below is worth doing until these are green. Each is one launch.
       corner bench, and **his face renders** -- no dark-face bug. He has no FaceGen of his own and
       borrows the Duneville mage's through a Traits template. *Confirmed 2026-11-25.*
 - [x] He speaks with the Shrouded Mage voice and his barter line opens his shop: FS's forbidden
-      tomes plus the six Novice Entropy/Psionics tomes. With BOTH Psionics and Entropy below 15 he
+      tomes plus the 16 Novice and Apprentice Entropy/Psionics tomes. With BOTH Psionics and Entropy below 15 he
       refuses with FS's "not enough entropy" message instead -- that is FS's gate on every Shrouded Mage.
 - [ ] No Entropy or Psionics tome at Milbert, Tarhutie, Ora, Torius or Emberlord and Fireflash.
 - [x] `player.additem XX1C1E71 5` ... `XX1C1E75 5` each yield Apocalypse tomes, and
@@ -170,10 +170,10 @@ unrelated to the conversion. Harmless -- the victim is still released.
 | -- | Ark -- Ora Stonehand | 980 | Adept (Light Magic) | 7 | `OraSteinschlag_CustomMerchandise` |
 | -- | Riverville -- Tarhutie | 630 | Apprentice (no Entropy/Psionics) | 18 | `Tarhutie_CustomMerchandise` |
 | -- | Ark -- Milbert Foxhand | 530 | Novice (no Entropy/Psionics) | 9 | `MilbertFuchshand_CustomMerchandise` |
-| `FlusshaimTavern` | Riverville -- Shrouded Mage, The Drunken Bee | 707 | Novice Entropy + Psionics | 6 | own chest `ZP_Apoc_Merchant_Wildmage_RivervilleChest` |
+| `FlusshaimTavern` | Riverville -- Shrouded Mage, The Drunken Bee | 707 | Novice + Apprentice Entropy and Psionics | 16 | own chest `ZP_Apoc_Merchant_Wildmage_RivervilleChest` |
 
 Entropy and Psionics are forbidden schools in Enderal, so the respectable shops sell neither; only
-Barnabas and the Shrouded Mage do. Entropy and Psionics tomes above Novice that Barnabas does not
+Barnabas and the Shrouded Mage do. Entropy and Psionics tomes from Adept up that Barnabas does not
 carry are loot-only for now.
 
 The three shops without a `coc` target are outdoor Ark and Riverville market stalls -- their chests
@@ -336,16 +336,16 @@ player.advskill conjuration 100000 first, so magnitudes read at full skill.
 | [ ] | **Bag of Rats** | `player.addspell XX16162D` | FireAndForget | 45 | 30 | Riverville - Shrouded Mage | Summons a Skeever for 30 seconds. | DEAD-REF |
 | [ ] | **Consuming Power** | `player.addspell XX016F92` | FireAndForget / Aimed | 80 | 45 | Riverville - Shrouded Mage | Allied summoned or reanimated minion gains 75% extra attack damage for 10 seconds, then dies. |  |
 
-### Apprentice (025) -- NOT SOLD
+### Apprentice (025) -- NOT SOLD / Riverville - Shrouded Mage
 
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Conjure Cat Totem** | `player.addspell XX027144` | FireAndForget / TargetLocation | 115 | 85 | - | Summons a ancient totem spirit for 60 seconds. It changes between warrior and cat form to heal. (Max. <1>) |  |
-| [ ] | **Conjure Deadeye Captain** | `player.addspell XX037E17` | FireAndForget / TargetLocation | 120 | 95 | - | Summons a Deadeye Captain for 60 seconds. Activate a corpse to store it. Activate the Captain to dredge it up. |  |
+| [ ] | **Conjure Cat Totem** | `player.addspell XX027144` | FireAndForget / TargetLocation | 115 | 85 | Riverville - Shrouded Mage | Summons a ancient totem spirit for 60 seconds. It changes between warrior and cat form to heal. (Max. <1>) |  |
+| [ ] | **Conjure Deadeye Captain** | `player.addspell XX037E17` | FireAndForget / TargetLocation | 120 | 95 | Riverville - Shrouded Mage | Summons a Deadeye Captain for 60 seconds. Activate a corpse to store it. Activate the Captain to dredge it up. |  |
 | [ ] | **Conjure Entropic Churl** | `player.addspell XX012359` | FireAndForget / TargetLocation | 110 | 145 | - | Summons an Entropic Churl for 60 seconds. When killed, an Entropic Churl is summoned under control of the killer. | NOT-SOLD |
 | [ ] | **Elemental Mark** | `player.addspell XX02CD7E` | FireAndForget / Aimed | 50 | 90 | - | Marks a target for 10 seconds. The mark detonates when the target is struck by a summoned or reanimated minion, dealing <30> magic damage in a <15> foot area. | NOT-SOLD |
-| [ ] | **Power of the Master** | `player.addspell XX01857E` | FireAndForget | 130 | 170 | - | Casts the (beneficial self-targeted) spell in your left hand on all nearby summoned or reanimated minions. |  |
-| [ ] | **Soul Cloak** | `player.addspell XX140B03` | FireAndForget | 100 | 95 | - | For 60 seconds, nearby enemies within 15 feet fill a soul gem on death. |  |
+| [ ] | **Power of the Master** | `player.addspell XX01857E` | FireAndForget | 130 | 170 | Riverville - Shrouded Mage | Casts the (beneficial self-targeted) spell in your left hand on all nearby summoned or reanimated minions. |  |
+| [ ] | **Soul Cloak** | `player.addspell XX140B03` | FireAndForget | 100 | 95 | Riverville - Shrouded Mage | For 60 seconds, nearby enemies within 15 feet fill a soul gem on death. |  |
 
 ### Adept (050) -- NOT SOLD / Undercity - Barnabas
 
@@ -528,16 +528,16 @@ player.advskill illusion 100000 first, so magnitudes read at full skill.
 | [ ] | **Pale Shadow** | `player.addspell XX08558A` | FireAndForget / Aimed | 30 | 55 | Riverville - Shrouded Mage | Target enemy is attacked by its own image for 10 seconds. It deals the same damage but has <1> Health. | DEAD-SCRIPT-PROP |
 | [ ] | **Silvery Barbs** | `player.addspell XX15B843` | FireAndForget / Aimed | 35 | 40 | Riverville - Shrouded Mage | Curses a target for 20 seconds. When the target casts a spell, they get <10>% weakness to magic and you get <10>% magic resistance. This effect stacks. |  |
 
-### Apprentice (025) -- NOT SOLD
+### Apprentice (025) -- Riverville - Shrouded Mage
 
 | OK | Spell | `addspell` | Cast / Target | Cost | Gold | Sold at | Expected | Risk |
 |---|---|---|---|---:|---:|---|---|---|
-| [ ] | **Backlash** | `player.addspell XX1132DA` | FireAndForget / Aimed | 27 | 95 | - | Interrupts target spellcaster. If a spell is interrupted, the target is hit by their own offensive spells, while non-offensive spells are cast on you. |  |
-| [ ] | **Curse of the Silent** | `player.addspell XX017509` | FireAndForget / Aimed | 70 | 120 | - | Drains 8 points of Magicka per second for 30 seconds or until the target successfully casts a spell. |  |
-| [ ] | **Illusory Flames** | `player.addspell XX03682F` | Concentration / Aimed | 27 | 75 | - | Concentrate to deal <30>% of their current Health as temporary damage that wears off after 2 seconds. |  |
-| [ ] | **Mind Vision** | `player.addspell XX0378A9` | FireAndForget / TargetActor | 65 | 85 | - | See through the eyes of target creature or humanoid for 10 seconds. Sheathe to cancel. | DEAD-PERK |
-| [ ] | **Shared Trauma** | `player.addspell XX00C0AC` | FireAndForget / Aimed | 45 | 100 | - | For 10 seconds, when target creature or humanoid loses Health, the previous target loses the same amount. | DEAD-PERK |
-| [ ] | **Thoughtsteal** | `player.addspell XX00BB22` | FireAndForget / Aimed | 70 | 90 | - | Equip the spells the target has equipped. Lasts for 120 seconds or until unequipped. |  |
+| [ ] | **Backlash** | `player.addspell XX1132DA` | FireAndForget / Aimed | 27 | 95 | Riverville - Shrouded Mage | Interrupts target spellcaster. If a spell is interrupted, the target is hit by their own offensive spells, while non-offensive spells are cast on you. |  |
+| [ ] | **Curse of the Silent** | `player.addspell XX017509` | FireAndForget / Aimed | 70 | 120 | Riverville - Shrouded Mage | Drains 8 points of Magicka per second for 30 seconds or until the target successfully casts a spell. |  |
+| [ ] | **Illusory Flames** | `player.addspell XX03682F` | Concentration / Aimed | 27 | 75 | Riverville - Shrouded Mage | Concentrate to deal <30>% of their current Health as temporary damage that wears off after 2 seconds. |  |
+| [ ] | **Mind Vision** | `player.addspell XX0378A9` | FireAndForget / TargetActor | 65 | 85 | Riverville - Shrouded Mage | See through the eyes of target creature or humanoid for 10 seconds. Sheathe to cancel. | DEAD-PERK |
+| [ ] | **Shared Trauma** | `player.addspell XX00C0AC` | FireAndForget / Aimed | 45 | 100 | Riverville - Shrouded Mage | For 10 seconds, when target creature or humanoid loses Health, the previous target loses the same amount. | DEAD-PERK |
+| [ ] | **Thoughtsteal** | `player.addspell XX00BB22` | FireAndForget / Aimed | 70 | 90 | Riverville - Shrouded Mage | Equip the spells the target has equipped. Lasts for 120 seconds or until unequipped. |  |
 
 ### Adept (050) -- NOT SOLD
 

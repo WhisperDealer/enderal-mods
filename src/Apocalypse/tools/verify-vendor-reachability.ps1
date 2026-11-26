@@ -23,8 +23,8 @@ $ErrorActionPreference = 'Stop'
 #   4. Our OWN merchant - the Riverville Shrouded Mage (18-shrouded-mage-riverville.ps1) - is wired
 #      end to end: a Vendor faction whose MerchantContainer is a ref placed in our tree, whose base is
 #      our container, which the NPC carrying that faction stands in the same cell as.
-#   5. 116 tomes are stocked exactly once each: 110 in hooks, 6 in our own chest. The other 47 of the
-#      163 distributed tomes are Entropy/Psionics above Novice and are loot-only for now; 12 summons
+#   5. 126 tomes are stocked exactly once each: 110 in hooks, 16 in our own chest. The other 37 of the
+#      163 distributed tomes are Entropy/Psionics Adept and up, loot-only for now; 12 summons
 #      are withheld entirely (00-cut-summons.ps1).
 #   6. No Entropy (C) or Psionics (I) tome is on a respectable shelf. They are forbidden schools in
 #      Enderal; only Barnabas in the Undercity and the Shrouded Mages may carry them.
@@ -154,7 +154,7 @@ $rows | Format-Table -AutoSize | Out-String | Write-Host
 
 # ---------------------------------------------------------------- 5. coverage
 $total = $seen.Keys.Count
-if ($total -ne 116) { throw "$total tomes stocked, expected 116 (110 in hooks + 6 at the Riverville Shrouded Mage)" }
+if ($total -ne 126) { throw "$total tomes stocked, expected 126 (110 in hooks + 16 at the Riverville Shrouded Mage)" }
 
 # ---------------------------------------------------------------- 6. forbidden schools stay off respectable shelves
 $shady = @('Barnabas_CustomMerchandise') + @($ownVendors | ForEach-Object { [regex]::Match((Read-Text $_.FullName), '(?m)^EditorID: (.+?)\s*\r?\n').Groups[1].Value })

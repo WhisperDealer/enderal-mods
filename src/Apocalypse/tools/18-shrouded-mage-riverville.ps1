@@ -1,8 +1,8 @@
 #requires -Version 5.1
 <#
 .SYNOPSIS
-  Add a fourth Shrouded Mage to The Drunken Bee in Riverville, selling Apocalypse's Novice Entropy
-  and Psionics tomes.
+  Add a fourth Shrouded Mage to The Drunken Bee in Riverville, selling Apocalypse's Novice and
+  Apprentice Entropy and Psionics tomes. Adept, Expert and Master are left for the three FS mages.
 
 .DESCRIPTION
   Entropy (Conjuration) and Psionics (Illusion) are the forbidden schools in Enderal, so they belong
@@ -90,16 +90,17 @@ $rival = @(Get-ChildItem $mods -Recurse -Filter 'RecordData.yaml' -File -ErrorAc
   Where-Object { $_.DirectoryName -match 'FlusshaimTavern - 019C50' -and $_.FullName -notmatch '\\Apocalypse\\' })
 if ($rival.Count -gt 0) { throw "FlusshaimTavern is overridden by: $(($rival | ForEach-Object FullName) -join ', ') - forward it" }
 
-# --- the six tomes: Novice Entropy + Novice Psionics, minus anything withheld ---------------------
+# --- the 16 tomes: Novice + Apprentice Entropy and Psionics, minus anything withheld --------------
+# (Novice 3 C + 3 I; Apprentice 4 C + 6 I - Conjure Entropic Churl and Elemental Mark are withheld)
 $tomes = @(Get-ChildItem (Join-Path $tree 'Books') -Filter '*.yaml' -File | ForEach-Object {
   $t = Read-Lf $_.FullName
   [pscustomobject]@{
     EditorID = [regex]::Match($t, '(?m)^EditorID: (\S+)').Groups[1].Value
     FormKey  = [regex]::Match($t, '(?m)^FormKey: (.+)$').Groups[1].Value.Trim()
   }
-} | Where-Object { $_.EditorID -match '^WB_[CI]000_.+_Book$' -and $removed -notcontains ($_.EditorID -replace '_Book$', '') } |
+} | Where-Object { $_.EditorID -match '^WB_[CI](000|025)_.+_Book$' -and $removed -notcontains ($_.EditorID -replace '_Book$', '') } |
   Sort-Object EditorID)
-if ($tomes.Count -ne 6) { throw "expected 6 Novice Entropy/Psionics tomes, found $($tomes.Count)" }
+if ($tomes.Count -ne 16) { throw "expected 16 Novice/Apprentice Entropy/Psionics tomes, found $($tomes.Count)" }
 
 # --- 1. NPC ----------------------------------------------------------------------------------------
 $t = Read-Lf (Find-One (Join-Path $fs 'Npcs') '_00E_FS_Wildmage_Duneville - 01E907_*.yaml')
@@ -190,5 +191,5 @@ foreach ($k in $ID.Values) {
 "Shrouded Mage, The Drunken Bee (Riverville)"
 "  npc $($ID.Npc) (Traits template 01E907), faction $($ID.Faction), chest $($ID.Chest)"
 "  refs $($ID.NpcRef) on bench $Bench, $($ID.ChestRef) $ChestDrop units below"
-"  stock: FS's forbidden lists + $($tomes.Count) Novice tomes:"
+"  stock: FS's forbidden lists + $($tomes.Count) Novice/Apprentice tomes:"
 $tomes | ForEach-Object { "    $($_.EditorID)" }
